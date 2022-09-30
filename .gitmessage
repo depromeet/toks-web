@@ -1,0 +1,12 @@
+
+# [종류]: 제목
+
+# 내용
+
+# feat : new feature
+# fix : bug fix
+# refactor: refactoring production code
+# style : formatting, missing semi colons, etc; no code change
+# docs : changes to documentation
+# test : adding or refactoring tests
+# chore : updating grunt tasks etc
