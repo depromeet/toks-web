@@ -4,7 +4,7 @@
 
 1. 레포 clone
 
-2. `npm i yarn -g` / yarn이 global로 설치 되어있다면 패스
+2. `npm i yarn -g` / yarn이 global로 설치 되어있다면 패스합니다.
 
 3. `cd depromeet` (클론한 해당 워크스페이스로 접근)
 
@@ -16,6 +16,8 @@
 6. yarn install 이후 node_module 내부에 esbuild 관련 캐싱 폴더가 아닌 다른 패키지가 생긴다면, 잘못 설정한거에요. 말씀 주시면 도와드리겠습니다. esbuild 관련 캐싱 폴더만 생겼다면 node_module은 삭제하셔도 무방합니다. yarn berry는 node_module을 사용하지 않습니다.
 
 7. `git config commit.template .gitmessage` (깃 커밋 메세지 템플릿 설정)
+
+8. `yarn lint`, `yarn typecheck`, `yarn find-deadcode` 스크립트가 문제 없이 동작하는지 확인합니다.
 
 ## 첨언
 
