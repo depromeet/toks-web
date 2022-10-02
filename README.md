@@ -22,3 +22,7 @@
 ## 첨언
 
 git commit template, pr template, eslint, prettier 등 컨벤션 관련한 것은 이야기 후에 변경해보도록 해요! 우선은 임시로 설정해보았습니다.
+
+---
+
+test 시도합니다.
