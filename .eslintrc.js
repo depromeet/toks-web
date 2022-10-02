@@ -13,7 +13,12 @@ module.exports = {
   settings: { 'import/resolver': { typescript: {} } },
 
   rules: {
-    'prettier/prettier': 'error',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
 
     'react-hooks/exhaustive-deps': 'error',
 
