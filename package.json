@@ -12,7 +12,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint -c .eslintrc.js '{src}/**/*.{js,jsx,ts,tsx}'",
+    "lint": "eslint -c .eslintrc.js 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "yarn lint --fix",
     "typecheck": "tsc --noEmit",
     "analyze": "ANALYZE=true next build",
