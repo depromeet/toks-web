@@ -20,8 +20,8 @@ jobs:
           status: ${{ job.status }}
           author_name: Frontend PR - dev
           fields: repo,commit,message,author # action,eventName,ref,workflow,job,took 추가할 수 있음
-          mention: 'here'
-          if_mention: failure,cancelled
+          mention: here,channel
+          if_mention: success,failure,cancelled
           icon_emoji: ':zap:'
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
