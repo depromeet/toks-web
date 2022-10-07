@@ -3,7 +3,7 @@ function App() {
 }
 
 export function ErrorTrigger() {
-  return 'test';
+  return 'test1';
 }
 
 export default App;
