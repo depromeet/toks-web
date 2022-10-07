@@ -16,14 +16,13 @@ jobs:
           status: ${{ job.status }}
           author_name: Frontend PR - dev
           fields: repo,commit,message,author # action,eventName,ref,workflow,job,took 추가할 수 있음
+          custom_payload: [{
+            attachments: [{
+              text: `코드 리뷰 요청드립니다.`
+            }]
+          }]
           mention: channel
           if_mention: success,failure
-          custom_payload: |
-            {
-              attachments: [{
-                text: `코드 리뷰 요청드립니다.`
-              }]
-            }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
         if: always() # Pick up events even if the job fails or is canceled.
