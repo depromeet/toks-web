@@ -4,26 +4,42 @@
 name: CI
 
 on:
-  pull_request:
-    branches: [develop, master]
+  # 마스터 브랜치에 push 하는 경우는, husky로 금지합니다.
+  push:
+      branches-ignore:
+        - "master"
 
 jobs:
-  build:
-
+  ci:
+    name: CI
     runs-on: ubuntu-latest
+    # 커밋 메세지에 "[skip ci]"를 넣으면 CI가 돌지 않습니다.
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
 
     strategy:
       matrix:
         node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        
     steps:
+    # 변경 이력을 모두 불러옵니다.
     - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install Yarn
+        run: npm i -g yarn
 
     - name: Install dependencies
-      run: yarn install
+      # Zero-Installs 사용 시, lock file, cache file 수정 여부 검증 및 throw error & exit
+      run: yarn install --immutable --immutable-cache
 
+    # TODO: 모노레포 설정 후, Changed Directory 추적 후 해당 Service만 커맨드 실행 로직 필요 
     - name: Check Lint
       run: yarn lint
 
