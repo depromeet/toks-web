@@ -33,7 +33,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Install Yarn
-        run: npm i -g yarn
+      run: npm i -g yarn
 
     - name: Install dependencies
       # Zero-Installs 사용 시, lock file, cache file 수정 여부 검증 및 throw error & exit
