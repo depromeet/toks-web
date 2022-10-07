@@ -37,7 +37,8 @@ jobs:
 
     - name: Install dependencies
       # Zero-Installs 사용 시, lock file, cache file 수정 여부 검증 및 throw error & exit
-      run: yarn install --immutable --immutable-cache
+      # TODO: --immutable-cache (cache file install 방지)
+      run: yarn install --immutable
 
     # TODO: 모노레포 설정 후, Changed Directory 추적 후 해당 Service만 커맨드 실행 로직 필요 
     - name: Check Lint
