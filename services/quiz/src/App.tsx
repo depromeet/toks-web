@@ -1,5 +1,5 @@
 function App() {
-  return <div>DEPROMEET</div>;
+  return <div>quiz</div>;
 }
 
 export default App;

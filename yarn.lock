@@ -676,6 +676,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@services/quiz@workspace:services/quiz":
+  version: 0.0.0-use.local
+  resolution: "@services/quiz@workspace:services/quiz"
+  dependencies:
+    "@emotion/css": ^11.9.0
+    "@emotion/react": ^11.9.3
+    "@emotion/styled": ^11.9.3
+    "@types/react": ^18.0.17
+    "@types/react-dom": ^18.0.6
+    "@typescript-eslint/eslint-plugin": ^5.29.0
+    "@typescript-eslint/parser": ^5.29.0
+    "@vitejs/plugin-react": ^2.1.0
+    axios: ^0.27.2
+    date-fns: ^2.29.3
+    eslint: ^8.23.0
+    eslint-config-prettier: ^8.5.0
+    eslint-import-resolver-typescript: ^2.7.1
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: ^6.6.1
+    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-react: ^7.31.6
+    eslint-plugin-react-hooks: ^4.6.0
+    prettier: ^2.7.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    react-query: "npm:@tanstack/react-query@4.0.10"
+    ts-pattern: ^4.0.5
+    ts-prune: ^0.10.3
+    typescript: ^4.7.4
+    vite: ^3.1.0
+  languageName: unknown
+  linkType: soft
+
 "@tanstack/query-core@npm:^4.0.0-beta.1":
   version: 4.8.0
   resolution: "@tanstack/query-core@npm:4.8.0"
@@ -1383,7 +1416,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"date-fns@npm:^2.29.3":
+"date-fns@npm:^2.27.0, date-fns@npm:^2.29.3":
   version: 2.29.3
   resolution: "date-fns@npm:2.29.3"
   checksum: e01cf5b62af04e05dfff921bb9c9933310ed0e1ae9a81eb8653452e64dc841acf7f6e01e1a5ae5644d0337e9a7f936175fd2cb6819dc122fdd9c5e86c56be484
@@ -1465,28 +1498,15 @@ __metadata:
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
-    "@types/react": ^18.0.17
-    "@types/react-dom": ^18.0.6
-    "@typescript-eslint/eslint-plugin": ^5.29.0
-    "@typescript-eslint/parser": ^5.29.0
     "@vitejs/plugin-react": ^2.1.0
     axios: ^0.27.2
-    date-fns: ^2.29.3
-    eslint: ^8.23.0
-    eslint-config-prettier: ^8.5.0
-    eslint-import-resolver-typescript: ^2.7.1
-    eslint-plugin-import: ^2.26.0
-    eslint-plugin-jsx-a11y: ^6.6.1
-    eslint-plugin-prettier: ^4.2.1
-    eslint-plugin-react: ^7.31.6
-    eslint-plugin-react-hooks: ^4.6.0
-    prettier: ^2.7.1
+    date-fns: ^2.27.0
+    husky: ^8.0.1
     react: ^18.2.0
     react-dom: ^18.2.0
     react-query: "npm:@tanstack/react-query@4.0.10"
     ts-pattern: ^4.0.5
-    ts-prune: ^0.10.3
-    typescript: ^4.7.4
+    typescript: 4.7.4
     vite: ^3.1.0
   peerDependencies:
     react: "*"
@@ -2573,6 +2593,15 @@ __metadata:
   dependencies:
     ms: ^2.0.0
   checksum: 9c7a74a2827f9294c009266c82031030eae811ca87b0da3dceb8d6071b9bde22c9f3daef0469c3c533cc67a97d8a167cd9fc0389350e5f415f61a79b171ded16
+  languageName: node
+  linkType: hard
+
+"husky@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "husky@npm:8.0.1"
+  bin:
+    husky: lib/bin.js
+  checksum: 943a73a13d0201318fd30e83d299bb81d866bd245b69e6277804c3b462638dc1921694cb94c2b8c920a4a187060f7d6058d3365152865406352e934c5fff70dc
   languageName: node
   linkType: hard
 

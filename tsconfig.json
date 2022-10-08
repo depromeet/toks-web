@@ -21,7 +21,5 @@
     "downlevelIteration": true,
     "experimentalDecorators": true,
     "lib": ["esnext", "dom", "dom.iterable"]
-  },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.vite.json" }]
+  }
 }
