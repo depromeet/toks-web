@@ -10,20 +10,24 @@
   "workspaces": [
     "services/*",
     "packages/*",
-    "shared/*"
+    "shared/*",
+    "devops/*"
   ],
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "new": "scripts/scaffold.sh"
+    "new": "scripts/scaffold.sh",
+    "depromeet": "yarn workspace @devops/commandline execute"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "typescript": "4.7.4"
   },
   "devDependencies": {
     "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@types/node": "^16.11.33",
     "@vitejs/plugin-react": "^2.1.0",
     "axios": "^0.27.2",
     "date-fns": "^2.27.0",
