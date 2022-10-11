@@ -15,12 +15,15 @@
   ],
   "private": true,
   "scripts": {
+    "depromeet": "depromeet",
     "prepare": "husky install",
     "new": "scripts/scaffold.sh",
-    "depromeet": "yarn workspace @devops/commandline execute"
+    "postinstall": "patch-package"
   },
   "dependencies": {
+    "@devops/commandline": "workspace:devops/commandline",
     "dotenv": "^10.0.0",
+    "patch-package": "^6.4.7",
     "typescript": "4.7.4"
   },
   "devDependencies": {

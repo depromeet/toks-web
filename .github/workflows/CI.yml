@@ -43,7 +43,7 @@ jobs:
     - name: 커맨드라인 설치
       run: yarn workspace @devops/commandline run build
 
-    - name: Typecheck & Lint & Test
+    - name: Test
       run: yarn depromeet test
       env:
         GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}

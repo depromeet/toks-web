@@ -3,10 +3,12 @@
   "main": "src/index.ts",
   "module": "src/index.ts",
   "sideEffects": false,
+  "bin": {
+    "depromeet": "dist/index.js"
+  },
   "scripts": {
     "build": "ts-node -T scripts/build.ts",
-    "typecheck": "tsc --noEmit",
-    "execute": "node dist/index.js"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@slack/web-api": "^6.7.1",
