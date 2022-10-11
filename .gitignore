@@ -7,6 +7,9 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+tsconfig.tsbuildinfo
+tsconfig.typecheck.tsbuildinfo
+
 node_modules
 dist
 dist-ssr
