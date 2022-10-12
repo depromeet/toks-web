@@ -1831,10 +1831,12 @@ __metadata:
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
     "@types/node": ^16.11.33
+    "@typescript-eslint/parser": ^5.36.1
     "@vitejs/plugin-react": ^2.1.0
     axios: ^0.27.2
     date-fns: ^2.27.0
     dotenv: ^10.0.0
+    eslint-config-prettier: ^8.5.0
     husky: ^8.0.1
     patch-package: ^6.4.7
     react: ^18.2.0
