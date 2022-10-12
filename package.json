@@ -2,7 +2,7 @@
   "name": "depromeet",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/depromeet/Team-5-Frontend"
+    "url": "git+https://github.com/depromeet/toks-web"
   },
   "engines": {
     "node": "16"
