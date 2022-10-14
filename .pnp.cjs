@@ -549,6 +549,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react", "virtual:167f17d57a6647b76677d9b5241fbdebbfe0d3dfabc5f8f410c88593771a7010e8106ebe78cb5fc23edb9534866f81ec027182be884b2908486a484095f5f1ae#npm:7.31.8"],\
             ["eslint-plugin-react-hooks", "virtual:167f17d57a6647b76677d9b5241fbdebbfe0d3dfabc5f8f410c88593771a7010e8106ebe78cb5fc23edb9534866f81ec027182be884b2908486a484095f5f1ae#npm:4.6.0"],\
             ["prettier", "npm:2.7.1"],\
+            ["rimraf", "npm:3.0.2"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
           ],\
           "linkType": "SOFT"\

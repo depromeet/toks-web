@@ -361,6 +361,7 @@ __metadata:
     eslint-plugin-react: ^7.31.6
     eslint-plugin-react-hooks: ^4.6.0
     prettier: ^2.7.1
+    rimraf: ^3.0.2
     typescript: ^4.7.4
   languageName: unknown
   linkType: soft
