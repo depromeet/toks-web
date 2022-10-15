@@ -29,6 +29,7 @@ export class CheckPackageCommitCommand extends Command {
   private validatePackageCommit(commit: GitHubCommit) {
     const commitMessage = commit.commit.message ?? '';
 
+    console.log(commitMessage);
     const isPackageCommitLike = commitMessage?.includes('@packages') || commitMessage?.includes('@depromeet');
     if (!isPackageCommitLike) {
       return true;
