@@ -1,38 +1,27 @@
 import { Command } from 'clipanion';
 
-import {
-  GitHubCommit,
-  createPullRequestComment,
-  getPullRequestCommits,
-  getPullRequestNumberFromRef,
-} from '../utils/githubUtils';
+import { createPullRequestComment, getPullRequest, getPullRequestNumberFromRef } from '../utils/githubUtils';
 
 export class CheckPackageCommitCommand extends Command {
   static paths = [['check-package-commit']];
 
   async execute() {
     const pullRequestNumber = getPullRequestNumberFromRef();
-    const commits = await getPullRequestCommits(pullRequestNumber);
+    const { title } = await getPullRequest(pullRequestNumber);
 
-    if (commits.length === 0) {
-      throw new Error('검사할 커밋 목록이 없습니다.');
-    }
+    const isValidTitle = this.validatePackagePRTitle(title);
 
-    const verifiedCommit = commits.filter(commit => this.validatePackageCommit(commit));
-
-    if (verifiedCommit.length === 0) {
+    if (!isValidTitle) {
       await this.reportError(pullRequestNumber);
-      throw new Error('패키지 커밋을 확인해주세요');
+      throw new Error('패키지 PR 제목을 확인해주세요');
     }
   }
 
-  private validatePackageCommit(commit: GitHubCommit) {
-    const commitMessage = commit.commit.message ?? '';
-
-    console.log(commitMessage);
-    const isPackageCommitLike = commitMessage?.includes('@packages') || commitMessage?.includes('@depromeet');
+  private validatePackagePRTitle(title: string) {
+    console.log(title);
+    const isPackageCommitLike = title.includes('@packages') || title.includes('@depromeet');
     if (!isPackageCommitLike) {
-      return true;
+      return false;
     }
     /**
      * @example
@@ -40,12 +29,12 @@ export class CheckPackageCommitCommand extends Command {
      * fix(@depromeet/aaa) // true
      * chore(@depromeet/aaa) // false
      */
-    return /(^fix|feat)(\(@depromeet\/\S+\))/.test(commitMessage);
+    return /(^fix|feat)(\(@depromeet\/\S+\))/.test(title);
   }
 
   private async reportError(pullRequestNumber: number) {
     const body = [
-      '### :package: 패키지 커밋을 확인해주세요',
+      '### :package: 패키지 PR 제목을 확인해주세요',
       '\n',
       '패키지를 수정했나요? feat(@packages/[패키지명]) 대신 feat(@depromeet/[패키지명]) 으로 변경해주세요.',
       '\n',
