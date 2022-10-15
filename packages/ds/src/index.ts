@@ -1,3 +1,3 @@
 export default function () {
-  return null;
+  return 'test package';
 }

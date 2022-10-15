@@ -1,0 +1,37 @@
+name: package commit 컨벤션 검사
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, edited]
+    branches:
+      - "master"
+
+jobs:
+  check-package-commit:
+    name: package commit 컨벤션 검사
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: NPM Token
+        run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} | tee .npmrc $HOME/.npmrc > /dev/null
+
+      - name: Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.14.2"
+
+      - name: Yarn
+        run: npm i -g yarn
+
+      - name: Install
+        run: yarn install --immutable --immutable-cache
+
+      - name: 커맨드라인 설치
+        run: yarn workspace @devops/commandline run build
+
+      - name: package commit 컨벤션 검사
+        run: yarn depromeet check-package-commit
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
