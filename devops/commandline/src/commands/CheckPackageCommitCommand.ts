@@ -39,7 +39,7 @@ export class CheckPackageCommitCommand extends Command {
      * fix(@depromeet/aaa) // true
      * chore(@depromeet/aaa) // false
      */
-    return /(^fix|feat|BREAKING CHANGE)(\(@depromeet\/\S+\))/.test(commitMessage);
+    return /(^fix|feat)(\(@depromeet\/\S+\))/.test(commitMessage);
   }
 
   private async reportError(pullRequestNumber: number) {
