@@ -8,14 +8,13 @@ permissions:
   pull-requests: write
 
 jobs:
-  assign-author:
+  manage-pr:
     runs-on: ubuntu-latest
     steps:
       - uses: toshimaru/auto-author-assign@v1.1.0
         with:
           repo-token: "${{ secrets.BOT_TOKEN }}"
-
-  dependabot:
+      
       - name: Enable auto-merge for Dependabot PRs
         run: gh pr merge --auto --squash "$PR_URL"
         env:
