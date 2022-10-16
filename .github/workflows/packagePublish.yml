@@ -19,7 +19,7 @@ jobs:
 
       - run: git config --global user.email "depromeet.tocks@gmail.com"
 
-      - run: git config --global user.name "tocks-tocks"
+      - run: git config --global user.name "tocksbot"
 
       - name: NPM Token
         run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} | tee .npmrc $HOME/.npmrc > /dev/null
