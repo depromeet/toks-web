@@ -1,27 +1,37 @@
 import { Command } from 'clipanion';
 
-import { createPullRequestComment, getPullRequest, getPullRequestNumberFromRef } from '../utils/githubUtils';
+import {
+  GitHubCommit,
+  createPullRequestComment,
+  getPullRequestCommits,
+  getPullRequestNumberFromRef,
+} from '../utils/githubUtils';
 
 export class CheckPackageCommitCommand extends Command {
   static paths = [['check-package-commit']];
 
   async execute() {
     const pullRequestNumber = getPullRequestNumberFromRef();
-    const { title } = await getPullRequest(pullRequestNumber);
+    const commits = await getPullRequestCommits(pullRequestNumber);
 
-    const isValidTitle = this.validatePackagePRTitle(title);
+    if (commits.length === 0) {
+      throw new Error('검사할 커밋 목록이 없습니다.');
+    }
 
-    if (!isValidTitle) {
+    const verifiedCommit = commits.filter(commit => this.validatePackageCommit(commit));
+
+    if (!verifiedCommit) {
       await this.reportError(pullRequestNumber);
       throw new Error('패키지 PR 제목을 확인해주세요');
     }
   }
 
-  private validatePackagePRTitle(title: string) {
-    console.log(title);
-    const isPackageCommitLike = title.includes('@packages') || title.includes('@depromeet');
+  private validatePackageCommit(commit: GitHubCommit) {
+    const commitMessage = commit.commit.message ?? '';
+
+    const isPackageCommitLike = commitMessage?.includes('@packages') || commitMessage?.includes('@tossbank');
     if (!isPackageCommitLike) {
-      return false;
+      return true;
     }
     /**
      * @example
@@ -29,7 +39,7 @@ export class CheckPackageCommitCommand extends Command {
      * fix(@depromeet/aaa) // true
      * chore(@depromeet/aaa) // false
      */
-    return /(^fix|feat)(\(@depromeet\/\S+\))/.test(title);
+    return /(^fix|feat)(\(@tossbank\/\S+\))/.test(commitMessage);
   }
 
   private async reportError(pullRequestNumber: number) {
