@@ -1,6 +1,6 @@
 {
   "name": "@depromeet/ds",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "tocks tocks 디자인 시스템",
   "main": "src/index.ts",
   "module": "src/index.ts",
