@@ -13,8 +13,6 @@ jobs:
   ci:
     name: CI
     runs-on: ubuntu-latest
-    # 커밋 메세지에 "[skip ci]"를 넣으면 CI가 돌지 않습니다.
-    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
 
     strategy:
       matrix:
@@ -37,15 +35,13 @@ jobs:
 
     - name: Install dependencies
       # Zero-Installs 사용 시, lock file, cache file 수정 여부 검증 및 throw error & exit
-      # TODO: --immutable-cache (cache file install 방지)
-      run: yarn install --immutable
+      run: yarn install --immutable --immutable-cache
 
-    # TODO: 모노레포 설정 후, Changed Directory 추적 후 해당 Service만 커맨드 실행 로직 필요 
-    - name: Check Lint
-      run: yarn lint
+    - name: 커맨드라인 설치
+      run: yarn workspace @devops/commandline run build
 
-    - name: Check type check
-      run: yarn typecheck
-
-    - name: Check find deadcode
-      run: yarn find-deadcode
+    - name: Test
+      run: yarn depromeet test
+      env:
+        GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+        SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
