@@ -13,8 +13,6 @@ jobs:
   ci:
     name: CI
     runs-on: ubuntu-latest
-    # 커밋 메세지에 "[skip ci]"를 넣으면 CI가 돌지 않습니다.
-    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
 
     strategy:
       matrix:

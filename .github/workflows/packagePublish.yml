@@ -19,7 +19,7 @@ jobs:
 
       - run: git config --global user.email "depromeet.tocks@gmail.com"
 
-      - run: git config --global user.name "tocks-tocks"
+      - run: git config --global user.name "tocksbot"
 
       - name: NPM Token
         run: echo //registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }} | tee .npmrc $HOME/.npmrc > /dev/null
@@ -54,14 +54,14 @@ jobs:
         uses: CasperWA/push-protected@v2
         if: ${{ steps.bump-commit.outputs.HAS_BUMP_COMMIT == 'true' }}
         with:
-          token: ${{ secrets.BOT_TOKEN }}
+          token: ${{ secrets.PUSH_TO_PROTECTED_BRANCH }}
           branch: master
           unprotect_reviews: true
 
       - name: 배포
         if: ${{ steps.bump-commit.outputs.HAS_BUMP_COMMIT == 'true' }}
         run: |
-          yarn workspaces since run 'yarn npm publish' $(git rev-parse HEAD~1) --jobs=3 --include='packages/*'
+          yarn workspaces since run 'yarn npm publish --access=public' $(git rev-parse HEAD~1) --jobs=3 --include='packages/*'
         env:
           AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
