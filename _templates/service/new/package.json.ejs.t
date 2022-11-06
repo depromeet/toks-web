@@ -8,7 +8,7 @@ to: services/<%= name %>/package.json
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint -c .eslintrc.js 'src/**/*.{js,jsx,ts,tsx}'",
@@ -25,7 +25,8 @@ to: services/<%= name %>/package.json
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "npm:@tanstack/react-query@4.0.10",
-    "ts-pattern": "^4.0.5"
+    "ts-pattern": "^4.0.5",
+    "next": "13.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

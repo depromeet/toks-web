@@ -7,6 +7,6 @@ to: services/<%= name %>/tsconfig.json
     "baseUrl": "src",
     "incremental": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts"],
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
   "exclude": ["node_modules"],
 }
