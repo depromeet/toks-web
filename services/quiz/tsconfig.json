@@ -4,7 +4,6 @@
     "baseUrl": "src",
     "incremental": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "vite.config.js"],
-  "exclude": ["node_modules"],
-  "references": [{ "path": "./tsconfig.vite.json" }]
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

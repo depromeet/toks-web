@@ -21,7 +21,7 @@
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "@types/node": "^16.11.45",
+    "@types/node": "^18.0.3",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "concurrently": "^7.3.0",

@@ -8,9 +8,9 @@ to: services/<%= name %>/package.json
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "eslint -c .eslintrc.js 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "yarn lint --fix",
     "typecheck": "tsc --noEmit",
@@ -25,14 +25,14 @@ to: services/<%= name %>/package.json
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "npm:@tanstack/react-query@4.0.10",
-    "ts-pattern": "^4.0.5"
+    "ts-pattern": "^4.0.5",
+    "next": "13.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
-    "@vitejs/plugin-react": "^2.1.0",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
@@ -44,6 +44,5 @@ to: services/<%= name %>/package.json
     "prettier": "^2.7.1",
     "ts-prune": "^0.10.3",
     "typescript": "^4.7.4",
-    "vite": "^3.1.0"
   }
 }

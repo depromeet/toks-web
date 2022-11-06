@@ -30,9 +30,8 @@
     "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@types/node": "^16.11.33",
+    "@types/node": "^18.0.3",
     "@typescript-eslint/parser": "^5.36.1",
-    "@vitejs/plugin-react": "^2.1.0",
     "axios": "^0.27.2",
     "date-fns": "^2.27.0",
     "eslint-config-prettier": "^8.5.0",
@@ -40,8 +39,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "npm:@tanstack/react-query@4.0.10",
-    "ts-pattern": "^4.0.5",
-    "vite": "^3.1.0"
+    "ts-pattern": "^4.0.5"
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "^5.36.1",

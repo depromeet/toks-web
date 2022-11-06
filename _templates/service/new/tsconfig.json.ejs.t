@@ -7,7 +7,6 @@ to: services/<%= name %>/tsconfig.json
     "baseUrl": "src",
     "incremental": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "vite.config.js"],
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
   "exclude": ["node_modules"],
-  "references": [{ "path": "./tsconfig.vite.json" }]
 }
