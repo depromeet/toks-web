@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint -c .eslintrc.js 'src/**/*.{js,jsx,ts,tsx}'",
@@ -19,12 +19,14 @@
     "@emotion/styled": "^11.9.3",
     "axios": "^0.27.2",
     "date-fns": "^2.29.3",
+    "next": "13.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "npm:@tanstack/react-query@4.0.10",
     "ts-pattern": "^4.0.5"
   },
   "devDependencies": {
+    "@types/node": "18.11.9",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
