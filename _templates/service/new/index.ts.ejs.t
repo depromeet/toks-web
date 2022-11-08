@@ -1,5 +1,5 @@
 ---
 to: services/<%= name %>/pages/index.ts
 ---
-export { default } from 'pages/index';
+export { default } from 'index';
 
