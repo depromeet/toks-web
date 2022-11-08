@@ -43,6 +43,6 @@ to: services/<%= name %>/package.json
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.7.1",
     "ts-prune": "^0.10.3",
-    "typescript": "^4.7.4",
+    "typescript": "^4.7.4"
   }
 }
