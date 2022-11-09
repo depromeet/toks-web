@@ -3,11 +3,11 @@ to: services/<%= name %>/next.config.js
 ---
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   basePath: '/<%= name %>',
   experimental: {
-    appDir: true,
+    scrollRestoration: true,
   },
 };
 
