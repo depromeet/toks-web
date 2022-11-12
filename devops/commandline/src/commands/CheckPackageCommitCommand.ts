@@ -29,7 +29,7 @@ export class CheckPackageCommitCommand extends Command {
   private validatePackageCommit(commit: GitHubCommit) {
     const commitMessage = commit.commit.message ?? '';
 
-    const isPackageCommitLike = commitMessage?.includes('@packages') || commitMessage?.includes('@tossbank');
+    const isPackageCommitLike = commitMessage?.includes('@packages') || commitMessage?.includes('@depromeet');
     if (!isPackageCommitLike) {
       return true;
     }
@@ -39,7 +39,7 @@ export class CheckPackageCommitCommand extends Command {
      * fix(@depromeet/aaa) // true
      * chore(@depromeet/aaa) // false
      */
-    return /(^fix|feat)(\(@tossbank\/\S+\))/.test(commitMessage);
+    return /(^fix|feat)(\(@depromeet\/\S+\))/.test(commitMessage);
   }
 
   private async reportError(pullRequestNumber: number) {

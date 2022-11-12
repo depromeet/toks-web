@@ -1,0 +1,25 @@
+{
+  "name": "@configs/babel",
+  "main": "index.js",
+  "dependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.17.12",
+    "@babel/plugin-proposal-numeric-separator": "^7.16.7",
+    "@babel/plugin-proposal-optional-chaining": "^7.17.12",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
+    "@emotion/babel-plugin": "^11.9.2",
+    "babel-plugin-lodash": "^3"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11",
+    "next": "^12"
+  },
+  "peerDependenciesMeta": {
+    "next": {
+      "optional": true
+    }
+  }
+}
