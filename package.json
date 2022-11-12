@@ -11,7 +11,8 @@
     "services/*",
     "packages/*",
     "shared/*",
-    "devops/*"
+    "devops/*",
+    "configs/*"
   ],
   "private": true,
   "scripts": {
@@ -21,7 +22,19 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/plugin-proposal-class-properties": "^7.17.12",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.17.12",
+    "@babel/plugin-proposal-numeric-separator": "^7.16.7",
+    "@babel/plugin-proposal-optional-chaining": "^7.17.12",
+    "@babel/plugin-transform-runtime": "^7.18.5",
+    "@babel/preset-env": "^7.18.2",
+    "@babel/preset-react": "^7.17.12",
+    "@babel/preset-typescript": "^7.17.12",
+    "@babel/runtime": "^7.18.3",
+    "@configs/babel": "workspace:configs/babel",
     "@devops/commandline": "workspace:devops/commandline",
+    "@emotion/babel-plugin": "^11.9.2",
     "dotenv": "^10.0.0",
     "patch-package": "^6.4.7",
     "typescript": "4.7.4"
@@ -33,13 +46,16 @@
     "@types/node": "^18.0.3",
     "@typescript-eslint/parser": "^5.36.1",
     "axios": "^0.27.2",
+    "babel-loader": "^8.2.3",
     "date-fns": "^2.27.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "npm:@tanstack/react-query@4.0.10",
-    "ts-pattern": "^4.0.5"
+    "ts-pattern": "^4.0.5",
+    "webpack": "^5.72.0"
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "^5.36.1",
