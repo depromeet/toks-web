@@ -58,7 +58,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <Global styles={disallowUserSelectStyle} />
       {/* Color Token 설정 */}
       <QueryClientProvider client={queryClient}>
-        <OverlayProvider>{getLayout(<Component {...pageProps} />)}</OverlayProvider>{' '}
+        <OverlayProvider>{getLayout(<Component {...pageProps} />)}</OverlayProvider>
       </QueryClientProvider>
     </>
   );
