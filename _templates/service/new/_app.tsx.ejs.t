@@ -7,7 +7,8 @@ import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ReactElement, ReactNode, useState } from 'react';
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { OverlayProvider } from '@toss/use-overlay';
 
 const normalizedStyles = css`
   ${emotionNormalize}
@@ -56,7 +57,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <Global styles={normalizedStyles} />
       <Global styles={disallowUserSelectStyle} />
       {/* Color Token 설정 */}
-      <QueryClientProvider client={queryClient}>{getLayout(<Component {...pageProps} />)}</QueryClientProvider>
+      <QueryClientProvider client={queryClient}>
+        <OverlayProvider>{getLayout(<Component {...pageProps} />)}</OverlayProvider>{' '}
+      </QueryClientProvider>
     </>
   );
 }
