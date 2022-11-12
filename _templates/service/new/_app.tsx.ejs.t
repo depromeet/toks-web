@@ -56,9 +56,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <Global styles={normalizedStyles} />
       <Global styles={disallowUserSelectStyle} />
       {/* Color Token 설정 */}
-      <QueryClientProvider client={queryClient}>
-        <Hydrate state={pageProps.dehydratedState}>{getLayout(<Component {...pageProps} />)}</Hydrate>
-      </QueryClientProvider>
+      <QueryClientProvider client={queryClient}>{getLayout(<Component {...pageProps} />)}</QueryClientProvider>
     </>
   );
 }
