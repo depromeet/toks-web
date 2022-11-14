@@ -39,6 +39,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       {\
         "name": "@services/quiz",\
         "reference": "workspace:services/quiz"\
+      },\
+      {\
+        "name": "@services/test",\
+        "reference": "workspace:services/test"\
       }\
     ],\
     "enableTopLevelFallback": true,\
@@ -49,6 +53,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@depromeet/ds", ["workspace:packages/ds"]],\
       ["@devops/commandline", ["workspace:devops/commandline"]],\
       ["@services/quiz", ["workspace:services/quiz"]],\
+      ["@services/test", ["workspace:services/test"]],\
       ["depromeet", ["workspace:."]]\
     ],\
     "fallbackPool": [\
@@ -3459,6 +3464,52 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./services/quiz/",\
           "packageDependencies": [\
             ["@services/quiz", "workspace:services/quiz"],\
+            ["@configs/babel", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#workspace:configs/babel"],\
+            ["@configs/next", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#workspace:configs/next"],\
+            ["@emotion/css", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:11.10.0"],\
+            ["@emotion/react", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:11.10.4"],\
+            ["@emotion/styled", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:11.10.4"],\
+            ["@toss/assert", "npm:1.1.0"],\
+            ["@toss/error-boundary", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:1.1.0"],\
+            ["@toss/react", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:1.3.0"],\
+            ["@toss/react-query", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:1.1.0"],\
+            ["@toss/use-overlay", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:1.1.0"],\
+            ["@types/node", "npm:18.11.9"],\
+            ["@types/react", "npm:18.0.21"],\
+            ["@types/react-dom", "npm:18.0.6"],\
+            ["@typescript-eslint/eslint-plugin", "virtual:167f17d57a6647b76677d9b5241fbdebbfe0d3dfabc5f8f410c88593771a7010e8106ebe78cb5fc23edb9534866f81ec027182be884b2908486a484095f5f1ae#npm:5.38.1"],\
+            ["@typescript-eslint/parser", "virtual:167f17d57a6647b76677d9b5241fbdebbfe0d3dfabc5f8f410c88593771a7010e8106ebe78cb5fc23edb9534866f81ec027182be884b2908486a484095f5f1ae#npm:5.38.1"],\
+            ["axios", "npm:0.27.2"],\
+            ["date-fns", "npm:2.29.3"],\
+            ["emotion-normalize", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:11.0.1"],\
+            ["eslint", "npm:8.24.0"],\
+            ["eslint-config-prettier", "virtual:167f17d57a6647b76677d9b5241fbdebbfe0d3dfabc5f8f410c88593771a7010e8106ebe78cb5fc23edb9534866f81ec027182be884b2908486a484095f5f1ae#npm:8.5.0"],\
+            ["eslint-import-resolver-typescript", "virtual:167f17d57a6647b76677d9b5241fbdebbfe0d3dfabc5f8f410c88593771a7010e8106ebe78cb5fc23edb9534866f81ec027182be884b2908486a484095f5f1ae#npm:2.7.1"],\
+            ["eslint-plugin-import", "virtual:167f17d57a6647b76677d9b5241fbdebbfe0d3dfabc5f8f410c88593771a7010e8106ebe78cb5fc23edb9534866f81ec027182be884b2908486a484095f5f1ae#npm:2.26.0"],\
+            ["eslint-plugin-jsx-a11y", "virtual:167f17d57a6647b76677d9b5241fbdebbfe0d3dfabc5f8f410c88593771a7010e8106ebe78cb5fc23edb9534866f81ec027182be884b2908486a484095f5f1ae#npm:6.6.1"],\
+            ["eslint-plugin-prettier", "virtual:167f17d57a6647b76677d9b5241fbdebbfe0d3dfabc5f8f410c88593771a7010e8106ebe78cb5fc23edb9534866f81ec027182be884b2908486a484095f5f1ae#npm:4.2.1"],\
+            ["eslint-plugin-react", "virtual:167f17d57a6647b76677d9b5241fbdebbfe0d3dfabc5f8f410c88593771a7010e8106ebe78cb5fc23edb9534866f81ec027182be884b2908486a484095f5f1ae#npm:7.31.8"],\
+            ["eslint-plugin-react-hooks", "virtual:167f17d57a6647b76677d9b5241fbdebbfe0d3dfabc5f8f410c88593771a7010e8106ebe78cb5fc23edb9534866f81ec027182be884b2908486a484095f5f1ae#npm:4.6.0"],\
+            ["next", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:12.3.3"],\
+            ["prettier", "npm:2.7.1"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:18.2.0"],\
+            ["react-query", [\
+              "@tanstack/react-query",\
+              "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:4.0.10"\
+            ]],\
+            ["ts-pattern", "npm:4.0.5"],\
+            ["ts-prune", "npm:0.10.3"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@services/test", [\
+        ["workspace:services/test", {\
+          "packageLocation": "./services/test/",\
+          "packageDependencies": [\
+            ["@services/test", "workspace:services/test"],\
             ["@configs/babel", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#workspace:configs/babel"],\
             ["@configs/next", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#workspace:configs/next"],\
             ["@emotion/css", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#npm:11.10.0"],\
