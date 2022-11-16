@@ -15,3 +15,9 @@ echo "" >> worker.ts
 touch handlers.ts
 echo "import { rest } from 'msw';" >> handlers.ts
 echo "" >> handlers.ts
+echo "export const handlers = [" >> handlers.ts
+echo "    rest.get("/somthing", (req, res, ctx) => {" >> handlers.ts
+echo "      return res(ctx.status(200), ctx.json({}));" >> handlers.ts
+echo "    })," >> handlers.ts
+echo "];" >> handlers.ts
+echo "" >> handlers.ts
