@@ -1,9 +1,8 @@
 #! /bin/bash
 
 yarn add -D msw
-npx msw init public/ --save
+npx msw init mocks/ --save
 
-mkdir mocks
 cd mocks
 touch worker.ts
 echo "import { setupServer } from 'msw/node';" >> worker.ts
