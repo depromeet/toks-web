@@ -14,8 +14,7 @@ to: services/<%= name %>/package.json
     "lint": "eslint -c .eslintrc.js 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "yarn lint --fix",
     "typecheck": "tsc --noEmit",
-    "find-deadcode": "ts-prune",
-    "msw": "../../scripts/msw.sh"
+    "find-deadcode": "ts-prune"
   },
   "dependencies": {
     "@configs/babel": "workspace:configs/babel",
