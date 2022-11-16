@@ -9,7 +9,6 @@ echo "import { setupServer } from 'msw/node';" >> worker.ts
 echo "import { handlers } from './handlers';" >> worker.ts
 echo "" >> worker.ts
 echo "export const server = setupServer(...handlers);" >> worker.ts
-echo "" >> worker.ts
 
 touch handlers.ts
 echo "import { rest } from 'msw';" >> handlers.ts
@@ -19,4 +18,3 @@ echo "    rest.get('', (req, res, ctx) => {" >> handlers.ts
 echo "      return res(ctx.status(200), ctx.json({}));" >> handlers.ts
 echo "    })," >> handlers.ts
 echo "];" >> handlers.ts
-echo "" >> handlers.ts
