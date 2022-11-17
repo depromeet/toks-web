@@ -2,10 +2,12 @@ import ProfileIcon from "./ProfileIcon/ProfileIcon";
 import { headerCss, headerTitleCss } from "./style/HeaderCss";
 
 function Header() {
-    return (<header css={headerCss}>
+  return (
+    <header css={headerCss}>
       <div css={headerTitleCss}>Toks</div>
       <ProfileIcon/>
-    </header>);
-  }
-  
+    </header>
+  );
+}
+
 export default Header;
