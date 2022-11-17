@@ -8,11 +8,11 @@ import StudyProgress from "./components/StudyProgress/StudyProgress";
 function App() {
   return (<>
     <Header/>
-    <BackButton/>
+    {/* <BackButton/>
     <StudyInfo/>
     <StudyProgress/>
     <QuizList/>
-    <Ranking/>
+    <Ranking/> */}
   </>);
 }
 
