@@ -1,1 +1,1 @@
-export { default } from 'pages/index';
+export { default } from 'pages/StudyDetailPage/index';
