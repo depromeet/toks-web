@@ -38,8 +38,6 @@
     "@emotion/babel-plugin": "^11.9.2",
     "dotenv": "^10.0.0",
     "patch-package": "^6.4.7",
-    "primeicons": "^6.0.1",
-    "primereact": "^8.7.2",
     "typescript": "4.7.4"
   },
   "devDependencies": {
