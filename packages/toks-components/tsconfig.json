@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "declaration": true,
+    "inlineSources": false,
+    "sourceMap": false,
+    "outDir": "./dist",
+    "noUncheckedIndexedAccess": true,
+    "typeRoots": ["./@types"],
+    "paths": {
+      "*": ["./@types/*"]
+    }
+  }, 
+  "include": ["src"]
+}
