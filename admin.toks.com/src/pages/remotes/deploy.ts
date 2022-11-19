@@ -5,7 +5,7 @@ import { ServiceName } from 'pages/models/service';
 const API_HOST = 'http://3.90.189.11:8080';
 
 export async function runDeploy({ name }: { name: ServiceName }) {
-  return await axios.post(`${API_HOST}/deploy/${name}`, undefined, { onprogress: (_, event) => console.log(event) });
+  return await axios.post(`${API_HOST}/deploy/${name}`);
 }
 
 export async function getDeployStatus() {

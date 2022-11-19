@@ -31,7 +31,7 @@ function ServiceListRow({ name }: { name: ServiceName }) {
       <span>{name}</span>
       <button
         onClick={() => handleClick()}
-        disabled={isLoading || deployStatus == null || deployStatus.status == 'inprogress'}
+        disabled={isLoading || deployStatus == null || deployStatus.status === 'inprogress'}
       >
         배포
       </button>
