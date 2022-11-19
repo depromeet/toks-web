@@ -1,1 +1,1 @@
-export * from 'primereact'
+export * from 'primereact';
