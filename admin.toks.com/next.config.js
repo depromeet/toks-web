@@ -2,7 +2,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 
 // NOTE: '__dirname'이 yarn v2 virtual 경로로 잡히므로 실제 경로로 변환해줍니다.
-const ROOT_PATH = path.resolve(__dirname, '..', '..');
+const ROOT_PATH = path.resolve(__dirname, '..');
 const envs = require('@configs/next/config')({ packageDir: __dirname });
 const publicRuntimeConfig = createRuntimeConfig(envs);
 const { NODE_ENV, ENV, ...publicRuntimeConfigWithoutNodeEnv } = publicRuntimeConfig;
@@ -13,7 +13,7 @@ const babelLoaderTargetLocations = getBabelLoaderTargetLocations(__dirname);
 module.exports = {
   experimental: {
     scrollRestoration: true,
-    outputFileTracingRoot: path.join(__dirname, '../../'),
+    outputFileTracingRoot: path.join(__dirname, '../'),
   },
   output: 'standalone',
   env: publicRuntimeConfigWithoutNodeEnv,
