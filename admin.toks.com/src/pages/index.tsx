@@ -1,6 +1,7 @@
 import { width100 } from '@toss/emotion-utils';
-import ServiceList from './components/ServiceList';
+
 import SERVICE_MAP from '../../../serviceMap.json';
+import ServiceList from './components/ServiceList';
 
 //  Object.keys method가 타입을 string만 반환하여 커스텀
 const getObjectKeys = <T,>(obj: T) => {
