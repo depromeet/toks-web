@@ -1497,12 +1497,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@depromeet/theme@workspace:packages/colors":
+"@depromeet/theme@workspace:packages/theme":
   version: 0.0.0-use.local
-  resolution: "@depromeet/theme@workspace:packages/colors"
+  resolution: "@depromeet/theme@workspace:packages/theme"
   dependencies:
-    "@configs/babel": "workspace:configs/babel"
-    "@configs/next": "workspace:configs/next"
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
@@ -3853,7 +3851,6 @@ __metadata:
     "@babel/preset-react": ^7.17.12
     "@babel/preset-typescript": ^7.17.12
     "@babel/runtime": ^7.18.3
-    "@configs/babel": "workspace:configs/babel"
     "@devops/commandline": "workspace:devops/commandline"
     "@emotion/babel-plugin": ^11.9.2
     "@emotion/css": ^11.9.0
