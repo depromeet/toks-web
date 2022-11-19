@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import ic_default_profile from '../../../../img/ic_default_profile.png';
 import { ProfileIconCss } from './style/ProfileIconCss';
 
