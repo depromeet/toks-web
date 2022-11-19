@@ -1,1 +1,1 @@
-export { default } from '../../src/pages/StudyDetailPage/index';
+export {default} from '../../src/pages/StudyDetailPage/index';
