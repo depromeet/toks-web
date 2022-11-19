@@ -1,5 +1,5 @@
-import ProfileIcon from './ProfileIcon/ProfileIcon';
-import { headerCss, headerTitleCss } from './style/HeaderCss';
+import ProfileIcon from './ProfileIcon';
+import { headerCss, headerTitleCss } from './style';
 
 function Header() {
   return (
