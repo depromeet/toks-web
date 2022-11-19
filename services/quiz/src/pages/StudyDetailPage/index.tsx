@@ -1,9 +1,9 @@
-import BackButton from 'components/common/BackButton/BackButton';
-import Header from 'components/common/Header/Header';
-import QuizList from 'components/StudyDetailPage/QuizList/QuizList';
-import Ranking from 'components/StudyDetailPage/Ranking/Ranking';
-import StudyInfo from 'components/StudyDetailPage/StudyInfo/StudyInfo';
-import StudyProgress from 'components/StudyDetailPage/StudyProgress/StudyProgress';
+import BackButton from 'components/common/BackButton';
+import Header from 'components/common/Header';
+import QuizList from 'components/StudyDetailPage/QuizList';
+import Ranking from 'components/StudyDetailPage/Ranking';
+import StudyInfo from 'components/StudyDetailPage/StudyInfo';
+import StudyProgress from 'components/StudyDetailPage/StudyProgress';
 
 function App() {
   return (
