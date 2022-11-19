@@ -9,3 +9,5 @@ trimmedOwner="${owner// /_}"
 
 npx hygen service new --name $name --owner $trimmedOwner --description $trimmedDescription
 yarn
+
+yarn depromeet new-service --service=${name}
