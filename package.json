@@ -12,7 +12,8 @@
     "packages/*",
     "shared/*",
     "devops/*",
-    "configs/*"
+    "configs/*",
+    "admin.toks.com"
   ],
   "private": true,
   "scripts": {

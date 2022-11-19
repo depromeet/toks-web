@@ -2161,6 +2161,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toss/emotion-utils@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "@toss/emotion-utils@npm:1.1.3"
+  dependencies:
+    "@babel/runtime": ^7.14.8
+    "@toss/utils": ^1.2.2
+    csstype: ^3.0.9
+  peerDependencies:
+    "@emotion/react": "*"
+    react: ">= 16 || ^18"
+    react-dom: ">= 16 || ^18"
+  checksum: f4fee5525f70cb6fc36b23043653f8b23b3b9bde589d2c598ec9a9de6c663e6683ee57b8b46a64001feebc9e77ec68a926c071f80b2fcd3a52a4b3c4d7536431
+  languageName: node
+  linkType: hard
+
 "@toss/error-boundary@npm:^1.1.0":
   version: 1.1.0
   resolution: "@toss/error-boundary@npm:1.1.0"
@@ -2224,6 +2239,16 @@ __metadata:
     "@babel/runtime": ^7.14.8
     date-fns: ^2.25.0
   checksum: e20ee1417df8f0e829ad24a878f7fa88a10562acaf944657f8a7a0fbbc62bda9455e84374403c70c495e9118a2aae39e7f00e6ce89965922f9a2dc72567235e9
+  languageName: node
+  linkType: hard
+
+"@toss/utils@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "@toss/utils@npm:1.2.2"
+  dependencies:
+    "@babel/runtime": ^7.14.8
+    date-fns: ^2.25.0
+  checksum: 86dccb46863f8febb9f177572905a7271f01076c92570bcada1067185c6ba62e44719cae6a2c47b70c43e57d1bd0f8d441aa978b564c5580dee7c594e07d4b61
   languageName: node
   linkType: hard
 
@@ -2866,6 +2891,48 @@ __metadata:
   checksum: 4079b67283b94935157698831967642f24a075c52ce3feaaaafe095776dfbe15d86a1b33b1e53860fc0d062ed6c83f4284a5c87c85b9ad51853a01173da6097f
   languageName: node
   linkType: hard
+
+"admin.toks.com@workspace:admin.toks.com":
+  version: 0.0.0-use.local
+  resolution: "admin.toks.com@workspace:admin.toks.com"
+  dependencies:
+    "@configs/babel": "workspace:configs/babel"
+    "@configs/next": "workspace:configs/next"
+    "@emotion/css": ^11.9.0
+    "@emotion/react": ^11.9.3
+    "@emotion/styled": ^11.9.3
+    "@toss/assert": ^1.1.0
+    "@toss/emotion-utils": ^1.1.3
+    "@toss/error-boundary": ^1.1.0
+    "@toss/react": ^1.3.0
+    "@toss/react-query": ^1.1.0
+    "@toss/use-overlay": ^1.1.0
+    "@types/node": 18.11.9
+    "@types/react": ^18.0.17
+    "@types/react-dom": ^18.0.6
+    "@typescript-eslint/eslint-plugin": ^5.29.0
+    "@typescript-eslint/parser": ^5.29.0
+    axios: ^0.27.2
+    date-fns: ^2.29.3
+    emotion-normalize: ^11.0.1
+    eslint: ^8.23.0
+    eslint-config-prettier: ^8.5.0
+    eslint-import-resolver-typescript: ^2.7.1
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: ^6.6.1
+    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-react: ^7.31.6
+    eslint-plugin-react-hooks: ^4.6.0
+    next: ^12.2.5
+    prettier: ^2.7.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    react-query: "npm:@tanstack/react-query@4.0.10"
+    ts-pattern: ^4.0.5
+    ts-prune: ^0.10.3
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
 
 "agent-base@npm:6, agent-base@npm:^6.0.2":
   version: 6.0.2
@@ -3606,7 +3673,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:^3.0.2":
+"csstype@npm:^3.0.2, csstype@npm:^3.0.9":
   version: 3.1.1
   resolution: "csstype@npm:3.1.1"
   checksum: 1f7b4f5fdd955b7444b18ebdddf3f5c699159f13e9cf8ac9027ae4a60ae226aef9bbb14a6e12ca7dba3358b007cee6354b116e720262867c398de6c955ea451d
