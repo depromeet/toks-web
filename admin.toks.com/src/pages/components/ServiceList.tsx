@@ -1,9 +1,9 @@
 import { Flex, width100 } from '@toss/emotion-utils';
 import { ReactNode } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 
 import { ServiceName } from 'pages/models/service';
-import { runDeploy } from 'pages/remotes/deploy';
+import { getDeployStatus, runDeploy } from 'pages/remotes/deploy';
 
 function ServiceList({ children }: { children: ReactNode }) {
   return (
@@ -13,21 +13,26 @@ function ServiceList({ children }: { children: ReactNode }) {
   );
 }
 
-// TODO: build server에서 현재 build status 내려줘야함. 새로 고침의 경우 버튼 disable reset되어서 중복 요청 가능
 function ServiceListRow({ name }: { name: ServiceName }) {
+  const { data: deployStatus, refetch } = useQuery(getDeployStatus.queryKey, getDeployStatus);
+
   const { mutateAsync: handleClick, isLoading } = useMutation(async () => {
     try {
       await runDeploy({ name });
       window.alert(`${name} 배포 완료!`);
+      await refetch();
     } catch (err) {
-      window.alert(err);
+      window.alert((err as any).response.data.message);
     }
   });
 
   return (
     <Flex as="li" css={{ width: '90%', border: '1px solid #030303', padding: '12px' }} justify="space-between">
       <span>{name}</span>
-      <button onClick={() => handleClick()} disabled={isLoading}>
+      <button
+        onClick={() => handleClick()}
+        disabled={isLoading || deployStatus == null || deployStatus.status === 'inprogress'}
+      >
         배포
       </button>
     </Flex>
