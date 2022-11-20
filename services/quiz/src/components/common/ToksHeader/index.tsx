@@ -1,13 +1,13 @@
-import ProfileIcon from './ProfileIcon';
-import { Header, HeaderTitle } from './style';
+import { ProfileIcon } from './ProfileIcon';
+import { Header, HeaderContainer, HeaderTitle } from './style';
 
-function ToksHeader() {
+export function ToksHeader() {
   return (
     <Header>
-      <HeaderTitle>Toks</HeaderTitle>
-      <ProfileIcon />
+      <HeaderContainer>
+        <HeaderTitle>Toks</HeaderTitle>
+        <ProfileIcon />
+      </HeaderContainer>
     </Header>
   );
 }
-
-export default ToksHeader;
