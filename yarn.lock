@@ -1527,15 +1527,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@depromeet/toks-components@workspace:packages/toks-components":
+"@depromeet/toks-components@workspace:shared/toks-components":
   version: 0.0.0-use.local
-  resolution: "@depromeet/toks-components@workspace:packages/toks-components"
+  resolution: "@depromeet/toks-components@workspace:shared/toks-components"
   dependencies:
+    "@emotion/css": ^11.9.0
+    "@emotion/react": ^11.9.3
+    "@emotion/styled": ^11.9.3
     "@types/node": ^18.0.3
+    "@types/react": ^18.0.25
     "@typescript-eslint/eslint-plugin": ^5.29.0
     "@typescript-eslint/parser": ^5.29.0
     axios: ^0.27.2
     concurrently: ^7.3.0
+    emotion-normalize: ^11.0.1
     eslint: ^8.18.0
     eslint-config-prettier: ^8.5.0
     eslint-import-resolver-typescript: ^2.7.1
@@ -2084,6 +2089,7 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
+    "@depromeet/toks-components": "workspace:shared/toks-components"
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
@@ -2569,7 +2575,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^18.0.21":
+"@types/react@npm:^18.0.21, @types/react@npm:^18.0.25":
   version: 18.0.25
   resolution: "@types/react@npm:18.0.25"
   dependencies:

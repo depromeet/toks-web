@@ -7,11 +7,7 @@
     "inlineSources": false,
     "sourceMap": false,
     "outDir": "./dist",
-    "noUncheckedIndexedAccess": true,
-    "typeRoots": ["./@types"],
-    "paths": {
-      "*": ["./@types/*"]
-    }
-  }, 
+    "noUncheckedIndexedAccess": true
+  },
   "include": ["src"]
 }
