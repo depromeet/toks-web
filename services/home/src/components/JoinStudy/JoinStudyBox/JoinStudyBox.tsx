@@ -1,9 +1,10 @@
+import { JoinInput } from "../JoinInput/JoinInput";
 import { DetailDescription } from "../StudyDescription/DetailDescription";
 import { StudyDate } from "../StudyDescription/StudyDate";
 import { StudyDescription } from "../StudyDescription/StudyDescription";
 import {StudyStack} from "../StudyStack/StudyStack";
 import { StyudyTitle } from "../StudyTitle/StudyTitle";
-import { DateWrapper, DescriptionContainer, Wrapper } from "./style";
+import { DateWrapper, DescriptionContainer, JoinMessage, Wrapper } from "./style";
 
 export function JoinStudyBox(){
     const ourStudy='우리 스터디는'
@@ -31,8 +32,9 @@ export function JoinStudyBox(){
             <StudyDescription descriptionText={studyPersonnel}/>
             <DetailDescription detailDescription={personnelDescription}/>
             <StudyDescription descriptionText={toksStudy}/>
+            <JoinInput/>
+            <JoinMessage>똑스와 8주간 함께해볼까요?</JoinMessage>
             </DescriptionContainer>            
         </Wrapper>
     )
 }
-

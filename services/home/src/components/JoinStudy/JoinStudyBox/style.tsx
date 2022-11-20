@@ -18,3 +18,11 @@ export const DescriptionContainer=styled.div`
 export const DateWrapper=styled.div`
     display: flex;
 `
+
+export const JoinMessage=styled.div`
+    font-weight: 700;
+    font-size: 20px;
+    color: #FBFBFB;
+    text-align: center;
+    margin-bottom: 24px;
+`
