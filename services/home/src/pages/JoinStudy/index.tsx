@@ -1,10 +1,8 @@
-import { Button } from '@depromeet/toks-components';
+import {JoinStudyBox} from "components/JoinStudy/JoinStudyBox/JoinStudyBox";
 
 function JoinStudy() {
     return (
-      <Button type="primary" size="medium">
-        Button
-      </Button>
+     <JoinStudyBox/>
     );
   }
   
