@@ -19,6 +19,7 @@ to: services/<%= name %>/package.json
   "dependencies": {
     "@configs/babel": "workspace:configs/babel",
     "@configs/next": "workspace:configs/next",
+    "@depromeet/toks-components": "workspace:shared/toks-components",
     "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
