@@ -5,7 +5,7 @@ import { Ranking } from 'components/StudyDetailPage/Ranking';
 import { StudyInfo } from 'components/StudyDetailPage/StudyInfo';
 import { StudyProgress } from 'components/StudyDetailPage/StudyProgress';
 
-export function StudyDetailPage() {
+export default function StudyDetailPage() {
   return (
     <>
       <ToksHeader />
