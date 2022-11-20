@@ -1,5 +1,4 @@
 import { Image } from '@depromeet/toks-components';
-import React from 'react';
 
 function Intro() {
   return (
