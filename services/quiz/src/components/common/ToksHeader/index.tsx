@@ -1,13 +1,13 @@
 import { ProfileIcon } from './ProfileIcon';
-import { Header, HeaderContainer, HeaderTitle } from './style';
+import { Container, Header, Title } from './style';
 
 export function ToksHeader() {
   return (
     <Header>
-      <HeaderContainer>
-        <HeaderTitle>Toks</HeaderTitle>
+      <Container>
+        <Title>Toks</Title>
         <ProfileIcon />
-      </HeaderContainer>
+      </Container>
     </Header>
   );
 }
