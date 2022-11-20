@@ -1,10 +1,14 @@
-import {JoinStudyBox} from "components/JoinStudy/JoinStudyBox/JoinStudyBox";
+import { JoinStudyBox } from 'components/JoinStudy/JoinStudyBox/JoinStudyBox';
+
+import { JoinGuide, Wrapper } from './style';
 
 function JoinStudy() {
-    return (
-     <JoinStudyBox/>
-    );
-  }
-  
+  return (
+    <Wrapper>
+      <JoinGuide>앞으로 똑스와 8주 동안 함께해볼까요?</JoinGuide>
+      <JoinStudyBox />
+    </Wrapper>
+  );
+}
+
 export default JoinStudy;
-  

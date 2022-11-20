@@ -1,10 +1,5 @@
-import { DetailDescriptionText } from "./style"
+import { DetailDescriptionText } from './style';
 
-export function DetailDescription({detailDescription}:{detailDescription:string}){
-    return (
-            <DetailDescriptionText>
-                {detailDescription}
-            </DetailDescriptionText>
-    )
+export function DetailDescription({ detailDescription }: { detailDescription: string }) {
+  return <DetailDescriptionText>{detailDescription}</DetailDescriptionText>;
 }
-
