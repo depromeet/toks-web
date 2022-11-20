@@ -13,7 +13,7 @@ export const Header = styled.header`
   left: 0;
   right: 0;
   top: 0;
-  background-color: #eee;
+  background-color: ${theme.colors.gray120};
 `;
 
 export const Container = styled.div`
@@ -28,7 +28,7 @@ export const Container = styled.div`
 
 export const Title = styled.div`
   font-size: ${TITLE_FONT_SIZE};
-  color: ${theme.colors.gray060};
+  color: ${theme.colors.white};
   font-weight: ${TITLE_FONT_WEIGHT};
   flex: 1;
 `;

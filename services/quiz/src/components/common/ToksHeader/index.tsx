@@ -1,4 +1,4 @@
-import { ProfileIcon } from './ProfileIcon';
+import { ProfileButton } from './ProfileButton';
 import { Container, Header, Title } from './style';
 
 export function ToksHeader() {
@@ -6,7 +6,9 @@ export function ToksHeader() {
     <Header>
       <Container>
         <Title>Toks</Title>
-        <ProfileIcon />
+        <ProfileButton
+          imgUrl={`https://asset.tokstudy.com/img_penguin.png`}
+          userName={"윤두현"} />
       </Container>
     </Header>
   );
