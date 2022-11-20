@@ -1497,7 +1497,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@depromeet/theme@workspace:packages/theme":
+"@depromeet/theme@workspace:^, @depromeet/theme@workspace:packages/theme":
   version: 0.0.0-use.local
   resolution: "@depromeet/theme@workspace:packages/theme"
   dependencies:
@@ -2125,6 +2125,7 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
+    "@depromeet/theme": "workspace:^"
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
