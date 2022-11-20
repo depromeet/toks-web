@@ -4,4 +4,5 @@ export const Title=styled.div`
     font-weight: 700;
     font-size: 32px; 
     color: #FFFFFF;
+    margin-bottom: 24px;
 `
