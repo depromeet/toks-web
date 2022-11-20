@@ -6,9 +6,7 @@ export function ToksHeader() {
     <Header>
       <Container>
         <Title>Toks</Title>
-        <ProfileButton
-          imgUrl={`https://asset.tokstudy.com/img_penguin.png`}
-          userName={"윤두현"} />
+        <ProfileButton imgUrl={`https://asset.tokstudy.com/img_penguin.png`} userName={'윤두현'} />
       </Container>
     </Header>
   );

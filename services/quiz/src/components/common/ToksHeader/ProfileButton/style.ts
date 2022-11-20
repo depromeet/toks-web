@@ -1,12 +1,11 @@
-import styled from '@emotion/styled';
 import { theme } from '@depromeet/theme';
+import styled from '@emotion/styled';
 
 const ICON_SIZE = '24px' as const;
 const ICON_RADIUS = '12px' as const;
 
 const FONT_SIZE = '20px' as const;
 const FONT_WEIGHT = 700 as const;
-
 
 export const Button = styled.button`
   display: flex;
@@ -16,7 +15,7 @@ export const Button = styled.button`
   padding: 11px 22px;
   background-color: ${theme.colors.gray110};
   border: 2px solid ${theme.colors.gray080};
-`
+`;
 
 export const Img = styled.img`
   height: ${ICON_SIZE};
