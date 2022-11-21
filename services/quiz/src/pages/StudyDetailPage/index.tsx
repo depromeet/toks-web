@@ -4,16 +4,18 @@ import { QuizList } from 'components/StudyDetailPage/QuizList';
 import { Ranking } from 'components/StudyDetailPage/Ranking';
 import { StudyInfo } from 'components/StudyDetailPage/StudyInfo';
 import { StudyProgress } from 'components/StudyDetailPage/StudyProgress';
+import { Page } from './style';
 
 export default function StudyDetailPage() {
   return (
-    <>
-      <ToksHeader />
-      <BackButton />
+    <Page>
+      <ToksHeader>
+        <BackButton />
+      </ToksHeader>
       <StudyInfo />
       <StudyProgress />
       <QuizList />
       <Ranking />
-    </>
+    </Page>
   );
 }
