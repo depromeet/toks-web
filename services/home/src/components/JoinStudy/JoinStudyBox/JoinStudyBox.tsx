@@ -4,7 +4,7 @@ import { DetailDescription } from '../StudyDescription/DetailDescription';
 import { StudyDate } from '../StudyDescription/StudyDate';
 import { StudyDescription } from '../StudyDescription/StudyDescription';
 import { StudyStack } from '../StudyStack/StudyStack';
-import { StyudyTitle } from '../StudyTitle/StudyTitle';
+import { StudyTitle } from '../StudyTitle/StudyTitle';
 import { DateWrapper, DescriptionContainer, JoinMessage, Wrapper } from './style';
 
 export function JoinStudyBox() {
@@ -14,7 +14,7 @@ export function JoinStudyBox() {
   const doneDate = '2022. 12. 03';
   return (
     <Wrapper>
-      <StyudyTitle />
+      <StudyTitle />
       <StudyStack />
       <DescriptionContainer>
         <StudyDescription descriptionText='우리 스터디는' />
