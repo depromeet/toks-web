@@ -3,7 +3,7 @@ import { Button, Img, Text } from './style';
 interface ProfileButtonProps {
   imgUrl: string;
   userName: string;
-};
+}
 
 export function ProfileButton({ imgUrl, userName }: ProfileButtonProps) {
   return (

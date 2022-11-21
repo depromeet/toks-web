@@ -5,7 +5,7 @@ interface HeaderProps {
   imgUrl: string;
   userName: string;
   children: React.ReactNode;
-};
+}
 
 export function ToksHeader(props: HeaderProps) {
   return (
