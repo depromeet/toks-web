@@ -35,6 +35,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "@depromeet/theme": "^0.0.1",
     "axios": "^0.27.2",
     "primeicons": "^6.0.1",
     "primereact": "^8.7.2",
