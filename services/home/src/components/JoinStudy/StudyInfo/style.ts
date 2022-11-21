@@ -13,32 +13,41 @@ export const DetailDescriptionText = styled.span`
   font-weight: 500;
   font-size: 16px;
   color: ${theme.colors.white};
-  padding-top: 19px;
+  padding-top: 16px;
   display: flex;
 `;
 
 export const DateWrapper = styled.div`
   display: flex;
-  height: 20px;
-  padding-top: 16px;
   &:first-of-type {
     margin-left: 0px;
   }
   margin-right: 39px;
+  align-items: center;
 `;
 
-export const WhenText = styled.div`
+export const WhenText = styled.p`
   font-weight: 500;
   font-size: 14px;
-  line-height: 20px;
   color: ${theme.colors.white};
-  margin-right: 11px;
-  height: 20px;
+  margin: 0 11px 0 0;
+  &:first-of-type {
+    padding-left: 0;
+  }
+  padding-left: 40px;
 `;
 
-export const DateText = styled.div`
+export const DateText = styled.p`
   font-weight: 700;
   font-size: 20px;
   color: ${theme.colors.white};
-  height: 20px;
+  margin: 0;
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  &:first-of-type {
+    margin-top: 0;
+  }
+  margin-top: 36px;
 `;

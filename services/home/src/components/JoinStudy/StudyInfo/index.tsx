@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { DateText, DetailDescriptionText, InfoTitle, WhenText } from './style';
+import { DateText, DateWrapper, DetailDescriptionText, InfoTitle, TitleWrapper, WhenText } from './style';
 
 // 컴포넌트를 받을 때 ReactElement로 props를 받는게 맞는지 확인 필요.
 // 공통 컴포넌트 개발이후에 스타일 일부 제거 필요.
@@ -25,13 +25,17 @@ export function StudyInfo({
 }: StudyInfoProps) {
   return (
     <>
-      {leftAddon}
-      <InfoTitle>{title}</InfoTitle>
+      <TitleWrapper>
+        {leftAddon}
+        <InfoTitle>{title}</InfoTitle>
+      </TitleWrapper>
       <DetailDescriptionText>{description}</DetailDescriptionText>
-      <WhenText>{start}</WhenText>
-      <DateText>{startDate}</DateText>
-      <WhenText>{done}</WhenText>
-      <DateText>{doneDate}</DateText>
+      <DateWrapper>
+        <WhenText>{start}</WhenText>
+        <DateText>{startDate}</DateText>
+        <WhenText>{done}</WhenText>
+        <DateText>{doneDate}</DateText>
+      </DateWrapper>
       {joinInput}
     </>
   );
