@@ -1,6 +1,6 @@
 import { ProfileButton } from './ProfileButton';
 
-import { Container, Header, Title } from './style';
+import { Wrapper, Header, Title } from './style';
 
 type HeaderProps = {
   children : React.ReactNode
@@ -9,10 +9,10 @@ type HeaderProps = {
 export function ToksHeader(props : HeaderProps) {
   return (
     <Header>
-      <Container>
+      <Wrapper>
         <Title>Toks</Title>
         <ProfileButton imgUrl={`https://asset.tokstudy.com/img_penguin.png`} userName={'윤두현'} />
-      </Container>
+      </Wrapper>
       {props.children}
     </Header>
   );

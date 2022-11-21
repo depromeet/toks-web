@@ -16,7 +16,7 @@ export const Header = styled.header`
   background-color: ${theme.colors.gray120};
 `;
 
-export const Container = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   max-width: ${HEADER_MAX_WIDTH};
   min-width: ${HEADER_MIN_WIDTH};
@@ -24,6 +24,7 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 0 20px;
   align-items: center;
+  z-index: 1;
 `;
 
 export const Title = styled.div`
