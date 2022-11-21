@@ -40,7 +40,7 @@ export * from 'primereact/fileupload';
 
 export * from 'primereact/galleria';
 
-export * from 'primereact/image';
+export * from './Image';
 export * from 'primereact/inplace';
 export * from 'primereact/inputmask';
 export * from 'primereact/inputnumber';
