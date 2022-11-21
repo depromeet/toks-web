@@ -4,6 +4,7 @@ import { QuizList } from 'components/StudyDetailPage/QuizList';
 import { Ranking } from 'components/StudyDetailPage/Ranking';
 import { StudyInfo } from 'components/StudyDetailPage/StudyInfo';
 import { StudyProgress } from 'components/StudyDetailPage/StudyProgress';
+
 import { Page, Section, Wrapper } from './style';
 
 export default function StudyDetailPage() {

@@ -1,12 +1,11 @@
 import { ProfileButton } from './ProfileButton';
-
-import { Wrapper, Header, Title } from './style';
+import { Header, Title, Wrapper } from './style';
 
 type HeaderProps = {
-  children : React.ReactNode
+  children: React.ReactNode;
 };
 
-export function ToksHeader(props : HeaderProps) {
+export function ToksHeader(props: HeaderProps) {
   return (
     <Header>
       <Wrapper>
