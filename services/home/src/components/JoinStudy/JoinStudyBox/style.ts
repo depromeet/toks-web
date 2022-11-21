@@ -19,10 +19,12 @@ export const DateWrapper = styled.div`
   display: flex;
 `;
 
-export const JoinMessage = styled.div`
+export const JoinMessage = styled.span`
   font-weight: 700;
   font-size: 20px;
   color: ${theme.colors.gray010};
   text-align: center;
-  margin-bottom: 24px;
+  padding: 80px 0 24px 0;
+  justify-content: center;
+  display: flex;
 `;

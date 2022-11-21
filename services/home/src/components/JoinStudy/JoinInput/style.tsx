@@ -11,5 +11,4 @@ export const ResolutionInput = styled.input`
   font-size: 14px;
   color: ${theme.colors.gray040};
   padding: 16px;
-  margin-bottom: 80px;
 `;

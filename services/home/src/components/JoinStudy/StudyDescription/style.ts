@@ -4,7 +4,10 @@ import { theme } from '@depromeet/theme';
 export const DescriptionWrapper = styled.div`
   display: flex;
   height: 26px;
-  margin-bottom: 19px;
+  :first-child{
+    margin-top: 0;
+  }
+  margin-top: 34px;
 `;
 
 export const DescriptionBox = styled.div`
@@ -12,27 +15,28 @@ export const DescriptionBox = styled.div`
   height: 26px;
   border-radius: 6px;
   background-color: ${theme.colors.gray080};
-  margin-right: 8px;
 `;
 
-export const DescriptionText = styled.div`
+export const DescriptionText = styled.span`
   font-weight: 700;
   font-size: 16px;
   color: ${theme.colors.white};
   line-height: 26px;
+  padding-left: 8px;
+
 `;
 
-export const DetailDescriptionText = styled.div`
+export const DetailDescriptionText = styled.span`
   font-weight: 500;
   font-size: 16px;
   color: ${theme.colors.white};;
-  margin-bottom: 34px;
+  padding-top: 19px;
 `;
 
 export const DateWrapper = styled.div`
   display: flex;
   height: 20px;
-  margin-bottom: 24px;
+  padding-top: 24px;
 `;
 
 export const WhenText = styled.div`

@@ -6,10 +6,12 @@ export const Wrapper = styled.div`
   height: 100vh;
 `;
 
-export const JoinGuide = styled.div`
+export const JoinGuide = styled.span`
   font-weight: 700;
   font-size: 32px;
   color: ${theme.colors.white};
-  text-align: center;
+  justify-content: center;
+  /* align-items: center; */
+  display: flex;
   margin-bottom: 33px;
 `;
