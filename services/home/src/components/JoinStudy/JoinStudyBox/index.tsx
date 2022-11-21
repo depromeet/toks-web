@@ -3,6 +3,7 @@ import { JoinInput } from 'components/JoinStudy/JoinInput';
 import { StudyInfo } from 'components/JoinStudy/StudyInfo';
 import { StudyStack } from 'components/JoinStudy/StudyStack';
 import { StudyTitle } from 'components/JoinStudy/StudyTitle';
+
 import { DescriptionBox, DescriptionContainer, JoinMessage, Wrapper } from './style';
 
 export function JoinStudyBox() {

@@ -15,11 +15,6 @@ export const DescriptionContainer = styled.div`
   margin-top: 52px;
 `;
 
-export const DateWrapper = styled.div`
-  display: flex;
-  height: 36px;
-`;
-
 export const JoinMessage = styled.span`
   font-weight: 700;
   font-size: 20px;

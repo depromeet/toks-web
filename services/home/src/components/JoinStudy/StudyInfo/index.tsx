@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+
 import { DateText, DateWrapper, DetailDescriptionText, InfoTitle, TitleWrapper, WhenText } from './style';
 
 // 컴포넌트를 받을 때 ReactElement로 props를 받는게 맞는지 확인 필요.
