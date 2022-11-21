@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { theme } from '@depromeet/theme';
 
 export const DescriptionWrapper = styled.div`
   display: flex;
@@ -10,21 +11,21 @@ export const DescriptionBox = styled.div`
   width: 26px;
   height: 26px;
   border-radius: 6px;
-  background-color: #555555;
+  background-color: ${theme.colors.gray080};
   margin-right: 8px;
 `;
 
 export const DescriptionText = styled.div`
   font-weight: 700;
   font-size: 16px;
-  color: #ffffff;
+  color: ${theme.colors.white};
   line-height: 26px;
 `;
 
 export const DetailDescriptionText = styled.div`
   font-weight: 500;
   font-size: 16px;
-  color: #ffffff;
+  color: ${theme.colors.white};;
   margin-bottom: 34px;
 `;
 
@@ -38,13 +39,13 @@ export const WhenText = styled.div`
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  color: #ffffff;
+  color: ${theme.colors.white};;
   margin-right: 11px;
 `;
 
 export const DateText = styled.div`
   font-weight: 700;
   font-size: 20px;
-  color: #ffffff;
+  color: ${theme.colors.white};;
   margin-right: 39px;
 `;
