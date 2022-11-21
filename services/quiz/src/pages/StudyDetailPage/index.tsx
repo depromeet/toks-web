@@ -1,5 +1,4 @@
-import { BackButton } from 'components/common/BackButton';
-import { ToksHeader } from 'components/common/ToksHeader';
+import { BackButton, ToksHeader } from '@depromeet/toks-components';
 import { QuizList } from 'components/StudyDetailPage/QuizList';
 import { Ranking } from 'components/StudyDetailPage/Ranking';
 import { StudyInfo } from 'components/StudyDetailPage/StudyInfo';
