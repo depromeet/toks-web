@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { HTMLAttribute, useEffect, useRef, useState } from 'react';
+import { ImageHTMLAttributes, useEffect, useRef, useState } from 'react';
 
-export interface ImageProps extends HTMLAttribute<HTMLImageElement> {
+export interface ImageProps extends ImageHTMLAttributes<HTMLImageElement> {
   ref?: React.RefObject<HTMLImageElement>;
   lazy?: boolean;
   threshold?: number;
