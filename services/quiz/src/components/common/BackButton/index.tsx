@@ -1,7 +1,9 @@
+import { Button } from "./style";
+
 export function BackButton() {
   return (
-    <div>
-      <div>BackButton</div>
-    </div>
+    <Button>
+      <img src="https://asset.tokstudy.com/ic_left_chevron.svg"/>
+    </Button>
   );
 }
