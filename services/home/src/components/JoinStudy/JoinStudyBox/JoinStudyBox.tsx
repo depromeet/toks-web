@@ -8,6 +8,7 @@ import { StudyTitle } from '../StudyTitle/StudyTitle';
 import { DateWrapper, DescriptionContainer, JoinMessage, Wrapper } from './style';
 
 export function JoinStudyBox() {
+// mock data
   const ourStudyDescription = '아키텍쳐 크리너스로 소프트웨어 구조와 설계의 원칙 제대로 이해하기 ';
   const personnelDescription = '5-7명을 계획하고 있어요.';
   const startDate = '2022. 10. 13';
