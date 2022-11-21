@@ -29,3 +29,9 @@ export const JoinMessage = styled.span`
   justify-content: center;
   display: flex;
 `;
+export const DescriptionBox = styled.div`
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background-color: ${theme.colors.gray080};
+`;

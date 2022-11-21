@@ -1,9 +1,9 @@
 import { JoinButton } from 'components/JoinStudy/JoinButton';
 import { JoinInput } from 'components/JoinStudy/JoinInput';
-import { StudyInfo } from 'components/JoinStudy/StudyIntro';
+import { StudyInfo } from 'components/JoinStudy/StudyInfo';
 import { StudyStack } from 'components/JoinStudy/StudyStack';
 import { StudyTitle } from 'components/JoinStudy/StudyTitle';
-import { DescriptionContainer, JoinMessage, Wrapper } from './style';
+import { DescriptionBox, DescriptionContainer, JoinMessage, Wrapper } from './style';
 
 export function JoinStudyBox() {
   // mock data
@@ -15,28 +15,33 @@ export function JoinStudyBox() {
     <Wrapper>
       <StudyTitle />
       <StudyStack />
-      <DescriptionContainer>
-        <div />
-        <StudyInfo
-          leftAddon={<div />}
-          title={<span>우리 스터디는</span>}
-          description={<span>{ourStudyDescription}</span>}
-        />
-        <StudyInfo
-          leftAddon={<div />}
-          title={<span>스터디 기간은</span>}
-          start={<>시작일</>}
-          startDate={<>{startDate}</>}
-          done={<>종료일</>}
-          doneDate={<>{doneDate}</>}
-        />
-        <StudyInfo
-          leftAddon={<div />}
-          title={<span>스터디 인원은</span>}
-          description={<span>{personnelDescription}</span>}
-        />
-        <StudyInfo leftAddon={<div />} title={<span>나는 똑스 스터디에서</span>} />
-      </DescriptionContainer>
+      <form>
+        <DescriptionContainer>
+          <StudyInfo
+            leftAddon={<DescriptionBox />}
+            title={<span>우리 스터디는</span>}
+            description={<span>{ourStudyDescription}</span>}
+          />
+          <StudyInfo
+            leftAddon={<DescriptionBox />}
+            title={<span>스터디 기간은</span>}
+            start={<>시작일</>}
+            startDate={<>{startDate}</>}
+            done={<>종료일</>}
+            doneDate={<>{doneDate}</>}
+          />
+          <StudyInfo
+            leftAddon={<DescriptionBox />}
+            title={<span>스터디 인원은</span>}
+            description={<span>{personnelDescription}</span>}
+          />
+          <StudyInfo
+            leftAddon={<DescriptionBox />}
+            title={<span>나는 똑스 스터디에서</span>}
+            joinInput={<JoinInput />}
+          />
+        </DescriptionContainer>
+      </form>
       <JoinMessage>똑스와 8주간 함께해볼까요?</JoinMessage>
       <JoinButton />
     </Wrapper>

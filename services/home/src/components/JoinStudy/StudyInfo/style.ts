@@ -1,26 +1,7 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 
-export const DescriptionWrapper = styled.div`
-  display: flex;
-  height: 26px;
-  & :first-of-type {
-    margin-top: 0;
-  }
-  margin-top: 34px;
-  &:last-of-type {
-    padding-bottom: 40px;
-  }
-`;
-
-export const DescriptionBox = styled.div`
-  width: 26px;
-  height: 26px;
-  border-radius: 6px;
-  background-color: ${theme.colors.gray080};
-`;
-
-export const DescriptionText = styled.span`
+export const InfoTitle = styled.span`
   font-weight: 700;
   font-size: 16px;
   color: ${theme.colors.white};
