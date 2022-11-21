@@ -4,6 +4,5 @@
     "baseUrl": "src",
     "incremental": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts", "src/components/JoinStudy/StudyStack"],
   "exclude": ["node_modules"],
 }

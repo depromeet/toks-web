@@ -1,5 +1,5 @@
+import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
-import {theme} from '@depromeet/theme'
 
 export const Box = styled.span`
   height: 32px;
@@ -10,7 +10,7 @@ export const Box = styled.span`
   font-size: 16px;
   color: ${theme.colors.white};
 
-  &:first-of-type{
+  &:first-of-type {
     margin-left: 0;
   }
   margin-left: 8px;

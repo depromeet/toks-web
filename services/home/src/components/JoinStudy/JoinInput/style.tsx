@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import { theme } from '@depromeet/theme';
+import styled from '@emotion/styled';
 
 export const ResolutionInput = styled.input`
   height: 48px;

@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import { theme } from '@depromeet/theme';
+import styled from '@emotion/styled';
 
 export const StudyJoinButton = styled.button`
   cursor: pointer;
