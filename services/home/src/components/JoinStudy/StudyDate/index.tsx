@@ -1,4 +1,4 @@
-import { DateText, DateWrapper, WhenText } from './style';
+import { DateText, DateWrapper, WhenText } from '../StudyDate/style';
 
 type StudyDateProps = {
   when: string;

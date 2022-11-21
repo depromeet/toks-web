@@ -1,4 +1,4 @@
-import { JoinStudyBox } from 'components/JoinStudy/JoinStudyBox/JoinStudyBox';
+import { JoinStudyBox } from 'components/JoinStudy/JoinStudyBox';
 
 import { JoinGuide, Wrapper } from './style';
 
