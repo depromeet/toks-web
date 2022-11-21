@@ -10,7 +10,9 @@ import { Page, Section, Wrapper } from './style';
 export default function StudyDetailPage() {
   return (
     <Page>
-      <ToksHeader>
+      <ToksHeader
+        imgUrl={`https://asset.tokstudy.com/img_penguin.png`}
+        userName={'윤두현'}>
         <BackButton />
       </ToksHeader>
       <Section>
