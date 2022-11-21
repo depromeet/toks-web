@@ -4,10 +4,13 @@ import { theme } from '@depromeet/theme';
 export const DescriptionWrapper = styled.div`
   display: flex;
   height: 26px;
-  :first-child{
+  & :first-of-type{
     margin-top: 0;
   }
   margin-top: 34px;
+  &:last-of-type{
+    padding-bottom: 40px;
+  }
 `;
 
 export const DescriptionBox = styled.div`
@@ -31,12 +34,17 @@ export const DetailDescriptionText = styled.span`
   font-size: 16px;
   color: ${theme.colors.white};;
   padding-top: 19px;
+  display: flex;
 `;
 
 export const DateWrapper = styled.div`
   display: flex;
   height: 20px;
-  padding-top: 24px;
+  padding-top: 16px;
+  &:first-of-type{
+    margin-left: 0px;
+  }
+  margin-right: 39px;
 `;
 
 export const WhenText = styled.div`
@@ -45,11 +53,12 @@ export const WhenText = styled.div`
   line-height: 20px;
   color: ${theme.colors.white};;
   margin-right: 11px;
+  height: 20px;
 `;
 
 export const DateText = styled.div`
   font-weight: 700;
   font-size: 20px;
   color: ${theme.colors.white};;
-  margin-right: 39px;
+  height: 20px;
 `;

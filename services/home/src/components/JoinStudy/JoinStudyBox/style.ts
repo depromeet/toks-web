@@ -17,6 +17,7 @@ export const DescriptionContainer = styled.div`
 
 export const DateWrapper = styled.div`
   display: flex;
+  height: 36px;
 `;
 
 export const JoinMessage = styled.span`

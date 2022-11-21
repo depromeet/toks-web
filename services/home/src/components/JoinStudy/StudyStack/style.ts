@@ -8,6 +8,10 @@ export const Box = styled.span`
   border-radius: 6px;
   font-weight: 500;
   font-size: 16px;
-  color: ${theme.colors.white};;
-  margin-right: 8px;
+  color: ${theme.colors.white};
+
+  &:first-of-type{
+    margin-left: 0;
+  }
+  margin-left: 8px;
 `;
