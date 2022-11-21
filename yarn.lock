@@ -1526,7 +1526,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@depromeet/theme@npm:^0.0.1":
+"@depromeet/theme@npm:0.0.1, @depromeet/theme@npm:^0.0.1":
   version: 0.0.1
   resolution: "@depromeet/theme@npm:0.0.1"
   dependencies:
