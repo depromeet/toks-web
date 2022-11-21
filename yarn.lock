@@ -1497,7 +1497,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@depromeet/theme@workspace:^0.0.1, @depromeet/theme@workspace:packages/theme":
+"@depromeet/theme@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@depromeet/theme@npm:0.0.1"
+  dependencies:
+    "@emotion/css": ^11.9.0
+    "@emotion/react": ^11.9.3
+    "@emotion/styled": ^11.9.3
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    ts-pattern: ^4.0.5
+  checksum: 8442f146c22f299662e83d4176ec3b6712abedd4d401792fa830c50650c5d7f902ab72f358f1327d83fe67275193e61aa9f8e585b82a6907ca979b9aea312bfc
+  languageName: node
+  linkType: hard
+
+"@depromeet/theme@workspace:packages/theme":
   version: 0.0.0-use.local
   resolution: "@depromeet/theme@workspace:packages/theme"
   dependencies:
@@ -2125,7 +2139,7 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
-    "@depromeet/theme": "workspace:^0.0.1"
+    "@depromeet/theme": ^0.0.1
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
