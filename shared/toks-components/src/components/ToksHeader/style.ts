@@ -4,11 +4,9 @@ import styled from '@emotion/styled';
 import { HEADER_HEIGHT, HEADER_MAX_WIDTH, HEADER_MIN_WIDTH, TITLE_FONT_SIZE, TITLE_FONT_WEIGHT } from './constants';
 
 export const Header = styled.header`
-  position: fixed;
+  position: sticky;
   left: 0;
-  right: 0;
   top: 0;
-  background-color: ${theme.colors.gray120};
 `;
 
 export const Wrapper = styled.div`
@@ -27,4 +25,5 @@ export const Title = styled.div`
   color: ${theme.colors.white};
   font-weight: ${TITLE_FONT_WEIGHT};
   flex: 1;
+  line-height: 100%;
 `;
