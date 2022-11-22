@@ -47,7 +47,7 @@ Tag.Row = Row;
 const ListRow = styled.ul`
   display: flex;
   gap: 8px;
-  overflow: scroll;
+  overflow: auto;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
