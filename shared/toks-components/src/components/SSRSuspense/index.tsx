@@ -1,5 +1,5 @@
-import { ComponentProps, Suspense } from 'react';
 import { useIsMounted } from '@toss/react';
+import { ComponentProps, Suspense } from 'react';
 
 export function SSRSuspense(props: ComponentProps<typeof Suspense>) {
   const isMounted = useIsMounted();
