@@ -1,5 +1,5 @@
-import { css, Global } from '@emotion/react';
 import { theme } from '@depromeet/theme';
+import { Global, css } from '@emotion/react';
 
 export function GlobalStyle() {
   return (
