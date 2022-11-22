@@ -1,5 +1,6 @@
-import { StudyJoinButton } from './style';
 import { Txt } from '@depromeet/toks-components';
+
+import { StudyJoinButton } from './style';
 
 export function JoinButton() {
   return (

@@ -1,9 +1,9 @@
+import { Tag, Txt } from '@depromeet/toks-components';
+
 import { JoinButton } from 'components/JoinStudy/JoinButton';
 import { JoinInput } from 'components/JoinStudy/JoinInput';
 import { StudyInfo } from 'components/JoinStudy/StudyInfo';
 import { StudyTitle } from 'components/JoinStudy/StudyTitle';
-import { Tag } from '@depromeet/toks-components';
-import { Txt } from '@depromeet/toks-components';
 
 import {
   DateText,
@@ -26,7 +26,7 @@ export function JoinStudyBox() {
     <Wrapper>
       <StudyTitle />
       {stacks?.map(stack => (
-        <TagContainer>
+        <TagContainer key={Date.now()}>
           <Tag>
             <Txt>{stack}</Txt>
           </Tag>

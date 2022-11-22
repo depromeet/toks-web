@@ -1,5 +1,7 @@
-import { JoinStudyBox } from 'components/JoinStudy/JoinStudyBox';
 import { ToksHeader, Txt } from '@depromeet/toks-components';
+
+import { JoinStudyBox } from 'components/JoinStudy/JoinStudyBox';
+
 import { HeaderContainer, JoinGuide } from './style';
 
 function JoinStudy() {
