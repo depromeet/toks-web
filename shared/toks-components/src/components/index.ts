@@ -95,7 +95,7 @@ export * from 'primereact/styleclass';
 
 export * from 'primereact/tabmenu';
 export * from 'primereact/tabview';
-export * from 'primereact/tag';
+export * from './Tag';
 export * from 'primereact/terminalservice';
 export * from 'primereact/terminal';
 export * from 'primereact/tieredmenu';

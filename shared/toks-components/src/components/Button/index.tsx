@@ -56,6 +56,7 @@ const BUTTON_HEIGHT: { [key in ButtonSize]: string } = {
 export function Button({ type = 'primary', size = 'medium', disabled, htmlType, ...rest }: Props) {
   return (
     <StyledBaseButton
+      // TODO: inline style로 적용한 부분 제외하기
       style={{
         background: BUTTON_COLOR[disabled ? 'disabled' : 'normal'][type],
         borderRadius: '32px',
