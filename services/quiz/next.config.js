@@ -32,7 +32,7 @@ module.exports = {
       },
       loader: 'next-swc-loader',
     });
-
+    config.resolve.modules.push(__dirname);
     return config;
   },
 };
