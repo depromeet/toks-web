@@ -5,8 +5,7 @@ export * from './Txt';
 
 export * from 'primereact/accordion';
 export * from 'primereact/autocomplete';
-export * from 'primereact/avatar';
-export * from 'primereact/avatargroup';
+export * from './Avatar';
 
 export * from 'primereact/badge';
 export * from 'primereact/blockui';
