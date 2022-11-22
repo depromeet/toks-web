@@ -1,7 +1,8 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import { HTMLAttributes, ReactNode } from 'react';
-import { typography, Typography } from './token';
+
+import { Typography, typography as typographyObject } from './token';
 
 type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 'normal' | 'bold' | 'bolder' | 'lighter';
 
@@ -39,5 +40,5 @@ const StyledText = styled('span')<StyleProps>`
   letter-spacing: -0.6px;
   line-height: 100%;
 
-  ${({ variant }) => typography[variant ?? 'body02']}
+  ${({ variant }) => typographyObject[variant ?? 'body02']}
 `;
