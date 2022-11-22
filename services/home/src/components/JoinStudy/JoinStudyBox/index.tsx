@@ -4,7 +4,16 @@ import { StudyInfo } from 'components/JoinStudy/StudyInfo';
 import { StudyTitle } from 'components/JoinStudy/StudyTitle';
 import { Tag } from '@depromeet/toks-components';
 
-import { DescriptionBox, DescriptionContainer, JoinMessage, TagContainer, Wrapper } from './style';
+import {
+  DateText,
+  DateWrapper,
+  DescriptionBox,
+  DescriptionContainer,
+  JoinMessage,
+  TagContainer,
+  WhenText,
+  Wrapper,
+} from './style';
 
 export function JoinStudyBox() {
   // mock data
@@ -31,21 +40,24 @@ export function JoinStudyBox() {
           <StudyInfo
             leftAddon={<DescriptionBox />}
             title={<span>스터디 기간은</span>}
-            start={<>시작일</>}
-            startDate={<>{startDate}</>}
-            done={<>종료일</>}
-            doneDate={<>{doneDate}</>}
+            description={
+              <>
+                <DateWrapper>
+                  <WhenText>시작일</WhenText>
+                  <DateText>{startDate}</DateText>
+                </DateWrapper>
+                <DateWrapper>
+                  <WhenText>종료일 </WhenText> <DateText>{doneDate}</DateText>
+                </DateWrapper>
+              </>
+            }
           />
           <StudyInfo
             leftAddon={<DescriptionBox />}
             title={<span>스터디 인원은</span>}
             description={<span>{personnelDescription}</span>}
           />
-          <StudyInfo
-            leftAddon={<DescriptionBox />}
-            title={<span>나는 똑스 스터디에서</span>}
-            joinInput={<JoinInput />}
-          />
+          <StudyInfo leftAddon={<DescriptionBox />} title={<span>스터디 기간은</span>} description={<JoinInput />} />
         </DescriptionContainer>
       </form>
       <JoinMessage>똑스와 8주간 함께해볼까요?</JoinMessage>
