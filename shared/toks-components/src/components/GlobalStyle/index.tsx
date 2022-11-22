@@ -22,10 +22,12 @@ TODO:
 */
 const globalCss = css`
   html {
-    font-size: 16px;
+    font-size: 10px;
   }
 
   body {
+    height: 100vh;
+
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
     font-size: 1rem;
     box-sizing: border-box;
