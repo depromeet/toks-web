@@ -1,8 +1,9 @@
-import styled from '@emotion/styled';
 import { theme } from '@depromeet/theme';
 import { Button, Image, Tag, Txt } from '@depromeet/toks-components';
-import { padding, Spacing, width100 } from '@toss/emotion-utils';
+import styled from '@emotion/styled';
+import { Spacing, padding, width100 } from '@toss/emotion-utils';
 import { useMutation } from 'react-query';
+
 import { Study } from '../../models/study';
 
 interface Props extends Pick<Study, 'img' | 'title' | 'tags'> {

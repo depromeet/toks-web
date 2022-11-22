@@ -1,10 +1,12 @@
-import { Flex } from '@toss/emotion-utils';
-import StudyCard from './components/StudyCard';
-import { useSuspendedQuery } from '@toss/react-query';
-import { QUERY_KEYS } from 'constants/queryKeys';
-import { getMyStudies } from './remotes/study';
-import { ErrorBoundary } from '@toss/error-boundary';
 import { SSRSuspense } from '@depromeet/toks-components';
+import { Flex } from '@toss/emotion-utils';
+import { ErrorBoundary } from '@toss/error-boundary';
+import { useSuspendedQuery } from '@toss/react-query';
+
+import { QUERY_KEYS } from 'constants/queryKeys';
+
+import StudyCard from './components/StudyCard';
+import { getMyStudies } from './remotes/study';
 
 function StudyList() {
   const { data: myStudies } = useSuspendedQuery(QUERY_KEYS.GET_MY_STUDIES, getMyStudies);
