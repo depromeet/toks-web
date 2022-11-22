@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 `;
 
 export const DescriptionContainer = styled.div`
-  margin-top: 52px;
+  margin-top: 47px;
 `;
 
 export const JoinMessage = styled.span`
@@ -29,4 +29,11 @@ export const DescriptionBox = styled.div`
   height: 26px;
   border-radius: 6px;
   background-color: ${theme.colors.gray080};
+`;
+
+export const TagContainer = styled.span`
+  &:first-of-type {
+    margin-left: 0;
+  }
+  margin-left: 8px;
 `;

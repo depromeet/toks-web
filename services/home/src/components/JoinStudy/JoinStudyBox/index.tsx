@@ -1,10 +1,10 @@
 import { JoinButton } from 'components/JoinStudy/JoinButton';
 import { JoinInput } from 'components/JoinStudy/JoinInput';
 import { StudyInfo } from 'components/JoinStudy/StudyInfo';
-import { StudyStack } from 'components/JoinStudy/StudyStack';
 import { StudyTitle } from 'components/JoinStudy/StudyTitle';
+import { Tag } from '@depromeet/toks-components';
 
-import { DescriptionBox, DescriptionContainer, JoinMessage, Wrapper } from './style';
+import { DescriptionBox, DescriptionContainer, JoinMessage, TagContainer, Wrapper } from './style';
 
 export function JoinStudyBox() {
   // mock data
@@ -12,10 +12,15 @@ export function JoinStudyBox() {
   const personnelDescription = '5-7명을 계획하고 있어요.';
   const startDate = '2022. 10. 13';
   const doneDate = '2022. 12. 03';
+  const stacks = ['Java', 'Javascript', 'React'];
   return (
     <Wrapper>
       <StudyTitle />
-      <StudyStack />
+      {stacks?.map(stack => (
+        <TagContainer>
+          <Tag>{stack}</Tag>
+        </TagContainer>
+      ))}
       <form>
         <DescriptionContainer>
           <StudyInfo
