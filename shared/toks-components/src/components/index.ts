@@ -1,6 +1,7 @@
 export * from './GlobalStyle';
 export * from './ToksHeader';
 export * from './BackButton';
+export * from './Txt';
 
 export * from 'primereact/accordion';
 export * from 'primereact/autocomplete';
