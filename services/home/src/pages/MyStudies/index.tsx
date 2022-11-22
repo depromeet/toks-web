@@ -12,7 +12,7 @@ function StudyList() {
   const { data: myStudies } = useSuspendedQuery(QUERY_KEYS.GET_MY_STUDIES, getMyStudies);
 
   return (
-    <Flex css={{ gap: '32px' }}>
+    <Flex css={{ gap: '32px' }} as="ul">
       {myStudies.map(study => (
         <StudyCard
           img={study.img}
