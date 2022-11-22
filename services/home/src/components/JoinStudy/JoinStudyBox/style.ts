@@ -16,9 +16,6 @@ export const DescriptionContainer = styled.div`
 `;
 
 export const JoinMessage = styled.span`
-  font-weight: 700;
-  font-size: 20px;
-  color: ${theme.colors.gray010};
   text-align: center;
   padding: 80px 0 24px 0;
   justify-content: center;
@@ -47,20 +44,8 @@ export const DateWrapper = styled.div`
   align-items: center;
 `;
 
-export const WhenText = styled.p`
-  font-weight: 500;
-  font-size: 14px;
-  color: ${theme.colors.white};
-  margin: 0 11px 0 0;
-  &:first-of-type {
-    padding-left: 0;
-  }
-  padding-left: 40px;
-`;
-
 export const DateText = styled.p`
-  font-weight: 700;
-  font-size: 20px;
   color: ${theme.colors.white};
   margin: 0;
+  margin-left: 11px;
 `;
