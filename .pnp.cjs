@@ -4162,6 +4162,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@services/home", "workspace:services/home"],\
             ["@configs/babel", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#workspace:configs/babel"],\
             ["@configs/next", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#workspace:configs/next"],\
+            ["@depromeet/theme", "npm:0.0.1"],\
             ["@depromeet/toks-components", "workspace:shared/toks-components"],\
             ["@emotion/css", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.0"],\
             ["@emotion/react", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
