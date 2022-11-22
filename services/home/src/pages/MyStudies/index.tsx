@@ -1,10 +1,15 @@
-import { Button } from '@depromeet/toks-components';
+import { Tag } from '@depromeet/toks-components';
 
 function App() {
   return (
-    <Button type="primary" size="large">
-      Button
-    </Button>
+    <Tag.Row>
+      <Tag value="javascript" color="highlight" />
+      <Tag value="javascript" color="highlight" />
+      <Tag value="javascript" color="highlight" />
+      <Tag value="javascript" color="highlight" />
+      <Tag value="javascript" color="highlight" />
+      <Tag value="javascript" color="highlight" />
+    </Tag.Row>
   );
 }
 
