@@ -16,7 +16,8 @@ function StudyList() {
           img={study.img}
           title={study.title}
           tags={study.tags}
-          onClick={() => {}}
+          // TODO: 스터디 참여 로직 구현
+          onClick={async () => {}}
           memberCount={study.member.length}
           key={study.id}
         />

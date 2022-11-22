@@ -6,12 +6,12 @@ import { useMutation } from 'react-query';
 import { Study } from '../../models/study';
 
 interface Props extends Pick<Study, 'img' | 'title' | 'tags'> {
-  onClick: () => unknown;
+  onClick: () => Promise<void>;
   memberCount: number;
 }
 
 function StudyCard({ img, title, tags, onClick, memberCount }: Props) {
-  const { mutateAsync: handleClick, isLoading } = useMutation(async () => onClick());
+  const { mutateAsync: handleClick, isLoading } = useMutation(onClick);
 
   return (
     <Card>
