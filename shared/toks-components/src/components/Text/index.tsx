@@ -7,7 +7,7 @@ import { Typography, typography as typographyObject } from './token';
 type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 'normal' | 'bold' | 'bolder' | 'lighter';
 
 interface TextProps extends HTMLAttributes<HTMLSpanElement> {
-  // as?: 'span' | 'strong' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'; // TODO: as 통해서 시멘틱 태그 사용 가능하게
+  as?: 'span' | 'strong' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   size?: number;
   weight?: FontWeight;
   color?: string; // TODO: color token type 추가
@@ -21,11 +21,13 @@ export function Text({
   weight = 'normal',
   color = theme.colors.white,
   children,
-  variant = 'body02',
+  variant,
+  as = 'span',
+
   ...rest
 }: TextProps) {
   return (
-    <StyledText size={size} weight={weight} color={color} variant={variant} {...rest}>
+    <StyledText size={size} weight={weight} color={color} variant={variant} as={as} {...rest}>
       {children}
     </StyledText>
   );
@@ -40,5 +42,5 @@ const StyledText = styled('span')<StyleProps>`
   letter-spacing: -0.6px;
   line-height: 100%;
 
-  ${({ variant }) => typographyObject[variant ?? 'body02']}
+  ${({ variant }) => (variant == null ? '' : typographyObject[variant])}
 `;
