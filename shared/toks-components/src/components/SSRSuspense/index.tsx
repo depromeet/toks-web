@@ -5,7 +5,7 @@ export function SSRSuspense(props: ComponentProps<typeof Suspense>) {
   const isMounted = useIsMounted();
 
   if (!isMounted) {
-    return props.fallback ?? null;
+    return <>{props.fallback}</>;
   }
 
   return <Suspense {...props} />;
