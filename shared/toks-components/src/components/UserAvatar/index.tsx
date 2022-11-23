@@ -25,7 +25,7 @@ const AVATAR_SIZE = {
 };
 
 // TODO : 디폴트 이미지가 직접 넘어오는지 빈 값으로 넘어오는지에 따라 디폴트 프로필 이미지 출력을 구현해야함
-export function Avatar({ image, userName, size = 'normal' }: AvatarProps) {
+export function UserAvatar({ image, userName, size = 'normal' }: AvatarProps) {
   userName; // tooltip 때문에 일단 받아놓기 위한....일단 사용은 해야해서...
   return (
     <StyledAvatar
@@ -50,12 +50,12 @@ const StyledAvatar = styled(BaseAvatar)`
 
 const makeAvatars = (avatarInfos: AvatarProps[]) =>
   avatarInfos.map(avatarInfo => (
-    <Avatar image={avatarInfo.image} userName={avatarInfo.userName} size={avatarInfo.size} />
+    <UserAvatar image={avatarInfo.image} userName={avatarInfo.userName} size={avatarInfo.size} />
   ));
 
 const makeAvatarLabel = (avatarInfos: AvatarProps[]) =>
   avatarInfos.length !== 0 ? (
-    <Avatar.Label
+    <UserAvatar.Label
       label={`+${avatarInfos.length}`}
       userNames={avatarInfos.map(avartarInfo => avartarInfo.userName)}
       size={'large'}
@@ -93,5 +93,5 @@ function Label({ label, userNames, size = 'normal' }: LabelAvatarProps) {
   );
 }
 
-Avatar.Group = Group;
-Avatar.Label = Label;
+UserAvatar.Group = Group;
+UserAvatar.Label = Label;
