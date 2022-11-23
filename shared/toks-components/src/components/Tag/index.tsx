@@ -15,9 +15,13 @@ export function Tag({ color = 'normal', ...restProps }: TagProps) {
         background: color === 'highlight' ? 'rgba(255, 134, 47, 0.2)' : theme.colors.gray080,
         color: color === 'highlight' ? theme.colors.primary : theme.colors.gray020,
         padding: '4px 12px',
-        width: '86px',
+        maxWidth: '100px',
         height: '28px',
-        borderRadius: ' 8px',
+        borderRadius: '8px',
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        display: 'inline-block',
       }}
       role="listitem"
       {...restProps}
@@ -48,6 +52,7 @@ const ListRow = styled.ul`
   display: flex;
   gap: 8px;
   overflow: auto;
+  padding: 0;
 
   -ms-overflow-style: none;
   scrollbar-width: none;

@@ -37,7 +37,7 @@ const globalCss = css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    background-color: ${theme.colors.gray110};
+    background-color: ${theme.colors.gray120};
   }
 
   *,
