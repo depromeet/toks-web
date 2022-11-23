@@ -3,6 +3,7 @@ import { ComponentProps } from 'react';
 import styled from '@emotion/styled';
 import { theme } from '@depromeet/theme';
 import { css } from '@emotion/react';
+import { Text } from '../Text';
 
 type InputTextProps = ComponentProps<typeof InputText>;
 
@@ -10,19 +11,34 @@ interface Props extends Omit<InputTextProps, 'type'> {
   type?: 'normal' | 'errored';
   width?: number;
   height?: number;
+  label?: string;
+  errorMessage?: string;
 }
 
-export function Input({ type = 'normal', width, height, ...props }: Props) {
-  return <StyledInput width={width} height={height} {...props} placeholder="안녕하세요" />;
+export function Input({ type = 'normal', label = 'user', errorMessage = 'error', width, height, ...props }: Props) {
+  return (
+    <InputWrapper>
+      <Text size={14} weight={400} className="label">
+        {label}
+      </Text>
+      <StyledInput width={width} height={height} {...props} />
+      <Text size={14} weight={400}>
+        {errorMessage}
+      </Text>
+    </InputWrapper>
+  );
 }
 
-const StyledInput = styled(InputText)<InputTextProps>`
+const InputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const StyledInput = styled(InputText)<Props>`
   border-radius: 8px;
-  padding: 14px 16px;
   ${props => {
     const { width, height } = props;
     return css`
-      width: ${width ? `${width}px` : '100vw'};
+      width: ${width ? `${width}px` : '280px'};
       height: ${height ? `${height}px` : '48px'};
     `;
   }}
@@ -58,5 +74,9 @@ const StyledInput = styled(InputText)<InputTextProps>`
   &:invalid {
     border: #eb4852 1px solid !important;
     color: ${theme.colors.white};
+    outline: none !important;
+  }
+  .p-error-block {
+    color: #eb4852;
   }
 `;

@@ -21,7 +21,6 @@ export default function StudyDetailPage() {
           <Ranking />
         </Wrapper>
       </Section>
-      <Input />
     </Page>
   );
 }
