@@ -1,5 +1,6 @@
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+
 export const InfoTitle = styled.span`
   line-height: 26px;
   padding-left: 8px;

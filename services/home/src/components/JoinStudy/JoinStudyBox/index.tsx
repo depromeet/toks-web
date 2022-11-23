@@ -3,7 +3,7 @@ import { Button, Image, Tag, Txt } from '@depromeet/toks-components';
 import { StudyInfo } from 'components/JoinStudy/StudyInfo';
 import { StudyTitle } from 'components/JoinStudy/StudyTitle';
 
-import { ButtonContainer, dateStyle, DescriptionContainer, descriptionStyle, tagMargin, Wrapper } from './style';
+import { ButtonContainer, DescriptionContainer, Wrapper, dateStyle, descriptionStyle, tagMargin } from './style';
 
 export function JoinStudyBox() {
   // mock data
