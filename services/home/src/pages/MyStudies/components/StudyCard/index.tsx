@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { Button, Image, Tag, Txt } from '@depromeet/toks-components';
+import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Spacing, padding, width100 } from '@toss/emotion-utils';
 import { useMutation } from 'react-query';
@@ -16,9 +16,9 @@ function StudyCard({ img, title, tags, onClick, memberCount }: Props) {
 
   return (
     <Card>
-      <Txt size={14} weight={400} color={theme.colors.gray050} css={{ lineHeight: '20px', alignSelf: 'flex-end' }}>
+      <Text size={14} weight={400} color={theme.colors.gray050} css={{ lineHeight: '20px', alignSelf: 'flex-end' }}>
         {memberCount}명 입장
-      </Txt>
+      </Text>
 
       <Spacing size={22} />
 
@@ -26,9 +26,9 @@ function StudyCard({ img, title, tags, onClick, memberCount }: Props) {
 
       <Spacing size={40} />
 
-      <Txt size={26} weight={700} css={{ minHeight: '72px' }}>
+      <Text size={26} weight={700} css={{ minHeight: '72px' }}>
         {title}
-      </Txt>
+      </Text>
 
       <Spacing size={22} />
 

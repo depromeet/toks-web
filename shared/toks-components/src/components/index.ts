@@ -2,7 +2,6 @@ export * from './GlobalStyle';
 export * from './ToksHeader';
 export * from './BackButton';
 export * from './Text';
-export * from './Txt';
 export * from './SSRSuspense';
 
 export * from 'primereact/accordion';
