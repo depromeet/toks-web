@@ -3,9 +3,10 @@ import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Spacing, padding, width100 } from '@toss/emotion-utils';
 import { useSuspendedQuery } from '@toss/react-query';
+import { useMutation } from 'react-query';
+
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { getHasNewQuiz } from 'pages/MyStudies/remotes/study';
-import { useMutation } from 'react-query';
 
 import { Study } from '../../models/study';
 

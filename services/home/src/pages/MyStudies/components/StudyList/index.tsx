@@ -4,9 +4,9 @@ import { ErrorBoundary } from '@toss/error-boundary';
 import { useSuspendedQuery } from '@toss/react-query';
 
 import { QUERY_KEYS } from 'constants/queryKeys';
+import { getMyStudies } from 'pages/MyStudies/remotes/study';
 
 import StudyCard from '../StudyCard';
-import { getMyStudies } from 'pages/MyStudies/remotes/study';
 
 function StudyList() {
   const { data: myStudies } = useSuspendedQuery(QUERY_KEYS.GET_MY_STUDIES, getMyStudies);

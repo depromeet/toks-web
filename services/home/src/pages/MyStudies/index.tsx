@@ -1,6 +1,7 @@
-import { Flex, Spacing } from '@toss/emotion-utils';
-import StudyList from './components/StudyList';
 import { Text } from '@depromeet/toks-components';
+import { Flex, Spacing } from '@toss/emotion-utils';
+
+import StudyList from './components/StudyList';
 
 function MyStudis() {
   return (
