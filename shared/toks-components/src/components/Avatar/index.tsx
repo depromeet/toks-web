@@ -71,7 +71,6 @@ interface RowProps {
   avatarInfos: AvatarProps[];
 }
 
-// TODO: maxView 개수 받도록
 function Group({ avatarInfos }: RowProps) {
   return <AvatarGroup>{makeAvatarGroup(avatarInfos)}</AvatarGroup>;
 }
