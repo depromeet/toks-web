@@ -1,8 +1,12 @@
-import { InputText } from 'primereact/inputtext';
-import { ComponentProps } from 'react';
-import styled from '@emotion/styled';
 import { theme } from '@depromeet/theme';
 import { css } from '@emotion/react';
+
+import { InputText } from 'primereact/inputtext';
+
+import { ComponentProps } from 'react';
+
+import styled from '@emotion/styled';
+
 import { Text } from '../Text';
 
 type InputTextProps = ComponentProps<typeof InputText>;
