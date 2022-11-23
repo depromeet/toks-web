@@ -66,7 +66,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
               <Component {...pageProps} />
             </>
           )}
-        </OverlayProvider>{' '}
+        </OverlayProvider>
       </QueryClientProvider>
     </>
   );
