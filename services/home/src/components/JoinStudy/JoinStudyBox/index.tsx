@@ -1,4 +1,4 @@
-import { Input, Tag, Txt } from '@depromeet/toks-components';
+import { Tag, Txt } from '@depromeet/toks-components';
 
 import { JoinButton } from 'components/JoinStudy/JoinButton';
 import { JoinInput } from 'components/JoinStudy/JoinInput';
@@ -26,17 +26,15 @@ export function JoinStudyBox() {
     <Wrapper>
       <StudyTitle />
       {stacks?.map(stack => (
-        <TagContainer key={Date.now()}>
-          <Tag>
-            <Txt>{stack}</Txt>
-          </Tag>
-        </TagContainer>
+        <Tag>
+          <Txt>{stack}</Txt>
+        </Tag>
       ))}
       <form>
         <DescriptionContainer>
           <StudyInfo
             leftAddon={<DescriptionBox />}
-            title={<span>우리 스터디는</span>}
+            title={'우리 스터디는'}
             description={
               <Txt size={16} weight={500}>
                 {ourStudyDescription}
@@ -48,27 +46,18 @@ export function JoinStudyBox() {
             title={<span>스터디 기간은</span>}
             description={
               <>
-                <DateWrapper>
-                  <Txt size={14} weight={500}>
-                    시작일
-                  </Txt>
-                  <DateText>
-                    {' '}
-                    <Txt size={20} weight={700}>
-                      {startDate}
-                    </Txt>
-                  </DateText>
-                </DateWrapper>
-                <DateWrapper>
-                  <Txt size={14} weight={500}>
-                    종료일
-                  </Txt>
-                  <DateText>
-                    <Txt size={20} weight={700}>
-                      {doneDate}
-                    </Txt>
-                  </DateText>
-                </DateWrapper>
+                <Txt size={14} weight={500}>
+                  시작일
+                </Txt>
+                <Txt size={20} weight={700}>
+                  {startDate}
+                </Txt>
+                <Txt size={14} weight={500}>
+                  종료일
+                </Txt>
+                <Txt size={20} weight={700}>
+                  {doneDate}
+                </Txt>
               </>
             }
           />
@@ -81,7 +70,7 @@ export function JoinStudyBox() {
               </Txt>
             }
           />
-          <StudyInfo leftAddon={<DescriptionBox />} title={<span>스터디 기간은</span>} description={<Input />} />
+          <StudyInfo leftAddon={<DescriptionBox />} title={<span>스터디 기간은</span>} description={<JoinInput />} />
         </DescriptionContainer>
       </form>
       <JoinMessage>
