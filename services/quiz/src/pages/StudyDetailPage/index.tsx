@@ -1,4 +1,4 @@
-import { BackButton, ToksHeader } from '@depromeet/toks-components';
+import { BackButton, Input, ToksHeader } from '@depromeet/toks-components';
 
 import { QuizList } from 'components/StudyDetailPage/QuizList';
 import { Ranking } from 'components/StudyDetailPage/Ranking';
@@ -21,6 +21,7 @@ export default function StudyDetailPage() {
           <Ranking />
         </Wrapper>
       </Section>
+      <Input />
     </Page>
   );
 }
