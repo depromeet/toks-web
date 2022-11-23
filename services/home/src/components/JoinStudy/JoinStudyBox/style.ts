@@ -15,12 +15,6 @@ export const DescriptionContainer = styled.div`
   margin-top: 62px;
 `;
 
-export const DateText = styled.p`
-  color: ${theme.colors.white};
-  margin: 0;
-  margin-left: 11px;
-`;
-
 export const tagMargin = css`
   :first-of-type {
     margin-left: 0;
@@ -36,7 +30,6 @@ export const ButtonContainer = styled.div`
 `;
 
 export const descriptionStyle = css`
-  letter-spacing: -0.6px;
   line-height: 24px;
 `;
 
@@ -47,9 +40,4 @@ export const dateStyle = css`
     margin-left: 0;
   }
   margin-left: 36px;
-`;
-
-export const ImageStyle = css`
-  width: 16px;
-  height: 22px;
 `;
