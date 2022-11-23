@@ -4,7 +4,7 @@ import { Header, Title, Wrapper } from './style';
 interface HeaderProps {
   imgUrl: string;
   userName: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export function ToksHeader(props: HeaderProps) {
@@ -14,7 +14,7 @@ export function ToksHeader(props: HeaderProps) {
         <Title>Toks</Title>
         <ProfileButton imgUrl={props.imgUrl} userName={props.userName} />
       </Wrapper>
-      {props.children}
+      {props.children ?? null}
     </Header>
   );
 }
