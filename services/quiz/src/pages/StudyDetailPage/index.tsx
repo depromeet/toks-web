@@ -55,13 +55,9 @@ export default function StudyDetailPage() {
             image='https://asset.tokstudy.com/img_penguin.png'
             userName='윤두현'
             size='large'/>
-            <Avatar 
-            image='https://asset.tokstudy.com/img_penguin.png'
-            userName='윤두현'
-            size='large'/>
-            <Avatar 
-            image='https://asset.tokstudy.com/img_penguin.png'
-            userName='윤두현'
+            <Avatar.Label
+            label='+2'
+            userNames={['윤두현', '현두윤']}
             size='large'/>
           </Avatar.Group>
         </Wrapper>

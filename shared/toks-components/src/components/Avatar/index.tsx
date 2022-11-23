@@ -2,13 +2,19 @@ import styled from '@emotion/styled';
 import { theme } from '@depromeet/theme';
 import { Avatar as BaseAvatar } from 'primereact/avatar';
 import { AvatarGroup } from 'primereact/avatargroup';
-import { ComponentProps, HTMLAttributes, ReactNode } from 'react';
+import { ComponentProps, ReactNode } from 'react';
 
 type AvatarSize = 'normal' | 'large' | 'xlarge';
 
 interface AvatarProps extends Omit<ComponentProps<typeof BaseAvatar>, 'image' | 'size'> {
   image: string;
   userName: string;
+  size?: AvatarSize;
+}
+
+interface LabelAvatarProps extends Omit<ComponentProps<typeof BaseAvatar>, 'label' | 'size'> {
+  label: string;
+  userNames: string[];
   size?: AvatarSize;
 }
 
@@ -36,11 +42,9 @@ export function Avatar({image, userName, size="normal"} : AvatarProps) {
   );
 }
 
-// 일단 해놓긴 했는데 반영은 안됨
 const StyledAvatar = styled(BaseAvatar)`
-   .p-avatar-lg {
-     width: 32px;
-     height: 32px;
+   .p-avatar-text {
+     font-size: 14px;
    }
 `;
 
@@ -53,4 +57,24 @@ function Group({ children }: RowProps) {
   return <AvatarGroup>{children}</AvatarGroup>;
 }
 
+// TODO: Avatar와 중복되는 요소들을 어떻게 합칠지 고민해봐야 함
+function Label({label, userNames, size="normal"} : LabelAvatarProps) {
+  userNames;
+  return (
+    <StyledAvatar 
+      label={label} 
+      size={size}
+      shape="circle"
+      style={{
+        width: AVATAR_SIZE[size],
+        height: AVATAR_SIZE[size],
+        backgroundColor: `${theme.colors.gray060}`,
+        border: `1px solid ${theme.colors.gray100}`
+      }}
+    >
+    </StyledAvatar>
+  );
+}
+
 Avatar.Group = Group;
+Avatar.Label = Label;
