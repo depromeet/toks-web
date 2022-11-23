@@ -1,23 +1,14 @@
-import { Tag, Txt } from '@depromeet/toks-components';
+import { Button, Image, Tag, Txt } from '@depromeet/toks-components';
 
-import { JoinButton } from 'components/JoinStudy/JoinButton';
-import { JoinInput } from 'components/JoinStudy/JoinInput';
 import { StudyInfo } from 'components/JoinStudy/StudyInfo';
 import { StudyTitle } from 'components/JoinStudy/StudyTitle';
 
-import {
-  DateText,
-  DateWrapper,
-  DescriptionBox,
-  DescriptionContainer,
-  JoinMessage,
-  TagContainer,
-  Wrapper,
-} from './style';
+import { ButtonContainer, dateStyle, DescriptionContainer, descriptionStyle, tagMargin, Wrapper } from './style';
 
 export function JoinStudyBox() {
   // mock data
-  const ourStudyDescription = '아키텍쳐 크리너스로 소프트웨어 구조와 설계의 원칙 제대로 이해하기 ';
+  const ourStudyDescription =
+    '설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한';
   const personnelDescription = '5-7명을 계획하고 있어요.';
   const startDate = '2022. 10. 13';
   const doneDate = '2022. 12. 03';
@@ -26,59 +17,74 @@ export function JoinStudyBox() {
     <Wrapper>
       <StudyTitle />
       {stacks?.map(stack => (
-        <Tag>
-          <Txt>{stack}</Txt>
-        </Tag>
+        <Tag css={tagMargin}>{stack}</Tag>
       ))}
       <form>
         <DescriptionContainer>
           <StudyInfo
-            leftAddon={<DescriptionBox />}
+            leftAddon={
+              <Image
+                width={16}
+                height={22}
+                src="https://toks-web-assets.s3.amazonaws.com/studyinfo-icon.svg"
+                alt="StudyInfo 아이콘"
+              />
+            }
             title={'우리 스터디는'}
             description={
-              <Txt size={16} weight={500}>
+              <Txt css={descriptionStyle} size={16} weight={400}>
                 {ourStudyDescription}
               </Txt>
             }
           />
           <StudyInfo
-            leftAddon={<DescriptionBox />}
-            title={<span>스터디 기간은</span>}
+            leftAddon={
+              <Image
+                width={16}
+                height={22}
+                src="https://toks-web-assets.s3.amazonaws.com/studyinfo-icon.svg"
+                alt="StudyInfo 아이콘"
+              />
+            }
+            title={'스터디 기간은'}
             description={
               <>
-                <Txt size={14} weight={500}>
+                <Txt size={14} weight={400} css={dateStyle}>
                   시작일
                 </Txt>
-                <Txt size={20} weight={700}>
+                <Txt size={16} weight={400}>
                   {startDate}
                 </Txt>
-                <Txt size={14} weight={500}>
+                <Txt size={14} weight={400} css={dateStyle}>
                   종료일
                 </Txt>
-                <Txt size={20} weight={700}>
+                <Txt size={16} weight={400}>
                   {doneDate}
                 </Txt>
               </>
             }
           />
           <StudyInfo
-            leftAddon={<DescriptionBox />}
-            title={<span>스터디 인원은</span>}
+            leftAddon={
+              <Image
+                width={16}
+                height={22}
+                src="https://toks-web-assets.s3.amazonaws.com/studyinfo-icon.svg"
+                alt="StudyInfo 아이콘"
+              />
+            }
+            title={'스터디 인원은'}
             description={
-              <Txt size={16} weight={500}>
+              <Txt size={16} weight={400} css={descriptionStyle}>
                 {personnelDescription}
               </Txt>
             }
           />
-          <StudyInfo leftAddon={<DescriptionBox />} title={<span>스터디 기간은</span>} description={<JoinInput />} />
         </DescriptionContainer>
       </form>
-      <JoinMessage>
-        <Txt size={20} weight={700}>
-          똑스와 8주간 함께해볼까요?
-        </Txt>
-      </JoinMessage>
-      <JoinButton />
+      <ButtonContainer>
+        <Button>참여하기</Button>
+      </ButtonContainer>
     </Wrapper>
   );
 }

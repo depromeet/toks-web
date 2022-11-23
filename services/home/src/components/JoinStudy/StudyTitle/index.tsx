@@ -1,5 +1,4 @@
 import { Txt } from '@depromeet/toks-components';
-
 import { Title } from './style';
 
 export function StudyTitle() {
