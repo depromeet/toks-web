@@ -15,6 +15,6 @@ export const TitleWrapper = styled.div`
 `;
 
 export const StudyTitleStyle = css`
-  line-height: 22px;
+  line-height: 23px;
   padding-left: 8px;
 `;
