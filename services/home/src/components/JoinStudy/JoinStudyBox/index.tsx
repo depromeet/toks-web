@@ -1,4 +1,4 @@
-import { Tag, Txt } from '@depromeet/toks-components';
+import { Input, Tag, Txt } from '@depromeet/toks-components';
 
 import { JoinButton } from 'components/JoinStudy/JoinButton';
 import { JoinInput } from 'components/JoinStudy/JoinInput';
@@ -81,7 +81,7 @@ export function JoinStudyBox() {
               </Txt>
             }
           />
-          <StudyInfo leftAddon={<DescriptionBox />} title={<span>스터디 기간은</span>} description={<JoinInput />} />
+          <StudyInfo leftAddon={<DescriptionBox />} title={<span>스터디 기간은</span>} description={<Input />} />
         </DescriptionContainer>
       </form>
       <JoinMessage>
