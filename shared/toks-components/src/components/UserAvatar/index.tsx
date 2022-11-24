@@ -28,35 +28,30 @@ const AVATAR_SIZE = {
   xlarge: '40px',
 };
 
-const isImageAvatar = (props: any): props is ImageAvatarProps => 
-  props.userName !== undefined;
+const isImageAvatar = (props: any): props is ImageAvatarProps => props.userName !== undefined;
 
 // TODO : 디폴트 이미지가 직접 넘어오는지 빈 값으로 넘어오는지에 따라 디폴트 프로필 이미지 출력을 구현해야함
 export function UserAvatar(props: ImageAvatarProps | LabelAvatarProps) {
-  const tooltipContent = isImageAvatar(props)? props.userName : props.userNames.join(', ');
-  const avatarId = isImageAvatar(props)? `user_${props.id}` : `group_${props.id}`;
-  
-  return (<>
-    <Tooltip 
-      target={`#${avatarId}`}
-      content={tooltipContent}
-      position='bottom'
-      style={{
-      }}/>
-    <StyledAvatar
-      id={avatarId}
-      image={props.image}
-      label={props.label}
-      size={props.size}
-      shape="circle"
-      // TODO: inline style로 적용한 부분 제외하기...^^ (현구님 따라해서 일단 저도 이렇게 했슴다..)
-      style={{
-        width: AVATAR_SIZE[props.size ?? "normal"],
-        height: AVATAR_SIZE[props.size ?? "normal"],
-        backgroundColor: `${theme.colors.gray060}`,
-        border: `1px solid ${theme.colors.gray100}`,
-      }}
-    />
+  const tooltipContent = isImageAvatar(props) ? props.userName : props.userNames.join(', ');
+  const avatarId = isImageAvatar(props) ? `user_${props.id}` : `group_${props.id}`;
+
+  return (
+    <>
+      <Tooltip target={`#${avatarId}`} content={tooltipContent} position="bottom" style={{}} />
+      <StyledAvatar
+        id={avatarId}
+        image={props.image}
+        label={props.label}
+        size={props.size}
+        shape="circle"
+        // TODO: inline style로 적용한 부분 제외하기...^^ (현구님 따라해서 일단 저도 이렇게 했슴다..)
+        style={{
+          width: AVATAR_SIZE[props.size ?? 'normal'],
+          height: AVATAR_SIZE[props.size ?? 'normal'],
+          backgroundColor: `${theme.colors.gray060}`,
+          border: `1px solid ${theme.colors.gray100}`,
+        }}
+      />
     </>
   );
 }
@@ -67,7 +62,7 @@ const StyledAvatar = styled(BaseAvatar)`
   }
 `;
 
-const makeAvatarGroupLabel = (id: string, userAvatars :  ReactElement[], ) =>
+const makeAvatarGroupLabel = (id: string, userAvatars: ReactElement[]) =>
   userAvatars.length !== 0 ? (
     <UserAvatar
       label={`+${userAvatars.length}`}
@@ -77,7 +72,7 @@ const makeAvatarGroupLabel = (id: string, userAvatars :  ReactElement[], ) =>
     />
   ) : null;
 
-const getUserNamesOfAvatars = (userAvatars : ReactJSXElement[]) => 
+const getUserNamesOfAvatars = (userAvatars: ReactJSXElement[]) =>
   userAvatars.map(userAvatar => userAvatar.props.userName);
 
 interface GroupProps {
@@ -89,14 +84,7 @@ interface GroupProps {
 function Group({ view = 6, id, children }: GroupProps) {
   const userAvatars = Children.toArray(children) as ReactElement[];
   return (
-    <AvatarGroup>
-      {
-        [
-          ...userAvatars.slice(0, view),
-          makeAvatarGroupLabel(id, userAvatars.slice(view))
-        ]
-      }
-    </AvatarGroup>
+    <AvatarGroup>{[...userAvatars.slice(0, view), makeAvatarGroupLabel(id, userAvatars.slice(view))]}</AvatarGroup>
   );
 }
 
