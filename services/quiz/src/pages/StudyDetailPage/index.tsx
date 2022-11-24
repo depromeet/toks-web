@@ -19,14 +19,13 @@ export default function StudyDetailPage() {
           <StudyProgress />
           <QuizList />
           <Ranking />
-          <UserAvatar
-            image='https://asset.tokstudy.com/img_penguin.png'
-            userName='윤두현'
-            size='large'/>
-          <UserAvatar
-            label='+2'
-            userNames={['윤두현', '현두윤']}
-            size='large'/>
+          <UserAvatar.Group view={2}>
+            <UserAvatar
+              image='https://asset.tokstudy.com/img_penguin.png'
+              userName='윤두현1'
+              size='large'/>
+              
+          </UserAvatar.Group>
         </Wrapper>
       </Section>
     </Page>
