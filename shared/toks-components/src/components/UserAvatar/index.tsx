@@ -3,6 +3,7 @@ import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import styled from '@emotion/styled';
 import { Avatar as BaseAvatar } from 'primereact/avatar';
 import { AvatarGroup } from 'primereact/avatargroup';
+import { Tooltip } from 'primereact/tooltip';
 import { Children, ComponentProps, ReactElement, ReactNode } from 'react';
 
 type AvatarSize = 'normal' | 'large' | 'xlarge';
@@ -37,6 +38,7 @@ export function UserAvatar(avatarInfo: ImageAvatarProps | LabelAvatarProps) {
       style={{
         width: AVATAR_SIZE[avatarInfo.size ?? "normal"],
         height: AVATAR_SIZE[avatarInfo.size ?? "normal"],
+        backgroundColor: `${theme.colors.gray060}`,
         border: `1px solid ${theme.colors.gray100}`,
       }}
     />
@@ -67,13 +69,13 @@ interface RowProps {
 }
 
 function Group({ view = 6, children }: RowProps) {
-  const userAvatars = Children.toArray(children);
+  const userAvatars = Children.toArray(children) as ReactElement[];
   return (
     <AvatarGroup>
       {
         [
           ...userAvatars.slice(0, view),
-          makeAvatarGroupLabel(userAvatars.slice(view) as ReactElement[])
+          makeAvatarGroupLabel(userAvatars.slice(view))
         ]
       }
     </AvatarGroup>
