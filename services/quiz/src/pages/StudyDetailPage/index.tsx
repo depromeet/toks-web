@@ -19,12 +19,39 @@ export default function StudyDetailPage() {
           <StudyProgress />
           <QuizList />
           <Ranking />
-          <UserAvatar.Group view={2}>
+          <UserAvatar.Group>
             <UserAvatar
               image='https://asset.tokstudy.com/img_penguin.png'
               userName='윤두현1'
               size='large'/>
-              
+              <UserAvatar
+              image='https://asset.tokstudy.com/img_penguin.png'
+              userName='윤두현1'
+              size='large'/>
+              <UserAvatar
+              image='https://asset.tokstudy.com/img_penguin.png'
+              userName='윤두현1'
+              size='large'/>
+              <UserAvatar
+              image='https://asset.tokstudy.com/img_penguin.png'
+              userName='윤두현1'
+              size='large'/>
+              <UserAvatar
+              image='https://asset.tokstudy.com/img_penguin.png'
+              userName='윤두현1'
+              size='large'/>
+              <UserAvatar
+              image='https://asset.tokstudy.com/img_penguin.png'
+              userName='윤두현1'
+              size='large'/>
+              <UserAvatar
+              image='https://asset.tokstudy.com/img_penguin.png'
+              userName='윤두현1'
+              size='large'/>
+              <UserAvatar
+              image='https://asset.tokstudy.com/img_penguin.png'
+              userName='윤두현1'
+              size='large'/>
           </UserAvatar.Group>
         </Wrapper>
       </Section>

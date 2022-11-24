@@ -1,8 +1,9 @@
 import { theme } from '@depromeet/theme';
+import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import styled from '@emotion/styled';
 import { Avatar as BaseAvatar } from 'primereact/avatar';
 import { AvatarGroup } from 'primereact/avatargroup';
-import { ComponentProps, ReactNode } from 'react';
+import { Children, ComponentProps, ReactElement, ReactNode } from 'react';
 
 type AvatarSize = 'normal' | 'large' | 'xlarge';
 
@@ -38,7 +39,7 @@ export function UserAvatar(avatarInfo: ImageAvatarProps | LabelAvatarProps) {
         height: AVATAR_SIZE[avatarInfo.size ?? "normal"],
         border: `1px solid ${theme.colors.gray100}`,
       }}
-    ></StyledAvatar>
+    />
   );
 }
 
@@ -48,34 +49,33 @@ const StyledAvatar = styled(BaseAvatar)`
   }
 `;
 
-// const makeAvatars = (avatarInfos: ImageAvatarProps[]) =>
-//   avatarInfos.map(avatarInfo => (
-//     <UserAvatar image={avatarInfo.image} userName={avatarInfo.userName} size={avatarInfo.size} />
-//   ));
+const makeAvatarGroupLabel = (userAvatars :  ReactElement[]) =>
+  userAvatars.length !== 0 ? (
+    <UserAvatar
+      label={`+${userAvatars.length}`}
+      userNames={getUserNamesOfAvatars(userAvatars)}
+      size={'large'}
+    />
+  ) : null;
 
-// const makeAvatarGroupLabel = (avatarInfos: ImageAvatarProps[]) =>
-//   avatarInfos.length !== 0 ? (
-//     <UserAvatar
-//       label={`+${avatarInfos.length}`}
-//       userNames={avatarInfos.map(avartarInfo => avartarInfo.userName)}
-//       size={'large'}
-//     />
-//   ) : null;
-
-// const makeAvatarGroup = (avatarInfos: ImageAvatarProps[]) => [
-//   ...makeAvatars(avatarInfos.slice(0, 6)),
-//   makeAvatarGroupLabel(avatarInfos.slice(6)),
-// ];
+const getUserNamesOfAvatars = (userAvatars : ReactJSXElement[]) => 
+  userAvatars.map(userAvatar => userAvatar.props.userName);
 
 interface RowProps {
   view?: number;
-  children: ReactNode | ReactNode[];
+  children: ReactNode;
 }
 
 function Group({ view = 6, children }: RowProps) {
+  const userAvatars = Children.toArray(children);
   return (
     <AvatarGroup>
-      {children.slice(0, view)}
+      {
+        [
+          ...userAvatars.slice(0, view),
+          makeAvatarGroupLabel(userAvatars.slice(view) as ReactElement[])
+        ]
+      }
     </AvatarGroup>
   );
 }
