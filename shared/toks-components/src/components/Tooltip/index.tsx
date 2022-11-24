@@ -1,106 +1,72 @@
+import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import { Tooltip as BaseTooltip } from 'primereact/tooltip';
 import { ComponentProps } from 'react';
 
-// type ButtonType = 'primary' | 'general' | 'ghost';
+type PositionType = 'top' | 'bottom' | 'right' | 'left';
 
-// type ButtonSize = 'medium' | 'large';
-
-// type BaseButtonProps = ComponentProps<typeof BaseButton>;
-
-// type ButtonStatus = 'normal' | 'hover' | 'disabled';
-
-// interface Props extends Omit<BaseButtonProps, 'type'> {
-//   type?: ButtonType;
-//   htmlType?: BaseButtonProps['type'];
-//   size?: ButtonSize;
-// }
-
-// type ButtonColorMap = {
-//   [key in ButtonStatus]: {
-//     [key in ButtonType]: string;
-//   };
-// };
-
-// const BUTTON_COLOR: ButtonColorMap = {
-//   normal: {
-//     primary: '#FF862F',
-//     ghost: 'transparent',
-//     general: '#FFFFFF',
-//   },
-//   hover: {
-//     primary: '#E96C12',
-//     ghost: '#A5A5A5',
-//     general: '#DFDFDF',
-//   },
-//   disabled: {
-//     primary: 'rgba(255, 134, 47, 0.4)',
-//     ghost: 'rgba(165, 165, 165, 0.4)',
-//     general: 'rgba(223, 223, 223, 0.4)',
-//   },
-// };
-
-// const BUTTOON_TEXT_COLOR: { [key in ButtonType]: string } = {
-//   primary: '#fff',
-//   general: '#000',
-//   ghost: '#fff',
-// };
-
-// const BUTTON_HEIGHT: { [key in ButtonSize]: string } = {
-//   large: '64px',
-//   medium: '46px',
-// };
-
-/*
-  -툴팁-
-  내용,
-  방향,
-  배경색,
-  래디우스,
-  패딩,
-  글자색,
-  폰트굵기
-*/
-
-interface TooltipProps {
-  description: string,
-  position: string,
-  backgroundColor: string,
-  borderRadius: string,
-  padding: string,
-  fontSize: string,
-  fontColor: string,
-  fontWeight: number
+interface TooltipProps extends Omit<ComponentProps<typeof BaseTooltip>, 'target' | 'content' | 'position'> {
+  target: string;
+  content: string;
+  position: PositionType;
 }
 
-export function Tooltip({ 
-  description,
-  position = "top",
-  backgroundColor = `${theme.colors.white}`,
-  borderRadius
-}: TooltipProps) {
-  return (
-    <StyledTooltip
+const isBottom = (position: PositionType) => position === 'bottom';
+
+/*
+TODO:
+- 툴팁 화살표 길이 늘어나게 구현해야함
+- 툴팁 방향에 따라 스타일 적용이 다른 부분에 대해서 중복성을 줄여야 함 
+*/
+export function Tooltip({ target, content, position }: TooltipProps) {
+  return isBottom(position) ? (
+    <StyledBottomTooltip
       // TODO: inline style로 적용한 부분 제외하기
-      style={{
-        background: BUTTON_COLOR[disabled ? 'disabled' : 'normal'][type],
-        borderRadius: '32px',
-        width: '224px',
-        height: BUTTON_HEIGHT[size],
-        border: type !== 'ghost' ? 'none' : '1px solid #A5A5A5',
-        color: BUTTOON_TEXT_COLOR[type],
-        fontWeight: '700',
-        fontSize: '16px',
-      }}
-      buttontype={type}
-      type={htmlType}
-      disabled={disabled}
-      loadingIcon={<ProgressSpinner strokeWidth="6px" style={{ width: '26px', height: '26px', margin: 0 }} />}
-      {...rest}
+      target={target}
+      content={content}
+      position={position}
     />
+  ) : (
+    <StyledRightTooltip target={target} content={content} position={position} />
   );
 }
 
-const StyledTooltip = styled(Tooltip)`
-  
+const StyledBottomTooltip = styled(BaseTooltip)<{ position: PositionType }>`
+  text-align: center;
+  margin-top: 4px;
+  color: ${theme.colors.gray120} !important;
+
+  .p-tooltip {
+  }
+  .p-tooltip-text {
+    font-size: 14px;
+    color: ${theme.colors.gray120} !important;
+    background: ${theme.colors.white} !important;
+    padding: 4px 16px !important;
+    border-radius: 8px !important;
+  }
+
+  .p-tooltip-arrow {
+    border-bottom-color: ${theme.colors.white} !important;
+  }
+`;
+
+const StyledRightTooltip = styled(BaseTooltip)<{ position: PositionType }>`
+  text-align: center;
+  margin-left: 4px;
+  color: ${theme.colors.gray120} !important;
+
+  .p-tooltip {
+  }
+  .p-tooltip-text {
+    font-size: 14px;
+    color: ${theme.colors.gray120} !important;
+    background: ${theme.colors.white} !important;
+    padding: 4px 16px !important;
+    border-radius: 8px !important;
+  }
+
+  .p-tooltip-arrow {
+    border-right-color: ${theme.colors.white} !important;
+  }
 `;
