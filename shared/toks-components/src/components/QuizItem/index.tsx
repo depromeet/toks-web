@@ -1,6 +1,7 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import { ComponentProps, HTMLAttributes, ReactNode } from 'react';
+import { Item, ItemHeader, ItemBody } from './style';
 
 type User = {
     image: string;
@@ -19,13 +20,14 @@ interface QuizItemProps {
 
 export function QuizItem({ weekNumber, title, openDate, creator, absentee } : QuizItemProps) {
   return (
-    <li>
-        <div>{weekNumber}</div>
-        <div>{title}</div>
-        <div>{openDate.toString()}</div>
-        <div>{creator.toString()}</div>
-        <div>{absentee.toString()}</div>
-    </li>
+    <Item>
+      <details>
+        <ItemHeader></ItemHeader>
+      </details>
+      <ItemBody>
+        
+      </ItemBody>
+    </Item>
   );
 }
 
@@ -33,7 +35,6 @@ export function QuizItem({ weekNumber, title, openDate, creator, absentee } : Qu
 //   children: ReactNode;
 // }
 
-// // TODO: maxView 개수 받도록
 // function List({ children, ...props }: ListProps) {
 //   return <StyledList {...props}>{children}</StyledList>;
 // }

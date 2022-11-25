@@ -48,6 +48,12 @@ export default function StudyDetailPage() {
           <QuizList />
           <Ranking />
           <ul>
+          {/* <QuizItem
+              weekNumber={2}
+              title='오늘은 똑스 회식날~!'
+              openDate={new Date('2022-11-27 10:00:00')}
+              creator={creator}
+              absentee={absentee}/> */}
             <QuizItem
               weekNumber={1}
               title='사용자 수에 따른 규모 확장성'
