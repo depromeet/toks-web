@@ -19,7 +19,13 @@ interface QuizItemProps {
 
 export function QuizItem({ weekNumber, title, openDate, creator, absentee } : QuizItemProps) {
   return (
-    <li></li>
+    <li>
+        <div>{weekNumber}</div>
+        <div>{title}</div>
+        <div>{openDate.toString()}</div>
+        <div>{creator.toString()}</div>
+        <div>{absentee.toString()}</div>
+    </li>
   );
 }
 
