@@ -1,21 +1,22 @@
 import { theme } from '@depromeet/theme';
 import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { InputText } from 'primereact/inputtext';
 import { ComponentProps } from 'react';
-import styled from '@emotion/styled';
+
 import { Text } from '../Text';
 
 type InputTextProps = ComponentProps<typeof InputText>;
 
 interface Props extends Omit<InputTextProps, 'type'> {
-  type?: 'normal' | 'errored';
+  // type?: 'normal' | 'errored';
   width?: number;
   height?: number;
   label?: string;
   errorMessage?: string;
 }
 
-export function Input({ type = 'normal', label = 'user', errorMessage = 'error', width, height, ...props }: Props) {
+export function Input({ label = 'user', errorMessage = 'error', width, height, ...props }: Props) {
   return (
     <InputWrapper>
       <Text size={14} weight={400} className="label">
