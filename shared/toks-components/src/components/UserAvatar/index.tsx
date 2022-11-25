@@ -3,8 +3,9 @@ import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import styled from '@emotion/styled';
 import { Avatar as BaseAvatar } from 'primereact/avatar';
 import { AvatarGroup } from 'primereact/avatargroup';
-import { Tooltip } from 'primereact/tooltip';
 import { Children, ComponentProps, ReactElement, ReactNode } from 'react';
+
+import { Tooltip } from '@depromeet/toks-components';
 
 type AvatarSize = 'normal' | 'large' | 'xlarge';
 
@@ -33,13 +34,13 @@ const isImageAvatar = (props: any): props is ImageAvatarProps => props.userName 
 // TODO : 디폴트 이미지가 직접 넘어오는지 빈 값으로 넘어오는지에 따라 디폴트 프로필 이미지 출력을 구현해야함
 export function UserAvatar(props: ImageAvatarProps | LabelAvatarProps) {
   const tooltipContent = isImageAvatar(props) ? props.userName : props.userNames.join(', ');
-  const avatarId = isImageAvatar(props) ? `user_${props.id}` : `group_${props.id}`;
+  const avatarClassName = isImageAvatar(props) ? `avatar--user_${props.id}` : `avatar--group_${props.id}`;
 
   return (
     <>
-      <Tooltip target={`#${avatarId}`} content={tooltipContent} position="bottom" style={{}} />
+      <Tooltip target={`.${avatarClassName}`} content={tooltipContent} position="right" />
       <StyledAvatar
-        id={avatarId}
+        className={avatarClassName}
         image={props.image}
         label={props.label}
         size={props.size}
