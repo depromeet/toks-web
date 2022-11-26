@@ -8,21 +8,21 @@ export const typography = {
     letter-spacing: -0.6px;
   `,
   title02: css`
-    font-size: 46px;
+    font-size: 47px;
     font-weight: 700;
     line-height: 61px;
     letter-spacing: -0.6px;
   `,
   title03: css`
-    font-size: 26px;
+    font-size: 32px;
     font-weight: 700;
-    line-height: 36px;
+    line-height: 47px;
     letter-spacing: -0.6px;
   `,
   title04: css`
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
-    line-height: 37px;
+    line-height: 34px;
     letter-spacing: -0.6px;
   `,
   headline: css`
