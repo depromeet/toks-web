@@ -1,4 +1,4 @@
-import { ToksHeader, Text } from '@depromeet/toks-components';
+import { Text, ToksHeader } from '@depromeet/toks-components';
 
 import { JoinStudyBox } from 'components/JoinStudy/JoinStudyBox';
 
