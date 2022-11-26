@@ -6,8 +6,7 @@ export * from './SSRSuspense';
 
 export * from 'primereact/accordion';
 export * from 'primereact/autocomplete';
-export * from 'primereact/avatar';
-export * from 'primereact/avatargroup';
+export * from './UserAvatar';
 
 export * from 'primereact/badge';
 export * from 'primereact/blockui';
@@ -49,7 +48,7 @@ export * from 'primereact/inplace';
 export * from 'primereact/inputmask';
 export * from 'primereact/inputnumber';
 export * from 'primereact/inputswitch';
-export * from 'primereact/inputtext';
+export * from './Input';
 export * from 'primereact/inputtextarea';
 
 export * from 'primereact/keyfilter';
