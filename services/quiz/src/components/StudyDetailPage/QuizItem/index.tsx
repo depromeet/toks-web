@@ -22,10 +22,10 @@ export function QuizItem({ weekNumber, title, openDate, creator, absentee } : Qu
   return (
     <Item>
       <details>
-        <ItemHeader></ItemHeader>
+        <ItemHeader>{weekNumber} : {title}</ItemHeader>
       </details>
       <ItemBody>
-        
+        body
       </ItemBody>
     </Item>
   );

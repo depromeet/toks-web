@@ -1,6 +1,6 @@
-import { BackButton, QuizItem, ToksHeader } from '@depromeet/toks-components';
+import { BackButton, ToksHeader } from '@depromeet/toks-components';
 
-import { QuizList } from 'components/StudyDetailPage/QuizList';
+import { QuizItem } from 'components/StudyDetailPage/QuizItem';
 import { Ranking } from 'components/StudyDetailPage/Ranking';
 import { StudyInfo } from 'components/StudyDetailPage/StudyInfo';
 import { StudyProgress } from 'components/StudyDetailPage/StudyProgress';
@@ -45,15 +45,14 @@ export default function StudyDetailPage() {
         <Wrapper>
           <StudyInfo />
           <StudyProgress />
-          <QuizList />
           <Ranking />
           <ul>
-          {/* <QuizItem
+          <QuizItem
               weekNumber={2}
               title='오늘은 똑스 회식날~!'
               openDate={new Date('2022-11-27 10:00:00')}
               creator={creator}
-              absentee={absentee}/> */}
+              absentee={absentee}/>
             <QuizItem
               weekNumber={1}
               title='사용자 수에 따른 규모 확장성'
