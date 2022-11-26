@@ -1,4 +1,4 @@
-import { ToksHeader, Txt } from '@depromeet/toks-components';
+import { ToksHeader, Text } from '@depromeet/toks-components';
 
 import { JoinStudyBox } from 'components/JoinStudy/JoinStudyBox';
 
@@ -11,9 +11,9 @@ function JoinStudy() {
         <ToksHeader imgUrl={'https://asset.tokstudy.com/img_penguin.png'} userName={'김채림'} children={undefined} />
       </HeaderContainer>
       <JoinGuide>
-        <Txt size={46} weight={700} css={pageTitle}>
+        <Text size={46} weight={700} css={pageTitle}>
           똑스와 함께해 볼까요?
-        </Txt>
+        </Text>
       </JoinGuide>
       <JoinStudyBox />
     </>

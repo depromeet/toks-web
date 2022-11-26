@@ -1,4 +1,4 @@
-import { Txt } from '@depromeet/toks-components';
+import { Text } from '@depromeet/toks-components';
 import { ReactNode } from 'react';
 
 import { DetailDescriptionText, StudyTitleStyle, TitleWrapper } from './style';
@@ -15,9 +15,9 @@ export function StudyInfo({ leftAddon, title, description }: StudyInfoProps) {
     <>
       <TitleWrapper>
         {leftAddon}
-        <Txt size={14} weight={700} css={StudyTitleStyle}>
+        <Text size={14} weight={700} css={StudyTitleStyle}>
           {title}
-        </Txt>
+        </Text>
       </TitleWrapper>
       <DetailDescriptionText>{description}</DetailDescriptionText>
     </>

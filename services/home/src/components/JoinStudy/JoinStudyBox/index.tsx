@@ -1,4 +1,4 @@
-import { Button, Image, Tag, Txt } from '@depromeet/toks-components';
+import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 
 import { StudyInfo } from 'components/JoinStudy/StudyInfo';
 import { StudyTitle } from 'components/JoinStudy/StudyTitle';
@@ -32,9 +32,9 @@ export function JoinStudyBox() {
             }
             title={'우리 스터디는'}
             description={
-              <Txt css={descriptionStyle} size={16} weight={400}>
+              <Text css={descriptionStyle} size={16} weight={400}>
                 {ourStudyDescription}
-              </Txt>
+              </Text>
             }
           />
           <StudyInfo
@@ -49,18 +49,18 @@ export function JoinStudyBox() {
             title={'스터디 기간은'}
             description={
               <>
-                <Txt size={14} weight={400} css={dateStyle}>
+                <Text size={14} weight={400} css={dateStyle}>
                   시작일
-                </Txt>
-                <Txt size={16} weight={400}>
+                </Text>
+                <Text size={16} weight={400}>
                   {startDate}
-                </Txt>
-                <Txt size={14} weight={400} css={dateStyle}>
+                </Text>
+                <Text size={14} weight={400} css={dateStyle}>
                   종료일
-                </Txt>
-                <Txt size={16} weight={400}>
+                </Text>
+                <Text size={16} weight={400}>
                   {doneDate}
-                </Txt>
+                </Text>
               </>
             }
           />
@@ -75,9 +75,9 @@ export function JoinStudyBox() {
             }
             title={'스터디 인원은'}
             description={
-              <Txt size={16} weight={400} css={descriptionStyle}>
+              <Text size={16} weight={400} css={descriptionStyle}>
                 {personnelDescription}
-              </Txt>
+              </Text>
             }
           />
         </DescriptionContainer>
