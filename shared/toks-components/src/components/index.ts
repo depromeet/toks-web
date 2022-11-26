@@ -106,7 +106,7 @@ export * from 'primereact/timeline';
 export * from 'primereact/toast';
 export * from 'primereact/togglebutton';
 export * from 'primereact/toolbar';
-export * from 'primereact/tooltip';
+export * from './Tooltip';
 export * from 'primereact/tree';
 export * from 'primereact/treeselect';
 export * from 'primereact/treetable';
