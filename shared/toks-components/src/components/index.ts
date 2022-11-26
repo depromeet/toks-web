@@ -48,7 +48,7 @@ export * from 'primereact/inplace';
 export * from 'primereact/inputmask';
 export * from 'primereact/inputnumber';
 export * from 'primereact/inputswitch';
-export * from 'primereact/inputtext';
+export * from './Input';
 export * from 'primereact/inputtextarea';
 
 export * from 'primereact/keyfilter';
