@@ -67,7 +67,7 @@ export function Button({ type = 'primary', size = 'medium', disabled, htmlType, 
         fontWeight: '700',
         fontSize: '16px',
       }}
-      buttonType={type}
+      buttontype={type}
       type={htmlType}
       disabled={disabled}
       loadingIcon={<ProgressSpinner strokeWidth="6px" style={{ width: '26px', height: '26px', margin: 0 }} />}
@@ -76,14 +76,14 @@ export function Button({ type = 'primary', size = 'medium', disabled, htmlType, 
   );
 }
 
-const StyledBaseButton = styled(BaseButton)<{ buttonType: ButtonType }>`
+const StyledBaseButton = styled(BaseButton)<{ buttontype: ButtonType }>`
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 14px;
 
   &:hover {
-    background: ${({ buttonType }) => BUTTON_COLOR.hover[buttonType]} !important;
+    background: ${({ buttontype }) => BUTTON_COLOR.hover[buttontype]} !important;
   }
 
   &:focus {
@@ -94,6 +94,6 @@ const StyledBaseButton = styled(BaseButton)<{ buttonType: ButtonType }>`
 
   .p-progress-spinner-circle {
     animation: unset;
-    stroke: ${({ buttonType }) => BUTTOON_TEXT_COLOR[buttonType]};
+    stroke: ${({ buttontype }) => BUTTOON_TEXT_COLOR[buttontype]};
   }
 `;

@@ -1,16 +1,18 @@
-import { Tag } from '@depromeet/toks-components';
+import { Text } from '@depromeet/toks-components';
+import { Flex, Spacing } from '@toss/emotion-utils';
 
-function App() {
+import StudyList from './components/StudyList';
+
+function MyStudis() {
   return (
-    <Tag.Row>
-      <Tag value="javascript" color="highlight" />
-      <Tag value="javascript" color="highlight" />
-      <Tag value="javascript" color="highlight" />
-      <Tag value="javascript" color="highlight" />
-      <Tag value="javascript" color="highlight" />
-      <Tag value="javascript" color="highlight" />
-    </Tag.Row>
+    <Flex.Center direction="column">
+      <Spacing size={136} />
+      <Text variant="title01">개발자를 위한 스터디, 똑스-잇!</Text>
+
+      <Spacing size={163} />
+      <StudyList />
+    </Flex.Center>
   );
 }
 
-export default App;
+export default MyStudis;
