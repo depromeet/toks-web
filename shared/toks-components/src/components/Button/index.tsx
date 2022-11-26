@@ -60,7 +60,6 @@ export function Button({ type = 'primary', size = 'medium', disabled, htmlType, 
       style={{
         background: BUTTON_COLOR[disabled ? 'disabled' : 'normal'][type],
         borderRadius: '32px',
-        width: '224px',
         height: BUTTON_HEIGHT[size],
         border: type !== 'ghost' ? 'none' : '1px solid #A5A5A5',
         color: BUTTOON_TEXT_COLOR[type],
@@ -81,6 +80,7 @@ const StyledBaseButton = styled(BaseButton)<{ buttontype: ButtonType }>`
   justify-content: center;
   align-items: center;
   gap: 14px;
+  width: 224px;
 
   &:hover {
     background: ${({ buttontype }) => BUTTON_COLOR.hover[buttontype]} !important;
