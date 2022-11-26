@@ -2962,6 +2962,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.0"],\
             ["@emotion/react", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:11.10.4"],\
             ["@emotion/styled", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:11.10.4"],\
+            ["@toss/react", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:1.3.3"],\
             ["@types/node", "npm:18.11.9"],\
             ["@types/react", "npm:18.0.25"],\
             ["@typescript-eslint/eslint-plugin", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
@@ -4162,12 +4163,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@services/home", "workspace:services/home"],\
             ["@configs/babel", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#workspace:configs/babel"],\
             ["@configs/next", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#workspace:configs/next"],\
+            ["@depromeet/theme", "npm:0.0.1"],\
             ["@depromeet/toks-components", "workspace:shared/toks-components"],\
             ["@emotion/css", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.0"],\
             ["@emotion/react", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
             ["@emotion/styled", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
             ["@toss/assert", "npm:1.1.0"],\
-            ["@toss/error-boundary", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.0"],\
+            ["@toss/emotion-utils", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.3"],\
+            ["@toss/error-boundary", "virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#npm:1.1.3"],\
             ["@toss/react", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.3.0"],\
             ["@toss/react-query", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.0"],\
             ["@toss/use-overlay", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.0"],\
@@ -4502,6 +4505,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
+        ["npm:1.1.3", {\
+          "packageLocation": "./.yarn/cache/@toss-error-boundary-npm-1.1.3-5d7bd8cfc8-cddfc4a033.zip/node_modules/@toss/error-boundary/",\
+          "packageDependencies": [\
+            ["@toss/error-boundary", "npm:1.1.3"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#npm:1.1.3", {\
+          "packageLocation": "./.yarn/__virtual__/@toss-error-boundary-virtual-434c381a53/0/cache/@toss-error-boundary-npm-1.1.3-5d7bd8cfc8-cddfc4a033.zip/node_modules/@toss/error-boundary/",\
+          "packageDependencies": [\
+            ["@toss/error-boundary", "virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#npm:1.1.3"],\
+            ["@toss/utils", "npm:1.2.2"],\
+            ["@types/react", "npm:18.0.21"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.0", {\
           "packageLocation": "./.yarn/__virtual__/@toss-error-boundary-virtual-6e8454ffbe/0/cache/@toss-error-boundary-npm-1.1.0-f27c8b8100-2f0a3e1bcf.zip/node_modules/@toss/error-boundary/",\
           "packageDependencies": [\
@@ -4525,6 +4549,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
+        ["npm:1.3.3", {\
+          "packageLocation": "./.yarn/cache/@toss-react-npm-1.3.3-2cddc76113-a176e1f44c.zip/node_modules/@toss/react/",\
+          "packageDependencies": [\
+            ["@toss/react", "npm:1.3.3"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
         ["virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.3.0", {\
           "packageLocation": "./.yarn/__virtual__/@toss-react-virtual-ad0758c46d/0/cache/@toss-react-npm-1.3.0-b946e55d21-e72a80119e.zip/node_modules/@toss/react/",\
           "packageDependencies": [\
@@ -4533,6 +4564,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@toss/storage", "npm:1.0.4"],\
             ["@toss/utils", "npm:1.1.0"],\
             ["@types/react", "npm:18.0.21"],\
+            ["classnames", "npm:2.3.2"],\
+            ["lodash", "npm:4.17.21"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:1.3.3", {\
+          "packageLocation": "./.yarn/__virtual__/@toss-react-virtual-9c33661701/0/cache/@toss-react-npm-1.3.3-2cddc76113-a176e1f44c.zip/node_modules/@toss/react/",\
+          "packageDependencies": [\
+            ["@toss/react", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:1.3.3"],\
+            ["@babel/runtime", "npm:7.20.1"],\
+            ["@toss/storage", "npm:1.0.6"],\
+            ["@toss/utils", "npm:1.2.2"],\
+            ["@types/react", "npm:18.0.25"],\
             ["classnames", "npm:2.3.2"],\
             ["lodash", "npm:4.17.21"],\
             ["react", "npm:18.2.0"]\
@@ -4578,6 +4627,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@toss-storage-npm-1.0.4-a4f7537545-f413d3abad.zip/node_modules/@toss/storage/",\
           "packageDependencies": [\
             ["@toss/storage", "npm:1.0.4"],\
+            ["@babel/runtime", "npm:7.20.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.0.6", {\
+          "packageLocation": "./.yarn/cache/@toss-storage-npm-1.0.6-544e82556d-d083ea0074.zip/node_modules/@toss/storage/",\
+          "packageDependencies": [\
+            ["@toss/storage", "npm:1.0.6"],\
             ["@babel/runtime", "npm:7.20.1"]\
           ],\
           "linkType": "HARD"\

@@ -5,7 +5,7 @@ import { FONT_SIZE, FONT_WEIGHT, ICON_RADIUS, ICON_SIZE } from './constants';
 
 export const Button = styled.button`
   display: flex;
-  height: 50px;
+  height: 44px;
   align-items: center;
   border-radius: 25px;
   padding: 11px 22px;
@@ -24,4 +24,8 @@ export const Text = styled.span`
   font-size: ${FONT_SIZE};
   color: ${theme.colors.white};
   margin-left: 12px;
+  line-height: 22px;
+
+  text-align: center;
+  letter-spacing: -0.6px;
 `;
