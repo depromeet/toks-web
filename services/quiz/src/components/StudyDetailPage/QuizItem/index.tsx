@@ -2,7 +2,7 @@ import { theme } from '@depromeet/theme';
 import { Button, Image, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { ComponentProps, HTMLAttributes, ReactNode } from 'react';
-import { Item, ItemDetails, ItemHeader, ItemBody } from './style';
+import { Item, ItemDetails, ItemHeader, ItemBody, FlexRow } from './style';
 
 type User = {
     image: string;
@@ -19,6 +19,7 @@ interface QuizItemProps {
     absentee: User[];
 }
 
+// TODO: 아이콘들 Image로 되어있는것 추후 Icon 컴포넌트로 변경해야 함
 export function QuizItem({ weekNumber, title, openDate, creator, absentee } : QuizItemProps) {
   return (
     <Item css={{backgroundColor: theme.colors.gray110}}>
@@ -30,7 +31,10 @@ export function QuizItem({ weekNumber, title, openDate, creator, absentee } : Qu
           <Image width={16} height={9} src='https://toks-web-assets.s3.amazonaws.com/ic-bottom-chevron.svg' alt='펼치기 버튼 입니다.' css={{marginLeft: '24px'}}/>
         </ItemHeader>
         <ItemBody>
-          body
+          <FlexRow>
+            <Image width={16} height={9} src='https://toks-web-assets.s3.amazonaws.com/ic-bottom-chevron.svg' alt='펼치기 버튼 입니다.' css={{marginLeft: '24px'}}/>
+            <Text variant='title04' css={{margin: '0'}} as='h4'>02:00:00</Text>
+          </FlexRow>
         </ItemBody>
       </ItemDetails>
     </Item>

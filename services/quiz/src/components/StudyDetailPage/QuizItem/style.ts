@@ -25,3 +25,8 @@ export const ItemHeader = styled.summary`
 export const ItemBody = styled.div`
   
 `;
+
+export const FlexRow = styled.div`
+  display: flex;
+  align-items: center;
+`;
