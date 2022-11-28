@@ -12,7 +12,7 @@ export function JoinStudyBox() {
     '설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한';
   const personnelDescription = '5-7명을 계획하고 있어요.';
   const startDate = '2022. 10. 13';
-  const doneDate = '2022. 12. 03';
+  const endDate = '2022. 12. 03';
   const tags = ['Java', 'Javascript', 'React'];
   return (
     <Wrapper>
@@ -36,7 +36,7 @@ export function JoinStudyBox() {
               alt="StudyInfo 아이콘"
             />
           }
-          title={'우리 스터디는'}
+          title="우리 스터디는"
           description={<Text variant="body01">{ourStudyDescription}</Text>}
         />
         <StudyInfo
@@ -48,7 +48,7 @@ export function JoinStudyBox() {
               alt="StudyInfo 아이콘"
             />
           }
-          title={'스터디 기간은'}
+          title="스터디 기간은"
           description={
             <>
               <Text variant="body02">시작일</Text>
@@ -59,7 +59,7 @@ export function JoinStudyBox() {
                 종료일
               </Text>
               <Text variant="body01" css={{ marginLeft: '12px' }}>
-                {doneDate}
+                {endDate}
               </Text>
             </>
           }
@@ -73,7 +73,7 @@ export function JoinStudyBox() {
               alt="StudyInfo 아이콘"
             />
           }
-          title={'스터디 인원은'}
+          title="스터디 인원은"
           description={<Text variant="body01">{personnelDescription}</Text>}
         />
       </Flex>
