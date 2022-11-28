@@ -1,6 +1,6 @@
 import { Button, Image } from '@depromeet/toks-components';
 import { Spacing } from '@toss/emotion-utils';
-import { Wrapper } from './style';
+import { Wrapper } from '../../../style';
 import { Text } from '@depromeet/toks-components';
 import { useRouter } from 'next/router';
 
@@ -16,6 +16,7 @@ export function LoginBox() {
       <Spacing size={32} />
       <Text variant="title04">개발자를 위한 스터디, 똑스-잇!</Text>
       <Spacing size={93} />
+      <a href="https://tokstudy.com/oauth2/authorize/kakao">안녕</a>
       <Button onClick={onClick}>Kakao 로그인</Button>
     </Wrapper>
   );
