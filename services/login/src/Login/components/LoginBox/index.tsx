@@ -8,7 +8,7 @@ export function LoginBox() {
   const router = useRouter();
 
   const onClick = () => {
-    router.push('http://13.125.23.164/oauth2/authorize/kakao');
+    router.push('https://api.tokstudy.com/oauth2/authorize/kakao');
   };
   return (
     <Wrapper>
