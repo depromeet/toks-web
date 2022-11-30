@@ -16,7 +16,7 @@ if (!authToken?.access || authToken?.access === '') {
   if (authToken?.access) {
     history.pushState('', '', 'https://tokstudy.com/login/myName');
   }
-} else if (authToken?.access) {
+} else if (authToken?.access && authToken.access !== '') {
   // refresh 토큰 보내서 만료되었는지 확인?
   // 응답이 refresh 만료면 다시 로그인 페이지로
 }
