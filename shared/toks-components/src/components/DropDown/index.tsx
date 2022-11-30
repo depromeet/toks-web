@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Dropdown } from 'primereact/dropdown';
 import { ComponentProps } from 'react';
+
 import { Text } from '../Text';
 
 type DropdownProps = ComponentProps<typeof Dropdown>;
@@ -96,5 +97,3 @@ const StyledDropdown = styled(Dropdown)<Props>`
     background-image: url('https://toks-web-assets.s3.amazonaws.com/disabledTrigger.svg');
   }
 `;
-
-//aria-expended=true 면 위로 올라가는 false면 아래로 내려가는
