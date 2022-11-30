@@ -71,14 +71,16 @@ const globalCss = css`
   }
   .p-dropdown-items {
     background-color: ${theme.colors.gray100} !important;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
+
     padding: 0 !important;
     border-radius: 8px;
   }
 
   .p-dropdown-item {
+    font-family: 'Spoqa Han Sans Neo' !important ;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
     color: ${theme.colors.white} !important;
     padding: 12px 16px !important;
     &:hover {
