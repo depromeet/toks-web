@@ -36,7 +36,7 @@ export * from 'primereact/deferredcontent';
 export * from 'primereact/dialog';
 export * from 'primereact/divider';
 export * from 'primereact/dock';
-export * from 'primereact/dropdown';
+export * from './DropDown';
 
 export * from 'primereact/fieldset';
 export * from 'primereact/fileupload';
