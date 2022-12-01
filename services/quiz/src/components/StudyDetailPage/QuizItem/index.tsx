@@ -20,13 +20,12 @@ interface QuizItemProps {
     absentee: User[];
 }
 
-type QuizItemElement = 'button' | 'timer';
-
 type QuizStatus = 'default' | 'disabled' | 'activated';
 
 type QuizItemColorMap = {
   [key in QuizStatus]: {
-    [key in QuizItemElement]: string;
+    button: ComponentProps<typeof Button>["type"];
+    timer: string;
   };
 };
 
@@ -48,21 +47,20 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
 // TODO: 아이콘들 Image로 되어있는것 추후 Icon 컴포넌트로 변경해야 함
 export function QuizItem({ weekNumber, title, openDate, creator, absentee } : QuizItemProps) {
   const quizItemType = "default";
-  const buttonType = QUIZ_ITEM_COLOR[quizItemType].button
-  console.log(buttonType);
+
   return (
     <Item css={{backgroundColor: theme.colors.gray110}}>
       <ItemDetails>
         <ItemHeader>
           <Text variant='subhead' css={{margin: '0'}} as='h6'>{weekNumber}회차</Text>
           <Text variant='headline' css={{margin: '0 0 0 18px', flex: 1}} as='h5'>{title}</Text>
-          <Button type={buttonType} size='medium'>똑스 확인하기</Button>
+          <Button type={QUIZ_ITEM_COLOR[quizItemType].button} size='medium'>똑스 확인하기</Button>
           <Image width={16} height={9} src='https://toks-web-assets.s3.amazonaws.com/ic-bottom-chevron.svg' alt='펼치기 버튼 입니다.' css={{marginLeft: '24px'}}/>
         </ItemHeader>
         <ItemBody>
           <FlexRow>
             <Image width={20.17} height={20.17} src='https://toks-web-assets.s3.amazonaws.com/ic-timer.svg' alt='펼치기 버튼 입니다.' css={{marginLeft: '3.2px'}}/>
-            <Text variant='title04' css={{margin: '0 0 0 9.2px', color: `${theme.colors.gray060}`}} as='h4'>02:00:00</Text>
+            <Text variant='title04' css={{margin: '0 0 0 9.2px', color: `${QUIZ_ITEM_COLOR[quizItemType].timer}`}} as='h4'>02:00:00</Text>
           </FlexRow>
         </ItemBody>
       </ItemDetails>
