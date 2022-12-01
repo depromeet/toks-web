@@ -2,6 +2,7 @@ import { theme } from '@depromeet/theme';
 import { colors } from '@depromeet/theme/dist/colors';
 import { Button, Image, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
+import { Divider } from 'components/common/Divider';
 import { ComponentProps, HTMLAttributes, ReactNode } from 'react';
 import { Item, ItemDetails, ItemHeader, ItemBody, FlexRow } from './style';
 
@@ -58,9 +59,14 @@ export function QuizItem({ weekNumber, title, openDate, creator, absentee } : Qu
           <Image width={16} height={9} src='https://toks-web-assets.s3.amazonaws.com/ic-bottom-chevron.svg' alt='펼치기 버튼 입니다.' css={{marginLeft: '24px'}}/>
         </ItemHeader>
         <ItemBody>
-          <FlexRow>
+          <FlexRow css={{marginTop: '36px'}}>
             <Image width={20.17} height={20.17} src='https://toks-web-assets.s3.amazonaws.com/ic-timer.svg' alt='펼치기 버튼 입니다.' css={{marginLeft: '3.2px'}}/>
             <Text variant='title04' css={{margin: '0 0 0 9.2px', color: `${QUIZ_ITEM_COLOR[quizItemType].timer}`}} as='h4'>02:00:00</Text>
+          </FlexRow>
+          <Divider css={{marginTop: '22.25px'}}/>
+          <FlexRow css={{marginTop: '14px'}}>
+            <Text variant='subhead' css={{margin: '0', flex: 1}} as='h6'>똑스 만든사람</Text>
+            <Text variant='subhead' css={{margin: '0'}} as='h6'>똑스 안 푼 사람</Text>
           </FlexRow>
         </ItemBody>
       </ItemDetails>

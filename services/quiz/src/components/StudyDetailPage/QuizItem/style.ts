@@ -29,5 +29,4 @@ export const ItemBody = styled.div`
 export const FlexRow = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 36px;
 `;
