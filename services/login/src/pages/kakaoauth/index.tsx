@@ -1,17 +1,28 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { useQueryParams } from '@toss/use-query-param';
+import { ProgressSpinner } from '@depromeet/toks-components';
+import { Flex } from '@toss/emotion-utils';
 
 function kakaoauth() {
-  const { accessToken, refreshToken } = useQueryParams<{ accessToken: string; refreshToken: string }>();
   const router = useRouter();
   useEffect(() => {
+    // @ts-expect-error
+    const params = new URLSearchParams(location);
+    const accessToken = params.get('accessToken');
+    const refreshToken = params.get('refreshToken');
+
     if (accessToken && refreshToken) {
       sessionStorage.setItem('accessToken', accessToken);
       sessionStorage.setItem('refreshToken', refreshToken);
-      router.push('/login/myName');
     }
+    router.push('/myName');
   }, []);
+
+  return (
+    <Flex.Center css={{ marginTop: '250px' }}>
+      <ProgressSpinner />
+    </Flex.Center>
+  );
 }
 
 export default kakaoauth;
