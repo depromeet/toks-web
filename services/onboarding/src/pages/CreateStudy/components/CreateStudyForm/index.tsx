@@ -19,6 +19,7 @@ export const CreateStudyForm = () => {
           label="스터디 설명"
           name="studyDescription"
           placeholder="스터디 목표나 간단한 소개를 작성해주세요. (50자 이내)"
+          errorMessage="스터디 설명을 입력해주세요."
         />
         <Flex css={gutter('horizontal', 24)}>
           <Calendar readOnlyInput label="스터디 시작일*" minDate={new Date()} placeholder="날짜 선택" />

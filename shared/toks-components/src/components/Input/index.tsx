@@ -1,11 +1,10 @@
 import { theme } from '@depromeet/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-
-import { Flex, gutter } from '@toss/emotion-utils';
-import { Text } from '../Text';
-import { Image } from '../Image';
 import { useState } from 'react';
+
+import { Image } from '../Image';
+import { Text } from '../Text';
 
 interface Props extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
   name?: string;
