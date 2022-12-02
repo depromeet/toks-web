@@ -41,6 +41,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "reference": "workspace:packages/ds"\
       },\
       {\
+        "name": "@depromeet/emoji",\
+        "reference": "workspace:packages/emoji"\
+      },\
+      {\
         "name": "@depromeet/theme",\
         "reference": "workspace:packages/theme"\
       },\
@@ -71,6 +75,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@configs/babel", ["virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#workspace:configs/babel", "workspace:configs/babel"]],\
       ["@configs/next", ["virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#workspace:configs/next", "workspace:configs/next"]],\
       ["@depromeet/ds", ["workspace:packages/ds"]],\
+      ["@depromeet/emoji", ["workspace:packages/emoji"]],\
       ["@depromeet/path", ["workspace:shared/path"]],\
       ["@depromeet/theme", ["workspace:packages/theme"]],\
       ["@depromeet/toks-components", ["workspace:shared/toks-components"]],\
@@ -2908,6 +2913,38 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-react-hooks", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:4.6.0"],\
             ["prettier", "npm:2.7.1"],\
             ["rimraf", "npm:3.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["@depromeet/emoji", [\
+        ["workspace:packages/emoji", {\
+          "packageLocation": "./packages/emoji/",\
+          "packageDependencies": [\
+            ["@depromeet/emoji", "workspace:packages/emoji"],\
+            ["@emotion/css", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.0"],\
+            ["@emotion/react", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
+            ["@emotion/styled", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
+            ["@types/node", "npm:18.11.9"],\
+            ["@types/react", "npm:18.0.21"],\
+            ["@types/react-dom", "npm:18.0.6"],\
+            ["@typescript-eslint/eslint-plugin", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
+            ["@typescript-eslint/parser", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
+            ["concurrently", "npm:7.4.0"],\
+            ["eslint", "npm:8.24.0"],\
+            ["eslint-config-prettier", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:8.5.0"],\
+            ["eslint-import-resolver-typescript", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:2.7.1"],\
+            ["eslint-plugin-import", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:2.26.0"],\
+            ["eslint-plugin-jsx-a11y", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:6.6.1"],\
+            ["eslint-plugin-prettier", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:4.2.1"],\
+            ["eslint-plugin-react", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:7.31.8"],\
+            ["eslint-plugin-react-hooks", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:4.6.0"],\
+            ["prettier", "npm:2.7.1"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:18.2.0"],\
+            ["rimraf", "npm:3.0.2"],\
+            ["ts-pattern", "npm:4.0.5"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
           ],\
           "linkType": "SOFT"\
