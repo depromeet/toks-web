@@ -13,7 +13,7 @@ export * from 'primereact/blockui';
 export * from 'primereact/breadcrumb';
 export * from './Button';
 
-export * from 'primereact/calendar';
+export * from './Calendar';
 export * from 'primereact/captcha';
 export * from 'primereact/card';
 export * from 'primereact/carousel';

@@ -2992,6 +2992,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.0"],\
             ["@emotion/react", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:11.10.4"],\
             ["@emotion/styled", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:11.10.4"],\
+            ["@toss/emotion-utils", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:1.1.3"],\
             ["@toss/react", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:1.3.3"],\
             ["@types/node", "npm:18.11.9"],\
             ["@types/react", "npm:18.0.25"],\
@@ -4517,6 +4518,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["csstype", "npm:3.1.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@emotion/react",\
+            "@types/emotion__react",\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:1.1.3", {\
+          "packageLocation": "./.yarn/__virtual__/@toss-emotion-utils-virtual-ce1ac40c71/0/cache/@toss-emotion-utils-npm-1.1.3-7b80e7395f-f4fee5525f.zip/node_modules/@toss/emotion-utils/",\
+          "packageDependencies": [\
+            ["@toss/emotion-utils", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:1.1.3"],\
+            ["@babel/runtime", "npm:7.20.1"],\
+            ["@emotion/react", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:11.10.4"],\
+            ["@toss/utils", "npm:1.2.2"],\
+            ["@types/emotion__react", null],\
+            ["@types/react", "npm:18.0.25"],\
+            ["@types/react-dom", null],\
+            ["csstype", "npm:3.1.1"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#npm:18.2.0"]\
           ],\
           "packagePeers": [\
             "@emotion/react",\
