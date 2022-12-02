@@ -4,12 +4,37 @@ import { Wrapper } from '../../../common/style';
 import { Text } from '@depromeet/toks-components';
 import { useRouter } from 'next/router';
 
+export function Auth() {
+  const params = new URLSearchParams(location.search);
+  let authToken = {
+    access: sessionStorage.getItem('accessToken'),
+    refresh: sessionStorage.getItem('refreshToken'),
+  };
+  if (!authToken?.access) {
+    // let { accessToken, refreshToken } = URLSearchParams<{ accessToken: string; refreshToken: string }>();
+    let accessToken = params.get('accessToken');
+    let refreshToken = params.get('refreshToken');
+    console.log(accessToken);
+    console.log(refreshToken);
+    console.log(params);
+
+    if (accessToken && refreshToken) {
+      sessionStorage.setItem('accessToken', accessToken);
+      sessionStorage.setItem('refreshToken', refreshToken);
+    }
+  }
+}
 export function LoginBox() {
   const router = useRouter();
-
   const onClick = () => {
     router.push('https://api.tokstudy.com/oauth2/authorize/kakao');
+
+    setTimeout(() => {
+      Auth();
+      console.log('hihihi');
+    }, 100);
   };
+
   return (
     <Wrapper>
       <Image src="https://asset.tokstudy.com/awake-yellow-emoji.png" width={100} height={100} alt="toks-emoji" />
