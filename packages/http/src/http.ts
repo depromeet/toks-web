@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useQueryParams, useNextRouter } from '@toss/use-query-param';
+import { useNextRouter } from '@toss/use-query-param';
 
 let authToken = {
   access: sessionStorage.getItem('accessToken'),
@@ -10,8 +10,6 @@ export function Auth() {
   const router = useNextRouter();
 
   if (!authToken?.access) {
-    let { accessToken, refreshToken } = useQueryParams<{ accessToken: string; refreshToken: string }>();
-
     if (accessToken && refreshToken) {
       sessionStorage.setItem('accessToken', accessToken);
       sessionStorage.setItem('refreshToken', refreshToken);
