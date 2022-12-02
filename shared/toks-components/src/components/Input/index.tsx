@@ -1,83 +1,122 @@
 import { theme } from '@depromeet/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { InputText } from 'primereact/inputtext';
-import { ComponentProps } from 'react';
 
+import { Flex, gutter } from '@toss/emotion-utils';
 import { Text } from '../Text';
+import { Image } from '../Image';
+import { useState } from 'react';
 
-type InputTextProps = ComponentProps<typeof InputText>;
-
-interface Props extends Omit<InputTextProps, 'type'> {
-  // type?: 'normal' | 'errored';
+interface Props extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
+  name?: string;
   width?: number;
   height?: number;
   label?: string;
   errorMessage?: string;
 }
 
-export function Input({ label = 'user', errorMessage = 'error', width, height, ...props }: Props) {
+export function Input({ label = 'user', name, errorMessage, width, height, ...props }: Props) {
+  const [isFocus, setIsFocus] = useState(false);
+
   return (
-    <InputWrapper>
-      <Text size={14} weight={400} className="label">
-        {label}
-      </Text>
-      <StyledInput width={width} height={height} {...props} />
-      <Text size={14} weight={400}>
-        {errorMessage}
-      </Text>
-    </InputWrapper>
+    <Wrapper>
+      <label htmlFor={name}>
+        <Text variant="body02">{label}</Text>
+      </label>
+      <StyledInput width={width} height={height} isFocus={isFocus} isError={Boolean(errorMessage)} {...props}>
+        <InitialInput
+          onFocus={() => setIsFocus(true)}
+          onBlur={() => setIsFocus(false)}
+          id={name}
+          name={name}
+          {...props}
+        />
+        {errorMessage && (
+          <Image src="https://toks-web-assets.s3.amazonaws.com/ic-danger.svg" alt="경고" width={22} height={22} />
+        )}
+      </StyledInput>
+      {errorMessage && (
+        <Text variant="body02" color="danger">
+          {errorMessage}
+        </Text>
+      )}
+    </Wrapper>
   );
 }
 
-const InputWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
+  width: 100%;
   flex-direction: column;
+  gap: 6px;
 `;
-const StyledInput = styled(InputText)<Props>`
+
+const StyledInput = styled('div')<{ width?: number; height?: number; isFocus: boolean; isError: boolean }>`
   border-radius: 8px;
+  display: flex;
+  align-items: center;
   ${props => {
-    const { width, height } = props;
+    const { width, height, isFocus, isError } = props;
+
+    const errorStyle =
+      isError &&
+      css`
+        border: 1px solid ${theme.colors.danger};
+      `;
+
+    const focusStyle =
+      isFocus &&
+      css`
+        border: #ff862f 2px solid;
+        background: ${theme.colors.gray100};
+        outline: none;
+        box-shadow: none;
+        color: ${theme.colors.white};
+      `;
+
     return css`
-      width: ${width ? `${width}px` : '280px'};
+      width: ${width ? `${width}px` : '100%'};
       height: ${height ? `${height}px` : '48px'};
+      ${focusStyle}
+      ${errorStyle}
     `;
   }}
-  border: none !important;
-  background: ${theme.colors.gray100} !important;
+  background: ${theme.colors.gray100};
+  padding: 0 14px;
+  &:hover {
+    background: ${theme.colors.gray100};
+    border: ${theme.colors.gray040} 1px solid;
+  }
+`;
+
+const InitialInput = styled('input')`
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+
+  color: ${theme.colors.white};
+
   ::placeholder {
     color: ${theme.colors.gray070};
   }
-  &:hover {
-    background: ${theme.colors.gray100} !important;
-    border: ${theme.colors.gray040} 1px solid !important;
-  }
 
-  &:focus {
-    border: #ff862f 2px solid !important;
-    background: ${theme.colors.gray100} !important;
-    outline: none !important;
-    box-shadow: none !important;
-    color: ${theme.colors.white};
-  }
   &:disabled {
-    border: none !important;
-    background: ${theme.colors.gray110} !important;
+    border: none;
+    background: ${theme.colors.gray110};
     ::placeholder {
       color: ${theme.colors.gray080};
     }
   }
-  &:active {
-    color: ${theme.colors.white};
-    background: ${theme.colors.gray110} !important;
-    border: none !important;
-  }
-  &:invalid {
-    border: #eb4852 1px solid !important;
-    color: ${theme.colors.white};
-    outline: none !important;
-  }
-  .p-error-block {
-    color: #eb4852;
-  }
+
+  //styleName: body-02;
+  font-family: Spoqa Han Sans Neo;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.6px;
+
+  box-sizing: border-box;
+  outline: none;
+  border-radius: 8px;
 `;
