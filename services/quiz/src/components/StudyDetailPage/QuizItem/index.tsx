@@ -1,9 +1,8 @@
 import { theme } from '@depromeet/theme';
-import { colors } from '@depromeet/theme/dist/colors';
 import { Button, Image, Text } from '@depromeet/toks-components';
-import styled from '@emotion/styled';
 import { Divider } from 'components/common/Divider';
-import { ComponentProps, HTMLAttributes, ReactNode } from 'react';
+import { Timer } from 'components/common/Timer';
+import { ComponentProps } from 'react';
 import { Item, ItemDetails, ItemHeader, ItemBody, FlexRow } from './style';
 
 type User = {
@@ -49,6 +48,11 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
 export function QuizItem({ weekNumber, title, openDate, creator, absentee } : QuizItemProps) {
   const quizItemType = "default";
 
+  const currentDate = new Date();
+
+  console.log(currentDate);
+  console.log(openDate);
+  
   return (
     <Item css={{backgroundColor: theme.colors.gray110}}>
       <ItemDetails>
@@ -61,7 +65,7 @@ export function QuizItem({ weekNumber, title, openDate, creator, absentee } : Qu
         <ItemBody>
           <FlexRow css={{marginTop: '36px'}}>
             <Image width={20.17} height={20.17} src='https://toks-web-assets.s3.amazonaws.com/ic-timer.svg' alt='펼치기 버튼 입니다.' css={{marginLeft: '3.2px'}}/>
-            <Text variant='title04' css={{margin: '0 0 0 9.2px', color: `${QUIZ_ITEM_COLOR[quizItemType].timer}`}} as='h4'>02:00:00</Text>
+            <Timer openDate={openDate} css={{margin: '0 0 0 9.2px', color: `${QUIZ_ITEM_COLOR[quizItemType].timer}`}}/>
           </FlexRow>
           <Divider css={{marginTop: '22.25px'}}/>
           <FlexRow css={{marginTop: '14px'}}>

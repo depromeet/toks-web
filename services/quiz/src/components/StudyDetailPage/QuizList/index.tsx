@@ -34,14 +34,20 @@ export function QuizList() {
   return (
     <List>
       <QuizItem
+        weekNumber={3}
+        title='퀴즈가 진행되고 있는 스터디 입니다'
+        openDate={new Date('2022-11-27 10:00:00')}
+        creator={creator}
+        absentee={absentee}/>
+      <QuizItem
         weekNumber={2}
-        title='오늘은 똑스 회식날~!'
+        title='곧 퀴즈가 시작되는 스터디 입니다'
         openDate={new Date('2022-11-27 10:00:00')}
         creator={creator}
         absentee={absentee}/>
       <QuizItem
         weekNumber={1}
-        title='사용자 수에 따른 규모 확장성'
+        title='만료된 스터디 입니다'
         openDate={new Date('2022-11-27 10:00:00')}
         creator={creator}
         absentee={absentee}/>
