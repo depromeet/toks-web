@@ -50,7 +50,7 @@ const BUTTOON_TEXT_COLOR: { [key in ButtonType]: string } = {
 };
 
 const BUTTON_HEIGHT: { [key in ButtonSize]: string } = {
-  large: '64px',
+  large: '54px',
   medium: '46px',
 };
 
