@@ -1,7 +1,8 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import { Chips as ChipsComponent, ChipsProps } from 'primereact/chips';
-import { useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
+
 import { Text } from '../Text';
 
 interface ChipsComponentProps extends ChipsProps {
@@ -10,30 +11,32 @@ interface ChipsComponentProps extends ChipsProps {
   errorMessage?: string;
 }
 
-export const InputChips = ({ label, name, value, errorMessage, ...props }: ChipsComponentProps) => {
-  const inputBoxRef = useRef<HTMLDivElement>(null);
+export const InputChips = forwardRef<HTMLInputElement, ChipsComponentProps>(
+  ({ label, name, errorMessage, value, ...props }: ChipsComponentProps, ref) => {
+    const inputBoxRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    // chip icon 변경
-    if (inputBoxRef.current) {
-      const chips = inputBoxRef.current?.querySelectorAll('.pi-times-circle');
-      chips.forEach(chip => {
-        chip.classList.replace('pi-times-circle', 'pi-times');
-      });
-    }
-  }, [value]);
+    useEffect(() => {
+      // chip icon 변경
+      if (inputBoxRef.current) {
+        const nonChangeIconChips = inputBoxRef.current?.querySelectorAll('.pi-times-circle');
+        nonChangeIconChips.forEach(chip => {
+          chip.classList.replace('pi-times-circle', 'pi-times');
+        });
+      }
+    }, [value]);
 
-  return (
-    <Wrapper>
-      <label htmlFor={name}>
-        <Text variant="body02">{label}</Text>
-      </label>
-      <StyledChip ref={inputBoxRef}>
-        <ChipsComponent value={value} inputId={name} name={name} {...props} />
-      </StyledChip>
-    </Wrapper>
-  );
-};
+    return (
+      <Wrapper>
+        <label htmlFor={name}>
+          <Text variant="body02">{label}</Text>
+        </label>
+        <StyledChip ref={inputBoxRef}>
+          <ChipsComponent inputId={name} inputRef={ref} name={name} value={value} {...props} />
+        </StyledChip>
+      </Wrapper>
+    );
+  }
+);
 
 const Wrapper = styled.div`
   display: flex;

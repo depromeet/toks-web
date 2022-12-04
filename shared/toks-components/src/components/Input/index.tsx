@@ -1,7 +1,7 @@
 import { theme } from '@depromeet/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 
 import { Image } from '../Image';
 import { Text } from '../Text';
@@ -14,34 +14,37 @@ interface Props extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
   errorMessage?: string;
 }
 
-export function Input({ label = 'user', name, errorMessage, width, height, ...props }: Props) {
-  const [isFocus, setIsFocus] = useState(false);
+export const Input = forwardRef<HTMLInputElement, Props>(
+  ({ label = 'user', name, errorMessage, width, height, ...props }: Props, ref) => {
+    const [isFocus, setIsFocus] = useState(false);
 
-  return (
-    <Wrapper>
-      <label htmlFor={name}>
-        <Text variant="body02">{label}</Text>
-      </label>
-      <StyledInput width={width} height={height} isFocus={isFocus} isError={Boolean(errorMessage)} {...props}>
-        <InitialInput
-          onFocus={() => setIsFocus(true)}
-          onBlur={() => setIsFocus(false)}
-          id={name}
-          name={name}
-          {...props}
-        />
+    return (
+      <Wrapper>
+        <label htmlFor={name}>
+          <Text variant="body02">{label}</Text>
+        </label>
+        <StyledInput width={width} height={height} isFocus={isFocus} isError={Boolean(errorMessage)} {...props}>
+          <InitialInput
+            ref={ref}
+            onFocus={() => setIsFocus(true)}
+            onBlur={() => setIsFocus(false)}
+            id={name}
+            name={name}
+            {...props}
+          />
+          {errorMessage && (
+            <Image src="https://toks-web-assets.s3.amazonaws.com/ic-danger.svg" alt="경고" width={22} height={22} />
+          )}
+        </StyledInput>
         {errorMessage && (
-          <Image src="https://toks-web-assets.s3.amazonaws.com/ic-danger.svg" alt="경고" width={22} height={22} />
+          <Text variant="body02" color="danger">
+            {errorMessage}
+          </Text>
         )}
-      </StyledInput>
-      {errorMessage && (
-        <Text variant="body02" color="danger">
-          {errorMessage}
-        </Text>
-      )}
-    </Wrapper>
-  );
-}
+      </Wrapper>
+    );
+  }
+);
 
 const Wrapper = styled.div`
   display: flex;
