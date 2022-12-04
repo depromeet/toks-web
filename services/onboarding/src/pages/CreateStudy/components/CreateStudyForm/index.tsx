@@ -1,13 +1,14 @@
-import { Button, Calendar, InputChips, Input, Text } from '@depromeet/toks-components';
+import { Button, Calendar, Input, InputChips, Text } from '@depromeet/toks-components';
 import { Flex, gutter, margin, size } from '@toss/emotion-utils';
-import { useState } from 'react';
+import { Controller } from 'react-hook-form';
 
-import { useForm } from 'react-hook-form';
+import { useCreateStudyForm } from 'pages/CreateStudy/hooks/useCreateStudyForm';
+
 import { Wrapper } from './style';
 
 export const CreateStudyForm = () => {
-  const { register, handleSubmit, getValues } = useForm();
-  const [value, setValue] = useState<string[]>([]);
+  const { register, control, handleSubmit, setValue, errors, isDisabled, isMaxLength, isRequiredText } =
+    useCreateStudyForm();
 
   return (
     <Wrapper>
@@ -15,46 +16,65 @@ export const CreateStudyForm = () => {
         똑스터디 만들기
       </Text>
       <form
-        onSubmit={handleSubmit(data => alert(JSON.stringify(data)))}
+        onSubmit={handleSubmit(data => alert(data))}
         css={(margin.top(42), size({ width: '100%' }), gutter('vertical', 32))}
       >
         <Input
+          {...register('studyName', {
+            required: isRequiredText('스터디 이름'),
+            maxLength: isMaxLength(20),
+          })}
+          autoFocus
           label="스터디 이름*"
           placeholder="스터디 이름을 입력해주세요. (20자 이내)"
-          autoFocus
-          {...register('studyName', { required: true })}
+          errorMessage={errors.studyName?.message}
         />
         <Input
+          {...register('studyDescription', {
+            maxLength: isMaxLength(50),
+          })}
           label="스터디 설명"
           placeholder="스터디 목표나 간단한 소개를 작성해주세요. (50자 이내)"
-          errorMessage="스터디 설명을 입력해주세요."
-          {...register('studyDescription')}
+          errorMessage={errors.studyDescription?.message}
         />
         <Flex css={gutter('horizontal', 24)}>
           <Calendar
+            {...register('startDate', {
+              required: isRequiredText('시작일'),
+            })}
             readOnlyInput
             label="스터디 시작일*"
             minDate={new Date()}
             placeholder="날짜 선택"
-            {...register('startDate', { required: true })}
+            errorMessage={errors.startDate?.message}
           />
           <Calendar
+            {...register('endDate', {
+              required: isRequiredText('종료일'),
+            })}
             readOnlyInput
             label="스터디 종료일*"
             minDate={new Date()}
             placeholder="날짜 선택"
-            {...register('endDate', { required: true })}
+            errorMessage={errors.endDate?.message}
           />
         </Flex>
-        <Input label="스터디 인원*" {...register('memberCount', { required: true })} />
-        <InputChips
-          value={getValues('tags')}
-          name="studyTags"
-          onChange={e => setValue(e.value)}
-          label="스터디 관련 태그"
+        <Input
+          {...register('memberCount', {
+            required: isRequiredText('인원'),
+          })}
+          label="스터디 인원*"
+          errorMessage={errors.memberCount?.message}
         />
-        <Button type="primary" htmlType="submit">
-          생성하기
+        <Controller
+          name="studyTags"
+          control={control}
+          render={({ field }) => (
+            <InputChips {...field} onChange={e => setValue('studyTags', e.value)} label="스터디 관련 태그" max={5} />
+          )}
+        />
+        <Button type="primary" htmlType="submit" disabled={isDisabled}>
+          {isDisabled ? '필수 요소를 채워주세요' : '생성하기'}
         </Button>
       </form>
     </Wrapper>
