@@ -4275,6 +4275,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.7.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:18.2.0"],\
+            ["react-hook-form", "virtual:87e9d50c60540715015872022167b60dcd88556bfd25af5c870c711bf726f8b60daec70a89ac22a94fe2f0fda74350420aeff8938d18c171034442d24b2fce90#npm:7.40.0"],\
             ["react-query", [\
               "@tanstack/react-query",\
               "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:4.0.10"\
@@ -11200,6 +11201,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["loose-envify", "npm:1.4.0"],\
             ["react", "npm:18.2.0"],\
             ["scheduler", "npm:0.23.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-hook-form", [\
+        ["npm:7.40.0", {\
+          "packageLocation": "./.yarn/cache/react-hook-form-npm-7.40.0-760f91e47b-8187981c14.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "npm:7.40.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:87e9d50c60540715015872022167b60dcd88556bfd25af5c870c711bf726f8b60daec70a89ac22a94fe2f0fda74350420aeff8938d18c171034442d24b2fce90#npm:7.40.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-9f0a02ae9a/0/cache/react-hook-form-npm-7.40.0-760f91e47b-8187981c14.zip/node_modules/react-hook-form/",\
+          "packageDependencies": [\
+            ["react-hook-form", "virtual:87e9d50c60540715015872022167b60dcd88556bfd25af5c870c711bf726f8b60daec70a89ac22a94fe2f0fda74350420aeff8938d18c171034442d24b2fce90#npm:7.40.0"],\
+            ["@types/react", "npm:18.0.21"],\
+            ["react", "npm:18.2.0"]\
           ],\
           "packagePeers": [\
             "@types/react",\
