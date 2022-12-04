@@ -1526,36 +1526,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@depromeet/emoji@workspace:packages/emoji":
-  version: 0.0.0-use.local
-  resolution: "@depromeet/emoji@workspace:packages/emoji"
-  dependencies:
-    "@emotion/css": ^11.9.0
-    "@emotion/react": ^11.9.3
-    "@emotion/styled": ^11.9.3
-    "@types/node": ^18.0.3
-    "@types/react": ^18.0.17
-    "@types/react-dom": ^18.0.6
-    "@typescript-eslint/eslint-plugin": ^5.29.0
-    "@typescript-eslint/parser": ^5.29.0
-    concurrently: ^7.3.0
-    eslint: ^8.18.0
-    eslint-config-prettier: ^8.5.0
-    eslint-import-resolver-typescript: ^2.7.1
-    eslint-plugin-import: ^2.26.0
-    eslint-plugin-jsx-a11y: ^6.6.1
-    eslint-plugin-prettier: ^4.0.0
-    eslint-plugin-react: ^7.31.6
-    eslint-plugin-react-hooks: ^4.6.0
-    prettier: ^2.7.1
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    rimraf: ^3.0.2
-    ts-pattern: ^4.0.5
-    typescript: ^4.7.4
-  languageName: unknown
-  linkType: soft
-
 "@depromeet/path@workspace:shared/path":
   version: 0.0.0-use.local
   resolution: "@depromeet/path@workspace:shared/path"
