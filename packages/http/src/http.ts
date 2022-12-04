@@ -54,7 +54,6 @@ instance.interceptors.response.use(async function (error) {
       }
     } else if (res.data.message === 'error.invalid.refresh.token') {
       const router = useNextRouter();
-
       // refresh invalid한 경우 다시 로그인
       router.push('https://api.tokstudy.com/oauth2/authorize/kakao');
     }
