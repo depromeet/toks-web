@@ -1,19 +1,19 @@
-import { Button, Image } from '@depromeet/toks-components';
+import { Button, Image, Text } from '@depromeet/toks-components';
 import { Spacing } from '@toss/emotion-utils';
-import { Wrapper } from '../../../common/style';
-import { Text } from '@depromeet/toks-components';
 import { useRouter } from 'next/router';
+
+import { Wrapper } from '../../../common/style';
 
 export function Auth() {
   const params = new URLSearchParams(location.search);
-  let authToken = {
+  const authToken = {
     access: sessionStorage.getItem('accessToken'),
     refresh: sessionStorage.getItem('refreshToken'),
   };
   if (!authToken?.access) {
     // let { accessToken, refreshToken } = URLSearchParams<{ accessToken: string; refreshToken: string }>();
-    let accessToken = params.get('accessToken');
-    let refreshToken = params.get('refreshToken');
+    const accessToken = params.get('accessToken');
+    const refreshToken = params.get('refreshToken');
     console.log(accessToken);
     console.log(refreshToken);
     console.log(params);

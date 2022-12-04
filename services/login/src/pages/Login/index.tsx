@@ -1,6 +1,8 @@
 import { Text } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
+
 import { LoginBox } from 'Login/components/LoginBox';
+
 function Login() {
   return (
     <Flex.Center direction="column">

@@ -1,7 +1,7 @@
-import { Button, Image, Input } from '@depromeet/toks-components';
+import { Button, Image, Input, Text } from '@depromeet/toks-components';
 import { Spacing } from '@toss/emotion-utils';
+
 import { Wrapper } from 'common/style';
-import { Text } from '@depromeet/toks-components';
 
 export function NickNameBox() {
   return (

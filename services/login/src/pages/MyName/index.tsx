@@ -1,5 +1,6 @@
-import { Flex, Spacing } from '@toss/emotion-utils';
 import { Text } from '@depromeet/toks-components';
+import { Flex, Spacing } from '@toss/emotion-utils';
+
 import { NickNameBox } from 'MyName/components/NickNameBox';
 
 function MyName() {

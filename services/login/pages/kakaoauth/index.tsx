@@ -1,1 +1,1 @@
-export { default } from 'pages/kakaoauth';
+export { default } from 'pages/KakaoAuth';

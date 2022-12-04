@@ -1,13 +1,13 @@
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 import { ProgressSpinner } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
-function kakaoauth() {
+function KakaoAuth() {
   const router = useRouter();
+
   useEffect(() => {
-    // @ts-expect-error
-    const params = new URLSearchParams(location);
+    const params = new URLSearchParams(location.search);
     const accessToken = params.get('accessToken');
     const refreshToken = params.get('refreshToken');
 
@@ -33,4 +33,4 @@ function kakaoauth() {
   );
 }
 
-export default kakaoauth;
+export default KakaoAuth;
