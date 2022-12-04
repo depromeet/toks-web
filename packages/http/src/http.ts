@@ -1,29 +1,19 @@
 import axios from 'axios';
 import { useNextRouter } from '@toss/use-query-param';
 
-let authToken = {
+const authToken = {
   access: sessionStorage.getItem('accessToken'),
   refresh: sessionStorage.getItem('refreshToken'),
 };
 
 export function Auth() {
   const router = useNextRouter();
-
-  if (!authToken?.access) {
-    if (accessToken && refreshToken) {
-      sessionStorage.setItem('accessToken', accessToken);
-      sessionStorage.setItem('refreshToken', refreshToken);
-    }
-
-    if (authToken?.access) {
-      //accessToken이 없어서 쿼리에서 가져온 경우 닉네임 설정하는 페이지로 보내버리기
-      router.push('http://localhost:3000/login/myName');
-    }
-  } else if (authToken?.access) {
-    //accessToken이 있는 경우 home으로 리다이렉트
-    router.push('http://localhost:3000/home');
+  // 엑세스 토큰이 없는 경우 로그인 페이지로 라우팅
+  if (sessionStorage.getItem('accessToken') == null) {
+    router.push('https://api.tokstudy.com/oauth2/authorize/kakao');
   }
 }
+
 //axios instance
 export const instance = axios.create({
   baseURL: 'https://api.tokstudy.com',
@@ -49,8 +39,13 @@ instance.interceptors.request.use(
 
 //2. 응답 인터셉터
 instance.interceptors.response.use(function (error) {
-  /*
-    401에러인경우 
-        */
+  const prevRequest = error?.config;
+  if (error?.status === 401 && error?.data?.message === 'error.invalid.access.token') {
+    //리프레쉬 토큰 보내서 accesstoken 업데이트
+    const newAccessToken = '';
+    //@ts-ignore
+    error?.config?.headers['Authorization'] = $`${newAccessToken}`;
+  }
+
   return Promise.reject(error);
 });
