@@ -99,7 +99,7 @@ const isExistQuizToSolve = (openDate: Date, limitTime: string) => {
   return limitDate.getTime() <= currentDate.getTime();
 };
 
-export const AddButton = styled.button`
+const AddButton = styled.button`
   width: 982px;
   height: 54px;
   margin-bottom: 12px;
