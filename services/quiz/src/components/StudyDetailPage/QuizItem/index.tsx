@@ -1,7 +1,7 @@
 import { theme } from '@depromeet/theme';
 import { Button, Image, Text } from '@depromeet/toks-components';
 import { Divider } from 'components/common/Divider';
-import { Timer } from 'components/common/Timer';
+// import { Timer } from 'components/common/Timer';
 import { ComponentProps, useState, useEffect } from 'react';
 import { Item, ItemDetails, ItemHeader, ItemBody, FlexRow } from './style';
 
@@ -88,7 +88,8 @@ const getQuizItemType = (openDate: Date, limitDate : Date) => {
 export function QuizItem({ weekNumber, title, openDate, limitTime, creator, absentee } : QuizItemProps) {
   const limitDate = getLimitDate(openDate, limitTime);
   const [quizItemType, setQuizItemType] = useState(getQuizItemType(openDate, limitDate) as QuizStatus);
-  const [timer, useTimer] = useState((quizItemType === "default")? "00:00:00" : limitTime)
+  const [timer, setTimer] = useState((quizItemType === "default")? "00:00:00" : limitTime);
+  const [test, setTest] = useState("ddd");
 
   useEffect(() => {
     const interval = setInterval(
@@ -98,7 +99,7 @@ export function QuizItem({ weekNumber, title, openDate, limitTime, creator, abse
     );
 
     return () => clearInterval(interval);
-  });
+  }); 
 
   return (
     <Item css={{backgroundColor: theme.colors.gray110}}>

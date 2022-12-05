@@ -36,14 +36,14 @@ export function QuizList() {
       <QuizItem
         weekNumber={3}
         title='퀴즈가 진행되고 있는 스터디 입니다'
-        openDate={new Date('2022-12-04 04:00:00')}
+        openDate={new Date('2022-12-05 14:24:00')}
         limitTime='02:00:00'
         creator={creator}
         absentee={absentee}/>
       <QuizItem
         weekNumber={2}
         title='곧 퀴즈가 시작되는 스터디 입니다'
-        openDate={new Date('2022-12-04 05:10:00')}
+        openDate={new Date('2022-12-06 05:10:00')}
         limitTime='02:15:00'
         creator={creator}
         absentee={absentee}/>
