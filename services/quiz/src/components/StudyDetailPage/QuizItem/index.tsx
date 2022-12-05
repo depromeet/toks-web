@@ -45,21 +45,6 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
   },
 };
 
-// const getRemainerPeriod = (endDate, today) =>
-//   endDate.getTime() - today.getTime();
-
-// const getObjectRemainderPeriod = (time) => {
-//   const day = parseInt(time / (1000 * 60 * 60 * 24));
-//   time -= day * (1000 * 60 * 60 * 24);
-//   const hour = parseInt(time / (1000 * 60 * 60));
-//   time -= hour * (1000 * 60 * 60);
-//   const minute = parseInt(time / (1000 * 60));
-//   time -= minute * (1000 * 60);
-//   const second = parseInt(time / 1000);
-
-//   return { day, hour, minute, second };
-// };
-
 const parseTimeStr = (timeStr : string) => [...timeStr.split(":").map(Number)];
 
 const getLimitDate = (openDate : Date, limitTime : string) => {
@@ -81,21 +66,46 @@ const getQuizItemType = (openDate: Date, limitDate : Date) => {
   } else {
     return "activated";
   }
-}  
-  
+}
+
+const getTimerByQuizType = (quizItemType : QuizStatus, limitTime : string, endDate : Date) => {
+  if (quizItemType === "default") {
+    return "00:00:00";
+  } else if (quizItemType === "disabled") {
+    return limitTime;
+  } else {
+    return calculateRemainingTimerValue(endDate);
+  }
+}
+
+const convertTimeFormat = (num : number) => (num < 10)? `0${num}` : num;
+
+const calculateRemainingTimerValue = (limitDate : Date) => {
+  let remainingTime = limitDate.getTime() - (new Date()).getTime();
+
+  const day = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+  remainingTime -= day * (1000 * 60 * 60 * 24);
+  const hour = Math.floor(remainingTime / (1000 * 60 * 60));
+  remainingTime -= hour * (1000 * 60 * 60);
+  const minute = Math.floor(remainingTime / (1000 * 60));
+  remainingTime -= minute * (1000 * 60);
+  const second = Math.floor(remainingTime / 1000);
+
+  return `${convertTimeFormat(hour)}:${convertTimeFormat(minute)}:${convertTimeFormat(second)}`;
+}
 
 // TODO: 아이콘들 Image로 되어있는것 추후 Icon 컴포넌트로 변경해야 함
 export function QuizItem({ weekNumber, title, openDate, limitTime, creator, absentee } : QuizItemProps) {
   const limitDate = getLimitDate(openDate, limitTime);
   const [quizItemType, setQuizItemType] = useState(getQuizItemType(openDate, limitDate) as QuizStatus);
-  const [timer, setTimer] = useState((quizItemType === "default")? "00:00:00" : limitTime);
-  const [test, setTest] = useState("ddd");
+  const [timer, setTimer] = useState(getTimerByQuizType(quizItemType, limitTime, limitDate));
 
   useEffect(() => {
     const interval = setInterval(
-      () =>
-        setQuizItemType(getQuizItemType(openDate, limitDate))
-      ,1000
+      () => {
+        setQuizItemType(getQuizItemType(openDate, limitDate));
+        setTimer(getTimerByQuizType(quizItemType, limitTime, limitDate));
+      }, 1000
     );
 
     return () => clearInterval(interval);
