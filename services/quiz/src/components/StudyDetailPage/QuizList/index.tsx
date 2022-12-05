@@ -52,13 +52,12 @@ interface QuizItem {
   absentee: User[];
 }
 
-// TODO: 퀴즈 리스트 타입을 API Response에 맞추어 변경해야함
 const quizList: QuizItem[] = [
   {
     quizId: 33,
     weekNumber: 3,
     title: '퀴즈가 진행되고 있는 스터디 입니다',
-    openDate: new Date('2022-12-06 00:30:00'),
+    openDate: new Date('2022-12-06 01:25:00'),
     limitTime: '02:00:00',
     creator,
     absentee,

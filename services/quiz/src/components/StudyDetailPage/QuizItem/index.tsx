@@ -103,6 +103,7 @@ const calculateRemainingTimerValue = (limitDate: Date) => {
 // TODO: 아이콘들 Image로 되어있는것 추후 Icon 컴포넌트로 변경해야 함
 // TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
 // TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
+// TODO: 버튼의 disabled 상태 추가해야 함
 export function QuizItem({
   index,
   weekNumber,
@@ -116,6 +117,7 @@ export function QuizItem({
   const limitDate = getLimitDate(openDate, limitTime);
   const [quizItemType, setQuizItemType] = useState(getQuizItemType(openDate, limitDate) as QuizStatus);
   const [timer, setTimer] = useState(quizItemType === 'default' ? '00:00:00' : limitTime); //useState(getTimerByQuizType(quizItemType, limitTime, limitDate));
+  const [isFold, setIsFold] = useState(quizItemType !== 'default');
 
   // TODO: Avatar 적용해야 함...
   creator;
@@ -133,9 +135,11 @@ export function QuizItem({
     return () => clearInterval(interval);
   });
 
+  const onFold = () => setIsFold(!isFold);
+
   return (
     <Item css={{ backgroundColor: theme.colors.gray110 }}>
-      <ItemDetails>
+      <ItemDetails open={isFold} onToggle={onFold}>
         <ItemHeader>
           <Text variant="subhead" css={{ margin: '0' }} as="h6">
             {weekNumber}회차
@@ -146,13 +150,23 @@ export function QuizItem({
           <Button type={QUIZ_ITEM_COLOR[quizItemType].button} size="medium">
             똑스 확인하기
           </Button>
-          <Image
-            width={16}
-            height={9}
-            src="https://toks-web-assets.s3.amazonaws.com/ic-bottom-chevron.svg"
-            alt="펼치기 버튼 입니다."
-            css={{ marginLeft: '24px' }}
-          />
+          {isFold ? (
+            <Image
+              width={16}
+              height={9}
+              src="https://toks-web-assets.s3.amazonaws.com/ic-chevron-top.svg"
+              alt="닫기 버튼 입니다."
+              css={{ marginLeft: '24px' }}
+            />
+          ) : (
+            <Image
+              width={16}
+              height={9}
+              src="https://toks-web-assets.s3.amazonaws.com/ic-bottom-chevron.svg"
+              alt="펼치기 버튼 입니다."
+              css={{ marginLeft: '24px' }}
+            />
+          )}
         </ItemHeader>
         <ItemBody>
           <FlexRow css={{ marginTop: '36px' }}>
