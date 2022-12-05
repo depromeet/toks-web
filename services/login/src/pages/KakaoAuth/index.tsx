@@ -15,6 +15,7 @@ function KakaoAuth() {
       sessionStorage.setItem('accessToken', accessToken);
       sessionStorage.setItem('refreshToken', refreshToken);
     }
+
     // TODO: axios package 업로드 이후 수정 예정
     //닉네임 조회 이후
     //if (toksname ==null) 인 경우
