@@ -16,7 +16,9 @@ export const Banner = () => {
       <Text variant="title01" color="white">
         개발자를 위한 스터디, 똑스-잇!
       </Text>
-      <Button type="general">똑스 로그인</Button>
+      <Button type="general" width={200} size="large">
+        똑스 로그인
+      </Button>
     </Flex>
   );
 };
