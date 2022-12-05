@@ -1,4 +1,5 @@
 import { BackButton, ToksHeader } from '@depromeet/toks-components';
+
 import { QuizList } from 'components/StudyDetailPage/QuizList';
 import { Ranking } from 'components/StudyDetailPage/Ranking';
 import { StudyInfo } from 'components/StudyDetailPage/StudyInfo';
@@ -17,7 +18,7 @@ export default function StudyDetailPage() {
           <StudyInfo />
           <StudyProgress />
           <Ranking />
-          <QuizList/>
+          <QuizList />
         </Wrapper>
       </Section>
     </Page>
