@@ -1,7 +1,6 @@
 import { theme } from '@depromeet/theme';
 import { Button, Image, Text } from '@depromeet/toks-components';
 import { Divider } from 'components/common/Divider';
-// import { Timer } from 'components/common/Timer';
 import { ComponentProps, useState, useEffect } from 'react';
 import { Item, ItemDetails, ItemHeader, ItemBody, FlexRow } from './style';
 
@@ -68,13 +67,13 @@ const getQuizItemType = (openDate: Date, limitDate : Date) => {
   }
 }
 
-const getTimerByQuizType = (quizItemType : QuizStatus, limitTime : string, endDate : Date) => {
+const getTimerByQuizType = (quizItemType : QuizStatus, limitTime : string, limitDate : Date) => {
   if (quizItemType === "default") {
     return "00:00:00";
   } else if (quizItemType === "disabled") {
     return limitTime;
   } else {
-    return calculateRemainingTimerValue(endDate);
+    return calculateRemainingTimerValue(limitDate);
   }
 }
 
@@ -98,10 +97,11 @@ const calculateRemainingTimerValue = (limitDate : Date) => {
 }
 
 // TODO: 아이콘들 Image로 되어있는것 추후 Icon 컴포넌트로 변경해야 함
+// TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
 export function QuizItem({ weekNumber, title, openDate, limitTime, creator, absentee } : QuizItemProps) {
   const limitDate = getLimitDate(openDate, limitTime);
   const [quizItemType, setQuizItemType] = useState(getQuizItemType(openDate, limitDate) as QuizStatus);
-  const [timer, setTimer] = useState(getTimerByQuizType(quizItemType, limitTime, limitDate));
+  const [timer, setTimer] = useState((quizItemType === "default")? "00:00:00" : limitTime)//useState(getTimerByQuizType(quizItemType, limitTime, limitDate));
 
   useEffect(() => {
     const interval = setInterval(
@@ -126,7 +126,6 @@ export function QuizItem({ weekNumber, title, openDate, limitTime, creator, abse
         <ItemBody>
           <FlexRow css={{marginTop: '36px'}}>
             <Image width={20.17} height={20.17} src='https://toks-web-assets.s3.amazonaws.com/ic-timer.svg' alt='펼치기 버튼 입니다.' css={{marginLeft: '3.2px'}}/>
-            {/* <Timer quizItemType={quizItemType} limitTime={limitTime} css={{margin: '0 0 0 9.2px'}}/> */}
             <Text variant='title04' color={QUIZ_ITEM_COLOR[quizItemType].timer} css={{margin: '0 0 0 9.2px'}} as='h4'>{timer}</Text>
           </FlexRow>
           <Divider css={{marginTop: '22.25px'}}/>
