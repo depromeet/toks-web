@@ -36,7 +36,7 @@ export function QuizList() {
       <QuizItem
         weekNumber={3}
         title='퀴즈가 진행되고 있는 스터디 입니다'
-        openDate={new Date('2022-12-05 15:43:00')}
+        openDate={new Date('2022-12-05 16:00:00')}
         limitTime='02:00:00'
         creator={creator}
         absentee={absentee}/>

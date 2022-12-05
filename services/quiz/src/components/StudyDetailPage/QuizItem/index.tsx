@@ -82,6 +82,9 @@ const convertTimeFormat = (num : number) => (num < 10)? `0${num}` : num;
 
 const calculateRemainingTimerValue = (limitDate : Date) => {
   let remainingTime = limitDate.getTime() - (new Date()).getTime();
+  if (remainingTime <= 0) {
+    return "00:00:00";
+  }
 
   const day = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
   remainingTime -= day * (1000 * 60 * 60 * 24);
