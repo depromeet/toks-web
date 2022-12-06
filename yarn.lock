@@ -1526,6 +1526,38 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@depromeet/http@workspace:packages/http":
+  version: 0.0.0-use.local
+  resolution: "@depromeet/http@workspace:packages/http"
+  dependencies:
+    "@emotion/css": ^11.9.0
+    "@emotion/react": ^11.9.3
+    "@emotion/styled": ^11.9.3
+    "@toss/use-query-param": ^1.1.2
+    "@types/node": ^18.0.3
+    "@types/react": ^18.0.17
+    "@types/react-dom": ^18.0.6
+    "@typescript-eslint/eslint-plugin": ^5.29.0
+    "@typescript-eslint/parser": ^5.29.0
+    axios: ^1.2.0
+    concurrently: ^7.3.0
+    eslint: ^8.18.0
+    eslint-config-prettier: ^8.5.0
+    eslint-import-resolver-typescript: ^2.7.1
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: ^6.6.1
+    eslint-plugin-prettier: ^4.0.0
+    eslint-plugin-react: ^7.31.6
+    eslint-plugin-react-hooks: ^4.6.0
+    prettier: ^2.7.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    rimraf: ^3.0.2
+    ts-pattern: ^4.0.5
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
+
 "@depromeet/path@workspace:shared/path":
   version: 0.0.0-use.local
   resolution: "@depromeet/path@workspace:shared/path"
@@ -2403,6 +2435,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remix-run/router@npm:1.0.4":
+  version: 1.0.4
+  resolution: "@remix-run/router@npm:1.0.4"
+  checksum: db6b1e111fb6e7e22c3d274bd6cef3054a0a989245894fde5735efd9cb46d18511e528e813ff50bcbdd7eda1c559f4e76e9d0c54396624e33396168d80b09c42
+  languageName: node
+  linkType: hard
+
 "@services/home@workspace:services/home":
   version: 0.0.0-use.local
   resolution: "@services/home@workspace:services/home"
@@ -2442,6 +2481,52 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     react-query: "npm:@tanstack/react-query@4.0.10"
+    ts-pattern: ^4.0.5
+    ts-prune: ^0.10.3
+    typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
+
+"@services/login@workspace:services/login":
+  version: 0.0.0-use.local
+  resolution: "@services/login@workspace:services/login"
+  dependencies:
+    "@configs/babel": "workspace:configs/babel"
+    "@configs/next": "workspace:configs/next"
+    "@depromeet/theme": ^0.0.1
+    "@depromeet/toks-components": "workspace:shared/toks-components"
+    "@emotion/css": ^11.9.0
+    "@emotion/react": ^11.9.3
+    "@emotion/styled": ^11.9.3
+    "@toss/assert": ^1.1.0
+    "@toss/emotion-utils": ^1.1.3
+    "@toss/error-boundary": ^1.1.0
+    "@toss/react": ^1.3.0
+    "@toss/react-query": ^1.1.0
+    "@toss/use-overlay": ^1.1.0
+    "@toss/use-query-param": ^1.1.2
+    "@types/node": 18.11.9
+    "@types/react": ^18.0.17
+    "@types/react-dom": ^18.0.6
+    "@typescript-eslint/eslint-plugin": ^5.29.0
+    "@typescript-eslint/parser": ^5.29.0
+    axios: ^0.27.2
+    date-fns: ^2.29.3
+    emotion-normalize: ^11.0.1
+    eslint: ^8.23.0
+    eslint-config-prettier: ^8.5.0
+    eslint-import-resolver-typescript: ^2.7.1
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: ^6.6.1
+    eslint-plugin-prettier: ^4.2.1
+    eslint-plugin-react: ^7.31.6
+    eslint-plugin-react-hooks: ^4.6.0
+    next: ^12.2.5
+    prettier: ^2.7.1
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    react-query: "npm:@tanstack/react-query@4.0.10"
+    react-router-dom: ^6.4.4
     ts-pattern: ^4.0.5
     ts-prune: ^0.10.3
     typescript: ^4.7.4
@@ -2731,6 +2816,17 @@ __metadata:
   peerDependencies:
     react: ^16.8 || ^17 || ^18
   checksum: f35831d21ea753b60fe966c6aae5fbaee9890d7c5130793e27ac3d1eeaf4ee7c1a765c827a803ff8d252f81534626bb728d113e2f1c7402721e64798b00af171
+  languageName: node
+  linkType: hard
+
+"@toss/use-query-param@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "@toss/use-query-param@npm:1.1.2"
+  peerDependencies:
+    next: ^11.1 || ^12
+    react: ^16.8 || ^17 || ^18
+    react-dom: ^16.8 || ^17 || ^18
+  checksum: 6fa456484ce8fb7de9e685afdf1523e94cfeddc289ecbae370798f6ab6439c223d5cbca0a7c65a2198e4153ffedf8e727354cbfe79ee3754a07eddf13e927829
   languageName: node
   linkType: hard
 
@@ -3758,6 +3854,17 @@ __metadata:
     follow-redirects: ^1.14.9
     form-data: ^4.0.0
   checksum: 38cb7540465fe8c4102850c4368053c21683af85c5fdf0ea619f9628abbcb59415d1e22ebc8a6390d2bbc9b58a9806c874f139767389c862ec9b772235f06854
+  languageName: node
+  linkType: hard
+
+"axios@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "axios@npm:1.2.0"
+  dependencies:
+    follow-redirects: ^1.15.0
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: f08ce214e957dfde45b837f8d3c7861424608fb7df32faa638835e338782a9f4c0b05074e92e0e8dcca3a1e6250112fbbe1b15a6b21104da633d84745bbb79cc
   languageName: node
   linkType: hard
 
@@ -5555,7 +5662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.14.9":
+"follow-redirects@npm:^1.14.9, follow-redirects@npm:^1.15.0":
   version: 1.15.2
   resolution: "follow-redirects@npm:1.15.2"
   peerDependenciesMeta:
@@ -7993,6 +8100,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"proxy-from-env@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "proxy-from-env@npm:1.1.0"
+  checksum: ed7fcc2ba0a33404958e34d95d18638249a68c430e30fcb6c478497d72739ba64ce9810a24f53a7d921d0c065e5b78e3822759800698167256b04659366ca4d4
+  languageName: node
+  linkType: hard
+
 "punycode@npm:1.3.2":
   version: 1.3.2
   resolution: "punycode@npm:1.3.2"
@@ -8082,6 +8196,30 @@ __metadata:
     react-native:
       optional: true
   checksum: b5f7501f977f4262fe80e510f5d58f3b49163ff7232603a839b7184431db7309c38ab55c5856a9d31a3c5219dd5031f9174e9dfcc78408300d0424b3000b9034
+  languageName: node
+  linkType: hard
+
+"react-router-dom@npm:^6.4.4":
+  version: 6.4.4
+  resolution: "react-router-dom@npm:6.4.4"
+  dependencies:
+    "@remix-run/router": 1.0.4
+    react-router: 6.4.4
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 95f31ae84979b404db7483309e1063fbf724046103dc8b7be7e6df79f7b81e4e63dcdb587f11d8be38e3aaf62b71f9e0d83344ef8d8c5e962de7819c793de781
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.4.4":
+  version: 6.4.4
+  resolution: "react-router@npm:6.4.4"
+  dependencies:
+    "@remix-run/router": 1.0.4
+  peerDependencies:
+    react: ">=16.8"
+  checksum: d82cc8b8bdf10e02e07d089f9d82987fa161c2f07583c973126f5f8a052c02b3d2339891ddbda1738f877755a407e2c35f0dc1ac52aaa1d2c853774d19753ea7
   languageName: node
   linkType: hard
 
