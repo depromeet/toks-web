@@ -1,6 +1,6 @@
 {
-  "name": "@depromeet/toks-components",
-  "description": "toks components",
+  "name": "@depromeet/path",
+  "description": "toks path",
   "main": "src/index.ts",
   "module": "src/index.ts",
   "sideEffects": false,
@@ -12,18 +12,10 @@
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "@depromeet/theme": "0.0.1",
-    "@emotion/css": "^11.9.0",
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@toss/emotion-utils": "1.1.3",
-    "@toss/react": "^1.3.3",
     "@types/node": "^18.0.3",
-    "@types/react": "^18.0.25",
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "concurrently": "^7.3.0",
-    "emotion-normalize": "^11.0.1",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^2.7.1",
@@ -36,12 +28,5 @@
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "axios": "^0.27.2",
-    "primeicons": "^6.0.1",
-    "primereact": "^8.7.2",
-    "react": "^17.0.0 || ^18.0.0",
-    "react-dom": "^17.0.0 || ^18.0.0"
   }
 }
