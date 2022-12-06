@@ -32,7 +32,13 @@ module.exports = {
       },
       loader: 'next-swc-loader',
     });
-    config.resolve.modules.push(__dirname);
+
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ['@svgr/webpack'],
+    });
+
     return config;
   },
 };
