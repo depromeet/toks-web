@@ -15,13 +15,10 @@ export function Tag({ color = 'normal', ...restProps }: TagProps) {
         background: color === 'highlight' ? 'rgba(255, 134, 47, 0.2)' : theme.colors.gray080,
         color: color === 'highlight' ? theme.colors.primary : theme.colors.gray020,
         padding: '4px 12px',
-        maxWidth: '100px',
+        width: 'fit-content',
         height: '28px',
         borderRadius: '8px',
-        textOverflow: 'ellipsis',
-        overflow: 'hidden',
         whiteSpace: 'nowrap',
-        display: 'inline-block',
       }}
       role="listitem"
       {...restProps}

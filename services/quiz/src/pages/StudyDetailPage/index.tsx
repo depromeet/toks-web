@@ -1,4 +1,4 @@
-import { BackButton, ToksHeader } from '@depromeet/toks-components';
+import { BackButton, ToksHeader, UserAvatar } from '@depromeet/toks-components';
 
 import { QuizList } from 'components/StudyDetailPage/QuizList';
 import { Ranking } from 'components/StudyDetailPage/Ranking';

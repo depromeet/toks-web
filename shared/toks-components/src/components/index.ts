@@ -6,22 +6,20 @@ export * from './SSRSuspense';
 
 export * from 'primereact/accordion';
 export * from 'primereact/autocomplete';
-export * from 'primereact/avatar';
-export * from 'primereact/avatargroup';
+export * from './UserAvatar';
 
 export * from 'primereact/badge';
 export * from 'primereact/blockui';
 export * from 'primereact/breadcrumb';
 export * from './Button';
 
-export * from 'primereact/calendar';
+export * from './Calendar';
 export * from 'primereact/captcha';
 export * from 'primereact/card';
 export * from 'primereact/carousel';
 export * from 'primereact/cascadeselect';
 export * from 'primereact/checkbox';
-export * from 'primereact/chip';
-export * from 'primereact/chips';
+export * from './InputChips';
 export * from 'primereact/colorpicker';
 export * from 'primereact/column';
 export * from 'primereact/columngroup';
@@ -49,7 +47,7 @@ export * from 'primereact/inplace';
 export * from 'primereact/inputmask';
 export * from 'primereact/inputnumber';
 export * from 'primereact/inputswitch';
-export * from 'primereact/inputtext';
+export * from './Input';
 export * from 'primereact/inputtextarea';
 
 export * from 'primereact/keyfilter';
@@ -107,7 +105,7 @@ export * from 'primereact/timeline';
 export * from 'primereact/toast';
 export * from 'primereact/togglebutton';
 export * from 'primereact/toolbar';
-export * from 'primereact/tooltip';
+export * from './Tooltip';
 export * from 'primereact/tree';
 export * from 'primereact/treeselect';
 export * from 'primereact/treetable';
