@@ -29,7 +29,7 @@ function StudyCard({ title, tags, onClick, memberCount, studyId }: Props) {
 
   return (
     <Card>
-      <Text size={14} weight={400} color={theme.colors.gray050} css={{ lineHeight: '20px', alignSelf: 'flex-end' }}>
+      <Text size={14} weight={400} color={'gray050'} css={{ lineHeight: '20px', alignSelf: 'flex-end' }}>
         {memberCount}명 입장
       </Text>
 

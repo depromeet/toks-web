@@ -13,8 +13,10 @@ type ButtonStatus = 'normal' | 'hover' | 'disabled';
 
 interface Props extends Omit<BaseButtonProps, 'type'> {
   type?: ButtonType;
+  width?: number;
   htmlType?: BaseButtonProps['type'];
   size?: ButtonSize;
+  buttonStyle?: React.CSSProperties;
 }
 
 type ButtonColorMap = {
@@ -48,24 +50,25 @@ const BUTTOON_TEXT_COLOR: { [key in ButtonType]: string } = {
 };
 
 const BUTTON_HEIGHT: { [key in ButtonSize]: string } = {
-  large: '64px',
+  large: '54px',
   medium: '46px',
 };
 
 // TODO: 다크 모드 대응
-export function Button({ type = 'primary', size = 'medium', disabled, htmlType, ...rest }: Props) {
+export function Button({ type = 'primary', width, size = 'medium', disabled, htmlType, buttonStyle, ...rest }: Props) {
   return (
     <StyledBaseButton
       // TODO: inline style로 적용한 부분 제외하기
       style={{
         background: BUTTON_COLOR[disabled ? 'disabled' : 'normal'][type],
         borderRadius: '32px',
-        width: '224px',
+        width: width ?? '100%',
         height: BUTTON_HEIGHT[size],
         border: type !== 'ghost' ? 'none' : '1px solid #A5A5A5',
         color: BUTTOON_TEXT_COLOR[type],
         fontWeight: '700',
         fontSize: '16px',
+        ...buttonStyle,
       }}
       buttontype={type}
       type={htmlType}
