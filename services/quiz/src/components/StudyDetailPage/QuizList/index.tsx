@@ -119,7 +119,7 @@ const QuizAddButton = () => (
       src="https://toks-web-assets.s3.amazonaws.com/ic-plus.svg"
       alt="퀴즈 추가 버튼 입니다."
     />
-    <Text variant="headline" color={theme.colors.gray010} css={{ margin: '0 0 0 10px' }} as="h5">
+    <Text variant="headline" color='gray010' css={{ margin: '0 0 0 10px' }} as="h5">
       똑스 만들기
     </Text>
   </AddButton>

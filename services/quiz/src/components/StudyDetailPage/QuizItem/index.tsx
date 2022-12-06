@@ -29,22 +29,22 @@ type QuizStatus = 'default' | 'disabled' | 'activated';
 type QuizItemColorMap = {
   [key in QuizStatus]: {
     button: ComponentProps<typeof Button>['type'];
-    timer: string;
+    timer:  ComponentProps<typeof Text>['color'];
   };
 };
 
 const QUIZ_ITEM_COLOR: QuizItemColorMap = {
   default: {
     button: 'general',
-    timer: `${theme.colors.gray060}`,
+    timer: "gray060",
   },
   disabled: {
     button: 'primary',
-    timer: `${theme.colors.primary}`,
+    timer: 'primary',
   },
   activated: {
     button: 'primary',
-    timer: `${theme.colors.primary}`,
+    timer: 'primary',
   },
 };
 
