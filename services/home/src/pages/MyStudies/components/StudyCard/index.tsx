@@ -86,7 +86,7 @@ function Plus({ onClick }: { onClick: () => void }) {
       <Flex.Center css={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: theme.colors.gray090 }}>
         <i className="pi pi-plus" style={{ fontSize: '36px', color: theme.colors.white }} />
       </Flex.Center>
-      <Text variant="headline" color={theme.colors.gray070}>
+      <Text variant="headline" color="gray070">
         스터디 만들기
       </Text>
     </Card>
