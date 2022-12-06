@@ -23,7 +23,6 @@ export function Text({
   children,
   variant,
   as = 'span',
-
   ...rest
 }: TextProps) {
   return (
