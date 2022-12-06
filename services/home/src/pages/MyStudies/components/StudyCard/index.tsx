@@ -1,7 +1,7 @@
 import { theme } from '@depromeet/theme';
 import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
-import { Spacing, padding, width100 } from '@toss/emotion-utils';
+import { Spacing, padding, width100, Flex } from '@toss/emotion-utils';
 import { useSuspendedQuery } from '@toss/react-query';
 import { useMutation } from 'react-query';
 
@@ -17,8 +17,8 @@ interface Props extends Pick<Study, 'title' | 'tags'> {
 }
 
 const IMG_MAP = {
-  sleep: 'https://asset.tokstudy.com/sleep-yellow-emoji.png',
-  awake: 'https://asset.tokstudy.com/awake-yellow-emoji.png',
+  sleep: 'https://asset.tokstudy.com/character-sleep.png',
+  awake: 'https://asset.tokstudy.com/character-base-1.png',
 } as const;
 
 function StudyCard({ title, tags, onClick, memberCount, studyId }: Props) {
@@ -35,7 +35,14 @@ function StudyCard({ title, tags, onClick, memberCount, studyId }: Props) {
 
       <Spacing size={12} />
 
-      <Image src={hasNewQuiz ? IMG_MAP.awake : IMG_MAP.sleep} alt="" draggable={false} width={90} height={90} />
+      <Image
+        src={hasNewQuiz ? IMG_MAP.awake : IMG_MAP.sleep}
+        alt=""
+        draggable={false}
+        width={84}
+        height={84}
+        css={{ scale: '195%' }}
+      />
 
       <Spacing size={24} />
 
@@ -65,6 +72,27 @@ function StudyCard({ title, tags, onClick, memberCount, studyId }: Props) {
   );
 }
 
+function Plus({ onClick }: { onClick: () => void }) {
+  return (
+    <Card
+      css={{
+        justifyContent: 'center',
+        gap: '18px',
+        boxShadow: 'none',
+        border: 'none',
+      }}
+      onClick={onClick}
+    >
+      <Flex.Center css={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: theme.colors.gray090 }}>
+        <i className="pi pi-plus" style={{ fontSize: '36px', color: theme.colors.white }} />
+      </Flex.Center>
+      <Text variant="headline" color={theme.colors.gray070}>
+        스터디 만들기
+      </Text>
+    </Card>
+  );
+}
+
 const Card = styled.li`
   position: relative;
   min-width: 280px;
@@ -78,9 +106,17 @@ const Card = styled.li`
   border: 1px solid ${theme.colors.gray100};
   border-radius: 32px;
 
+  &:hover {
+    cursor: pointer;
+    transform: scale(102%);
+  }
+
+  transition: transform 100ms ease-in-out;
+
   ${theme.shadows.book01}
 `;
 
+StudyCard.Plus = Plus;
 StudyCard.Skeleton = Card;
 
 export default StudyCard;
