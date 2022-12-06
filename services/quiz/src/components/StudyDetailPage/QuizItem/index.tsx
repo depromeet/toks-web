@@ -147,7 +147,7 @@ export function QuizItem({
           <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
             {title}
           </Text>
-          <Button type={QUIZ_ITEM_COLOR[quizItemType].button} size="medium">
+          <Button type={QUIZ_ITEM_COLOR[quizItemType].button} width={140} size="medium">
             똑스 확인하기
           </Button>
           {isFold ? (
