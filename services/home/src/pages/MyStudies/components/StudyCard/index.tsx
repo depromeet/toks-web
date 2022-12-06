@@ -1,7 +1,7 @@
 import { theme } from '@depromeet/theme';
 import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
-import { Spacing, padding, width100, Flex } from '@toss/emotion-utils';
+import { Flex, Spacing, padding, width100 } from '@toss/emotion-utils';
 import { useSuspendedQuery } from '@toss/react-query';
 import { useMutation } from 'react-query';
 
