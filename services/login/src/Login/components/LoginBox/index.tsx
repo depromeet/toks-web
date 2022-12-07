@@ -1,7 +1,7 @@
 import { Button, Image, Text, emoji } from '@depromeet/toks-components';
-
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
+
 import { Wrapper } from '../../../common/style';
 
 export function LoginBox() {
