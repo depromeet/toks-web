@@ -57,7 +57,7 @@ const quizList: QuizItem[] = [
     quizId: 33,
     weekNumber: 3,
     title: '퀴즈가 진행되고 있는 스터디 입니다',
-    openDate: new Date('2022-12-06 01:25:00'),
+    openDate: new Date('2022-12-07 17:21:00'),
     limitTime: '02:00:00',
     creator,
     absentee,
@@ -126,7 +126,6 @@ const QuizAddButton = () => (
 );
 
 export function QuizList() {
-  const isEmptyQuizList = quizList.length === 0;
   const firstQuizItem = quizList[0];
   const [addQuizState, setAddQuizState] = useState(
     firstQuizItem && isExistQuizToSolve(firstQuizItem.openDate, firstQuizItem.limitTime)
@@ -134,22 +133,22 @@ export function QuizList() {
 
   return (
     <List>
-      <li>{isEmptyQuizList || addQuizState ? QuizAddButton() : null}</li>
-      {isEmptyQuizList
-        ? null
-        : quizList.map((quizItem, index) => (
-            <QuizItem
-              key={quizItem.quizId}
-              index={index}
-              weekNumber={quizItem.weekNumber}
-              title={quizItem.title}
-              openDate={quizItem.openDate}
-              limitTime={quizItem.limitTime}
-              creator={quizItem.creator}
-              absentee={quizItem.absentee}
-              setAddQuizState={setAddQuizState}
-            />
-          ))}
+      <li>{addQuizState? QuizAddButton() : null}</li>
+      {firstQuizItem
+        ? quizList.map((quizItem, index) => (
+          <QuizItem
+            key={quizItem.quizId}
+            index={index}
+            weekNumber={quizItem.weekNumber}
+            title={quizItem.title}
+            openDate={quizItem.openDate}
+            limitTime={quizItem.limitTime}
+            creator={quizItem.creator}
+            absentee={quizItem.absentee}
+            setAddQuizState={setAddQuizState}
+          />
+        ))
+        : null }
     </List>
   );
 }
