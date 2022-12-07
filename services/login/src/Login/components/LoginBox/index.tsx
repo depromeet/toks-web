@@ -15,7 +15,7 @@ export function LoginBox() {
     <Wrapper>
       <Flex.Center direction="column">
         <Image src={emoji.studying} width={170} height={170} alt="toks-emoji" />
-        <Spacing size={15} />
+        <Spacing size={10} />
         <Text variant="title04">개발자를 위한 스터디, 똑스-잇!</Text>
       </Flex.Center>
       <Spacing size={93} />

@@ -19,11 +19,18 @@ export const useCreateNicknameForm = () => {
   const isMaxLength = useCallback((maxLength: number) => {
     return {
       value: maxLength,
-      message: `${maxLength}자 이내로 입력해주세요.`,
+      message: `닉네임은 2-${maxLength}글자여야 합니다.`,
     };
   }, []);
 
-  const isRequiredText = useCallback((text: string) => `${text}을 입력해주세요.`, []);
+  const isMinLength = useCallback((minLength: number) => {
+    return {
+      value: minLength,
+      message: `닉네임은 ${minLength}-10글자여야 합니다.`,
+    };
+  }, []);
+
+  const isRequiredText = useCallback(() => '닉네임은 2-10글자여야 합니다.', []);
 
   return {
     register,
@@ -33,6 +40,7 @@ export const useCreateNicknameForm = () => {
     control,
     isDisabled,
     isMaxLength,
+    isMinLength,
     isRequiredText,
   };
 };
