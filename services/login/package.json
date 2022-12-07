@@ -28,7 +28,7 @@
     "@toss/react-query": "^1.1.0",
     "@toss/use-overlay": "^1.1.0",
     "@toss/use-query-param": "^1.1.2",
-    "axios": "^0.27.2",
+    "axios": "^1.2.1",
     "date-fns": "^2.29.3",
     "emotion-normalize": "^11.0.1",
     "next": "^12.2.5",
