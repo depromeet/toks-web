@@ -57,7 +57,7 @@ const quizList: QuizItem[] = [
     quizId: 33,
     weekNumber: 3,
     title: '퀴즈가 진행되고 있는 스터디 입니다',
-    openDate: new Date('2022-12-07 17:21:00'),
+    openDate: new Date('2022-12-07 17:45:00'),
     limitTime: '02:00:00',
     creator,
     absentee,
@@ -139,12 +139,7 @@ export function QuizList() {
           <QuizItem
             key={quizItem.quizId}
             index={index}
-            weekNumber={quizItem.weekNumber}
-            title={quizItem.title}
-            openDate={quizItem.openDate}
-            limitTime={quizItem.limitTime}
-            creator={quizItem.creator}
-            absentee={quizItem.absentee}
+            {...quizItem}
             setAddQuizState={setAddQuizState}
           />
         ))

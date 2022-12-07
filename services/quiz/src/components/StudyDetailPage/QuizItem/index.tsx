@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { Button, Image, Text } from '@depromeet/toks-components';
+import { Button, Image, Text, UserAvatar } from '@depromeet/toks-components';
 import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { Divider } from 'components/common/Divider';
@@ -103,7 +103,6 @@ const calculateRemainingTimerValue = (limitDate: Date) => {
 // TODO: 아이콘들 Image로 되어있는것 추후 Icon 컴포넌트로 변경해야 함
 // TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
 // TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
-// TODO: 버튼의 disabled 상태 추가해야 함
 export function QuizItem({
   index,
   weekNumber,
@@ -116,10 +115,9 @@ export function QuizItem({
 }: QuizItemProps) {
   const limitDate = getLimitDate(openDate, limitTime);
   const [quizItemType, setQuizItemType] = useState(getQuizItemType(openDate, limitDate) as QuizStatus);
-  const [timer, setTimer] = useState(quizItemType === 'default' ? '00:00:00' : limitTime); //useState(getTimerByQuizType(quizItemType, limitTime, limitDate));
+  const [timer, setTimer] = useState(quizItemType === 'default' ? '00:00:00' : limitTime);
   const [isFold, setIsFold] = useState(quizItemType !== 'default');
 
-  // TODO: Avatar 적용해야 함...
   creator;
   absentee;
 
@@ -147,7 +145,10 @@ export function QuizItem({
           <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
             {title}
           </Text>
-          <Button type={QUIZ_ITEM_COLOR[quizItemType].button} width={140} size="medium">
+          {
+            quizItemType === "disabled"? <Text color='primary' variant="body02" css={{ margin: '0 18px 0 0'}}>기다려주세요!</Text> : null
+          }
+          <Button type={QUIZ_ITEM_COLOR[quizItemType].button} width={140} disabled={quizItemType === "disabled"} size="medium">
             똑스 확인하기
           </Button>
           {isFold ? (
