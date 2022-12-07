@@ -4,7 +4,7 @@ import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'r
 
 import { Divider } from 'components/common/Divider';
 
-import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader } from './style';
+import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
 
 type User = {
   image: string;
@@ -184,10 +184,11 @@ export function QuizItem({
           </FlexRow>
           <Divider css={{ marginTop: '22.25px' }} />
           <FlexRow css={{ marginTop: '14px' }}>
-            <Text variant="subhead" css={{ margin: '0'}} as="h6">
+            <Text variant="subhead" css={{ margin: '0 22px 0 0'}} as="h6">
               똑스 만든사람
             </Text>
-            <UserAvatar {...creator} size="large" css={{ margin:"0 0 0 22px", flex: 1}}/>
+            <UserAvatar {...creator} size="large"/>
+            <Space css={{ flex: 1}}/>
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               똑스 안 푼 사람
             </Text>

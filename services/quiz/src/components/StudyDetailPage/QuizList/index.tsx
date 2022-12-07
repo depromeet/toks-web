@@ -9,8 +9,8 @@ import { List } from './style';
 
 const creator = {
   image: 'https://asset.tokstudy.com/img_penguin.png',
-  id: '1',
-  userName: '윤두현',
+  id: '13',
+  userName: '윤두현1',
   size: 'large',
 };
 

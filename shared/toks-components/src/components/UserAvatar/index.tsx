@@ -52,7 +52,7 @@ export function UserAvatar({image, label, id, userName, userNames = [], size , .
           backgroundColor: `${theme.colors.gray060}`,
           border: `1px solid ${theme.colors.gray100}`,
         }}
-        {...rest}
+        {...rest} // TODO: UserAvatar에 css값을 주기 위해서 추가했으나 툴팁이 출력되지 않는 문제가 있음
       />
     </>
   );

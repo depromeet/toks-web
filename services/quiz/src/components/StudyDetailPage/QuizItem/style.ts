@@ -23,3 +23,6 @@ export const FlexRow = styled.div`
   display: flex;
   align-items: center;
 `;
+
+export const Space = styled.div`
+`
