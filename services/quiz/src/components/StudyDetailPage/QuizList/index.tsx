@@ -149,7 +149,7 @@ const QuizAddButton = () => (
       src="https://toks-web-assets.s3.amazonaws.com/ic-plus.svg"
       alt="퀴즈 추가 버튼 입니다."
     />
-    <Text variant="headline" color='gray010' css={{ margin: '0 0 0 10px' }} as="h5">
+    <Text variant="headline" color="gray010" css={{ margin: '0 0 0 10px' }} as="h5">
       똑스 만들기
     </Text>
   </AddButton>
@@ -163,17 +163,12 @@ export function QuizList() {
 
   return (
     <List>
-      <li>{addQuizState? QuizAddButton() : null}</li>
+      <li>{addQuizState ? QuizAddButton() : null}</li>
       {firstQuizItem
         ? quizList.map((quizItem, index) => (
-          <QuizItem
-            key={quizItem.quizId}
-            index={index}
-            {...quizItem}
-            setAddQuizState={setAddQuizState}
-          />
-        ))
-        : null }
+            <QuizItem key={quizItem.quizId} index={index} {...quizItem} setAddQuizState={setAddQuizState} />
+          ))
+        : null}
     </List>
   );
 }

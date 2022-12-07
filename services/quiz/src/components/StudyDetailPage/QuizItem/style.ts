@@ -24,5 +24,4 @@ export const FlexRow = styled.div`
   align-items: center;
 `;
 
-export const Space = styled.div`
-`
+export const Space = styled.div``;

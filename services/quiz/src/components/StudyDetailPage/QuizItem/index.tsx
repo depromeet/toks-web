@@ -29,14 +29,14 @@ type QuizStatus = 'default' | 'disabled' | 'activated';
 type QuizItemColorMap = {
   [key in QuizStatus]: {
     button: ComponentProps<typeof Button>['type'];
-    timer:  ComponentProps<typeof Text>['color'];
+    timer: ComponentProps<typeof Text>['color'];
   };
 };
 
 const QUIZ_ITEM_COLOR: QuizItemColorMap = {
   default: {
     button: 'general',
-    timer: "gray060",
+    timer: 'gray060',
   },
   disabled: {
     button: 'primary',
@@ -145,10 +145,17 @@ export function QuizItem({
           <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
             {title}
           </Text>
-          {
-            quizItemType === "disabled"? <Text color='primary' variant="body02" css={{ margin: '0 18px 0 0'}}>기다려주세요!</Text> : null
-          }
-          <Button type={QUIZ_ITEM_COLOR[quizItemType].button} width={140} disabled={quizItemType === "disabled"} size="medium">
+          {quizItemType === 'disabled' ? (
+            <Text color="primary" variant="body02" css={{ margin: '0 18px 0 0' }}>
+              기다려주세요!
+            </Text>
+          ) : null}
+          <Button
+            type={QUIZ_ITEM_COLOR[quizItemType].button}
+            width={140}
+            disabled={quizItemType === 'disabled'}
+            size="medium"
+          >
             똑스 확인하기
           </Button>
           {isFold ? (
@@ -184,23 +191,18 @@ export function QuizItem({
           </FlexRow>
           <Divider css={{ marginTop: '22.25px' }} />
           <FlexRow css={{ marginTop: '14px' }}>
-            <Text variant="subhead" css={{ margin: '0 22px 0 0'}} as="h6">
+            <Text variant="subhead" css={{ margin: '0 22px 0 0' }} as="h6">
               똑스 만든사람
             </Text>
-            <UserAvatar {...creator} size="large"/>
-            <Space css={{ flex: 1}}/>
+            <UserAvatar {...creator} size="large" />
+            <Space css={{ flex: 1 }} />
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               똑스 안 푼 사람
             </Text>
-            <UserAvatar.Group 
-              view={6} 
-              id="8"
-              css={{margin:"0 0 0 22px"}}>
-              {
-                absentee.map((user, index) =>
-                  <UserAvatar key={index} {...user} size="large"/>
-                )
-              }
+            <UserAvatar.Group view={6} id="8" css={{ margin: '0 0 0 22px' }}>
+              {absentee.map((user, index) => (
+                <UserAvatar key={index} {...user} size="large" />
+              ))}
             </UserAvatar.Group>
           </FlexRow>
         </ItemBody>

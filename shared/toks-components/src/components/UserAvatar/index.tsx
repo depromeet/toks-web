@@ -32,9 +32,17 @@ const AVATAR_SIZE = {
 // const isImageAvatar = (image : string) => ima !== undefined;
 
 // TODO : 디폴트 이미지가 직접 넘어오는지 빈 값으로 넘어오는지에 따라 디폴트 프로필 이미지 출력을 구현해야함
-export function UserAvatar({image, label, id, userName, userNames = [], size , ...rest}: ImageAvatarProps & LabelAvatarProps) {
+export function UserAvatar({
+  image,
+  label,
+  id,
+  userName,
+  userNames = [],
+  size,
+  ...rest
+}: ImageAvatarProps & LabelAvatarProps) {
   const tooltipContent = userName ?? userNames.join(', ');
-  const avatarClassName = (image) ? `avatar--user_${id}` : `avatar--group_${id}`;
+  const avatarClassName = image ? `avatar--user_${id}` : `avatar--group_${id}`;
 
   return (
     <>
@@ -87,7 +95,9 @@ interface GroupProps extends ComponentProps<typeof AvatarGroup> {
 function Group({ view = 6, id, children, ...rest }: GroupProps) {
   const userAvatars = Children.toArray(children) as ReactElement[];
   return (
-    <AvatarGroup {...rest}>{[...userAvatars.slice(0, view), makeAvatarGroupLabel(id, view, userAvatars.slice(view))]}</AvatarGroup>
+    <AvatarGroup {...rest}>
+      {[...userAvatars.slice(0, view), makeAvatarGroupLabel(id, view, userAvatars.slice(view))]}
+    </AvatarGroup>
   );
 }
 
