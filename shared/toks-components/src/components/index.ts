@@ -13,14 +13,13 @@ export * from 'primereact/blockui';
 export * from 'primereact/breadcrumb';
 export * from './Button';
 
-export * from 'primereact/calendar';
+export * from './Calendar';
 export * from 'primereact/captcha';
 export * from 'primereact/card';
 export * from 'primereact/carousel';
 export * from 'primereact/cascadeselect';
 export * from 'primereact/checkbox';
-export * from 'primereact/chip';
-export * from 'primereact/chips';
+export * from './InputChips';
 export * from 'primereact/colorpicker';
 export * from 'primereact/column';
 export * from 'primereact/columngroup';
@@ -36,7 +35,7 @@ export * from 'primereact/deferredcontent';
 export * from 'primereact/dialog';
 export * from 'primereact/divider';
 export * from 'primereact/dock';
-export * from 'primereact/dropdown';
+export * from './DropDown';
 
 export * from 'primereact/fieldset';
 export * from 'primereact/fileupload';

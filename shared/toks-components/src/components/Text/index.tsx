@@ -1,4 +1,4 @@
-import { theme } from '@depromeet/theme';
+import { KeyOfColors, theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import { HTMLAttributes, ReactNode } from 'react';
 
@@ -10,7 +10,7 @@ interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   as?: 'span' | 'strong' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   size?: number;
   weight?: FontWeight;
-  color?: string; // TODO: color token type 추가
+  color?: KeyOfColors; // TODO: color token type 추가
   variant?: Typography;
   children: ReactNode;
 }
@@ -19,11 +19,10 @@ interface TextProps extends HTMLAttributes<HTMLSpanElement> {
 export function Text({
   size = 16,
   weight = 'normal',
-  color = theme.colors.white,
+  color = 'white',
   children,
   variant,
   as = 'span',
-
   ...rest
 }: TextProps) {
   return (
@@ -38,7 +37,7 @@ type StyleProps = Pick<TextProps, 'size' | 'weight' | 'color' | 'variant'>;
 const StyledText = styled('span')<StyleProps>`
   font-size: ${({ size }) => size}px;
   font-weight: ${({ weight }) => weight};
-  color: ${({ color }) => color};
+  color: ${({ color }) => theme.colors[color ?? 'white']};
   letter-spacing: -0.6px;
   line-height: 100%;
 
