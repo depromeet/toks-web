@@ -1,6 +1,5 @@
 import { PATHS } from '@depromeet/path';
 import { SSRSuspense, useToast } from '@depromeet/toks-components';
-
 import { Flex } from '@toss/emotion-utils';
 import { ErrorBoundary } from '@toss/error-boundary';
 import { useSuspendedQuery } from '@toss/react-query';
