@@ -2,6 +2,7 @@ import { ProgressSpinner } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+
 import { getNickname } from '../../apis/getNickname';
 
 function KakaoAuth() {

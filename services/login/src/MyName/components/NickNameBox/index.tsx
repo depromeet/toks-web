@@ -1,11 +1,10 @@
-import { Button, emoji, Image, Input, Text } from '@depromeet/toks-components';
+import { Button, Image, Input, Text, emoji } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
+import { Wrapper } from 'common/style';
 import { useCreateNicknameForm } from 'hooks/useCreateNicknameForm';
 
-import { Wrapper } from 'common/style';
-
 export function NickNameBox() {
-  const { register, control, handleSubmit, setValue, errors, isDisabled, isMaxLength, isMinLength, isRequiredText } =
+  const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText } =
     useCreateNicknameForm();
   return (
     <Wrapper>
