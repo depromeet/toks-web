@@ -184,12 +184,23 @@ export function QuizItem({
           </FlexRow>
           <Divider css={{ marginTop: '22.25px' }} />
           <FlexRow css={{ marginTop: '14px' }}>
-            <Text variant="subhead" css={{ margin: '0', flex: 1 }} as="h6">
+            <Text variant="subhead" css={{ margin: '0'}} as="h6">
               똑스 만든사람
             </Text>
+            <UserAvatar {...creator} size="large" css={{ margin:"0 0 0 22px", flex: 1 }}/>
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               똑스 안 푼 사람
             </Text>
+            <UserAvatar.Group 
+              view={6} 
+              id="8"
+              css={{margin:"0 0 0 22px"}}>
+              {
+                absentee.map(user =>
+                  <UserAvatar {...user} size="large"/>
+                )
+              }
+            </UserAvatar.Group>
           </FlexRow>
         </ItemBody>
       </ItemDetails>
