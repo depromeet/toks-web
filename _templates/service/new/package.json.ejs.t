@@ -38,6 +38,7 @@ to: services/<%= name %>/package.json
     "ts-pattern": "^4.0.5"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
     "@types/node": "18.11.9",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
