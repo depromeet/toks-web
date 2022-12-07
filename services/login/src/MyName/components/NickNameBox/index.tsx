@@ -1,7 +1,7 @@
 import { Button, Image, Input, Text, emoji } from '@depromeet/toks-components';
+
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { Wrapper } from 'common/style';
-
 import { useCreateNicknameForm } from 'hooks/useCreateNicknameForm';
 
 export function NickNameBox() {
