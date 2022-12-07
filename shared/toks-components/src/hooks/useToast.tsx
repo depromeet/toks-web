@@ -16,8 +16,6 @@ export function useToast() {
   const openToast = ({ time = TOAST_OPENED_TIME, ...rest }: Props) =>
     new Promise(resolve => {
       overlay.open(({ isOpen, close }) => {
-        window.setTimeout(close, time);
-
         return (
           <AnimatePresence>
             {isOpen ? (
@@ -26,7 +24,10 @@ export function useToast() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.15 }}
-                onAnimationStart={resolve}
+                onAnimationStart={() => {
+                  window.setTimeout(close, time);
+                  resolve(true);
+                }}
               >
                 <Toast {...rest} />
               </motion.div>
