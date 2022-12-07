@@ -1,8 +1,8 @@
 import { useOverlay } from '@toss/use-overlay';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps } from 'react';
 
 import { Toast } from '../components/Toast';
-import { motion, AnimatePresence } from 'framer-motion';
 
 const TOAST_OPENED_TIME = 3_000;
 

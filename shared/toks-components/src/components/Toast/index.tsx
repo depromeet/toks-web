@@ -1,9 +1,9 @@
 import { theme } from '@depromeet/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { ReactNode } from 'react';
 import { match } from 'ts-pattern';
 
-import { ReactNode } from 'react';
 import { Text } from '../Text';
 
 const VERTICAL = ['top', 'bottom'] as const;
