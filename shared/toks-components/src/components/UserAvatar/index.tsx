@@ -3,7 +3,7 @@ import { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
 import styled from '@emotion/styled';
 import { Avatar as BaseAvatar } from 'primereact/avatar';
 import { AvatarGroup } from 'primereact/avatargroup';
-import { Children, ComponentProps, ReactElement, ReactNode, HTMLAttributes } from 'react';
+import { Children, ComponentProps, ReactElement, ReactNode } from 'react';
 
 import { Tooltip } from '@depromeet/toks-components';
 
@@ -64,9 +64,10 @@ const StyledAvatar = styled(BaseAvatar)`
   }
 `;
 
-const makeAvatarGroupLabel = (id: string, userAvatars: ReactElement[]) =>
+const makeAvatarGroupLabel = (id: string, labelKey: number, userAvatars: ReactElement[]) =>
   userAvatars.length !== 0 ? (
     <UserAvatar
+      key={labelKey}
       label={`+${userAvatars.length}`}
       id={id}
       userNames={getUserNamesOfAvatars(userAvatars)}
@@ -86,7 +87,7 @@ interface GroupProps extends ComponentProps<typeof AvatarGroup> {
 function Group({ view = 6, id, children, ...rest }: GroupProps) {
   const userAvatars = Children.toArray(children) as ReactElement[];
   return (
-    <AvatarGroup {...rest}>{[...userAvatars.slice(0, view), makeAvatarGroupLabel(id, userAvatars.slice(view))]}</AvatarGroup>
+    <AvatarGroup {...rest}>{[...userAvatars.slice(0, view), makeAvatarGroupLabel(id, view, userAvatars.slice(view))]}</AvatarGroup>
   );
 }
 

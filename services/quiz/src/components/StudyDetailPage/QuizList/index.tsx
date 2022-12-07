@@ -9,7 +9,7 @@ import { List } from './style';
 
 const creator = {
   image: 'https://asset.tokstudy.com/img_penguin.png',
-  id: '13',
+  id: '1',
   userName: '윤두현',
   size: 'large',
 };

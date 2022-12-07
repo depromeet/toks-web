@@ -187,7 +187,7 @@ export function QuizItem({
             <Text variant="subhead" css={{ margin: '0'}} as="h6">
               똑스 만든사람
             </Text>
-            <UserAvatar {...creator} size="large" css={{ margin:"0 0 0 22px", flex: 1 }}/>
+            <UserAvatar {...creator} size="large" css={{ margin:"0 0 0 22px", flex: 1}}/>
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               똑스 안 푼 사람
             </Text>
@@ -196,8 +196,8 @@ export function QuizItem({
               id="8"
               css={{margin:"0 0 0 22px"}}>
               {
-                absentee.map(user =>
-                  <UserAvatar {...user} size="large"/>
+                absentee.map((user, index) =>
+                  <UserAvatar key={index} {...user} size="large"/>
                 )
               }
             </UserAvatar.Group>
