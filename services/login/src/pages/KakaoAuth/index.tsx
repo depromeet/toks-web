@@ -2,9 +2,19 @@ import { ProgressSpinner } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { instance } from '@depromeet/http';
 
 function KakaoAuth() {
   const router = useRouter();
+
+  const getNickname = async () => {
+    try {
+      const { data } = await instance.get('/api/v1/user/nickname');
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);

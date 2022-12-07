@@ -1620,6 +1620,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@depromeet/http@npm:0.1.0":
+  version: 0.1.0
+  resolution: "@depromeet/http@npm:0.1.0"
+  dependencies:
+    "@emotion/css": ^11.9.0
+    "@emotion/react": ^11.9.3
+    "@emotion/styled": ^11.9.3
+    "@toss/use-query-param": ^1.1.2
+    axios: ^1.2.0
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    ts-pattern: ^4.0.5
+  checksum: ae76bce70166f252194a245c231cd4cac0c0754654383ceab9a8bae4af7a029e3e1ec19c432639673b25ebee69ae00ef2696e11d97147d701c6972b64c1a96dd
+  languageName: node
+  linkType: hard
+
 "@depromeet/http@workspace:packages/http":
   version: 0.0.0-use.local
   resolution: "@depromeet/http@workspace:packages/http"
@@ -2588,6 +2604,7 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
+    "@depromeet/http": 0.1.0
     "@depromeet/theme": ^0.0.1
     "@depromeet/toks-components": "workspace:shared/toks-components"
     "@emotion/css": ^11.9.0
@@ -2620,6 +2637,7 @@ __metadata:
     prettier: ^2.7.1
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-hook-form: ^7.40.0
     react-query: "npm:@tanstack/react-query@4.0.10"
     react-router-dom: ^6.4.4
     ts-pattern: ^4.0.5
