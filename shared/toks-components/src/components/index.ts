@@ -12,6 +12,7 @@ export * from 'primereact/badge';
 export * from 'primereact/blockui';
 export * from 'primereact/breadcrumb';
 export * from './Button';
+export * from './TextBallon';
 
 export * from './Calendar';
 export * from 'primereact/captcha';
