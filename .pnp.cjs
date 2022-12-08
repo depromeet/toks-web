@@ -4306,6 +4306,21 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["@depromeet/http", [\
+        ["npm:0.1.0", {\
+          "packageLocation": "./.yarn/cache/@depromeet-http-npm-0.1.0-1332f66328-ae76bce701.zip/node_modules/@depromeet/http/",\
+          "packageDependencies": [\
+            ["@depromeet/http", "npm:0.1.0"],\
+            ["@emotion/css", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.0"],\
+            ["@emotion/react", "virtual:84f5b654ef3b3bb658474edac08d04d289ffdcc739879c6b8cc47a0c3cb141294858f7698043a0292a6b71846af9237b13ed8ff7cd0d33e108dcc0cd635ffb52#npm:11.10.4"],\
+            ["@emotion/styled", "virtual:84f5b654ef3b3bb658474edac08d04d289ffdcc739879c6b8cc47a0c3cb141294858f7698043a0292a6b71846af9237b13ed8ff7cd0d33e108dcc0cd635ffb52#npm:11.10.4"],\
+            ["@toss/use-query-param", "virtual:1332f663285efb069e281f29b054b44c1270b8a734f18b0111f1ee04419f48d7606689754677a2b2fdc1712e9a08ca6da4ee2c228984c0b8749d9224bb165ac0#npm:1.1.2"],\
+            ["axios", "npm:1.2.0"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:18.2.0"],\
+            ["ts-pattern", "npm:4.0.5"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["workspace:packages/http", {\
           "packageLocation": "./packages/http/",\
           "packageDependencies": [\
@@ -5814,6 +5829,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@services/login", "workspace:services/login"],\
             ["@configs/babel", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#workspace:configs/babel"],\
             ["@configs/next", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#workspace:configs/next"],\
+            ["@depromeet/http", "npm:0.1.0"],\
             ["@depromeet/theme", "npm:0.0.1"],\
             ["@depromeet/toks-components", "virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#workspace:shared/toks-components"],\
             ["@emotion/css", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.0"],\
@@ -5831,7 +5847,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/react-dom", "npm:18.0.6"],\
             ["@typescript-eslint/eslint-plugin", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
             ["@typescript-eslint/parser", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
-            ["axios", "npm:0.27.2"],\
+            ["axios", "npm:1.2.1"],\
             ["date-fns", "npm:2.29.3"],\
             ["emotion-normalize", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.0.1"],\
             ["eslint", "npm:8.24.0"],\
@@ -5846,6 +5862,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.7.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:18.2.0"],\
+            ["react-hook-form", "virtual:3cc1a7235cad23b112cfb897b59230e8c0eadd6027ac809ce7bef06af830a3b34578d8b70b528c88107cb0a843ce6b5a12e7cae9d7b195523ed31366b6e7ff67#npm:7.40.0"],\
             ["react-query", [\
               "@tanstack/react-query",\
               "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:4.0.10"\
@@ -5897,7 +5914,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.7.1"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:18.2.0"],\
-            ["react-hook-form", "virtual:87e9d50c60540715015872022167b60dcd88556bfd25af5c870c711bf726f8b60daec70a89ac22a94fe2f0fda74350420aeff8938d18c171034442d24b2fce90#npm:7.40.0"],\
+            ["react-hook-form", "virtual:3cc1a7235cad23b112cfb897b59230e8c0eadd6027ac809ce7bef06af830a3b34578d8b70b528c88107cb0a843ce6b5a12e7cae9d7b195523ed31366b6e7ff67#npm:7.40.0"],\
             ["react-query", [\
               "@tanstack/react-query",\
               "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:4.0.10"\
@@ -6669,6 +6686,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@toss/use-query-param", "npm:1.1.2"]\
           ],\
           "linkType": "SOFT"\
+        }],\
+        ["virtual:1332f663285efb069e281f29b054b44c1270b8a734f18b0111f1ee04419f48d7606689754677a2b2fdc1712e9a08ca6da4ee2c228984c0b8749d9224bb165ac0#npm:1.1.2", {\
+          "packageLocation": "./.yarn/__virtual__/@toss-use-query-param-virtual-19b9ce4f51/0/cache/@toss-use-query-param-npm-1.1.2-3ae88d718f-6fa456484c.zip/node_modules/@toss/use-query-param/",\
+          "packageDependencies": [\
+            ["@toss/use-query-param", "virtual:1332f663285efb069e281f29b054b44c1270b8a734f18b0111f1ee04419f48d7606689754677a2b2fdc1712e9a08ca6da4ee2c228984c0b8749d9224bb165ac0#npm:1.1.2"],\
+            ["@types/next", null],\
+            ["@types/react", null],\
+            ["@types/react-dom", null],\
+            ["next", null],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/next",\
+            "@types/react-dom",\
+            "@types/react",\
+            "next",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
         }],\
         ["virtual:2b84034f2ee9abf066cdd40f914365517e5a655184b1d71768de9fc65205326162e6f6ab5016e627c91cf725255b89c00a8a14624ffa4091ec69e703b49aa9b2#npm:1.1.2", {\
           "packageLocation": "./.yarn/__virtual__/@toss-use-query-param-virtual-1ea0795267/0/cache/@toss-use-query-param-npm-1.1.2-3ae88d718f-6fa456484c.zip/node_modules/@toss/use-query-param/",\
@@ -8037,6 +8075,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/axios-npm-1.2.0-ad83373c57-f08ce214e9.zip/node_modules/axios/",\
           "packageDependencies": [\
             ["axios", "npm:1.2.0"],\
+            ["debug", "virtual:569a25513afb6a24dfed8c5a30a481623293e0360f4b156e464840d4caead450805a6a0e63416cee33f850b619b3920e00801a8b5031df983b570ea9dd38b09f#npm:4.3.4"],\
+            ["follow-redirects", "virtual:dbe3a48aea1dd5649e16abaf23d4ae05582d2149e16141955113766a0f84f681baf358c77ddccfc82eb23e4ccc66c6c912df62a9c01f2a83f1842bf86cc297b1#npm:1.15.2"],\
+            ["form-data", "npm:4.0.0"],\
+            ["proxy-from-env", "npm:1.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:1.2.1", {\
+          "packageLocation": "./.yarn/cache/axios-npm-1.2.1-4056ddcb4c-c4dc4e1190.zip/node_modules/axios/",\
+          "packageDependencies": [\
+            ["axios", "npm:1.2.1"],\
             ["debug", "virtual:569a25513afb6a24dfed8c5a30a481623293e0360f4b156e464840d4caead450805a6a0e63416cee33f850b619b3920e00801a8b5031df983b570ea9dd38b09f#npm:4.3.4"],\
             ["follow-redirects", "virtual:dbe3a48aea1dd5649e16abaf23d4ae05582d2149e16141955113766a0f84f681baf358c77ddccfc82eb23e4ccc66c6c912df62a9c01f2a83f1842bf86cc297b1#npm:1.15.2"],\
             ["form-data", "npm:4.0.0"],\
@@ -13487,10 +13536,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "linkType": "SOFT"\
         }],\
-        ["virtual:87e9d50c60540715015872022167b60dcd88556bfd25af5c870c711bf726f8b60daec70a89ac22a94fe2f0fda74350420aeff8938d18c171034442d24b2fce90#npm:7.40.0", {\
-          "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-9f0a02ae9a/0/cache/react-hook-form-npm-7.40.0-760f91e47b-8187981c14.zip/node_modules/react-hook-form/",\
+        ["virtual:3cc1a7235cad23b112cfb897b59230e8c0eadd6027ac809ce7bef06af830a3b34578d8b70b528c88107cb0a843ce6b5a12e7cae9d7b195523ed31366b6e7ff67#npm:7.40.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-hook-form-virtual-4d631f9709/0/cache/react-hook-form-npm-7.40.0-760f91e47b-8187981c14.zip/node_modules/react-hook-form/",\
           "packageDependencies": [\
-            ["react-hook-form", "virtual:87e9d50c60540715015872022167b60dcd88556bfd25af5c870c711bf726f8b60daec70a89ac22a94fe2f0fda74350420aeff8938d18c171034442d24b2fce90#npm:7.40.0"],\
+            ["react-hook-form", "virtual:3cc1a7235cad23b112cfb897b59230e8c0eadd6027ac809ce7bef06af830a3b34578d8b70b528c88107cb0a843ce6b5a12e7cae9d7b195523ed31366b6e7ff67#npm:7.40.0"],\
             ["@types/react", "npm:18.0.21"],\
             ["react", "npm:18.2.0"]\
           ],\
