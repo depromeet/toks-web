@@ -1620,6 +1620,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@depromeet/http@npm:0.1.0":
+  version: 0.1.0
+  resolution: "@depromeet/http@npm:0.1.0"
+  dependencies:
+    "@emotion/css": ^11.9.0
+    "@emotion/react": ^11.9.3
+    "@emotion/styled": ^11.9.3
+    "@toss/use-query-param": ^1.1.2
+    axios: ^1.2.0
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    ts-pattern: ^4.0.5
+  checksum: ae76bce70166f252194a245c231cd4cac0c0754654383ceab9a8bae4af7a029e3e1ec19c432639673b25ebee69ae00ef2696e11d97147d701c6972b64c1a96dd
+  languageName: node
+  linkType: hard
+
 "@depromeet/http@workspace:packages/http":
   version: 0.0.0-use.local
   resolution: "@depromeet/http@workspace:packages/http"
@@ -2588,6 +2604,7 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
+    "@depromeet/http": 0.1.0
     "@depromeet/theme": ^0.0.1
     "@depromeet/toks-components": "workspace:shared/toks-components"
     "@emotion/css": ^11.9.0
@@ -2605,7 +2622,7 @@ __metadata:
     "@types/react-dom": ^18.0.6
     "@typescript-eslint/eslint-plugin": ^5.29.0
     "@typescript-eslint/parser": ^5.29.0
-    axios: ^0.27.2
+    axios: ^1.2.1
     date-fns: ^2.29.3
     emotion-normalize: ^11.0.1
     eslint: ^8.23.0
@@ -2620,6 +2637,7 @@ __metadata:
     prettier: ^2.7.1
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-hook-form: ^7.40.0
     react-query: "npm:@tanstack/react-query@4.0.10"
     react-router-dom: ^6.4.4
     ts-pattern: ^4.0.5
@@ -4125,6 +4143,17 @@ __metadata:
     form-data: ^4.0.0
     proxy-from-env: ^1.1.0
   checksum: f08ce214e957dfde45b837f8d3c7861424608fb7df32faa638835e338782a9f4c0b05074e92e0e8dcca3a1e6250112fbbe1b15a6b21104da633d84745bbb79cc
+  languageName: node
+  linkType: hard
+
+"axios@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "axios@npm:1.2.1"
+  dependencies:
+    follow-redirects: ^1.15.0
+    form-data: ^4.0.0
+    proxy-from-env: ^1.1.0
+  checksum: c4dc4e119064c9aed09a3de309bedb797a139a6fb372223aafe3e0c10a7d4a14e4d3e9c9d309467fadb9d2b490b891ee3df96ef5b55716bb971910466ff9f0c5
   languageName: node
   linkType: hard
 

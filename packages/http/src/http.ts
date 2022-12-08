@@ -1,4 +1,3 @@
-import { useNextRouter } from '@toss/use-query-param';
 import axios from 'axios';
 
 const authToken = {
@@ -7,11 +6,9 @@ const authToken = {
 };
 
 export function Auth() {
-  const router = useNextRouter();
-
   // 엑세스 토큰이 없는 경우 로그인 페이지로 라우팅
   if (sessionStorage.getItem('accessToken') == null) {
-    router.push('https://api.tokstudy.com/oauth2/authorize/kakao');
+    window.location.href = 'https://api.tokstudy.com/oauth2/authorize/kakao';
   }
 }
 
@@ -53,9 +50,8 @@ instance.interceptors.response.use(async function (error) {
         return originalResponse.data.data;
       }
     } else if (res.data.message === 'error.invalid.refresh.token') {
-      const router = useNextRouter();
       // refresh invalid한 경우 다시 로그인
-      router.push('https://api.tokstudy.com/oauth2/authorize/kakao');
+      window.location.href = 'https://api.tokstudy.com/oauth2/authorize/kakao';
     }
   }
   return Promise.reject(error);
