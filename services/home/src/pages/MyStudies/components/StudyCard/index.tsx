@@ -1,15 +1,15 @@
+import { PATHS, pushTo } from '@depromeet/path';
 import { theme } from '@depromeet/theme';
-import { TextBallon, Button, Image, Tag, Text } from '@depromeet/toks-components';
+import { Button, Image, Tag, Text, TextBallon } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Flex, Spacing, padding, width100 } from '@toss/emotion-utils';
 import { useSuspendedQuery } from '@toss/react-query';
+import { match } from 'ts-pattern';
 
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { getStudyStatus } from 'pages/MyStudies/remotes/study';
 
 import { Study } from '../../models/study';
-import { match } from 'ts-pattern';
-import { PATHS, pushTo } from '@depromeet/path';
 
 interface Props extends Pick<Study, 'title' | 'tags'> {
   onClick: () => void;

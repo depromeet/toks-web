@@ -1,5 +1,6 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
+
 import { Text } from '../Text';
 
 // 다른 방향도 필요하면 추가.

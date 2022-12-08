@@ -1,9 +1,10 @@
 import { PATHS, pushTo } from '@depromeet/path';
 import { SSRSuspense } from '@depromeet/toks-components';
+import styled from '@emotion/styled';
 import { Flex } from '@toss/emotion-utils';
 import { ErrorBoundary } from '@toss/error-boundary';
 import { useSuspendedQuery } from '@toss/react-query';
-import styled from '@emotion/styled';
+
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { getMyStudies } from 'pages/MyStudies/remotes/study';
 
