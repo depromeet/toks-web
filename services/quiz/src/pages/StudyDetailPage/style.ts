@@ -8,7 +8,7 @@ export const Page = styled.div`
 `;
 
 export const Section = styled.section`
-  padding-top: 120px;
+  margin-top: 50px;
 `;
 
 export const Wrapper = styled.div`
