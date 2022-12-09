@@ -5987,6 +5987,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:b42fe8303bdaf1f7293ae4e9208df1b7ca1b3c3cf5e1556f0f651c25c817aca17053a3c80f73d82479c763da7c6f52c7b153483d94bb4e55b41f0d9234bd2def#npm:11.10.0"],\
             ["@emotion/react", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
             ["@emotion/styled", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
+            ["@svgr/webpack", "npm:6.5.1"],\
             ["@toss/assert", "npm:1.1.0"],\
             ["@toss/emotion-utils", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.3"],\
             ["@toss/error-boundary", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.0"],\
