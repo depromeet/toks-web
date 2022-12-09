@@ -82,7 +82,7 @@ export * from 'primereact/rating';
 export * from 'primereact/ripple';
 export * from 'primereact/row';
 
-export * from './SvgIcon';
+export * from './Icon';
 export * from 'primereact/scrollpanel';
 export * from 'primereact/scrolltop';
 export * from 'primereact/selectbutton';

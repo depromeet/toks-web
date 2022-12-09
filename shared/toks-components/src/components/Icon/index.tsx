@@ -1,17 +1,20 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import React from 'react';
+import { IconName, ICONS } from './icons';
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   wrapperProps?: React.HTMLAttributes<HTMLDivElement>;
-  icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  iconName: IconName;
   size?: number;
   color?: KeyOfColors;
   width?: number;
   height?: number;
 }
 
-export const SvgIcon = ({ color, size = 24, width, height, icon: IconComponent, wrapperProps, ...rest }: IconProps) => {
+export const Icon = ({ color, size = 24, width, height, iconName, wrapperProps, ...rest }: IconProps) => {
+  const IconComponent = ICONS[iconName];
+
   return (
     <StyledIcon {...wrapperProps} color={color}>
       <IconComponent {...rest} width={width || size} height={height || 'auto'} />
