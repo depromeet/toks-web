@@ -35,6 +35,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         defaultOptions: {
           queries: {
             retry: false,
+            networkMode: 'always',
           },
         },
       })
@@ -51,7 +52,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <meta name="referrer" content="no-referrer-when-downgrade" />
         <title>Toks</title>
       </Head>
-      <Global styles={normalizedStyles}/>
+      <Global styles={normalizedStyles} />
       <Global styles={disallowUserSelectStyle} />
       {/* Design System Style */}
       <ToksDesignSystemStyle />
