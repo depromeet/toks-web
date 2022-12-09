@@ -7,7 +7,8 @@ import { ReactElement, ReactNode, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { OverlayProvider } from '@toss/use-overlay';
 import { GlobalStyle as ToksDesignSystemStyle } from '@depromeet/toks-components';
-import { theme } from '@depromeet/theme'
+import { theme } from '@depromeet/theme';
+import { Layout } from '@depromeet/layout';
 
 const normalizedStyles = css`
   ${emotionNormalize}
@@ -60,7 +61,13 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       {/* Color Token 설정 */}
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
-          <OverlayProvider>{getLayout(<Component {...pageProps} />)}</OverlayProvider>{' '}
+          <OverlayProvider>
+            {getLayout(
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            )}
+          </OverlayProvider>
         </QueryClientProvider>
       </ThemeProvider>
     </>
