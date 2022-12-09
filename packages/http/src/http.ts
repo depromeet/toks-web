@@ -34,7 +34,6 @@ instance.interceptors.request.use(
     if (config?.headers == null) {
       throw new Error(`config.header is undefined`);
     }
-
     config.headers['Content-Type'] = 'application/json; charset=utf-8';
     config.headers['Authorization'] = `${authToken?.access}`;
 
