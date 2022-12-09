@@ -1,9 +1,8 @@
 import { ToksHeader } from '@depromeet/toks-components';
-
-import { QuizList } from 'components/StudyDetailPage/QuizList';
-import { Ranking } from 'components/StudyDetailPage/Ranking';
-import { StudyInfo } from 'components/StudyDetailPage/StudyInfo';
-import { StudyProgress } from 'components/StudyDetailPage/StudyProgress';
+import { QuizList } from './components/QuizList';
+import { Ranking } from './components/Ranking';
+import { StudyInfo } from './components/StudyInfo';
+import { StudyProgress } from './components/StudyProgress';
 
 import { members } from '../../../utils/userUtils';
 import { Page, Section, Wrapper } from './style';
@@ -11,7 +10,7 @@ import { Page, Section, Wrapper } from './style';
 export default function StudyDetailPage() {
   return (
     <Page>
-      <ToksHeader imgUrl={`https://asset.tokstudy.com/img_penguin.png`} userName={'윤두현'}/>
+      <ToksHeader imgUrl={`https://asset.tokstudy.com/img_penguin.png`} userName={'윤두현'} />
       <Section>
         <Wrapper>
           <StudyInfo

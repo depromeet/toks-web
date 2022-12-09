@@ -1,12 +1,11 @@
 import { theme } from '@depromeet/theme';
 import { Image, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
+import { QuizItem } from '../../components/QuizItem';
 import { useState } from 'react';
 
-import { QuizItem } from 'components/StudyDetailPage/QuizItem';
-
-import { isExistQuizToSolve } from '../../../../utils/quizUtils';
-import { User, absentee, creator } from '../../../../utils/userUtils';
+import { isExistQuizToSolve } from '../../../../../utils/quizUtils';
+import { User, absentee, creator } from '../../../../../utils/userUtils';
 import { List } from './style';
 
 interface QuizItem {

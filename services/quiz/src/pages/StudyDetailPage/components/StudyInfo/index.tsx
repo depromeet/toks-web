@@ -1,6 +1,6 @@
 import { Tag, UserAvatar } from '@depromeet/toks-components';
 
-import { User } from '../../../../utils/userUtils';
+import { User } from '../../../../../utils/userUtils';
 import { Body, Description, Footer, Header, Info, StudyTags, Title } from './style';
 
 interface StudyInfoProps {
