@@ -17,7 +17,7 @@ const authToken = {
 
 export function Auth() {
   // 엑세스 토큰이 없는 경우 로그인 페이지로 라우팅
-  if (sessionStorage.getItem('accessToken') == null) {
+  if (authToken.access == null) {
     window.location.href = 'https://api.tokstudy.com/oauth2/authorize/kakao';
   }
 }
@@ -25,7 +25,7 @@ export function Auth() {
 //axios instance
 const instance: ToksHttpClient = axios.create({
   baseURL: 'https://api.tokstudy.com',
-  headers: { Authorization: `Bearer ${authToken?.access}` },
+  headers: { Authorization: `${authToken?.access}` },
 });
 
 //1. 요청 인터셉터
@@ -36,7 +36,7 @@ instance.interceptors.request.use(
     }
 
     config.headers['Content-Type'] = 'application/json; charset=utf-8';
-    config.headers['Authorization'] = `Bearer ${authToken?.access}`;
+    config.headers['Authorization'] = `${authToken?.access}`;
 
     return config;
   },
@@ -49,7 +49,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   response => response.data,
   async function (error) {
-    if (error?.status === 401 && error?.data?.message === 'error.invalid.access.token') {
+    if (error?.status === 401 && error?.data?.code === -20027) {
       //액세스 토큰이 invalid 한 경우 refresh 확인
       const res = await axios.post('/api/v1/user/renew', authToken.refresh);
       if (res.status === 201) {
@@ -63,7 +63,7 @@ instance.interceptors.response.use(
           const originalResponse = await axios.request(error.config);
           return originalResponse.data.data;
         }
-      } else if (res.data.message === 'error.invalid.refresh.token') {
+      } else if (res.data.code === -20014) {
         // refresh invalid한 경우 다시 로그인
         window.location.href = 'https://api.tokstudy.com/oauth2/authorize/kakao';
       }
