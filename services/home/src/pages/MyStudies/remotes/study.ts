@@ -41,20 +41,35 @@ export async function getMyStudies() {
   return data;
 }
 
-const NEW_QUIZ_MOCK: { [key: number]: boolean } = {
-  1: false,
-  2: false,
-  3: true,
-  4: false,
+type QuizStatus = 'EXPIRED' | 'NEW' | 'NORMAL';
+
+interface StudyStatus {
+  quiz: QuizStatus;
+  // ...some
+}
+
+const STUDY_STATUS: Record<number, StudyStatus> = {
+  1: {
+    quiz: 'EXPIRED',
+  },
+  2: {
+    quiz: 'NEW',
+  },
+  3: {
+    quiz: 'EXPIRED',
+  },
+  4: {
+    quiz: 'NORMAL',
+  },
 };
 
-export async function getHasNewQuiz({ studyId }: { studyId: number }) {
+export async function getStudyStatus({ studyId }: { studyId: number }) {
   if (isTest) {
-    return await new Promise<{ hasNewQuiz: boolean }>(res =>
-      setTimeout(() => res({ hasNewQuiz: NEW_QUIZ_MOCK[studyId] ?? false }), 1000)
+    return await new Promise<StudyStatus>(res =>
+      setTimeout(() => res(STUDY_STATUS[studyId] ?? { quiz: 'EXPIRED' }), 1000)
     );
   }
 
-  const { data } = await axios.get<{ hasNewQuiz: boolean }>(`/api/${studyId}/new-quiz`);
+  const { data } = await axios.get<StudyStatus>(`/api/${studyId}/status`);
   return data;
 }
