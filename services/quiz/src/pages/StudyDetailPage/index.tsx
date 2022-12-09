@@ -1,4 +1,4 @@
-import { Text, ToksHeader } from '@depromeet/toks-components';
+import { Text } from '@depromeet/toks-components';
 
 import { members } from '../../../utils/userUtils';
 import { QuizList } from './components/QuizList';
@@ -10,7 +10,6 @@ import { FlexRow, Page, Section, Wrapper } from './style';
 export default function StudyDetailPage() {
   return (
     <Page>
-      <ToksHeader imgUrl={`https://asset.tokstudy.com/img_penguin.png`} userName={'윤두현'} />
       <Section>
         <Wrapper>
           <FlexRow>
