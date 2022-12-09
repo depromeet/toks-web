@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { addLocale, locale } from 'primereact/api';
 import { Calendar as CalendarComponent, CalendarProps } from 'primereact/calendar';
 import { forwardRef, useState } from 'react';
+import { InitialInputErrorStyle, InitialInputFocusStyle } from '../Input';
 
 import { Text } from '../Text';
 
@@ -51,8 +52,6 @@ export const Calendar = forwardRef<HTMLInputElement, CalendarComponentProps>(
         <StyledCalendar isFocus={isFocus} isError={Boolean(errorMessage)}>
           <CalendarComponent
             name={name}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
             panelStyle={{
               backgroundColor: theme.colors.gray100,
               color: theme.colors.white,
@@ -61,6 +60,8 @@ export const Calendar = forwardRef<HTMLInputElement, CalendarComponentProps>(
             inputRef={ref}
             required={required}
             {...props}
+            onFocus={() => setIsFocus(true)}
+            onBlur={() => setIsFocus(false)}
           />
         </StyledCalendar>
         {errorMessage && (
@@ -85,21 +86,8 @@ const StyledCalendar = styled('div')<{ width?: number; height?: number; isFocus:
   ${props => {
     const { width, height, isFocus, isError } = props;
 
-    const errorStyle =
-      isError &&
-      css`
-        border: 1px solid ${theme.colors.danger};
-      `;
-
-    const focusStyle =
-      isFocus &&
-      css`
-        border: #ff862f 2px solid;
-        background: ${theme.colors.gray100};
-        outline: none;
-        box-shadow: none;
-        color: ${theme.colors.white};
-      `;
+    const errorStyle = isError && InitialInputErrorStyle;
+    const focusStyle = isFocus && InitialInputFocusStyle;
 
     return css`
       width: ${width ? `${width}px` : '100%'};

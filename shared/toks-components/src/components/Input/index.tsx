@@ -18,7 +18,6 @@ export const Input = forwardRef<HTMLInputElement, Props>(
   ({ label = 'user', name, errorMessage, width, height, required, ...props }: Props, ref) => {
     const [isFocus, setIsFocus] = useState(false);
 
-    console.log(required);
     return (
       <Wrapper>
         <label htmlFor={name}>
@@ -30,12 +29,12 @@ export const Input = forwardRef<HTMLInputElement, Props>(
         <StyledInput width={width} height={height} isFocus={isFocus} isError={Boolean(errorMessage)} {...props}>
           <InitialInput
             ref={ref}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
             id={name}
             name={name}
             required={required}
             {...props}
+            onFocus={() => setIsFocus(true)}
+            onBlur={() => setIsFocus(false)}
           />
           {errorMessage && (
             <Image src="https://toks-web-assets.s3.amazonaws.com/ic-danger.svg" alt="경고" width={22} height={22} />
@@ -51,6 +50,25 @@ export const Input = forwardRef<HTMLInputElement, Props>(
   }
 );
 
+export const InitialInputFocusStyle = css`
+  border: #ff862f 2px solid;
+  background: ${theme.colors.gray100};
+  outline: none;
+  box-shadow: none;
+  color: ${theme.colors.white};
+`;
+
+export const InitialInputErrorStyle = css`
+  border: 1px solid ${theme.colors.danger};
+`;
+
+export const InitialInputHoverStyle = css`
+  &:hover {
+    background: ${theme.colors.gray100};
+    border: ${theme.colors.gray040} 1px solid;
+  }
+`;
+
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -65,35 +83,20 @@ const StyledInput = styled('div')<{ width?: number; height?: number; isFocus: bo
   ${props => {
     const { width, height, isFocus, isError } = props;
 
-    const errorStyle =
-      isError &&
-      css`
-        border: 1px solid ${theme.colors.danger};
-      `;
-
-    const focusStyle =
-      isFocus &&
-      css`
-        border: #ff862f 2px solid;
-        background: ${theme.colors.gray100};
-        outline: none;
-        box-shadow: none;
-        color: ${theme.colors.white};
-      `;
+    const errorStyle = isError && InitialInputErrorStyle;
+    const focusStyle = isFocus && InitialInputFocusStyle;
+    const hoverStyle = !isFocus && InitialInputHoverStyle;
 
     return css`
       width: ${width ? `${width}px` : '100%'};
       height: ${height ? `${height}px` : '48px'};
       ${focusStyle}
       ${errorStyle}
+      ${hoverStyle}
     `;
   }}
   background: ${theme.colors.gray100};
   padding: 0 14px;
-  &:hover {
-    background: ${theme.colors.gray100};
-    border: ${theme.colors.gray040} 1px solid;
-  }
 `;
 
 const InitialInput = styled('input')`
