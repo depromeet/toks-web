@@ -49,7 +49,8 @@ const quizList: QuizItem[] = [
 ];
 
 const AddButton = styled.button`
-  width: 982px;
+  display: block;
+  width: 100%;
   height: 54px;
   margin-bottom: 12px;
   border-radius: 16px;
