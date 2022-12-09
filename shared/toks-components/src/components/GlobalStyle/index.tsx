@@ -62,4 +62,32 @@ const globalCss = css`
   a:hover {
     text-decoration: none;
   }
+
+  /* dropdown custom styling */
+  .p-dropdown-panel {
+    margin-top: 4px;
+    border-radius: 8px;
+    background-color: ${theme.colors.gray100} !important;
+  }
+  .p-dropdown-items {
+    background-color: ${theme.colors.gray100} !important;
+
+    padding: 0 !important;
+    border-radius: 8px;
+  }
+
+  .p-dropdown-item {
+    font-family: 'Spoqa Han Sans Neo' !important ;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: ${theme.colors.white} !important;
+    padding: 12px 16px !important;
+    &:hover {
+      background: ${theme.colors.gray090} !important;
+    }
+  }
+  .p-highlight {
+    background-color: ${theme.colors.gray080} !important;
+  }
 `;

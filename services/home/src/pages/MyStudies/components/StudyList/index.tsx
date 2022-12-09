@@ -15,7 +15,7 @@ function StudyList() {
   const router = useRouter();
 
   return (
-    <Flex css={{ gap: '32px' }} as="ul">
+    <Flex css={{ gap: '32px', alignSelf: 'flex-start', width: '90%', margin: '0 auto' }} as="ul">
       {myStudies.map(study => (
         <SSRSuspense fallback={<StudyCard.Skeleton />} key={study.id}>
           <StudyCard
@@ -29,6 +29,8 @@ function StudyList() {
           />
         </SSRSuspense>
       ))}
+      {/* TODO: 스터디 생성 로직 구현 */}
+      {myStudies.length < 4 ? <StudyCard.Plus onClick={() => {}} /> : null}
     </Flex>
   );
 }
