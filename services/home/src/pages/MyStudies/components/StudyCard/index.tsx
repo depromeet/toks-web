@@ -12,7 +12,7 @@ import { getStudyStatus } from 'pages/MyStudies/remotes/study';
 import { Study } from '../../models/study';
 
 interface Props extends Pick<Study, 'title' | 'tags'> {
-  onClick: () => void;
+  onClick: VoidFunction;
   memberCount: number;
   studyId: number;
 }

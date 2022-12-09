@@ -48,7 +48,7 @@ interface StudyStatus {
   // ...some
 }
 
-const STUDY_STATUS: { [key: number]: StudyStatus } = {
+const STUDY_STATUS: Record<number, StudyStatus> = {
   1: {
     quiz: 'EXPIRED',
   },
