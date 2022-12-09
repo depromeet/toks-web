@@ -34,7 +34,7 @@ export function UserAvatar({
   userName,
   userNames = [],
   size,
-  className
+  className,
 }: ImageAvatarProps & LabelAvatarProps) {
   const tooltipContent = userName ?? userNames.join(', ');
   // const avatarClassName = image ? `avatar--user_${id}` : `avatar--group_${id}`;

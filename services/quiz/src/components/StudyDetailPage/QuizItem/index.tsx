@@ -1,11 +1,12 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
 import { Button, Image, Text, UserAvatar } from '@depromeet/toks-components';
 import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'react';
+
 // import { useInterval } from '@toss/react';
 import { Divider } from 'components/common/Divider';
 
-import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
 import { getLimitDate, getQuizItemType, getTimerByQuizType } from '../../../../utils/quizUtils';
+import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
 
 type User = {
   image: string;
@@ -140,14 +141,19 @@ export function QuizItem({
             <Text variant="subhead" css={{ margin: '0 0 0 0' }} as="h6">
               똑스 만든사람
             </Text>
-            <UserAvatar {...creator} css={{ margin: '0 0 0 22px' }} size="large" className={`avatar--user_${creator.id}`}/>
+            <UserAvatar
+              {...creator}
+              css={{ margin: '0 0 0 22px' }}
+              size="large"
+              className={`avatar--user_${creator.id}`}
+            />
             <Space css={{ flex: 1 }} />
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               똑스 안 푼 사람
             </Text>
             <UserAvatar.Group view={6} id="8" css={{ margin: '0 0 0 22px' }}>
               {absentee.map((user, index) => (
-                <UserAvatar key={index} {...user} size="large" className={`avatar--user_${user.id}`}/>
+                <UserAvatar key={index} {...user} size="large" className={`avatar--user_${user.id}`} />
               ))}
             </UserAvatar.Group>
           </FlexRow>
