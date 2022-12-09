@@ -66,32 +66,35 @@ const StyledAvatar = styled(BaseAvatar)`
   }
 `;
 
-const makeAvatarGroupLabel = (id: string, labelKey: number, userAvatars: ReactElement[]) =>
+const makeAvatarGroupLabel = (className: string, labelKey: number, userAvatars: ReactElement[]) =>
   userAvatars.length !== 0 ? (
     <UserAvatar
       key={labelKey}
       label={`+${userAvatars.length}`}
-      id={id}
       userNames={getUserNamesOfAvatars(userAvatars)}
       size={'large'}
-      className={`avatar--group_${id}`}
+      className={className}
     />
   ) : null;
 
 const getUserNamesOfAvatars = (userAvatars: ReactJSXElement[]) =>
   userAvatars.map(userAvatar => userAvatar.props.userName);
 
+type GroupType = 'study' | 'quiz';
+
 interface GroupProps extends ComponentProps<typeof AvatarGroup> {
   view?: number;
   id: string;
   children: ReactNode;
+  groupType: GroupType;
 }
 
-function Group({ view = 6, id, children, ...rest }: GroupProps) {
+function Group({ view = 6, id, children, groupType, ...rest }: GroupProps) {
   const userAvatars = Children.toArray(children) as ReactElement[];
+  const groupClassName = `avatar--${groupType}_${id}`;
   return (
     <AvatarGroup {...rest}>
-      {[...userAvatars.slice(0, view), makeAvatarGroupLabel(id, view, userAvatars.slice(view))]}
+      {[...userAvatars.slice(0, view), makeAvatarGroupLabel(groupClassName, view, userAvatars.slice(view))]}
     </AvatarGroup>
   );
 }
