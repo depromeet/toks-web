@@ -51,6 +51,7 @@ export const Calendar = forwardRef<HTMLInputElement, CalendarComponentProps>(
         </label>
         <StyledCalendar isFocus={isFocus} isError={Boolean(errorMessage)}>
           <CalendarComponent
+            inputId={name}
             name={name}
             panelStyle={{
               backgroundColor: theme.colors.gray100,
