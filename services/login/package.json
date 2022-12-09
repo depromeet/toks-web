@@ -16,6 +16,7 @@
   "dependencies": {
     "@configs/babel": "workspace:configs/babel",
     "@configs/next": "workspace:configs/next",
+    "@depromeet/http": "0.1.0",
     "@depromeet/theme": "^0.0.1",
     "@depromeet/toks-components": "workspace:shared/toks-components",
     "@emotion/css": "^11.9.0",
@@ -27,12 +28,13 @@
     "@toss/react-query": "^1.1.0",
     "@toss/use-overlay": "^1.1.0",
     "@toss/use-query-param": "^1.1.2",
-    "axios": "^0.27.2",
+    "axios": "^1.2.1",
     "date-fns": "^2.29.3",
     "emotion-normalize": "^11.0.1",
     "next": "^12.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.40.0",
     "react-query": "npm:@tanstack/react-query@4.0.10",
     "react-router-dom": "^6.4.4",
     "ts-pattern": "^4.0.5"
