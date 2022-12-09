@@ -2,10 +2,10 @@ import { Button, Calendar, DropDown, Input, InputChips, Text } from '@depromeet/
 import { Flex, gutter, margin, size } from '@toss/emotion-utils';
 import { Controller } from 'react-hook-form';
 
+import { STUDY_CATEGORY_OPTIONS } from 'pages/CreateStudy/constants';
 import { useCreateStudyForm } from 'pages/CreateStudy/hooks/useCreateStudyForm';
 
 import { Wrapper } from './style';
-import { STUDY_CATEGORY_OPTIONS } from 'pages/CreateStudy/constants';
 
 export const CreateStudyForm = () => {
   const { register, control, handleSubmit, setValue, errors, isDisabled, isMaxLength, isRequiredText } =
