@@ -39,16 +39,15 @@ export function UserAvatar({
   userName,
   userNames = [],
   size,
-  ...rest
+  className
 }: ImageAvatarProps & LabelAvatarProps) {
   const tooltipContent = userName ?? userNames.join(', ');
-  const avatarClassName = image ? `avatar--user_${id}` : `avatar--group_${id}`;
+  // const avatarClassName = image ? `avatar--user_${id}` : `avatar--group_${id}`;
 
   return (
     <>
-      <Tooltip target={`.${avatarClassName}`} content={tooltipContent} position="bottom" />
+      <Tooltip target={`.${className}`} content={tooltipContent} position="bottom" />
       <StyledAvatar
-        className={avatarClassName}
         image={image}
         label={label}
         size={size}
@@ -60,7 +59,7 @@ export function UserAvatar({
           backgroundColor: `${theme.colors.gray060}`,
           border: `1px solid ${theme.colors.gray100}`,
         }}
-        {...rest} // TODO: UserAvatar에 css값을 주기 위해서 추가했으나 툴팁이 출력되지 않는 문제가 있음
+        className={className}
       />
     </>
   );
@@ -80,6 +79,7 @@ const makeAvatarGroupLabel = (id: string, labelKey: number, userAvatars: ReactEl
       id={id}
       userNames={getUserNamesOfAvatars(userAvatars)}
       size={'large'}
+      className={`avatar--group_${id}`}
     />
   ) : null;
 

@@ -191,17 +191,17 @@ export function QuizItem({
           </FlexRow>
           <Divider css={{ marginTop: '22.25px' }} />
           <FlexRow css={{ marginTop: '14px' }}>
-            <Text variant="subhead" css={{ margin: '0 22px 0 0' }} as="h6">
+            <Text variant="subhead" css={{ margin: '0 0 0 0' }} as="h6">
               똑스 만든사람
             </Text>
-            <UserAvatar {...creator} size="large" />
+            <UserAvatar {...creator} css={{ margin: '0 0 0 22px' }} size="large" className={`avatar--user_${creator.id}`}/>
             <Space css={{ flex: 1 }} />
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               똑스 안 푼 사람
             </Text>
             <UserAvatar.Group view={6} id="8" css={{ margin: '0 0 0 22px' }}>
               {absentee.map((user, index) => (
-                <UserAvatar key={index} {...user} size="large" />
+                <UserAvatar key={index} {...user} size="large" className={`avatar--user_${user.id}`}/>
               ))}
             </UserAvatar.Group>
           </FlexRow>
