@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const authToken = {
-  access: window == undefined ? null : sessionStorage.getItem('accessToken'),
-  refresh: window == undefined ? null : sessionStorage.getItem('refreshToken'),
+  access: typeof window === 'undefined' ? null : sessionStorage.getItem('accessToken'),
+  refresh: typeof window === 'undefined' ? null : sessionStorage.getItem('refreshToken'),
 };
 
 export function Auth() {
