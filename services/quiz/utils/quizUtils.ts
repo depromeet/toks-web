@@ -1,6 +1,6 @@
 export type QuizStatus = 'default' | 'disabled' | 'activated';
 
-export const parseTimeStr = (timeStr: string) => [...timeStr.split(':').map(Number)];
+const parseTimeStr = (timeStr: string) => [...timeStr.split(':').map(Number)];
 
 export const getLimitDate = (openDate: Date, limitTime: string) => {
   const [hour, minute, second] = parseTimeStr(limitTime);
@@ -39,9 +39,9 @@ export const getTimerByQuizType = (quizItemType: QuizStatus, limitTime: string, 
   }
 };
 
-export const convertTimeFormat = (num: number) => (num < 10 ? `0${num}` : num);
+const convertTimeFormat = (num: number) => (num < 10 ? `0${num}` : num);
 
-export const calculateRemainingTimerValue = (limitDate: Date) => {
+const calculateRemainingTimerValue = (limitDate: Date) => {
   let remainingTime = limitDate.getTime() - new Date().getTime();
   if (remainingTime <= 0) {
     return '00:00:00';
