@@ -3,6 +3,6 @@ export interface CreateStudyFormValues {
   studyDescription: string;
   startDate: Date;
   endDate: Date;
-  memberCount: number;
+  studyCategory: string;
   studyTags: string[];
 }

@@ -1,10 +1,11 @@
-import { Button, Calendar, Input, InputChips, Text } from '@depromeet/toks-components';
+import { Button, Calendar, DropDown, Input, InputChips, Text } from '@depromeet/toks-components';
 import { Flex, gutter, margin, size } from '@toss/emotion-utils';
 import { Controller } from 'react-hook-form';
 
 import { useCreateStudyForm } from 'pages/CreateStudy/hooks/useCreateStudyForm';
 
 import { Wrapper } from './style';
+import { STUDY_CATEGORY_OPTIONS } from 'pages/CreateStudy/constants';
 
 export const CreateStudyForm = () => {
   const { register, control, handleSubmit, setValue, errors, isDisabled, isMaxLength, isRequiredText } =
@@ -16,7 +17,7 @@ export const CreateStudyForm = () => {
         똑스터디 만들기
       </Text>
       <form
-        onSubmit={handleSubmit(data => alert(data))}
+        onSubmit={handleSubmit(data => alert(JSON.stringify(data, null, 2)))}
         css={(margin.top(42), size({ width: '100%' }), gutter('vertical', 32))}
       >
         <Input
@@ -62,13 +63,10 @@ export const CreateStudyForm = () => {
             errorMessage={errors.endDate?.message}
           />
         </Flex>
-        <Input
-          {...register('memberCount', {
-            required: isRequiredText('인원'),
-          })}
-          required
-          label="스터디 인원"
-          errorMessage={errors.memberCount?.message}
+        <Controller
+          name="studyCategory"
+          control={control}
+          render={({ field }) => <DropDown {...field} options={STUDY_CATEGORY_OPTIONS} label="스터디 인원" required />}
         />
         <Controller
           name="studyTags"
