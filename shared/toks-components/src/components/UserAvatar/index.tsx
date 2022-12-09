@@ -10,16 +10,14 @@ import { Tooltip } from '@depromeet/toks-components';
 type AvatarSize = 'normal' | 'large' | 'xlarge';
 
 interface ImageAvatarProps extends Omit<ComponentProps<typeof BaseAvatar>, 'image' | 'size'> {
-  image: string;
-  id: string;
-  userName: string;
+  image?: string;
+  userName?: string;
   size?: AvatarSize;
 }
 
 interface LabelAvatarProps extends Omit<ComponentProps<typeof BaseAvatar>, 'label' | 'size'> {
-  label: string;
-  id: string;
-  userNames: string[];
+  label?: string;
+  userNames?: string[];
   size?: AvatarSize;
 }
 
@@ -29,29 +27,34 @@ const AVATAR_SIZE = {
   xlarge: '40px',
 };
 
-const isImageAvatar = (props: any): props is ImageAvatarProps => props.userName !== undefined;
-
 // TODO : 디폴트 이미지가 직접 넘어오는지 빈 값으로 넘어오는지에 따라 디폴트 프로필 이미지 출력을 구현해야함
-export function UserAvatar(props: ImageAvatarProps | LabelAvatarProps) {
-  const tooltipContent = isImageAvatar(props) ? props.userName : props.userNames.join(', ');
-  const avatarClassName = isImageAvatar(props) ? `avatar--user_${props.id}` : `avatar--group_${props.id}`;
+export function UserAvatar({
+  image,
+  label,
+  userName,
+  userNames = [],
+  size,
+  className,
+}: ImageAvatarProps & LabelAvatarProps) {
+  const tooltipContent = userName ?? userNames.join(', ');
+  // const avatarClassName = image ? `avatar--user_${id}` : `avatar--group_${id}`;
 
   return (
     <>
-      <Tooltip target={`.${avatarClassName}`} content={tooltipContent} position="right" />
+      <Tooltip target={`.${className}`} content={tooltipContent} position="bottom" />
       <StyledAvatar
-        className={avatarClassName}
-        image={props.image}
-        label={props.label}
-        size={props.size}
+        image={image}
+        label={label}
+        size={size}
         shape="circle"
         // TODO: inline style로 적용한 부분 제외하기...^^ (현구님 따라해서 일단 저도 이렇게 했슴다..)
         style={{
-          width: AVATAR_SIZE[props.size ?? 'normal'],
-          height: AVATAR_SIZE[props.size ?? 'normal'],
+          width: AVATAR_SIZE[size ?? 'normal'],
+          height: AVATAR_SIZE[size ?? 'normal'],
           backgroundColor: `${theme.colors.gray060}`,
           border: `1px solid ${theme.colors.gray100}`,
         }}
+        className={className}
       />
     </>
   );
@@ -63,29 +66,33 @@ const StyledAvatar = styled(BaseAvatar)`
   }
 `;
 
-const makeAvatarGroupLabel = (id: string, userAvatars: ReactElement[]) =>
+const makeAvatarGroupLabel = (id: string, labelKey: number, userAvatars: ReactElement[]) =>
   userAvatars.length !== 0 ? (
     <UserAvatar
+      key={labelKey}
       label={`+${userAvatars.length}`}
       id={id}
       userNames={getUserNamesOfAvatars(userAvatars)}
       size={'large'}
+      className={`avatar--group_${id}`}
     />
   ) : null;
 
 const getUserNamesOfAvatars = (userAvatars: ReactJSXElement[]) =>
   userAvatars.map(userAvatar => userAvatar.props.userName);
 
-interface GroupProps {
+interface GroupProps extends ComponentProps<typeof AvatarGroup> {
   view?: number;
   id: string;
   children: ReactNode;
 }
 
-function Group({ view = 6, id, children }: GroupProps) {
+function Group({ view = 6, id, children, ...rest }: GroupProps) {
   const userAvatars = Children.toArray(children) as ReactElement[];
   return (
-    <AvatarGroup>{[...userAvatars.slice(0, view), makeAvatarGroupLabel(id, userAvatars.slice(view))]}</AvatarGroup>
+    <AvatarGroup {...rest}>
+      {[...userAvatars.slice(0, view), makeAvatarGroupLabel(id, view, userAvatars.slice(view))]}
+    </AvatarGroup>
   );
 }
 
