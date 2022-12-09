@@ -10,7 +10,6 @@ export interface ToksHttpClient extends AxiosInstance {
   put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
   patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
 }
-
 const authToken = {
   access: typeof window === 'undefined' ? null : sessionStorage.getItem('accessToken'),
   refresh: typeof window === 'undefined' ? null : sessionStorage.getItem('refreshToken'),
