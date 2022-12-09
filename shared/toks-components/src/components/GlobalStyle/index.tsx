@@ -90,4 +90,66 @@ const globalCss = css`
   .p-highlight {
     background-color: ${theme.colors.gray080} !important;
   }
+
+  /* calendar custom styling */
+  .p-datepicker .p-datepicker-header {
+    background-color: ${theme.colors.gray100} !important;
+    border-bottom: none !important;
+  }
+
+  /* head */
+  div.p-datepicker-calendar-container > table > thead {
+    //styleName: body-02;
+    font-family: Spoqa Han Sans Neo;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.6px;
+    text-align: center;
+  }
+
+  .p-datepicker .p-datepicker-header .p-datepicker-title button {
+    color: ${theme.colors.white} !important;
+
+    //styleName: Subhead;
+    font-family: Spoqa Han Sans Neo;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.6px;
+  }
+
+  /* cell */
+  .p-datepicker table td > span {
+    //styleName: body-02;
+    font-family: Spoqa Han Sans Neo;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: -0.6000000238418579px;
+    text-align: center;
+  }
+
+  /* today cell */
+  .p-datepicker table td.p-datepicker-today > span {
+    background-color: ${theme.colors.primary} !important;
+    color: ${theme.colors.white} !important;
+  }
+
+  /* 요일 days cell */
+  .p-datepicker table th {
+    :first-of-type,
+    :last-of-type {
+      color: ${theme.colors.danger} !important;
+    }
+    padding-bottom: 8px !important;
+  }
+
+  /* 토/일 cell */
+  .p-datepicker table td {
+    :first-of-type,
+    :last-of-type {
+      color: ${theme.colors.primary} !important;
+    }
+  }
 `;
