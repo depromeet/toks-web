@@ -38,6 +38,10 @@ jobs:
       - name: 업데이트 버전 커밋
         id: bump-commit
         run: |
+          git submodule deinit -f services/home/feat/joinstudy
+          rm -rf .git/modules/services/home/feat/joinstudy
+          git rm -r --cached --ignore-unmatch services/home/feat/joinstudy
+
           echo "npmAuthToken: ${{ secrets.NPM_PUBLISH_TOKEN }}" | tee $HOME/.yarnrc.yml
           yarn workspaces since version $(git rev-parse HEAD~1) --include='packages/*'
           git add ./packages
