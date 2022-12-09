@@ -1,7 +1,8 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import React from 'react';
-import { IconName, ICONS } from './icons';
+
+import { ICONS, IconName } from './icons';
 
 export interface IconProps extends React.SVGProps<SVGSVGElement> {
   wrapperProps?: React.HTMLAttributes<HTMLDivElement>;
