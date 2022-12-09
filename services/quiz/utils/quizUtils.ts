@@ -1,4 +1,4 @@
-export type QuizStatus = 'default' | 'disabled' | 'activated';
+type QuizStatus = 'default' | 'disabled' | 'activated';
 
 const parseTimeStr = (timeStr: string) => [...timeStr.split(':').map(Number)];
 
