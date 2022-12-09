@@ -1,10 +1,11 @@
-import { theme } from '@depromeet/theme';
+import { KeyOfColors, theme } from '@depromeet/theme';
 import { Button, Image, Text, UserAvatar } from '@depromeet/toks-components';
 import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'react';
-
+// import { useInterval } from '@toss/react';
 import { Divider } from 'components/common/Divider';
 
 import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
+import { getLimitDate, getQuizItemType, getTimerByQuizType } from '../../../../utils/quizUtils';
 
 type User = {
   image: string;
@@ -29,7 +30,7 @@ type QuizStatus = 'default' | 'disabled' | 'activated';
 type QuizItemColorMap = {
   [key in QuizStatus]: {
     button: ComponentProps<typeof Button>['type'];
-    timer: ComponentProps<typeof Text>['color'];
+    timer: KeyOfColors;
   };
 };
 
@@ -46,58 +47,6 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
     button: 'primary',
     timer: 'primary',
   },
-};
-
-const parseTimeStr = (timeStr: string) => [...timeStr.split(':').map(Number)];
-
-const getLimitDate = (openDate: Date, limitTime: string) => {
-  const [hour, minute, second] = parseTimeStr(limitTime);
-  const limitDate = new Date(openDate);
-  limitDate.setHours(limitDate.getHours() + hour);
-  limitDate.setMinutes(limitDate.getMinutes() + minute);
-  limitDate.setSeconds(limitDate.getSeconds() + second);
-  return limitDate;
-};
-
-const getQuizItemType = (openDate: Date, limitDate: Date) => {
-  const currentDate = new Date();
-
-  if (limitDate.getTime() <= currentDate.getTime()) {
-    return 'default';
-  } else if (currentDate.getTime() < openDate.getTime()) {
-    return 'disabled';
-  } else {
-    return 'activated';
-  }
-};
-
-const getTimerByQuizType = (quizItemType: QuizStatus, limitTime: string, limitDate: Date) => {
-  if (quizItemType === 'default') {
-    return '00:00:00';
-  } else if (quizItemType === 'disabled') {
-    return limitTime;
-  } else {
-    return calculateRemainingTimerValue(limitDate);
-  }
-};
-
-const convertTimeFormat = (num: number) => (num < 10 ? `0${num}` : num);
-
-const calculateRemainingTimerValue = (limitDate: Date) => {
-  let remainingTime = limitDate.getTime() - new Date().getTime();
-  if (remainingTime <= 0) {
-    return '00:00:00';
-  }
-
-  const day = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-  remainingTime -= day * (1000 * 60 * 60 * 24);
-  const hour = Math.floor(remainingTime / (1000 * 60 * 60));
-  remainingTime -= hour * (1000 * 60 * 60);
-  const minute = Math.floor(remainingTime / (1000 * 60));
-  remainingTime -= minute * (1000 * 60);
-  const second = Math.floor(remainingTime / 1000);
-
-  return `${convertTimeFormat(hour)}:${convertTimeFormat(minute)}:${convertTimeFormat(second)}`;
 };
 
 // TODO: 아이콘들 Image로 되어있는것 추후 Icon 컴포넌트로 변경해야 함
@@ -117,9 +66,6 @@ export function QuizItem({
   const [quizItemType, setQuizItemType] = useState(getQuizItemType(openDate, limitDate) as QuizStatus);
   const [timer, setTimer] = useState(quizItemType === 'default' ? '00:00:00' : limitTime);
   const [isFold, setIsFold] = useState(quizItemType !== 'default');
-
-  creator;
-  absentee;
 
   useEffect(() => {
     const interval = setInterval(() => {

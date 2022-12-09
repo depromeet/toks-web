@@ -11,14 +11,12 @@ type AvatarSize = 'normal' | 'large' | 'xlarge';
 
 interface ImageAvatarProps extends Omit<ComponentProps<typeof BaseAvatar>, 'image' | 'size'> {
   image?: string;
-  id: string;
   userName?: string;
   size?: AvatarSize;
 }
 
 interface LabelAvatarProps extends Omit<ComponentProps<typeof BaseAvatar>, 'label' | 'size'> {
   label?: string;
-  id: string;
   userNames?: string[];
   size?: AvatarSize;
 }
@@ -29,13 +27,10 @@ const AVATAR_SIZE = {
   xlarge: '40px',
 };
 
-// const isImageAvatar = (image : string) => ima !== undefined;
-
 // TODO : 디폴트 이미지가 직접 넘어오는지 빈 값으로 넘어오는지에 따라 디폴트 프로필 이미지 출력을 구현해야함
 export function UserAvatar({
   image,
   label,
-  id,
   userName,
   userNames = [],
   size,

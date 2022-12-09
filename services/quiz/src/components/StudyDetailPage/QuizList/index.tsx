@@ -2,10 +2,10 @@ import { theme } from '@depromeet/theme';
 import { Image, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { useState } from 'react';
-
 import { QuizItem } from 'components/StudyDetailPage/QuizItem';
 
 import { List } from './style';
+import { isExistQuizToSolve } from '../../../../utils/quizUtils';
 
 const creator = {
   image: 'https://asset.tokstudy.com/img_penguin.png',
@@ -112,23 +112,6 @@ const quizList: QuizItem[] = [
   },
 ];
 
-const parseTimeStr = (timeStr: string) => [...timeStr.split(':').map(Number)];
-
-const getLimitDate = (openDate: Date, limitTime: string) => {
-  const [hour, minute, second] = parseTimeStr(limitTime);
-  const limitDate = new Date(openDate);
-  limitDate.setHours(limitDate.getHours() + hour);
-  limitDate.setMinutes(limitDate.getMinutes() + minute);
-  limitDate.setSeconds(limitDate.getSeconds() + second);
-  return limitDate;
-};
-
-const isExistQuizToSolve = (openDate: Date, limitTime: string) => {
-  const limitDate = getLimitDate(openDate, limitTime);
-  const currentDate = new Date();
-  return limitDate.getTime() <= currentDate.getTime();
-};
-
 const AddButton = styled.button`
   width: 982px;
   height: 54px;
@@ -163,7 +146,7 @@ export function QuizList() {
 
   return (
     <List>
-      <li>{addQuizState ? QuizAddButton() : null}</li>
+      <li>{addQuizState ? <QuizAddButton/> : null}</li>
       {firstQuizItem
         ? quizList.map((quizItem, index) => (
             <QuizItem key={quizItem.quizId} index={index} {...quizItem} setAddQuizState={setAddQuizState} />
