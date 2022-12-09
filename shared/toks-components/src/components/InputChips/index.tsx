@@ -1,7 +1,9 @@
 import { theme } from '@depromeet/theme';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Chips as ChipsComponent, ChipsProps } from 'primereact/chips';
-import { forwardRef, useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
+import { InitialInputFocusStyle, InitialInputHoverStyle } from '../Input';
 
 import { Text } from '../Text';
 
@@ -14,6 +16,7 @@ interface ChipsComponentProps extends ChipsProps {
 export const InputChips = forwardRef<HTMLInputElement, ChipsComponentProps>(
   ({ label, name, errorMessage, value, ...props }: ChipsComponentProps, ref) => {
     const inputBoxRef = useRef<HTMLDivElement>(null);
+    const [isFocus, setIsFocus] = useState(false);
 
     useEffect(() => {
       // chip icon 변경
@@ -30,8 +33,16 @@ export const InputChips = forwardRef<HTMLInputElement, ChipsComponentProps>(
         <label htmlFor={name}>
           <Text variant="body02">{label}</Text>
         </label>
-        <StyledChip ref={inputBoxRef}>
-          <ChipsComponent inputId={name} inputRef={ref} name={name} value={value} {...props} />
+        <StyledChip ref={inputBoxRef} isFocus={isFocus}>
+          <ChipsComponent
+            inputId={name}
+            inputRef={ref}
+            name={name}
+            value={value}
+            {...props}
+            onFocus={() => setIsFocus(true)}
+            onBlur={() => setIsFocus(false)}
+          />
         </StyledChip>
       </Wrapper>
     );
@@ -48,7 +59,20 @@ const Wrapper = styled.div`
   }
 `;
 
-export const StyledChip = styled('div')`
+export const StyledChip = styled('div')<{ isFocus?: boolean }>`
+  .p-inputtext {
+    border: none;
+    box-shadow: none !important;
+
+    ${props => {
+      const { isFocus } = props;
+      return css`
+        ${isFocus && InitialInputFocusStyle}
+        ${!isFocus && InitialInputHoverStyle}
+      `;
+    }}
+  }
+
   & .p-chips .p-chips-multiple-container {
     padding: 0 16px;
     height: 48px;

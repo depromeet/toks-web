@@ -51,7 +51,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
 );
 
 export const InitialInputFocusStyle = css`
-  border: #ff862f 2px solid;
+  border: #ff862f 2px solid !important;
   background: ${theme.colors.gray100};
   outline: none;
   box-shadow: none;
@@ -65,7 +65,7 @@ export const InitialInputErrorStyle = css`
 export const InitialInputHoverStyle = css`
   &:hover {
     background: ${theme.colors.gray100};
-    border: ${theme.colors.gray040} 1px solid;
+    border: ${theme.colors.gray040} 1px solid !important;
   }
 `;
 
