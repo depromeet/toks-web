@@ -1,7 +1,158 @@
+import { theme } from '@depromeet/theme';
+import { Image, Text } from '@depromeet/toks-components';
+import styled from '@emotion/styled';
+import { useState } from 'react';
+
+import { QuizItem } from 'components/StudyDetailPage/QuizItem';
+
+import { isExistQuizToSolve } from '../../../../utils/quizUtils';
+import { List } from './style';
+
+const creator = {
+  image: 'https://asset.tokstudy.com/img_penguin.png',
+  id: '13',
+  userName: '윤두현1',
+  size: 'large',
+};
+
+const absentee = [
+  {
+    image: 'https://asset.tokstudy.com/img_penguin.png',
+    id: '13',
+    userName: '윤두현1',
+    size: 'large',
+  },
+  {
+    image: 'https://asset.tokstudy.com/img_penguin.png',
+    id: '14',
+    userName: '현두윤2',
+    size: 'large',
+  },
+  {
+    image: 'https://asset.tokstudy.com/img_penguin.png',
+    id: '15',
+    userName: '두현윤3',
+    size: 'large',
+  },
+  {
+    image: 'https://asset.tokstudy.com/img_penguin.png',
+    id: '16',
+    userName: '윤두현4',
+    size: 'large',
+  },
+  {
+    image: 'https://asset.tokstudy.com/img_penguin.png',
+    id: '17',
+    userName: '현두윤5',
+    size: 'large',
+  },
+  {
+    image: 'https://asset.tokstudy.com/img_penguin.png',
+    id: '18',
+    userName: '두현윤6',
+    size: 'large',
+  },
+  {
+    image: 'https://asset.tokstudy.com/img_penguin.png',
+    id: '19',
+    userName: '나머지1',
+    size: 'large',
+  },
+  {
+    image: 'https://asset.tokstudy.com/img_penguin.png',
+    id: '20',
+    userName: '나머지2',
+    size: 'large',
+  },
+];
+
+type User = {
+  image: string;
+  id: string;
+  userName: string;
+  size?: string;
+};
+
+interface QuizItem {
+  quizId: number;
+  weekNumber: number;
+  title: string;
+  openDate: Date;
+  limitTime: string;
+  creator: User;
+  absentee: User[];
+}
+
+const quizList: QuizItem[] = [
+  {
+    quizId: 33,
+    weekNumber: 3,
+    title: '퀴즈가 진행되고 있는 스터디 입니다',
+    openDate: new Date('2022-12-07 17:45:00'),
+    limitTime: '02:00:00',
+    creator,
+    absentee,
+  },
+  {
+    quizId: 22,
+    weekNumber: 2,
+    title: '만료된 스터디 입니다 22',
+    openDate: new Date('2022-12-05 05:10:00'),
+    limitTime: '02:15:00',
+    creator,
+    absentee,
+  },
+  {
+    quizId: 11,
+    weekNumber: 1,
+    title: '만료된 스터디 입니다',
+    openDate: new Date('2022-11-27 10:00:00'),
+    limitTime: '02:00:00',
+    creator,
+    absentee,
+  },
+];
+
+const AddButton = styled.button`
+  width: 982px;
+  height: 54px;
+  margin-bottom: 12px;
+  border-radius: 16px;
+  border: 1.4px solid ${theme.colors.gray080};
+  background-color: ${theme.colors.gray120};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const QuizAddButton = () => (
+  <AddButton>
+    <Image
+      width={24}
+      height={24}
+      src="https://toks-web-assets.s3.amazonaws.com/ic-plus.svg"
+      alt="퀴즈 추가 버튼 입니다."
+    />
+    <Text variant="headline" color="gray010" css={{ margin: '0 0 0 10px' }} as="h5">
+      똑스 만들기
+    </Text>
+  </AddButton>
+);
+
 export function QuizList() {
+  const firstQuizItem = quizList[0];
+  const [addQuizState, setAddQuizState] = useState(
+    firstQuizItem && isExistQuizToSolve(firstQuizItem.openDate, firstQuizItem.limitTime)
+  );
+
   return (
-    <div>
-      <div>QuizList</div>
-    </div>
+    <List>
+      <li>{addQuizState ? <QuizAddButton /> : null}</li>
+      {firstQuizItem
+        ? quizList.map((quizItem, index) => (
+            <QuizItem key={quizItem.quizId} index={index} {...quizItem} setAddQuizState={setAddQuizState} />
+          ))
+        : null}
+    </List>
   );
 }
