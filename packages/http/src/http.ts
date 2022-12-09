@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const authToken = {
-  access: sessionStorage.getItem('accessToken'),
-  refresh: sessionStorage.getItem('refreshToken'),
+  access: window == undefined ? null : sessionStorage.getItem('accessToken'),
+  refresh: window == undefined ? null : sessionStorage.getItem('refreshToken'),
 };
 
 export function Auth() {
@@ -13,7 +13,7 @@ export function Auth() {
 }
 
 //axios instance
-export const instance = axios.create({
+const instance = axios.create({
   baseURL: 'https://api.tokstudy.com',
   headers: { Authorization: `Bearer ${authToken?.access}` },
 });
@@ -56,3 +56,5 @@ instance.interceptors.response.use(async function (error) {
   }
   return Promise.reject(error);
 });
+
+export const http = instance;
