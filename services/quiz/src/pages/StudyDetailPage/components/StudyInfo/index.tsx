@@ -1,7 +1,7 @@
-import { Tag, UserAvatar } from '@depromeet/toks-components';
+import { Text, Tag, UserAvatar } from '@depromeet/toks-components';
 
 import { User } from '../../../../../utils/userUtils';
-import { Body, Description, Footer, Header, Info, StudyTags, Title } from './style';
+import { Body, Footer, Header, Info, StudyTags } from './style';
 
 interface StudyInfoProps {
   studyId: string;
@@ -17,10 +17,10 @@ export function StudyInfo({ studyId, title, description, studyTags, members }: S
   return (
     <Info>
       <Header>
-        <Title>{title}</Title>
+        <Text color='white' variant='title01' css={{textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap'}} as="h1">{title}</Text>
       </Header>
       <Body>
-        <Description>{description}</Description>
+      <Text color='gray020' variant='body02'>{description}</Text>
         <StudyTags>
           <Tag.Row style={{ padding: 0 }}>{makeStudyTags(studyTags)}</Tag.Row>
         </StudyTags>
