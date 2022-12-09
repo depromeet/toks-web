@@ -37,13 +37,16 @@ export interface CalendarComponentProps extends CalendarProps {
 }
 
 export const Calendar = forwardRef<HTMLInputElement, CalendarComponentProps>(
-  ({ label, name, errorMessage, inputRef, ...props }: CalendarComponentProps, ref) => {
+  ({ label, name, errorMessage, inputRef, required, ...props }: CalendarComponentProps, ref) => {
     const [isFocus, setIsFocus] = useState(false);
 
     return (
       <Wrapper>
         <label htmlFor={name}>
-          <Text variant="body02">{label}</Text>
+          <Text variant="body02">
+            {label}
+            {required && '*'}
+          </Text>
         </label>
         <StyledCalendar isFocus={isFocus} isError={Boolean(errorMessage)}>
           <CalendarComponent
@@ -56,6 +59,7 @@ export const Calendar = forwardRef<HTMLInputElement, CalendarComponentProps>(
             }}
             dateFormat="yy. mm. dd. D"
             inputRef={ref}
+            required={required}
             {...props}
           />
         </StyledCalendar>

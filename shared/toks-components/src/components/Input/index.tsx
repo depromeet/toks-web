@@ -15,13 +15,17 @@ interface Props extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
 }
 
 export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label = 'user', name, errorMessage, width, height, ...props }: Props, ref) => {
+  ({ label = 'user', name, errorMessage, width, height, required, ...props }: Props, ref) => {
     const [isFocus, setIsFocus] = useState(false);
 
+    console.log(required);
     return (
       <Wrapper>
         <label htmlFor={name}>
-          <Text variant="body02">{label}</Text>
+          <Text variant="body02">
+            {label}
+            {required && '*'}
+          </Text>
         </label>
         <StyledInput width={width} height={height} isFocus={isFocus} isError={Boolean(errorMessage)} {...props}>
           <InitialInput
@@ -30,6 +34,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
             onBlur={() => setIsFocus(false)}
             id={name}
             name={name}
+            required={required}
             {...props}
           />
           {errorMessage && (

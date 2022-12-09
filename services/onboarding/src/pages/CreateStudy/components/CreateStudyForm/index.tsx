@@ -25,7 +25,8 @@ export const CreateStudyForm = () => {
             maxLength: isMaxLength(20),
           })}
           autoFocus
-          label="스터디 이름*"
+          required
+          label="스터디 이름"
           placeholder="스터디 이름을 입력해주세요. (20자 이내)"
           errorMessage={errors.studyName?.message}
         />
@@ -43,7 +44,8 @@ export const CreateStudyForm = () => {
               required: isRequiredText('시작일'),
             })}
             readOnlyInput
-            label="스터디 시작일*"
+            required
+            label="스터디 시작일"
             minDate={new Date()}
             placeholder="날짜 선택"
             errorMessage={errors.startDate?.message}
@@ -53,7 +55,8 @@ export const CreateStudyForm = () => {
               required: isRequiredText('종료일'),
             })}
             readOnlyInput
-            label="스터디 종료일*"
+            required
+            label="스터디 종료일"
             minDate={new Date()}
             placeholder="날짜 선택"
             errorMessage={errors.endDate?.message}
@@ -63,7 +66,8 @@ export const CreateStudyForm = () => {
           {...register('memberCount', {
             required: isRequiredText('인원'),
           })}
-          label="스터디 인원*"
+          required
+          label="스터디 인원"
           errorMessage={errors.memberCount?.message}
         />
         <Controller
