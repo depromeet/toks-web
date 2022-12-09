@@ -72,7 +72,7 @@ export const CreateStudyForm = () => {
           name="studyTags"
           control={control}
           render={({ field }) => (
-            <InputChips {...field} onChange={e => setValue('studyTags', e.value)} label="스터디 관련 태그" max={5} />
+            <InputChips {...field} onChange={e => setValue('studyTags', e.value)} label="스터디 관련 태그" />
           )}
         />
         <Button type="primary" htmlType="submit" disabled={isDisabled}>
