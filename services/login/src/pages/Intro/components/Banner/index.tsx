@@ -1,7 +1,8 @@
 import { Button, Text } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
-import { login as requestLogin } from '../../remote/login';
 import { useMutation } from 'react-query';
+
+import { login as requestLogin } from '../../remote/login';
 
 export const Banner = () => {
   const { mutateAsync: login, isLoading } = useMutation(requestLogin);
