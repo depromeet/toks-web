@@ -6,7 +6,8 @@ import Head from 'next/head';
 import { ReactElement, ReactNode, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { OverlayProvider } from '@toss/use-overlay';
-import { GlobalStyle as ToksDesignSystemStyle, ToksHeader } from '@depromeet/toks-components';
+import { GlobalStyle as ToksDesignSystemStyle } from '@depromeet/toks-components';
+import { Layout } from '@depromeet/layout';
 
 const normalizedStyles = css`
   ${emotionNormalize}
@@ -60,11 +61,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <QueryClientProvider client={queryClient}>
         <OverlayProvider>
           {getLayout(
-            <>
-              {/* //TODO: ToksHeader Layout으로 뺴기 */}
-              <ToksHeader imgUrl="https://asset.tokstudy.com/img_penguin.png" userName="강현구" />
+            <Layout login={false}>
               <Component {...pageProps} />
-            </>
+            </Layout>
           )}
         </OverlayProvider>
       </QueryClientProvider>

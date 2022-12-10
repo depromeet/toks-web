@@ -4,7 +4,6 @@ import { Wrapper } from './style';
 function Intro() {
   return (
     <>
-      {/* <ToksHeader /> */}
       <Wrapper>
         <Banner />
       </Wrapper>

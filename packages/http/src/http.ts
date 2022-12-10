@@ -27,18 +27,19 @@ export function Auth() {
 const instance: ToksHttpClient = axios.create({
   baseURL: 'https://api.tokstudy.com',
   headers: { Authorization: `Bearer ${authToken?.access}` },
-  withCredentials: true,
 });
 
 //1. 요청 인터셉터
 instance.interceptors.request.use(
   function (config) {
-    //axios headers undefined issue로 인해 headers 재설정
-    config.headers = {
-      Authorization: `Bearer ${authToken?.access}`,
-    };
-    config!.headers['Content-Type'] = 'application/json; charset=utf-8';
-    return config.data.data;
+    if (config?.headers == null) {
+      throw new Error(`config.header is undefined`);
+    }
+
+    config.headers['Content-Type'] = 'application/json; charset=utf-8';
+    config.headers['Authorization'] = `Bearer ${authToken?.access}`;
+
+    return config;
   },
   function (error) {
     return Promise.reject(error);

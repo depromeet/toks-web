@@ -1620,9 +1620,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@depromeet/http@npm:0.1.0":
-  version: 0.1.0
-  resolution: "@depromeet/http@npm:0.1.0"
+"@depromeet/http@npm:0.1.2, @depromeet/http@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "@depromeet/http@npm:0.1.2"
   dependencies:
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
@@ -1632,7 +1632,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     ts-pattern: ^4.0.5
-  checksum: ae76bce70166f252194a245c231cd4cac0c0754654383ceab9a8bae4af7a029e3e1ec19c432639673b25ebee69ae00ef2696e11d97147d701c6972b64c1a96dd
+  checksum: 26f2c3c28f95e8957cc013450bdc8ab5ffec6237380eac79fc0f5ddabf4eee74644cc741cb38f63e9b891172f7f387ca46b051540c2b2cf0e27e75d7a81282bd
   languageName: node
   linkType: hard
 
@@ -1665,6 +1665,51 @@ __metadata:
     rimraf: ^3.0.2
     ts-pattern: ^4.0.5
     typescript: ^4.7.4
+  languageName: unknown
+  linkType: soft
+
+"@depromeet/layout@workspace:shared/layout":
+  version: 0.0.0-use.local
+  resolution: "@depromeet/layout@workspace:shared/layout"
+  dependencies:
+    "@depromeet/http": ^0.1.2
+    "@depromeet/path": "workspace:shared/path"
+    "@depromeet/theme": 0.0.1
+    "@depromeet/toks-components": "workspace:shared/toks-components"
+    "@emotion/css": ^11.9.0
+    "@emotion/react": ^11.9.3
+    "@emotion/styled": ^11.9.3
+    "@toss/emotion-utils": 1.1.3
+    "@toss/react": ^1.3.3
+    "@toss/use-overlay": ^1.3.0
+    "@types/node": ^18.0.3
+    "@types/react": ^18.0.25
+    "@typescript-eslint/eslint-plugin": ^5.29.0
+    "@typescript-eslint/parser": ^5.29.0
+    axios: ^0.27.2
+    concurrently: ^7.3.0
+    emotion-normalize: ^11.0.1
+    eslint: ^8.18.0
+    eslint-config-prettier: ^8.5.0
+    eslint-import-resolver-typescript: ^2.7.1
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: ^6.6.1
+    eslint-plugin-prettier: ^4.0.0
+    eslint-plugin-react: ^7.31.6
+    eslint-plugin-react-hooks: ^4.6.0
+    framer-motion: ^6.5.1
+    jest: ^29.3.1
+    prettier: ^2.7.1
+    primeicons: ^6.0.1
+    primereact: ^8.7.2
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+    react-query: "npm:@tanstack/react-query@4.0.10"
+    rimraf: ^3.0.2
+    typescript: ^4.7.4
+  peerDependencies:
+    "@toss/use-overlay": ">=1.1.0"
+    react-query: "*"
   languageName: unknown
   linkType: soft
 
@@ -1743,7 +1788,7 @@ __metadata:
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
-    "@toss/emotion-utils": 1.1.3
+    "@toss/emotion-utils": ^1.1.4
     "@toss/react": ^1.3.3
     "@toss/use-overlay": ^1.3.0
     "@types/node": ^18.0.3
@@ -2644,6 +2689,7 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
+    "@depromeet/layout": "workspace:shared/layout"
     "@depromeet/path": "workspace:shared/path"
     "@depromeet/theme": ^0.0.1
     "@depromeet/toks-components": "workspace:shared/toks-components"
@@ -2690,12 +2736,14 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
-    "@depromeet/http": 0.1.0
+    "@depromeet/http": 0.1.2
+    "@depromeet/layout": "workspace:shared/layout"
     "@depromeet/theme": ^0.0.1
     "@depromeet/toks-components": "workspace:shared/toks-components"
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
+    "@svgr/webpack": ^6.5.1
     "@toss/assert": ^1.1.0
     "@toss/emotion-utils": ^1.1.3
     "@toss/error-boundary": ^1.1.0
@@ -2738,6 +2786,7 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
+    "@depromeet/layout": "workspace:shared/layout"
     "@depromeet/theme": 0.0.1
     "@depromeet/toks-components": "workspace:shared/toks-components"
     "@emotion/css": ^11.9.0
@@ -2784,6 +2833,7 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
+    "@depromeet/layout": "workspace:shared/layout"
     "@depromeet/theme": ^0.0.1
     "@depromeet/toks-components": "workspace:shared/toks-components"
     "@emotion/css": ^11.9.0
@@ -3086,6 +3136,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toss/emotion-utils@npm:^1.1.4":
+  version: 1.1.4
+  resolution: "@toss/emotion-utils@npm:1.1.4"
+  dependencies:
+    "@babel/runtime": ^7.14.8
+    "@toss/utils": ^1.3.0
+    csstype: ^3.0.9
+  peerDependencies:
+    "@emotion/react": "*"
+    react: ">= 16 || ^18"
+    react-dom: ">= 16 || ^18"
+  checksum: 607efbdb0c6a9b1382fb5c44c1cb49d03947250f90539ba5edd4047ffc18dfd585422b8b54b00c067cfd1fdd3a8d910e2084eabedbab4660f01aabf3f729536b
+  languageName: node
+  linkType: hard
+
 "@toss/error-boundary@npm:^1.1.0":
   version: 1.1.0
   resolution: "@toss/error-boundary@npm:1.1.0"
@@ -3216,6 +3281,16 @@ __metadata:
     "@babel/runtime": ^7.14.8
     date-fns: ^2.25.0
   checksum: 86dccb46863f8febb9f177572905a7271f01076c92570bcada1067185c6ba62e44719cae6a2c47b70c43e57d1bd0f8d441aa978b564c5580dee7c594e07d4b61
+  languageName: node
+  linkType: hard
+
+"@toss/utils@npm:^1.3.0":
+  version: 1.3.0
+  resolution: "@toss/utils@npm:1.3.0"
+  dependencies:
+    "@babel/runtime": ^7.14.8
+    date-fns: ^2.25.0
+  checksum: a910c46085a4d9018a00268c8662270c5f94096e9763b3cb728e707e1deeae1dbd298cf38b93bf81b0c3becb90e9639f3ca5ec9c7fd585b48057412e76e5b69c
   languageName: node
   linkType: hard
 
@@ -5078,6 +5153,7 @@ __metadata:
     "@babel/preset-react": ^7.17.12
     "@babel/preset-typescript": ^7.17.12
     "@babel/runtime": ^7.18.3
+    "@depromeet/http": ^0.1.2
     "@devops/commandline": "workspace:devops/commandline"
     "@emotion/babel-plugin": ^11.9.2
     "@emotion/css": ^11.9.0
@@ -5103,6 +5179,7 @@ __metadata:
     "@toss/use-overlay": ">=1.1.0"
     react: "*"
     react-dom: "*"
+    react-query: "*"
   languageName: unknown
   linkType: soft
 
