@@ -1,13 +1,13 @@
+import { rankingList } from '../../../../../utils/rankingUtils';
 import { RankingItem } from '../RankingItem';
+import { List } from './style';
 
 export function RankingList() {
   return (
-    <ul>
-      <RankingItem />
-      <RankingItem />
-      <RankingItem />
-      <RankingItem />
-      <RankingItem />
-    </ul>
+    <List>
+      {rankingList.map(rankingItem => (
+        <RankingItem {...rankingItem} />
+      ))}
+    </List>
   );
 }
