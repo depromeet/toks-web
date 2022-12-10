@@ -13,12 +13,14 @@ interface ImageAvatarProps extends Omit<ComponentProps<typeof BaseAvatar>, 'imag
   image?: string;
   userName?: string;
   size?: AvatarSize;
+  tooltip?: boolean;
 }
 
 interface LabelAvatarProps extends Omit<ComponentProps<typeof BaseAvatar>, 'label' | 'size'> {
   label?: string;
   userNames?: string[];
   size?: AvatarSize;
+  tooltip?: boolean;
 }
 
 const AVATAR_SIZE = {
@@ -35,13 +37,14 @@ export function UserAvatar({
   userNames = [],
   size,
   className,
+  tooltip = false,
 }: ImageAvatarProps & LabelAvatarProps) {
   const tooltipContent = userName ?? userNames.join(', ');
   // const avatarClassName = image ? `avatar--user_${id}` : `avatar--group_${id}`;
 
   return (
     <>
-      <Tooltip target={`.${className}`} content={tooltipContent} position="bottom" />
+      {tooltip && <Tooltip target={`.${className}`} content={tooltipContent} position="bottom" />}
       <StyledAvatar
         image={image}
         label={label}
@@ -74,6 +77,7 @@ const makeAvatarGroupLabel = (className: string, labelKey: number, userAvatars: 
       userNames={getUserNamesOfAvatars(userAvatars)}
       size={'large'}
       className={className}
+      tooltip={true}
     />
   ) : null;
 
@@ -85,11 +89,11 @@ type GroupType = 'study' | 'quiz';
 interface GroupProps extends ComponentProps<typeof AvatarGroup> {
   view?: number;
   id: string;
-  children: ReactNode;
   groupType: GroupType;
+  children: ReactNode;
 }
 
-function Group({ view = 6, id, children, groupType, ...rest }: GroupProps) {
+function Group({ view = 6, id, groupType, children, ...rest }: GroupProps) {
   const userAvatars = Children.toArray(children) as ReactElement[];
   const groupClassName = `avatar--${groupType}_${id}`;
   return (

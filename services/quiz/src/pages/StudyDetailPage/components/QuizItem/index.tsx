@@ -146,6 +146,7 @@ export function QuizItem({
               css={{ margin: '0 0 0 22px' }}
               size="large"
               className={`avatar--user_${creator.id}`}
+              tooltip={true}
             />
             <Space css={{ flex: 1 }} />
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
@@ -153,7 +154,7 @@ export function QuizItem({
             </Text>
             <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ margin: '0 0 0 22px' }}>
               {absentee.map((user, index) => (
-                <UserAvatar key={index} {...user} size="large" className={`avatar--user_${user.id}`} />
+                <UserAvatar key={index} {...user} size="large" className={`avatar--user_${user.id}`} tooltip={true} />
               ))}
             </UserAvatar.Group>
           </FlexRow>

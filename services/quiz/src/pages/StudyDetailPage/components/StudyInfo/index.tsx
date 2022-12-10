@@ -38,7 +38,7 @@ export function StudyInfo({ studyId, title, description, studyTags, members }: S
         {/* UserAvatar Group id가 여기서는 스터디 id가 되고 각 퀴즈에서는 퀴즈의 id가 됨 */}
         <UserAvatar.Group view={6} id={studyId} groupType="study">
           {members.map((user, index) => (
-            <UserAvatar key={index} {...user} size="large" className={`avatar--user_${user.id}`} />
+            <UserAvatar key={index} {...user} size="large" className={`avatar--user_${user.id}`} tooltip={true} />
           ))}
         </UserAvatar.Group>
       </Footer>
