@@ -1,7 +1,6 @@
 export const PATHS = {
   home: {
     myStudy: '/home/my-studies',
-    myInfo: '/home/my-info',
   },
   quiz: {
     studyDetail: ({ studyId }: { studyId: number | string }) => `/quiz/study-detail/${studyId}`,
