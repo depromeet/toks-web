@@ -7,11 +7,10 @@ interface Props {
   img: string;
   name: string;
   nickname: string;
-  handlekMyInfo: VoidFunction;
   handleLogout: VoidFunction;
 }
 
-export function UserMenu({ img, name, nickname, handleLogout, handlekMyInfo }: Props) {
+export function UserMenu({ img, name, nickname, handleLogout }: Props) {
   return (
     <UserMenuCard>
       <UserInfo>
@@ -26,7 +25,7 @@ export function UserMenu({ img, name, nickname, handleLogout, handlekMyInfo }: P
         </Flex>
       </UserInfo>
 
-      <Spacing size={24} />
+      <Spacing size={16} />
 
       <hr
         style={{
@@ -35,15 +34,7 @@ export function UserMenu({ img, name, nickname, handleLogout, handlekMyInfo }: P
         }}
       />
 
-      <Spacing size={24} />
-
-      <MyPageButton onClick={handlekMyInfo}>
-        <Text variant="subhead" color="gray010">
-          나의 정보
-        </Text>
-      </MyPageButton>
-
-      <Spacing size={16} />
+      <Spacing size={18} />
 
       <TextButton variant="subhead" color="gray070" onClick={handleLogout}>
         로그아웃
@@ -63,7 +54,6 @@ const UserMenuCard = styled.div`
 
   position: absolute;
   width: 254px;
-  height: 237px;
 
   border-radius: 16px;
 
@@ -75,27 +65,6 @@ const UserMenuCard = styled.div`
 const UserInfo = styled.div`
   display: flex;
   gap: 12px;
-`;
-
-const MyPageButton = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 24px;
-
-  width: 198px;
-  height: 42px;
-
-  background: ${theme.colors.gray120};
-
-  border: 1px solid ${theme.colors.gray080};
-  border-radius: 32px;
-
-  &:hover {
-    background: ${theme.colors.gray110};
-    cursor: pointer;
-  }
 `;
 
 const TextButton = styled(Text)`

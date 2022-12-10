@@ -46,9 +46,6 @@ export function Layout({ children, login = true }: { children: ReactNode; login?
               img: user.profileImageUrl,
               name: user.nickname,
               nickname: user.nickname,
-              handlekMyInfo: () => {
-                pushTo(PATHS.home.myInfo);
-              },
               handleLogout: () => logout(),
             });
           }}
