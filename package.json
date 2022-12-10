@@ -33,7 +33,7 @@
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
     "@babel/runtime": "^7.18.3",
-    "@depromeet/http": "^0.1.2",
+    "@depromeet/http": "^0.2.0",
     "@devops/commandline": "workspace:devops/commandline",
     "@emotion/babel-plugin": "^11.9.2",
     "dotenv": "^10.0.0",

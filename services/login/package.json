@@ -16,7 +16,7 @@
   "dependencies": {
     "@configs/babel": "workspace:configs/babel",
     "@configs/next": "workspace:configs/next",
-    "@depromeet/http": "0.1.2",
+    "@depromeet/http": "0.2.0",
     "@depromeet/layout": "workspace:shared/layout",
     "@depromeet/theme": "^0.0.1",
     "@depromeet/toks-components": "workspace:shared/toks-components",
