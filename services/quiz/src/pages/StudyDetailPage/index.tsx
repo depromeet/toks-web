@@ -2,7 +2,7 @@ import { Text } from '@depromeet/toks-components';
 
 import { members } from '../../../utils/userUtils';
 import { QuizList } from './components/QuizList';
-import { Ranking } from './components/Ranking';
+import { RankingList } from './components/RankingList';
 import { StudyInfo } from './components/StudyInfo';
 import { StudyProgress } from './components/StudyProgress';
 import { FlexRow, Page, Section, Wrapper } from './style';
@@ -33,7 +33,7 @@ export default function StudyDetailPage() {
               <Text variant="title04" color="gray010">
                 똑순위
               </Text>
-              <Ranking />
+              <RankingList />
             </div>
           </FlexRow>
         </Wrapper>
