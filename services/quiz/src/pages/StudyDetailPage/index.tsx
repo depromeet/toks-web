@@ -1,11 +1,11 @@
-import { ToksHeader, Text } from '@depromeet/toks-components';
+import { Text, ToksHeader } from '@depromeet/toks-components';
+
+import { members } from '../../../utils/userUtils';
 import { QuizList } from './components/QuizList';
 import { Ranking } from './components/Ranking';
 import { StudyInfo } from './components/StudyInfo';
 import { StudyProgress } from './components/StudyProgress';
-
-import { members } from '../../../utils/userUtils';
-import { Page, Section, Wrapper, FlexRow } from './style';
+import { FlexRow, Page, Section, Wrapper } from './style';
 
 export default function StudyDetailPage() {
   return (
@@ -23,13 +23,17 @@ export default function StudyDetailPage() {
             />
             <StudyProgress />
           </FlexRow>
-          <FlexRow css={{marginTop: '80px'}}>
+          <FlexRow css={{ marginTop: '80px' }}>
             <div>
-              <Text variant='title04' color='gray010'>똑스</Text>
+              <Text variant="title04" color="gray010">
+                똑스
+              </Text>
               <QuizList />
             </div>
             <div>
-              <Text variant='title04' color='gray010'>똑순위</Text>
+              <Text variant="title04" color="gray010">
+                똑순위
+              </Text>
               <Ranking />
             </div>
           </FlexRow>

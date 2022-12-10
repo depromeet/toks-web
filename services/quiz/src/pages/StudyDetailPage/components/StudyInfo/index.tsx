@@ -1,4 +1,4 @@
-import { Text, Tag, UserAvatar } from '@depromeet/toks-components';
+import { Tag, Text, UserAvatar } from '@depromeet/toks-components';
 
 import { User } from '../../../../../utils/userUtils';
 import { Body, Footer, Header, Info, StudyTags } from './style';
@@ -17,10 +17,19 @@ export function StudyInfo({ studyId, title, description, studyTags, members }: S
   return (
     <Info>
       <Header>
-        <Text color='white' variant='title01' css={{textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap'}} as="h1">{title}</Text>
+        <Text
+          color="white"
+          variant="title01"
+          css={{ textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}
+          as="h1"
+        >
+          {title}
+        </Text>
       </Header>
       <Body>
-      <Text color='gray020' variant='body02'>{description}</Text>
+        <Text color="gray020" variant="body02">
+          {description}
+        </Text>
         <StudyTags>
           <Tag.Row style={{ padding: 0 }}>{makeStudyTags(studyTags)}</Tag.Row>
         </StudyTags>
