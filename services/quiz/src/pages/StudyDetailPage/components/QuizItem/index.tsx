@@ -151,7 +151,7 @@ export function QuizItem({
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               똑스 안 푼 사람
             </Text>
-            <UserAvatar.Group view={6} id="8" css={{ margin: '0 0 0 22px' }}>
+            <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ margin: '0 0 0 22px' }}>
               {absentee.map((user, index) => (
                 <UserAvatar key={index} {...user} size="large" className={`avatar--user_${user.id}`} />
               ))}
