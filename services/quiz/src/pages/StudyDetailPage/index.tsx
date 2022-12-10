@@ -30,7 +30,7 @@ export default function StudyDetailPage() {
               </Text>
               <QuizList />
             </div>
-            <div css={{marginLeft: '35px'}}>
+            <div css={{ marginLeft: '35px' }}>
               <Text variant="title04" color="gray010">
                 똑순위
               </Text>
