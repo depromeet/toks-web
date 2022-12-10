@@ -1,9 +1,8 @@
-import { instance } from '@depromeet/http';
+import { http } from '@depromeet/http';
 
 export const getNickname = async () => {
   try {
-    const { data } = await instance.get('/api/v1/user/nickname');
-    return data;
+    return await http.get('/api/v1/user/nickname');
   } catch (error) {
     console.log(error);
   }
