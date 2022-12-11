@@ -1,4 +1,4 @@
-import { rankingList } from '../../../../../utils/rankingUtils';
+import { rankingList } from './constants';
 import { RankingItem } from '../RankingItem';
 import { List } from './style';
 

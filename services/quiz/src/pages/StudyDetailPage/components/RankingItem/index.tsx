@@ -18,10 +18,10 @@ const medals = [
   'ic-bronze' as const,
 ];
 
-const isMedalItem = (ranking: Ranking) => ranking !== undefined && ranking <= 3;
-const convertNoneRanking = (ranking: Ranking) => (ranking === undefined ? '-' : `${ranking}.`);
-
 export function RankingItem({ ranking = undefined, toks, user }: RankingItemProps) {
+  const isMedalItem = (ranking: Ranking) => ranking && ranking <= 3;
+  const convertNoneRanking = (ranking: Ranking) => (ranking ? `${ranking}.` : '-');
+
   return (
     <Item css={{ backgroundColor: isMedalItem(ranking) ? theme.colors.gray100 : theme.colors.gray110 }}>
       {isMedalItem(ranking) ? (

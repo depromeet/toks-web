@@ -1,4 +1,4 @@
-import { members } from "./userUtils";
+import { members } from '../../../../../utils/userUtils'
 
 export const rankingList = [
     {
