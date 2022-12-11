@@ -14,7 +14,7 @@ interface Props extends DropdownProps {
   isFocus?: boolean;
 }
 
-export function DropDown({ label, width, height, isClicked, required, ...props }: Props) {
+export function DropDown({ label, width, height, isClicked, required, onFocus, onBlur, ...props }: Props) {
   const [isFocus, setIsFocus] = useState(false);
 
   return (
@@ -32,8 +32,14 @@ export function DropDown({ label, width, height, isClicked, required, ...props }
         height={height}
         required={required}
         {...props}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
+        onFocus={e => {
+          onFocus?.(e);
+          setIsFocus(true);
+        }}
+        onBlur={e => {
+          onBlur?.(e);
+          setIsFocus(false);
+        }}
       />
     </DropDownWrapper>
   );
