@@ -1,7 +1,8 @@
-import { Button, Calendar, Input, InputChips, Text } from '@depromeet/toks-components';
+import { Button, Calendar, DropDown, Input, InputChips, Text } from '@depromeet/toks-components';
 import { Flex, gutter, margin, size } from '@toss/emotion-utils';
 import { Controller } from 'react-hook-form';
 
+import { STUDY_CATEGORY_OPTIONS } from 'pages/CreateStudy/constants';
 import { useCreateStudyForm } from 'pages/CreateStudy/hooks/useCreateStudyForm';
 
 import { Wrapper } from './style';
@@ -16,7 +17,7 @@ export const CreateStudyForm = () => {
         똑스터디 만들기
       </Text>
       <form
-        onSubmit={handleSubmit(data => alert(data))}
+        onSubmit={handleSubmit(data => alert(JSON.stringify(data, null, 2)))}
         css={(margin.top(42), size({ width: '100%' }), gutter('vertical', 32))}
       >
         <Input
@@ -25,7 +26,8 @@ export const CreateStudyForm = () => {
             maxLength: isMaxLength(20),
           })}
           autoFocus
-          label="스터디 이름*"
+          required
+          label="스터디 이름"
           placeholder="스터디 이름을 입력해주세요. (20자 이내)"
           errorMessage={errors.studyName?.message}
         />
@@ -43,7 +45,8 @@ export const CreateStudyForm = () => {
               required: isRequiredText('시작일'),
             })}
             readOnlyInput
-            label="스터디 시작일*"
+            required
+            label="스터디 시작일"
             minDate={new Date()}
             placeholder="날짜 선택"
             errorMessage={errors.startDate?.message}
@@ -53,24 +56,23 @@ export const CreateStudyForm = () => {
               required: isRequiredText('종료일'),
             })}
             readOnlyInput
-            label="스터디 종료일*"
+            required
+            label="스터디 종료일"
             minDate={new Date()}
             placeholder="날짜 선택"
             errorMessage={errors.endDate?.message}
           />
         </Flex>
-        <Input
-          {...register('memberCount', {
-            required: isRequiredText('인원'),
-          })}
-          label="스터디 인원*"
-          errorMessage={errors.memberCount?.message}
+        <Controller
+          name="studyCategory"
+          control={control}
+          render={({ field }) => <DropDown {...field} options={STUDY_CATEGORY_OPTIONS} label="스터디 인원" required />}
         />
         <Controller
           name="studyTags"
           control={control}
           render={({ field }) => (
-            <InputChips {...field} onChange={e => setValue('studyTags', e.value)} label="스터디 관련 태그" max={5} />
+            <InputChips {...field} onChange={e => setValue('studyTags', e.value)} label="스터디 관련 태그" />
           )}
         />
         <Button type="primary" htmlType="submit" disabled={isDisabled}>

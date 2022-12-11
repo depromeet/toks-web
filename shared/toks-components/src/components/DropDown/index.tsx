@@ -1,50 +1,54 @@
 import { theme } from '@depromeet/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Dropdown } from 'primereact/dropdown';
-import { ComponentProps } from 'react';
+import { Dropdown, DropdownProps } from 'primereact/dropdown';
+import { useState } from 'react';
 
 import { Text } from '../Text';
-
-type DropdownProps = ComponentProps<typeof Dropdown>;
 
 interface Props extends DropdownProps {
   width?: number;
   height?: number;
   label?: string;
   isClicked?: boolean;
+  isFocus?: boolean;
 }
 
-export function DropDown({ label, width, height, isClicked, ...props }: Props) {
+export function DropDown({ label, width, height, isClicked, required, onFocus, onBlur, ...props }: Props) {
+  const [isFocus, setIsFocus] = useState(false);
+
   return (
-    <DropDownWrapper isClicked={isClicked}>
-      {label ? (
+    <DropDownWrapper>
+      {label && (
         <Text variant="body02" className="label">
           {label}
+          {required && '*'}
         </Text>
-      ) : (
-        <></>
       )}
-      <StyledDropdown isClicked={isClicked} width={width} height={height} {...props} />;
+      <StyledDropdown
+        isFocus={isFocus}
+        isClicked={isClicked}
+        width={width}
+        height={height}
+        required={required}
+        {...props}
+        onFocus={e => {
+          onFocus?.(e);
+          setIsFocus(true);
+        }}
+        onBlur={e => {
+          onBlur?.(e);
+          setIsFocus(false);
+        }}
+      />
     </DropDownWrapper>
   );
 }
 
-const DropDownWrapper = styled.div<{ isClicked: boolean | undefined }>`
+const DropDownWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  .label {
-    color: ${theme.colors.gray070};
-  }
-
   gap: 8px;
-  ${props =>
-    props.isClicked === true &&
-    css`
-      .label {
-        color: ${theme.colors.white};
-      }
-    `};
 `;
 
 const StyledDropdown = styled(Dropdown)<Props>`
@@ -58,8 +62,9 @@ const StyledDropdown = styled(Dropdown)<Props>`
 
   ${props => {
     const { width, height } = props;
+
     return css`
-      width: ${width ? `${width}px` : '280px'};
+      width: ${width ? `${width}px` : '100%'};
       height: ${height ? `${height}px` : '48px'};
     `;
   }}
