@@ -3,11 +3,9 @@ import { Wrapper } from './style';
 
 function Intro() {
   return (
-    <>
-      <Wrapper>
-        <Banner />
-      </Wrapper>
-    </>
+    <Wrapper>
+      <Banner />
+    </Wrapper>
   );
 }
 
