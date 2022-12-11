@@ -57,7 +57,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
 );
 
 export const InitialInputFocusStyle = css`
-  border: #ff862f 2px solid !important;
+  border: ${theme.colors.primary} 2px solid !important;
   background: ${theme.colors.gray100};
   outline: none;
   box-shadow: none;
