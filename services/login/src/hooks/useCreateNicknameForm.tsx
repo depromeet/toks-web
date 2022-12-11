@@ -11,6 +11,7 @@ export const useCreateNicknameForm = () => {
     control,
     handleSubmit,
     setValue,
+    setError,
     formState: { isDirty, isValid, errors },
   } = useForm<CreateNicknameForm>({ mode: 'onChange' });
 
@@ -36,6 +37,7 @@ export const useCreateNicknameForm = () => {
     register,
     handleSubmit,
     setValue,
+    setError,
     errors,
     control,
     isDisabled,
