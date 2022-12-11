@@ -14,7 +14,7 @@ interface ChipsComponentProps extends ChipsProps {
 }
 
 export const InputChips = forwardRef<HTMLInputElement, ChipsComponentProps>(
-  ({ label, name, errorMessage, value, ...props }: ChipsComponentProps, ref) => {
+  ({ label, name, errorMessage, value, onFocus, onBlur, ...props }: ChipsComponentProps, ref) => {
     const inputBoxRef = useRef<HTMLDivElement>(null);
     const [isFocus, setIsFocus] = useState(false);
 
@@ -40,8 +40,14 @@ export const InputChips = forwardRef<HTMLInputElement, ChipsComponentProps>(
             name={name}
             value={value}
             {...props}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
+            onFocus={e => {
+              onFocus?.(e);
+              setIsFocus(true);
+            }}
+            onBlur={e => {
+              onBlur?.(e);
+              setIsFocus(false);
+            }}
           />
         </StyledChip>
       </Wrapper>
