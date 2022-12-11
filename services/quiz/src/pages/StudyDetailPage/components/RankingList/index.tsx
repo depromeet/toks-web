@@ -1,5 +1,5 @@
-import { rankingList } from './constants';
 import { RankingItem } from '../RankingItem';
+import { rankingList } from './constants';
 import { List } from './style';
 
 export function RankingList() {

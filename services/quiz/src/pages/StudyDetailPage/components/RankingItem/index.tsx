@@ -12,11 +12,7 @@ interface RankingItemProps {
   user: User;
 }
 
-const medals = [
-  'ic-gold' as const,
-  'ic-silver' as const,
-  'ic-bronze' as const,
-];
+const medals = ['ic-gold' as const, 'ic-silver' as const, 'ic-bronze' as const];
 
 export function RankingItem({ ranking = undefined, toks, user }: RankingItemProps) {
   const isMedalItem = (ranking: Ranking) => ranking && ranking <= 3;
@@ -25,7 +21,7 @@ export function RankingItem({ ranking = undefined, toks, user }: RankingItemProp
   return (
     <Item css={{ backgroundColor: isMedalItem(ranking) ? theme.colors.gray100 : theme.colors.gray110 }}>
       {isMedalItem(ranking) ? (
-        <Icon height={32} iconName={medals[(ranking as number) - 1]}/>
+        <Icon height={32} iconName={medals[(ranking as number) - 1]} />
       ) : (
         <Text variant="body02" color="gray040" css={{ padding: '0 5.5px' }}>
           {convertNoneRanking(ranking)}
