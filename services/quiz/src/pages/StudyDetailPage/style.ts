@@ -13,3 +13,12 @@ export const Section = styled.section`
 export const FlexRow = styled.div`
   display: flex;
 `;
+
+export const QuizListWrapper = styled.div`
+  /* max-width: 982px; */
+  width: 982px;
+`;
+
+export const RankingListWrapper = styled.div`
+  width: 304px;
+`;

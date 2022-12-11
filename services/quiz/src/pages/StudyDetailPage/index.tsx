@@ -5,7 +5,7 @@ import { QuizList } from './components/QuizList';
 import { RankingList } from './components/RankingList';
 import { StudyInfo } from './components/StudyInfo';
 import { StudyProgress } from './components/StudyProgress';
-import { FlexRow, Page, Section } from './style';
+import { FlexRow, Page, QuizListWrapper, RankingListWrapper, Section } from './style';
 
 export default function StudyDetailPage() {
   return (
@@ -22,18 +22,18 @@ export default function StudyDetailPage() {
           <StudyProgress />
         </FlexRow>
         <FlexRow css={{ marginTop: '80px' }}>
-          <div>
+          <QuizListWrapper>
             <Text variant="title04" color="gray010">
               똑스
             </Text>
             <QuizList />
-          </div>
-          <div css={{ marginLeft: '35px' }}>
+          </QuizListWrapper>
+          <RankingListWrapper css={{ marginLeft: '35px' }}>
             <Text variant="title04" color="gray010">
               똑순위
             </Text>
             <RankingList />
-          </div>
+          </RankingListWrapper>
         </FlexRow>
       </Section>
     </Page>
