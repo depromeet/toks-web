@@ -5,6 +5,7 @@ import { addLocale, locale } from 'primereact/api';
 import { Calendar as CalendarComponent, CalendarProps } from 'primereact/calendar';
 import { forwardRef, useState } from 'react';
 
+import { InitialInputErrorStyle, InitialInputFocusStyle } from '../Input';
 import { Text } from '../Text';
 
 addLocale('ko', {
@@ -37,27 +38,37 @@ export interface CalendarComponentProps extends CalendarProps {
 }
 
 export const Calendar = forwardRef<HTMLInputElement, CalendarComponentProps>(
-  ({ label, name, errorMessage, inputRef, ...props }: CalendarComponentProps, ref) => {
+  ({ label, name, errorMessage, inputRef, required, onFocus, onBlur, ...props }: CalendarComponentProps, ref) => {
     const [isFocus, setIsFocus] = useState(false);
 
     return (
       <Wrapper>
         <label htmlFor={name}>
-          <Text variant="body02">{label}</Text>
+          <Text variant="body02">
+            {label}
+            {required && '*'}
+          </Text>
         </label>
         <StyledCalendar isFocus={isFocus} isError={Boolean(errorMessage)}>
           <CalendarComponent
             inputId={name}
             name={name}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
             panelStyle={{
               backgroundColor: theme.colors.gray100,
               color: theme.colors.white,
             }}
             dateFormat="yy. mm. dd. D"
             inputRef={ref}
+            required={required}
             {...props}
+            onFocus={e => {
+              onFocus?.(e);
+              setIsFocus(true);
+            }}
+            onBlur={e => {
+              onBlur?.(e);
+              setIsFocus(false);
+            }}
           />
         </StyledCalendar>
         {errorMessage && (
@@ -82,21 +93,8 @@ const StyledCalendar = styled('div')<{ width?: number; height?: number; isFocus:
   ${props => {
     const { width, height, isFocus, isError } = props;
 
-    const errorStyle =
-      isError &&
-      css`
-        border: 1px solid ${theme.colors.danger};
-      `;
-
-    const focusStyle =
-      isFocus &&
-      css`
-        border: #ff862f 2px solid;
-        background: ${theme.colors.gray100};
-        outline: none;
-        box-shadow: none;
-        color: ${theme.colors.white};
-      `;
+    const errorStyle = isError && InitialInputErrorStyle;
+    const focusStyle = isFocus && InitialInputFocusStyle;
 
     return css`
       width: ${width ? `${width}px` : '100%'};
