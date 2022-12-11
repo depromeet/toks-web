@@ -12,6 +12,9 @@ import { default as plus } from './icons/ic_plus.svg';
 import { default as selected } from './icons/ic_selected.svg';
 import { default as time } from './icons/ic_time.svg';
 import { default as unchecked } from './icons/ic_unchecked.svg';
+import { default as bronze } from './icons/ic_bronze.svg';
+import { default as silver } from './icons/ic_silver.svg';
+import { default as gold } from './icons/ic_gold.svg';
 
 export const ICONS = {
   'ic-checked': checked,
@@ -28,6 +31,9 @@ export const ICONS = {
   'ic-selected': selected,
   'ic-time': time,
   'ic-unchecked': unchecked,
+  'ic-bronze': bronze,
+  'ic-silver': silver,
+  'ic-gold': gold
 } as const;
 
 export type IconName = keyof typeof ICONS;
