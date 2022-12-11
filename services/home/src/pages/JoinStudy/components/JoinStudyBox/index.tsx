@@ -1,9 +1,9 @@
 import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
 
+import { Wrapper } from 'pages/JoinStudy/components/JoinStudyBox/style';
 import { StudyInfo } from 'pages/JoinStudy/components/StudyInfo';
 import { StudyTitle } from 'pages/JoinStudy/components/StudyTitle';
-import { Wrapper } from 'pages/JoinStudy/components/JoinStudyBox/style';
 
 export function JoinStudyBox() {
   // mock data
