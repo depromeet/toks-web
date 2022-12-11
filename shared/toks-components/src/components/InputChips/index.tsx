@@ -73,8 +73,7 @@ export const StyledChip = styled('div')<{ isFocus?: boolean }>`
     ${props => {
       const { isFocus } = props;
       return css`
-        ${isFocus && InitialInputFocusStyle}
-        ${!isFocus && InitialInputHoverStyle}
+        ${isFocus ? InitialInputFocusStyle : InitialInputHoverStyle}
       `;
     }}
   }
