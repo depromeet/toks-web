@@ -3,8 +3,8 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Chips as ChipsComponent, ChipsProps } from 'primereact/chips';
 import { forwardRef, useEffect, useRef, useState } from 'react';
-import { InitialInputFocusStyle, InitialInputHoverStyle } from '../Input';
 
+import { InitialInputFocusStyle, InitialInputHoverStyle } from '../Input';
 import { Text } from '../Text';
 
 interface ChipsComponentProps extends ChipsProps {

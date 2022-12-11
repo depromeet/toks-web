@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 import { addLocale, locale } from 'primereact/api';
 import { Calendar as CalendarComponent, CalendarProps } from 'primereact/calendar';
 import { forwardRef, useState } from 'react';
-import { InitialInputErrorStyle, InitialInputFocusStyle } from '../Input';
 
+import { InitialInputErrorStyle, InitialInputFocusStyle } from '../Input';
 import { Text } from '../Text';
 
 addLocale('ko', {
