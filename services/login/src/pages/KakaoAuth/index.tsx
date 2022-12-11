@@ -4,10 +4,10 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 
-import { getNickname } from '../../remote/login';
 import { IUser } from '../../interfaces/interfaces';
+import { getNickname } from '../../remote/login';
 
-function KakaoAuth(props) {
+function KakaoAuth() {
   const router = useRouter();
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -23,7 +23,7 @@ function KakaoAuth(props) {
   const { data: user, isSuccess } = useQuery<IUser>(['nickname'], getNickname);
 
   if (isSuccess) {
-    if (user?.nickname == '닉네임을 등록해주세요') {
+    if (user?.nickname === '닉네임을 등록해주세요') {
       router.push('/myName');
     } else {
       //TODO: 닉네임이 있는 경우 홈으로 라우팅 홈 도메인으로 수정 필요

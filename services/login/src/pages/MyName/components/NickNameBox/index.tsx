@@ -1,12 +1,12 @@
 import { Button, Image, Input, Text, emoji } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
-import { patchNickname } from 'remote/login';
+import { AxiosError } from 'axios';
 import { useMutation } from 'react-query';
 
-import { Wrapper } from 'pages/MyName/components/style';
 import { useCreateNicknameForm } from 'hooks/useCreateNicknameForm';
-import { AxiosError } from 'axios';
 import { IAxiosError } from 'interfaces/interfaces';
+import { Wrapper } from 'pages/MyName/components/style';
+import { patchNickname } from 'remote/login';
 
 export function NickNameBox() {
   const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText, setError } =
