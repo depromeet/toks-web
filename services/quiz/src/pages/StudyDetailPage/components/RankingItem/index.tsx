@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { Image, Text, UserAvatar } from '@depromeet/toks-components';
+import { Icon, Text, UserAvatar } from '@depromeet/toks-components';
 
 import { User } from '../../../../../utils/userUtils';
 import { Item } from './style';
@@ -13,9 +13,9 @@ interface RankingItemProps {
 }
 
 const medals = [
-  'https://asset.tokstudy.com/ic-rank-gold.png',
-  'https://asset.tokstudy.com/ic-rank-silver.png',
-  'https://asset.tokstudy.com/ic-rank-bronze.png',
+  'ic-gold' as const,
+  'ic-silver' as const,
+  'ic-bronze' as const,
 ];
 
 const isMedalItem = (ranking: Ranking) => ranking !== undefined && ranking <= 3;
@@ -25,7 +25,7 @@ export function RankingItem({ ranking = undefined, toks, user }: RankingItemProp
   return (
     <Item css={{ backgroundColor: isMedalItem(ranking) ? theme.colors.gray100 : theme.colors.gray110 }}>
       {isMedalItem(ranking) ? (
-        <Image width={24.08} height={32} src={medals[(ranking as number) - 1]} alt="메달 이미지 입니다." />
+        <Icon height={32} iconName={medals[(ranking as number) - 1]}/>
       ) : (
         <Text variant="body02" color="gray040" css={{ padding: '0 5.5px' }}>
           {convertNoneRanking(ranking)}
