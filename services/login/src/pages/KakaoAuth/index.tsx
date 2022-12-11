@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 
-import { getNickname } from '../../apis/getNickname';
+import { getNickname } from '../../remote/login';
 import { IUser } from '../../interfaces/interfaces';
 
 function KakaoAuth(props) {

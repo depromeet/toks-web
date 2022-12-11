@@ -1,9 +1,9 @@
 import { Button, Image, Input, Text, emoji } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
-import { patchNickname } from 'apis/getNickname';
+import { patchNickname } from 'remote/login';
 import { useMutation } from 'react-query';
 
-import { Wrapper } from 'common/style';
+import { Wrapper } from 'pages/MyName/components/style';
 import { useCreateNicknameForm } from 'hooks/useCreateNicknameForm';
 import { AxiosError } from 'axios';
 import { IAxiosError } from 'interfaces/interfaces';

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// TODO: http 패키지 배포 이후 변경 예정 api fetching test 용
+// TODO: http 패키지 배포 이후 뱐걍 예정
 const accessToken = typeof window !== 'undefined' ? sessionStorage.getItem('accessToken') : null;
 
 const instance = axios.create({
