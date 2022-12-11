@@ -58,6 +58,8 @@ instance.interceptors.response.use(
           error.config.headers = {};
         } else {
           error.config.headers['Authorization'] = `${newAccessToken}`;
+          //sessionStorage에 새 토큰 저장
+          sessionStorage.setItem('accessToken', newAccessToken);
           // 중단된 요청 새로운 토큰으로 재전송
           const originalResponse = await axios.request(error.config);
           return originalResponse.data.data;
