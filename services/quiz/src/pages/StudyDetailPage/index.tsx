@@ -11,7 +11,7 @@ export default function StudyDetailPage() {
     <Page>
       <Section>
         <FlexRow>
-          <StudyInfo/>
+          <StudyInfo />
           <StudyProgress />
         </FlexRow>
         <FlexRow css={{ marginTop: '80px' }}>

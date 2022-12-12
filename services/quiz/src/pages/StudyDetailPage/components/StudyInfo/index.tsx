@@ -1,15 +1,15 @@
-import { Tag, Text, UserAvatar } from '@depromeet/toks-components';
+import { SSRSuspense, Tag, Text, UserAvatar } from '@depromeet/toks-components';
 import { ErrorBoundary } from '@toss/error-boundary';
 import { useSuspendedQuery } from '@toss/react-query';
-import { SSRSuspense } from '@depromeet/toks-components';
 
 import { QUERY_KEYS } from 'constants/queryKeys';
-import { Body, Footer, Header, Info, StudyTags } from './style';
 import { getStudyInfo } from 'pages/StudyDetailPage/remote/quiz';
 
+import { Body, Footer, Header, Info, StudyTags } from './style';
 
 function StudyInfo() {
-  const makeStudyTags = (tagInfos: string[]) => [...tagInfos].map((tagInfo, index) => <Tag key={index} value={tagInfo} />);
+  const makeStudyTags = (tagInfos: string[]) =>
+    [...tagInfos].map((tagInfo, index) => <Tag key={index} value={tagInfo} />);
   const { data: studyInfo } = useSuspendedQuery(QUERY_KEYS.GET_STUDY_INFO, getStudyInfo);
   const { studyId, title, description, studyTags, members } = studyInfo;
   return (
@@ -48,7 +48,7 @@ function StudyInfo() {
 export default () => (
   <ErrorBoundary renderFallback={() => null}>
     <SSRSuspense fallback={<div>Study info skeleton</div>}>
-      <StudyInfo/>
+      <StudyInfo />
     </SSRSuspense>
   </ErrorBoundary>
-)
+);

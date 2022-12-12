@@ -1,11 +1,12 @@
 import { theme } from '@depromeet/theme';
-import { Image, Text, SSRSuspense } from '@depromeet/toks-components';
+import { Image, SSRSuspense, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { ErrorBoundary } from '@toss/error-boundary';
 import { useSuspendedQuery } from '@toss/react-query';
+import { useState } from 'react';
+
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { getQuizList } from 'pages/StudyDetailPage/remote/quiz';
-import { useState } from 'react';
 
 import { isExistQuizToSolve } from '../../../../../utils/quizUtils';
 import { QuizItem } from '../../components/QuizItem';
@@ -60,10 +61,8 @@ function QuizList() {
 
 export default () => (
   <ErrorBoundary renderFallback={() => null}>
-    <SSRSuspense
-      fallback={<div>Quiz List Skeleton</div>}
-    >
-      <QuizList/>
+    <SSRSuspense fallback={<div>Quiz List Skeleton</div>}>
+      <QuizList />
     </SSRSuspense>
   </ErrorBoundary>
 );
