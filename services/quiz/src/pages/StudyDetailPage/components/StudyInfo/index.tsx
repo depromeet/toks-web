@@ -4,23 +4,14 @@ import { useSuspendedQuery } from '@toss/react-query';
 import { SSRSuspense } from '@depromeet/toks-components';
 
 import { QUERY_KEYS } from 'constants/queryKeys';
-import { User } from '../../../../../utils/userUtils';
 import { Body, Footer, Header, Info, StudyTags } from './style';
 import { getStudyInfo } from 'pages/StudyDetailPage/remote/quiz';
 
-interface StudyInfo {
-  studyId: string;
-  title: string;
-  description: string;
-  studyTags: string[];
-  members: User[];
-}
-
-const makeStudyTags = (tagInfos: string[]) => [...tagInfos].map(tagInfo => <Tag value={tagInfo} />);
 
 function StudyInfo() {
+  const makeStudyTags = (tagInfos: string[]) => [...tagInfos].map(tagInfo => <Tag value={tagInfo} />);
   const { data: studyInfo } = useSuspendedQuery(QUERY_KEYS.GET_STUDY_INFO, getStudyInfo);
-  const { studyId, title, description, studyTags, members } = studyInfo as StudyInfo;
+  const { studyId, title, description, studyTags, members } = studyInfo;
   return (
     <Info>
       <Header>
@@ -43,7 +34,8 @@ function StudyInfo() {
       </Body>
       <Footer>
         {/* UserAvatar Group id가 여기서는 스터디 id가 되고 각 퀴즈에서는 퀴즈의 id가 됨 */}
-        <UserAvatar.Group view={6} id={studyId} groupType="study">
+        {/* TODO: id값을 string 변환 안하게 컴포넌트 수정해야 함 */}
+        <UserAvatar.Group view={6} id={studyId.toString()} groupType="study">
           {members.map((user, index) => (
             <UserAvatar key={index} {...user} size="large" className={`avatar--user_${user.id}`} tooltip={true} />
           ))}

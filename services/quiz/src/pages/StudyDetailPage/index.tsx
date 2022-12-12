@@ -1,6 +1,6 @@
 import { Text } from '@depromeet/toks-components';
 
-import { QuizList } from './components/QuizList';
+import QuizList from './components/QuizList';
 import { RankingList } from './components/RankingList';
 import StudyInfo from './components/StudyInfo';
 import { StudyProgress } from './components/StudyProgress';

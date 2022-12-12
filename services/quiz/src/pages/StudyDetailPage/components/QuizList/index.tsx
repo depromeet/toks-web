@@ -1,52 +1,15 @@
 import { theme } from '@depromeet/theme';
-import { Image, Text } from '@depromeet/toks-components';
+import { Image, Text, SSRSuspense } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
+import { ErrorBoundary } from '@toss/error-boundary';
+import { useSuspendedQuery } from '@toss/react-query';
+import { QUERY_KEYS } from 'constants/queryKeys';
+import { getQuizList } from 'pages/StudyDetailPage/remote/quiz';
 import { useState } from 'react';
 
 import { isExistQuizToSolve } from '../../../../../utils/quizUtils';
-import { User, absentee, creator } from '../../../../../utils/userUtils';
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
-
-interface QuizItem {
-  quizId: number;
-  weekNumber: number;
-  title: string;
-  openDate: Date;
-  limitTime: string;
-  creator: User;
-  absentee: User[];
-}
-
-const quizList: QuizItem[] = [
-  {
-    quizId: 33,
-    weekNumber: 3,
-    title: '퀴즈가 진행되고 있는 스터디 입니다',
-    openDate: new Date('2022-12-07 17:45:00'),
-    limitTime: '02:00:00',
-    creator,
-    absentee,
-  },
-  {
-    quizId: 22,
-    weekNumber: 2,
-    title: '만료된 스터디 입니다 22',
-    openDate: new Date('2022-12-05 05:10:00'),
-    limitTime: '02:15:00',
-    creator,
-    absentee,
-  },
-  {
-    quizId: 11,
-    weekNumber: 1,
-    title: '만료된 스터디 입니다',
-    openDate: new Date('2022-11-27 10:00:00'),
-    limitTime: '02:00:00',
-    creator,
-    absentee,
-  },
-];
 
 const AddButton = styled.button`
   display: block;
@@ -75,7 +38,9 @@ const QuizAddButton = () => (
   </AddButton>
 );
 
-export function QuizList() {
+function QuizList() {
+  const { data: quizList } = useSuspendedQuery(QUERY_KEYS.GET_QUIZ_LIST, getQuizList);
+
   const firstQuizItem = quizList[0];
   const [addQuizState, setAddQuizState] = useState(
     firstQuizItem && isExistQuizToSolve(firstQuizItem.openDate, firstQuizItem.limitTime)
@@ -92,3 +57,13 @@ export function QuizList() {
     </List>
   );
 }
+
+export default () => (
+  <ErrorBoundary renderFallback={() => null}>
+    <SSRSuspense
+      fallback={<div>Quiz List Skeleton</div>}
+    >
+      <QuizList/>
+    </SSRSuspense>
+  </ErrorBoundary>
+);
