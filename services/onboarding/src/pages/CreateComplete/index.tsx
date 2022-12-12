@@ -1,5 +1,7 @@
-import { flex, FullHeight } from '@toss/emotion-utils';
+import { FullHeight, flex } from '@toss/emotion-utils';
+
 import { StudyInfoBox } from './components/StudyInfoBox';
+
 const CreateComplete = () => {
   return (
     <FullHeight css={flex('center', 'center')}>

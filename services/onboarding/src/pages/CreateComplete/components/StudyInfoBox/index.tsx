@@ -1,8 +1,8 @@
-import { Button, Image, Tag, Text, Icon, useClipboard } from '@depromeet/toks-components';
-import { Flex, gutter, Spacing } from '@toss/emotion-utils';
+import { Button, Icon, Image, Tag, Text, useClipboard } from '@depromeet/toks-components';
+import { Flex, Spacing, gutter } from '@toss/emotion-utils';
+
 import { StudyInfo } from '../StudyInfo';
 import { StudyTitle } from '../StudyTitle';
-
 import { Wrapper } from './style';
 
 export const StudyInfoBox = () => {
