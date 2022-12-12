@@ -12,6 +12,8 @@ import { default as plus } from './icons/ic_plus.svg';
 import { default as selected } from './icons/ic_selected.svg';
 import { default as time } from './icons/ic_time.svg';
 import { default as unchecked } from './icons/ic_unchecked.svg';
+import { default as success } from './icons/ic_success.svg';
+import { default as failed } from './icons/ic_failed.svg';
 
 export const ICONS = {
   'ic-checked': checked,
@@ -28,6 +30,8 @@ export const ICONS = {
   'ic-selected': selected,
   'ic-time': time,
   'ic-unchecked': unchecked,
+  'ic-success': success,
+  'ic-failed': failed,
 } as const;
 
 export type IconName = keyof typeof ICONS;
