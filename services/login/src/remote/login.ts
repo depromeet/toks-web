@@ -1,17 +1,10 @@
 import axios from 'axios';
-
-// TODO: http 패키지 배포 이후 뱐걍 예정
-const accessToken = typeof window !== 'undefined' ? sessionStorage.getItem('accessToken') : null;
-
-const instance = axios.create({
-  baseURL: 'https://api.tokstudy.com',
-  headers: { 'Content-Type': 'application/json', Authorization: `${accessToken}` },
-});
+import { http } from '@depromeet/http';
 
 export function getNickname() {
-  return instance.get('/api/v1/user').then(res => res.data);
+  return http.get('/api/v1/user').then(res => res.data);
 }
 
 export function patchNickname(nickname: string) {
-  return instance.patch('/api/v1/user/nickname', nickname).then(res => res.data);
+  return http.patch('/api/v1/user/nickname', nickname).then(res => res.data);
 }
