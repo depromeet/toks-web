@@ -1,10 +1,9 @@
 import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
 
-import { StudyInfo } from 'JoinStudy/components/StudyInfo';
-import { StudyTitle } from 'JoinStudy/components/StudyTitle';
-
-import { Wrapper } from './style';
+import { Wrapper } from 'pages/JoinStudy/components/JoinStudyBox/style';
+import { StudyInfo } from 'pages/JoinStudy/components/StudyInfo';
+import { StudyTitle } from 'pages/JoinStudy/components/StudyTitle';
 
 export function JoinStudyBox() {
   // mock data
@@ -51,11 +50,13 @@ export function JoinStudyBox() {
           title="스터디 기간은"
           description={
             <>
-              <Text variant="body02">시작일</Text>
+              <Text variant="body02" color="gray040">
+                시작일
+              </Text>
               <Text variant="body01" css={{ marginLeft: '12px' }}>
                 {startDate}
               </Text>
-              <Text variant="body02" css={{ marginLeft: '36px' }}>
+              <Text variant="body02" color="gray040" css={{ marginLeft: '36px' }}>
                 종료일
               </Text>
               <Text variant="body01" css={{ marginLeft: '12px' }}>
