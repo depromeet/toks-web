@@ -12,6 +12,7 @@ export const Banner = () => {
   const onClick = () => {
     router.push('https://api.tokstudy.com/oauth2/authorize/kakao');
   };
+  
   return (
     <Flex
       direction="column"

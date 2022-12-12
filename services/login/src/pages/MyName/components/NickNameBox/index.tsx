@@ -6,7 +6,7 @@ import { useMutation } from 'react-query';
 import { useCreateNicknameForm } from 'hooks/useCreateNicknameForm';
 import { CustomAxiosError } from 'interfaces/interfaces';
 import { Wrapper } from 'pages/MyName/components/style';
-import { patchNickname } from 'remote/login';
+import { patchNickname } from 'pages/MyName/remote/nickName';
 
 export function NickNameBox() {
   const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText, setError } =
@@ -22,7 +22,7 @@ export function NickNameBox() {
     nicknameMutation.mutate(data.nickName);
 
     //닉네임 중복처리
-    if ((nicknameMutation.error?.response?.data as CustomAxiosError)?.code === -20011) {
+    if ((nicknameMutation.error?.response?.data as CustomAxiosError)?.code === '-20011') {
       setError(
         'nickName',
         { message: '이미 존재하는 닉네임입니다.' }, // 에러 메세지

@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 
 import { GetUserResponse } from '../../interfaces/interfaces';
-import { getNickname } from '../../remote/login';
+import { getNickname } from '../MyName/remote/nickName';
 
 function KakaoAuth() {
   const router = useRouter();
