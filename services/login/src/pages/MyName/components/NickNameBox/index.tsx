@@ -1,25 +1,22 @@
 import { Button, Image, Input, Text, emoji } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { AxiosError } from 'axios';
-import { useMutation } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 
 import { useCreateNicknameForm } from 'hooks/useCreateNicknameForm';
-import { CustomAxiosError } from 'interfaces/interfaces';
+import { CustomAxiosError, GetUserResponse } from 'interfaces/user';
 import { Wrapper } from 'pages/MyName/components/style';
-import { patchNickname } from 'pages/MyName/remote/nickName';
+import { getUserinfo, patchNickname } from 'pages/MyName/remote/nickName';
+import { useSetNickname } from 'hooks/query/useSetNickname';
 
 export function NickNameBox() {
   const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText, setError } =
     useCreateNicknameForm();
 
-  const nicknameMutation = useMutation((nickname: string) => patchNickname(nickname), {
-    onError: async (error: AxiosError) => {
-      return error.response?.data;
-    },
-  });
+  const nicknameMutation = useSetNickname();
 
   const onSubmit = handleSubmit(data => {
-    nicknameMutation.mutate(data.nickName);
+    nicknameMutation?.mutate(data.nickName);
 
     //닉네임 중복처리
     if ((nicknameMutation.error?.response?.data as CustomAxiosError)?.code === '-20011') {

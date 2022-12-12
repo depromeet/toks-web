@@ -2,13 +2,13 @@ import { ProgressSpinner } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { useQuery } from 'react-query';
 
-import { GetUserResponse } from '../../interfaces/interfaces';
-import { getNickname } from '../MyName/remote/nickName';
+import { useUserInfo } from '../../hooks/query/useUserInfo';
 
 function KakaoAuth() {
   const router = useRouter();
+  const { data: user, isSuccess } = useUserInfo();
+
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const accessToken = params.get('accessToken');
@@ -19,8 +19,6 @@ function KakaoAuth() {
       sessionStorage.setItem('refreshToken', refreshToken);
     }
   }, []);
-
-  const { data: user, isSuccess } = useQuery<GetUserResponse>(['nickname'], getNickname);
 
   if (isSuccess) {
     if (user?.nickname === '닉네임을 등록해주세요') {
