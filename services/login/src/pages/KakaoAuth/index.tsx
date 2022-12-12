@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 
-import { IUser } from '../../interfaces/interfaces';
+import { GetUserResponse } from '../../interfaces/interfaces';
 import { getNickname } from '../../remote/login';
 
 function KakaoAuth() {
@@ -20,7 +20,7 @@ function KakaoAuth() {
     }
   }, []);
 
-  const { data: user, isSuccess } = useQuery<IUser>(['nickname'], getNickname);
+  const { data: user, isSuccess } = useQuery<GetUserResponse>(['nickname'], getNickname);
 
   if (isSuccess) {
     if (user?.nickname === '닉네임을 등록해주세요') {
