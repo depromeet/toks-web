@@ -10,9 +10,18 @@ export interface ToksHttpClient extends AxiosInstance {
   put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
   patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
 }
+
+export interface CustomAxiosError extends AxiosError {
+  code: number;
+  httpStatus: string;
+  message: string;
+  statusCode: number;
+}
+
 const authToken = {
-  access: typeof window === 'undefined' ? null : sessionStorage.getItem('accessToken'),
-  refresh: typeof window === 'undefined' ? null : sessionStorage.getItem('refreshToken'),
+  access: typeof window === 'undefined' && typeof global !== 'undefined' ? null : sessionStorage.getItem('accessToken'),
+  refresh:
+    typeof window === 'undefined' && typeof global !== 'undefined' ? null : sessionStorage.getItem('refreshToken'),
 };
 
 export function Auth() {
