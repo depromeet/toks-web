@@ -1,7 +1,7 @@
 import { Text } from '@depromeet/toks-components';
 
 import QuizList from './components/QuizList';
-import { RankingList } from './components/RankingList';
+import RankingList from './components/RankingList';
 import StudyInfo from './components/StudyInfo';
 import { StudyProgress } from './components/StudyProgress';
 import { FlexRow, Page, QuizListWrapper, RankingListWrapper, Section } from './style';

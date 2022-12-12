@@ -17,6 +17,15 @@ interface StudyInfo {
     description: string;
     studyTags: string[];
     members: User[];
+  };
+
+
+type Ranking = number | undefined;
+
+interface RankingItem {
+    ranking?: Ranking;
+    toks: number;
+    user: User;
   }
 
 export const getStudyInfo = async () => {
@@ -28,5 +37,5 @@ export const getQuizList = async () => {
 };
   
 export const getRankingList = async () => {
-  return await new Promise(resolve => setTimeout(() => resolve(rankingList), 1000));
+  return await new Promise<RankingItem[]>(resolve => setTimeout(() => resolve(rankingList), 1000));
 }; 
