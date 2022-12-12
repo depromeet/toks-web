@@ -1,11 +1,11 @@
-export const creator = {
+const creator = {
   image: 'https://asset.tokstudy.com/img_penguin.png',
   id: '13',
   userName: '윤두현1',
   size: 'large',
 };
 
-export const absentee = [
+const absentee = [
   {
     image: 'https://asset.tokstudy.com/img_penguin.png',
     id: '13',
@@ -56,7 +56,7 @@ export const absentee = [
   },
 ];
 
-export const members = [
+const members = [
   {
     image: 'https://asset.tokstudy.com/img_penguin.png',
     id: '13',
