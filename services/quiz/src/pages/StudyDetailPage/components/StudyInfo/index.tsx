@@ -9,7 +9,7 @@ import { getStudyInfo } from 'pages/StudyDetailPage/remote/quiz';
 
 
 function StudyInfo() {
-  const makeStudyTags = (tagInfos: string[]) => [...tagInfos].map(tagInfo => <Tag value={tagInfo} />);
+  const makeStudyTags = (tagInfos: string[]) => [...tagInfos].map((tagInfo, index) => <Tag key={index} value={tagInfo} />);
   const { data: studyInfo } = useSuspendedQuery(QUERY_KEYS.GET_STUDY_INFO, getStudyInfo);
   const { studyId, title, description, studyTags, members } = studyInfo;
   return (

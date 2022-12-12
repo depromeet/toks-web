@@ -12,15 +12,14 @@ function RankingList() {
 
   return (
     <List>
-      {rankingList.map(rankingItem => (
-        <RankingItem {...rankingItem} />
+      {rankingList.map((rankingItem, index) => (
+        <RankingItem key={index} {...rankingItem} />
       ))}
     </List>
   );
 }
 
 export default () => (
-  // TODO: fallback 개선
   <ErrorBoundary renderFallback={() => null}>
     <SSRSuspense
       fallback={<div>Ranking Skeleton</div>}>
