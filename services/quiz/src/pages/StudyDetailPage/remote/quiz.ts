@@ -19,7 +19,7 @@ interface StudyInfo {
   members: User[];
 }
 
-type Ranking = number | undefined;
+type Ranking = number;
 
 interface RankingItem {
   ranking?: Ranking;
