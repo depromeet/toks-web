@@ -184,40 +184,48 @@ export const quizList = [
 
 export const rankingList = [
   {
+    rankingId: 31
     ranking: 1,
     toks: 110,
     user: members[0],
   },
   {
+    rankingId: 32
     ranking: 1,
     toks: 110,
     user: members[1],
   },
   {
+    rankingId: 33
     ranking: 1,
     toks: 110,
     user: members[2],
   },
   {
+    rankingId: 34
     ranking: 2,
     toks: 105,
     user: members[3],
   },
   {
+    rankingId: 35
     ranking: 3,
     toks: 102,
     user: members[4],
   },
   {
+    rankingId: 36
     ranking: 4,
     toks: 53,
     user: members[5],
   },
   {
+    rankingId: 37
     toks: 53,
     user: members[6],
   },
   {
+    rankingId: 38
     toks: 0,
     user: members[7],
   },
