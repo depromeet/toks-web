@@ -15,7 +15,7 @@ export function NickNameBox() {
       console.log('닉네임이 변경되었습니다. ');
     },
     onError: error => {
-      if ((error?.response?.data as CustomAxiosError)?.code === -20011) {
+      if ((error?.response?.data as CustomAxiosError)?.code === '-20011') {
         setError('nickName', {
           message: '이미 존재하는 닉네임입니다.', // 에러 메세지
         });
