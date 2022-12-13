@@ -26,7 +26,9 @@ function StudyInfo() {
         </Text>
         <StudyTags>
           <Tag.Row style={{ padding: 0 }}>
-            {studyTags.map((tagInfo, index) => <Tag key={index} value={tagInfo} />)}
+            {studyTags.map((tagInfo, index) => (
+              <Tag key={index} value={tagInfo} />
+            ))}
           </Tag.Row>
         </StudyTags>
       </Body>

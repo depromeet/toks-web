@@ -5,7 +5,7 @@ import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'r
 // import { useInterval } from '@toss/react';
 import { Divider } from 'components/common/Divider';
 
-import { getLimitDate, getQuizItemType, getTimerByQuizType } from '../../../../../utils/quizUtils';
+import { getLimitDate, getQuizItemType, getTimerByQuizType } from '../../../../../utils/quizList';
 import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
 
 type User = {

@@ -4,10 +4,11 @@ import styled from '@emotion/styled';
 import { ErrorBoundary } from '@toss/error-boundary';
 import { useState } from 'react';
 
-import { isExistQuizToSolve } from '../../../../../utils/quizUtils';
+import { useGetQuizList } from 'pages/StudyDetailPage/hooks/queries/quizList';
+
+import { isExistQuizToSolve } from '../../../../../utils/quizList';
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
-import { useGetQuizList } from 'pages/StudyDetailPage/hooks/queries/quizList';
 
 const AddButton = styled.button`
   display: block;
