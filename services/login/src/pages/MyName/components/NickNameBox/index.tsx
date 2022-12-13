@@ -1,31 +1,30 @@
 import { Button, Image, Input, Text, emoji } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
-import { AxiosError } from 'axios';
-import { useMutation, useQuery } from 'react-query';
 
-import { useCreateNicknameForm } from 'hooks/useCreateNicknameForm';
-import { CustomAxiosError, GetUserResponse } from 'interfaces/user';
-import { Wrapper } from 'pages/MyName/components/style';
-import { getUserinfo, patchNickname } from 'pages/MyName/remote/nickName';
 import { useSetNickname } from 'hooks/query/useSetNickname';
+import { useCreateNicknameForm } from 'hooks/useCreateNicknameForm';
+import { CustomAxiosError } from 'interfaces/user';
+import { Wrapper } from 'pages/MyName/components/style';
 
 export function NickNameBox() {
   const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText, setError } =
     useCreateNicknameForm();
 
-  const nicknameMutation = useSetNickname();
+  const { mutate: nicknameMutation } = useSetNickname({
+    onSuccess: () => {
+      console.log('닉네임이 변경되었습니다. ');
+    },
+    onError: error => {
+      if ((error?.response?.data as CustomAxiosError)?.code === -20011) {
+        setError('nickName', {
+          message: '이미 존재하는 닉네임입니다.', // 에러 메세지
+        });
+      }
+    },
+  });
 
   const onSubmit = handleSubmit(data => {
-    nicknameMutation?.mutate(data.nickName);
-
-    //닉네임 중복처리
-    if ((nicknameMutation.error?.response?.data as CustomAxiosError)?.code === '-20011') {
-      setError(
-        'nickName',
-        { message: '이미 존재하는 닉네임입니다.' }, // 에러 메세지
-        { shouldFocus: true }
-      );
-    }
+    nicknameMutation(data.nickName);
   });
 
   return (

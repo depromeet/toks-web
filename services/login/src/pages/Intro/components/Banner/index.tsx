@@ -1,18 +1,18 @@
 import { Button, Text } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
-import { useMutation } from 'react-query';
 import { useRouter } from 'next/router';
+import { useMutation } from 'react-query';
 
 import { login as requestLogin } from '../../remote/login';
 
 export const Banner = () => {
-  const { mutateAsync: login, isLoading } = useMutation(requestLogin);
+  const { isLoading } = useMutation(requestLogin);
   const router = useRouter();
 
   const onClick = () => {
     router.push('https://api.tokstudy.com/oauth2/authorize/kakao');
   };
-  
+
   return (
     <Flex
       direction="column"

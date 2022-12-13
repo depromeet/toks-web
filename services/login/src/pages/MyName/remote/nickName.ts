@@ -1,4 +1,5 @@
 import { http } from '@depromeet/http';
+
 import { SetNickname } from 'interfaces/user';
 
 export async function getUserinfo() {
