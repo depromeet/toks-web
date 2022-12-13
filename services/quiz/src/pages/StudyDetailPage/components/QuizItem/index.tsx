@@ -2,31 +2,17 @@ import { KeyOfColors, theme } from '@depromeet/theme';
 import { Button, Image, Text, UserAvatar } from '@depromeet/toks-components';
 import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-// import { useInterval } from '@toss/react';
+// TODO: import { useInterval } from '@toss/react';
 import { Divider } from 'components/common/Divider';
+import { QuizItem, QuizStatus } from 'pages/StudyDetailPage/models/quizList';
 
 import { getLimitDate, getQuizItemType, getTimerByQuizType } from '../../../../../utils/quizList';
 import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
 
-type User = {
-  image: string;
-  id: string;
-  userName: string;
-  size?: string;
-};
-
-interface QuizItemProps {
+interface QuizItemProps extends QuizItem {
   index: number;
-  weekNumber: number;
-  title: string;
-  openDate: Date;
-  limitTime: string;
-  creator: User;
-  absentee: User[];
   setAddQuizState: Dispatch<SetStateAction<boolean>>;
 }
-
-type QuizStatus = 'default' | 'disabled' | 'activated';
 
 type QuizItemColorMap = {
   [key in QuizStatus]: {

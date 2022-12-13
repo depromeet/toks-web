@@ -1,5 +1,7 @@
 import { User } from '../models/user';
 
+export type QuizStatus = 'default' | 'disabled' | 'activated';
+
 export interface QuizItem {
   quizId: number;
   weekNumber: number;
