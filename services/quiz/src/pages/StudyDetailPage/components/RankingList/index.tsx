@@ -20,7 +20,7 @@ function RankingList() {
 
 export default () => (
   <ErrorBoundary renderFallback={() => null}>
-    <SSRSuspense fallback={<div>Ranking Skeleton</div>}>
+    <SSRSuspense fallback={null}>
       <RankingList />
     </SSRSuspense>
   </ErrorBoundary>

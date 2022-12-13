@@ -47,7 +47,7 @@ function StudyInfo() {
 
 export default () => (
   <ErrorBoundary renderFallback={() => null}>
-    <SSRSuspense fallback={<div>Study info skeleton</div>}>
+    <SSRSuspense fallback={null}>
       <StudyInfo />
     </SSRSuspense>
   </ErrorBoundary>

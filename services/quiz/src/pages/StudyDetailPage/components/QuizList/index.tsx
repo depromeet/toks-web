@@ -59,7 +59,7 @@ function QuizList() {
 
 export default () => (
   <ErrorBoundary renderFallback={() => null}>
-    <SSRSuspense fallback={<div>Quiz List Skeleton</div>}>
+    <SSRSuspense fallback={null}>
       <QuizList />
     </SSRSuspense>
   </ErrorBoundary>
