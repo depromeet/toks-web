@@ -2,15 +2,12 @@ import { theme } from '@depromeet/theme';
 import { Image, SSRSuspense, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { ErrorBoundary } from '@toss/error-boundary';
-import { useSuspendedQuery } from '@toss/react-query';
 import { useState } from 'react';
-
-import { QUERY_KEYS } from 'constants/queryKeys';
-import { getQuizList } from 'pages/StudyDetailPage/remote/quiz';
 
 import { isExistQuizToSolve } from '../../../../../utils/quizUtils';
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
+import { useGetQuizList } from 'pages/StudyDetailPage/hooks/queries/quizList';
 
 const AddButton = styled.button`
   display: block;
@@ -40,7 +37,7 @@ const QuizAddButton = () => (
 );
 
 function QuizList() {
-  const { data: quizList } = useSuspendedQuery(QUERY_KEYS.GET_QUIZ_LIST, getQuizList);
+  const { data: quizList } = useGetQuizList();
 
   const firstQuizItem = quizList[0];
   const [addQuizState, setAddQuizState] = useState(

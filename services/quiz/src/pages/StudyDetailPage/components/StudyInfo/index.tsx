@@ -1,14 +1,12 @@
 import { SSRSuspense, Tag, Text, UserAvatar } from '@depromeet/toks-components';
 import { ErrorBoundary } from '@toss/error-boundary';
-import { useSuspendedQuery } from '@toss/react-query';
 
-import { QUERY_KEYS } from 'constants/queryKeys';
-import { getStudyInfo } from 'pages/StudyDetailPage/remote/quiz';
+import { useGetStudyInfo } from 'pages/StudyDetailPage/hooks/queries/studyInfo';
 
 import { Body, Footer, Header, Info, StudyTags } from './style';
 
 function StudyInfo() {
-  const { data: studyInfo } = useSuspendedQuery(QUERY_KEYS.GET_STUDY_INFO, getStudyInfo);
+  const { data: studyInfo } = useGetStudyInfo();
   const { studyId, title, description, studyTags, members } = studyInfo;
   return (
     <Info>

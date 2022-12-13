@@ -1,15 +1,13 @@
 import { SSRSuspense } from '@depromeet/toks-components';
 import { ErrorBoundary } from '@toss/error-boundary';
-import { useSuspendedQuery } from '@toss/react-query';
 
-import { QUERY_KEYS } from 'constants/queryKeys';
-import { getRankingList } from 'pages/StudyDetailPage/remote/quiz';
+import { useGetRankingList } from 'pages/StudyDetailPage/hooks/queries/rankingList';
 
 import { RankingItem } from '../RankingItem';
 import { List } from './style';
 
 function RankingList() {
-  const { data: rankingList } = useSuspendedQuery(QUERY_KEYS.GET_RANKING_LIST, getRankingList);
+  const { data: rankingList } = useGetRankingList();
 
   return (
     <List>
