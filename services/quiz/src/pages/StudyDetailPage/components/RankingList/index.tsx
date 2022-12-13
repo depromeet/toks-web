@@ -11,7 +11,7 @@ function RankingList() {
 
   return (
     <List>
-      {rankingList.map((rankingItem) => (
+      {rankingList.map(rankingItem => (
         <RankingItem key={rankingItem.rankingId} {...rankingItem} />
       ))}
     </List>

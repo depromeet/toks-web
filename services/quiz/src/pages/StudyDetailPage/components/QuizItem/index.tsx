@@ -5,10 +5,10 @@ import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'r
 // TODO: import { useInterval } from '@toss/react';
 import { Divider } from 'components/common/Divider';
 import { QuizStatus } from 'pages/StudyDetailPage/models/quizList';
+import { User } from 'pages/StudyDetailPage/models/user';
 
 import { getLimitDate, getQuizItemType, getTimerByQuizType } from '../../../../../utils/quizList';
 import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
-import { User } from 'pages/StudyDetailPage/models/user';
 
 interface QuizItemProps {
   index: number;
@@ -147,7 +147,7 @@ export function QuizItem({
               똑스 안 푼 사람
             </Text>
             <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ margin: '0 0 0 22px' }}>
-              {absentee.map((user) => (
+              {absentee.map(user => (
                 <UserAvatar key={user.id} {...user} size="large" className={`avatar--user_${user.id}`} tooltip={true} />
               ))}
             </UserAvatar.Group>
