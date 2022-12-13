@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export interface RankingItem {
+export interface RankingItemResponse {
   rankingId: number
   ranking?: number;
   toks: number;

@@ -1,7 +1,7 @@
 import { rankingList } from 'mock/db';
 
-import { RankingItem } from '../models/rankingList';
+import { RankingItemResponse } from '../models/rankingList';
 
 export const getRankingList = async () => {
-  return await new Promise<RankingItem[]>(resolve => setTimeout(() => resolve(rankingList), 1000));
+  return await new Promise<RankingItemResponse[]>(resolve => setTimeout(() => resolve(rankingList), 1000));
 };

@@ -1,13 +1,13 @@
 import { theme } from '@depromeet/theme';
 import { Icon, Text, UserAvatar } from '@depromeet/toks-components';
 
-import { RankingItem } from 'pages/StudyDetailPage/models/rankingList';
+import { RankingItemResponse } from 'pages/StudyDetailPage/models/rankingList';
 
 import { Item } from './style';
 
 const medals = ['ic-gold' as const, 'ic-silver' as const, 'ic-bronze' as const];
 
-export function RankingItem({ ranking = undefined, toks, user }: RankingItem) {
+export function RankingItem({ ranking = undefined, toks, user }: RankingItemResponse) {
   const isMedalItem = (ranking?: number) => ranking && ranking <= 3;
   const convertNoneRanking = (ranking?: number) => (ranking ? `${ranking}.` : '-');
 
