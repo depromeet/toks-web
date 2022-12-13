@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios';
 
 export interface ToksHttpClient extends AxiosInstance {
   request<T = any>(config: AxiosRequestConfig): Promise<T>;
@@ -12,7 +12,8 @@ export interface ToksHttpClient extends AxiosInstance {
 }
 
 export interface CustomAxiosError extends AxiosError {
-  code: number;
+  timestamp?: number;
+  code: string;
   httpStatus: string;
   message: string;
   statusCode: number;
@@ -34,7 +35,7 @@ export function Auth() {
 //axios instance
 const instance: ToksHttpClient = axios.create({
   baseURL: 'https://api.tokstudy.com',
-  headers: { Authorization: `${authToken?.access}` },
+  headers: { Authorization: authToken?.access },
 });
 
 //1. 요청 인터셉터
@@ -44,7 +45,7 @@ instance.interceptors.request.use(
       throw new Error(`config.header is undefined`);
     }
     config.headers['Content-Type'] = 'application/json; charset=utf-8';
-    config.headers['Authorization'] = `${authToken?.access}`;
+    config.headers['Authorization'] = authToken?.access;
 
     return config;
   },
@@ -66,7 +67,7 @@ instance.interceptors.response.use(
         if (error?.config.headers === undefined) {
           error.config.headers = {};
         } else {
-          error.config.headers['Authorization'] = `${newAccessToken}`;
+          error.config.headers['Authorization'] = newAccessToken;
           //sessionStorage에 새 토큰 저장
           sessionStorage.setItem('accessToken', newAccessToken);
           // 중단된 요청 새로운 토큰으로 재전송
