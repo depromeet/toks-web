@@ -5,5 +5,5 @@ export const List = styled.ul`
   list-style: none;
   padding: 0;
   height: 500px;
-  overflow: scroll;
+  overflow: auto;
 `;
