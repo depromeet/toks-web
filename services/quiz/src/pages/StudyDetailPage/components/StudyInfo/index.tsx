@@ -8,8 +8,6 @@ import { getStudyInfo } from 'pages/StudyDetailPage/remote/quiz';
 import { Body, Footer, Header, Info, StudyTags } from './style';
 
 function StudyInfo() {
-  const makeStudyTags = (tagInfos: string[]) =>
-    [...tagInfos].map((tagInfo, index) => <Tag key={index} value={tagInfo} />);
   const { data: studyInfo } = useSuspendedQuery(QUERY_KEYS.GET_STUDY_INFO, getStudyInfo);
   const { studyId, title, description, studyTags, members } = studyInfo;
   return (
@@ -29,7 +27,9 @@ function StudyInfo() {
           {description}
         </Text>
         <StudyTags>
-          <Tag.Row style={{ padding: 0 }}>{makeStudyTags(studyTags)}</Tag.Row>
+          <Tag.Row style={{ padding: 0 }}>
+            {studyTags.map((tagInfo, index) => <Tag key={index} value={tagInfo} />)}
+          </Tag.Row>
         </StudyTags>
       </Body>
       <Footer>
