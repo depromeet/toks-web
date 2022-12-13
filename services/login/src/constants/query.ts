@@ -1,4 +1,4 @@
-export const QUERY_KEY = {
+const QUERY_KEY = {
   NICKNAME: 'nickname',
 } as const;
 
