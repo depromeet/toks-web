@@ -62,9 +62,10 @@ export function Layout({ children, login = true }: { children: ReactNode; login?
 const StyledLayout = styled.main`
   position: relative;
   width: 100vw;
-  max-width: 100vw;
+  max-width: 1320px;
   padding: 0 9vw;
   overflow: auto;
+  margin: 0 auto;
 `;
 
 function useUserMenuDialog() {

@@ -1,7 +1,7 @@
 import { Text } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
 
-import { JoinStudyBox } from 'JoinStudy/components/JoinStudyBox';
+import { JoinStudyBox } from 'pages/JoinStudy/components/JoinStudyBox';
 
 function JoinStudy() {
   return (

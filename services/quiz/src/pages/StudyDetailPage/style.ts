@@ -10,11 +10,16 @@ export const Section = styled.section`
   margin-top: 50px;
 `;
 
-export const Wrapper = styled.div`
-  width: 1320px;
-  margin: 0 auto;
-`;
-
 export const FlexRow = styled.div`
   display: flex;
+`;
+
+export const QuizListWrapper = styled.div`
+  max-width: 982px;
+  width: 74%;
+`;
+
+export const RankingListWrapper = styled.div`
+  max-width: 304px;
+  width: 27%;
 `;
