@@ -33,7 +33,7 @@
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
     "@babel/runtime": "^7.18.3",
-    "@depromeet/http": "^0.2.0",
+    "@depromeet/http": "^0.2.1",
     "@devops/commandline": "workspace:devops/commandline",
     "@emotion/babel-plugin": "^11.9.2",
     "dotenv": "^10.0.0",
@@ -74,6 +74,7 @@
   },
   "peerDependencies": {
     "@toss/use-overlay": ">=1.1.0",
+    "next": "^12",
     "react": "*",
     "react-dom": "*",
     "react-query": "*"

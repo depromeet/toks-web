@@ -38,7 +38,7 @@ export function Layout({ children, login = true }: { children: ReactNode; login?
             }
 
             if (!login) {
-              pushTo(PATHS.login);
+              pushTo(PATHS.login.main);
               return;
             }
 

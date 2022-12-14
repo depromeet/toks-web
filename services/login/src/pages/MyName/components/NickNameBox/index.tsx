@@ -1,30 +1,29 @@
+import { PATHS, pushTo } from '@depromeet/path';
 import { Button, Image, Input, Text, emoji } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 
 import { useSetNickname } from 'hooks/query/useSetNickname';
 import { useCreateNicknameForm } from 'hooks/useCreateNicknameForm';
-import { CustomAxiosError } from 'interfaces/user';
 import { Wrapper } from 'pages/MyName/components/style';
+import { isToksError } from '@depromeet/http';
 
 export function NickNameBox() {
   const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText, setError } =
     useCreateNicknameForm();
 
-  const { mutate: nicknameMutation } = useSetNickname({
-    onSuccess: () => {
-      console.log('닉네임이 변경되었습니다. ');
-    },
-    onError: error => {
-      if ((error?.response?.data as CustomAxiosError)?.code === '-20011') {
+  const { mutateAsync: nicknameMutation } = useSetNickname();
+
+  const onSubmit = handleSubmit(async data => {
+    try {
+      await nicknameMutation(data.nickName);
+      pushTo(PATHS.home.myStudy);
+    } catch (error: unknown) {
+      if (isToksError(error) && error.code === '-20011') {
         setError('nickName', {
           message: '이미 존재하는 닉네임입니다.', // 에러 메세지
         });
       }
-    },
-  });
-
-  const onSubmit = handleSubmit(data => {
-    nicknameMutation(data.nickName);
+    }
   });
 
   return (

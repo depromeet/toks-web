@@ -1,6 +1,7 @@
 import { PATHS, pushTo } from '@depromeet/path';
-import { ProgressSpinner } from '@depromeet/toks-components';
+import { ProgressSpinner, SSRSuspense } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
+import { ErrorBoundary } from '@toss/error-boundary';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
@@ -8,7 +9,7 @@ import { useUserInfo } from 'hooks/query/useUserInfo';
 
 function KakaoAuth() {
   const router = useRouter();
-  const { data: user, isSuccess } = useUserInfo();
+  const { data: user } = useUserInfo();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -19,16 +20,13 @@ function KakaoAuth() {
       sessionStorage.setItem('accessToken', accessToken);
       sessionStorage.setItem('refreshToken', refreshToken);
     }
-  }, []);
 
-  if (isSuccess) {
-    if (user?.nickname === '닉네임을 등록해주세요') {
-      router.push('/myName');
+    if (user.nickname === '닉네임을 등록해주세요') {
+      router.push(PATHS.login.nickname);
     } else {
-      //TODO: 닉네임이 있는 경우 홈으로 라우팅 홈 도메인으로 수정 필요
       pushTo(PATHS.home.myStudy);
     }
-  }
+  }, [router, user]);
 
   return (
     <Flex.Center css={{ marginTop: '250px' }}>
@@ -37,4 +35,10 @@ function KakaoAuth() {
   );
 }
 
-export default KakaoAuth;
+export default () => (
+  <ErrorBoundary renderFallback={() => null}>
+    <SSRSuspense fallback={null}>
+      <KakaoAuth />
+    </SSRSuspense>
+  </ErrorBoundary>
+);

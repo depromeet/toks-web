@@ -8,7 +8,10 @@ export const PATHS = {
   onboarding: {
     createStudy: '/onboarding/create-study',
   },
-  login: '/login',
+  login: {
+    main: '/login',
+    nickname: '/myName',
+  },
 } as const;
 
 /**
