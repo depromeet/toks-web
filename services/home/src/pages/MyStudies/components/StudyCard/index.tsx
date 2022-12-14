@@ -3,18 +3,17 @@ import { theme } from '@depromeet/theme';
 import { Button, Image, Tag, Text, TextBallon } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Flex, Spacing, padding, width100 } from '@toss/emotion-utils';
-import { useSuspendedQuery } from '@toss/react-query';
 import { match } from 'ts-pattern';
-
-import { QUERY_KEYS } from 'constants/queryKeys';
-import { getStudyStatus } from 'pages/MyStudies/remotes/study';
 
 import { Study } from '../../models/study';
 
-interface Props extends Pick<Study, 'title' | 'tags'> {
+interface Props {
   onClick: VoidFunction;
   memberCount: number;
   studyId: number;
+  title: Study['name'];
+  tags: Study['studyTags'];
+  quizStatus: Study['StudylatestquizStatus'];
 }
 
 const IMG_MAP = {
@@ -22,24 +21,19 @@ const IMG_MAP = {
   awake: 'https://asset.tokstudy.com/character-base-1.png',
 } as const;
 
-function StudyCard({ title, tags, onClick, memberCount, studyId }: Props) {
-  const {
-    data: { quiz: quizStatus },
-  } = useSuspendedQuery(QUERY_KEYS.GET_STUDY_STATUS(studyId), () => getStudyStatus({ studyId }));
-
+function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyId }: Props) {
   return (
     <div css={{ position: 'relative' }}>
       {match(quizStatus)
-        .with('EXPIRED', () => (
+        .with('UNCHECKED', () => (
           <TextBallon title="우수 답변을 확인해보세요!" onClick={() => pushTo(PATHS.quiz.studyDetail({ studyId }))} />
         ))
-        .with('NEW', () => (
+        .with('UNSOLVED', () => (
           <TextBallon
             title="똑스대장님이 똑스를 추가했어요!"
             onClick={() => pushTo(PATHS.quiz.studyDetail({ studyId }))}
           />
         ))
-        .with('NORMAL', () => null)
         .otherwise(() => null)}
 
       <Card>
@@ -52,7 +46,9 @@ function StudyCard({ title, tags, onClick, memberCount, studyId }: Props) {
         <Spacing size={12} />
 
         <Image
-          src={quizStatus !== 'NORMAL' ? IMG_MAP.awake : IMG_MAP.sleep}
+          src={match(quizStatus)
+            .with('UNCHECKED', 'UNSOLVED', () => IMG_MAP.awake)
+            .otherwise(() => IMG_MAP.sleep)}
           alt=""
           draggable={false}
           width={84}
@@ -70,14 +66,16 @@ function StudyCard({ title, tags, onClick, memberCount, studyId }: Props) {
 
         <Tag.Row css={[width100, padding(0)]}>
           {tags.map(tag => (
-            <Tag value={tag} key={tag} />
+            <Tag value={tag.name} key={tag.id} />
           ))}
         </Tag.Row>
 
         <Spacing size={52} />
 
         <Button
-          type={quizStatus !== 'NORMAL' ? 'primary' : 'general'}
+          type={match(quizStatus)
+            .with('UNCHECKED', 'UNSOLVED', () => 'primary' as const)
+            .otherwise(() => 'general' as const)}
           css={{ justifySelf: 'flex-end' }}
           onClick={onClick}
         >

@@ -13,23 +13,26 @@ import StudyCard from '../StudyCard';
 const MAX_STUDY_CNT = 4;
 
 function StudyList() {
-  const { data: myStudies } = useSuspendedQuery(QUERY_KEYS.GET_MY_STUDIES, getMyStudies);
+  const {
+    data: { studies },
+  } = useSuspendedQuery(QUERY_KEYS.GET_MY_STUDIES, getMyStudies);
 
   return (
     <StudyListRow as="ul">
-      {myStudies.map(study => (
+      {studies.map(study => (
         <SSRSuspense fallback={<StudyCard.Skeleton />} key={study.id}>
           <StudyCard
-            title={study.title}
-            tags={study.tags}
-            memberCount={study.member.length}
+            title={study.name}
+            tags={study.studyTags}
+            memberCount={study.studyUserCount}
             studyId={study.id}
+            quizStatus={study.StudylatestquizStatus}
             onClick={() => pushTo(PATHS.quiz.studyDetail({ studyId: study.id }))}
           />
         </SSRSuspense>
       ))}
 
-      {myStudies.length < MAX_STUDY_CNT && <StudyCard.Plus onClick={() => pushTo(PATHS.onboarding.createStudy)} />}
+      {studies.length < MAX_STUDY_CNT && <StudyCard.Plus onClick={() => pushTo(PATHS.onboarding.createStudy)} />}
     </StudyListRow>
   );
 }
