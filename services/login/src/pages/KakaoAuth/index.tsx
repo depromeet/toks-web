@@ -1,11 +1,10 @@
+import { PATHS, pushTo } from '@depromeet/path';
 import { ProgressSpinner } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 import { useUserInfo } from 'hooks/query/useUserInfo';
-import { PATHS, pushTo } from '@depromeet/path';
-
 
 function KakaoAuth() {
   const router = useRouter();
@@ -27,7 +26,7 @@ function KakaoAuth() {
       router.push('/myName');
     } else {
       //TODO: 닉네임이 있는 경우 홈으로 라우팅 홈 도메인으로 수정 필요
-      pushTo(PATHS.home.myStudy)
+      pushTo(PATHS.home.myStudy);
     }
   }
 
