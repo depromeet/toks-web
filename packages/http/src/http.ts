@@ -98,9 +98,8 @@ instance.interceptors.response.use(
   async function (error) {
     if (isToksError(error) && error.message === 'error.invalid.access.token') {
       try {
-        const {
-          data: { refreshToken },
-        } = await axios.post('/api/v1/user/renew', authToken.refresh);
+        await axios.post('/api/v1/user/renew', authToken.refresh);
+
         //refresh 토큰 발급 받기
         redirectToLoginPage();
       } catch (err) {
