@@ -3,7 +3,7 @@ import { Flex } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-import { useUserInfo } from '../../hooks/query/useUserInfo';
+import { useUserInfo } from 'hooks/query/useUserInfo';
 
 function KakaoAuth() {
   const router = useRouter();
