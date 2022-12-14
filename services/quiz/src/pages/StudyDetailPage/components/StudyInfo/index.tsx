@@ -1,6 +1,6 @@
 import { SSRSuspense, Tag, Text, UserAvatar } from '@depromeet/toks-components';
 import { ErrorBoundary } from '@toss/error-boundary';
-
+../../../../utils/userUtils
 import { useGetStudyInfo } from 'pages/StudyDetailPage/hooks/queries/studyInfo';
 
 import { Body, Footer, Header, Info, StudyTags } from './style';

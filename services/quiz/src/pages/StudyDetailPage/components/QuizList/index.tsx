@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 import { useGetQuizList } from 'pages/StudyDetailPage/hooks/queries/quizList';
 
-import { isExistQuizToSolve } from '../../../../../utils/quizList';
+import { isExistQuizToSolve } from 'utils/quizList';
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
 
