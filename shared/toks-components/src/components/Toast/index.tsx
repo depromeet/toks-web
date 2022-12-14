@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { match } from 'ts-pattern';
 
-import { Icon } from '../Icon';
 import { Text } from '../Text';
 
 const VERTICAL = ['top', 'bottom'] as const;
@@ -49,11 +48,13 @@ export function Toast({ type, icon, title, onClick, direction = 'top' }: Props) 
 
 // TODO 아이콘 컴포넌트 완성되면 수정
 function DangerIcon() {
-  return <Icon size={28} iconName="ic-failed" />;
+  return <i className="pi pi-times-circle" style={{ fontSize: '20px', background: '#EB4852', borderRadius: '50%' }} />;
 }
 
 function SuccessIcon() {
-  return <Icon size={28} iconName="ic-success" />;
+  return (
+    <i className="pi pi-chevron-circle-down" style={{ fontSize: '20px', background: '#39D878', borderRadius: '50%' }} />
+  );
 }
 
 /**
