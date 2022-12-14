@@ -1,13 +1,18 @@
 import { theme } from '@depromeet/theme';
 import { Icon, Text, UserAvatar } from '@depromeet/toks-components';
 
-import { RankingItemResponse } from 'pages/StudyDetailPage/models/rankingList';
+import { RankResponse } from 'pages/StudyDetailPage/models/rankingList';
 
 import { Item } from './style';
 
+interface RankingItemProps {
+  ranking?: number;
+  rankItem: RankResponse;
+};
+
 const medals = ['ic-gold' as const, 'ic-silver' as const, 'ic-bronze' as const];
 
-export function RankingItem({ ranking = undefined, toks, user }: RankingItemResponse) {
+export function RankingItem({ ranking = undefined, rankItem }: RankingItemProps) {
   const isMedalItem = (ranking?: number) => ranking && ranking <= 3;
   const convertNoneRanking = (ranking?: number) => (ranking ? `${ranking}.` : '-');
 
@@ -20,12 +25,12 @@ export function RankingItem({ ranking = undefined, toks, user }: RankingItemResp
           {convertNoneRanking(ranking)}
         </Text>
       )}
-      <UserAvatar image={user.profileImageUrl} size="large" css={{ marginLeft: '12px' }} />
+      <UserAvatar image={rankItem.user.profileImageUrl} size="large" css={{ marginLeft: '12px' }} />
       <Text variant="body01" color="white" css={{ marginLeft: '12px', flex: 1 }}>
-        {user.nickname}
+        {rankItem.user.nickname}
       </Text>
       <Text variant="body03" color="gray060" css={{ marginLeft: '12px', flex: 1 }}>
-        {toks} Toks
+        {rankItem.score} Toks
       </Text>
     </Item>
   );

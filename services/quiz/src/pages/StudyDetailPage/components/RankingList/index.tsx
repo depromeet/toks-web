@@ -9,10 +9,14 @@ import { List } from './style';
 function RankingList() {
   const { data: rankingList } = useGetRankingList();
 
+  // TODO: 서버에서 랭킹 숫자 내려주냐 안내려주냐에 따라서 랭킹 추가하는 부분 구성해야 함
   return (
     <List>
-      {rankingList.map(rankingItem => (
-        <RankingItem key={rankingItem.rankingId} {...rankingItem} />
+      {rankingList.map((rankItem, index) => (
+        <RankingItem 
+          key={rankItem.rankingId}
+          ranking={index + 1}
+          rankItem={rankItem}/>
       ))}
     </List>
   );
