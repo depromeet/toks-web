@@ -2,7 +2,7 @@ import { KeyOfColors, theme } from '@depromeet/theme';
 import { Button, Image, Text, UserAvatar } from '@depromeet/toks-components';
 import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-// TODO: import { useInterval } from '@toss/react';
+// TODO: useInterval을 사용해서 코드 간결화 하기 / import { useInterval } from '@toss/react';
 import { Divider } from 'components/common/Divider';
 import { QuizStatus } from 'pages/StudyDetailPage/models/quizList';
 import { User } from 'pages/StudyDetailPage/models/user';
