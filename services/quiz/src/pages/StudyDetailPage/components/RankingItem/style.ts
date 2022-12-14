@@ -7,7 +7,7 @@ export const Item = styled.li`
   padding: 12px 42px;
   border-radius: 16px;
 
-  :nth-child(n + 2) {
+  :nth-of-type(n + 2) {
     margin-top: 12px;
   }
 `;

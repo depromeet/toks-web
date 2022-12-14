@@ -1,22 +1,15 @@
 import { theme } from '@depromeet/theme';
 import { Icon, Text, UserAvatar } from '@depromeet/toks-components';
 
-import { User } from '../../../../../utils/userUtils';
+import { RankingItemResponse } from 'pages/StudyDetailPage/models/rankingList';
+
 import { Item } from './style';
-
-type Ranking = number | undefined;
-
-interface RankingItemProps {
-  ranking?: Ranking;
-  toks: number;
-  user: User;
-}
 
 const medals = ['ic-gold' as const, 'ic-silver' as const, 'ic-bronze' as const];
 
-export function RankingItem({ ranking = undefined, toks, user }: RankingItemProps) {
-  const isMedalItem = (ranking: Ranking) => ranking && ranking <= 3;
-  const convertNoneRanking = (ranking: Ranking) => (ranking ? `${ranking}.` : '-');
+export function RankingItem({ ranking = undefined, toks, user }: RankingItemResponse) {
+  const isMedalItem = (ranking?: number) => ranking && ranking <= 3;
+  const convertNoneRanking = (ranking?: number) => (ranking ? `${ranking}.` : '-');
 
   return (
     <Item css={{ backgroundColor: isMedalItem(ranking) ? theme.colors.gray100 : theme.colors.gray110 }}>
