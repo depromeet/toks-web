@@ -1,5 +1,5 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
-import { Button, Text, UserAvatar, Icon } from '@depromeet/toks-components';
+import { Button, Icon, Text, UserAvatar } from '@depromeet/toks-components';
 import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { Divider } from 'components/common/Divider';
@@ -100,23 +100,14 @@ export function QuizItem({
             똑스 확인하기
           </Button>
           {isFold ? (
-            <Icon
-              iconName='ic-chevron-up'
-              height={24}
-              css={{ marginLeft: '24px' }}/>
+            <Icon iconName="ic-chevron-up" height={24} css={{ marginLeft: '24px' }} />
           ) : (
-            <Icon
-              iconName='ic-chevron-down'
-              height={24}
-              css={{ marginLeft: '24px' }}/>
+            <Icon iconName="ic-chevron-down" height={24} css={{ marginLeft: '24px' }} />
           )}
         </ItemHeader>
         <ItemBody>
           <FlexRow css={{ marginTop: '36px' }}>
-            <Icon
-              iconName='ic-time'
-              height={24}
-              css={{ marginLeft: '3.2px' }}/>
+            <Icon iconName="ic-time" height={24} css={{ marginLeft: '3.2px' }} />
             <Text variant="title04" color={QUIZ_ITEM_COLOR[quizItemType].timer} css={{ margin: '0 0 0 9.2px' }} as="h4">
               {timer}
             </Text>
