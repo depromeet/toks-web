@@ -2,11 +2,10 @@ import { Button, Text } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
 import { useMutation } from 'react-query';
 
-import { login as requestLogin } from '../../remote/login';
+import { login as requestLogin } from 'pages/Intro/remote/login';
 
 export const Banner = () => {
   const { mutateAsync: login, isLoading } = useMutation(requestLogin);
-
   return (
     <Flex
       direction="column"

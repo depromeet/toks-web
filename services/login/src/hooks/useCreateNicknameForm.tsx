@@ -1,8 +1,10 @@
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { SetNickname } from 'interfaces/user';
+
 interface CreateNicknameForm {
-  nickName: string;
+  nickName: SetNickname;
 }
 
 export const useCreateNicknameForm = () => {
@@ -10,6 +12,7 @@ export const useCreateNicknameForm = () => {
     register,
     control,
     handleSubmit,
+    setError,
     setValue,
     formState: { isDirty, isValid, errors },
   } = useForm<CreateNicknameForm>({ mode: 'onChange' });
@@ -36,6 +39,7 @@ export const useCreateNicknameForm = () => {
     register,
     handleSubmit,
     setValue,
+    setError,
     errors,
     control,
     isDisabled,

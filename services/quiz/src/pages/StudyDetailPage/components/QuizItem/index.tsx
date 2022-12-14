@@ -1,22 +1,17 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
-import { Button, Image, Text, UserAvatar } from '@depromeet/toks-components';
+import { Button, Icon, Text, UserAvatar } from '@depromeet/toks-components';
 import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'react';
 
-// import { useInterval } from '@toss/react';
 import { Divider } from 'components/common/Divider';
+import { QuizStatus } from 'pages/StudyDetailPage/models/quizList';
+import { User } from 'pages/StudyDetailPage/models/user';
 
-import { getLimitDate, getQuizItemType, getTimerByQuizType } from '../../../../../utils/quizUtils';
+import { getLimitDate, getQuizItemType, getTimerByQuizType } from '../../../../../utils/quizList';
 import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
-
-type User = {
-  image: string;
-  id: string;
-  userName: string;
-  size?: string;
-};
 
 interface QuizItemProps {
   index: number;
+  quizId: number;
   weekNumber: number;
   title: string;
   openDate: Date;
@@ -25,8 +20,6 @@ interface QuizItemProps {
   absentee: User[];
   setAddQuizState: Dispatch<SetStateAction<boolean>>;
 }
-
-type QuizStatus = 'default' | 'disabled' | 'activated';
 
 type QuizItemColorMap = {
   [key in QuizStatus]: {
@@ -68,6 +61,7 @@ export function QuizItem({
   const [timer, setTimer] = useState(quizItemType === 'default' ? '00:00:00' : limitTime);
   const [isFold, setIsFold] = useState(quizItemType !== 'default');
 
+  // TODO: useInterval 사용으로 추후 변경해봐야 함
   useEffect(() => {
     const interval = setInterval(() => {
       setQuizItemType(getQuizItemType(openDate, limitDate));
@@ -106,32 +100,14 @@ export function QuizItem({
             똑스 확인하기
           </Button>
           {isFold ? (
-            <Image
-              width={16}
-              height={9}
-              src="https://toks-web-assets.s3.amazonaws.com/ic-chevron-top.svg"
-              alt="닫기 버튼 입니다."
-              css={{ marginLeft: '24px' }}
-            />
+            <Icon iconName="ic-chevron-up" height={24} css={{ marginLeft: '24px' }} />
           ) : (
-            <Image
-              width={16}
-              height={9}
-              src="https://toks-web-assets.s3.amazonaws.com/ic-bottom-chevron.svg"
-              alt="펼치기 버튼 입니다."
-              css={{ marginLeft: '24px' }}
-            />
+            <Icon iconName="ic-chevron-down" height={24} css={{ marginLeft: '24px' }} />
           )}
         </ItemHeader>
         <ItemBody>
           <FlexRow css={{ marginTop: '36px' }}>
-            <Image
-              width={20.17}
-              height={20.17}
-              src="https://toks-web-assets.s3.amazonaws.com/ic-timer.svg"
-              alt="펼치기 버튼 입니다."
-              css={{ marginLeft: '3.2px' }}
-            />
+            <Icon iconName="ic-time" height={24} css={{ marginLeft: '3.2px' }} />
             <Text variant="title04" color={QUIZ_ITEM_COLOR[quizItemType].timer} css={{ margin: '0 0 0 9.2px' }} as="h4">
               {timer}
             </Text>
@@ -153,8 +129,8 @@ export function QuizItem({
               똑스 안 푼 사람
             </Text>
             <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ margin: '0 0 0 22px' }}>
-              {absentee.map((user, index) => (
-                <UserAvatar key={index} {...user} size="large" className={`avatar--user_${user.id}`} tooltip={true} />
+              {absentee.map(user => (
+                <UserAvatar key={user.id} {...user} size="large" className={`avatar--user_${user.id}`} tooltip={true} />
               ))}
             </UserAvatar.Group>
           </FlexRow>
