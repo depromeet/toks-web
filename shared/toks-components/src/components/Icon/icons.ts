@@ -5,6 +5,7 @@ import { default as chevronLeft } from './icons/ic_chevron-left.svg';
 import { default as chevronRight } from './icons/ic_chevron-right.svg';
 import { default as chevronUp } from './icons/ic_chevron-up.svg';
 import { default as deleted } from './icons/ic_delete.svg';
+import { default as failed } from './icons/ic_failed.svg';
 import { default as file } from './icons/ic_file.svg';
 import { default as gold } from './icons/ic_gold.svg';
 import { default as kakao } from './icons/ic_kakao.svg';
@@ -13,6 +14,7 @@ import { default as newFile } from './icons/ic_new-file.svg';
 import { default as plus } from './icons/ic_plus.svg';
 import { default as selected } from './icons/ic_selected.svg';
 import { default as silver } from './icons/ic_silver.svg';
+import { default as success } from './icons/ic_success.svg';
 import { default as time } from './icons/ic_time.svg';
 import { default as unchecked } from './icons/ic_unchecked.svg';
 
@@ -31,6 +33,8 @@ export const ICONS = {
   'ic-selected': selected,
   'ic-time': time,
   'ic-unchecked': unchecked,
+  'ic-success': success,
+  'ic-failed': failed,
   'ic-bronze': bronze,
   'ic-silver': silver,
   'ic-gold': gold,

@@ -1,6 +1,6 @@
 {
   "name": "@depromeet/http",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "toks auth",
   "main": "src/index.ts",
   "module": "src/index.ts",
@@ -43,7 +43,6 @@
     "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@toss/use-query-param": "^1.1.2",
     "axios": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -9,7 +9,7 @@ interface TagProps extends Omit<ComponentProps<typeof BaseTag>, 'color'> {
 
 export function Tag({ color = 'normal', ...restProps }: TagProps) {
   return (
-    <StyledTag
+    <BaseTag
       // TODO: inline style로 적용한 부분 제외하기
       style={{
         background: color === 'highlight' ? 'rgba(255, 134, 47, 0.2)' : theme.colors.gray080,
@@ -19,20 +19,18 @@ export function Tag({ color = 'normal', ...restProps }: TagProps) {
         height: '28px',
         borderRadius: '8px',
         whiteSpace: 'nowrap',
+        fontFamily: 'Spoqa Han Sans Neo',
+        fontSize: '14px',
+        fontWeight: '400',
+        lineHeight: '20px',
+        letterSpacing: ' -0.6px',
+        textAlign: 'left',
       }}
       role="listitem"
       {...restProps}
     />
   );
 }
-
-const StyledTag = styled(BaseTag)`
-  .p-tag-value {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-  }
-`;
 
 interface RowProps extends HTMLAttributes<HTMLUListElement> {
   children: ReactNode;
