@@ -18,6 +18,7 @@
     "@configs/next": "workspace:configs/next",
     "@depromeet/http": "0.2.0",
     "@depromeet/layout": "workspace:shared/layout",
+    "@depromeet/path": "workspace:shared/path",
     "@depromeet/theme": "^0.0.1",
     "@depromeet/toks-components": "workspace:shared/toks-components",
     "@emotion/css": "^11.9.0",
