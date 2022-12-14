@@ -13,12 +13,12 @@ export interface IconProps extends React.SVGProps<SVGSVGElement> {
   height?: number;
 }
 
-export const Icon = ({ color, size = 28, width, height, iconName, wrapperProps, ...rest }: IconProps) => {
+export const Icon = ({ color, size = 24, width, height, iconName, wrapperProps, ...rest }: IconProps) => {
   const IconComponent = ICONS[iconName];
 
   return (
     <StyledIcon {...wrapperProps} color={color}>
-      <IconComponent {...rest} width={width || size} height={height || size} />
+      <IconComponent {...rest} width={width || size} height={height || 'auto'} />
     </StyledIcon>
   );
 };
@@ -28,6 +28,5 @@ const StyledIcon = styled.i<{ color?: KeyOfColors }>`
   & path {
     fill: ${({ color }) => color && theme.colors[color]};
   }
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
 `;
