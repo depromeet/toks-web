@@ -24,7 +24,9 @@ export const StudyInfoBox = () => {
         <Spacing size={8} />
         <Tag.Row>
           {tags?.map(tag => (
-            <Tag key={tag}>{tag}</Tag>
+            <Tag key={tag} color="highlight">
+              {tag}
+            </Tag>
           ))}
         </Tag.Row>
       </div>

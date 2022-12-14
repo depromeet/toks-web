@@ -7,7 +7,6 @@ export function useClipboard() {
   const copyToClipboard = async (text: string) => {
     const isSuccess = await clipboard.writeText(text);
 
-    console.log(isSuccess);
     if (isSuccess) {
       await open({
         type: 'success',
