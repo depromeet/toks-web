@@ -21,5 +21,5 @@ export const QuizListWrapper = styled.div`
 
 export const RankingListWrapper = styled.div`
   max-width: 304px;
-  width: 24%;
+  width: 27%;
 `;
