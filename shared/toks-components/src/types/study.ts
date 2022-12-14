@@ -1,16 +1,16 @@
-export type CapacityRequest = 'SMALL' | 'MEDIUM' | 'LARGE';
+export type CapacityResponse = 'SMALL' | 'MEDIUM' | 'LARGE';
 
-export interface TagRequest {
+export interface TagResponse {
   id: number;
   name: string;
 }
 
-export interface StudyRequest {
+export interface StudyResponse {
   id: number;
   name: string;
   description: string;
   startDate: string;
   endDate: string;
-  capacity: CapacityRequest;
-  tagList: TagRequest[];
+  capacity: CapacityResponse;
+  tagList: TagResponse[];
 }
