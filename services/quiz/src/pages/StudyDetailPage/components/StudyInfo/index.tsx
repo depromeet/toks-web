@@ -1,6 +1,6 @@
 import { SSRSuspense, Tag, Text, UserAvatar } from '@depromeet/toks-components';
 import { ErrorBoundary } from '@toss/error-boundary';
-../../../../utils/userUtils
+
 import { useGetStudyInfo } from 'pages/StudyDetailPage/hooks/queries/studyInfo';
 
 import { Body, Footer, Header, Info, StudyTags } from './style';
@@ -37,7 +37,14 @@ function StudyInfo() {
         {/* TODO: id값을 string 변환 안하게 컴포넌트 수정해야 함 */}
         <UserAvatar.Group view={6} id={studyId.toString()} groupType="study">
           {members.map(user => (
-            <UserAvatar key={user.id} {...user} size="large" className={`avatar--user_${user.id}`} tooltip={true} />
+            <UserAvatar
+              key={user.userId}
+              userName={user.nickname}
+              image={user.profileImageUrl}
+              size="large"
+              className={`avatar--user_${user.userId}`}
+              tooltip={true}
+            />
           ))}
         </UserAvatar.Group>
       </Footer>

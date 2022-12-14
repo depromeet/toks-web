@@ -5,8 +5,8 @@ import { ErrorBoundary } from '@toss/error-boundary';
 import { useState } from 'react';
 
 import { useGetQuizList } from 'pages/StudyDetailPage/hooks/queries/quizList';
-
 import { isExistQuizToSolve } from 'utils/quizList';
+
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
 
@@ -42,15 +42,16 @@ function QuizList() {
 
   const firstQuizItem = quizList[0];
   const [addQuizState, setAddQuizState] = useState(
-    firstQuizItem && isExistQuizToSolve(firstQuizItem.openDate, firstQuizItem.limitTime)
+    firstQuizItem && isExistQuizToSolve(new Date(firstQuizItem.endedAt))
   );
 
+  // TODO: round가 백엔드에서 내려주는 순서에 맞춰서 변경되어야 함~
   return (
     <List>
       <li>{addQuizState ? <QuizAddButton /> : null}</li>
       {firstQuizItem
         ? quizList.map((quizItem, index) => (
-            <QuizItem key={quizItem.quizId} index={index} {...quizItem} setAddQuizState={setAddQuizState} />
+            <QuizItem key={quizItem.quizId} round={index} quiz={quizItem} setAddQuizState={setAddQuizState} />
           ))
         : null}
     </List>

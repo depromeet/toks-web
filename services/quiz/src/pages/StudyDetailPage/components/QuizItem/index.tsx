@@ -3,21 +3,14 @@ import { Button, Icon, Text, UserAvatar } from '@depromeet/toks-components';
 import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { Divider } from 'components/common/Divider';
-import { QuizStatus } from 'pages/StudyDetailPage/models/quizList';
-import { User } from 'pages/StudyDetailPage/models/user';
+import { QuizResponse, QuizStatus } from 'pages/StudyDetailPage/models/quizList';
+import { convertMilliSecondToString, getQuizItemType, getTimerByQuizType } from 'utils/quizList';
 
-import { getLimitDate, getQuizItemType, getTimerByQuizType } from 'utils/quizList';
 import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
 
 interface QuizItemProps {
-  index: number;
-  quizId: number;
-  weekNumber: number;
-  title: string;
-  openDate: Date;
-  limitTime: string;
-  creator: User;
-  absentee: User[];
+  round: number;
+  quiz: QuizResponse;
   setAddQuizState: Dispatch<SetStateAction<boolean>>;
 }
 
@@ -46,27 +39,23 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
 // TODO: 아이콘들 Image로 되어있는것 추후 Icon 컴포넌트로 변경해야 함
 // TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
 // TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
-export function QuizItem({
-  index,
-  weekNumber,
-  title,
-  openDate,
-  limitTime,
-  creator,
-  absentee,
-  setAddQuizState,
-}: QuizItemProps) {
-  const limitDate = getLimitDate(openDate, limitTime);
+export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
+  const limitDate = new Date(quiz.endedAt);
+  const openDate = new Date(quiz.startedAt);
   const [quizItemType, setQuizItemType] = useState(getQuizItemType(openDate, limitDate) as QuizStatus);
-  const [timer, setTimer] = useState(quizItemType === 'default' ? '00:00:00' : limitTime);
+  const [timer, setTimer] = useState(
+    quizItemType === 'default' ? '00:00:00' : convertMilliSecondToString(quiz.durationOfSecond)
+  );
   const [isFold, setIsFold] = useState(quizItemType !== 'default');
+
+  const onFold = () => setIsFold(!isFold);
 
   // TODO: useInterval 사용으로 추후 변경해봐야 함
   useEffect(() => {
     const interval = setInterval(() => {
       setQuizItemType(getQuizItemType(openDate, limitDate));
-      setTimer(getTimerByQuizType(quizItemType, limitTime, limitDate));
-      if (index === 0 && quizItemType === 'default') {
+      setTimer(getTimerByQuizType(quizItemType, quiz.durationOfSecond, limitDate));
+      if (round === 0 && quizItemType === 'default') {
         setAddQuizState(true);
       }
     }, 1000);
@@ -74,17 +63,15 @@ export function QuizItem({
     return () => clearInterval(interval);
   });
 
-  const onFold = () => setIsFold(!isFold);
-
   return (
     <Item css={{ backgroundColor: theme.colors.gray110 }}>
       <ItemDetails open={isFold} onToggle={onFold}>
         <ItemHeader>
           <Text variant="subhead" css={{ margin: '0' }} as="h6">
-            {weekNumber}회차
+            {round}회차
           </Text>
           <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
-            {title}
+            {quiz.quiz}
           </Text>
           {quizItemType === 'disabled' ? (
             <Text color="primary" variant="body02" css={{ margin: '0 18px 0 0' }}>
@@ -118,10 +105,11 @@ export function QuizItem({
               똑스 만든사람
             </Text>
             <UserAvatar
-              {...creator}
+              image={quiz.creator.profileImageUrl}
+              userName={quiz.creator.nickname}
               css={{ margin: '0 0 0 22px' }}
               size="large"
-              className={`avatar--user_${creator.id}`}
+              className={`avatar--user_${quiz.creator.userId}`}
               tooltip={true}
             />
             <Space css={{ flex: 1 }} />
@@ -129,8 +117,15 @@ export function QuizItem({
               똑스 안 푼 사람
             </Text>
             <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ margin: '0 0 0 22px' }}>
-              {absentee.map(user => (
-                <UserAvatar key={user.id} {...user} size="large" className={`avatar--user_${user.id}`} tooltip={true} />
+              {quiz.unSubmitters.map(user => (
+                <UserAvatar
+                  key={user.userId}
+                  image={user.profileImageUrl}
+                  userName={user.nickname}
+                  size="large"
+                  className={`avatar--user_${user.userId}`}
+                  tooltip={true}
+                />
               ))}
             </UserAvatar.Group>
           </FlexRow>

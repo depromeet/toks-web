@@ -20,9 +20,9 @@ export function RankingItem({ ranking = undefined, toks, user }: RankingItemResp
           {convertNoneRanking(ranking)}
         </Text>
       )}
-      <UserAvatar image={user.image} size="large" css={{ marginLeft: '12px' }} />
+      <UserAvatar image={user.profileImageUrl} size="large" css={{ marginLeft: '12px' }} />
       <Text variant="body01" color="white" css={{ marginLeft: '12px', flex: 1 }}>
-        {user.userName}
+        {user.nickname}
       </Text>
       <Text variant="body03" color="gray060" css={{ marginLeft: '12px', flex: 1 }}>
         {toks} Toks

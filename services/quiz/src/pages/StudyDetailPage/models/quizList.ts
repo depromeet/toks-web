@@ -2,12 +2,17 @@ import { User } from '../models/user';
 
 export type QuizStatus = 'default' | 'disabled' | 'activated';
 
-export interface QuizItem {
+export interface QuizResponse {
   quizId: number;
-  weekNumber: number;
-  title: string;
-  openDate: Date;
-  limitTime: string;
+  quiz: string;
+  quizType: string;
+  description: string;
+  startedAt: string;
+  endedAt: string;
+  durationOfSecond: number;
+  timestamp: string;
   creator: User;
-  absentee: User[];
+  unSubmitters: User[];
+  studyId: number;
+  quizStatus: string;
 }

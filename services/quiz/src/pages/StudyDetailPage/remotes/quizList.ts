@@ -1,6 +1,7 @@
-import { quizList } from '../../../mock/db';
-import { QuizItem } from '../models/quizList';
+import { quizList } from 'mock/db';
+
+import { QuizResponse } from '../models/quizList';
 
 export const getQuizList = () => {
-  return new Promise<QuizItem[]>(resolve => setTimeout(() => resolve(quizList), 3000));
+  return new Promise<QuizResponse[]>(resolve => setTimeout(() => resolve(quizList), 3000));
 };
