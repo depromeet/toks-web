@@ -1,3 +1,4 @@
+import { isToksError } from '@depromeet/http';
 import { PATHS, pushTo } from '@depromeet/path';
 import { Button, Image, Input, Text, emoji } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
@@ -5,7 +6,6 @@ import { Flex, Spacing } from '@toss/emotion-utils';
 import { useSetNickname } from 'hooks/query/useSetNickname';
 import { useCreateNicknameForm } from 'hooks/useCreateNicknameForm';
 import { Wrapper } from 'pages/MyName/components/style';
-import { isToksError } from '@depromeet/http';
 
 export function NickNameBox() {
   const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText, setError } =
