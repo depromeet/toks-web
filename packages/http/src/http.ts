@@ -96,23 +96,13 @@ instance.interceptors.response.use(
 instance.interceptors.response.use(
   response => response.data,
   async function (error) {
-    if (error?.status === 401 && error?.data?.code === -20027) {
+    if (isToksError(error) && error.message === 'error.invalid.access.token') {
       try {
         const {
           data: { refreshToken },
         } = await axios.post('/api/v1/user/renew', authToken.refresh);
-        //refresh 유효한 경우 새롭게 accesstoken 설정
-
-        if (error?.config.headers === undefined) {
-          error.config.headers = {};
-        } else {
-          error.config.headers['Authorization'] = refreshToken;
-          //sessionStorage에 새 토큰 저장
-          sessionStorage.setItem('accessToken', refreshToken);
-          // 중단된 요청 새로운 토큰으로 재전송
-          const originalResponse = await axios.request(error.config);
-          return originalResponse.data.data;
-        }
+        //refresh 토큰 발급 받기
+        redirectToLoginPage();
       } catch (err) {
         redirectToLoginPage();
       }
