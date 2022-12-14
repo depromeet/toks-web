@@ -1620,25 +1620,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@depromeet/http@npm:0.2.0":
-  version: 0.2.0
-  resolution: "@depromeet/http@npm:0.2.0"
-  dependencies:
-    "@emotion/css": ^11.9.0
-    "@emotion/react": ^11.9.3
-    "@emotion/styled": ^11.9.3
-    "@toss/use-query-param": ^1.1.2
-    axios: ^1.2.0
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    ts-pattern: ^4.0.5
-  checksum: 8750f49691f8842c2aed728b8f4772a59c6c4c2b3e35bdece2a09b30673066a32ad7aa7edb1b2fe1cbe73ae572aaf099d22fd5d59b90ec4822cfea9e9f924d55
-  languageName: node
-  linkType: hard
-
-"@depromeet/http@npm:0.2.2":
-  version: 0.2.2
-  resolution: "@depromeet/http@npm:0.2.2"
+"@depromeet/http@npm:0.2.3, @depromeet/http@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "@depromeet/http@npm:0.2.3"
   dependencies:
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
@@ -1647,22 +1631,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     ts-pattern: ^4.0.5
-  checksum: 2822ae8c1f39c53251f894eef6edf86de7ee1e37d3931059f6cb3c508580a575cb2526d1f2e1bbdd825588c6be0315ea29096567e392cf29cb0e2fe1393b2e6d
-  languageName: node
-  linkType: hard
-
-"@depromeet/http@npm:^0.2.1":
-  version: 0.2.1
-  resolution: "@depromeet/http@npm:0.2.1"
-  dependencies:
-    "@emotion/css": ^11.9.0
-    "@emotion/react": ^11.9.3
-    "@emotion/styled": ^11.9.3
-    axios: ^1.2.0
-    react: ^18.2.0
-    react-dom: ^18.2.0
-    ts-pattern: ^4.0.5
-  checksum: 7af8c4f7c4989469a6057dca099d5f0a2c5eb59140a6d98db06dc08ef7013df1b0e75af5e852a71302dc558d5a8f47df354e93a7fd04dfab2b7c34ffb4b4c35b
+  checksum: d48f615a8b5fe9d63ad89601471092d2f17eda1633aaff65d9f67d15ae3f6c29e95a00e6a2731695df252b4254adfc9c4a8aeeb6db47c688be4469933522c92d
   languageName: node
   linkType: hard
 
@@ -1701,7 +1670,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@depromeet/layout@workspace:shared/layout"
   dependencies:
-    "@depromeet/http": ^0.2.1
+    "@depromeet/http": ^0.2.3
     "@depromeet/path": "workspace:shared/path"
     "@depromeet/theme": 0.0.1
     "@depromeet/toks-components": "workspace:shared/toks-components"
@@ -2719,7 +2688,7 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
-    "@depromeet/http": 0.2.2
+    "@depromeet/http": 0.2.3
     "@depromeet/layout": "workspace:shared/layout"
     "@depromeet/path": "workspace:shared/path"
     "@depromeet/theme": ^0.0.1
@@ -2767,7 +2736,7 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
-    "@depromeet/http": 0.2.2
+    "@depromeet/http": 0.2.3
     "@depromeet/layout": "workspace:shared/layout"
     "@depromeet/path": "workspace:shared/path"
     "@depromeet/theme": ^0.0.1
@@ -2818,7 +2787,7 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
-    "@depromeet/http": 0.2.0
+    "@depromeet/http": 0.2.3
     "@depromeet/layout": "workspace:shared/layout"
     "@depromeet/theme": 0.0.1
     "@depromeet/toks-components": "workspace:shared/toks-components"
@@ -5186,7 +5155,7 @@ __metadata:
     "@babel/preset-react": ^7.17.12
     "@babel/preset-typescript": ^7.17.12
     "@babel/runtime": ^7.18.3
-    "@depromeet/http": ^0.2.1
+    "@depromeet/http": ^0.2.3
     "@devops/commandline": "workspace:devops/commandline"
     "@emotion/babel-plugin": ^11.9.2
     "@emotion/css": ^11.9.0
