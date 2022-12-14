@@ -4334,7 +4334,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:8f1d23321fc73f63a23a69eea049bd4e118ed160511334e71a15d0291d2a970ebd766ecc894350935b562df93b206d16a7edc9e1abfbeb41b996b404ab9a67c3#npm:11.10.0"],\
             ["@emotion/react", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
             ["@emotion/styled", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
-            ["@toss/use-query-param", "virtual:2b84034f2ee9abf066cdd40f914365517e5a655184b1d71768de9fc65205326162e6f6ab5016e627c91cf725255b89c00a8a14624ffa4091ec69e703b49aa9b2#npm:1.1.2"],\
             ["@types/node", "npm:18.11.9"],\
             ["@types/react", "npm:18.0.21"],\
             ["@types/react-dom", "npm:18.0.6"],\
@@ -5982,6 +5981,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@configs/next", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#workspace:configs/next"],\
             ["@depromeet/http", "npm:0.2.0"],\
             ["@depromeet/layout", "virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#workspace:shared/layout"],\
+            ["@depromeet/path", "workspace:shared/path"],\
             ["@depromeet/theme", "npm:0.0.1"],\
             ["@depromeet/toks-components", "virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#workspace:shared/toks-components"],\
             ["@emotion/css", "virtual:8f1d23321fc73f63a23a69eea049bd4e118ed160511334e71a15d0291d2a970ebd766ecc894350935b562df93b206d16a7edc9e1abfbeb41b996b404ab9a67c3#npm:11.10.0"],\
@@ -6897,27 +6897,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@toss/use-query-param", "npm:1.1.2"]\
           ],\
           "linkType": "SOFT"\
-        }],\
-        ["virtual:2b84034f2ee9abf066cdd40f914365517e5a655184b1d71768de9fc65205326162e6f6ab5016e627c91cf725255b89c00a8a14624ffa4091ec69e703b49aa9b2#npm:1.1.2", {\
-          "packageLocation": "./.yarn/__virtual__/@toss-use-query-param-virtual-1ea0795267/0/cache/@toss-use-query-param-npm-1.1.2-3ae88d718f-6fa456484c.zip/node_modules/@toss/use-query-param/",\
-          "packageDependencies": [\
-            ["@toss/use-query-param", "virtual:2b84034f2ee9abf066cdd40f914365517e5a655184b1d71768de9fc65205326162e6f6ab5016e627c91cf725255b89c00a8a14624ffa4091ec69e703b49aa9b2#npm:1.1.2"],\
-            ["@types/next", null],\
-            ["@types/react", "npm:18.0.21"],\
-            ["@types/react-dom", "npm:18.0.6"],\
-            ["next", null],\
-            ["react", "npm:18.2.0"],\
-            ["react-dom", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:18.2.0"]\
-          ],\
-          "packagePeers": [\
-            "@types/next",\
-            "@types/react-dom",\
-            "@types/react",\
-            "next",\
-            "react-dom",\
-            "react"\
-          ],\
-          "linkType": "HARD"\
         }],\
         ["virtual:3cc1a7235cad23b112cfb897b59230e8c0eadd6027ac809ce7bef06af830a3b34578d8b70b528c88107cb0a843ce6b5a12e7cae9d7b195523ed31366b6e7ff67#npm:1.1.2", {\
           "packageLocation": "./.yarn/__virtual__/@toss-use-query-param-virtual-9db4c01323/0/cache/@toss-use-query-param-npm-1.1.2-3ae88d718f-6fa456484c.zip/node_modules/@toss/use-query-param/",\

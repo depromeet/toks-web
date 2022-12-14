@@ -1,12 +1,32 @@
 import { Button, Image, Input, Text, emoji } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 
-import { Wrapper } from 'common/style';
+import { useSetNickname } from 'hooks/query/useSetNickname';
 import { useCreateNicknameForm } from 'hooks/useCreateNicknameForm';
+import { CustomAxiosError } from 'interfaces/user';
+import { Wrapper } from 'pages/MyName/components/style';
 
 export function NickNameBox() {
-  const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText } =
+  const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText, setError } =
     useCreateNicknameForm();
+
+  const { mutate: nicknameMutation } = useSetNickname({
+    onSuccess: () => {
+      console.log('닉네임이 변경되었습니다. ');
+    },
+    onError: error => {
+      if ((error?.response?.data as CustomAxiosError)?.code === '-20011') {
+        setError('nickName', {
+          message: '이미 존재하는 닉네임입니다.', // 에러 메세지
+        });
+      }
+    },
+  });
+
+  const onSubmit = handleSubmit(data => {
+    nicknameMutation(data.nickName);
+  });
+
   return (
     <Wrapper>
       <Flex.Center direction="column">
@@ -15,7 +35,7 @@ export function NickNameBox() {
         <Text variant="title04">내 이름은 똑스야! 너의 이름은 뭐니?</Text>
         <Spacing size={53} />
       </Flex.Center>
-      <form onSubmit={handleSubmit(data => alert(data))}>
+      <form onSubmit={onSubmit}>
         <Input
           {...register('nickName', {
             required: isRequiredText(),

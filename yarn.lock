@@ -1643,7 +1643,6 @@ __metadata:
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
-    "@toss/use-query-param": ^1.1.2
     "@types/node": ^18.0.3
     "@types/react": ^18.0.17
     "@types/react-dom": ^18.0.6
@@ -2738,6 +2737,7 @@ __metadata:
     "@configs/next": "workspace:configs/next"
     "@depromeet/http": 0.2.0
     "@depromeet/layout": "workspace:shared/layout"
+    "@depromeet/path": "workspace:shared/path"
     "@depromeet/theme": ^0.0.1
     "@depromeet/toks-components": "workspace:shared/toks-components"
     "@emotion/css": ^11.9.0
