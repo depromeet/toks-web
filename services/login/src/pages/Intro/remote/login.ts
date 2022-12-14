@@ -1,5 +1,3 @@
-import { http } from '@depromeet/http';
-
-export function login() {
-  return http.get('/oauth2/authorize/kakao');
+export async function login() {
+  window.location.href = 'https://api.tokstudy.com/oauth2/authorize/kakao';
 }
