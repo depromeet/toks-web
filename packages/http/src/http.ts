@@ -1,4 +1,4 @@
-import axios, { AxiosError, AxiosInstance, AxiosRequestConfig } from 'axios';
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, isAxiosError } from 'axios';
 
 export interface ToksHttpClient extends AxiosInstance {
   request<T = any>(config: AxiosRequestConfig): Promise<T>;
@@ -11,12 +11,46 @@ export interface ToksHttpClient extends AxiosInstance {
   patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
 }
 
-export interface CustomAxiosError extends AxiosError {
-  timestamp?: number;
+export interface ToksErrorResponse {
   code: string;
   httpStatus: string;
   message: string;
   statusCode: number;
+}
+
+export interface ToksError extends AxiosError<ToksErrorResponse> {
+  response: AxiosResponse<ToksErrorResponse>;
+  isToksError: true;
+  message: string;
+  code: string;
+}
+
+export function isToksError(error: unknown): error is ToksError {
+  try {
+    return (error as ToksError).isToksError === true;
+  } catch {
+    return false;
+  }
+}
+
+function isAxiosErrorWithResponseData(error: unknown): error is AxiosError & { response: AxiosResponse } {
+  try {
+    return axios.isAxiosError(error) && error.response?.data != null;
+  } catch {
+    return false;
+  }
+}
+
+function createTossBankErrorFromAxiosError(error: AxiosError): ToksErrorResponse | AxiosError {
+  if (isAxiosErrorWithResponseData(error)) {
+    const toksError = error as ToksError;
+
+    toksError.isToksError = true;
+    toksError.message = toksError.response.data.message;
+    toksError.code = toksError.response.data.code ?? '';
+  }
+
+  return error;
 }
 
 const authToken = {
@@ -50,6 +84,12 @@ instance.interceptors.request.use(
   function (error) {
     return Promise.reject(error);
   }
+);
+
+instance.interceptors.response.use(
+  response => response,
+  originalError =>
+    Promise.reject(isAxiosError(originalError) ? createTossBankErrorFromAxiosError(originalError) : originalError)
 );
 
 //2. 응답 인터셉터
