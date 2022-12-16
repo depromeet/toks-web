@@ -1,6 +1,6 @@
-import { QuizResponse } from 'pages/StudyDetailPage/models/quizList';
+import { QuizResponse } from '@depromeet/toks-components/src/types/quiz';
 import { RankResponse } from 'pages/StudyDetailPage/models/rankingList';
-import { User } from 'pages/StudyDetailPage/models/user';
+import { User } from '@depromeet/toks-components/src/types/user';
 
 const creator = {
   userId: 13,

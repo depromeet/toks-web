@@ -1,5 +1,7 @@
 import { User } from './user';
 
+export type QuizStatus = 'default' | 'disabled' | 'activated';
+
 export interface QuizResponse {
   quizId: number;
   quiz: string;

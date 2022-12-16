@@ -1,7 +1,7 @@
 import { useSuspendedQuery } from '@toss/react-query';
 
 import { QUERY_KEYS } from 'constants/queryKeys';
-import { QuizResponse } from 'pages/StudyDetailPage/models/quizList';
+import { QuizResponse } from '@depromeet/toks-components/src/types/quiz';
 import { getQuizList } from 'pages/StudyDetailPage/remotes/quizList';
 
 export const useGetQuizList = () => {
