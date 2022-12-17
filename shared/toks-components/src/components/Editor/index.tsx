@@ -1,11 +1,11 @@
 import '@toast-ui/editor/dist/i18n/ko-kr';
+import { theme } from '@depromeet/theme';
+import styled from '@emotion/styled';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import { Editor as TuiEditor, EditorProps as TuiEditorProps } from '@toast-ui/react-editor';
 import { useDebounce } from '@toss/react';
 import Prism from 'prismjs';
 import { useRef } from 'react';
-import styled from '@emotion/styled';
-import { theme } from '@depromeet/theme';
 
 export interface EditorProps extends TuiEditorProps {}
 
