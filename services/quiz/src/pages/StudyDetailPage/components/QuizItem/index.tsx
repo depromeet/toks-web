@@ -3,7 +3,7 @@ import { Button, Icon, Text, UserAvatar } from '@depromeet/toks-components';
 import { useTimer } from '@depromeet/toks-components/src/hooks';
 import { QuizResponse, QuizStatus } from '@depromeet/toks-components/src/types/quiz';
 import { getQuizItemStatus, getTimerByQuizStatus } from '@depromeet/toks-components/src/utils';
-import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { ComponentProps, useEffect, useState } from 'react';
 
 import { Divider } from 'components/common/Divider';
 
@@ -12,7 +12,6 @@ import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style
 interface QuizItemProps {
   round: number;
   quiz: QuizResponse;
-  setAddQuizState: Dispatch<SetStateAction<boolean>>;
 }
 
 type QuizItemColorMap = {
@@ -39,7 +38,7 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
 
 // TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
 // TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
-export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
+export function QuizItem({ round, quiz }: QuizItemProps) {
   const limitDate = new Date(quiz.endedAt);
   const openDate = new Date(quiz.startedAt);
   const currentDate = new Date(quiz.timestamp);
@@ -47,17 +46,15 @@ export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
   const [quizItemStatus, setQuizItemStatus] = useState(quiz.quizStatus);
   const initialTimer = getTimerByQuizStatus(currentDate, durationOfMilliSecond, limitDate, quizItemStatus);
   const timer = useTimer(initialTimer, durationOfMilliSecond, limitDate, quizItemStatus);
-  const [isFold, setIsFold] = useState(quizItemStatus !== 'DONE');
-
+  const [isFold, setIsFold] = useState(quiz.quizStatus !== "DONE");
   const onFold = () => setIsFold(!isFold);
 
   // TODO: useInterval 사용으로 추후 변경해봐야 함
   useEffect(() => {
     const interval = setInterval(() => {
-      setQuizItemStatus(getQuizItemStatus(openDate, limitDate));
-      if (round === 0 && quizItemStatus === 'DONE') {
-        setAddQuizState(true);
-      }
+      const newQuizItemStatus = getQuizItemStatus(openDate, limitDate);
+      quiz.quizStatus = newQuizItemStatus;
+      setQuizItemStatus(newQuizItemStatus);
     }, 1000);
 
     return () => clearInterval(interval);

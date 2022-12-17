@@ -1,9 +1,8 @@
 import { theme } from '@depromeet/theme';
-import { Image, SSRSuspense, Text } from '@depromeet/toks-components';
+import { Icon, SSRSuspense, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { ErrorBoundary } from '@toss/error-boundary';
-import { useState } from 'react';
-import { isExistQuizToSolve } from '@depromeet/toks-components/src/utils';
+import { useEffect, useState } from 'react';
 
 import { useGetQuizList } from 'pages/StudyDetailPage/hooks/queries/quizList';
 
@@ -25,12 +24,7 @@ const AddButton = styled.button`
 
 const QuizAddButton = () => (
   <AddButton>
-    <Image
-      width={24}
-      height={24}
-      src="https://toks-web-assets.s3.amazonaws.com/ic-plus.svg"
-      alt="퀴즈 추가 버튼 입니다."
-    />
+    <Icon iconName="ic-plus" />
     <Text variant="headline" color="gray010" css={{ margin: '0 0 0 10px' }} as="h5">
       똑스 만들기
     </Text>
@@ -38,20 +32,27 @@ const QuizAddButton = () => (
 );
 
 function QuizList() {
-  const { data: quizList } = useGetQuizList();
+  const { data : quizList } = useGetQuizList();
 
-  const firstQuizItem = quizList[0];
-  const [addQuizState, setAddQuizState] = useState(
-    firstQuizItem && isExistQuizToSolve(new Date(firstQuizItem.endedAt))
-  );
+  const isNotQuizEmpty = quizList[0] !== undefined;
+  const isAllDone = quizList.every(quiz => quiz.quizStatus === "DONE");
+  const [isAddState, setIsAddState] = useState(!isNotQuizEmpty || isNotQuizEmpty && isAllDone);
 
-  // TODO: round가 백엔드에서 내려주는 순서에 맞춰서 변경되어야 함~
+  // TODO: useEffect의 deps를 이용해서 하자니 quizList는 state가 아님 일단은 1초마다 업데이트 하는걸루..
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAddState(quizList.every(quiz => quiz.quizStatus === "DONE"));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  })
+
   return (
     <List>
-      <li>{addQuizState ? <QuizAddButton /> : null}</li>
-      {firstQuizItem
+      <li>{isAddState ? <QuizAddButton /> : null}</li>
+      {isNotQuizEmpty
         ? quizList.map((quizItem, index) => (
-            <QuizItem key={quizItem.quizId} round={index} quiz={quizItem} setAddQuizState={setAddQuizState} />
+            <QuizItem key={quizItem.quizId} round={index} quiz={quizItem}/>
           ))
         : null}
     </List>

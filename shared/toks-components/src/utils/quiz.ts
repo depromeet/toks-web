@@ -1,10 +1,5 @@
 import { QuizStatus } from '@depromeet/toks-components';
 
-export const isExistQuizToSolve = (limitDate: Date) => {
-  const currentDate = new Date();
-  return limitDate.getTime() <= currentDate.getTime();
-};
-
 export const getQuizItemStatus = (openDate: Date, limitDate: Date) => {
   const currentDate = new Date();
 
