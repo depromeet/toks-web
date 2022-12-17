@@ -5,7 +5,7 @@ export const isExistQuizToSolve = (limitDate: Date) => {
   return limitDate.getTime() <= currentDate.getTime();
 };
 
-export const getQuizItemType = (openDate: Date, limitDate: Date) => {
+export const getQuizItemStatus = (openDate: Date, limitDate: Date) => {
   const currentDate = new Date();
 
   if (limitDate.getTime() <= currentDate.getTime()) {
@@ -17,11 +17,11 @@ export const getQuizItemType = (openDate: Date, limitDate: Date) => {
   }
 };
 
-export const getTimerByQuizType = (quizItemType: QuizStatus, limitTime: number, limitDate: Date) => {
-  if (quizItemType === 'DONE') {
+export const getTimerByQuizStatus = (quizItemStatus: QuizStatus, limitTime: number, limitDate: Date) => {
+  if (quizItemStatus === 'DONE') {
     return '00:00:00';
-  } else if (quizItemType === 'TO_DO') {
-    return convertMilliSecondToString(limitTime * 1000);
+  } else if (quizItemStatus === 'TO_DO') {
+    return convertMilliSecondToString(limitTime);
   } else {
     return calculateRemainingTimerValue(limitDate);
   }

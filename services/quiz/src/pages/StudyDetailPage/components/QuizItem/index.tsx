@@ -4,7 +4,7 @@ import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'r
 
 import { Divider } from 'components/common/Divider';
 import { QuizResponse, QuizStatus } from '@depromeet/toks-components/src/types/quiz';
-import { convertMilliSecondToString, getQuizItemType, getTimerByQuizType } from 'utils/quizList';
+import { convertMilliSecondToString, getQuizItemStatus, getTimerByQuizStatus } from 'utils/quizList';
 
 import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
 
@@ -36,27 +36,43 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
   }
 };
 
+const useTimer = (quizItemStatus: QuizStatus, durationOfMilliSecond: number, limitDate: Date) => {
+  const [timer, setTimer] = useState(
+    quizItemStatus === 'DONE' ? '00:00:00' : convertMilliSecondToString(durationOfMilliSecond * 1000)
+  );
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer(getTimerByQuizStatus(quizItemStatus, durationOfMilliSecond, limitDate));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  });
+
+  return timer;
+}
 
 // TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
 // TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
 export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
   const limitDate = new Date(quiz.endedAt);
   const openDate = new Date(quiz.startedAt);
-  const [quizItemType, setQuizItemType] = useState(quiz.quizStatus as QuizStatus);
-  const [timer, setTimer] = useState(
-    quizItemType === 'DONE' ? '00:00:00' : convertMilliSecondToString(quiz.durationOfSecond * 1000)
-  );
-  const [isFold, setIsFold] = useState(quizItemType !== 'DONE');
+  const durationOfMilliSecond = quiz.durationOfSecond * 1000
+  const [quizItemStatus, setQuizItemStatus] = useState(quiz.quizStatus as QuizStatus);
+  // const [timer, setTimer] = useState(
+  //   quizItemStatus === 'DONE' ? '00:00:00' : convertMilliSecondToString(durationOfMilliSecond)
+  // );
+  const timer = useTimer(quizItemStatus, durationOfMilliSecond, limitDate);
+  const [isFold, setIsFold] = useState(quizItemStatus !== 'DONE');
 
   const onFold = () => setIsFold(!isFold);
 
   // TODO: useInterval 사용으로 추후 변경해봐야 함
   useEffect(() => {
     const interval = setInterval(() => {
-      setQuizItemType(getQuizItemType(openDate, limitDate));
-      setTimer(getTimerByQuizType(quizItemType, quiz.durationOfSecond, limitDate));
-      if (round === 0 && quizItemType === 'DONE') {
+      setQuizItemStatus(getQuizItemStatus(openDate, limitDate));
+      // setTimer(getTimerByQuizStatus(quizItemStatus, durationOfMilliSecond, limitDate));
+      if (round === 0 && quizItemStatus === 'DONE') {
         setAddQuizState(true);
       }
     }, 1000);
@@ -74,15 +90,15 @@ export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
           <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
             {quiz.quiz}
           </Text>
-          {quizItemType === 'TO_DO' ? (
+          {quizItemStatus === 'TO_DO' ? (
             <Text color="primary" variant="body02" css={{ margin: '0 18px 0 0' }}>
               기다려주세요!
             </Text>
           ) : null}
           <Button
-            type={QUIZ_ITEM_COLOR[quizItemType].button}
+            type={QUIZ_ITEM_COLOR[quizItemStatus].button}
             width={140}
-            disabled={quizItemType === 'TO_DO'}
+            disabled={quizItemStatus === 'TO_DO'}
             size="medium"
           >
             똑스 확인하기
@@ -96,7 +112,7 @@ export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
         <ItemBody>
           <FlexRow css={{ marginTop: '36px' }}>
             <Icon iconName="ic-time" height={24} css={{ marginLeft: '3.2px' }} />
-            <Text variant="title04" color={QUIZ_ITEM_COLOR[quizItemType].timer} css={{ margin: '0 0 0 9.2px' }} as="h4">
+            <Text variant="title04" color={QUIZ_ITEM_COLOR[quizItemStatus].timer} css={{ margin: '0 0 0 9.2px' }} as="h4">
               {timer}
             </Text>
           </FlexRow>
