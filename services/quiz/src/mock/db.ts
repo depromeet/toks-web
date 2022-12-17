@@ -1,6 +1,7 @@
 import { QuizResponse } from '@depromeet/toks-components/src/types/quiz';
-import { RankResponse } from 'pages/StudyDetailPage/models/rankingList';
 import { User } from '@depromeet/toks-components/src/types/user';
+
+import { RankResponse } from 'pages/StudyDetailPage/models/rankingList';
 
 const creator = {
   userId: 13,
@@ -103,20 +104,22 @@ export const studyInfo = {
   members,
 };
 
+const realTimestamp = new Date().toISOString();
+
 export const quizList: QuizResponse[] = [
   {
     quizId: 77,
     quiz: '퀴즈가 진행되고 있는 스터디 입니다',
     quizType: 'O_X',
     description: '설명입니다.',
-    startedAt: '2022-12-17T15:29:00',
-    endedAt: '2022-12-17T17:29:00',
+    startedAt: '2022-12-17T17:10:00',
+    endedAt: '2022-12-17T19:10:00',
     durationOfSecond: 7200,
-    timestamp: '2022-12-11T23:55:13.751+09:00',
+    timestamp: realTimestamp,
     creator,
     unSubmitters: absentee,
     studyId: 1,
-    quizStatus: 'DONE',
+    quizStatus: 'IN_PROGRESS',
   },
   {
     quizId: 66,

@@ -3,9 +3,9 @@ import { Image, SSRSuspense, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { ErrorBoundary } from '@toss/error-boundary';
 import { useState } from 'react';
+import { isExistQuizToSolve } from '@depromeet/toks-components/src/utils';
 
 import { useGetQuizList } from 'pages/StudyDetailPage/hooks/queries/quizList';
-import { isExistQuizToSolve } from 'utils/quizList';
 
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';

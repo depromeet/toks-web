@@ -14,5 +14,5 @@ export interface QuizResponse {
   creator: User;
   unSubmitters: User[];
   studyId: number;
-  quizStatus: string;
+  quizStatus: QuizStatus;
 }

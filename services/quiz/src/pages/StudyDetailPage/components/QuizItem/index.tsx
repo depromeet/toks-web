@@ -1,10 +1,11 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
 import { Button, Icon, Text, UserAvatar } from '@depromeet/toks-components';
+import { useTimer } from '@depromeet/toks-components/src/hooks';
+import { QuizResponse, QuizStatus } from '@depromeet/toks-components/src/types/quiz';
+import { getQuizItemStatus, getTimerByQuizStatus } from '@depromeet/toks-components/src/utils';
 import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { Divider } from 'components/common/Divider';
-import { QuizResponse, QuizStatus } from '@depromeet/toks-components/src/types/quiz';
-import { convertMilliSecondToString, getQuizItemStatus, getTimerByQuizStatus } from 'utils/quizList';
 
 import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
 
@@ -22,47 +23,30 @@ type QuizItemColorMap = {
 };
 
 const QUIZ_ITEM_COLOR: QuizItemColorMap = {
-  "DONE": {
+  DONE: {
     button: 'general',
     timer: 'gray060',
   },
-  "TO_DO": {
+  TO_DO: {
     button: 'primary',
     timer: 'primary',
   },
-  "IN_PROGRESS": {
+  IN_PROGRESS: {
     button: 'primary',
     timer: 'primary',
-  }
+  },
 };
-
-const useTimer = (quizItemStatus: QuizStatus, durationOfMilliSecond: number, limitDate: Date) => {
-  const [timer, setTimer] = useState(
-    quizItemStatus === 'DONE' ? '00:00:00' : convertMilliSecondToString(durationOfMilliSecond * 1000)
-  );
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer(getTimerByQuizStatus(quizItemStatus, durationOfMilliSecond, limitDate));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  });
-
-  return timer;
-}
 
 // TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
 // TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
 export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
   const limitDate = new Date(quiz.endedAt);
   const openDate = new Date(quiz.startedAt);
-  const durationOfMilliSecond = quiz.durationOfSecond * 1000
-  const [quizItemStatus, setQuizItemStatus] = useState(quiz.quizStatus as QuizStatus);
-  // const [timer, setTimer] = useState(
-  //   quizItemStatus === 'DONE' ? '00:00:00' : convertMilliSecondToString(durationOfMilliSecond)
-  // );
-  const timer = useTimer(quizItemStatus, durationOfMilliSecond, limitDate);
+  const currentDate = new Date(quiz.timestamp);
+  const durationOfMilliSecond = quiz.durationOfSecond * 1000;
+  const [quizItemStatus, setQuizItemStatus] = useState(quiz.quizStatus);
+  const initialTimer = getTimerByQuizStatus(currentDate, durationOfMilliSecond, limitDate, quizItemStatus);
+  const timer = useTimer(initialTimer, durationOfMilliSecond, limitDate, quizItemStatus);
   const [isFold, setIsFold] = useState(quizItemStatus !== 'DONE');
 
   const onFold = () => setIsFold(!isFold);
@@ -71,7 +55,6 @@ export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
   useEffect(() => {
     const interval = setInterval(() => {
       setQuizItemStatus(getQuizItemStatus(openDate, limitDate));
-      // setTimer(getTimerByQuizStatus(quizItemStatus, durationOfMilliSecond, limitDate));
       if (round === 0 && quizItemStatus === 'DONE') {
         setAddQuizState(true);
       }
@@ -104,15 +87,20 @@ export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
             똑스 확인하기
           </Button>
           {isFold ? (
-            <Icon iconName="ic-chevron-up" height={24} css={{ marginLeft: '24px' }} />
+            <Icon iconName="ic-chevron-up" css={{ marginLeft: '24px' }} />
           ) : (
-            <Icon iconName="ic-chevron-down" height={24} css={{ marginLeft: '24px' }} />
+            <Icon iconName="ic-chevron-down" css={{ marginLeft: '24px' }} />
           )}
         </ItemHeader>
         <ItemBody>
           <FlexRow css={{ marginTop: '36px' }}>
-            <Icon iconName="ic-time" height={24} css={{ marginLeft: '3.2px' }} />
-            <Text variant="title04" color={QUIZ_ITEM_COLOR[quizItemStatus].timer} css={{ margin: '0 0 0 9.2px' }} as="h4">
+            <Icon iconName="ic-time" css={{ marginLeft: '3.2px' }} />
+            <Text
+              variant="title04"
+              color={QUIZ_ITEM_COLOR[quizItemStatus].timer}
+              css={{ margin: '0 0 0 9.2px' }}
+              as="h4"
+            >
               {timer}
             </Text>
           </FlexRow>

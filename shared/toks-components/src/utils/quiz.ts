@@ -1,4 +1,4 @@
-import { QuizStatus } from '@depromeet/toks-components/src/types/quiz';
+import { QuizStatus } from '@depromeet/toks-components';
 
 export const isExistQuizToSolve = (limitDate: Date) => {
   const currentDate = new Date();
@@ -17,19 +17,24 @@ export const getQuizItemStatus = (openDate: Date, limitDate: Date) => {
   }
 };
 
-export const getTimerByQuizStatus = (quizItemStatus: QuizStatus, limitTime: number, limitDate: Date) => {
+export const getTimerByQuizStatus = (
+  currentDate: Date,
+  duration: number,
+  limitDate: Date,
+  quizItemStatus: QuizStatus
+) => {
   if (quizItemStatus === 'DONE') {
     return '00:00:00';
   } else if (quizItemStatus === 'TO_DO') {
-    return convertMilliSecondToString(limitTime);
+    return convertMilliSecondToString(duration);
   } else {
-    return calculateRemainingTimerValue(limitDate);
+    return calculateRemainingTimerValue(currentDate, limitDate);
   }
 };
 
 const convertTimeFormat = (num: number) => (num < 10 ? `0${num}` : num);
 
-export const convertMilliSecondToString = (millisecond: number) => {
+const convertMilliSecondToString = (millisecond: number) => {
   const day = Math.floor(millisecond / (1000 * 60 * 60 * 24));
   millisecond -= day * (1000 * 60 * 60 * 24);
   const hour = Math.floor(millisecond / (1000 * 60 * 60));
@@ -41,9 +46,9 @@ export const convertMilliSecondToString = (millisecond: number) => {
   return `${convertTimeFormat(hour)}:${convertTimeFormat(minute)}:${convertTimeFormat(second)}`;
 };
 
-const calculateRemainingTimerValue = (limitDate: Date) => {
-  const remainingTime = limitDate.getTime() - new Date().getTime();
-  if (remainingTime <= 0) {
+const calculateRemainingTimerValue = (currentDate: Date, limitDate: Date) => {
+  const remainingTime = limitDate.getTime() - currentDate.getTime();
+  if (remainingTime < 0) {
     return '00:00:00';
   }
 

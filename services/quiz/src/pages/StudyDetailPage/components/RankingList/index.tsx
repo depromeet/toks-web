@@ -13,10 +13,7 @@ function RankingList() {
   return (
     <List>
       {rankingList.map((rankItem, index) => (
-        <RankingItem 
-          key={rankItem.rankingId}
-          ranking={index + 1}
-          rankItem={rankItem}/>
+        <RankingItem key={rankItem.rankingId} ranking={index + 1} rankItem={rankItem} />
       ))}
     </List>
   );

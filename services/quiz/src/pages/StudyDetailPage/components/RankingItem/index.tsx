@@ -8,7 +8,7 @@ import { Item } from './style';
 interface RankingItemProps {
   ranking?: number;
   rankItem: RankResponse;
-};
+}
 
 const medals = ['ic-gold' as const, 'ic-silver' as const, 'ic-bronze' as const];
 
