@@ -12,7 +12,7 @@ interface Props {
 export function Modal({ children, onClose }: Props) {
   const outSide = useCloaseModal(() => {
     onClose();
-  }, []);
+  });
   return (
     <ModalWrapper ref={outSide}>
       <ModalContainer>{children}</ModalContainer>
