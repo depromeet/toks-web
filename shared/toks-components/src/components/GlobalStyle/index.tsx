@@ -8,8 +8,18 @@ export function GlobalStyle() {
       <link rel="stylesheet" href="https://unpkg.com/primereact/resources/themes/lara-light-indigo/theme.css" />
       <link rel="stylesheet" href="https://unpkg.com/primereact/resources/primereact.min.css" />
       <link rel="stylesheet" href="https://unpkg.com/primeflex@3.2.1/primeflex.min.css" />
+      <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" />
+      <link
+        rel="stylesheet"
+        href="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight.min.css"
+      />
       <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css" />
       <Global styles={globalCss} />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-clojure.min.js"></script>
+      <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+      <script src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
     </>
   );
 }
