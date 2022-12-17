@@ -1,17 +1,12 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
-import { Flex } from '@toss/emotion-utils';
 import React, { Dispatch, ReactNode, SetStateAction } from 'react';
 
-import { Text } from '@depromeet/toks-components';
-
 interface Props {
-  modalTitle: string;
-  contents: ReactNode;
-  button: ReactNode;
+  children: ReactNode;
   setIsModalOpened: Dispatch<SetStateAction<boolean>>;
 }
-export function Modal({ modalTitle, contents, button, setIsModalOpened }: Props) {
+export function Modal({ children, setIsModalOpened }: Props) {
   const onClickOutsideModal = () => {
     setIsModalOpened(false);
   };
@@ -20,13 +15,7 @@ export function Modal({ modalTitle, contents, button, setIsModalOpened }: Props)
   };
   return (
     <ModalWrapper onClick={onClickOutsideModal}>
-      <ModalContainer onClick={onClickInsideModal}>
-        <Text variant="title03">{modalTitle}</Text>
-        <Flex direction="column">
-          {contents}
-          {button}
-        </Flex>
-      </ModalContainer>
+      <ModalContainer onClick={onClickInsideModal}>{children}</ModalContainer>
     </ModalWrapper>
   );
 }
