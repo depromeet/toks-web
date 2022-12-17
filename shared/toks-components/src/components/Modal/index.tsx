@@ -1,27 +1,27 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
-import React, { Dispatch, ReactNode, SetStateAction } from 'react';
+import { ReactNode } from 'react';
+import { useCloaseModal } from '../../hooks';
 
 interface Props {
   children: ReactNode;
-  onClose: (value: SetStateAction<boolean>) => void;
+  onClose: () => void;
 }
 
 export function Modal({ children, onClose }: Props) {
-  const onClickOutsideModal = () => {
+  const outSide = useCloaseModal(() => {
     onClose();
-  };
-  const onClickInsideModal = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
+  }, []);
   return (
-    <ModalWrapper onClick={onClickOutsideModal}>
-      <ModalContainer onClick={onClickInsideModal}>{children}</ModalContainer>
+    <ModalWrapper ref={outSide}>
+      <ModalContainer>{children}</ModalContainer>
     </ModalWrapper>
   );
 }
 
 const ModalWrapper = styled.div`
+  display: flex;
+  align-items: center;
   position: fixed;
   width: 100%;
   height: 100%;
@@ -32,7 +32,7 @@ const ModalWrapper = styled.div`
 
 const ModalContainer = styled.div`
   position: relative;
-  top: 330px;
+  vertical-align: auto;
   padding: 28px;
   width: 600px;
   background-color: ${theme.colors.gray110};
