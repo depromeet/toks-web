@@ -210,36 +210,43 @@ export const quizList: QuizResponse[] = [
 export const rankingList = [
   {
     rankingId: 31,
+    rank: 1,
     score: 110,
     user: members[0],
   },
   {
     rankingId: 32,
+    rank: 1,
     score: 110,
     user: members[1],
   },
   {
     rankingId: 33,
+    rank: 1,
     score: 110,
     user: members[2],
   },
   {
     rankingId: 34,
+    rank: 2,
     score: 105,
     user: members[3],
   },
   {
     rankingId: 35,
+    rank: 3,
     score: 102,
     user: members[4],
   },
   {
     rankingId: 36,
+    rank: 4,
     score: 53,
     user: members[5],
   },
   {
     rankingId: 37,
+    rank: 4,
     score: 53,
     user: members[6],
   },
