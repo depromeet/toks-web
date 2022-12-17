@@ -1,8 +1,9 @@
 import { theme } from '@depromeet/theme';
-import { Text } from '@depromeet/toks-components';
-import { Flex } from '@toss/emotion-utils';
 import styled from '@emotion/styled';
+import { Flex } from '@toss/emotion-utils';
 import React, { Dispatch, ReactNode, SetStateAction } from 'react';
+
+import { Text } from '@depromeet/toks-components';
 
 interface Props {
   modalTitle: string;
