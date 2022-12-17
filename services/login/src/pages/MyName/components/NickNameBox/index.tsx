@@ -18,7 +18,7 @@ export function NickNameBox() {
       await nicknameMutation(data.nickName);
       pushTo(PATHS.home.myStudy);
     } catch (error: unknown) {
-      if (isToksError(error) && error.code === '-20011') {
+      if (isToksError(error) && error.code === -20011) {
         setError('nickName', {
           message: '이미 존재하는 닉네임입니다.', // 에러 메세지
         });
