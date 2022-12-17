@@ -1,6 +1,7 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
+
 import { useCloaseModal } from '../../hooks';
 
 interface Props {

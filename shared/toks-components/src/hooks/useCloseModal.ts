@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-export const useCloaseModal = (awayEvent: () => void, dep?: []) => {
+export const useCloaseModal = (awayEvent: () => void) => {
   const ref = useRef<HTMLDivElement>(null);
   const callback = (e: MouseEvent) => {
     const element = ref.current; // wrapper
@@ -12,12 +12,9 @@ export const useCloaseModal = (awayEvent: () => void, dep?: []) => {
     }
   };
 
-  useEffect(
-    () => {
-      document.body.addEventListener('click', callback);
-      return () => document.body.removeEventListener('click', callback);
-    },
-    dep ? [...dep] : []
-  );
+  useEffect(() => {
+    document.body.addEventListener('click', callback);
+    return () => document.body.removeEventListener('click', callback);
+  });
   return ref;
 };
