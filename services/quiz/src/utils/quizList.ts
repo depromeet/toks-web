@@ -1,15 +1,4 @@
-type QuizStatus = 'default' | 'disabled' | 'activated';
-
-const parseTimeStr = (timeStr: string) => [...timeStr.split(':').map(Number)];
-
-export const getLimitDate = (openDate: Date, limitTime: string) => {
-  const [hour, minute, second] = parseTimeStr(limitTime);
-  const limitDate = new Date(openDate);
-  limitDate.setHours(limitDate.getHours() + hour);
-  limitDate.setMinutes(limitDate.getMinutes() + minute);
-  limitDate.setSeconds(limitDate.getSeconds() + second);
-  return limitDate;
-};
+import { QuizStatus } from '@depromeet/toks-components/src/types/quiz';
 
 export const isExistQuizToSolve = (limitDate: Date) => {
   const currentDate = new Date();
@@ -20,18 +9,18 @@ export const getQuizItemType = (openDate: Date, limitDate: Date) => {
   const currentDate = new Date();
 
   if (limitDate.getTime() <= currentDate.getTime()) {
-    return 'default';
+    return 'DONE';
   } else if (currentDate.getTime() < openDate.getTime()) {
-    return 'disabled';
+    return 'TO_DO';
   } else {
-    return 'activated';
+    return 'IN_PROGRESS';
   }
 };
 
 export const getTimerByQuizType = (quizItemType: QuizStatus, limitTime: number, limitDate: Date) => {
-  if (quizItemType === 'default') {
+  if (quizItemType === 'DONE') {
     return '00:00:00';
-  } else if (quizItemType === 'disabled') {
+  } else if (quizItemType === 'TO_DO') {
     return convertMilliSecondToString(limitTime * 1000);
   } else {
     return calculateRemainingTimerValue(limitDate);

@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export type QuizStatus = 'default' | 'disabled' | 'activated';
+export type QuizStatus = 'DONE' | 'TO_DO' | 'IN_PROGRESS';
 
 export interface QuizResponse {
   quizId: number;

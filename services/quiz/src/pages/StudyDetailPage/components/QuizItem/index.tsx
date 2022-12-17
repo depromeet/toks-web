@@ -3,7 +3,7 @@ import { Button, Icon, Text, UserAvatar } from '@depromeet/toks-components';
 import { ComponentProps, Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 import { Divider } from 'components/common/Divider';
-import { QuizResponse, QuizStatus } from 'pages/StudyDetailPage/models/quizList';
+import { QuizResponse, QuizStatus } from '@depromeet/toks-components/src/types/quiz';
 import { convertMilliSecondToString, getQuizItemType, getTimerByQuizType } from 'utils/quizList';
 
 import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
@@ -22,31 +22,32 @@ type QuizItemColorMap = {
 };
 
 const QUIZ_ITEM_COLOR: QuizItemColorMap = {
-  default: {
+  "DONE": {
     button: 'general',
     timer: 'gray060',
   },
-  disabled: {
+  "TO_DO": {
     button: 'primary',
     timer: 'primary',
   },
-  activated: {
+  "IN_PROGRESS": {
     button: 'primary',
     timer: 'primary',
-  },
+  }
 };
 
-// TODO: 아이콘들 Image로 되어있는것 추후 Icon 컴포넌트로 변경해야 함
+
+
 // TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
 // TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
 export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
   const limitDate = new Date(quiz.endedAt);
   const openDate = new Date(quiz.startedAt);
-  const [quizItemType, setQuizItemType] = useState(getQuizItemType(openDate, limitDate) as QuizStatus);
+  const [quizItemType, setQuizItemType] = useState(quiz.quizStatus as QuizStatus);
   const [timer, setTimer] = useState(
-    quizItemType === 'default' ? '00:00:00' : convertMilliSecondToString(quiz.durationOfSecond)
+    quizItemType === 'DONE' ? '00:00:00' : convertMilliSecondToString(quiz.durationOfSecond * 1000)
   );
-  const [isFold, setIsFold] = useState(quizItemType !== 'default');
+  const [isFold, setIsFold] = useState(quizItemType !== 'DONE');
 
   const onFold = () => setIsFold(!isFold);
 
@@ -55,7 +56,7 @@ export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
     const interval = setInterval(() => {
       setQuizItemType(getQuizItemType(openDate, limitDate));
       setTimer(getTimerByQuizType(quizItemType, quiz.durationOfSecond, limitDate));
-      if (round === 0 && quizItemType === 'default') {
+      if (round === 0 && quizItemType === 'DONE') {
         setAddQuizState(true);
       }
     }, 1000);
@@ -73,7 +74,7 @@ export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
           <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
             {quiz.quiz}
           </Text>
-          {quizItemType === 'disabled' ? (
+          {quizItemType === 'TO_DO' ? (
             <Text color="primary" variant="body02" css={{ margin: '0 18px 0 0' }}>
               기다려주세요!
             </Text>
@@ -81,7 +82,7 @@ export function QuizItem({ round, quiz, setAddQuizState }: QuizItemProps) {
           <Button
             type={QUIZ_ITEM_COLOR[quizItemType].button}
             width={140}
-            disabled={quizItemType === 'disabled'}
+            disabled={quizItemType === 'TO_DO'}
             size="medium"
           >
             똑스 확인하기
