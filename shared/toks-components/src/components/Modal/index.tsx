@@ -4,11 +4,12 @@ import React, { Dispatch, ReactNode, SetStateAction } from 'react';
 
 interface Props {
   children: ReactNode;
-  setIsModalOpened: Dispatch<SetStateAction<boolean>>;
+  onClose: (value: SetStateAction<boolean>) => void;
 }
-export function Modal({ children, setIsModalOpened }: Props) {
+
+export function Modal({ children, onClose }: Props) {
   const onClickOutsideModal = () => {
-    setIsModalOpened(false);
+    onClose();
   };
   const onClickInsideModal = (e: React.MouseEvent) => {
     e.stopPropagation();
