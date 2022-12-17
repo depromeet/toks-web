@@ -32,28 +32,26 @@ const QuizAddButton = () => (
 );
 
 function QuizList() {
-  const { data : quizList } = useGetQuizList();
+  const { data: quizList } = useGetQuizList();
 
   const isNotQuizEmpty = quizList[0] !== undefined;
-  const isAllDone = quizList.every(quiz => quiz.quizStatus === "DONE");
-  const [isAddState, setIsAddState] = useState(!isNotQuizEmpty || isNotQuizEmpty && isAllDone);
+  const isAllDone = quizList.every(quiz => quiz.quizStatus === 'DONE');
+  const [isAddState, setIsAddState] = useState(!isNotQuizEmpty || (isNotQuizEmpty && isAllDone));
 
   // TODO: useEffect의 deps를 이용해서 하자니 quizList는 state가 아님 일단은 1초마다 업데이트 하는걸루..
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsAddState(quizList.every(quiz => quiz.quizStatus === "DONE"));
+      setIsAddState(quizList.every(quiz => quiz.quizStatus === 'DONE'));
     }, 1000);
 
     return () => clearInterval(interval);
-  })
+  });
 
   return (
     <List>
       <li>{isAddState ? <QuizAddButton /> : null}</li>
       {isNotQuizEmpty
-        ? quizList.map((quizItem, index) => (
-            <QuizItem key={quizItem.quizId} round={index} quiz={quizItem}/>
-          ))
+        ? quizList.map((quizItem, index) => <QuizItem key={quizItem.quizId} round={index} quiz={quizItem} />)
         : null}
     </List>
   );

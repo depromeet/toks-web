@@ -46,7 +46,7 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
   const [quizItemStatus, setQuizItemStatus] = useState(quiz.quizStatus);
   const initialTimer = getTimerByQuizStatus(currentDate, durationOfMilliSecond, limitDate, quizItemStatus);
   const timer = useTimer(initialTimer, durationOfMilliSecond, limitDate, quizItemStatus);
-  const [isFold, setIsFold] = useState(quiz.quizStatus !== "DONE");
+  const [isFold, setIsFold] = useState(quiz.quizStatus !== 'DONE');
   const onFold = () => setIsFold(!isFold);
 
   // TODO: useInterval 사용으로 추후 변경해봐야 함
