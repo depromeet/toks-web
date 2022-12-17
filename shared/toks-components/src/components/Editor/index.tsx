@@ -14,8 +14,8 @@ export const Editor = ({ ...rest }: EditorProps) => {
 
   const handleChange = useDebounce(() => {
     if (editorRef.current) {
-      const data = editorRef.current.getInstance().getHTML();
-      console.log(data);
+      // NOTE: editorRef.current.getInstance().getHTML()로 데이터를 가져올 수 있음
+      // const data = editorRef.current.getInstance().getHTML();
     }
   }, 200);
 
