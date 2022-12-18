@@ -7,15 +7,16 @@ import { useDebounce } from '@toss/react';
 import Prism from 'prismjs';
 import { useRef } from 'react';
 
-export interface EditorProps extends TuiEditorProps {}
+export interface EditorProps extends TuiEditorProps {
+  onChange: (data: string) => void;
+}
 
-export const Editor = ({ ...rest }: EditorProps) => {
+export const Editor = ({ onChange, ...rest }: EditorProps) => {
   const editorRef = useRef<TuiEditor>(null);
-
   const handleChange = useDebounce(() => {
     if (editorRef.current) {
-      // NOTE: editorRef.current.getInstance().getHTML()로 데이터를 가져올 수 있음
-      // const data = editorRef.current.getInstance().getHTML();
+      const data = editorRef.current.getInstance().getHTML();
+      onChange?.(data);
     }
   }, 200);
 
