@@ -39,7 +39,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@depromeet/http": "^0.2.3",
+    "@depromeet/http": "^0.3.0",
     "@depromeet/path": "workspace:shared/path",
     "@toss/use-overlay": "^1.3.0",
     "axios": "^0.27.2",
