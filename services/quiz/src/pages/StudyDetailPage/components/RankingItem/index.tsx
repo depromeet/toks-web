@@ -13,24 +13,25 @@ interface RankingItemProps {
 const medals = ['ic-gold' as const, 'ic-silver' as const, 'ic-bronze' as const];
 
 export function RankingItem({ rankItem }: RankingItemProps) {
+  const { rank : ranking, user, score } = rankItem
   const isMedalItem = (ranking?: number) => ranking && ranking <= 3;
   const convertNoneRanking = (ranking?: number) => (ranking ? `${ranking}.` : '-');
 
   return (
-    <Item css={{ backgroundColor: isMedalItem(rankItem.rank) ? theme.colors.gray100 : theme.colors.gray110 }}>
-      {isMedalItem(rankItem.rank) ? (
-        <Icon height={32} iconName={medals[(rankItem.rank as number) - 1]} />
+    <Item css={{ backgroundColor: isMedalItem(ranking) ? theme.colors.gray100 : theme.colors.gray110 }}>
+      {isMedalItem(ranking) ? (
+        <Icon height={32} iconName={medals[(ranking as number) - 1]} />
       ) : (
         <Text variant="body02" color="gray040" css={{ padding: '0 5.5px' }}>
-          {convertNoneRanking(rankItem.rank)}
+          {convertNoneRanking(ranking)}
         </Text>
       )}
-      <UserAvatar image={rankItem.user.profileImageUrl} size="large" css={{ marginLeft: '12px' }} />
+      <UserAvatar image={user.profileImageUrl} size="large" css={{ marginLeft: '12px' }} />
       <Text variant="body01" color="white" css={{ marginLeft: '12px', flex: 1 }}>
-        {rankItem.user.nickname}
+        {user.nickname}
       </Text>
       <Text variant="body03" color="gray060" css={{ marginLeft: '12px', flex: 1 }}>
-        {rankItem.score} Toks
+        {score} Toks
       </Text>
     </Item>
   );
