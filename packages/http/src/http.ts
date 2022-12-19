@@ -23,6 +23,7 @@ export interface ToksError extends AxiosError<ToksErrorResponse> {
   isToksError: true;
   message: string;
   code: string;
+  status: number;
 }
 
 export function isToksError(error: unknown): error is ToksError {
@@ -48,6 +49,7 @@ function createTossBankErrorFromAxiosError(error: AxiosError): ToksErrorResponse
     toksError.isToksError = true;
     toksError.message = toksError.response.data.message;
     toksError.code = toksError.response.data.code ?? '';
+    toksError.status = toksError.response.status;
   }
 
   return error;
@@ -67,7 +69,8 @@ const redirectToLoginPage = () => {
 //axios instance
 const instance: ToksHttpClient = axios.create({
   baseURL: 'https://api.tokstudy.com',
-  headers: { Authorization: authToken?.access },
+  headers: { Authorization: authToken?.access, 'Content-Type': 'application/json; charset=utf-8' },
+  timeout: 5000,
 });
 
 //1. 요청 인터셉터
@@ -76,8 +79,10 @@ instance.interceptors.request.use(
     if (config?.headers == null) {
       throw new Error(`config.header is undefined`);
     }
-    config.headers['Content-Type'] = 'application/json; charset=utf-8';
-    config.headers['Authorization'] = authToken?.access;
+
+    if (instance.defaults.headers.common['Authorization'] == null) {
+      instance.defaults.headers.common['Authorization'] = authToken?.access;
+    }
 
     return config;
   },
@@ -96,15 +101,10 @@ instance.interceptors.response.use(
 instance.interceptors.response.use(
   response => response.data,
   async function (error) {
-    if (isToksError(error) && error.message === 'error.invalid.access.token') {
-      try {
-        await axios.post('/api/v1/user/renew', authToken.refresh);
-
-        //refresh 토큰 발급 받기
-        redirectToLoginPage();
-      } catch (err) {
-        redirectToLoginPage();
-      }
+    // TODO: 인증처리 401로 통일되면 403 삭제
+    if (isToksError(error) && (error.status === 401 || error.status === 403)) {
+      //refresh 토큰 처리 로직 추가
+      redirectToLoginPage();
     } else {
       throw error;
     }
