@@ -1,4 +1,5 @@
 import { QuizStatus } from '@depromeet/toks-components';
+import { format } from 'date-fns';
 
 export const getQuizItemStatus = (openDate: Date, limitDate: Date) => {
   const currentDate = new Date();

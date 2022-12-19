@@ -42,6 +42,7 @@
   "dependencies": {
     "@toss/use-overlay": "^1.3.0",
     "axios": "^0.27.2",
+    "date-fns": "^2.29.3",
     "primeicons": "^6.0.1",
     "primereact": "^8.7.2",
     "react": "^17.0.0 || ^18.0.0",

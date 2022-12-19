@@ -1827,6 +1827,7 @@ __metadata:
     "@typescript-eslint/parser": ^5.29.0
     axios: ^0.27.2
     concurrently: ^7.3.0
+    date-fns: ^2.29.3
     emotion-normalize: ^11.0.1
     eslint: ^8.18.0
     eslint-config-prettier: ^8.5.0

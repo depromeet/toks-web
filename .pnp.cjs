@@ -4577,6 +4577,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
             ["axios", "npm:0.27.2"],\
             ["concurrently", "npm:7.4.0"],\
+            ["date-fns", "npm:2.29.3"],\
             ["emotion-normalize", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.0.1"],\
             ["eslint", "npm:8.24.0"],\
             ["eslint-config-prettier", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:8.5.0"],\
@@ -4622,6 +4623,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
             ["axios", "npm:0.27.2"],\
             ["concurrently", "npm:7.4.0"],\
+            ["date-fns", "npm:2.29.3"],\
             ["emotion-normalize", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.0.1"],\
             ["eslint", "npm:8.24.0"],\
             ["eslint-config-prettier", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:8.5.0"],\
@@ -4666,6 +4668,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
             ["axios", "npm:0.27.2"],\
             ["concurrently", "npm:7.4.0"],\
+            ["date-fns", "npm:2.29.3"],\
             ["emotion-normalize", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.0.1"],\
             ["eslint", "npm:8.24.0"],\
             ["eslint-config-prettier", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:8.5.0"],\
