@@ -4,11 +4,24 @@ import styled from '@emotion/styled';
 import { Image } from '../Image';
 import { Text } from '../Text';
 
-interface HeaderProps {
+type MemberProps = {
   imgUrl: string;
   userName: string;
   onClickButton: VoidFunction;
-  login: boolean;
+  login?: true;
+};
+
+type NonMemberProps = {
+  login: false;
+};
+
+type HeaderProps = MemberProps | NonMemberProps;
+
+function isMember(props: HeaderProps): props is MemberProps {
+  if (props.login) {
+    return true;
+  }
+  return false;
 }
 
 export function ToksHeader(props: HeaderProps) {
@@ -20,8 +33,8 @@ export function ToksHeader(props: HeaderProps) {
   );
 }
 
-function ProfileButton({ imgUrl, userName, onClickButton, login }: HeaderProps) {
-  if (!login) {
+function ProfileButton(props: HeaderProps) {
+  if (!isMember(props)) {
     return (
       <Button>
         <Image
@@ -37,6 +50,8 @@ function ProfileButton({ imgUrl, userName, onClickButton, login }: HeaderProps) 
       </Button>
     );
   }
+
+  const { imgUrl, userName, onClickButton } = props;
 
   return (
     <Button onClick={onClickButton}>

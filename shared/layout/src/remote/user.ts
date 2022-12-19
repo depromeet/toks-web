@@ -1,4 +1,4 @@
-import { http } from '@depromeet/http';
+import { http, isToksError } from '@depromeet/http';
 
 interface User {
   email: string;
@@ -7,26 +7,19 @@ interface User {
   profileImageUrl: string;
 }
 
-export async function getUser() {
-  // TODO: API 나온 후 삭제
-  const isTest = true;
-
-  if (isTest) {
-    return new Promise<User>(res =>
-      setTimeout(
-        () =>
-          res({
-            email: 'kanghg1116@naver.com',
-            nickname: '강현구',
-            thumbnailImageUrl: 'https://asset.tokstudy.com/img_penguin.png',
-            profileImageUrl: 'https://asset.tokstudy.com/img_penguin.png',
-          }),
-        1000
-      )
-    );
-  }
-
+async function getUser() {
   return await http.get<User>('/api/v1/user');
 }
 
-getUser.queryKey = ['getUser'];
+export async function safelyGetUser() {
+  try {
+    return await getUser();
+  } catch (err) {
+    if (isToksError(err) && (err.status === 401 || err.status === 403)) {
+      return null;
+    }
+    throw err;
+  }
+}
+
+safelyGetUser.queryKey = ['getUser'];
