@@ -16,10 +16,13 @@ export function GlobalStyle() {
       />
       <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css" />
       <Global styles={globalCss} />
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-clojure.min.js"></script>
-      <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-      <script src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight-all.min.js"></script>
+      <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+      <script async src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-clojure.min.js"></script>
+      <script async src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+      <script
+        async
+        src="https://uicdn.toast.com/editor-plugin-code-syntax-highlight/latest/toastui-editor-plugin-code-syntax-highlight-all.min.js"
+      ></script>
     </>
   );
 }
