@@ -45,7 +45,7 @@ function QuizList() {
     }, 1000);
 
     return () => clearInterval(interval);
-  });
+  }, []);
 
   return (
     <List>

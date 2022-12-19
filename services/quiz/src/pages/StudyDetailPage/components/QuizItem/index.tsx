@@ -58,7 +58,7 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
     }, 1000);
 
     return () => clearInterval(interval);
-  });
+  }, []);
 
   return (
     <Item css={{ backgroundColor: theme.colors.gray110 }}>
@@ -70,11 +70,11 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
           <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
             {quiz.quiz}
           </Text>
-          {quizItemStatus === 'TO_DO' ? (
+          {quizItemStatus === 'TO_DO' && 
             <Text color="primary" variant="body02" css={{ margin: '0 18px 0 0' }}>
               기다려주세요!
             </Text>
-          ) : null}
+          }
           <Button
             type={QUIZ_ITEM_COLOR[quizItemStatus].button}
             width={140}
