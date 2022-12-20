@@ -39,7 +39,7 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
 // TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
 // TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
 export function QuizItem({ round, quiz }: QuizItemProps) {
-  const { endedAt, startedAt, timestamp, durationOfSecond, quizStatus, quiz : title, creator, unSubmitters } = quiz;
+  const { endedAt, startedAt, timestamp, durationOfSecond, quizStatus, quiz: title, creator, unSubmitters } = quiz;
   const [limitDate, openDate, currentDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
   const durationOfMilliSecond = durationOfSecond * 1000;
   const [quizItemStatus, setQuizItemStatus] = useState(quizStatus);
@@ -57,7 +57,7 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [openDate, limitDate, quiz]);
 
   return (
     <Item css={{ backgroundColor: theme.colors.gray110 }}>
@@ -69,11 +69,11 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
           <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
             {title}
           </Text>
-          {quizItemStatus === 'TO_DO' && 
+          {quizItemStatus === 'TO_DO' && (
             <Text color="primary" variant="body02" css={{ margin: '0 18px 0 0' }}>
               기다려주세요!
             </Text>
-          }
+          )}
           <Button
             type={QUIZ_ITEM_COLOR[quizItemStatus].button}
             width={140}

@@ -13,7 +13,7 @@ interface RankingItemProps {
 const medals = ['ic-gold' as const, 'ic-silver' as const, 'ic-bronze' as const];
 
 export function RankingItem({ rankItem }: RankingItemProps) {
-  const { rank : ranking, user, score } = rankItem
+  const { rank: ranking, user, score } = rankItem;
   const isMedalItem = (ranking?: number) => ranking && ranking <= 3;
   const convertNoneRanking = (ranking?: number) => (ranking ? `${ranking}.` : '-');
 
