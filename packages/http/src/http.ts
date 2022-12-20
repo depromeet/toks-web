@@ -63,6 +63,12 @@ const authToken = {
 
 const redirectToLoginPage = () => {
   const isDev = window.location.hostname === 'localhost';
+  const isLoginPage = window.location.href.includes('/login');
+
+  if (isLoginPage) {
+    return;
+  }
+
   window.location.href = isDev ? 'http://localhost:3000/login' : 'https://tokstudy.com/login';
 };
 
