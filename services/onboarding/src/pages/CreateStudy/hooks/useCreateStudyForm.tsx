@@ -1,7 +1,11 @@
+import { ToksError } from '@depromeet/http';
+import { StudyResponse } from '@depromeet/toks-components';
+import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
-
+import { useMutation } from 'react-query';
 import { CreateStudyFormValues } from '../components/CreateStudyForm/type';
+import { postStudy } from '../remotes/study';
 
 export const useCreateStudyForm = () => {
   const {
@@ -11,6 +15,20 @@ export const useCreateStudyForm = () => {
     setValue,
     formState: { isDirty, isValid, errors },
   } = useForm<CreateStudyFormValues>({ mode: 'onChange' });
+
+  const router = useRouter();
+  const { mutate: createStudy } = useMutation<StudyResponse, ToksError, CreateStudyFormValues>(
+    studyForm => postStudy(studyForm),
+    {
+      onSuccess: ({ id: studyId }) => {
+        alert('스터디가 생성되었습니다.');
+        router.replace(`/create-complete/${studyId}`);
+      },
+      onError: error => {
+        console.log(error.isToksError);
+      },
+    }
+  );
 
   const isDisabled = !isDirty || !isValid;
 
@@ -25,6 +43,7 @@ export const useCreateStudyForm = () => {
 
   return {
     register,
+    createStudy,
     handleSubmit,
     setValue,
     errors,

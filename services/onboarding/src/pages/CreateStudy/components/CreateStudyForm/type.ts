@@ -1,8 +1,9 @@
+import { CapacityResponse } from '@depromeet/toks-components';
 export interface CreateStudyFormValues {
-  studyName: string;
-  studyDescription: string;
-  startDate: Date;
-  endDate: Date;
-  studyCategory: string;
-  studyTags: string[];
+  name: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  capacity: CapacityResponse;
+  tagList: string[];
 }
