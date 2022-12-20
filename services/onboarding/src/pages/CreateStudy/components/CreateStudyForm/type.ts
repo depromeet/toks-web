@@ -1,4 +1,5 @@
 import { CapacityResponse } from '@depromeet/toks-components';
+
 export interface CreateStudyFormValues {
   name: string;
   description: string;

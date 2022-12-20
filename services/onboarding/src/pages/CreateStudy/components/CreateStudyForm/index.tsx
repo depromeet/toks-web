@@ -1,7 +1,7 @@
 import { Button, Calendar, DropDown, Input, InputChips, Text } from '@depromeet/toks-components';
+import { kstFormat } from '@toss/date';
 import { Flex, gutter, margin, size } from '@toss/emotion-utils';
 import { Controller } from 'react-hook-form';
-import { kstFormat } from '@toss/date';
 
 import { STUDY_CATEGORY_OPTIONS } from 'pages/CreateStudy/constants';
 import { useCreateStudyForm } from 'pages/CreateStudy/hooks/useCreateStudyForm';
