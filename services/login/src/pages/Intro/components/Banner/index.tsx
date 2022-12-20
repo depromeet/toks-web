@@ -6,6 +6,7 @@ import { login as requestLogin } from 'pages/Intro/remote/login';
 
 export const Banner = () => {
   const { mutateAsync: login, isLoading } = useMutation(requestLogin);
+
   return (
     <Flex
       direction="column"
