@@ -4537,11 +4537,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:4253d3973d08d57014ce87d103bfecc4558ec3d05d3726545e5f8dd8748d56f4c0f37d45d1a763a3a7d49fc345e4f3de1e2d900c7ea34cdcd12742f73a657679#npm:11.10.0"],\
             ["@emotion/react", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.10.4"],\
             ["@emotion/styled", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.10.4"],\
+            ["@toast-ui/editor", "npm:3.2.1"],\
+            ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
+            ["@toast-ui/react-editor", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#npm:3.2.2"],\
             ["@toss/emotion-utils", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#npm:1.1.4"],\
             ["@toss/react", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:1.3.3"],\
             ["@toss/use-overlay", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.0"],\
             ["@toss/utils", "npm:1.3.0"],\
             ["@types/node", "npm:18.11.9"],\
+            ["@types/prismjs", "npm:1.26.0"],\
             ["@types/react", "npm:18.0.25"],\
             ["@types/toss__use-overlay", null],\
             ["@typescript-eslint/eslint-plugin", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
@@ -4562,6 +4566,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.7.1"],\
             ["primeicons", "npm:6.0.1"],\
             ["primereact", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:8.7.2"],\
+            ["prismjs", "npm:1.29.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
@@ -4582,11 +4587,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:4253d3973d08d57014ce87d103bfecc4558ec3d05d3726545e5f8dd8748d56f4c0f37d45d1a763a3a7d49fc345e4f3de1e2d900c7ea34cdcd12742f73a657679#npm:11.10.0"],\
             ["@emotion/react", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.10.4"],\
             ["@emotion/styled", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.10.4"],\
+            ["@toast-ui/editor", "npm:3.2.1"],\
+            ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
+            ["@toast-ui/react-editor", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#npm:3.2.2"],\
             ["@toss/emotion-utils", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#npm:1.1.4"],\
             ["@toss/react", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:1.3.3"],\
             ["@toss/use-overlay", "virtual:96bfde779e8ce5b52b39849685a5786dd6858e7484df515fef37bf1b11b128a87e4b4dd6b0fb6262b57ab1b115993c3d6177ae4bf560f229fb1027769d22c769#npm:1.3.0"],\
             ["@toss/utils", "npm:1.3.0"],\
             ["@types/node", "npm:18.11.9"],\
+            ["@types/prismjs", "npm:1.26.0"],\
             ["@types/react", "npm:18.0.25"],\
             ["@types/toss__use-overlay", null],\
             ["@typescript-eslint/eslint-plugin", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
@@ -4607,6 +4616,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.7.1"],\
             ["primeicons", "npm:6.0.1"],\
             ["primereact", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:8.7.2"],\
+            ["prismjs", "npm:1.29.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
@@ -4627,11 +4637,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:4253d3973d08d57014ce87d103bfecc4558ec3d05d3726545e5f8dd8748d56f4c0f37d45d1a763a3a7d49fc345e4f3de1e2d900c7ea34cdcd12742f73a657679#npm:11.10.0"],\
             ["@emotion/react", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.10.4"],\
             ["@emotion/styled", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.10.4"],\
+            ["@toast-ui/editor", "npm:3.2.1"],\
+            ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
+            ["@toast-ui/react-editor", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#npm:3.2.2"],\
             ["@toss/emotion-utils", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#npm:1.1.4"],\
             ["@toss/react", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:1.3.3"],\
             ["@toss/use-overlay", "virtual:96bfde779e8ce5b52b39849685a5786dd6858e7484df515fef37bf1b11b128a87e4b4dd6b0fb6262b57ab1b115993c3d6177ae4bf560f229fb1027769d22c769#npm:1.3.0"],\
             ["@toss/utils", "npm:1.3.0"],\
             ["@types/node", "npm:18.11.9"],\
+            ["@types/prismjs", "npm:1.26.0"],\
             ["@types/react", "npm:18.0.25"],\
             ["@typescript-eslint/eslint-plugin", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
             ["@typescript-eslint/parser", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
@@ -4651,6 +4665,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.7.1"],\
             ["primeicons", "npm:6.0.1"],\
             ["primereact", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:8.7.2"],\
+            ["prismjs", "npm:1.29.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
@@ -6602,6 +6617,57 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["@toast-ui/editor", [\
+        ["npm:3.2.1", {\
+          "packageLocation": "./.yarn/cache/@toast-ui-editor-npm-3.2.1-3c51f0046b-9282260854.zip/node_modules/@toast-ui/editor/",\
+          "packageDependencies": [\
+            ["@toast-ui/editor", "npm:3.2.1"],\
+            ["dompurify", "npm:2.4.1"],\
+            ["prosemirror-commands", "npm:1.5.0"],\
+            ["prosemirror-history", "npm:1.3.0"],\
+            ["prosemirror-inputrules", "npm:1.2.0"],\
+            ["prosemirror-keymap", "npm:1.2.0"],\
+            ["prosemirror-model", "npm:1.18.3"],\
+            ["prosemirror-state", "npm:1.4.2"],\
+            ["prosemirror-transform", "npm:1.7.0"],\
+            ["prosemirror-view", "npm:1.29.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@toast-ui/editor-plugin-code-syntax-highlight", [\
+        ["npm:3.1.0", {\
+          "packageLocation": "./.yarn/cache/@toast-ui-editor-plugin-code-syntax-highlight-npm-3.1.0-c1ad588de9-cdef0f5da7.zip/node_modules/@toast-ui/editor-plugin-code-syntax-highlight/",\
+          "packageDependencies": [\
+            ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
+            ["prismjs", "npm:1.29.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@toast-ui/react-editor", [\
+        ["npm:3.2.2", {\
+          "packageLocation": "./.yarn/cache/@toast-ui-react-editor-npm-3.2.2-8c3b0b867a-a069f10c9e.zip/node_modules/@toast-ui/react-editor/",\
+          "packageDependencies": [\
+            ["@toast-ui/react-editor", "npm:3.2.2"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#npm:3.2.2", {\
+          "packageLocation": "./.yarn/__virtual__/@toast-ui-react-editor-virtual-e63e2af132/0/cache/@toast-ui-react-editor-npm-3.2.2-8c3b0b867a-a069f10c9e.zip/node_modules/@toast-ui/react-editor/",\
+          "packageDependencies": [\
+            ["@toast-ui/react-editor", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#npm:3.2.2"],\
+            ["@toast-ui/editor", "npm:3.2.1"],\
+            ["@types/react", "npm:18.0.25"],\
+            ["react", "npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["@tootallnate/once", [\
         ["npm:2.0.0", {\
           "packageLocation": "./.yarn/cache/@tootallnate-once-npm-2.0.0-e36cf4f140-ad87447820.zip/node_modules/@tootallnate/once/",\
@@ -7256,6 +7322,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-prettier-npm-2.7.1-d46ada27e6-5e3f58e229.zip/node_modules/@types/prettier/",\
           "packageDependencies": [\
             ["@types/prettier", "npm:2.7.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/prismjs", [\
+        ["npm:1.26.0", {\
+          "packageLocation": "./.yarn/cache/@types-prismjs-npm-1.26.0-e89ec94ae4-cd5e7a6214.zip/node_modules/@types/prismjs/",\
+          "packageDependencies": [\
+            ["@types/prismjs", "npm:1.26.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -9531,6 +9606,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["domhandler", "npm:4.3.1"],\
             ["domelementtype", "npm:2.3.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["dompurify", [\
+        ["npm:2.4.1", {\
+          "packageLocation": "./.yarn/cache/dompurify-npm-2.4.1-1c79f22057-1169177465.zip/node_modules/dompurify/",\
+          "packageDependencies": [\
+            ["dompurify", "npm:2.4.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -13167,6 +13251,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["orderedmap", [\
+        ["npm:2.1.0", {\
+          "packageLocation": "./.yarn/cache/orderedmap-npm-2.1.0-0135fadc5b-af3f2bd3b7.zip/node_modules/orderedmap/",\
+          "packageDependencies": [\
+            ["orderedmap", "npm:2.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["os-tmpdir", [\
         ["npm:1.0.2", {\
           "packageLocation": "./.yarn/cache/os-tmpdir-npm-1.0.2-e305b0689b-5666560f7b.zip/node_modules/os-tmpdir/",\
@@ -13529,6 +13622,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["prismjs", [\
+        ["npm:1.29.0", {\
+          "packageLocation": "./.yarn/cache/prismjs-npm-1.29.0-6faa5b04b8-007a8869d4.zip/node_modules/prismjs/",\
+          "packageDependencies": [\
+            ["prismjs", "npm:1.29.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["process", [\
         ["npm:0.11.10", {\
           "packageLocation": "./.yarn/cache/process-npm-0.11.10-aeb3b641ae-bfcce49814.zip/node_modules/process/",\
@@ -13590,6 +13692,96 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["loose-envify", "npm:1.4.0"],\
             ["object-assign", "npm:4.1.1"],\
             ["react-is", "npm:16.13.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["prosemirror-commands", [\
+        ["npm:1.5.0", {\
+          "packageLocation": "./.yarn/cache/prosemirror-commands-npm-1.5.0-0a9bd9a30d-dfc155f3f4.zip/node_modules/prosemirror-commands/",\
+          "packageDependencies": [\
+            ["prosemirror-commands", "npm:1.5.0"],\
+            ["prosemirror-model", "npm:1.18.3"],\
+            ["prosemirror-state", "npm:1.4.2"],\
+            ["prosemirror-transform", "npm:1.7.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["prosemirror-history", [\
+        ["npm:1.3.0", {\
+          "packageLocation": "./.yarn/cache/prosemirror-history-npm-1.3.0-c4190c34d0-023feff702.zip/node_modules/prosemirror-history/",\
+          "packageDependencies": [\
+            ["prosemirror-history", "npm:1.3.0"],\
+            ["prosemirror-state", "npm:1.4.2"],\
+            ["prosemirror-transform", "npm:1.7.0"],\
+            ["rope-sequence", "npm:1.3.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["prosemirror-inputrules", [\
+        ["npm:1.2.0", {\
+          "packageLocation": "./.yarn/cache/prosemirror-inputrules-npm-1.2.0-39ef2859e1-c6c3e4c4d6.zip/node_modules/prosemirror-inputrules/",\
+          "packageDependencies": [\
+            ["prosemirror-inputrules", "npm:1.2.0"],\
+            ["prosemirror-state", "npm:1.4.2"],\
+            ["prosemirror-transform", "npm:1.7.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["prosemirror-keymap", [\
+        ["npm:1.2.0", {\
+          "packageLocation": "./.yarn/cache/prosemirror-keymap-npm-1.2.0-36cb458dbe-35ce499a72.zip/node_modules/prosemirror-keymap/",\
+          "packageDependencies": [\
+            ["prosemirror-keymap", "npm:1.2.0"],\
+            ["prosemirror-state", "npm:1.4.2"],\
+            ["w3c-keyname", "npm:2.2.6"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["prosemirror-model", [\
+        ["npm:1.18.3", {\
+          "packageLocation": "./.yarn/cache/prosemirror-model-npm-1.18.3-409e71bcb2-f535445029.zip/node_modules/prosemirror-model/",\
+          "packageDependencies": [\
+            ["prosemirror-model", "npm:1.18.3"],\
+            ["orderedmap", "npm:2.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["prosemirror-state", [\
+        ["npm:1.4.2", {\
+          "packageLocation": "./.yarn/cache/prosemirror-state-npm-1.4.2-138c0dced6-a9e44df56a.zip/node_modules/prosemirror-state/",\
+          "packageDependencies": [\
+            ["prosemirror-state", "npm:1.4.2"],\
+            ["prosemirror-model", "npm:1.18.3"],\
+            ["prosemirror-transform", "npm:1.7.0"],\
+            ["prosemirror-view", "npm:1.29.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["prosemirror-transform", [\
+        ["npm:1.7.0", {\
+          "packageLocation": "./.yarn/cache/prosemirror-transform-npm-1.7.0-8c6cc0ac14-8d099ae0dc.zip/node_modules/prosemirror-transform/",\
+          "packageDependencies": [\
+            ["prosemirror-transform", "npm:1.7.0"],\
+            ["prosemirror-model", "npm:1.18.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["prosemirror-view", [\
+        ["npm:1.29.1", {\
+          "packageLocation": "./.yarn/cache/prosemirror-view-npm-1.29.1-ff37db4eea-c800a18233.zip/node_modules/prosemirror-view/",\
+          "packageDependencies": [\
+            ["prosemirror-view", "npm:1.29.1"],\
+            ["prosemirror-model", "npm:1.18.3"],\
+            ["prosemirror-state", "npm:1.4.2"],\
+            ["prosemirror-transform", "npm:1.7.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -14066,6 +14258,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["rimraf", "npm:3.0.2"],\
             ["glob", "npm:7.2.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["rope-sequence", [\
+        ["npm:1.3.3", {\
+          "packageLocation": "./.yarn/cache/rope-sequence-npm-1.3.3-2c8440686f-f77ef15299.zip/node_modules/rope-sequence/",\
+          "packageDependencies": [\
+            ["rope-sequence", "npm:1.3.3"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -15291,6 +15492,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@jridgewell/trace-mapping", "npm:0.3.17"],\
             ["@types/istanbul-lib-coverage", "npm:2.0.4"],\
             ["convert-source-map", "npm:1.9.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["w3c-keyname", [\
+        ["npm:2.2.6", {\
+          "packageLocation": "./.yarn/cache/w3c-keyname-npm-2.2.6-55cd4f6245-59a31d23ca.zip/node_modules/w3c-keyname/",\
+          "packageDependencies": [\
+            ["w3c-keyname", "npm:2.2.6"]\
           ],\
           "linkType": "HARD"\
         }]\

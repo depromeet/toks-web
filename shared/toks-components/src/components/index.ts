@@ -5,6 +5,8 @@ export * from './Text';
 export * from './SSRSuspense';
 export * from './Modal';
 
+export * from './Editor';
+
 export * from 'primereact/accordion';
 export * from 'primereact/autocomplete';
 export * from './UserAvatar';
