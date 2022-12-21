@@ -23,6 +23,7 @@ export interface ToksError extends AxiosError<ToksErrorResponse> {
   isToksError: true;
   message: string;
   code: string;
+  status: number;
 }
 
 export function isToksError(error: unknown): error is ToksError {
@@ -48,6 +49,7 @@ function createTossBankErrorFromAxiosError(error: AxiosError): ToksErrorResponse
     toksError.isToksError = true;
     toksError.message = toksError.response.data.message;
     toksError.code = toksError.response.data.code ?? '';
+    toksError.status = toksError.response.status;
   }
 
   return error;
@@ -61,13 +63,20 @@ const authToken = {
 
 const redirectToLoginPage = () => {
   const isDev = window.location.hostname === 'localhost';
+  const isLoginPage = window.location.href.includes('/login');
+
+  if (isLoginPage) {
+    return;
+  }
+
   window.location.href = isDev ? 'http://localhost:3000/login' : 'https://tokstudy.com/login';
 };
 
 //axios instance
 const instance: ToksHttpClient = axios.create({
   baseURL: 'https://api.tokstudy.com',
-  headers: { Authorization: authToken?.access },
+  headers: { Authorization: authToken?.access, 'Content-Type': 'application/json; charset=utf-8' },
+  timeout: 5000,
 });
 
 //1. 요청 인터셉터
@@ -76,8 +85,10 @@ instance.interceptors.request.use(
     if (config?.headers == null) {
       throw new Error(`config.header is undefined`);
     }
-    config.headers['Content-Type'] = 'application/json; charset=utf-8';
-    config.headers['Authorization'] = authToken?.access;
+
+    if (instance.defaults.headers.common['Authorization'] == null) {
+      instance.defaults.headers.common['Authorization'] = authToken?.access;
+    }
 
     return config;
   },
@@ -96,30 +107,20 @@ instance.interceptors.response.use(
 instance.interceptors.response.use(
   response => response.data,
   async function (error) {
-    if (error?.status === 401 && error?.data?.code === -20027) {
-      try {
-        const {
-          data: { refreshToken },
-        } = await axios.post('/api/v1/user/renew', authToken.refresh);
-        //refresh 유효한 경우 새롭게 accesstoken 설정
-
-        if (error?.config.headers === undefined) {
-          error.config.headers = {};
-        } else {
-          error.config.headers['Authorization'] = refreshToken;
-          //sessionStorage에 새 토큰 저장
-          sessionStorage.setItem('accessToken', refreshToken);
-          // 중단된 요청 새로운 토큰으로 재전송
-          const originalResponse = await axios.request(error.config);
-          return originalResponse.data.data;
-        }
-      } catch (err) {
-        redirectToLoginPage();
-      }
+    // TODO: 인증처리 401로 통일되면 403 삭제
+    if (isToksError(error) && (error.status === 401 || error.status === 403)) {
+      //refresh 토큰 처리 로직 추가
+      redirectToLoginPage();
+      // redirect가 완료되고, API가 종료될 수 있도록 delay를 추가합니다.
+      await delay(500);
     } else {
       throw error;
     }
   }
 );
+
+function delay(time: number) {
+  return new Promise(res => setTimeout(res, time));
+}
 
 export const http: ToksHttpClient = instance;

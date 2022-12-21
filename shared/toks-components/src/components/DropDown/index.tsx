@@ -2,7 +2,7 @@ import { theme } from '@depromeet/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { Dropdown, DropdownProps } from 'primereact/dropdown';
-import { useState } from 'react';
+import { forwardRef } from 'react';
 
 import { Text } from '../Text';
 
@@ -10,13 +10,9 @@ interface Props extends DropdownProps {
   width?: number;
   height?: number;
   label?: string;
-  isClicked?: boolean;
-  isFocus?: boolean;
 }
 
-export function DropDown({ label, width, height, isClicked, required, onFocus, onBlur, ...props }: Props) {
-  const [isFocus, setIsFocus] = useState(false);
-
+export const DropDown = forwardRef<Dropdown, Props>(({ label, width, height, required, ...props }: Props, ref) => {
   return (
     <DropDownWrapper>
       {label && (
@@ -25,25 +21,10 @@ export function DropDown({ label, width, height, isClicked, required, onFocus, o
           {required && '*'}
         </Text>
       )}
-      <StyledDropdown
-        isFocus={isFocus}
-        isClicked={isClicked}
-        width={width}
-        height={height}
-        required={required}
-        {...props}
-        onFocus={e => {
-          onFocus?.(e);
-          setIsFocus(true);
-        }}
-        onBlur={e => {
-          onBlur?.(e);
-          setIsFocus(false);
-        }}
-      />
+      <StyledDropdown ref={ref} width={width} height={height} required={required} {...props} />
     </DropDownWrapper>
   );
-}
+});
 
 const DropDownWrapper = styled.div`
   display: flex;
@@ -51,7 +32,7 @@ const DropDownWrapper = styled.div`
   gap: 8px;
 `;
 
-const StyledDropdown = styled(Dropdown)<Props>`
+const StyledDropdown = styled(Dropdown)`
   border-radius: 8px !important;
   padding: 14px 16px;
   background: ${theme.colors.gray100} !important;
@@ -85,16 +66,6 @@ const StyledDropdown = styled(Dropdown)<Props>`
     font-size: 14px;
     line-height: 20px;
   }
-
-  ${props =>
-    props.isClicked === true &&
-    css`
-      .p-dropdown-trigger-icon {
-        padding-right: 6px;
-        color: transparent !important;
-        background-image: url('https://toks-web-assets.s3.amazonaws.com/selectedTrigger.svg') !important;
-      }
-    `};
 
   .p-dropdown-trigger-icon {
     padding-right: 6px;

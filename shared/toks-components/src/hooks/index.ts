@@ -1,3 +1,4 @@
 export * from './useToast';
 export * from './useClipboard';
-export * from './useTimer/useTimer';
+export * from './useModal';
+export * from './useTimer';
