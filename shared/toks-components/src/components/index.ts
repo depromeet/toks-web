@@ -4,8 +4,8 @@ export * from './BackButton';
 export * from './Text';
 export * from './SSRSuspense';
 export * from './Modal';
-
 export * from './Editor';
+export * from './Timer';
 
 export * from 'primereact/accordion';
 export * from 'primereact/autocomplete';
