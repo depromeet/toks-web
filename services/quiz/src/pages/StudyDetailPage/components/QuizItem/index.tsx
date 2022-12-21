@@ -1,7 +1,5 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
-import { Button, Icon, Text, UserAvatar } from '@depromeet/toks-components';
-import { useTimer } from '@depromeet/toks-components/src/hooks';
-import { QuizResponse, QuizStatus } from '@depromeet/toks-components/src/types/quiz';
+import { Button, Icon, Text, UserAvatar, QuizResponse, QuizStatus, useTimer } from '@depromeet/toks-components';
 import {
   convertMilliSecondToString,
   getQuizItemStatus,
@@ -49,6 +47,9 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
   const initialTime = durationOfSecond;
   const { time, start } = useTimer({
     initialTime,
+    onTimeOver: () => {
+      console.log("time is over")
+    }
   });
 
   useEffect(() => {

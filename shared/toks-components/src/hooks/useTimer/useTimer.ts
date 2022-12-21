@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useReducer } from 'react';
-import { Config, ReturnValue } from './types';
+
 import reducer from './state/reducer';
+import { Config, ReturnValue } from './types';
 
 export const useTimer = ({
   initialStatus = 'STOPPED',
@@ -10,7 +11,7 @@ export const useTimer = ({
 }: Partial<Config> = {}): ReturnValue => {
   const [state, dispatch] = useReducer(reducer, {
     status: initialStatus,
-    time: initialTime
+    time: initialTime,
   });
 
   const { status, time } = state;
@@ -20,7 +21,7 @@ export const useTimer = ({
   }, []);
 
   const start = useCallback(() => {
-    dispatch({ type: 'start', payload: { initialTime } });
+    dispatch({ type: 'start', payload: initialTime });
   }, [initialTime]);
 
   useEffect(() => {
@@ -46,9 +47,7 @@ export const useTimer = ({
       intervalId = setInterval(() => {
         dispatch({
           type: 'set',
-          payload: {
-            newTime: time - 1,
-          },
+          payload: time - 1,
         });
       }, 1000);
     } else if (intervalId) {

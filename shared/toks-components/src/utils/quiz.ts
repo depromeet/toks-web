@@ -3,11 +3,13 @@ import { QuizStatus } from '@depromeet/toks-components';
 export const getQuizItemStatus = (openDate: Date, limitDate: Date) => {
   const currentDate = new Date();
 
-  if (limitDate.getTime() <= currentDate.getTime()) 
+  if (limitDate.getTime() <= currentDate.getTime()) {
     return 'DONE';
-  if (currentDate.getTime() < openDate.getTime()) 
+  }
+  if (currentDate.getTime() < openDate.getTime()) {
     return 'TO_DO';
-  
+  }
+
   return 'IN_PROGRESS';
 };
 
@@ -18,10 +20,10 @@ export const getTimerByQuizStatus = (
   quizItemStatus: QuizStatus
 ) => {
   const getTimerValue = {
-    DONE: "00:00:00",
+    DONE: '00:00:00',
     TO_DO: convertMilliSecondToString(duration),
     IN_PROGRESS: calculateRemainingTimerValue(currentDate, limitDate),
-  }
+  };
   return getTimerValue[quizItemStatus];
 };
 

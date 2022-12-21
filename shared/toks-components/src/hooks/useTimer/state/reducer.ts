@@ -13,17 +13,17 @@ function reducer(state: State, action: TimerActionsType): State {
       return {
         ...state,
         status: 'STOPPED',
-        time: action.payload.initialTime,
+        time: action.payload,
       };
     }
     case 'set': {
       return {
         ...state,
-        time: action.payload.newTime,
+        time: action.payload,
       };
     }
     case 'start': {
-      const { initialTime } = action.payload;
+      const initialTime = action.payload;
 
       return {
         ...state,
