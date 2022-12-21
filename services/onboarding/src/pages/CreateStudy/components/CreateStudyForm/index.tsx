@@ -1,5 +1,4 @@
 import { Button, Calendar, DropDown, Input, InputChips, Text } from '@depromeet/toks-components';
-import { kstFormat } from '@toss/date';
 import { Flex, gutter, margin, size } from '@toss/emotion-utils';
 import { Controller } from 'react-hook-form';
 
@@ -18,13 +17,8 @@ export const CreateStudyForm = () => {
         똑스터디 만들기
       </Text>
       <form
-        onSubmit={handleSubmit(data => {
-          const { startDate, endDate } = data;
-
-          const formatStartDate = kstFormat(new Date(startDate), 'yyyy-MM-dd');
-          const formatEndDate = kstFormat(new Date(endDate), 'yyyy-MM-dd');
-
-          createStudy({ ...data, startDate: formatStartDate, endDate: formatEndDate });
+        onSubmit={handleSubmit(studyForm => {
+          createStudy(studyForm);
         })}
         css={(margin.top(42), size({ width: '100%' }), gutter('vertical', 32))}
       >
