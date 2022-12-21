@@ -45,28 +45,29 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
   const [limitDate, openDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
   const [quizItemStatus, setQuizItemStatus] = useState(quizStatus);
   const initialTime = durationOfSecond;
-  const { time, start } = useTimer({
+  const { time, timerStart } = useTimer({
     initialTime,
     onTimeOver: () => {
-      console.log("time is over")
+      setQuizItemStatus("DONE")
     }
   });
 
-  useEffect(() => {
-    if (quizStatus === 'IN_PROGRESS') {
-      start();
-    }
-  }, []);
-
   const [isFold, setIsFold] = useState(quizStatus !== 'DONE');
   const onFold = () => setIsFold(!isFold);
+
+  useEffect(() => {
+    if (quizItemStatus === 'IN_PROGRESS') {
+      timerStart();
+    }
+  }, [quizItemStatus]);
 
   // TODO: useInterval 사용으로 추후 변경해봐야 함
   useEffect(() => {
     const interval = setInterval(() => {
       const newQuizItemStatus = getQuizItemStatus(openDate, limitDate);
-      quiz.quizStatus = newQuizItemStatus;
-      setQuizItemStatus(newQuizItemStatus);
+      if (newQuizItemStatus === "IN_PROGRESS") {
+        setQuizItemStatus(newQuizItemStatus);
+      }
     }, 1000);
 
     return () => clearInterval(interval);

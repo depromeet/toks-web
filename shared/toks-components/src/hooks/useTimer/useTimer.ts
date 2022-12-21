@@ -16,11 +16,11 @@ export const useTimer = ({
 
   const { status, time } = state;
 
-  const pause = useCallback(() => {
+  const timerPause = useCallback(() => {
     dispatch({ type: 'pause' });
   }, []);
 
-  const start = useCallback(() => {
+  const timerStart = useCallback(() => {
     dispatch({ type: 'start', payload: initialTime });
   }, [initialTime]);
 
@@ -61,5 +61,5 @@ export const useTimer = ({
     };
   }, [status, time]);
 
-  return { pause, start, status, time };
+  return { timerPause, timerStart, status, time };
 };

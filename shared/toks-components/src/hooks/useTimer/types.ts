@@ -8,8 +8,8 @@ export type Config = {
 };
 
 export type ReturnValue = {
-  pause: () => void;
-  start: () => void;
+  timerPause: () => void;
+  timerStart: () => void;
   status: Status;
   time: number;
 };
