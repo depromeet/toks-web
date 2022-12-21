@@ -2,10 +2,10 @@ import { PATHS, pushTo } from '@depromeet/path';
 import { SSRSuspense, ToksHeader } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { useBooleanState } from '@toss/react';
+import { useSuspendedQuery } from '@toss/react-query';
 import { useOverlay } from '@toss/use-overlay';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, ReactNode } from 'react';
-import { useSuspendedQuery } from '@toss/react-query';
 import { useMutation } from 'react-query';
 
 import { logout as requestLogout } from '../remote/logout';
