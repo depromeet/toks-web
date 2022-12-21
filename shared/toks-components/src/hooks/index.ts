@@ -1,3 +1,3 @@
 export * from './useToast';
 export * from './useClipboard';
-export * from './useTimer';
+export * from './useTimer/useTimer';
