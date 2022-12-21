@@ -9,6 +9,8 @@ import { OverlayProvider } from '@toss/use-overlay';
 import { GlobalStyle } from '@depromeet/toks-components';
 import { Layout } from '@depromeet/layout';
 
+import 'yet-another-react-lightbox/styles.css';
+
 const normalizedStyles = css`
   ${emotionNormalize}
 `;

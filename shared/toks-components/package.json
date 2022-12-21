@@ -55,6 +55,8 @@
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0",
     "react-hook-form": "^7.41.2",
+    "react-photo-album": "^2.0.0",
+    "yet-another-react-lightbox": "^2.2.3",
     "ts-pattern": "^4.0.6"
   },
   "peerDependencies": {

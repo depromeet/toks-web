@@ -1822,9 +1822,11 @@ __metadata:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
     react-hook-form: ^7.41.2
+    react-photo-album: ^2.0.0
     rimraf: ^3.0.2
     ts-pattern: ^4.0.6
     typescript: ^4.7.4
+    yet-another-react-lightbox: ^2.2.3
   peerDependencies:
     "@toss/use-overlay": ">=1.1.0"
   languageName: unknown
@@ -2933,6 +2935,7 @@ __metadata:
     ts-pattern: ^4.0.5
     ts-prune: ^0.10.3
     typescript: ^4.7.4
+    yet-another-react-lightbox: ^2.2.3
   languageName: unknown
   linkType: soft
 
@@ -9051,6 +9054,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-photo-album@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "react-photo-album@npm:2.0.0"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 93c667958e85eb5a1aa53d9e12b20aed9c7c2cbddbdcb8c343477f519eb917a33b048306a3dc46cdf0680326af6d0b2d5b8a95810f19bc821b9f6afb4a3f9137
+  languageName: node
+  linkType: hard
+
 "react-query@npm:@tanstack/react-query@4.0.10":
   version: 4.0.10
   resolution: "@tanstack/react-query@npm:4.0.10"
@@ -10626,6 +10638,16 @@ __metadata:
     y18n: ^5.0.5
     yargs-parser: ^21.0.0
   checksum: 604bdb4a6395a870540d2f3fea083c8e28441f12da8fd05b172b1e68480f00ed73d76be4a05fac19de9bf55ec7729b41e81cf555cccaed700aa192e4fff64872
+  languageName: node
+  linkType: hard
+
+"yet-another-react-lightbox@npm:^2.2.3":
+  version: 2.2.3
+  resolution: "yet-another-react-lightbox@npm:2.2.3"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: ab9cfa8a885d05bde61ba641ff70676ddf5be92cbf6abe8604d5008c1b3f5d608f2753d724bcdf34da69a0be58e60d1c418199392b02e13e0cfc0b9904d44528
   languageName: node
   linkType: hard
 
