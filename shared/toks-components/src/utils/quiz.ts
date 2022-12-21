@@ -1,5 +1,6 @@
-import { QuizStatus } from '@depromeet/toks-components';
 import { differenceInSeconds } from 'date-fns';
+
+import { QuizStatus } from '@depromeet/toks-components';
 
 export const getQuizItemStatus = (openDate: Date, limitDate: Date) => {
   const currentDate = new Date();
@@ -39,8 +40,8 @@ export const convertSecondToString = (second: number) => {
   second -= day * (60 * 60 * 24);
   const hh = Math.floor(second / (60 * 60));
   second -= hh * (60 * 60);
-  const mm = Math.floor(second / (60));
-  second -= mm * (60);
+  const mm = Math.floor(second / 60);
+  second -= mm * 60;
   const ss = Math.floor(second);
 
   return `${convertTimeFormat(hh)}:${convertTimeFormat(mm)}:${convertTimeFormat(ss)}`;
