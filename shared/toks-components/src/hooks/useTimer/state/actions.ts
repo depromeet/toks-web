@@ -1,8 +1,5 @@
 import { createActionType } from './helpers';
 
-const ADVANCE_TIME = (timeToAdd: number) =>
-  createActionType('advanceTime', { timeToAdd });
-
 const PAUSE = () => createActionType('pause');
 
 const RESET = (initialTime: number) =>
@@ -16,7 +13,6 @@ const START = (initialTime: number) =>
 const STOP = () => createActionType('stop');
 
 export type TimerActionsType = ReturnType<
-  | typeof ADVANCE_TIME
   | typeof PAUSE
   | typeof RESET
   | typeof SET

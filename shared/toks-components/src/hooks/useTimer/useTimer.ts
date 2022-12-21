@@ -3,20 +3,14 @@ import { Config, ReturnValue } from './types';
 import reducer from './state/reducer';
 
 export const useTimer = ({
-  autostart = false,
-  endTime,
   initialStatus = 'STOPPED',
   initialTime = 0,
-  interval = 1000,
   onTimeOver,
   onTimeUpdate,
-  step = 1,
-  timerType = 'INCREMENTAL',
 }: Partial<Config> = {}): ReturnValue => {
   const [state, dispatch] = useReducer(reducer, {
     status: initialStatus,
-    time: initialTime,
-    timerType,
+    time: initialTime
   });
 
   const { status, time } = state;
@@ -25,19 +19,9 @@ export const useTimer = ({
     dispatch({ type: 'pause' });
   }, []);
 
-  const reset = useCallback(() => {
-    dispatch({ type: 'reset', payload: { initialTime } });
-  }, [initialTime]);
-
   const start = useCallback(() => {
     dispatch({ type: 'start', payload: { initialTime } });
   }, [initialTime]);
-
-  useEffect(() => {
-    if (autostart) {
-      dispatch({ type: 'start', payload: { initialTime } });
-    }
-  }, [autostart, initialTime]);
 
   useEffect(() => {
     if (typeof onTimeUpdate === 'function') {
@@ -46,14 +30,14 @@ export const useTimer = ({
   }, [time, onTimeUpdate]);
 
   useEffect(() => {
-    if (status !== 'STOPPED' && time === endTime) {
+    if (status !== 'STOPPED' && time === 0) {
       dispatch({ type: 'stop' });
 
       if (typeof onTimeOver === 'function') {
         onTimeOver();
       }
     }
-  }, [endTime, onTimeOver, time, status]);
+  }, [onTimeOver, time, status]);
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout | null = null;
@@ -63,10 +47,10 @@ export const useTimer = ({
         dispatch({
           type: 'set',
           payload: {
-            newTime: timerType === 'DECREMENTAL' ? time - step : time + step,
+            newTime: time - 1,
           },
         });
-      }, interval);
+      }, 1000);
     } else if (intervalId) {
       clearInterval(intervalId);
     }
@@ -76,7 +60,7 @@ export const useTimer = ({
         clearInterval(intervalId);
       }
     };
-  }, [status, step, timerType, interval, time]);
+  }, [status, time]);
 
-  return { pause, reset, start, status, time };
+  return { pause, start, status, time };
 };

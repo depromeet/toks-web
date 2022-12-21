@@ -27,7 +27,7 @@ export const getTimerByQuizStatus = (
 
 const convertTimeFormat = (num: number) => (num < 10 ? `0${num}` : num);
 
-const convertMilliSecondToString = (milliSecond: number) => {
+export const convertMilliSecondToString = (milliSecond: number) => {
   const day = Math.floor(milliSecond / (1000 * 60 * 60 * 24));
   milliSecond -= day * (1000 * 60 * 60 * 24);
   const hh = Math.floor(milliSecond / (1000 * 60 * 60));
