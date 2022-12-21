@@ -1,10 +1,6 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
-import { Button, Icon, Text, UserAvatar, QuizResponse, QuizStatus, useTimer } from '@depromeet/toks-components';
-import {
-  convertMilliSecondToString,
-  getQuizItemStatus,
-  getTimerByQuizStatus,
-} from '@depromeet/toks-components/src/utils';
+import { Button, Icon, QuizResponse, QuizStatus, Text, UserAvatar, useTimer } from '@depromeet/toks-components';
+import { convertSecondToString, getInitialTimerSecond, getQuizItemStatus } from '@depromeet/toks-components/src/utils';
 import { ComponentProps, useEffect, useState } from 'react';
 
 import { Divider } from 'components/common/Divider';
@@ -42,14 +38,14 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
 // TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
 export function QuizItem({ round, quiz }: QuizItemProps) {
   const { endedAt, startedAt, timestamp, durationOfSecond, quizStatus, quiz: title, creator, unSubmitters } = quiz;
-  const [limitDate, openDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
+  const [limitDate, openDate, currentDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
   const [quizItemStatus, setQuizItemStatus] = useState(quizStatus);
-  const initialTime = durationOfSecond;
+  const initialTime = getInitialTimerSecond(currentDate, durationOfSecond, limitDate, quizStatus);
   const { time, timerStart } = useTimer({
     initialTime,
     onTimeOver: () => {
-      setQuizItemStatus("DONE")
-    }
+      setQuizItemStatus('DONE');
+    },
   });
 
   const [isFold, setIsFold] = useState(quizStatus !== 'DONE');
@@ -59,13 +55,13 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
     if (quizItemStatus === 'IN_PROGRESS') {
       timerStart();
     }
-  }, [quizItemStatus]);
+  }, [quizItemStatus, timerStart]);
 
   // TODO: useInterval 사용으로 추후 변경해봐야 함
   useEffect(() => {
     const interval = setInterval(() => {
       const newQuizItemStatus = getQuizItemStatus(openDate, limitDate);
-      if (newQuizItemStatus === "IN_PROGRESS") {
+      if (newQuizItemStatus === 'IN_PROGRESS') {
         setQuizItemStatus(newQuizItemStatus);
       }
     }, 1000);
@@ -111,7 +107,7 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
               css={{ margin: '0 0 0 9.2px' }}
               as="h4"
             >
-              {convertMilliSecondToString(time * 1000)}
+              {convertSecondToString(time)}
             </Text>
           </FlexRow>
           <Divider css={{ marginTop: '22.25px' }} />

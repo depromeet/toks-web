@@ -1,4 +1,5 @@
 import { QuizStatus } from '@depromeet/toks-components';
+import { differenceInSeconds } from 'date-fns';
 
 export const getQuizItemStatus = (openDate: Date, limitDate: Date) => {
   const currentDate = new Date();
@@ -13,51 +14,34 @@ export const getQuizItemStatus = (openDate: Date, limitDate: Date) => {
   return 'IN_PROGRESS';
 };
 
-export const getTimerByQuizStatus = (
+const calculateRemainingSecond = (currentDate: Date, endDate: Date) => {
+  return differenceInSeconds(endDate, currentDate);
+};
+
+export const getInitialTimerSecond = (
   currentDate: Date,
-  duration: number,
+  durationOfSecond: number,
   limitDate: Date,
   quizItemStatus: QuizStatus
 ) => {
   const getTimerValue = {
-    DONE: '00:00:00',
-    TO_DO: convertMilliSecondToString(duration),
-    IN_PROGRESS: calculateRemainingTimerValue(currentDate, limitDate),
+    DONE: 0,
+    TO_DO: durationOfSecond,
+    IN_PROGRESS: calculateRemainingSecond(currentDate, limitDate),
   };
   return getTimerValue[quizItemStatus];
 };
 
 const convertTimeFormat = (num: number) => (num < 10 ? `0${num}` : num);
 
-export const convertMilliSecondToString = (milliSecond: number) => {
-  const day = Math.floor(milliSecond / (1000 * 60 * 60 * 24));
-  milliSecond -= day * (1000 * 60 * 60 * 24);
-  const hh = Math.floor(milliSecond / (1000 * 60 * 60));
-  milliSecond -= hh * (1000 * 60 * 60);
-  const mm = Math.floor(milliSecond / (1000 * 60));
-  milliSecond -= mm * (1000 * 60);
-  const ss = Math.floor(milliSecond / 1000);
+export const convertSecondToString = (second: number) => {
+  const day = Math.floor(second / (60 * 60 * 24));
+  second -= day * (60 * 60 * 24);
+  const hh = Math.floor(second / (60 * 60));
+  second -= hh * (60 * 60);
+  const mm = Math.floor(second / (60));
+  second -= mm * (60);
+  const ss = Math.floor(second);
 
   return `${convertTimeFormat(hh)}:${convertTimeFormat(mm)}:${convertTimeFormat(ss)}`;
-};
-
-// const convertMilliSecondToString = (second: number) => {
-//   const day = Math.floor(second / (60 * 60 * 24));
-//   second -= day * (60 * 60 * 24);
-//   const hh = Math.floor(second / (60 * 60));
-//   second -= hh * (60 * 60);
-//   const mm = Math.floor(second / (60));
-//   second -= mm * (60);
-//   const ss = Math.floor(second);
-
-//   return `${convertTimeFormat(hh)}:${convertTimeFormat(mm)}:${convertTimeFormat(ss)}`;
-// };
-
-const calculateRemainingTimerValue = (currentDate: Date, limitDate: Date) => {
-  const remainingTime = limitDate.getTime() - currentDate.getTime();
-  if (remainingTime < 0) {
-    return '00:00:00';
-  }
-
-  return convertMilliSecondToString(remainingTime);
 };
