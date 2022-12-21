@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { intervalToDuration } from 'date-fns';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface Timer {
   time: number;
@@ -16,12 +17,18 @@ export function useTimer({ time: totalTime, enabled = true }: Timer) {
 
   const timer = useRef<number | null>(null);
 
-  const start = () => {
+  // 멈춤
+  const stop = useCallback(() => {
+    timer.current != null && window.clearInterval(timer.current);
+  }, []);
+
+  // 시작
+  const start = useCallback(() => {
     timer.current = window.setInterval(() => {
       setTime(time => {
         const nextTime = time - 1;
 
-        if (nextTime < 0) {
+        if (nextTime <= 0) {
           stop();
           return 0;
         }
@@ -29,11 +36,13 @@ export function useTimer({ time: totalTime, enabled = true }: Timer) {
         return nextTime;
       });
     }, TIMER_DURATION);
-  };
+  }, [stop]);
 
-  const stop = () => {
-    timer.current != null && clearInterval(timer.current);
-  };
+  // 재시작
+  const restart = useCallback(() => {
+    setTime(totalTime);
+    start();
+  }, [setTime, start, totalTime]);
 
   useEffect(() => {
     if (enabled && timer.current == null) {
@@ -41,7 +50,9 @@ export function useTimer({ time: totalTime, enabled = true }: Timer) {
     } else if (!enabled) {
       stop();
     }
-  }, [enabled]);
+  }, [enabled, start, stop]);
 
-  return { time };
+  const duration = intervalToDuration({ start: 0, end: time * 1000 });
+
+  return { time, ...duration, stop, start, restart };
 }
