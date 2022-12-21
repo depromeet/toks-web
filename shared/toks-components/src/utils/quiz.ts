@@ -33,7 +33,7 @@ export const getInitialTimerSecond = (
   return getTimerValue[quizItemStatus];
 };
 
-const convertTimeFormat = (num: number) => (num < 10 ? `0${num}` : num);
+const padZero = (value = 0) => value.toString().padStart(2, '0');
 
 export const convertSecondToString = (second: number) => {
   const day = Math.floor(second / (60 * 60 * 24));
@@ -44,5 +44,5 @@ export const convertSecondToString = (second: number) => {
   second -= mm * 60;
   const ss = Math.floor(second);
 
-  return `${convertTimeFormat(hh)}:${convertTimeFormat(mm)}:${convertTimeFormat(ss)}`;
+  return `${padZero(hh)}:${padZero(mm)}:${padZero(ss)}`;
 };
