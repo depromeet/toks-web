@@ -13,7 +13,7 @@ import { safelyGetUser } from '../remote/user';
 import { UserMenu } from './UserMenu';
 
 function Component({ children }: { children: ReactNode }) {
-  const { data: user } = useSuspendedQuery(safelyGetUser.queryKey, safelyGetUser);
+  const { data: user } = useSuspendedQuery(safelyGetUser.queryKey, safelyGetUser, { retry: false });
   const { toggle } = useUserMenuDialog();
 
   const { mutateAsync: logout, isLoading } = useMutation(async () => {
