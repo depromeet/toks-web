@@ -1,7 +1,7 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
 import { Button, Icon, QuizResponse, QuizStatus, Text, UserAvatar } from '@depromeet/toks-components';
-import { useTimer } from '@depromeet/utils';
 import { convertSecondToString, getInitialTimerSecond, getQuizItemStatus } from '@depromeet/toks-components/src/utils';
+import { useTimer } from '@depromeet/utils';
 import { ComponentProps, useEffect, useState } from 'react';
 
 import { Divider } from 'components/common/Divider';
@@ -42,15 +42,17 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
   const [limitDate, openDate, currentDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
   const [quizItemStatus, setQuizItemStatus] = useState(quizStatus);
   const initialTime = getInitialTimerSecond(currentDate, durationOfSecond, limitDate, quizStatus);
-  const { time, timerStart } = useTimer({
-    initialTime,
-    onTimeOver: () => {
-      setQuizItemStatus('DONE');
-    },
-  });
+  const { time, start: timerStart, stop: timerStop } = useTimer({ time: initialTime, enabled: false });
 
   const [isFold, setIsFold] = useState(quizStatus !== 'DONE');
   const onFold = () => setIsFold(!isFold);
+
+  useEffect(() => {
+    if (time === 0) {
+      timerStop();
+      setQuizItemStatus('DONE');
+    }
+  }, [time, timerStop]);
 
   useEffect(() => {
     if (quizItemStatus === 'IN_PROGRESS') {
@@ -65,6 +67,9 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
       if (newQuizItemStatus === 'IN_PROGRESS') {
         setQuizItemStatus(newQuizItemStatus);
       }
+      // if (time === 0) {
+      //   setQuizItemStatus('DONE');
+      // }
     }, 1000);
 
     return () => clearInterval(interval);
