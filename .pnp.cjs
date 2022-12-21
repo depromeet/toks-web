@@ -92,7 +92,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@depromeet/path", ["workspace:shared/path"]],\
       ["@depromeet/theme", ["workspace:packages/theme"]],\
       ["@depromeet/toks-components", ["virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#workspace:shared/toks-components", "virtual:96bfde779e8ce5b52b39849685a5786dd6858e7484df515fef37bf1b11b128a87e4b4dd6b0fb6262b57ab1b115993c3d6177ae4bf560f229fb1027769d22c769#workspace:shared/toks-components", "virtual:f356d075fcbb031f2421cfd58fdad304839be20722504dd5f04216cae6627523bd626bbb5a80af3a6565f5136835184543767cf6ba0309247b5e92f1075e3896#workspace:shared/toks-components", "workspace:shared/toks-components"]],\
-      ["@depromeet/utils", ["virtual:3ed5bd407e305f4b21b696a402fbd0d61441cda5db545c2ae19382ffaa664e18b580a828da3d8396aa0d14d1c4353e878ad0f4730cf86a7c8c37c8f093cb3c7c#workspace:shared/utils", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#workspace:shared/utils", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#workspace:shared/utils", "workspace:shared/utils"]],\
+      ["@depromeet/utils", ["virtual:3ed5bd407e305f4b21b696a402fbd0d61441cda5db545c2ae19382ffaa664e18b580a828da3d8396aa0d14d1c4353e878ad0f4730cf86a7c8c37c8f093cb3c7c#workspace:shared/utils", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#workspace:shared/utils", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#workspace:shared/utils", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#workspace:shared/utils", "workspace:shared/utils"]],\
       ["@devops/commandline", ["workspace:devops/commandline"]],\
       ["@services/home", ["workspace:services/home"]],\
       ["@services/login", ["workspace:services/login"]],\
@@ -4595,17 +4595,22 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/css", "virtual:4253d3973d08d57014ce87d103bfecc4558ec3d05d3726545e5f8dd8748d56f4c0f37d45d1a763a3a7d49fc345e4f3de1e2d900c7ea34cdcd12742f73a657679#npm:11.10.0"],\
             ["@emotion/react", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.10.4"],\
             ["@emotion/styled", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.10.4"],\
+            ["@toast-ui/editor", "npm:3.2.1"],\
+            ["@toast-ui/editor-plugin-code-syntax-highlight", "npm:3.1.0"],\
+            ["@toast-ui/react-editor", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#npm:3.2.2"],\
             ["@toss/emotion-utils", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#npm:1.1.4"],\
             ["@toss/react", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:1.3.3"],\
             ["@toss/use-overlay", "virtual:96bfde779e8ce5b52b39849685a5786dd6858e7484df515fef37bf1b11b128a87e4b4dd6b0fb6262b57ab1b115993c3d6177ae4bf560f229fb1027769d22c769#npm:1.3.0"],\
             ["@toss/utils", "npm:1.3.0"],\
             ["@types/node", "npm:18.11.9"],\
+            ["@types/prismjs", "npm:1.26.0"],\
             ["@types/react", "npm:18.0.25"],\
             ["@types/toss__use-overlay", null],\
             ["@typescript-eslint/eslint-plugin", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
             ["@typescript-eslint/parser", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
             ["axios", "npm:0.27.2"],\
             ["concurrently", "npm:7.4.0"],\
+            ["date-fns", "npm:2.29.3"],\
             ["emotion-normalize", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.0.1"],\
             ["eslint", "npm:8.24.0"],\
             ["eslint-config-prettier", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:8.5.0"],\
@@ -4620,6 +4625,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.7.1"],\
             ["primeicons", "npm:6.0.1"],\
             ["primereact", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:8.7.2"],\
+            ["prismjs", "npm:1.29.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:18.2.0"],\
             ["rimraf", "npm:3.0.2"],\
@@ -4838,6 +4844,61 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@toss/use-overlay",\
             "@types/react-query",\
             "@types/toss__use-overlay"\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#workspace:shared/utils", {\
+          "packageLocation": "./.yarn/__virtual__/@depromeet-utils-virtual-349d801573/1/shared/utils/",\
+          "packageDependencies": [\
+            ["@depromeet/utils", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#workspace:shared/utils"],\
+            ["@depromeet/http", "npm:0.3.1"],\
+            ["@depromeet/path", "workspace:shared/path"],\
+            ["@depromeet/theme", "npm:0.0.1"],\
+            ["@depromeet/toks-components", "virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#workspace:shared/toks-components"],\
+            ["@emotion/css", "virtual:4253d3973d08d57014ce87d103bfecc4558ec3d05d3726545e5f8dd8748d56f4c0f37d45d1a763a3a7d49fc345e4f3de1e2d900c7ea34cdcd12742f73a657679#npm:11.10.0"],\
+            ["@emotion/react", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.10.4"],\
+            ["@emotion/styled", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.10.4"],\
+            ["@toss/emotion-utils", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:1.1.3"],\
+            ["@toss/react", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:1.3.3"],\
+            ["@toss/react-query", "virtual:349d80157329085292a289aa497350964c3385846bf21776c704a61448e8563382e5c790bd786275e44ed04ee6fc1c56e34df0f0852fba0eee817e6e74fb8103#npm:1.1.0"],\
+            ["@toss/use-overlay", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.0"],\
+            ["@types/node", "npm:18.11.9"],\
+            ["@types/react", "npm:18.0.25"],\
+            ["@types/react-query", null],\
+            ["@types/toss__use-overlay", null],\
+            ["@typescript-eslint/eslint-plugin", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
+            ["@typescript-eslint/parser", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:5.38.1"],\
+            ["axios", "npm:0.27.2"],\
+            ["concurrently", "npm:7.4.0"],\
+            ["date-fns", "npm:2.29.3"],\
+            ["emotion-normalize", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:11.0.1"],\
+            ["eslint", "npm:8.24.0"],\
+            ["eslint-config-prettier", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:8.5.0"],\
+            ["eslint-import-resolver-typescript", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:2.7.1"],\
+            ["eslint-plugin-import", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:2.26.0"],\
+            ["eslint-plugin-jsx-a11y", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:6.6.1"],\
+            ["eslint-plugin-prettier", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:4.2.1"],\
+            ["eslint-plugin-react", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:7.31.8"],\
+            ["eslint-plugin-react-hooks", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:4.6.0"],\
+            ["framer-motion", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:6.5.1"],\
+            ["jest", "virtual:46b71cc57d188318f5428786c97799867f14085f63ae68d538d32ed30f3ca7ac79c67cb772203e770e187edfa664e5f08b46f924b3c6cae2c0dd804c2b4d6af5#npm:29.3.1"],\
+            ["prettier", "npm:2.7.1"],\
+            ["primeicons", "npm:6.0.1"],\
+            ["primereact", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:8.7.2"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:216a7d6f1a992098e3da2ca14944a498ee59fa328e5a8f0ddbb64e35f4043475fbb579c612a0cfe3a85a471c0f9c35067cfbcbb9ac1e969afb40c606d73f9754#npm:18.2.0"],\
+            ["react-query", [\
+              "@tanstack/react-query",\
+              "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:4.0.10"\
+            ]],\
+            ["rimraf", "npm:3.0.2"],\
+            ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"]\
+          ],\
+          "packagePeers": [\
+            "@toss/use-overlay",\
+            "@types/react-query",\
+            "@types/toss__use-overlay",\
+            "react-query"\
           ],\
           "linkType": "SOFT"\
         }],\
@@ -6377,6 +6438,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@depromeet/layout", "virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#workspace:shared/layout"],\
             ["@depromeet/theme", "npm:0.0.1"],\
             ["@depromeet/toks-components", "virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#workspace:shared/toks-components"],\
+            ["@depromeet/utils", "virtual:b587581af264dbe117f4fb056f3bb80f8756861347220c1d6121632c328786593e05b13f5c9debe435b393b92759192e7bb22f58ee73721480976c27e13cdea7#workspace:shared/utils"],\
             ["@emotion/css", "virtual:4253d3973d08d57014ce87d103bfecc4558ec3d05d3726545e5f8dd8748d56f4c0f37d45d1a763a3a7d49fc345e4f3de1e2d900c7ea34cdcd12742f73a657679#npm:11.10.0"],\
             ["@emotion/react", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
             ["@emotion/styled", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
@@ -7146,6 +7208,26 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@toss/react-query", "npm:1.1.0"]\
           ],\
           "linkType": "SOFT"\
+        }],\
+        ["virtual:349d80157329085292a289aa497350964c3385846bf21776c704a61448e8563382e5c790bd786275e44ed04ee6fc1c56e34df0f0852fba0eee817e6e74fb8103#npm:1.1.0", {\
+          "packageLocation": "./.yarn/__virtual__/@toss-react-query-virtual-ebd528e160/0/cache/@toss-react-query-npm-1.1.0-71d48d749d-2655bb23fd.zip/node_modules/@toss/react-query/",\
+          "packageDependencies": [\
+            ["@toss/react-query", "virtual:349d80157329085292a289aa497350964c3385846bf21776c704a61448e8563382e5c790bd786275e44ed04ee6fc1c56e34df0f0852fba0eee817e6e74fb8103#npm:1.1.0"],\
+            ["@types/react", "npm:18.0.25"],\
+            ["@types/react-query", null],\
+            ["react", "npm:18.2.0"],\
+            ["react-query", [\
+              "@tanstack/react-query",\
+              "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:4.0.10"\
+            ]]\
+          ],\
+          "packagePeers": [\
+            "@types/react-query",\
+            "@types/react",\
+            "react-query",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
         }],\
         ["virtual:7f928a8ad7bdc5f0c8398196f54381e554e08f033037bddbfb32fe66b6e489bb577ca5764b772fade6ba4eebec10c8bb502b5aec765289809037b83d7b0a833e#npm:1.1.0", {\
           "packageLocation": "./.yarn/__virtual__/@toss-react-query-virtual-4a511febdf/0/cache/@toss-react-query-npm-1.1.0-71d48d749d-2655bb23fd.zip/node_modules/@toss/react-query/",\

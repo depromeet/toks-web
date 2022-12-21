@@ -1,5 +1,6 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
-import { Button, Icon, QuizResponse, QuizStatus, Text, UserAvatar, useTimer } from '@depromeet/toks-components';
+import { Button, Icon, QuizResponse, QuizStatus, Text, UserAvatar } from '@depromeet/toks-components';
+import { useTimer } from '@depromeet/utils';
 import { convertSecondToString, getInitialTimerSecond, getQuizItemStatus } from '@depromeet/toks-components/src/utils';
 import { ComponentProps, useEffect, useState } from 'react';
 
