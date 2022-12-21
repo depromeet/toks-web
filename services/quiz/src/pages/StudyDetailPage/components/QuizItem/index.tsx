@@ -2,7 +2,11 @@ import { KeyOfColors, theme } from '@depromeet/theme';
 import { Button, Icon, Text, UserAvatar } from '@depromeet/toks-components';
 import { useTimer } from '@depromeet/toks-components/src/hooks';
 import { QuizResponse, QuizStatus } from '@depromeet/toks-components/src/types/quiz';
-import { getQuizItemStatus, getTimerByQuizStatus } from '@depromeet/toks-components/src/utils';
+import {
+  convertMilliSecondToString,
+  getQuizItemStatus,
+  getTimerByQuizStatus,
+} from '@depromeet/toks-components/src/utils';
 import { ComponentProps, useEffect, useState } from 'react';
 
 import { Divider } from 'components/common/Divider';
@@ -40,11 +44,19 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
 // TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
 export function QuizItem({ round, quiz }: QuizItemProps) {
   const { endedAt, startedAt, timestamp, durationOfSecond, quizStatus, quiz: title, creator, unSubmitters } = quiz;
-  const [limitDate, openDate, currentDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
-  const durationOfMilliSecond = durationOfSecond * 1000;
+  const [limitDate, openDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
   const [quizItemStatus, setQuizItemStatus] = useState(quizStatus);
-  const initialTimer = getTimerByQuizStatus(currentDate, durationOfMilliSecond, limitDate, quizItemStatus);
-  const timer = useTimer(initialTimer, durationOfMilliSecond, limitDate, quizItemStatus);
+  const initialTime = durationOfSecond;
+  const { time, start } = useTimer({
+    initialTime,
+  });
+
+  useEffect(() => {
+    if (quizStatus === 'IN_PROGRESS') {
+      start();
+    }
+  }, []);
+
   const [isFold, setIsFold] = useState(quizStatus !== 'DONE');
   const onFold = () => setIsFold(!isFold);
 
@@ -97,7 +109,7 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
               css={{ margin: '0 0 0 9.2px' }}
               as="h4"
             >
-              {timer}
+              {convertMilliSecondToString(time * 1000)}
             </Text>
           </FlexRow>
           <Divider css={{ marginTop: '22.25px' }} />

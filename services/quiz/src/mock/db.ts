@@ -119,7 +119,7 @@ export const quizList: QuizResponse[] = [
     creator,
     unSubmitters: absentee,
     studyId: 1,
-    quizStatus: 'TO_DO',
+    quizStatus: 'IN_PROGRESS',
   },
   {
     quizId: 66,
