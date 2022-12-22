@@ -8,7 +8,7 @@ import { useCreateStudyForm } from 'pages/CreateStudy/hooks/useCreateStudyForm';
 import { Wrapper } from './style';
 
 export const CreateStudyForm = () => {
-  const { register, control, createStudy, handleSubmit, setValue, errors, isDisabled, isMaxLength, isRequiredText } =
+  const { register, control, createStudy, setValue, errors, isDisabled, isMaxLength, isRequiredText } =
     useCreateStudyForm();
 
   return (
@@ -17,9 +17,10 @@ export const CreateStudyForm = () => {
         똑스터디 만들기
       </Text>
       <form
-        onSubmit={handleSubmit(studyForm => {
-          createStudy(studyForm);
-        })}
+        onSubmit={e => {
+          e.preventDefault();
+          createStudy();
+        }}
         css={(margin.top(42), size({ width: '100%' }), gutter('vertical', 32))}
       >
         <Input

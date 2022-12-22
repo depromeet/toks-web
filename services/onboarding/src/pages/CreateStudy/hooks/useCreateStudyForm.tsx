@@ -12,24 +12,20 @@ export const useCreateStudyForm = () => {
   const {
     register,
     control,
+    getValues,
     handleSubmit,
     setValue,
     formState: { isDirty, isValid, errors },
   } = useForm<CreateStudyFormValues>({ mode: 'onChange' });
 
   const router = useRouter();
-  const { mutate: createStudy } = useMutation<StudyResponse, ToksError, CreateStudyFormValues>(
-    studyForm => postStudy(studyForm),
-    {
-      onSuccess: ({ id: studyId }) => {
-        alert('스터디가 생성되었습니다.');
-        router.replace(`/create-complete/${studyId}`);
-      },
-      onError: error => {
-        console.log(error.isToksError);
-      },
-    }
-  );
+
+  const { mutate: createStudy } = useMutation(async () => {
+    const values = getValues();
+    const { id } = await postStudy(values);
+    alert('스터디가 생성되었습니다.');
+    await router.replace(`/create-complete/${id}`);
+  });
 
   const isDisabled = !isDirty || !isValid;
 
