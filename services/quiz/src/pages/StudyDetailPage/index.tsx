@@ -1,4 +1,4 @@
-import { Text } from '@depromeet/toks-components';
+import { Text, TimePicker } from '@depromeet/toks-components';
 
 import QuizList from './components/QuizList';
 import RankingList from './components/RankingList';
@@ -14,6 +14,9 @@ export default function StudyDetailPage() {
           <StudyInfo />
           <StudyProgress />
         </FlexRow>
+        <div css={{width: '340px'}}>
+          <TimePicker />
+        </div>
         <FlexRow css={{ marginTop: '80px' }}>
           <QuizListWrapper>
             <Text variant="title04" color="gray010">
