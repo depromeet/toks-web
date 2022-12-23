@@ -19,22 +19,14 @@ function ToggleSwitchButton({ isAM } : ToggleSwitchButtonProps) {
   const getActiveColor = (isActive : boolean) => isActive? theme.colors.primary : theme.colors.gray090;
   return (
     <FlexRow style={{paddingTop: '6px', borderRadius: '6px'}}>
-      <button style={{
-        display: 'block',
-        padding: '13px',
-        border: '0px',
-        backgroundColor: `${getActiveColor(isAM)}`,
-        borderRadius: '6px 0 0 6px'
-        }}>
+      <LeftToggleButton style={{
+        backgroundColor: `${getActiveColor(isAM)}`}}>
         <Text variant="body02">AM</Text>
-      </button>
-      <button style={{
-        padding: '13px',
-        border: '0px',
-        backgroundColor: `${getActiveColor(!isAM)}`,
-        borderRadius: '0 6px 6px 0'}}>
+      </LeftToggleButton>
+      <RightToggleButton style={{
+        backgroundColor: `${getActiveColor(!isAM)}`}}>
         <Text variant="body02">PM</Text>
-      </button>
+      </RightToggleButton>
     </FlexRow>
   )
 }
@@ -42,11 +34,12 @@ function ToggleSwitchButton({ isAM } : ToggleSwitchButtonProps) {
 export function TimePicker({hour = 0, minute = 0, isAM = true} : TimePickerProps) {
   return (
     <FlexRow>
+      <FlexRow style={{marginRight: '20px'}}>
         <Input label='' placeholder={padZero(hour)}/>
         <Text variant="body01" style={{margin: '0 6px'}}>:</Text>
         <Input label='' placeholder={padZero(minute)}/>
-        <RowSpace style={{width: '20px'}}/>
-        <ToggleSwitchButton isAM={isAM}/>
+      </FlexRow>
+      <ToggleSwitchButton isAM={isAM}/>
     </FlexRow>
   );
 }
@@ -56,5 +49,14 @@ export const FlexRow = styled.div`
   align-items: center;
 `;
 
-export const RowSpace = styled.div`
+export const LeftToggleButton = styled.button`
+  padding: 13px;
+  border: 0px;
+  border-radius: 6px 0 0 6px;
+`
+
+export const RightToggleButton = styled.button`
+  padding: 13px;
+  border: 0px;
+  border-radius: 0 6px 6px 0;
 `
