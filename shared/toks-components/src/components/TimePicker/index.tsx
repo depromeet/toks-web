@@ -19,7 +19,6 @@ function ToggleSwitchButton({ initIsAM } : ToggleSwitchButtonProps) {
   const [isAM, setIsAM] = useState(initIsAM);
 
   const getActiveColor = (isActive : boolean) => isActive? theme.colors.primary : theme.colors.gray090;
-  const onToggle = () => setIsAM(!isAM);
 
   return (
     <FlexRow style={{paddingTop: '6px', borderRadius: '6px'}}>
@@ -27,14 +26,14 @@ function ToggleSwitchButton({ initIsAM } : ToggleSwitchButtonProps) {
         style={{
           backgroundColor: `${getActiveColor(isAM)}`
         }}
-        onClick={onToggle}>
+        onClick={() => setIsAM(true)}>
         <Text variant="body02">AM</Text>
       </LeftToggleButton>
       <RightToggleButton 
         style={{
           backgroundColor: `${getActiveColor(!isAM)}`
         }}
-        onClick={onToggle}>
+        onClick={() => setIsAM(false)}>
         <Text variant="body02">PM</Text>
       </RightToggleButton>
     </FlexRow>
