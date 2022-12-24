@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, useState } from 'react';
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import { Input, Text } from '@depromeet/toks-components';
@@ -10,21 +10,31 @@ interface TimePickerProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 interface ToggleSwitchButtonProps extends HTMLAttributes<HTMLDivElement> {
-  isAM : boolean,
+  initIsAM : boolean,
 }
 
 const padZero = (value: string | number = 0) => value.toString().padStart(2, '0');
 
-function ToggleSwitchButton({ isAM } : ToggleSwitchButtonProps) {
+function ToggleSwitchButton({ initIsAM } : ToggleSwitchButtonProps) {
+  const [isAM, setIsAM] = useState(initIsAM);
+
   const getActiveColor = (isActive : boolean) => isActive? theme.colors.primary : theme.colors.gray090;
+  const onToggle = () => setIsAM(!isAM);
+
   return (
     <FlexRow style={{paddingTop: '6px', borderRadius: '6px'}}>
-      <LeftToggleButton style={{
-        backgroundColor: `${getActiveColor(isAM)}`}}>
+      <LeftToggleButton 
+        style={{
+          backgroundColor: `${getActiveColor(isAM)}`
+        }}
+        onClick={onToggle}>
         <Text variant="body02">AM</Text>
       </LeftToggleButton>
-      <RightToggleButton style={{
-        backgroundColor: `${getActiveColor(!isAM)}`}}>
+      <RightToggleButton 
+        style={{
+          backgroundColor: `${getActiveColor(!isAM)}`
+        }}
+        onClick={onToggle}>
         <Text variant="body02">PM</Text>
       </RightToggleButton>
     </FlexRow>
@@ -39,7 +49,7 @@ export function TimePicker({hour = 0, minute = 0, isAM = true} : TimePickerProps
         <Text variant="body01" style={{margin: '0 6px'}}>:</Text>
         <Input label='' placeholder={padZero(minute)}/>
       </FlexRow>
-      <ToggleSwitchButton isAM={isAM}/>
+      <ToggleSwitchButton initIsAM={isAM}/>
     </FlexRow>
   );
 }
