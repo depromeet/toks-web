@@ -44,7 +44,7 @@ export const CreateStudyForm = () => {
         />
         <Flex css={gutter('horizontal', 24)}>
           <Calendar
-            {...register('startDate', {
+            {...register('startedAt', {
               required: isRequiredText('시작일'),
             })}
             readOnlyInput
@@ -52,10 +52,10 @@ export const CreateStudyForm = () => {
             label="스터디 시작일"
             minDate={new Date()}
             placeholder="날짜 선택"
-            errorMessage={errors.startDate?.message}
+            errorMessage={errors.startedAt?.message}
           />
           <Calendar
-            {...register('endDate', {
+            {...register('endedAt', {
               required: isRequiredText('종료일'),
             })}
             readOnlyInput
@@ -63,7 +63,7 @@ export const CreateStudyForm = () => {
             label="스터디 종료일"
             minDate={new Date()}
             placeholder="날짜 선택"
-            errorMessage={errors.endDate?.message}
+            errorMessage={errors.endedAt?.message}
           />
         </Flex>
         <Controller
