@@ -1782,6 +1782,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@depromeet/toks-components@workspace:shared/toks-components"
   dependencies:
+    "@depromeet/http": 0.3.1
     "@depromeet/theme": 0.0.1
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
