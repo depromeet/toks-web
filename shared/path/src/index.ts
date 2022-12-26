@@ -7,6 +7,7 @@ export const PATHS = {
   },
   onboarding: {
     createStudy: '/onboarding/create-study',
+    createComplete: ({ studyId }: { studyId: number | string }) => `/onboarding/create-complete/${studyId}`,
   },
   login: {
     main: '/login',

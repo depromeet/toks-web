@@ -4538,6 +4538,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/@depromeet-toks-components-virtual-7aee1006bc/1/shared/toks-components/",\
           "packageDependencies": [\
             ["@depromeet/toks-components", "virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#workspace:shared/toks-components"],\
+            ["@depromeet/http", "npm:0.3.1"],\
             ["@depromeet/theme", "npm:0.0.1"],\
             ["@depromeet/utils", "virtual:7aee1006bc3eb08e55787c8546ccbeeb543700027410505c302692365020edd261f41034bf98110ca6e76016e109d13a5d1015c6f74e8cc6fea3e2e395681440#workspace:shared/utils"],\
             ["@emotion/css", "virtual:4253d3973d08d57014ce87d103bfecc4558ec3d05d3726545e5f8dd8748d56f4c0f37d45d1a763a3a7d49fc345e4f3de1e2d900c7ea34cdcd12742f73a657679#npm:11.10.0"],\
@@ -4590,6 +4591,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/@depromeet-toks-components-virtual-3ed5bd407e/1/shared/toks-components/",\
           "packageDependencies": [\
             ["@depromeet/toks-components", "virtual:96bfde779e8ce5b52b39849685a5786dd6858e7484df515fef37bf1b11b128a87e4b4dd6b0fb6262b57ab1b115993c3d6177ae4bf560f229fb1027769d22c769#workspace:shared/toks-components"],\
+            ["@depromeet/http", "npm:0.3.1"],\
             ["@depromeet/theme", "npm:0.0.1"],\
             ["@depromeet/utils", "virtual:3ed5bd407e305f4b21b696a402fbd0d61441cda5db545c2ae19382ffaa664e18b580a828da3d8396aa0d14d1c4353e878ad0f4730cf86a7c8c37c8f093cb3c7c#workspace:shared/utils"],\
             ["@emotion/css", "virtual:4253d3973d08d57014ce87d103bfecc4558ec3d05d3726545e5f8dd8748d56f4c0f37d45d1a763a3a7d49fc345e4f3de1e2d900c7ea34cdcd12742f73a657679#npm:11.10.0"],\
@@ -4694,6 +4696,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./shared/toks-components/",\
           "packageDependencies": [\
             ["@depromeet/toks-components", "workspace:shared/toks-components"],\
+            ["@depromeet/http", "npm:0.3.1"],\
             ["@depromeet/theme", "npm:0.0.1"],\
             ["@depromeet/utils", "virtual:ef96c7ddbb9c140b2af76ed7cf7e3af09de9433cf74e7406c9c543d639d19f86676b9d8181b531933f84cb2d98c4a36f8e2025d4b6eac82316e271b2e801bcde#workspace:shared/utils"],\
             ["@emotion/css", "virtual:4253d3973d08d57014ce87d103bfecc4558ec3d05d3726545e5f8dd8748d56f4c0f37d45d1a763a3a7d49fc345e4f3de1e2d900c7ea34cdcd12742f73a657679#npm:11.10.0"],\
@@ -6384,6 +6387,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@configs/next", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#workspace:configs/next"],\
             ["@depromeet/http", "npm:0.3.1"],\
             ["@depromeet/layout", "virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#workspace:shared/layout"],\
+            ["@depromeet/path", "workspace:shared/path"],\
             ["@depromeet/theme", "npm:0.0.1"],\
             ["@depromeet/toks-components", "virtual:64da7d8dcebb3a60a500ffa0a91d19f724793a1c06213ebbc873cbea5b76a36ca3a67d9e3deed6a024ae864da32868cd970cb6b4b0d9f2c3d049f95a1a60a7aa#workspace:shared/toks-components"],\
             ["@emotion/css", "virtual:4253d3973d08d57014ce87d103bfecc4558ec3d05d3726545e5f8dd8748d56f4c0f37d45d1a763a3a7d49fc345e4f3de1e2d900c7ea34cdcd12742f73a657679#npm:11.10.0"],\
@@ -6391,6 +6395,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@emotion/styled", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:11.10.4"],\
             ["@svgr/webpack", "npm:6.5.1"],\
             ["@toss/assert", "npm:1.1.0"],\
+            ["@toss/date", "npm:1.1.4"],\
             ["@toss/emotion-utils", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.3"],\
             ["@toss/error-boundary", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.0"],\
             ["@toss/react", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.3.0"],\
@@ -7013,6 +7018,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@toss/assert", "npm:1.1.0"],\
             ["@toss/utils", "npm:1.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@toss/date", [\
+        ["npm:1.1.4", {\
+          "packageLocation": "./.yarn/cache/@toss-date-npm-1.1.4-b8e3ce00ed-d4ce8362a6.zip/node_modules/@toss/date/",\
+          "packageDependencies": [\
+            ["@toss/date", "npm:1.1.4"],\
+            ["date-fns", "npm:2.29.3"]\
           ],\
           "linkType": "HARD"\
         }]\

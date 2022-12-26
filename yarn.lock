@@ -1782,6 +1782,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@depromeet/toks-components@workspace:shared/toks-components"
   dependencies:
+    "@depromeet/http": 0.3.1
     "@depromeet/theme": 0.0.1
     "@depromeet/utils": "workspace:shared/utils"
     "@emotion/css": ^11.9.0
@@ -2843,6 +2844,7 @@ __metadata:
     "@configs/next": "workspace:configs/next"
     "@depromeet/http": 0.3.1
     "@depromeet/layout": "workspace:shared/layout"
+    "@depromeet/path": "workspace:shared/path"
     "@depromeet/theme": 0.0.1
     "@depromeet/toks-components": "workspace:shared/toks-components"
     "@emotion/css": ^11.9.0
@@ -2850,6 +2852,7 @@ __metadata:
     "@emotion/styled": ^11.9.3
     "@svgr/webpack": ^6.5.1
     "@toss/assert": ^1.1.0
+    "@toss/date": ^1.1.4
     "@toss/emotion-utils": ^1.1.3
     "@toss/error-boundary": ^1.1.0
     "@toss/react": ^1.3.0
@@ -3211,6 +3214,15 @@ __metadata:
   dependencies:
     "@toss/utils": ^1.1.0
   checksum: d81b66e53115a2b262a5a19229c7762f9052624ef397c3c657fff69129a0f5f0cc75a9c1fa8909d594e9c0379007f00f92f40427192862f0df9bf466bbc1977c
+  languageName: node
+  linkType: hard
+
+"@toss/date@npm:^1.1.4":
+  version: 1.1.4
+  resolution: "@toss/date@npm:1.1.4"
+  dependencies:
+    date-fns: ^2.25.0
+  checksum: d4ce8362a603cf9889faf7ef950bd04fe08a70788d6565835f4ce1ba04ec2f6c8bc131644bb27478fc3cc8214009fabd66cfb96d57ed941668fdccc52d38b3dc
   languageName: node
   linkType: hard
 

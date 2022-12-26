@@ -1,12 +1,17 @@
 import { Button, Icon, Image, Tag, Text, useClipboard } from '@depromeet/toks-components';
 import { Flex, Spacing, gutter } from '@toss/emotion-utils';
+// import { useRouter } from 'next/router';
 
 import { StudyInfo } from '../StudyInfo';
 import { StudyTitle } from '../StudyTitle';
 import { Wrapper } from './style';
 
 export const StudyInfoBox = () => {
-  // mock data
+  // TODO: studyId를 받아서 서버에서 정보를 가져와야 합니다.
+  // const {
+  //   query: { studyId },
+  // } = useRouter();
+
   const { copyToClipboard } = useClipboard();
 
   const ourStudyDescription =
