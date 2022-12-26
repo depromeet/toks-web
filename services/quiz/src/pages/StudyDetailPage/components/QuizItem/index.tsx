@@ -4,7 +4,7 @@ import { convertSecondToString, getInitialTimerSecond, getQuizItemStatus } from 
 import { useTimer } from '@depromeet/utils';
 import { ComponentProps, useEffect, useState } from 'react';
 
-import { Divider } from 'components/common/Divider';
+import { Divider } from 'common/components/Divider';
 
 import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
 

@@ -17,6 +17,7 @@
     "@configs/babel": "workspace:configs/babel",
     "@configs/next": "workspace:configs/next",
     "@depromeet/layout": "workspace:shared/layout",
+    "@depromeet/path": "workspace:shared/path",
     "@depromeet/theme": "^0.0.1",
     "@depromeet/toks-components": "workspace:shared/toks-components",
     "@depromeet/utils": "workspace:shared/utils",
