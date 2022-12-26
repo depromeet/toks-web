@@ -1,18 +1,27 @@
 import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
+import { useSuspendedQuery } from '@toss/react-query';
+import { QUERY_KEYS } from 'constants/queryKeys';
+import { useRouter } from 'next/router';
 
 import { Wrapper } from 'pages/JoinStudy/components/JoinStudyBox/style';
 import { StudyInfo } from 'pages/JoinStudy/components/StudyInfo';
 import { StudyTitle } from 'pages/JoinStudy/components/StudyTitle';
+import { getStudyById } from 'pages/JoinStudy/remotes/study';
 
 export function JoinStudyBox() {
-  // mock data
-  const ourStudyDescription =
-    '설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한';
+  const router = useRouter();
+  const studyId = router.query.studyId;
+
+  const {
+    data: { study },
+  } = useSuspendedQuery(QUERY_KEYS.GET_STUDY_BY_ID, () => getStudyById(studyId));
+
+  const startDate = study.startedAt.replace('-', '. ').split('T')[0];
+  const endDate = study.endedAt.replace('-', '. ').split('T')[0];
+  // 스터디 인원 api 수정되면 변경 예정.
   const personnelDescription = '5-7명을 계획하고 있어요.';
-  const startDate = '2022. 10. 13';
-  const endDate = '2022. 12. 03';
-  const tags = ['Java', 'Javascript', 'React'];
+
   return (
     <Wrapper>
       <div>
@@ -20,8 +29,8 @@ export function JoinStudyBox() {
         {/* tag margin 위아래 10 고려하여 18->8 */}
         <Spacing size={8} />
         <Tag.Row>
-          {tags?.map(tag => (
-            <Tag key={tag}>{tag}</Tag>
+          {study.tags.map(tag => (
+            <Tag key={tag.id}>{tag.name}</Tag>
           ))}
         </Tag.Row>
       </div>
@@ -36,7 +45,7 @@ export function JoinStudyBox() {
             />
           }
           title="우리 스터디는"
-          description={<Text variant="body01">{ourStudyDescription}</Text>}
+          description={<Text variant="body01">{study.description}</Text>}
         />
         <StudyInfo
           leftAddon={
@@ -54,13 +63,13 @@ export function JoinStudyBox() {
                 시작일
               </Text>
               <Text variant="body01" css={{ marginLeft: '12px' }}>
-                {startDate}
+                {startDate} 일
               </Text>
               <Text variant="body02" color="gray040" css={{ marginLeft: '36px' }}>
                 종료일
               </Text>
               <Text variant="body01" css={{ marginLeft: '12px' }}>
-                {endDate}
+                {endDate} 일
               </Text>
             </>
           }

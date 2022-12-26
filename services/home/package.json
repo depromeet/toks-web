@@ -36,6 +36,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-query": "npm:@tanstack/react-query@4.0.10",
+    "react-router-dom": "^6.6.1",
     "ts-pattern": "^4.0.5"
   },
   "devDependencies": {
