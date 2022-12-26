@@ -19,6 +19,7 @@
     "@depromeet/layout": "workspace:shared/layout",
     "@depromeet/theme": "^0.0.1",
     "@depromeet/toks-components": "workspace:shared/toks-components",
+    "@depromeet/utils": "workspace:shared/utils",
     "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",

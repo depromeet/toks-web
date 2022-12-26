@@ -1,8 +1,8 @@
-import { User } from './user';
+import { User } from '@depromeet/toks-components/src/types/user';
 
-export interface RankingItemResponse {
+export interface RankResponse {
   rankingId: number;
-  ranking?: number;
-  toks: number;
+  rank?: number;
+  score: number;
   user: User;
 }
