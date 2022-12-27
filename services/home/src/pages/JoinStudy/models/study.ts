@@ -1,4 +1,4 @@
-export interface StudyById {
+export interface StudyByIdResponse {
   id: number;
   name: string;
   description: string;

@@ -1,6 +1,5 @@
 import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
-import { useSuspendedQuery } from '@toss/react-query';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { useRouter } from 'next/router';
 
@@ -13,9 +12,7 @@ export function JoinStudyBox() {
   const router = useRouter();
   const studyId = router.query.studyId;
 
-  const {
-    data: { study },
-  } = useSuspendedQuery(QUERY_KEYS.GET_STUDY_BY_ID, () => getStudyById(studyId));
+  const { data: study } = useQuery(QUERY_KEYS.GET_STUDY_BY_ID, () => getStudyById(studyId));
 
   const startDate = study.startedAt.replace('-', '. ').split('T')[0];
   const endDate = study.endedAt.replace('-', '. ').split('T')[0];
@@ -90,4 +87,7 @@ export function JoinStudyBox() {
       <Button css={width100}>참여하기</Button>
     </Wrapper>
   );
+}
+function useQuery(GET_STUDY_BY_ID: any, arg1: () => Promise<{ study: StudyByIdResponse }>): { data: { study: any } } {
+  throw new Error('Function not implemented.');
 }
