@@ -31,5 +31,5 @@ export function QuizNav({ mainTitle, subTitle, studyId }: Props) {
 
 const Button = styled.div`
   cursor: pointer;
-  margin-top: 7px;
+  margin-top: 6px;
 `;
