@@ -41,7 +41,7 @@ function ToggleSwitchButton({ ampm, setAmpm } : ToggleSwitchButtonProps) {
 const convertTimeFormat = (hour : string, minute : string, ampm : AMPM) => {
   return (ampm === "AM")? 
     `${padZero(hour)}:${padZero(minute)}:00` :
-    `${padZero(Number(hour) + 12)}:${padZero(minute)}:00`
+    `${padZero((Number(hour) + 12) === 24? 0 : Number(hour) + 12)}:${padZero(minute)}:00`
 }
 
 const useTimePicker = (defaultHour : number, defaultMinute : number, defaultAmpm : AMPM) => {
@@ -85,14 +85,14 @@ export function TimePicker({defaultHour = 0, defaultMinute = 0, defaultAmpm = "A
         value={convertTimeFormat(hour, minute, ampm)}/>
       <FlexRow style={{marginRight: '20px'}}>
         <Input 
-          label='' 
+          label=''
           name='hour'
           placeholder={padZero(defaultHour)}
           autoComplete="off"
           onChange={onUpdate}/>
         <Text variant="body01" style={{margin: '0 6px'}}>:</Text>
         <Input 
-          label='' 
+          label=''
           name='minute'
           placeholder={padZero(defaultMinute)}
           autoComplete="off"
