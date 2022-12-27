@@ -45,26 +45,46 @@ const convertTimeFormat = (hour : string, minute : string, ampm : AMPM) => {
 }
 
 const useTimePicker = (defaultHour : number, defaultMinute : number, defaultAmpm : AMPM) => {
-  const [timePick, setTimePick] = useState({
-    hour : padZero(defaultHour),
-    minute : padZero(defaultMinute)
-  });
-  const { hour, minute } = timePick;
+  // const [timePick, setTimePick] = useState({
+  //   hour : padZero(defaultHour),
+  //   minute : padZero(defaultMinute)
+  // });
+  const [hour, setHour] = useState(padZero(defaultHour));
+  const [minute, setMinute] = useState(padZero(defaultMinute));
+  const [hourError, setHourError] = useState<string>();
+  const [minuteError, setMinuteError] = useState<string>();
   const [ampm, setAmpm] = useState(defaultAmpm);
 
-  const onUpdate = (e : React.ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    setTimePick({
-      ...timePick, 
-      [name]: value
-    });
+  const onHourUpdate = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const { value : newHour } = e.target;
+    if (Number(newHour) <= 12) {
+      setHour(newHour);
+      setHourError(undefined);
+    } else {
+      setHour('');
+      setHourError("0-12사이의 숫자를 입력해주세요");
+    }
+  };
+
+  const onMinuteUpdate = (e : React.ChangeEvent<HTMLInputElement>) => {
+    const { value : newMinute } = e.target;
+    if (Number(newMinute) < 60) {
+      setMinute(newMinute);
+      setMinuteError(undefined);
+    } else {
+      setMinute('');
+      setMinuteError("0-59사이의 숫자를 입력해주세요");
+    }
   };
 
   return {
     hour,
     minute,
     ampm,
-    onUpdate,
+    hourError,
+    minuteError,
+    onHourUpdate,
+    onMinuteUpdate,
     setAmpm
   }
 }
@@ -74,7 +94,10 @@ export function TimePicker({defaultHour = 0, defaultMinute = 0, defaultAmpm = "A
     hour,
     minute,
     ampm,
-    onUpdate,
+    hourError,
+    minuteError,
+    onHourUpdate,
+    onMinuteUpdate,
     setAmpm
   } = useTimePicker(defaultHour, defaultMinute, defaultAmpm);
 
@@ -89,14 +112,21 @@ export function TimePicker({defaultHour = 0, defaultMinute = 0, defaultAmpm = "A
           name='hour'
           placeholder={padZero(defaultHour)}
           autoComplete="off"
-          onChange={onUpdate}/>
+          maxLength={2}
+          onChange={onHourUpdate}
+          value={hourError && ""}
+          errorMessage={hourError}/>
         <Text variant="body01" style={{margin: '0 6px'}}>:</Text>
         <Input 
           label=''
           name='minute'
           placeholder={padZero(defaultMinute)}
           autoComplete="off"
-          onChange={onUpdate}/>
+          maxLength={2}
+          pattern="[0-9]{2}"
+          onChange={onMinuteUpdate}
+          value={minuteError && ""}
+          errorMessage={minuteError}/>
       </FlexRow>
       <ToggleSwitchButton ampm={ampm} setAmpm={setAmpm}/>
     </FlexRow>
