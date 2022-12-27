@@ -2,31 +2,34 @@ import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { useRouter } from 'next/router';
+import { useQuery } from 'react-query';
 
 import { Wrapper } from 'pages/JoinStudy/components/JoinStudyBox/style';
 import { StudyInfo } from 'pages/JoinStudy/components/StudyInfo';
-import { StudyTitle } from 'pages/JoinStudy/components/StudyTitle';
 import { getStudyById } from 'pages/JoinStudy/remotes/study';
 
 export function JoinStudyBox() {
+  //TODO undefined 이슈 해결하기
   const router = useRouter();
   const studyId = router.query.studyId;
+  const { data: study } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudyById(studyId));
 
-  const { data: study } = useQuery(QUERY_KEYS.GET_STUDY_BY_ID, () => getStudyById(studyId));
+  const onClick = () => {};
+  console.log(study);
 
-  const startDate = study.startedAt.replace('-', '. ').split('T')[0];
-  const endDate = study.endedAt.replace('-', '. ').split('T')[0];
+  const startDate = study?.startedAt.split('T')[0].replaceAll('-', '. ');
+  const endDate = study?.endedAt.split('T')[0].replaceAll('-', '. ');
+
   // 스터디 인원 api 수정되면 변경 예정.
-  const personnelDescription = '5-7명을 계획하고 있어요.';
+  const personnelDescription = '5-7명';
 
   return (
     <Wrapper>
       <div>
-        <StudyTitle />
-        {/* tag margin 위아래 10 고려하여 18->8 */}
+        <Text variant="title03">{study?.name}</Text>;{/* tag margin 위아래 10 고려하여 18->8 */}
         <Spacing size={8} />
         <Tag.Row>
-          {study.tags.map(tag => (
+          {study?.tags.map(tag => (
             <Tag key={tag.id}>{tag.name}</Tag>
           ))}
         </Tag.Row>
@@ -42,7 +45,7 @@ export function JoinStudyBox() {
             />
           }
           title="우리 스터디는"
-          description={<Text variant="body01">{study.description}</Text>}
+          description={<Text variant="body01">{study?.description}</Text>}
         />
         <StudyInfo
           leftAddon={
@@ -81,13 +84,12 @@ export function JoinStudyBox() {
             />
           }
           title="스터디 인원은"
-          description={<Text variant="body01">{personnelDescription}</Text>}
+          description={<Text variant="body01">{personnelDescription}을 계획하고 있어요. </Text>}
         />
       </Flex>
-      <Button css={width100}>참여하기</Button>
+      <Button css={width100} onClick={onClick}>
+        참여하기
+      </Button>
     </Wrapper>
   );
-}
-function useQuery(GET_STUDY_BY_ID: any, arg1: () => Promise<{ study: StudyByIdResponse }>): { data: { study: any } } {
-  throw new Error('Function not implemented.');
 }
