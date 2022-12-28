@@ -1,5 +1,3 @@
-import { User } from './user';
-
 export type CapacityResponse = 'SMALL' | 'MEDIUM' | 'LARGE';
 
 export interface TagResponse {
@@ -7,13 +5,12 @@ export interface TagResponse {
   name: string;
 }
 
-export interface StudyResponse {
+export interface StudyEnterResponse {
   id: number;
   name: string;
   description: string;
-  startedAt: string;
-  endedAt: string;
-  users: User[];
+  startedAt: Date;
+  endedAt: Date;
   capacity: CapacityResponse;
   tags: TagResponse[];
 }
