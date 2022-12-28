@@ -16,7 +16,7 @@ export const DropDown = forwardRef<Dropdown, Props>(({ label, width, height, req
   return (
     <DropDownWrapper>
       {label && (
-        <Text variant="body02" className="label">
+        <Text variant="headline" className="label">
           {label}
           {required && '*'}
         </Text>

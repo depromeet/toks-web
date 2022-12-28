@@ -44,7 +44,7 @@ export const Calendar = forwardRef<HTMLInputElement, CalendarComponentProps>(
     return (
       <Wrapper>
         <label htmlFor={name}>
-          <Text variant="body02">
+          <Text variant="headline">
             {label}
             {required && '*'}
           </Text>
