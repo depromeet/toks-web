@@ -5,7 +5,7 @@ import { Input, Text } from '@depromeet/toks-components';
 
 type AMPM = "AM" | "PM";
 
-interface TimePickerProps extends HTMLAttributes<HTMLDivElement> {
+interface TimePickerProps extends Partial<React.InputHTMLAttributes<HTMLInputElement>>  {
   defaultHour? : number,
   defaultMinute? : number,
   defaultAmpm? : AMPM
@@ -45,10 +45,6 @@ const convertTimeFormat = (hour : string, minute : string, ampm : AMPM) => {
 }
 
 const useTimePicker = (defaultHour : number, defaultMinute : number, defaultAmpm : AMPM) => {
-  // const [timePick, setTimePick] = useState({
-  //   hour : padZero(defaultHour),
-  //   minute : padZero(defaultMinute)
-  // });
   const [hour, setHour] = useState(padZero(defaultHour));
   const [minute, setMinute] = useState(padZero(defaultMinute));
   const [hourError, setHourError] = useState<string>();

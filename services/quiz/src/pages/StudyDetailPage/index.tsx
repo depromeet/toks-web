@@ -7,6 +7,7 @@ import { StudyProgress } from './components/StudyProgress';
 import { FlexRow, Page, QuizListWrapper, RankingListWrapper, Section } from './style';
 
 export default function StudyDetailPage() {
+
   return (
     <Page>
       <Section>
@@ -14,9 +15,9 @@ export default function StudyDetailPage() {
           <StudyInfo />
           <StudyProgress />
         </FlexRow>
-        <div css={{width: '340px'}}>
+        <form css={{width: '340px'}}>
           <TimePicker />
-        </div>
+        </form>
         <FlexRow css={{ marginTop: '80px' }}>
           <QuizListWrapper>
             <Text variant="title04" color="gray010">
