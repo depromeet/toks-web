@@ -1,12 +1,14 @@
-import { Button, Icon, Image, Tag, Text, useClipboard, getStudy } from '@depromeet/toks-components';
-import { useQuery } from 'react-query';
+import { Button, Icon, Image, Tag, Text, getStudy, useClipboard } from '@depromeet/toks-components';
+import { kstFormat } from '@toss/date';
 import { Flex, Spacing, gutter } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
-import { kstFormat } from '@toss/date';
+import { useQuery } from 'react-query';
+
+import { STUDY_CATEGORY_OPTIONS } from 'pages/CreateStudy/constants';
+
 import { StudyInfo } from '../StudyInfo';
 import { StudyTitle } from '../StudyTitle';
 import { Wrapper } from './style';
-import { STUDY_CATEGORY_OPTIONS } from 'pages/CreateStudy/constants';
 
 export const StudyInfoBox = () => {
   const {
@@ -15,10 +17,12 @@ export const StudyInfoBox = () => {
 
   const { copyToClipboard } = useClipboard();
   const { data: studyInfo, isError } = useQuery(['studyInfo', studyId], () => getStudy(Number(studyId)), {
-    enabled: !!studyId,
+    enabled: Boolean(studyId),
   });
 
-  if (isError || !studyInfo) return null;
+  if (isError || !studyInfo) {
+    return null;
+  }
 
   const { name, description, startedAt, endedAt, capacity, tags } = studyInfo;
 
