@@ -5,13 +5,13 @@ import { QuizEditor } from './components/QuizEditor';
 
 export default function QuizSolvingPage() {
   return (
-    <>
-      <QuizNav mainTitle="똑스 풀기" />
+    <div>
+      <QuizNav mainTitle="똑스 풀기" studyId={1} />
       <Spacing size={25} />
       <Flex>
         <QuizQuestion />
         <QuizEditor />
       </Flex>
-    </>
+    </div>
   );
 }

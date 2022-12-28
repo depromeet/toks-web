@@ -2,21 +2,16 @@ import { QUERY_KEYS } from 'constants/queryKeys';
 import { getQuizById } from 'pages/QuizSolvingPage/remotes/quiz';
 import { DescriptionContainer, Line, Wrapper } from './style';
 import { useQuery } from 'react-query';
-import { useNextRouter } from '@toss/use-query-param';
-import { useRouter } from 'next/router';
 import { UserAvatar, Text, Timer, Icon } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
+import { useRouter } from 'next/router';
 
 export function QuizQuestion() {
-  //useNextRouter로 바꾸기.
-  const router = useRouter();
-  const quizId = router.query.quizId;
+  const {
+    query: { quizId },
+  } = useRouter();
 
-  console.log('hihi', quizId);
-  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizId), {});
-
-  console.log(quiz);
-
+  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizId), { enabled: !!quizId });
   return (
     <Wrapper>
       <Flex css={{ alignItems: 'center' }}>

@@ -31,7 +31,6 @@
     "@toss/react": "^1.3.0",
     "@toss/react-query": "^1.1.0",
     "@toss/use-overlay": "^1.1.0",
-    "@toss/use-query-param": "^1.1.3",
     "axios": "^0.27.2",
     "date-fns": "^2.29.3",
     "emotion-normalize": "^11.0.1",
@@ -40,6 +39,7 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.41.1",
     "react-query": "npm:@tanstack/react-query@4.0.10",
+    "react-router-dom": "^6.6.1",
     "ts-pattern": "^4.0.5",
     "yet-another-react-lightbox": "^2.2.3"
   },
