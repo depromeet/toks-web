@@ -1,4 +1,5 @@
 import { http } from '@depromeet/http';
+
 import { StudyByIdResponse } from '../models/study';
 
 export async function getStudyById(studyId: string | string[] | undefined) {
