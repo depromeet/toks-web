@@ -8,6 +8,7 @@ import { QUERY_KEYS } from 'constants/queryKeys';
 import { Wrapper } from 'pages/JoinStudy/components/JoinStudyBox/style';
 import { StudyInfo } from 'pages/JoinStudy/components/StudyInfo';
 import { getStudyById, postStudyById } from 'pages/JoinStudy/remotes/study';
+
 import { STUDY_CATEGORY_OPTIONS } from './constants';
 
 export function JoinStudyBox() {
@@ -16,7 +17,7 @@ export function JoinStudyBox() {
   } = useRouter();
 
   const { data: study } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudyById(studyId), {
-    enabled: !!studyId,
+    enabled: Boolean(studyId),
   });
   const { mutate: studyMutation } = useMutation(postStudyById, {
     onSuccess: () => (typeof studyId === 'string' ? pushTo(PATHS.quiz.studyDetail({ studyId })) : null),
