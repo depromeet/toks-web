@@ -72,10 +72,10 @@ export const CreateStudyForm = () => {
           render={({ field }) => <DropDown {...field} options={STUDY_CATEGORY_OPTIONS} label="스터디 인원" required />}
         />
         <Controller
-          name="tagList"
+          name="tags"
           control={control}
           render={({ field }) => (
-            <InputChips {...field} onChange={e => setValue('tagList', e.value)} label="스터디 관련 태그" />
+            <InputChips {...field} onChange={e => setValue('tags', e.value)} label="스터디 관련 태그" />
           )}
         />
         <Button type="primary" htmlType="submit" disabled={isDisabled}>
