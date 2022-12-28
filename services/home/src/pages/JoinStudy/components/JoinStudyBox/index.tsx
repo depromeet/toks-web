@@ -8,6 +8,7 @@ import { QUERY_KEYS } from 'constants/queryKeys';
 import { Wrapper } from 'pages/JoinStudy/components/JoinStudyBox/style';
 import { StudyInfo } from 'pages/JoinStudy/components/StudyInfo';
 import { getStudyById, postStudyById } from 'pages/JoinStudy/remotes/study';
+import { STUDY_CATEGORY_OPTIONS } from './constants';
 
 export function JoinStudyBox() {
   const {
@@ -15,7 +16,7 @@ export function JoinStudyBox() {
   } = useRouter();
 
   const { data: study } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudyById(studyId), {
-    enabled: Boolean(studyId),
+    enabled: !!studyId,
   });
   const { mutate: studyMutation } = useMutation(postStudyById, {
     onSuccess: () => (typeof studyId === 'string' ? pushTo(PATHS.quiz.studyDetail({ studyId })) : null),
@@ -28,8 +29,7 @@ export function JoinStudyBox() {
   const startDate = study?.startedAt.split('T')[0].replaceAll('-', '. ');
   const endDate = study?.endedAt.split('T')[0].replaceAll('-', '. ');
 
-  // 스터디 인원 api 수정되면 변경 예정.
-  const personnelDescription = '5-7명';
+  const personnelDescription = STUDY_CATEGORY_OPTIONS.find(v => v.label === study?.capacity);
 
   return (
     <Wrapper>
@@ -92,7 +92,7 @@ export function JoinStudyBox() {
             />
           }
           title="스터디 인원은"
-          description={<Text variant="body01">{personnelDescription}을 계획하고 있어요. </Text>}
+          description={<Text variant="body01">{personnelDescription?.value}을 계획하고 있어요. </Text>}
         />
       </Flex>
       <Button css={width100} onClick={onClick}>

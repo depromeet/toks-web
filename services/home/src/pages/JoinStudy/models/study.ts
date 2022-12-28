@@ -4,13 +4,7 @@ export interface StudyByIdResponse {
   description: string;
   startedAt: string;
   endedAt: string;
-  users: [
-    {
-      userId: number;
-      nickname: string;
-      profileImageUrl: string;
-    }
-  ];
+  capacity: string;
   tags: [
     {
       id: number;
