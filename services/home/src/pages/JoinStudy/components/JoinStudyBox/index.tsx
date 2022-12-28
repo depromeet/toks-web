@@ -2,20 +2,27 @@ import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { useRouter } from 'next/router';
-import { useQuery } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
 
 import { Wrapper } from 'pages/JoinStudy/components/JoinStudyBox/style';
 import { StudyInfo } from 'pages/JoinStudy/components/StudyInfo';
-import { getStudyById } from 'pages/JoinStudy/remotes/study';
+import { getStudyById, postStudyById } from 'pages/JoinStudy/remotes/study';
+import { PATHS, pushTo } from '@depromeet/path';
 
 export function JoinStudyBox() {
   //TODO undefined 이슈 해결하기
-  const router = useRouter();
-  const studyId = router.query.studyId;
-  const { data: study } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudyById(studyId));
+  const {
+    query: { studyId },
+  } = useRouter();
 
-  const onClick = () => {};
-  console.log(study);
+  const { data: study } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudyById(studyId), { enabled: !!studyId });
+  const { mutate: studyMutation } = useMutation(postStudyById, {
+    onSuccess: () => (typeof studyId === 'string' ? pushTo(PATHS.quiz.studyDetail({ studyId })) : null),
+  });
+
+  const onClick = () => {
+    studyMutation(studyId);
+  };
 
   const startDate = study?.startedAt.split('T')[0].replaceAll('-', '. ');
   const endDate = study?.endedAt.split('T')[0].replaceAll('-', '. ');
