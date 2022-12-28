@@ -6,6 +6,7 @@ import { Editor as TuiEditor, EditorProps as TuiEditorProps } from '@toast-ui/re
 import { useDebounce } from '@toss/react';
 import Prism from 'prismjs';
 import { useRef } from 'react';
+
 import { Text } from '../Text';
 
 export interface EditorProps extends TuiEditorProps {
