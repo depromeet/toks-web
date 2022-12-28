@@ -1,39 +1,46 @@
-import { Button, Icon, Image, Tag, Text, useClipboard } from '@depromeet/toks-components';
+import { Button, Icon, Image, Tag, Text, useClipboard, getStudy } from '@depromeet/toks-components';
+import { useQuery } from 'react-query';
 import { Flex, Spacing, gutter } from '@toss/emotion-utils';
-// import { useRouter } from 'next/router';
-
+import { useRouter } from 'next/router';
+import { kstFormat } from '@toss/date';
 import { StudyInfo } from '../StudyInfo';
 import { StudyTitle } from '../StudyTitle';
 import { Wrapper } from './style';
+import { STUDY_CATEGORY_OPTIONS } from 'pages/CreateStudy/constants';
 
 export const StudyInfoBox = () => {
-  // TODO: studyId를 받아서 서버에서 정보를 가져와야 합니다.
-  // const {
-  //   query: { studyId },
-  // } = useRouter();
+  const {
+    query: { studyId },
+  } = useRouter();
 
   const { copyToClipboard } = useClipboard();
+  const { data: studyInfo, isError } = useQuery(['studyInfo', studyId], () => getStudy(Number(studyId)), {
+    enabled: !!studyId,
+  });
 
-  const ourStudyDescription =
-    '설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한입니다 설명은 100자 제한';
-  const personnelDescription = '5-7명을 계획하고 있어요.';
-  const startDate = '2022. 10. 13';
-  const endDate = '2022. 12. 03';
-  const tags = ['Java', 'JavaScript', 'React'];
+  if (isError || !studyInfo) return null;
+
+  const { name, description, startedAt, endedAt, capacity, tags } = studyInfo;
+
+  const studyCategory = STUDY_CATEGORY_OPTIONS.find(({ value }) => value === capacity)?.label;
+  const inviteLink = `${window.location.origin}/home/join-study/${studyId}`;
 
   return (
     <Wrapper>
       <div>
-        <StudyTitle />
-        {/* tag margin 위아래 10 고려하여 18->8 */}
-        <Spacing size={8} />
-        <Tag.Row>
-          {tags?.map(tag => (
-            <Tag key={tag} color="highlight">
-              {tag}
-            </Tag>
-          ))}
-        </Tag.Row>
+        <StudyTitle title={name} />
+        {tags.length > 0 && (
+          <>
+            <Spacing size={8} />
+            <Tag.Row>
+              {tags?.map(({ id, name }) => (
+                <Tag key={id} color="highlight">
+                  {name}
+                </Tag>
+              ))}
+            </Tag.Row>
+          </>
+        )}
       </div>
       <Flex direction="column" css={{ gap: '32px' }}>
         <StudyInfo
@@ -46,7 +53,7 @@ export const StudyInfoBox = () => {
             />
           }
           title="우리 스터디는"
-          description={<Text variant="body01">{ourStudyDescription}</Text>}
+          description={<Text variant="body01">{description}</Text>}
         />
         <StudyInfo
           leftAddon={
@@ -64,13 +71,13 @@ export const StudyInfoBox = () => {
                 시작일
               </Text>
               <Text variant="body01" css={{ marginLeft: '12px' }}>
-                {startDate}
+                {kstFormat(new Date(startedAt), 'yyyy. MM. dd E')}
               </Text>
               <Text variant="body02" color="gray040" css={{ marginLeft: '36px' }}>
                 종료일
               </Text>
               <Text variant="body01" css={{ marginLeft: '12px' }}>
-                {endDate}
+                {kstFormat(new Date(endedAt), 'yyyy. MM. dd E')}
               </Text>
             </>
           }
@@ -85,7 +92,7 @@ export const StudyInfoBox = () => {
             />
           }
           title="스터디 인원은"
-          description={<Text variant="body01">{personnelDescription}</Text>}
+          description={<Text variant="body01">{studyCategory}을 계획하고 있어요.</Text>}
         />
       </Flex>
       <Flex css={gutter('horizontal', 24)}>
@@ -94,7 +101,7 @@ export const StudyInfoBox = () => {
           css={{
             gap: '8px',
           }}
-          onClick={() => copyToClipboard('테스트')}
+          onClick={() => copyToClipboard(inviteLink)}
         >
           <Icon size={28} iconName="ic-link" />
           <Text variant="headline">링크 공유하기</Text>
