@@ -38,6 +38,6 @@ const PhotoAlbumWrapper = styled.div`
     margin-left: 16px;
   }
   .react-photo-album--row {
-    justify-content: left !important;
+    justify-content: flex-start !important;
   }
 `;
