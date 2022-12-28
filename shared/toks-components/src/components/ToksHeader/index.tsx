@@ -13,6 +13,7 @@ type MemberProps = {
 
 type NonMemberProps = {
   login: false;
+  onClickButton: VoidFunction;
 };
 
 type HeaderProps = MemberProps | NonMemberProps;
@@ -36,7 +37,7 @@ export function ToksHeader(props: HeaderProps) {
 function ProfileButton(props: HeaderProps) {
   if (!isMember(props)) {
     return (
-      <Button>
+      <Button onClick={props.onClickButton}>
         <Image
           src="https://asset.tokstudy.com/login-emoji.png"
           alt=""

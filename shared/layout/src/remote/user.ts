@@ -15,7 +15,7 @@ export async function safelyGetUser() {
   try {
     return await getUser();
   } catch (err) {
-    if (isToksError(err) && (err.status === 401 || err.status === 403)) {
+    if (isToksError(err) && err.status === 401) {
       return null;
     }
     throw err;

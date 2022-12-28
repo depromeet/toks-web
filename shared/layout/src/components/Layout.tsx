@@ -31,18 +31,13 @@ function Component({ children }: { children: ReactNode }) {
   return (
     <StyledLayout>
       {isNonMember ? (
-        <ToksHeader login={false} />
+        <ToksHeader login={false} onClickButton={() => pushTo(PATHS.login.main)} />
       ) : (
         <ToksHeader
           imgUrl={user.profileImageUrl}
           userName={user.nickname}
           onClickButton={() => {
             if (isLoading) {
-              return;
-            }
-
-            if (isNonMember) {
-              pushTo(PATHS.login.main);
               return;
             }
 
