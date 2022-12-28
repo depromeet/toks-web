@@ -1,7 +1,7 @@
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { QuizNav } from 'common/components/QuizNav';
 import { QuizQuestion } from './components/QuizQuestion';
-import { QuizSolvingBox } from './components/QuizSolvingBox';
+import { QuizEditor } from './components/QuizEditor';
 
 export default function QuizSolvingPage() {
   return (
@@ -10,7 +10,7 @@ export default function QuizSolvingPage() {
       <Spacing size={25} />
       <Flex>
         <QuizQuestion />
-        <QuizSolvingBox />
+        <QuizEditor />
       </Flex>
     </>
   );

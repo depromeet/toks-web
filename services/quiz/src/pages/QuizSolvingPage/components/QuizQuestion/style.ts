@@ -12,3 +12,14 @@ export const Wrapper = styled.div`
   height: 82vh;
   margin-right: 52px;
 `;
+
+export const Line = styled.div`
+  height: 1px;
+  background-color: ${theme.colors.gray090};
+  width: 100%;
+`;
+
+export const DescriptionContainer = styled.div`
+  overflow: auto;
+  height: 78%;
+`;
