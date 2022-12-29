@@ -1,4 +1,5 @@
 import { http } from '@depromeet/http';
+
 import { QuizAnswerRequest } from '../models/quiz';
 
 export async function postQuizAnswer(quizAnswer: QuizAnswerRequest) {

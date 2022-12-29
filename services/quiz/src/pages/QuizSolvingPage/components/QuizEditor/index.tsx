@@ -1,12 +1,13 @@
 import { Button, useModal } from '@depromeet/toks-components';
 import { Spacing } from '@toss/emotion-utils';
-import { SubmitModal } from '../ModalContents/SubmitModal';
-import { Container, Wrapper } from './style';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
+
+import { SubmitModal } from '../ModalContents/SubmitModal';
 import { postQuizAnswer } from './remotes/quiz';
-import { useRouter } from 'next/router';
+import { Container, Wrapper } from './style';
 
 const Editor = dynamic(() => import('@depromeet/toks-components/src/components/Editor/Editor'), { ssr: false });
 

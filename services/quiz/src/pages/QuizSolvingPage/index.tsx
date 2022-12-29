@@ -1,7 +1,9 @@
 import { Flex, Spacing } from '@toss/emotion-utils';
+
 import { QuizNav } from 'common/components/QuizNav';
-import { QuizQuestion } from './components/QuizQuestion';
+
 import { QuizEditor } from './components/QuizEditor';
+import { QuizQuestion } from './components/QuizQuestion';
 
 export default function QuizSolvingPage() {
   return (

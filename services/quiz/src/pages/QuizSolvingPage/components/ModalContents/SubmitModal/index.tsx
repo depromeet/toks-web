@@ -1,4 +1,4 @@
-import { Button, Text, Image } from '@depromeet/toks-components';
+import { Button, Image, Text } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 
 export function SubmitModal() {

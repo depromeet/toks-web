@@ -1,17 +1,19 @@
-import { QUERY_KEYS } from 'constants/queryKeys';
-import { getQuizById } from 'pages/QuizSolvingPage/remotes/quiz';
-import { DescriptionContainer, Line, Wrapper } from './style';
-import { useQuery } from 'react-query';
-import { UserAvatar, Text, Timer, Icon } from '@depromeet/toks-components';
+import { Icon, Text, Timer, UserAvatar } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
+import { useQuery } from 'react-query';
+
+import { QUERY_KEYS } from 'constants/queryKeys';
+import { getQuizById } from 'pages/QuizSolvingPage/remotes/quiz';
+
+import { DescriptionContainer, Line, Wrapper } from './style';
 
 export function QuizQuestion() {
   const {
     query: { quizId },
   } = useRouter();
 
-  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizId), { enabled: !!quizId });
+  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizId), { enabled: Boolean(quizId) });
   return (
     <Wrapper>
       <Flex css={{ alignItems: 'center' }}>

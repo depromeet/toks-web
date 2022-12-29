@@ -2939,7 +2939,7 @@ __metadata:
     prettier: ^2.7.1
     react: ^18.2.0
     react-dom: ^18.2.0
-    react-hook-form: ^7.41.1
+    react-hook-form: ^7.41.2
     react-query: "npm:@tanstack/react-query@4.0.10"
     react-router-dom: ^6.6.1
     ts-pattern: ^4.0.5
@@ -9030,24 +9030,6 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17 || ^18
   checksum: 8187981c14cc2e016c263a7427ffc5617b126efed97003e259efff1af991d12bef5cb599d824385f760a03a0676eb0d19007aa3ebcc65832cfe819b3802530c5
-  languageName: node
-  linkType: hard
-
-"react-hook-form@npm:^7.41.1":
-  version: 7.41.1
-  resolution: "react-hook-form@npm:7.41.1"
-  peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
-  checksum: 30f7ea67e29c3527d25f87b9ea8789f6722780759adf0718a0dadc6160227ae763c68ddedf63d8311f0902e4ce27225eff37b93a82eac868fc5e0a0d00dbbd14
-  languageName: node
-  linkType: hard
-
-"react-hook-form@npm:^7.41.2":
-  version: 7.41.2
-  resolution: "react-hook-form@npm:7.41.2"
-  peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
-  checksum: bc923b74018d55289838f820d49e32043dbc683d97ea2f93a6f3b75ff58fea9ee4536d6487adcb02912b4bc90a09ea07a63c4c24f930ec59f598bdafd5e8c8d3
   languageName: node
   linkType: hard
 
