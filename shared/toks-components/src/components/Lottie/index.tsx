@@ -45,6 +45,7 @@ interface LottieRef {
   pause: () => void;
 }
 
+/* eslint-disable @typescript-eslint/no-var-requires */
 const {
   Lottie: TossLottie,
 }: { Lottie: React.ForwardRefExoticComponent<Props & React.RefAttributes<LottieRef>> } = require('@toss/lottie');
