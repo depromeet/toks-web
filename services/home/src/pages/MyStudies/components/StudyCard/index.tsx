@@ -1,6 +1,6 @@
 import { PATHS, pushTo } from '@depromeet/path';
 import { theme } from '@depromeet/theme';
-import { Button, Image, Tag, Text, TextBallon } from '@depromeet/toks-components';
+import { Button, Lottie, Tag, Text, TextBallon } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Flex, Spacing, padding, width100 } from '@toss/emotion-utils';
 import { match } from 'ts-pattern';
@@ -16,9 +16,10 @@ interface Props {
   quizStatus: Study['StudylatestquizStatus'];
 }
 
-const IMG_MAP = {
-  sleep: 'https://asset.tokstudy.com/character-sleep.png',
-  awake: 'https://asset.tokstudy.com/character-base-1.png',
+const LOTTIE_MAP = {
+  sleep: 'https://asset.tokstudy.com/lottie-toks-sleep.json',
+  awake: 'https://asset.tokstudy.com/lottie-toks-base.json',
+  graduated: 'https://asset.tokstudy.com/lottie-toks-graduated.json',
 } as const;
 
 function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyId }: Props) {
@@ -45,12 +46,12 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyId }: P
 
         <Spacing size={12} />
 
-        <Image
+        {/* TODO: 스터디 끝나면 graduated 연결  */}
+        <Lottie
           src={match(quizStatus)
-            .with('UNCHECKED', 'UNSOLVED', () => IMG_MAP.awake)
-            .otherwise(() => IMG_MAP.sleep)}
+            .with('UNCHECKED', 'UNSOLVED', () => LOTTIE_MAP.awake)
+            .otherwise(() => LOTTIE_MAP.sleep)}
           alt=""
-          draggable={false}
           width={84}
           height={84}
           css={{ scale: '195%' }}

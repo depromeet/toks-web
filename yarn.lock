@@ -1778,6 +1778,7 @@ __metadata:
     "@toast-ui/editor-plugin-code-syntax-highlight": ^3.1.0
     "@toast-ui/react-editor": ^3.2.1
     "@toss/emotion-utils": ^1.1.4
+    "@toss/lottie": ^1.1.4
     "@toss/react": ^1.3.3
     "@toss/use-overlay": ^1.3.0
     "@toss/utils": ^1.3.0
@@ -3279,6 +3280,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toss/impression-area@npm:^1.2.4":
+  version: 1.2.4
+  resolution: "@toss/impression-area@npm:1.2.4"
+  dependencies:
+    "@toss/react": ^1.3.4
+    "@toss/utils": ^1.3.0
+    "@types/react": ^18.0.21
+    lodash.debounce: ^4.0.8
+  peerDependencies:
+    react: "*"
+  checksum: 534d017bc6e14152bcb25ca54fb220d0bf80c10981a8f106c1df66a7e8e73a32332d43c1012ffd17cdca10ea5b1bc551886154810ddf3e4df26800ca7cb196a1
+  languageName: node
+  linkType: hard
+
+"@toss/lottie@npm:^1.1.4":
+  version: 1.1.4
+  resolution: "@toss/lottie@npm:1.1.4"
+  dependencies:
+    "@toss/impression-area": ^1.2.4
+    "@toss/react": ^1.3.4
+    "@toss/utils": ^1.3.0
+    lodash.debounce: ^4.0.8
+    lottie-web: ^5.5.9
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18
+    react-dom: ^16.0.0 || ^17.0.0 || ^18
+  checksum: a51c8ac8f0b883d69778ac99d951e47a2ae984cfc6c4faf0762e89430ad666e56da5670a0f518c79c0edd6928414ea4b00f1f913e8121e6202d5e224134b4ba4
+  languageName: node
+  linkType: hard
+
 "@toss/react-query@npm:^1.1.0":
   version: 1.1.0
   resolution: "@toss/react-query@npm:1.1.0"
@@ -3319,6 +3350,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toss/react@npm:^1.3.4":
+  version: 1.3.4
+  resolution: "@toss/react@npm:1.3.4"
+  dependencies:
+    "@babel/runtime": ^7.14.8
+    "@toss/storage": ^1.1.0
+    "@toss/utils": ^1.3.0
+    classnames: ^2.3.1
+    lodash: ^4.17.20
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18
+  checksum: 362e2c711b86c7d928290d8e5c262b944c84cd4ed3421d32ab7bb28090701ee7b30701f2b833f15fc1866b3afa893c80cb649273fd0c77cd4d8a5e6f10cb5438
+  languageName: node
+  linkType: hard
+
 "@toss/storage@npm:^1.0.4":
   version: 1.0.4
   resolution: "@toss/storage@npm:1.0.4"
@@ -3334,6 +3380,15 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.19.0
   checksum: d083ea0074b9ab9c7114e5c0be15ba8c05256cc6af5efd62de0c496b6be062bad3d212c71e3bba5b4612572c8e2eac28fd1b7f686348a111eb26ee995a9475ef
+  languageName: node
+  linkType: hard
+
+"@toss/storage@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@toss/storage@npm:1.1.0"
+  dependencies:
+    "@babel/runtime": ^7.19.0
+  checksum: c491c48cf23205de7e7d276e6a3d9753376987457d7e13b415b318ad5fcdc4d561967f5219962f6df3f2aba95d332cb0491bb1dd2f2dc612f4ab9d2245399b9d
   languageName: node
   linkType: hard
 
@@ -7948,6 +8003,13 @@ __metadata:
   bin:
     loose-envify: cli.js
   checksum: 6517e24e0cad87ec9888f500c5b5947032cdfe6ef65e1c1936a0c48a524b81e65542c9c3edc91c97d5bddc806ee2a985dbc79be89215d613b1de5db6d1cfe6f4
+  languageName: node
+  linkType: hard
+
+"lottie-web@npm:^5.5.9":
+  version: 5.10.0
+  resolution: "lottie-web@npm:5.10.0"
+  checksum: f590581b59437ffac984ee3fe3deaa03aa0d6f97b37443a9fd5f42c5e237fc40de8713685b075a90723d421db9d0b4dcabd1f48ae2fc1335d4beb123149561f6
   languageName: node
   linkType: hard
 
