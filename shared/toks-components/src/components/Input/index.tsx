@@ -21,7 +21,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
     return (
       <Wrapper>
         <label htmlFor={name}>
-          <Text variant="body02">
+          <Text variant="headline">
             {label}
             {required && '*'}
           </Text>
