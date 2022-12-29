@@ -61,7 +61,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <QueryClientProvider client={queryClient}>
         <OverlayProvider>
           {getLayout(
-            <Layout login={false}>
+            <Layout>
               <Component {...pageProps} />
             </Layout>
           )}

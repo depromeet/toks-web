@@ -107,8 +107,7 @@ instance.interceptors.response.use(
 instance.interceptors.response.use(
   response => response.data,
   async function (error) {
-    // TODO: 인증처리 401로 통일되면 403 삭제
-    if (isToksError(error) && (error.status === 401 || error.status === 403)) {
+    if (isToksError(error) && error.status === 401) {
       //refresh 토큰 처리 로직 추가
       redirectToLoginPage();
       // redirect가 완료되고, API가 종료될 수 있도록 delay를 추가합니다.

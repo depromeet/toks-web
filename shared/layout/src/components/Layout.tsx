@@ -1,18 +1,19 @@
 import { PATHS, pushTo } from '@depromeet/path';
-import { ToksHeader } from '@depromeet/toks-components';
+import { SSRSuspense, ToksHeader } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { useBooleanState } from '@toss/react';
+import { useSuspendedQuery } from '@toss/react-query';
 import { useOverlay } from '@toss/use-overlay';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, ReactNode } from 'react';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation } from 'react-query';
 
 import { logout as requestLogout } from '../remote/logout';
-import { getUser } from '../remote/user';
+import { safelyGetUser } from '../remote/user';
 import { UserMenu } from './UserMenu';
 
-export function Layout({ children, login = true }: { children: ReactNode; login?: boolean }) {
-  const { data: user } = useQuery(getUser.queryKey, getUser);
+function Component({ children }: { children: ReactNode }) {
+  const { data: user } = useSuspendedQuery(safelyGetUser.queryKey, safelyGetUser, { retry: false });
   const { toggle } = useUserMenuDialog();
 
   const { mutateAsync: logout, isLoading } = useMutation(async () => {
@@ -25,20 +26,18 @@ export function Layout({ children, login = true }: { children: ReactNode; login?
     }
   });
 
+  const isNonMember = user == null;
+
   return (
     <StyledLayout>
-      {user != null ? (
+      {isNonMember ? (
+        <ToksHeader login={false} onClickButton={() => pushTo(PATHS.login.main)} />
+      ) : (
         <ToksHeader
           imgUrl={user.profileImageUrl}
           userName={user.nickname}
-          login={login}
           onClickButton={() => {
             if (isLoading) {
-              return;
-            }
-
-            if (!login) {
-              pushTo(PATHS.login.main);
               return;
             }
 
@@ -50,12 +49,18 @@ export function Layout({ children, login = true }: { children: ReactNode; login?
             });
           }}
         />
-      ) : (
-        <ToksHeader.Skeleton />
       )}
 
       {children}
     </StyledLayout>
+  );
+}
+
+export function Layout(props: ComponentProps<typeof Component>) {
+  return (
+    <SSRSuspense fallback={<ToksHeader.Skeleton />}>
+      <Component {...props} />
+    </SSRSuspense>
   );
 }
 
