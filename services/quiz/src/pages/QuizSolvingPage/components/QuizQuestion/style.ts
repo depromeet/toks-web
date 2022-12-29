@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   padding: 24px;
   background-color: ${theme.colors.gray110};
   border-radius: 16px;
-  width: 35vw;
+  width: 40vw;
   height: 82vh;
   margin-right: 52px;
 `;

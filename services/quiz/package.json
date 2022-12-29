@@ -37,7 +37,7 @@
     "next": "^12.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.41.1",
+    "react-hook-form": "^7.41.2",
     "react-query": "npm:@tanstack/react-query@4.0.10",
     "react-router-dom": "^6.6.1",
     "ts-pattern": "^4.0.5",
