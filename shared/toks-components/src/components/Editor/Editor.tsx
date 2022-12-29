@@ -7,11 +7,15 @@ import { useDebounce } from '@toss/react';
 import Prism from 'prismjs';
 import { useRef } from 'react';
 
+import { Text } from '../Text';
+
 export interface EditorProps extends TuiEditorProps {
+  label?: string;
+  required?: boolean;
   onChange: (data: string) => void;
 }
 
-export default function Editor({ onChange, ...rest }: EditorProps) {
+export default function Editor({ onChange, label, required, ...rest }: EditorProps) {
   const editorRef = useRef<TuiEditor>(null);
   const handleChange = useDebounce(() => {
     if (editorRef.current) {
@@ -22,6 +26,10 @@ export default function Editor({ onChange, ...rest }: EditorProps) {
 
   return (
     <EditorWrapper>
+      <Text variant="headline">
+        {label}
+        {required && '*'}
+      </Text>
       <TuiEditor
         ref={editorRef}
         initialEditType="wysiwyg"
@@ -43,7 +51,9 @@ export default function Editor({ onChange, ...rest }: EditorProps) {
 const EditorWrapper = styled.div`
   height: 100%;
   border-radius: 8px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   .toastui-editor-defaultUI {
     height: 100%;
     border-radius: 8px;

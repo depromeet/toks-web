@@ -6,5 +6,5 @@ export interface CreateStudyFormValues {
   startedAt: string;
   endedAt: string;
   capacity: CapacityResponse;
-  tagList: string[];
+  tags: string[];
 }
