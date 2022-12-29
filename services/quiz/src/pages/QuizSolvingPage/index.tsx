@@ -6,6 +6,7 @@ import { QuizEditor } from './components/QuizEditor';
 import { QuizQuestion } from './components/QuizQuestion';
 
 export default function QuizSolvingPage() {
+  //TODO: studyId 받아오기
   return (
     <div>
       <QuizNav mainTitle="똑스 풀기" studyId={1} />
