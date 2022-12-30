@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { SubmitModal } from '../ModalContents/SubmitModal';
 import { postQuizAnswer } from './remotes/quiz';
 import { Container, Wrapper } from './style';
 
