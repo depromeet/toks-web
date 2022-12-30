@@ -43,12 +43,12 @@ function QuizList() {
 
   return (
     <List>
-      <li>{isAddableQuiz ? <QuizAddButton /> : null}</li>
+      <li>{isAddableQuiz && <QuizAddButton />}</li>
       {isNotQuizEmpty &&
         quizList.map((quizItem, index) => (
           <QuizItem
             key={quizItem.quizId}
-            round={quizList.length - index + 1}
+            round={quizList.length - index}
             quiz={quizItem}
             setQuizItemStatus={setQuizItemStatus}
           />
