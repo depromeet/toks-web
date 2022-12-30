@@ -1,11 +1,14 @@
 import styled from '@emotion/styled';
 
-export const Item = styled.li`
-  padding: 22px 38.5px 22px 28px;
-  border-radius: 12px;
+export const ListItem = styled.li`
   :nth-of-type(n + 2) {
     margin-top: 12px;
   }
+`;
+
+export const Item = styled.div`
+  padding: 22px 38.5px 22px 28px;
+  border-radius: 12px;
 `;
 
 export const ItemDetails = styled.details``;
