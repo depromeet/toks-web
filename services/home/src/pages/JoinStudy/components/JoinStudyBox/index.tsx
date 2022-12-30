@@ -17,8 +17,13 @@ export function JoinStudyBox() {
     query: { studyId },
   } = useRouter();
 
-  const { mutate: studyMutation } = useMutation(postStudyById, {
-    onSuccess: () => (typeof studyId === 'string' ? pushTo(PATHS.quiz.studyDetail({ studyId })) : null),
+  const { mutate: studyMutation } = useMutation(async () => {
+    try {
+      await postStudyById(studyId);
+      typeof studyId === 'string' ? pushTo(PATHS.quiz.studyDetail({ studyId })) : null;
+    } catch (err) {
+      console.log(err);
+    }
   });
 
   const { data: study, isError } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudyById(studyId), {
@@ -30,7 +35,7 @@ export function JoinStudyBox() {
   }
 
   const onClick = () => {
-    studyMutation(studyId);
+    studyMutation();
   };
 
   const personnelDescription = STUDY_CATEGORY_OPTIONS.find(v => v.label === study?.capacity);
