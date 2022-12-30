@@ -3,6 +3,7 @@ import { Button, Image, Tag, Text } from '@depromeet/toks-components';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from 'react-query';
+import { kstFormat } from '@toss/date';
 
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { Wrapper } from 'pages/JoinStudy/components/JoinStudyBox/style';
@@ -16,29 +17,31 @@ export function JoinStudyBox() {
     query: { studyId },
   } = useRouter();
 
-  const { data: study } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudyById(studyId), {
-    enabled: Boolean(studyId),
-  });
   const { mutate: studyMutation } = useMutation(postStudyById, {
     onSuccess: () => (typeof studyId === 'string' ? pushTo(PATHS.quiz.studyDetail({ studyId })) : null),
   });
 
+  const { data: study, isError } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudyById(studyId), {
+    enabled: Boolean(studyId),
+  });
+
+  if (isError || study == null) {
+    return null;
+  }
+
   const onClick = () => {
     studyMutation(studyId);
   };
-
-  const startDate = study?.startedAt.split('T')[0].replaceAll('-', '. ');
-  const endDate = study?.endedAt.split('T')[0].replaceAll('-', '. ');
 
   const personnelDescription = STUDY_CATEGORY_OPTIONS.find(v => v.label === study?.capacity);
 
   return (
     <Wrapper>
       <div>
-        <Text variant="title03">{study?.name}</Text>;{/* tag margin 위아래 10 고려하여 18->8 */}
+        <Text variant="title03">{study.name}</Text>;{/* tag margin 위아래 10 고려하여 18->8 */}
         <Spacing size={8} />
         <Tag.Row>
-          {study?.tags.map(({ id, name }) => (
+          {study.tags.map(({ id, name }) => (
             <Tag key={id}>{name}</Tag>
           ))}
         </Tag.Row>
@@ -54,7 +57,7 @@ export function JoinStudyBox() {
             />
           }
           title="우리 스터디는"
-          description={<Text variant="body01">{study?.description}</Text>}
+          description={<Text variant="body01">{study.description}</Text>}
         />
         <StudyInfo
           leftAddon={
@@ -72,13 +75,13 @@ export function JoinStudyBox() {
                 시작일
               </Text>
               <Text variant="body01" css={{ marginLeft: '12px' }}>
-                {startDate} 일
+                {kstFormat(new Date(study.startedAt), 'yyyy. MM. dd E')}
               </Text>
               <Text variant="body02" color="gray040" css={{ marginLeft: '36px' }}>
                 종료일
               </Text>
               <Text variant="body01" css={{ marginLeft: '12px' }}>
-                {endDate} 일
+                {kstFormat(new Date(study.endedAt), 'yyyy. MM. dd E')}
               </Text>
             </>
           }
