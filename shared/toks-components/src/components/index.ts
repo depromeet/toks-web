@@ -9,6 +9,7 @@ export * from './ImageViewer';
 export * from './Editor';
 export * from './Timer';
 export * from './TimePicker';
+export * from './ToastViewer';
 
 export * from 'primereact/accordion';
 export * from 'primereact/autocomplete';
