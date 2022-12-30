@@ -11,5 +11,5 @@ export const useGetQuizList = () => {
 
 export const useSetClientQuizList = () => {
   const queryClient = useQueryClient();
-  return (state : QuizResponse[]) => queryClient.setQueryData(QUERY_KEYS.GET_QUIZ_LIST, state);
+  return (state: QuizResponse[]) => queryClient.setQueryData(QUERY_KEYS.GET_QUIZ_LIST, state);
 };

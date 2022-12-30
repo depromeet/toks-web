@@ -36,43 +36,49 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
   },
 };
 
-// TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
-// TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
 export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
-  const { quizId, endedAt, startedAt, timestamp, durationOfSecond, quizStatus: quizItemStatus, quiz: title, creator, unSubmitters } = quiz;
+  const {
+    quizId,
+    endedAt,
+    startedAt,
+    timestamp,
+    durationOfSecond,
+    quizStatus,
+    quiz: title,
+    creator,
+    unSubmitters,
+  } = quiz;
   const [limitDate, openDate, currentDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
-  // const [quizItemStatus, setQuizItemStatus] = useState(quizStatus);
-  const initialTime = getInitialTimerSecond(currentDate, durationOfSecond, limitDate, quizItemStatus);
+  const initialTime = getInitialTimerSecond(currentDate, durationOfSecond, limitDate, quizStatus);
   const { time, start: timerStart, stop: timerStop } = useTimer({ time: initialTime, enabled: false });
 
-  const [isFold, setIsFold] = useState(quizItemStatus !== 'DONE');
+  const [isFold, setIsFold] = useState(quizStatus !== 'DONE');
   const onFold = () => setIsFold(!isFold);
 
   useEffect(() => {
     if (time === 0) {
       timerStop();
-      // setQuizItemStatus('DONE');
-      setQuizItemStatus(quizId, 'DONE')
+      setQuizItemStatus(quizId, 'DONE');
     }
-  }, [time, timerStop]);
+  }, [time, quizId, timerStop, setQuizItemStatus]);
 
   useEffect(() => {
-    if (quizItemStatus === 'IN_PROGRESS') {
+    if (quizStatus === 'IN_PROGRESS') {
       timerStart();
     }
-  }, [quizItemStatus, timerStart]);
+  }, [quizStatus, timerStart]);
 
+  // TO_DO => IN_PROGRESS를 감지하기 위한 useEffect
   useEffect(() => {
     const interval = setInterval(() => {
       const newQuizItemStatus = getQuizItemStatus(openDate, limitDate);
       if (newQuizItemStatus === 'IN_PROGRESS') {
-        // setQuizItemStatus(newQuizItemStatus);
-        setQuizItemStatus(quizId, newQuizItemStatus)
+        setQuizItemStatus(quizId, newQuizItemStatus);
       }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [openDate, limitDate, quiz]);
+  }, [openDate, limitDate, quizId, setQuizItemStatus]);
 
   return (
     <Item css={{ backgroundColor: theme.colors.gray110 }}>
@@ -84,17 +90,12 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
           <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
             {title}
           </Text>
-          {quizItemStatus === 'TO_DO' && (
+          {quizStatus === 'TO_DO' && (
             <Text color="primary" variant="body02" css={{ margin: '0 18px 0 0' }}>
               기다려주세요!
             </Text>
           )}
-          <Button
-            type={QUIZ_ITEM_COLOR[quizItemStatus].button}
-            width={140}
-            disabled={quizItemStatus === 'TO_DO'}
-            size="medium"
-          >
+          <Button type={QUIZ_ITEM_COLOR[quizStatus].button} width={140} disabled={quizStatus === 'TO_DO'} size="medium">
             똑스 확인하기
           </Button>
           {isFold ? (
@@ -106,12 +107,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
         <ItemBody>
           <FlexRow css={{ marginTop: '36px' }}>
             <Icon iconName="ic-time" css={{ marginLeft: '3.2px' }} />
-            <Text
-              variant="title04"
-              color={QUIZ_ITEM_COLOR[quizItemStatus].timer}
-              css={{ margin: '0 0 0 9.2px' }}
-              as="h4"
-            >
+            <Text variant="title04" color={QUIZ_ITEM_COLOR[quizStatus].timer} css={{ margin: '0 0 0 9.2px' }} as="h4">
               {convertSecondToString(time)}
             </Text>
           </FlexRow>

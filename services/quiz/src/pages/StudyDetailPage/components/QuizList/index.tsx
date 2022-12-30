@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { Icon, SSRSuspense, Text, QuizStatus } from '@depromeet/toks-components';
+import { Icon, QuizStatus, SSRSuspense, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { ErrorBoundary } from '@toss/error-boundary';
 
@@ -36,20 +36,23 @@ function QuizList() {
 
   const isNotQuizEmpty = quizList[0] !== undefined;
   const isAllDone = quizList.every(quiz => quiz.quizStatus === 'DONE');
-  const isAddableQuiz = !isNotQuizEmpty || (isNotQuizEmpty && isAllDone)
+  const isAddableQuiz = !isNotQuizEmpty || (isNotQuizEmpty && isAllDone);
 
-  const setQuizItemStatus = (quizId : number, newQuizStatus: QuizStatus) => 
-    setQuizList(quizList.map(quiz => quizId === quiz.quizId? {...quiz, quizStatus: newQuizStatus} : quiz));
+  const setQuizItemStatus = (quizId: number, newQuizStatus: QuizStatus) =>
+    setQuizList(quizList.map(quiz => (quizId === quiz.quizId ? { ...quiz, quizStatus: newQuizStatus } : quiz)));
 
   return (
     <List>
       <li>{isAddableQuiz ? <QuizAddButton /> : null}</li>
-      {
-        isNotQuizEmpty
-          && quizList.map((quizItem, index) => (
-            <QuizItem key={quizItem.quizId} round={quizList.length - index + 1} quiz={quizItem} setQuizItemStatus={setQuizItemStatus} />
-          ))
-      }
+      {isNotQuizEmpty &&
+        quizList.map((quizItem, index) => (
+          <QuizItem
+            key={quizItem.quizId}
+            round={quizList.length - index + 1}
+            quiz={quizItem}
+            setQuizItemStatus={setQuizItemStatus}
+          />
+        ))}
     </List>
   );
 }
