@@ -1,3 +1,4 @@
+import { default as back } from './icons/ic_back.svg';
 import { default as bronze } from './icons/ic_bronze.svg';
 import { default as checked } from './icons/ic_checked.svg';
 import { default as chevronDown } from './icons/ic_chevron-down.svg';
@@ -17,7 +18,6 @@ import { default as silver } from './icons/ic_silver.svg';
 import { default as success } from './icons/ic_success.svg';
 import { default as time } from './icons/ic_time.svg';
 import { default as unchecked } from './icons/ic_unchecked.svg';
-import { default as back } from './icons/ic_back.svg';
 
 export const ICONS = {
   'ic-checked': checked,
