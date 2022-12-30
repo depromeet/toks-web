@@ -1,4 +1,4 @@
-import { Global, css } from '@emotion/react';
+import { Global, css, ThemeProvider } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
@@ -6,8 +6,9 @@ import Head from 'next/head';
 import { ReactElement, ReactNode, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { OverlayProvider } from '@toss/use-overlay';
-import { GlobalStyle } from '@depromeet/toks-components';
+import { GlobalStyle as ToksDesignSystemStyle } from '@depromeet/toks-components';
 import { Layout } from '@depromeet/layout';
+import { theme } from '@depromeet/theme';
 
 import 'yet-another-react-lightbox/styles.css';
 
@@ -57,17 +58,19 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
 
       <Global styles={normalizedStyles} />
       <Global styles={disallowUserSelectStyle} />
-      <GlobalStyle />
+      <ToksDesignSystemStyle />
       {/* Color Token 설정 */}
-      <QueryClientProvider client={queryClient}>
-        <OverlayProvider>
-          {getLayout(
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          )}
-        </OverlayProvider>
-      </QueryClientProvider>
+      <ThemeProvider theme={theme}>
+        <QueryClientProvider client={queryClient}>
+          <OverlayProvider>
+            {getLayout(
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            )}
+          </OverlayProvider>
+        </QueryClientProvider>
+      </ThemeProvider>
     </>
   );
 }
