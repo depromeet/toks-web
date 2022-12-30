@@ -38,8 +38,8 @@ export function JoinStudyBox() {
         <Text variant="title03">{study?.name}</Text>;{/* tag margin 위아래 10 고려하여 18->8 */}
         <Spacing size={8} />
         <Tag.Row>
-          {study?.tags.map(tag => (
-            <Tag key={tag.id}>{tag.name}</Tag>
+          {study?.tags.map(({ id, name }) => (
+            <Tag key={id}>{name}</Tag>
           ))}
         </Tag.Row>
       </div>
