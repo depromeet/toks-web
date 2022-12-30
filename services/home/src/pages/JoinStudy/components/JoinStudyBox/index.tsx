@@ -1,9 +1,9 @@
 import { PATHS, pushTo } from '@depromeet/path';
-import { Button, getStudy, Image, Tag, Text } from '@depromeet/toks-components';
+import { Button, Image, Tag, Text, getStudy } from '@depromeet/toks-components';
+import { kstFormat } from '@toss/date';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from 'react-query';
-import { kstFormat } from '@toss/date';
 
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { Wrapper } from 'pages/JoinStudy/components/JoinStudyBox/style';
