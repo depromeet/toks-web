@@ -11,6 +11,7 @@ import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style
 interface QuizItemProps {
   round: number;
   quiz: QuizResponse;
+  setQuizItemStatus: (quizId: number, newQuizStatus: QuizStatus) => QuizResponse[] | undefined;
 }
 
 type QuizItemColorMap = {
@@ -37,20 +38,21 @@ const QUIZ_ITEM_COLOR: QuizItemColorMap = {
 
 // TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
 // TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
-export function QuizItem({ round, quiz }: QuizItemProps) {
-  const { endedAt, startedAt, timestamp, durationOfSecond, quizStatus, quiz: title, creator, unSubmitters } = quiz;
+export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
+  const { quizId, endedAt, startedAt, timestamp, durationOfSecond, quizStatus: quizItemStatus, quiz: title, creator, unSubmitters } = quiz;
   const [limitDate, openDate, currentDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
-  const [quizItemStatus, setQuizItemStatus] = useState(quizStatus);
-  const initialTime = getInitialTimerSecond(currentDate, durationOfSecond, limitDate, quizStatus);
+  // const [quizItemStatus, setQuizItemStatus] = useState(quizStatus);
+  const initialTime = getInitialTimerSecond(currentDate, durationOfSecond, limitDate, quizItemStatus);
   const { time, start: timerStart, stop: timerStop } = useTimer({ time: initialTime, enabled: false });
 
-  const [isFold, setIsFold] = useState(quizStatus !== 'DONE');
+  const [isFold, setIsFold] = useState(quizItemStatus !== 'DONE');
   const onFold = () => setIsFold(!isFold);
 
   useEffect(() => {
     if (time === 0) {
       timerStop();
-      setQuizItemStatus('DONE');
+      // setQuizItemStatus('DONE');
+      setQuizItemStatus(quizId, 'DONE')
     }
   }, [time, timerStop]);
 
@@ -60,16 +62,13 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
     }
   }, [quizItemStatus, timerStart]);
 
-  // TODO: useInterval 사용으로 추후 변경해봐야 함
   useEffect(() => {
     const interval = setInterval(() => {
       const newQuizItemStatus = getQuizItemStatus(openDate, limitDate);
       if (newQuizItemStatus === 'IN_PROGRESS') {
-        setQuizItemStatus(newQuizItemStatus);
+        // setQuizItemStatus(newQuizItemStatus);
+        setQuizItemStatus(quizId, newQuizItemStatus)
       }
-      // if (time === 0) {
-      //   setQuizItemStatus('DONE');
-      // }
     }, 1000);
 
     return () => clearInterval(interval);
