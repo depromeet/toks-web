@@ -10,7 +10,7 @@ export * from './Editor';
 export * from './Timer';
 export * from './TimePicker';
 
-export * from 'primereact/accordion';
+export * from './Accordion';
 export * from 'primereact/autocomplete';
 export * from './UserAvatar';
 
