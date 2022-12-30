@@ -1,7 +1,6 @@
 import { Button, Image, Text, Timer } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
-
-export function AnswerConfirmModal() {
+default export function AnswerConfirmModal() {
   return (
     <Flex.Center direction="column">
       <Text variant="title03">똑스 풀기가 끝나면</Text>
@@ -12,7 +11,7 @@ export function AnswerConfirmModal() {
       </Text>
       <Text variant="title03" color="gray040">
         {/* time = quiz.durationOfSecond 넘기기 */}
-        <Timer />
+        <Timer />ß
       </Text>
       <Image
         width={170}

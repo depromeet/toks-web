@@ -1,5 +1,7 @@
 import { Button, useModal } from '@depromeet/toks-components';
 import { Spacing } from '@toss/emotion-utils';
+import { AnswerConfirmModal } from 'common/components/ModalContents/AnswerConfirmModal';
+import { SubmitModal } from 'common/components/ModalContents/SubmitModal';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -32,7 +34,12 @@ export function QuizEditor() {
 
   const openModal = async () => {
     await open({
-      children: <SubmitModal />,
+      children: (
+        <>
+          <SubmitModal />
+          <AnswerConfirmModal />
+        </>
+      ),
     });
   };
 
