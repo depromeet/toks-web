@@ -1,6 +1,7 @@
 import { Button, Image, Text, Timer } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
-default export function AnswerConfirmModal() {
+
+export function AnswerConfirmModal() {
   return (
     <Flex.Center direction="column">
       <Text variant="title03">똑스 풀기가 끝나면</Text>

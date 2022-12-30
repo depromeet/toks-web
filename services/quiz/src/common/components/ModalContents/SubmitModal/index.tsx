@@ -1,5 +1,6 @@
 import { Button, Image, Text } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
+
 export function SubmitModal() {
   return (
     <Flex.Center direction="column">
