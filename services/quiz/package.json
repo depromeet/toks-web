@@ -37,7 +37,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.41.1",
     "react-query": "npm:@tanstack/react-query@4.0.10",
-    "ts-pattern": "^4.0.5"
+    "ts-pattern": "^4.0.5",
+    "yet-another-react-lightbox": "^2.2.3"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.5.1",
