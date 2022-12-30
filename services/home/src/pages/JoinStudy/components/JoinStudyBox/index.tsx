@@ -1,5 +1,5 @@
 import { PATHS, pushTo } from '@depromeet/path';
-import { Button, Image, Tag, Text } from '@depromeet/toks-components';
+import { Button, getStudy, Image, Tag, Text } from '@depromeet/toks-components';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useMutation, useQuery } from 'react-query';
@@ -8,7 +8,7 @@ import { kstFormat } from '@toss/date';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { Wrapper } from 'pages/JoinStudy/components/JoinStudyBox/style';
 import { StudyInfo } from 'pages/JoinStudy/components/StudyInfo';
-import { getStudyById, postStudyById } from 'pages/JoinStudy/remotes/study';
+import { postStudyById } from 'pages/JoinStudy/remotes/study';
 
 import { STUDY_CATEGORY_OPTIONS } from './constants';
 
@@ -26,7 +26,7 @@ export function JoinStudyBox() {
     }
   });
 
-  const { data: study, isError } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudyById(studyId), {
+  const { data: study, isError } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudy(Number(studyId)), {
     enabled: Boolean(studyId),
   });
 
