@@ -1,10 +1,9 @@
 import { theme } from '@depromeet/theme';
-import { Icon, SSRSuspense, Text } from '@depromeet/toks-components';
+import { Icon, QuizStatus, SSRSuspense, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { ErrorBoundary } from '@toss/error-boundary';
-import { useEffect, useState } from 'react';
 
-import { useGetQuizList } from 'pages/StudyDetailPage/hooks/queries/quizList';
+import { useGetQuizList, useSetClientQuizList } from 'pages/StudyDetailPage/hooks/queries/quizList';
 
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
@@ -32,29 +31,28 @@ const QuizAddButton = () => (
 );
 
 function QuizList() {
-  const { data: quizList } = useGetQuizList();
+  const quizList = useGetQuizList();
+  const setQuizList = useSetClientQuizList();
 
   const isNotQuizEmpty = quizList[0] !== undefined;
   const isAllDone = quizList.every(quiz => quiz.quizStatus === 'DONE');
-  const [isAddState, setIsAddState] = useState(!isNotQuizEmpty || (isNotQuizEmpty && isAllDone));
+  const isAddableQuiz = !isNotQuizEmpty || (isNotQuizEmpty && isAllDone);
 
-  // TODO: useEffect의 deps를 이용해서 하자니 quizList는 state가 아님 일단은 1초마다 업데이트 하는걸루..
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsAddState(quizList.every(quiz => quiz.quizStatus === 'DONE'));
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [quizList]);
+  const setQuizItemStatus = (quizId: number, newQuizStatus: QuizStatus) =>
+    setQuizList(quizList.map(quiz => (quizId === quiz.quizId ? { ...quiz, quizStatus: newQuizStatus } : quiz)));
 
   return (
     <List>
-      <li>{isAddState ? <QuizAddButton /> : null}</li>
-      {isNotQuizEmpty
-        ? quizList.map((quizItem, index) => (
-            <QuizItem key={quizItem.quizId} round={quizList.length - index + 1} quiz={quizItem} />
-          ))
-        : null}
+      <li>{isAddableQuiz && <QuizAddButton />}</li>
+      {isNotQuizEmpty &&
+        quizList.map((quizItem, index) => (
+          <QuizItem
+            key={quizItem.quizId}
+            round={quizList.length - index}
+            quiz={quizItem}
+            setQuizItemStatus={setQuizItemStatus}
+          />
+        ))}
     </List>
   );
 }

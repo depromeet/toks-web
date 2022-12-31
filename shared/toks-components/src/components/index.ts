@@ -11,7 +11,7 @@ export * from './Timer';
 export * from './TimePicker';
 export * from './ToastViewer';
 
-export * from 'primereact/accordion';
+export * from './Accordion';
 export * from 'primereact/autocomplete';
 export * from './UserAvatar';
 
