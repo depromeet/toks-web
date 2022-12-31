@@ -121,12 +121,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
           <>
             <FlexRow css={{ marginTop: '36px' }}>
               <Icon iconName="ic-time" css={{ marginLeft: '3.2px' }} />
-              <Text
-                variant="title04"
-                color={QUIZ_ITEM[quizStatus].timerColor}
-                css={{ margin: '0 0 0 9.2px' }}
-                as="h4"
-              >
+              <Text variant="title04" color={QUIZ_ITEM[quizStatus].timerColor} css={{ margin: '0 0 0 9.2px' }} as="h4">
                 {convertSecondToString(time)}
               </Text>
             </FlexRow>
