@@ -15,23 +15,31 @@ interface QuizItemProps {
 
 type QuizItemColorMap = {
   [key in QuizStatus]: {
-    button: ComponentProps<typeof Button>['type'];
-    timer: KeyOfColors;
+    buttonColor: ComponentProps<typeof Button>['type'];
+    timerColor: KeyOfColors;
+    backgroundColor: string;
+    buttonName: string;
   };
 };
 
-const QUIZ_ITEM_COLOR: QuizItemColorMap = {
+const QUIZ_ITEM: QuizItemColorMap = {
   DONE: {
-    button: 'general',
-    timer: 'gray060',
+    buttonColor: 'general',
+    timerColor: 'gray060',
+    backgroundColor: theme.colors.gray110,
+    buttonName: '똑스 확인하기',
   },
   TO_DO: {
-    button: 'primary',
-    timer: 'primary',
+    buttonColor: 'primary',
+    timerColor: 'primary',
+    backgroundColor: theme.colors.gray100,
+    buttonName: '똑스 풀기',
   },
   IN_PROGRESS: {
-    button: 'primary',
-    timer: 'primary',
+    buttonColor: 'primary',
+    timerColor: 'primary',
+    backgroundColor: theme.colors.gray100,
+    buttonName: '똑스 풀기',
   },
 };
 
@@ -80,13 +88,13 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
       <Accordion
         isFold={isFold}
         onFold={onFold}
-        backgroundColor={theme.colors.gray110}
+        backgroundColor={QUIZ_ITEM[quizItemStatus].backgroundColor}
         headerNodes={
           <>
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               {round}회차
             </Text>
-            <Text variant="headline" css={{ marginLeft: '18px', flex: 1 }} as="h5">
+            <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
               {title}
             </Text>
             {quizItemStatus === 'TO_DO' && (
@@ -95,12 +103,12 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
               </Text>
             )}
             <Button
-              type={QUIZ_ITEM_COLOR[quizItemStatus].button}
+              type={QUIZ_ITEM[quizItemStatus].buttonColor}
               width={140}
               disabled={quizItemStatus === 'TO_DO'}
               size="medium"
             >
-              똑스 확인하기
+              {QUIZ_ITEM[quizItemStatus].buttonName}
             </Button>
           </>
         }
@@ -110,8 +118,8 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
               <Icon iconName="ic-time" css={{ marginLeft: '3.2px' }} />
               <Text
                 variant="title04"
-                color={QUIZ_ITEM_COLOR[quizItemStatus].timer}
-                css={{ marginLeft: '9.2px' }}
+                color={QUIZ_ITEM[quizItemStatus].timerColor}
+                css={{ margin: '0 0 0 9.2px' }}
                 as="h4"
               >
                 {convertSecondToString(time)}
@@ -119,13 +127,13 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
             </FlexRow>
             <Divider css={{ marginTop: '22.25px' }} />
             <FlexRow css={{ marginTop: '14px' }}>
-              <Text variant="subhead" css={{ margin: '0 0 0 0' }} as="h6">
+              <Text variant="subhead" css={{ margin: '0' }} as="h6">
                 똑스 만든사람
               </Text>
               <UserAvatar
                 image={creator.profileImageUrl}
                 userName={creator.nickname}
-                css={{ margin: '0 0 0 22px' }}
+                css={{ marginLeft: '22px' }}
                 size="large"
                 className={`avatar--user_${creator.userId}`}
                 tooltip={true}

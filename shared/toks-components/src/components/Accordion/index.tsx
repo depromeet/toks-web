@@ -13,8 +13,6 @@ interface AccordionProps {
 }
 
 export function Accordion({ headerNodes, bodyNodes, backgroundColor, isFold, onFold }: AccordionProps) {
-  
-
   return (
     <Container style={{ backgroundColor }}>
       <Details open={isFold} onToggle={onFold}>
