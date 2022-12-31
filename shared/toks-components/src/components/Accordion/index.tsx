@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 
 import { Icon } from '@depromeet/toks-components';
 
@@ -8,12 +8,12 @@ interface AccordionProps {
   headerNodes: ReactNode;
   bodyNodes: ReactNode;
   backgroundColor: string;
-  initIsFold: boolean;
+  isFold: boolean;
+  onFold: () => void;
 }
 
-export function Accordion({ headerNodes, bodyNodes, backgroundColor, initIsFold }: AccordionProps) {
-  const [isFold, setIsFold] = useState(initIsFold);
-  const onFold = () => setIsFold(!isFold);
+export function Accordion({ headerNodes, bodyNodes, backgroundColor, isFold, onFold }: AccordionProps) {
+  
 
   return (
     <Container style={{ backgroundColor }}>

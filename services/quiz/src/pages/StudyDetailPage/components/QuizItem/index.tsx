@@ -44,6 +44,9 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
   const initialTime = getInitialTimerSecond(currentDate, durationOfSecond, limitDate, quizStatus);
   const { time, start: timerStart, stop: timerStop } = useTimer({ time: initialTime, enabled: false });
 
+  const [isFold, setIsFold] = useState(quizStatus !== 'DONE');
+  const onFold = () => setIsFold(!isFold);
+
   useEffect(() => {
     if (time === 0) {
       timerStop();
@@ -75,7 +78,8 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
   return (
     <ListItem>
       <Accordion
-        initIsFold={quizStatus !== 'DONE'}
+        isFold={isFold}
+        onFold={onFold}
         backgroundColor={theme.colors.gray110}
         headerNodes={
           <>
