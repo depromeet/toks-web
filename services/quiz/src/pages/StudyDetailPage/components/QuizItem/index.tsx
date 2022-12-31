@@ -4,13 +4,14 @@ import { convertSecondToString, getInitialTimerSecond, getQuizItemStatus } from 
 import { useTimer } from '@depromeet/utils';
 import { ComponentProps, useEffect, useState } from 'react';
 
-import { Divider } from 'components/common/Divider';
+import { Divider } from 'common/components/Divider';
 
 import { FlexRow, ListItem, Space } from './style';
 
 interface QuizItemProps {
   round: number;
   quiz: QuizResponse;
+  setQuizItemStatus: (quizId: number, newQuizStatus: QuizStatus) => QuizResponse[] | undefined;
 }
 
 type QuizItemColorMap = {
@@ -43,12 +44,19 @@ const QUIZ_ITEM: QuizItemColorMap = {
   },
 };
 
-// TODO: 카운트 돌아가고 있을시 첫 렌더링에 반영되도록 해야함.
-// TODO: 퀴즈 추가 버튼 1초 늦게 나오는 문제 해결해야 함,,,
-export function QuizItem({ round, quiz }: QuizItemProps) {
-  const { endedAt, startedAt, timestamp, durationOfSecond, quizStatus, quiz: title, creator, unSubmitters } = quiz;
+export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
+  const {
+    quizId,
+    endedAt,
+    startedAt,
+    timestamp,
+    durationOfSecond,
+    quizStatus,
+    quiz: title,
+    creator,
+    unSubmitters,
+  } = quiz;
   const [limitDate, openDate, currentDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
-  const [quizItemStatus, setQuizItemStatus] = useState(quizStatus);
   const initialTime = getInitialTimerSecond(currentDate, durationOfSecond, limitDate, quizStatus);
   const { time, start: timerStart, stop: timerStop } = useTimer({ time: initialTime, enabled: false });
 
@@ -58,37 +66,34 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
   useEffect(() => {
     if (time === 0) {
       timerStop();
-      setQuizItemStatus('DONE');
+      setQuizItemStatus(quizId, 'DONE');
     }
-  }, [time, timerStop]);
+  }, [time, quizId, timerStop, setQuizItemStatus]);
 
   useEffect(() => {
-    if (quizItemStatus === 'IN_PROGRESS') {
+    if (quizStatus === 'IN_PROGRESS') {
       timerStart();
     }
-  }, [quizItemStatus, timerStart]);
+  }, [quizStatus, timerStart]);
 
-  // TODO: useInterval 사용으로 추후 변경해봐야 함
+  // TO_DO => IN_PROGRESS를 감지하기 위한 useEffect
   useEffect(() => {
     const interval = setInterval(() => {
       const newQuizItemStatus = getQuizItemStatus(openDate, limitDate);
       if (newQuizItemStatus === 'IN_PROGRESS') {
-        setQuizItemStatus(newQuizItemStatus);
+        setQuizItemStatus(quizId, newQuizItemStatus);
       }
-      // if (time === 0) {
-      //   setQuizItemStatus('DONE');
-      // }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [openDate, limitDate, quiz]);
+  }, [openDate, limitDate, quizId, setQuizItemStatus]);
 
   return (
     <ListItem>
       <Accordion
         isFold={isFold}
         onFold={onFold}
-        backgroundColor={QUIZ_ITEM[quizItemStatus].backgroundColor}
+        backgroundColor={QUIZ_ITEM[quizStatus].backgroundColor}
         headerNodes={
           <>
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
@@ -97,18 +102,18 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
             <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
               {title}
             </Text>
-            {quizItemStatus === 'TO_DO' && (
+            {quizStatus === 'TO_DO' && (
               <Text color="primary" variant="body02" css={{ marginRight: '18px' }}>
                 기다려주세요!
               </Text>
             )}
             <Button
-              type={QUIZ_ITEM[quizItemStatus].buttonColor}
+              type={QUIZ_ITEM[quizStatus].buttonColor}
               width={140}
-              disabled={quizItemStatus === 'TO_DO'}
+              disabled={quizStatus === 'TO_DO'}
               size="medium"
             >
-              {QUIZ_ITEM[quizItemStatus].buttonName}
+              {QUIZ_ITEM[quizStatus].buttonName}
             </Button>
           </>
         }
@@ -118,7 +123,7 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
               <Icon iconName="ic-time" css={{ marginLeft: '3.2px' }} />
               <Text
                 variant="title04"
-                color={QUIZ_ITEM[quizItemStatus].timerColor}
+                color={QUIZ_ITEM[quizStatus].timerColor}
                 css={{ margin: '0 0 0 9.2px' }}
                 as="h4"
               >
