@@ -1,4 +1,4 @@
-import { Icon, Text, Timer, UserAvatar } from '@depromeet/toks-components';
+import { Icon, Text, UserAvatar } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
@@ -7,6 +7,7 @@ import { QUERY_KEYS } from 'constants/queryKeys';
 import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
 
 import { DescriptionContainer, Line, Wrapper } from './style';
+import { QuizTimer } from '../QuizTimer';
 
 export function QuizQuestion() {
   const {
@@ -14,6 +15,11 @@ export function QuizQuestion() {
   } = useRouter();
 
   const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizId), { enabled: Boolean(quizId) });
+
+  if (!quiz) {
+    return;
+  }
+
   return (
     <Wrapper>
       <Flex css={{ alignItems: 'center' }}>
@@ -35,8 +41,7 @@ export function QuizQuestion() {
       <Flex css={{ textAlign: 'center' }}>
         <Icon iconName="ic-time" />
         <Text variant="title04" color="gray030" css={{ marginLeft: '10px' }}>
-          {/* time = quiz.durationOfSecond 넘기기 */}
-          <Timer />
+          <QuizTimer duration={quiz.durationOfSecond} />
         </Text>
       </Flex>
     </Wrapper>
