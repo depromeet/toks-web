@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
 import { QUERY_KEYS } from 'constants/queryKeys';
-import { getQuizById } from 'pages/QuizSolvingPage/remotes/quiz';
+import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
 
 import { DescriptionContainer, Line, Wrapper } from './style';
 

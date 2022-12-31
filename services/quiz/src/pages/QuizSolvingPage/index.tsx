@@ -3,7 +3,7 @@ import { Flex, Spacing } from '@toss/emotion-utils';
 import { QuizNav } from 'common/components/QuizNav';
 
 import { QuizEditor } from './components/QuizEditor';
-import { QuizQuestion } from './components/QuizQuestion';
+import { QuizQuestion } from '../../common/components/QuizQuestion';
 
 export default function QuizSolvingPage() {
   //TODO: studyId 받아오기
