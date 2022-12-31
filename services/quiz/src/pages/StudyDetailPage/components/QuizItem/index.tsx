@@ -131,13 +131,13 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
                 똑스 안 푼 사람
               </Text>
               <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ margin: '0 0 0 22px' }}>
-                {unSubmitters.map(user => (
+                {unSubmitters.map(({ userId, profileImageUrl, nickname }) => (
                   <UserAvatar
-                    key={user.userId}
-                    image={user.profileImageUrl}
-                    userName={user.nickname}
+                    key={userId}
+                    image={profileImageUrl}
+                    userName={nickname}
                     size="large"
-                    className={`avatar--user_${user.userId}`}
+                    className={`avatar--user_${userId}`}
                     tooltip={true}
                   />
                 ))}
