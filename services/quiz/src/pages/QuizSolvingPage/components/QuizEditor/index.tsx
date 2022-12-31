@@ -19,9 +19,9 @@ export function QuizEditor() {
   const [answer, setAnswer] = useState('');
 
   const {
-    query: { quizId },
+    query: { quizIdParams },
   } = useRouter();
-  const quizIdParams = Number(quizId);
+  const quizId = Number(quizIdParams);
 
   //button disable 제어
   useEffect(() => {
@@ -37,7 +37,7 @@ export function QuizEditor() {
       children: (
         <>
           {/* TODO: 모달 먼저 만들었는데 deadcode 때문에 answerconfirm 모달 임시로 넣어둠. 추후 삭제 예정 */}
-          <SubmitModal quizId={quizIdParams} />
+          <SubmitModal quizId={quizId} />
         </>
       ),
     });
@@ -45,7 +45,7 @@ export function QuizEditor() {
 
   const onClick = () => {
     openModal();
-    quizAnswerMutation({ answer, quizIdParams });
+    quizAnswerMutation({ answer, quizId });
   };
 
   return (

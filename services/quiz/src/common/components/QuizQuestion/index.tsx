@@ -11,10 +11,12 @@ import { QuizTimer } from '../QuizTimer';
 
 export function QuizQuestion() {
   const {
-    query: { quizId },
+    query: { quizIdParams },
   } = useRouter();
 
-  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizId), { enabled: Boolean(quizId) });
+  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizIdParams), {
+    enabled: Boolean(quizIdParams),
+  });
 
   if (!quiz) {
     return null;
