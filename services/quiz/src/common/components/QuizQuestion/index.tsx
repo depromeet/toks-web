@@ -17,7 +17,7 @@ export function QuizQuestion() {
   const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizId), { enabled: Boolean(quizId) });
 
   if (!quiz) {
-    return;
+    return null;
   }
 
   return (
