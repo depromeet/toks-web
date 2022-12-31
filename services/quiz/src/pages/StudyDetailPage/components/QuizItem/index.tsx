@@ -82,11 +82,11 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               {round}회차
             </Text>
-            <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
+            <Text variant="headline" css={{ marginLeft: '18px', flex: 1 }} as="h5">
               {title}
             </Text>
             {quizItemStatus === 'TO_DO' && (
-              <Text color="primary" variant="body02" css={{ margin: '0 18px 0 0' }}>
+              <Text color="primary" variant="body02" css={{ marginRight: '18px' }}>
                 기다려주세요!
               </Text>
             )}
@@ -107,7 +107,7 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
               <Text
                 variant="title04"
                 color={QUIZ_ITEM_COLOR[quizItemStatus].timer}
-                css={{ margin: '0 0 0 9.2px' }}
+                css={{ marginLeft: '9.2px' }}
                 as="h4"
               >
                 {convertSecondToString(time)}
@@ -130,7 +130,7 @@ export function QuizItem({ round, quiz }: QuizItemProps) {
               <Text variant="subhead" css={{ margin: '0' }} as="h6">
                 똑스 안 푼 사람
               </Text>
-              <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ margin: '0 0 0 22px' }}>
+              <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ marginLeft: '22px' }}>
                 {unSubmitters.map(({ userId, profileImageUrl, nickname }) => (
                   <UserAvatar
                     key={userId}
