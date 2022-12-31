@@ -1,7 +1,7 @@
 import { http } from '@depromeet/http';
 
-import { StudyResponse } from '../types';
+import { StudyEnterResponse } from '../types';
 
-export const getStudy = async (studyId: number) => {
-  return await http.get<StudyResponse>(`/api/v1/studies/${studyId}`);
+export const getStudy = async (studyId: number | string) => {
+  return await http.get<StudyEnterResponse>(`/api/v1/studies/${studyId}/enter`);
 };

@@ -1,3 +1,4 @@
+import { default as back } from './icons/ic_back.svg';
 import { default as bronze } from './icons/ic_bronze.svg';
 import { default as checked } from './icons/ic_checked.svg';
 import { default as chevronDown } from './icons/ic_chevron-down.svg';
@@ -38,6 +39,7 @@ export const ICONS = {
   'ic-bronze': bronze,
   'ic-silver': silver,
   'ic-gold': gold,
+  'ic-back': back,
 } as const;
 
 export type IconName = keyof typeof ICONS;

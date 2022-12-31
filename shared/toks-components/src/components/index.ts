@@ -4,6 +4,8 @@ export * from './BackButton';
 export * from './Text';
 export * from './SSRSuspense';
 export * from './Modal';
+export * from './ImageViewer';
+
 export * from './Editor';
 export * from './Timer';
 export * from './TimePicker';

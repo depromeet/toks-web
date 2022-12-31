@@ -1679,6 +1679,7 @@ __metadata:
     "@emotion/styled": ^11.9.3
     "@toss/emotion-utils": 1.1.3
     "@toss/react": ^1.3.3
+    "@toss/react-query": ^1.1.0
     "@toss/use-overlay": ^1.3.0
     "@types/node": ^18.0.3
     "@types/react": ^18.0.25
@@ -1821,9 +1822,11 @@ __metadata:
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
     react-hook-form: ^7.41.2
+    react-photo-album: ^2.0.0
     rimraf: ^3.0.2
     ts-pattern: ^4.0.6
     typescript: ^4.7.4
+    yet-another-react-lightbox: ^2.2.3
   peerDependencies:
     "@toss/use-overlay": ">=1.1.0"
   languageName: unknown
@@ -2738,6 +2741,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@remix-run/router@npm:1.2.1":
+  version: 1.2.1
+  resolution: "@remix-run/router@npm:1.2.1"
+  checksum: 71c947f83e130bf006226332aca395f626ad599b6d35dfe936f6a8f139cf37278bc1b36bce38c30f6062724402358296329f31c385b11ae59b13b76a2716d701
+  languageName: node
+  linkType: hard
+
 "@services/home@workspace:services/home":
   version: 0.0.0-use.local
   resolution: "@services/home@workspace:services/home"
@@ -2893,7 +2903,9 @@ __metadata:
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"
+    "@depromeet/http": 0.3.1
     "@depromeet/layout": "workspace:shared/layout"
+    "@depromeet/path": "workspace:shared/path"
     "@depromeet/theme": ^0.0.1
     "@depromeet/toks-components": "workspace:shared/toks-components"
     "@depromeet/utils": "workspace:shared/utils"
@@ -2927,11 +2939,13 @@ __metadata:
     prettier: ^2.7.1
     react: ^18.2.0
     react-dom: ^18.2.0
-    react-hook-form: ^7.41.1
+    react-hook-form: ^7.41.2
     react-query: "npm:@tanstack/react-query@4.0.10"
+    react-router-dom: ^6.6.1
     ts-pattern: ^4.0.5
     ts-prune: ^0.10.3
     typescript: ^4.7.4
+    yet-another-react-lightbox: ^2.2.3
   languageName: unknown
   linkType: soft
 
@@ -3360,7 +3374,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@toss/use-query-param@npm:^1.1.2":
+"@toss/use-query-param@npm:^1.1.2, @toss/use-query-param@npm:^1.1.3":
   version: 1.1.3
   resolution: "@toss/use-query-param@npm:1.1.3"
   peerDependencies:
@@ -5273,6 +5287,7 @@ __metadata:
     "@emotion/css": ^11.9.0
     "@emotion/react": ^11.9.3
     "@emotion/styled": ^11.9.3
+    "@toss/use-query-param": ^1.1.3
     "@types/node": ^18.0.3
     "@typescript-eslint/parser": ^5.36.1
     axios: ^0.27.2
@@ -9018,15 +9033,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.41.1":
-  version: 7.41.1
-  resolution: "react-hook-form@npm:7.41.1"
-  peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
-  checksum: 30f7ea67e29c3527d25f87b9ea8789f6722780759adf0718a0dadc6160227ae763c68ddedf63d8311f0902e4ce27225eff37b93a82eac868fc5e0a0d00dbbd14
-  languageName: node
-  linkType: hard
-
 "react-hook-form@npm:^7.41.2":
   version: 7.41.2
   resolution: "react-hook-form@npm:7.41.2"
@@ -9047,6 +9053,15 @@ __metadata:
   version: 18.2.0
   resolution: "react-is@npm:18.2.0"
   checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
+  languageName: node
+  linkType: hard
+
+"react-photo-album@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "react-photo-album@npm:2.0.0"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 93c667958e85eb5a1aa53d9e12b20aed9c7c2cbddbdcb8c343477f519eb917a33b048306a3dc46cdf0680326af6d0b2d5b8a95810f19bc821b9f6afb4a3f9137
   languageName: node
   linkType: hard
 
@@ -9083,6 +9098,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-router-dom@npm:^6.6.1":
+  version: 6.6.1
+  resolution: "react-router-dom@npm:6.6.1"
+  dependencies:
+    "@remix-run/router": 1.2.1
+    react-router: 6.6.1
+  peerDependencies:
+    react: ">=16.8"
+    react-dom: ">=16.8"
+  checksum: 68a4419c203add0df0203ac2a58e5832949105e0c0561a0850f74cac8e3108507fd8d9c62baeb10ea5ce4cb8eaddea9475bcb3787bdabb3ede23b55564b835ae
+  languageName: node
+  linkType: hard
+
 "react-router@npm:6.4.4":
   version: 6.4.4
   resolution: "react-router@npm:6.4.4"
@@ -9091,6 +9119,17 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: d82cc8b8bdf10e02e07d089f9d82987fa161c2f07583c973126f5f8a052c02b3d2339891ddbda1738f877755a407e2c35f0dc1ac52aaa1d2c853774d19753ea7
+  languageName: node
+  linkType: hard
+
+"react-router@npm:6.6.1":
+  version: 6.6.1
+  resolution: "react-router@npm:6.6.1"
+  dependencies:
+    "@remix-run/router": 1.2.1
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 58f0ad29123e2854d547915a1ae1cc2687504e396d71db50fe8f36ad733d7940a2914d45868a8478b6138536e119fa5e3303212b7c7b1d81d80cd5b0bbefdfa2
   languageName: node
   linkType: hard
 
@@ -10625,6 +10664,16 @@ __metadata:
     y18n: ^5.0.5
     yargs-parser: ^21.0.0
   checksum: 604bdb4a6395a870540d2f3fea083c8e28441f12da8fd05b172b1e68480f00ed73d76be4a05fac19de9bf55ec7729b41e81cf555cccaed700aa192e4fff64872
+  languageName: node
+  linkType: hard
+
+"yet-another-react-lightbox@npm:^2.2.3":
+  version: 2.2.3
+  resolution: "yet-another-react-lightbox@npm:2.2.3"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: ab9cfa8a885d05bde61ba641ff70676ddf5be92cbf6abe8604d5008c1b3f5d608f2753d724bcdf34da69a0be58e60d1c418199392b02e13e0cfc0b9904d44528
   languageName: node
   linkType: hard
 

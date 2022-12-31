@@ -165,4 +165,29 @@ const globalCss = css`
       color: ${theme.colors.primary} !important;
     }
   }
+
+  // ImageViewer background
+  .yarl__container {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+  }
+
+  // lightbox 왼쪽 버튼
+  .yarl__navigation_prev {
+    padding: 0 220px 0 114px !important;
+  }
+  // lightbox 오른쪽 버튼
+  .yarl__navigation_next {
+    padding: 0 114px 0 220px !important;
+    height: 50px;
+  }
+  // lightbox image max width height
+  .yarl__slide_image {
+    max-width: 800px !important;
+    max-height: 800px !important;
+  }
+  // lightbox 상단 x 버튼
+  .yarl__toolbar .yarl__button {
+    padding-right: 114px !important;
+    color: ${theme.colors.gray080} !important;
+  }
 `;
