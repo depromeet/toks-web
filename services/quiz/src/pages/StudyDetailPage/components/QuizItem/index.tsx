@@ -1,12 +1,12 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
-import { Button, Icon, QuizResponse, QuizStatus, Text, UserAvatar } from '@depromeet/toks-components';
+import { Accordion, Button, Icon, QuizResponse, QuizStatus, Text, UserAvatar } from '@depromeet/toks-components';
 import { convertSecondToString, getInitialTimerSecond, getQuizItemStatus } from '@depromeet/toks-components/src/utils';
 import { useTimer } from '@depromeet/utils';
 import { ComponentProps, useEffect, useState } from 'react';
 
 import { Divider } from 'common/components/Divider';
 
-import { FlexRow, Item, ItemBody, ItemDetails, ItemHeader, Space } from './style';
+import { FlexRow, ListItem, Space } from './style';
 
 interface QuizItemProps {
   round: number;
@@ -16,23 +16,31 @@ interface QuizItemProps {
 
 type QuizItemColorMap = {
   [key in QuizStatus]: {
-    button: ComponentProps<typeof Button>['type'];
-    timer: KeyOfColors;
+    buttonColor: ComponentProps<typeof Button>['type'];
+    timerColor: KeyOfColors;
+    backgroundColor: string;
+    buttonName: string;
   };
 };
 
-const QUIZ_ITEM_COLOR: QuizItemColorMap = {
+const QUIZ_ITEM: QuizItemColorMap = {
   DONE: {
-    button: 'general',
-    timer: 'gray060',
+    buttonColor: 'general',
+    timerColor: 'gray060',
+    backgroundColor: theme.colors.gray110,
+    buttonName: '똑스 확인하기',
   },
   TO_DO: {
-    button: 'primary',
-    timer: 'primary',
+    buttonColor: 'primary',
+    timerColor: 'primary',
+    backgroundColor: theme.colors.gray100,
+    buttonName: '똑스 풀기',
   },
   IN_PROGRESS: {
-    button: 'primary',
-    timer: 'primary',
+    buttonColor: 'primary',
+    timerColor: 'primary',
+    backgroundColor: theme.colors.gray100,
+    buttonName: '똑스 풀기',
   },
 };
 
@@ -81,68 +89,75 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
   }, [openDate, limitDate, quizId, setQuizItemStatus]);
 
   return (
-    <Item css={{ backgroundColor: theme.colors.gray110 }}>
-      <ItemDetails open={isFold} onToggle={onFold}>
-        <ItemHeader>
-          <Text variant="subhead" css={{ margin: '0' }} as="h6">
-            {round}회차
-          </Text>
-          <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
-            {title}
-          </Text>
-          {quizStatus === 'TO_DO' && (
-            <Text color="primary" variant="body02" css={{ margin: '0 18px 0 0' }}>
-              기다려주세요!
-            </Text>
-          )}
-          <Button type={QUIZ_ITEM_COLOR[quizStatus].button} width={140} disabled={quizStatus === 'TO_DO'} size="medium">
-            똑스 확인하기
-          </Button>
-          {isFold ? (
-            <Icon iconName="ic-chevron-up" css={{ marginLeft: '24px' }} />
-          ) : (
-            <Icon iconName="ic-chevron-down" css={{ marginLeft: '24px' }} />
-          )}
-        </ItemHeader>
-        <ItemBody>
-          <FlexRow css={{ marginTop: '36px' }}>
-            <Icon iconName="ic-time" css={{ marginLeft: '3.2px' }} />
-            <Text variant="title04" color={QUIZ_ITEM_COLOR[quizStatus].timer} css={{ margin: '0 0 0 9.2px' }} as="h4">
-              {convertSecondToString(time)}
-            </Text>
-          </FlexRow>
-          <Divider css={{ marginTop: '22.25px' }} />
-          <FlexRow css={{ marginTop: '14px' }}>
-            <Text variant="subhead" css={{ margin: '0 0 0 0' }} as="h6">
-              똑스 만든사람
-            </Text>
-            <UserAvatar
-              image={creator.profileImageUrl}
-              userName={creator.nickname}
-              css={{ margin: '0 0 0 22px' }}
-              size="large"
-              className={`avatar--user_${creator.userId}`}
-              tooltip={true}
-            />
-            <Space css={{ flex: 1 }} />
+    <ListItem>
+      <Accordion
+        isFold={isFold}
+        onFold={onFold}
+        backgroundColor={QUIZ_ITEM[quizStatus].backgroundColor}
+        headerNodes={
+          <>
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
-              똑스 안 푼 사람
+              {round}회차
             </Text>
-            <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ margin: '0 0 0 22px' }}>
-              {unSubmitters.map(user => (
-                <UserAvatar
-                  key={user.userId}
-                  image={user.profileImageUrl}
-                  userName={user.nickname}
-                  size="large"
-                  className={`avatar--user_${user.userId}`}
-                  tooltip={true}
-                />
-              ))}
-            </UserAvatar.Group>
-          </FlexRow>
-        </ItemBody>
-      </ItemDetails>
-    </Item>
+            <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
+              {title}
+            </Text>
+            {quizStatus === 'TO_DO' && (
+              <Text color="primary" variant="body02" css={{ marginRight: '18px' }}>
+                기다려주세요!
+              </Text>
+            )}
+            <Button
+              type={QUIZ_ITEM[quizStatus].buttonColor}
+              width={140}
+              disabled={quizStatus === 'TO_DO'}
+              size="medium"
+            >
+              {QUIZ_ITEM[quizStatus].buttonName}
+            </Button>
+          </>
+        }
+        bodyNodes={
+          <>
+            <FlexRow css={{ marginTop: '36px' }}>
+              <Icon iconName="ic-time" css={{ marginLeft: '3.2px' }} />
+              <Text variant="title04" color={QUIZ_ITEM[quizStatus].timerColor} css={{ margin: '0 0 0 9.2px' }} as="h4">
+                {convertSecondToString(time)}
+              </Text>
+            </FlexRow>
+            <Divider css={{ marginTop: '22.25px' }} />
+            <FlexRow css={{ marginTop: '14px' }}>
+              <Text variant="subhead" css={{ margin: '0' }} as="h6">
+                똑스 만든사람
+              </Text>
+              <UserAvatar
+                image={creator.profileImageUrl}
+                userName={creator.nickname}
+                css={{ marginLeft: '22px' }}
+                size="large"
+                className={`avatar--user_${creator.userId}`}
+                tooltip={true}
+              />
+              <Space css={{ flex: 1 }} />
+              <Text variant="subhead" css={{ margin: '0' }} as="h6">
+                똑스 안 푼 사람
+              </Text>
+              <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ marginLeft: '22px' }}>
+                {unSubmitters.map(({ userId, profileImageUrl, nickname }) => (
+                  <UserAvatar
+                    key={userId}
+                    image={profileImageUrl}
+                    userName={nickname}
+                    size="large"
+                    className={`avatar--user_${userId}`}
+                    tooltip={true}
+                  />
+                ))}
+              </UserAvatar.Group>
+            </FlexRow>
+          </>
+        }
+      />
+    </ListItem>
   );
 }
