@@ -13,12 +13,14 @@ import { safelyGetUser } from '../remote/user';
 import { UserMenu } from './UserMenu';
 
 function Component({ children }: { children: ReactNode }) {
-  const { data: user } = useSuspendedQuery(safelyGetUser.queryKey, safelyGetUser, { retry: false });
-  const { toggle } = useUserMenuDialog();
+  const { data: user, refetch } = useSuspendedQuery(safelyGetUser.queryKey, safelyGetUser, { retry: false });
+  const { toggle, close } = useUserMenuDialog();
 
   const { mutateAsync: logout, isLoading } = useMutation(async () => {
     try {
       await requestLogout();
+      await refetch();
+      close();
     } catch (err) {
       // TODO: alert, confirm 구현하기
       // TODO: 서버와 싱크 후, message를 에러 객체에 어떻게 담을지 정의하고 util만들기
@@ -76,7 +78,7 @@ const StyledLayout = styled.main`
 
 function useUserMenuDialog() {
   const overlay = useOverlay();
-  const [isOpended, , , toggleState] = useBooleanState(false);
+  const [isOpended, , setClosedState, toggleState] = useBooleanState(false);
 
   const toggle = (props: ComponentProps<typeof UserMenu>) =>
     new Promise(resolve => {
@@ -116,7 +118,12 @@ function useUserMenuDialog() {
       }
     });
 
-  return { toggle };
+  const close = () => {
+    setClosedState();
+    overlay.close();
+  };
+
+  return { toggle, close };
 }
 
 /**@Note 필요하면 공통 컴포넌틀로 빼기 */
