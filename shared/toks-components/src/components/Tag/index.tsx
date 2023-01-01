@@ -48,10 +48,16 @@ const ListRow = styled.ul`
   gap: 8px;
   overflow: auto;
   padding: 0;
+  height: 28px;
 
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  &:after {
+    content: '.';
+    visibility: hidden;
   }
 `;

@@ -2,7 +2,7 @@ import { PATHS, pushTo } from '@depromeet/path';
 import { theme } from '@depromeet/theme';
 import { Button, Lottie, Tag, Text, TextBallon } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
-import { Flex, Spacing, padding, width100 } from '@toss/emotion-utils';
+import { Flex, Spacing, padding, width100, margin } from '@toss/emotion-utils';
 import { match } from 'ts-pattern';
 
 import { Study } from '../../models/study';
@@ -12,8 +12,9 @@ interface Props {
   memberCount: number;
   studyId: number;
   title: Study['name'];
-  tags: Study['studyTags'];
-  quizStatus: Study['StudylatestquizStatus'];
+  tags: Study['tags'];
+  quizStatus: Study['latestQuizStatus'];
+  studyStatus: Study['status'];
 }
 
 const LOTTIE_MAP = {
@@ -22,7 +23,7 @@ const LOTTIE_MAP = {
   graduated: 'https://asset.tokstudy.com/lottie-toks-graduated.json',
 } as const;
 
-function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyId }: Props) {
+function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus, studyId }: Props) {
   return (
     <div css={{ position: 'relative' }}>
       {match(quizStatus)
@@ -46,24 +47,39 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyId }: P
 
         <Spacing size={12} />
 
-        {/* TODO: 스터디 끝나면 graduated 연결  */}
-        <Lottie
-          src={match(quizStatus)
-            .with('UNCHECKED', 'UNSOLVED', () => LOTTIE_MAP.awake)
-            .otherwise(() => LOTTIE_MAP.sleep)}
-          alt=""
-          width={84}
-          height={84}
-          css={{ scale: '195%' }}
-        />
+        <Flex.Center
+          css={{
+            position: 'absolute',
+            boxShadow: '0 0 30px #FEE101',
+            border: 'none',
+            borderRadius: '50%',
+            top: '42px',
+          }}
+        >
+          <Lottie
+            src={match({ studyStatus, quizStatus })
+              .when(
+                ({ studyStatus }) => studyStatus === 'FINISH',
+                () => LOTTIE_MAP.graduated
+              )
+              .when(
+                ({ quizStatus }) => quizStatus === 'UNCHECKED' || quizStatus === 'UNSOLVED',
+                () => LOTTIE_MAP.awake
+              )
+              .otherwise(() => LOTTIE_MAP.sleep)}
+            alt=""
+            width={90}
+            height={90}
+            loop
+            css={{ scale: '102%' }}
+          />
+        </Flex.Center>
 
-        <Spacing size={24} />
+        <Spacing size={124} />
 
-        <Text variant="title04" css={{ minHeight: '72px', textAlign: 'center', textOverflow: 'ellipsis' }}>
-          {title}
-        </Text>
+        <LimitLineText variant="title04">아키텍처 크리넉스 </LimitLineText>
 
-        <Spacing size={18} />
+        <Spacing size={17} />
 
         <Tag.Row css={[width100, padding(0)]}>
           {tags.map(tag => (
@@ -71,7 +87,7 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyId }: P
           ))}
         </Tag.Row>
 
-        <Spacing size={52} />
+        <Spacing size={51} />
 
         <Button
           type={match(quizStatus)
@@ -129,6 +145,18 @@ const Card = styled.li`
   transition: transform 100ms ease-in-out;
 
   ${theme.shadows.book01}
+`;
+
+const LimitLineText = styled(Text)`
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 72px;
+  max-height: 72px;
+  height: 72px;
+  text-align: center;
+  text-overflow: ellipsis;
 `;
 
 StudyCard.Plus = Plus;
