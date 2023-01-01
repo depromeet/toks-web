@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { Input, Text, Icon } from '@depromeet/toks-components';
+import { Icon, Input, Text } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';

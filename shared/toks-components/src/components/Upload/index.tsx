@@ -1,5 +1,6 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
+
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 import useFileDrop from './useFileDrop';

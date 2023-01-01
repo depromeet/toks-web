@@ -13,7 +13,9 @@ function useFileDrop(options?: OptionProps) {
 
   const onChangeFile = useCallback(
     (e: Event) => {
-      if (!(e.target as HTMLInputElement).files) return;
+      if (!(e.target as HTMLInputElement).files) {
+        return;
+      }
 
       const selectFiles = (e.target as HTMLInputElement).files as FileList;
       const uploadFiles = Array.from(selectFiles);
@@ -25,7 +27,9 @@ function useFileDrop(options?: OptionProps) {
 
   const onDragFile = useCallback(
     (e: DragEvent) => {
-      if (!e?.dataTransfer?.files) return;
+      if (!e?.dataTransfer?.files) {
+        return;
+      }
 
       const selectFiles = e.dataTransfer.files;
       const uploadFiles = Array.from(selectFiles);
@@ -74,7 +78,9 @@ function useFileDrop(options?: OptionProps) {
   }, []);
 
   useEffect(() => {
-    if (!inputRef.current || !options) return;
+    if (!inputRef.current || !options) {
+      return;
+    }
 
     if (options.accepts) {
       inputRef.current.setAttribute('accept', options.accepts.join(', '));
@@ -86,7 +92,9 @@ function useFileDrop(options?: OptionProps) {
   }, [inputRef, options]);
 
   useEffect(() => {
-    if (!labelRef.current) return;
+    if (!labelRef.current) {
+      return;
+    }
 
     labelRef.current.addEventListener('dragenter', onDragEnter);
     labelRef.current.addEventListener('dragleave', onDragLeave);
@@ -102,7 +110,9 @@ function useFileDrop(options?: OptionProps) {
   }, [labelRef, onDragEnter, onDragLeave, onDragOver, onDrop]);
 
   useEffect(() => {
-    if (!inputRef.current) return;
+    if (!inputRef.current) {
+      return;
+    }
 
     inputRef.current.setAttribute('type', 'file');
 
