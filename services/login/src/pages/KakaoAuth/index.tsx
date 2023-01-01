@@ -1,10 +1,11 @@
 import { PATHS, pushTo } from '@depromeet/path';
 import { ProgressSpinner, SSRSuspense } from '@depromeet/toks-components';
+import { assert } from '@toss/assert';
 import { Flex } from '@toss/emotion-utils';
 import { ErrorBoundary } from '@toss/error-boundary';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { assert } from '@toss/assert';
+
 import { getUserinfo } from 'pages/MyName/remote/nickName';
 
 function KakaoAuth() {

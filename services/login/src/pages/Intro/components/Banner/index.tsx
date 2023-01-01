@@ -1,9 +1,9 @@
-import { Button, Text, Image } from '@depromeet/toks-components';
+import { colors } from '@depromeet/theme/dist/colors';
+import { Button, Image, Text } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
 import { useMutation } from 'react-query';
 
 import { login as requestLogin } from 'pages/Intro/remote/login';
-import { colors } from '@depromeet/theme/dist/colors';
 
 export const Banner = () => {
   const { mutateAsync: login, isLoading } = useMutation(requestLogin);
