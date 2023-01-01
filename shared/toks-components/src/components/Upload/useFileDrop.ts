@@ -11,33 +11,26 @@ function useFileDrop(options?: OptionProps) {
   const [isDragActive, setIsDragActive] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
 
-  const onChangeFile = useCallback(
-    (e: Event) => {
-      if (!(e.target as HTMLInputElement).files) {
-        return;
-      }
+  const onChangeFile = (e: Event) => {
+    if (!(e.target as HTMLInputElement).files) {
+      return;
+    }
 
-      const selectFiles = (e.target as HTMLInputElement).files as FileList;
-      const uploadFiles = Array.from(selectFiles);
+    const selectFiles = (e.target as HTMLInputElement).files as FileList;
+    const uploadFiles = Array.from(selectFiles);
 
-      setFiles(prevFiles => [...prevFiles, ...uploadFiles]);
-    },
-    [files]
-  );
+    setFiles(prevFiles => [...prevFiles, ...uploadFiles]);
+  };
 
-  const onDragFile = useCallback(
-    (e: DragEvent) => {
-      if (!e?.dataTransfer?.files) {
-        return;
-      }
+  const onDragFile = useCallback((e: DragEvent) => {
+    if (!e?.dataTransfer?.files) {
+      return;
+    }
+    const selectFiles = e.dataTransfer.files;
+    const uploadFiles = Array.from(selectFiles);
 
-      const selectFiles = e.dataTransfer.files;
-      const uploadFiles = Array.from(selectFiles);
-
-      setFiles(prevFiles => [...prevFiles, ...uploadFiles]);
-    },
-    [files]
-  );
+    setFiles(prevFiles => [...prevFiles, ...uploadFiles]);
+  }, []);
 
   const onDragEnter = useCallback((e: DragEvent) => {
     e.preventDefault();
@@ -82,12 +75,14 @@ function useFileDrop(options?: OptionProps) {
       return;
     }
 
+    const input = inputRef.current;
+
     if (options.accepts) {
-      inputRef.current.setAttribute('accept', options.accepts.join(', '));
+      input.setAttribute('accept', options.accepts.join(', '));
     }
 
     if (options.multiple) {
-      inputRef.current.setAttribute('multiple', 'multiple');
+      input.setAttribute('multiple', 'multiple');
     }
   }, [inputRef, options]);
 
@@ -96,16 +91,18 @@ function useFileDrop(options?: OptionProps) {
       return;
     }
 
-    labelRef.current.addEventListener('dragenter', onDragEnter);
-    labelRef.current.addEventListener('dragleave', onDragLeave);
-    labelRef.current.addEventListener('dragover', onDragOver);
-    labelRef.current.addEventListener('drop', onDrop);
+    const label = labelRef.current;
+
+    label.addEventListener('dragenter', onDragEnter);
+    label.addEventListener('dragleave', onDragLeave);
+    label.addEventListener('dragover', onDragOver);
+    label.addEventListener('drop', onDrop);
 
     return () => {
-      labelRef.current?.removeEventListener('dragenter', onDragEnter);
-      labelRef.current?.removeEventListener('dragleave', onDragLeave);
-      labelRef.current?.removeEventListener('dragover', onDragOver);
-      labelRef.current?.removeEventListener('drop', onDrop);
+      label?.removeEventListener('dragenter', onDragEnter);
+      label?.removeEventListener('dragleave', onDragLeave);
+      label?.removeEventListener('dragover', onDragOver);
+      label?.removeEventListener('drop', onDrop);
     };
   }, [labelRef, onDragEnter, onDragLeave, onDragOver, onDrop]);
 
@@ -114,11 +111,12 @@ function useFileDrop(options?: OptionProps) {
       return;
     }
 
-    inputRef.current.setAttribute('type', 'file');
+    const input = inputRef.current;
 
-    inputRef.current.addEventListener('change', onChangeFile);
+    input.setAttribute('type', 'file');
+    input.addEventListener('change', onChangeFile);
     return () => {
-      inputRef.current?.removeEventListener('change', onChangeFile);
+      input?.removeEventListener('change', onChangeFile);
     };
   }, [inputRef]);
 

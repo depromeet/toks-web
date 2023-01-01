@@ -137,7 +137,7 @@ export const FileListItem = styled('li')`
 
   height: 48px;
 
-  padding-left: 16px;
+  padding: 0 16px;
 
   display: flex;
   align-items: center;
