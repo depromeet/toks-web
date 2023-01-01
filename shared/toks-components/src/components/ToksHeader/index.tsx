@@ -8,7 +8,7 @@ type MemberProps = {
   imgUrl: string;
   userName: string;
   onClickButton: VoidFunction;
-  login?: true;
+  login: true;
 };
 
 type NonMemberProps = {

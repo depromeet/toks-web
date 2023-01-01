@@ -36,6 +36,7 @@ function Component({ children }: { children: ReactNode }) {
         <ToksHeader
           imgUrl={user.profileImageUrl}
           userName={user.nickname}
+          login
           onClickButton={() => {
             if (isLoading) {
               return;
