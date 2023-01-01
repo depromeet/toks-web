@@ -122,3 +122,5 @@ export * from 'primereact/tristatecheckbox';
 export * from 'primereact/utils';
 
 export * from 'primereact/virtualscroller';
+
+export * from './Upload';
