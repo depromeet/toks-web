@@ -1,6 +1,6 @@
 export interface QuizByIdResponse {
   quizId: number;
-  quiz: string;
+  question: string;
   quizType: string;
   description: string;
   startedAt: string;

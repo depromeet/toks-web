@@ -37,7 +37,7 @@ export function PeerAnswerViewer() {
       <Spacing size={16} />
       <Wrapper>
         {peerAnswer.map(({ answer, creator }) => (
-          <PeerAnswerWrapper>
+          <PeerAnswerWrapper key={creator.userId}>
             <Accordion
               isFold={false}
               // onFold={() => setIsFold(!isFold)}

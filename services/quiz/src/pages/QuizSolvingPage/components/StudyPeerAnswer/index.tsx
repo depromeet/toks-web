@@ -30,7 +30,7 @@ export function StudyPeerAnswer() {
       <Spacing size={16} />
       <StudyPeerAnswerWrapper>
         {quizzes?.quizReplyHistories.map(({ creator }) => (
-          <AccordionCotainer>
+          <AccordionCotainer key={creator.userId}>
             <SubmitNotice>
               <TextContainer>
                 <Text color="gray020" variant="subhead">

@@ -1,4 +1,4 @@
-import { Icon, Text, UserAvatar } from '@depromeet/toks-components';
+import { Icon, ImageViewer, Text, UserAvatar } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
@@ -6,13 +6,18 @@ import { useQuery } from 'react-query';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
 
-import { DescriptionContainer, Line, RoundInfo, Wrapper } from './style';
+import { DescriptionContainer, ImageContainer, Line, RoundInfo, Wrapper } from './style';
 import { QuizTimer } from '../QuizTimer';
 
+type ImageUrl = {
+  src: string;
+};
 export function QuizQuestion() {
   const {
     query: { quizIdParams },
   } = useRouter();
+
+  let urlArray: ImageUrl[] = [];
 
   const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizIdParams), {
     enabled: Boolean(quizIdParams),
@@ -21,6 +26,8 @@ export function QuizQuestion() {
   if (!quiz) {
     return null;
   }
+
+  quiz.imageUrls.map(url => (url ? urlArray.push({ src: url }) : null));
 
   return (
     <Wrapper>
@@ -37,8 +44,16 @@ export function QuizQuestion() {
         </Text>
       </Flex>
       <Spacing size={24} />
-      <Text variant="title04">Q. {quiz?.quiz}</Text>
+      <Text variant="title04">Q. {quiz?.question}</Text>
       <Spacing size={24} />
+      {urlArray.length !== 0 ? (
+        <>
+          <ImageContainer>
+            <ImageViewer photos={urlArray} />
+          </ImageContainer>
+          <Spacing size={24} />
+        </>
+      ) : null}
       <DescriptionContainer>
         <Text variant="body02" color="gray040">
           {quiz?.description}

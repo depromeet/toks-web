@@ -29,3 +29,8 @@ export const RoundInfo = styled.div`
   border-radius: 8px;
   padding: 4px 12px;
 `;
+
+export const ImageContainer = styled.div`
+  width: 188px;
+  height: 188px;
+`;
