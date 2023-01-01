@@ -102,8 +102,9 @@ instance.interceptors.request.use(
       throw new Error(`config.header is undefined`);
     }
 
-    if (instance.defaults.headers.common['Authorization'] == null) {
+    if (instance.defaults.headers.common['Authorization'] == null || config.headers['Authorization'] == null) {
       authToken.refetch();
+      config.headers['Authorization'] = authToken.access;
       instance.defaults.headers.common['Authorization'] = authToken.access;
     }
 
