@@ -14,7 +14,14 @@ const Editor = dynamic(() => import('@depromeet/toks-components/src/components/E
 
 export function QuizEditor() {
   const { open } = useModal();
-  const { mutate: quizAnswerMutation } = useMutation(postQuizAnswer);
+  const { mutateAsync: quizAnswerMutation, isSuccess } = useMutation(async () => {
+    try {
+      postQuizAnswer({ answer, quizId });
+    } catch (err) {
+      console.log(err);
+      // TODO: 400에러 떨어진 경우 toast 알람 띄우기.
+    }
+  });
   const [isDisabled, setIsDisabled] = useState(true);
   const [answer, setAnswer] = useState('');
 
@@ -36,7 +43,6 @@ export function QuizEditor() {
     await open({
       children: (
         <>
-          {/* TODO: 모달 먼저 만들었는데 deadcode 때문에 answerconfirm 모달 임시로 넣어둠. 추후 삭제 예정 */}
           <SubmitModal quizId={quizId} />
         </>
       ),
@@ -44,8 +50,8 @@ export function QuizEditor() {
   };
 
   const onClick = () => {
-    openModal();
-    quizAnswerMutation({ answer, quizId });
+    quizAnswerMutation();
+    isSuccess ? openModal() : null;
   };
 
   return (
