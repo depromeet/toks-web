@@ -12,7 +12,7 @@ export function QuizTimer({ duration }: QuizTimerProps) {
   const [isQuizClosed, setIsQuizClosed] = useState(false);
 
   useEffect(() => {
-    // EX. 5초에 멈추기
+    // 0초에 멈추고 똑스 종료로
     if (time === 0) {
       setIsQuizClosed(true);
       stop();
@@ -23,7 +23,6 @@ export function QuizTimer({ duration }: QuizTimerProps) {
     <>똑스 종료</>
   ) : (
     <div>
-      {/* EX) 00:10:09 */}
       {padZero(hours)}:{padZero(minutes)}:{padZero(seconds)}
     </div>
   );

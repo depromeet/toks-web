@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   height: 408px;
+  width: 611px;
 `;
 
 export const Wrapper = styled.div`

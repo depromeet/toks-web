@@ -25,7 +25,7 @@ export function QuizQuestion() {
   return (
     <Wrapper>
       <Flex css={{ alignItems: 'center' }}>
-        <UserAvatar image={`${quiz?.creator.profileImageUrl}`} size="large" />
+        <UserAvatar image={quiz?.creator.profileImageUrl} size="large" />
         <Text variant="subhead" color="gray040" css={{ marginLeft: '12px' }}>
           {quiz?.creator.nickname}
         </Text>

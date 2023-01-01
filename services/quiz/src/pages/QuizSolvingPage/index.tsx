@@ -4,6 +4,7 @@ import { QuizNav } from 'common/components/QuizNav';
 import { QuizQuestion } from 'common/components/QuizQuestion';
 
 import { QuizEditor } from './components/QuizEditor';
+import { StudyPeerAnswer } from './components/StudyPeerAnswer';
 
 export default function QuizSolvingPage() {
   //TODO: studyId 받아오기
@@ -13,7 +14,11 @@ export default function QuizSolvingPage() {
       <Spacing size={25} />
       <Flex>
         <QuizQuestion />
-        <QuizEditor />
+        <Flex direction="column">
+          <QuizEditor />
+          <Spacing size={56} />
+          <StudyPeerAnswer />
+        </Flex>
       </Flex>
     </div>
   );
