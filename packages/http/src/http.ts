@@ -56,9 +56,25 @@ function createTossBankErrorFromAxiosError(error: AxiosError): ToksErrorResponse
 }
 
 const authToken = {
-  access: typeof window === 'undefined' && typeof global !== 'undefined' ? null : sessionStorage.getItem('accessToken'),
-  refresh:
-    typeof window === 'undefined' && typeof global !== 'undefined' ? null : sessionStorage.getItem('refreshToken'),
+  access: (() => {
+    try {
+      return sessionStorage.getItem('accessToken');
+    } catch (err) {
+      return null;
+    }
+  })(),
+  refresh: (() => {
+    try {
+      return sessionStorage.getItem('refreshToken');
+    } catch (err) {
+      return null;
+    }
+  })(),
+  refetch: () => {
+    authToken.access = sessionStorage.getItem('accessToken');
+    authToken.refresh = sessionStorage.getItem('refreshToken');
+    return;
+  },
 };
 
 const redirectToLoginPage = () => {
@@ -75,7 +91,7 @@ const redirectToLoginPage = () => {
 //axios instance
 const instance: ToksHttpClient = axios.create({
   baseURL: 'https://api.tokstudy.com',
-  headers: { Authorization: authToken?.access, 'Content-Type': 'application/json; charset=utf-8' },
+  headers: { Authorization: authToken.access, 'Content-Type': 'application/json; charset=utf-8' },
   timeout: 5000,
 });
 
@@ -87,7 +103,8 @@ instance.interceptors.request.use(
     }
 
     if (instance.defaults.headers.common['Authorization'] == null) {
-      instance.defaults.headers.common['Authorization'] = authToken?.access;
+      authToken.refetch();
+      instance.defaults.headers.common['Authorization'] = authToken.access;
     }
 
     return config;
@@ -112,6 +129,7 @@ instance.interceptors.response.use(
       redirectToLoginPage();
       // redirect가 완료되고, API가 종료될 수 있도록 delay를 추가합니다.
       await delay(500);
+      return null;
     } else {
       throw error;
     }

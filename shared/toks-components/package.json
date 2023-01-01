@@ -12,7 +12,7 @@
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "@depromeet/http": "0.3.1",
+    "@depromeet/http": "workspace:packages/http",
     "@depromeet/theme": "0.0.1",
     "@depromeet/utils": "workspace:shared/utils",
     "@emotion/css": "^11.9.0",
