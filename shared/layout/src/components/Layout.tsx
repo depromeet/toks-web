@@ -1,3 +1,4 @@
+import { logout as requestLogout } from '@depromeet/http';
 import { PATHS, pushTo } from '@depromeet/path';
 import { SSRSuspense, ToksHeader } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
@@ -8,7 +9,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, ReactNode } from 'react';
 import { useMutation } from 'react-query';
 
-import { logout as requestLogout } from '../remote/logout';
 import { safelyGetUser } from '../remote/user';
 import { UserMenu } from './UserMenu';
 

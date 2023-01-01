@@ -55,7 +55,7 @@ function createTossBankErrorFromAxiosError(error: AxiosError): ToksErrorResponse
   return error;
 }
 
-const authToken = {
+export const authToken = {
   access: (() => {
     try {
       return sessionStorage.getItem('accessToken');
@@ -75,9 +75,13 @@ const authToken = {
     authToken.refresh = sessionStorage.getItem('refreshToken');
     return;
   },
+  destroy: () => {
+    sessionStorage.removeItem('accessToken');
+    sessionStorage.removeItem('refreshToken');
+  },
 };
 
-const redirectToLoginPage = () => {
+export const redirectToLoginPage = () => {
   const isDev = window.location.hostname === 'localhost';
   const isLoginPage = window.location.href.includes('/login');
 
