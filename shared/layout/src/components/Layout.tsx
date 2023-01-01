@@ -33,7 +33,11 @@ function Component({ children }: { children: ReactNode }) {
   return (
     <StyledLayout>
       {isNonMember ? (
-        <ToksHeader login={false} onClickButton={() => pushTo(PATHS.login.main)} />
+        <ToksHeader
+          login={false}
+          onClickButton={() => pushTo(PATHS.login.main)}
+          onClickLogo={() => pushTo(PATHS.login.main)}
+        />
       ) : (
         <ToksHeader
           imgUrl={user.profileImageUrl}
@@ -51,6 +55,7 @@ function Component({ children }: { children: ReactNode }) {
               handleLogout: () => logout(),
             });
           }}
+          onClickLogo={() => pushTo(PATHS.home.myStudy)}
         />
       )}
 
@@ -61,7 +66,13 @@ function Component({ children }: { children: ReactNode }) {
 
 export function Layout(props: ComponentProps<typeof Component>) {
   return (
-    <SSRSuspense fallback={<ToksHeader.Skeleton />}>
+    <SSRSuspense
+      fallback={
+        <StyledLayout>
+          <ToksHeader.Skeleton />
+        </StyledLayout>
+      }
+    >
       <Component {...props} />
     </SSRSuspense>
   );
