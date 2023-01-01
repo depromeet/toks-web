@@ -1,5 +1,6 @@
-import { Button, Image, Text, Timer } from '@depromeet/toks-components';
+import { Button, Image, Text } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
+
 import { QuizTimer } from 'common/components/QuizTimer';
 
 export function AnswerConfirmModal() {

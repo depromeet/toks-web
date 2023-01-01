@@ -1,4 +1,5 @@
 import { http } from '@depromeet/http';
+
 import { UserInfoResponse } from 'common/models/user';
 
 export async function getUser() {

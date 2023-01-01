@@ -3,11 +3,11 @@ import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
-import { QUERY_KEYS } from 'constants/queryKeys';
 import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
+import { QUERY_KEYS } from 'constants/queryKeys';
 
-import { DescriptionContainer, ImageContainer, Line, RoundInfo, Wrapper } from './style';
 import { QuizTimer } from '../QuizTimer';
+import { DescriptionContainer, ImageContainer, Line, RoundInfo, Wrapper } from './style';
 
 type ImageUrl = {
   src: string;
@@ -17,7 +17,7 @@ export function QuizQuestion() {
     query: { quizIdParams },
   } = useRouter();
 
-  let urlArray: ImageUrl[] = [];
+  const urlArray: ImageUrl[] = [];
 
   const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizIdParams), {
     enabled: Boolean(quizIdParams),

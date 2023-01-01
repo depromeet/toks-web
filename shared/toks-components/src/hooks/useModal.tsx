@@ -31,7 +31,7 @@ export function useModal() {
       });
     });
 
-  return { openModal: openModal, close: overlay.close };
+  return { openModal, close: overlay.close };
 }
 
 export default useModal;

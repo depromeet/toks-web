@@ -11,7 +11,3 @@ export const Wrapper = styled.div`
   overflow-y: auto;
   height: 60%;
 `;
-
-export const UserContainer = styled.div`
-  display: flex;
-`;

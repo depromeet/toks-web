@@ -1,12 +1,14 @@
-import dynamic from 'next/dynamic';
-import { MyAnswerWrapper } from './style';
 import { Text } from '@depromeet/toks-components';
 import { Spacing } from '@toss/emotion-utils';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
-import { QUERY_KEYS } from 'constants/queryKeys';
 import { useQuery } from 'react-query';
+
 import { getQuizzesById } from 'common/remotes/quizzes';
 import { getUser } from 'common/remotes/user';
+import { QUERY_KEYS } from 'constants/queryKeys';
+
+import { MyAnswerWrapper } from './style';
 
 const ToastViewer = dynamic(() => import('@depromeet/toks-components/src/components/ToastViewer/ToastViewer'), {
   ssr: false,
@@ -18,7 +20,7 @@ export function MyAnswerViewer() {
   } = useRouter();
 
   const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizzesById(quizIdParams), {
-    enabled: !!quizIdParams,
+    enabled: Boolean(quizIdParams),
   });
 
   const { data: user } = useQuery(QUERY_KEYS.GET_USER_INFO, getUser);

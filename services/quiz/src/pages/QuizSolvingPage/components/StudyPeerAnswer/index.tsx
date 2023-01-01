@@ -1,12 +1,14 @@
-import { Flex, Spacing } from '@toss/emotion-utils';
-import { Accordion, Text, Image, UserAvatar } from '@depromeet/toks-components';
-import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
-import { AccordionCotainer, StudyPeerAnswerWrapper, SubmitNotice, TextContainer } from './style';
 import { theme } from '@depromeet/theme';
+import { Accordion, Text, UserAvatar } from '@depromeet/toks-components';
+import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
+import { useQuery } from 'react-query';
+
+import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
 import { getQuizzesById } from 'common/remotes/quizzes';
 import { QUERY_KEYS } from 'constants/queryKeys';
-import { useQuery } from 'react-query';
+
+import { AccordionCotainer, StudyPeerAnswerWrapper, SubmitNotice, TextContainer } from './style';
 
 export function StudyPeerAnswer() {
   const {
@@ -14,7 +16,7 @@ export function StudyPeerAnswer() {
   } = useRouter();
 
   const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizzesById(quizIdParams), {
-    enabled: !!quizIdParams,
+    enabled: Boolean(quizIdParams),
   });
 
   if (!quizzes) {

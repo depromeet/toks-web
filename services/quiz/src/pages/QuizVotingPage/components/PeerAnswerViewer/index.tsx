@@ -1,13 +1,14 @@
-import { Accordion, ToastViewer, UserAvatar, Button } from '@depromeet/toks-components';
+import { theme } from '@depromeet/theme';
+import { Accordion, Button, Text, ToastViewer, UserAvatar } from '@depromeet/toks-components';
+import { Flex, Spacing } from '@toss/emotion-utils';
+import { useRouter } from 'next/router';
+import { useQuery } from 'react-query';
+
+import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
 import { getQuizzesById } from 'common/remotes/quizzes';
 import { getUser } from 'common/remotes/user';
 import { QUERY_KEYS } from 'constants/queryKeys';
-import { useRouter } from 'next/router';
-import { useQuery } from 'react-query';
-import { Text } from '@depromeet/toks-components';
-import { Flex, Spacing } from '@toss/emotion-utils';
-import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
-import { theme } from '@depromeet/theme';
+
 import { PeerAnswerWrapper, Wrapper } from './style';
 
 export function PeerAnswerViewer() {
@@ -17,7 +18,7 @@ export function PeerAnswerViewer() {
   // const [isFold, setIsFold] = useState(true);
 
   const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizzesById(quizIdParams), {
-    enabled: !!quizIdParams,
+    enabled: Boolean(quizIdParams),
   });
 
   const { data: user } = useQuery(QUERY_KEYS.GET_USER_INFO, getUser);
