@@ -4,7 +4,7 @@ import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
 import { AccordionCotainer, StudyPeerAnswerWrapper, SubmitNotice, TextContainer } from './style';
 import { theme } from '@depromeet/theme';
 import { useRouter } from 'next/router';
-import { getQuizzesById } from './remotes/quizzes';
+import { getQuizzesById } from 'common/remotes/quizzes';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { useQuery } from 'react-query';
 
@@ -20,10 +20,6 @@ export function StudyPeerAnswer() {
   if (!quizzes) {
     return null;
   }
-
-  quizzes?.quizReplyHistories.map(({ creator }) => {
-    console.log(creator);
-  });
 
   return (
     <StudyPeerAnswerWrapper>
