@@ -1,15 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface OptionProps {
-  accepts?: string[];
+  accepts: string[];
   multiple?: boolean;
 }
 
-function useFileDrop(options?: OptionProps) {
+function useFileDrop(options: OptionProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const labelRef = useRef<HTMLLabelElement>(null);
   const [isDragActive, setIsDragActive] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
+
+  const convertFileType = (fileType: string) => fileType.split('/')[1] ?? '';
 
   const onChangeFile = (e: Event) => {
     if (!(e.target as HTMLInputElement).files) {
@@ -22,15 +24,27 @@ function useFileDrop(options?: OptionProps) {
     setFiles(prevFiles => [...prevFiles, ...uploadFiles]);
   };
 
-  const onDragFile = useCallback((e: DragEvent) => {
-    if (!e?.dataTransfer?.files) {
-      return;
-    }
-    const selectFiles = e.dataTransfer.files;
-    const uploadFiles = Array.from(selectFiles);
+  const onDragFile = useCallback(
+    (e: DragEvent) => {
+      if (!e?.dataTransfer?.files) {
+        return;
+      }
 
-    setFiles(prevFiles => [...prevFiles, ...uploadFiles]);
-  }, []);
+      const selectFiles = e.dataTransfer.files;
+      const uploadFiles = Array.from(selectFiles);
+      const filteredFiles = uploadFiles.filter(file => {
+        const fileType = convertFileType(file.type);
+        const isAcceptFile = options?.accepts.includes(fileType);
+        if (!isAcceptFile) {
+          alert(`${file.name}는 허용되지 않는 파일 형식입니다.`); // TODO: alert 대신 다른 방법으로 처리
+        }
+        return isAcceptFile;
+      });
+
+      setFiles(prevFiles => [...prevFiles, ...filteredFiles]);
+    },
+    [options?.accepts]
+  );
 
   const onDragEnter = useCallback((e: DragEvent) => {
     e.preventDefault();
