@@ -78,6 +78,8 @@ export const authToken = {
   destroy: () => {
     sessionStorage.removeItem('accessToken');
     sessionStorage.removeItem('refreshToken');
+    authToken.access = null;
+    authToken.refresh = null;
   },
 };
 
@@ -108,10 +110,10 @@ instance.interceptors.request.use(
 
     if (instance.defaults.headers.common['Authorization'] == null || config.headers['Authorization'] == null) {
       authToken.refetch();
-      config.headers['Authorization'] = authToken.access;
-      instance.defaults.headers.common['Authorization'] = authToken.access;
     }
 
+    config.headers['Authorization'] = authToken.access;
+    instance.defaults.headers.common['Authorization'] = authToken.access;
     return config;
   },
   function (error) {
