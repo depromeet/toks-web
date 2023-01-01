@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { MyAnswerContainer, MyAnswerWrapper } from './style';
+import { MyAnswerWrapper } from './style';
 import { Text } from '@depromeet/toks-components';
 import { Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
@@ -33,9 +33,7 @@ export function MyAnswerViewer() {
     <MyAnswerWrapper>
       <Text variant="subhead">나의 답안</Text>
       <Spacing size={16} />
-      <MyAnswerContainer>
-        <ToastViewer answer={myAnswer} />
-      </MyAnswerContainer>
+      <ToastViewer height={163} answer={myAnswer} />
     </MyAnswerWrapper>
   );
 }

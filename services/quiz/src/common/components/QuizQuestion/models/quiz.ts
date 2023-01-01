@@ -1,4 +1,4 @@
-export interface Quiz {
+export interface QuizByIdResponse {
   quizId: number;
   quiz: string;
   quizType: string;

@@ -1,5 +1,5 @@
 import { http } from '@depromeet/http';
-import { QuizzesByIdResponse } from '../../pages/QuizSolvingPage/components/StudyPeerAnswer/models/quizzes';
+import { QuizzesByIdResponse } from '../models/quizzes';
 
 export async function getQuizzesById(quizIdParams: string | string[] | undefined) {
   return await http.get<QuizzesByIdResponse>(`/api/v1/quiz-reply-histories/quizzes/${quizIdParams}`, {
