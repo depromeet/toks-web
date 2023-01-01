@@ -9,7 +9,7 @@ import { SubmitModal } from 'common/components/ModalContents/SubmitModal';
 
 import { postQuizAnswer } from './remotes/quiz';
 import { Container, Wrapper } from './style';
-import { isToksError, ToksError } from '@depromeet/http';
+import { isToksError } from '@depromeet/http';
 
 const Editor = dynamic(() => import('@depromeet/toks-components/src/components/Editor/Editor'), { ssr: false });
 
@@ -28,10 +28,9 @@ export function QuizEditor() {
           time: 2000,
         });
       }
-
-      // TODO: 400에러 떨어진 경우 toast 알람 띄우기.
     }
   });
+
   const [isDisabled, setIsDisabled] = useState(true);
   const [answer, setAnswer] = useState('');
 
