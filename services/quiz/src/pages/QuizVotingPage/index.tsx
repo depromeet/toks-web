@@ -11,8 +11,9 @@ export default function QuizVotingPage() {
       <Spacing size={25} />
       <Flex>
         <QuizQuestion />
-        <Flex direction="column">
+        <Flex direction="column" css={{ width: '50%' }}>
           <MyAnswerViewer />
+          <Spacing size={50} />
           <PeerAnswerViewer />
         </Flex>
       </Flex>

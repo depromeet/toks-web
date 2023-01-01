@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 
 export const StudyPeerAnswerWrapper = styled.div`
   overflow-y: auto;
+  height: 30%;
 `;
 
 export const AccordionCotainer = styled.div`

@@ -14,4 +14,5 @@ export interface QuizByIdResponse {
     profileImageUrl: string;
   };
   studyId: number;
+  round: number;
 }

@@ -6,7 +6,7 @@ import { useQuery } from 'react-query';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
 
-import { DescriptionContainer, Line, Wrapper } from './style';
+import { DescriptionContainer, Line, RoundInfo, Wrapper } from './style';
 import { QuizTimer } from '../QuizTimer';
 
 export function QuizQuestion() {
@@ -24,6 +24,12 @@ export function QuizQuestion() {
 
   return (
     <Wrapper>
+      <RoundInfo>
+        <Text variant="body02" color="primary">
+          {quiz.round}회차 진행 중
+        </Text>
+      </RoundInfo>
+      <Spacing size={16} />
       <Flex css={{ alignItems: 'center' }}>
         <UserAvatar image={quiz?.creator.profileImageUrl} size="large" />
         <Text variant="subhead" color="gray040" css={{ marginLeft: '12px' }}>

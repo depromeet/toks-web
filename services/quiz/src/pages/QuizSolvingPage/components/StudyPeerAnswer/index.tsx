@@ -22,37 +22,39 @@ export function StudyPeerAnswer() {
   }
 
   return (
-    <StudyPeerAnswerWrapper>
+    <>
       <Flex css={{ justifyContent: 'space-between' }}>
         <Text variant="headline">팀원들의 답안</Text>
         <DoneNumberNotice done={6} />
       </Flex>
       <Spacing size={16} />
-      {quizzes?.quizReplyHistories.map(({ creator }) => (
-        <AccordionCotainer>
-          <SubmitNotice>
-            <TextContainer>
-              <Text color="gray020" variant="subhead">
-                답변 제출 완료 후, 확인 해보세요!
-              </Text>
-            </TextContainer>
-          </SubmitNotice>
-          <Accordion
-            isFold={false}
-            backgroundColor={theme.colors.gray120}
-            headerNodes={
-              <Flex css={{ alignItems: 'center' }}>
-                <UserAvatar image={creator.profileImageUrl} size="large" />
-                <Text css={{ marginLeft: '12px' }} variant="subhead" color="gray020">
-                  {creator.nickname}
+      <StudyPeerAnswerWrapper>
+        {quizzes?.quizReplyHistories.map(({ creator }) => (
+          <AccordionCotainer>
+            <SubmitNotice>
+              <TextContainer>
+                <Text color="gray020" variant="subhead">
+                  답변 제출 완료 후, 확인 해보세요!
                 </Text>
-              </Flex>
-            }
-            bodyNodes={<></>}
-          />
-        </AccordionCotainer>
-      ))}
+              </TextContainer>
+            </SubmitNotice>
+            <Accordion
+              isFold={false}
+              backgroundColor={theme.colors.gray120}
+              headerNodes={
+                <Flex css={{ alignItems: 'center' }}>
+                  <UserAvatar image={creator.profileImageUrl} size="large" />
+                  <Text css={{ marginLeft: '12px' }} variant="subhead" color="gray020">
+                    {creator.nickname}
+                  </Text>
+                </Flex>
+              }
+              bodyNodes={<></>}
+            />
+          </AccordionCotainer>
+        ))}
+      </StudyPeerAnswerWrapper>
       {/* <Text variant="subhead">답변 제출 완료 후, 확인 해보세요!</Text> */}
-    </StudyPeerAnswerWrapper>
+    </>
   );
 }

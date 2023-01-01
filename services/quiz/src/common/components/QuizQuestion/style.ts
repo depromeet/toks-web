@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   padding: 24px;
   background-color: ${theme.colors.gray110};
   border-radius: 16px;
-  width: 45vw;
+  width: 50%;
   height: 82vh;
   margin-right: 52px;
 `;
@@ -22,4 +22,10 @@ export const Line = styled.div`
 export const DescriptionContainer = styled.div`
   overflow: auto;
   height: 78%;
+`;
+
+export const RoundInfo = styled.div`
+  background: rgba(255, 134, 47, 0.2);
+  border-radius: 8px;
+  padding: 4px 12px;
 `;

@@ -6,3 +6,12 @@ export const PeerAnswerWrapper = styled.div`
   }
   margin-top: 12px;
 `;
+
+export const Wrapper = styled.div`
+  overflow-y: auto;
+  height: 60%;
+`;
+
+export const UserContainer = styled.div`
+  display: flex;
+`;
