@@ -1,5 +1,6 @@
 import { PATHS, pushTo } from '@depromeet/path';
 import { ProgressSpinner, SSRSuspense } from '@depromeet/toks-components';
+import { assert } from '@toss/assert';
 import { Flex } from '@toss/emotion-utils';
 import { ErrorBoundary } from '@toss/error-boundary';
 import { useRouter } from 'next/router';
@@ -20,8 +21,10 @@ function KakaoAuth() {
       sessionStorage.setItem('refreshToken', refreshToken);
     }
 
+    assert(accessToken != null && refreshToken != null, '로그인이 정상적으로 처리되지 않았습니다.');
+
     // 토큰 저장 후 API 호출해야함. 따라서 react query 이용 X
-    getUserinfo().then(result => {
+    getUserinfo({ accessToken }).then(result => {
       if (result.nickname === '닉네임을 등록해주세요') {
         router.push(PATHS.login.nickname);
       } else {

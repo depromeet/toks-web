@@ -1,4 +1,5 @@
-import { Button, Text } from '@depromeet/toks-components';
+import { colors } from '@depromeet/theme/dist/colors';
+import { Button, Image, Text } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
 import { useMutation } from 'react-query';
 
@@ -21,8 +22,16 @@ export const Banner = () => {
       <Text variant="title01" color="white">
         개발자를 위한 스터디, 똑스-잇!
       </Text>
-      <Button type="general" width={200} size="large" onClick={() => login()} loading={isLoading}>
-        똑스 로그인
+      <Button
+        type="general"
+        width={200}
+        size="large"
+        onClick={() => login()}
+        loading={isLoading}
+        icon={<Image src="https://asset.tokstudy.com/kakao-logo.png" alt="" width={28} height={28} />}
+        buttonStyle={{ fontSize: '18px', color: colors.gray110 }}
+      >
+        Kakao 로그인
       </Button>
     </Flex>
   );
