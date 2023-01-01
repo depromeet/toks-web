@@ -5,11 +5,10 @@ import { ErrorBoundary } from '@toss/error-boundary';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
-import { useUserInfo } from 'hooks/query/useUserInfo';
+import { getUserinfo } from 'pages/MyName/remote/nickName';
 
 function KakaoAuth() {
   const router = useRouter();
-  const { data: user } = useUserInfo();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -21,12 +20,15 @@ function KakaoAuth() {
       sessionStorage.setItem('refreshToken', refreshToken);
     }
 
-    if (user.nickname === '닉네임을 등록해주세요') {
-      router.push(PATHS.login.nickname);
-    } else {
-      pushTo(PATHS.home.myStudy);
-    }
-  }, [router, user]);
+    // 토큰 저장 후 API 호출해야함. 따라서 react query 이용 X
+    getUserinfo().then(result => {
+      if (result.nickname === '닉네임을 등록해주세요') {
+        router.push(PATHS.login.nickname);
+      } else {
+        pushTo(PATHS.home.myStudy);
+      }
+    });
+  }, [router]);
 
   return (
     <Flex.Center css={{ marginTop: '250px' }}>
