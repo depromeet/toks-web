@@ -2,7 +2,7 @@ import { PATHS, pushTo } from '@depromeet/path';
 import { theme } from '@depromeet/theme';
 import { Button, Lottie, Tag, Text, TextBallon } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
-import { Flex, Spacing, padding, width100, margin } from '@toss/emotion-utils';
+import { Flex, Spacing, padding, width100 } from '@toss/emotion-utils';
 import { match } from 'ts-pattern';
 
 import { Study } from '../../models/study';
@@ -77,7 +77,7 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
 
         <Spacing size={124} />
 
-        <LimitLineText variant="title04">아키텍처 크리넉스 </LimitLineText>
+        <LimitLineText variant="title04">{title}</LimitLineText>
 
         <Spacing size={17} />
 
