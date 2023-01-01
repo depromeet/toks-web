@@ -1,4 +1,4 @@
-import { Button, useModal } from '@depromeet/toks-components';
+import { Button, useModal, useToast } from '@depromeet/toks-components';
 import { Spacing } from '@toss/emotion-utils';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
@@ -9,16 +9,26 @@ import { SubmitModal } from 'common/components/ModalContents/SubmitModal';
 
 import { postQuizAnswer } from './remotes/quiz';
 import { Container, Wrapper } from './style';
+import { isToksError, ToksError } from '@depromeet/http';
 
 const Editor = dynamic(() => import('@depromeet/toks-components/src/components/Editor/Editor'), { ssr: false });
 
 export function QuizEditor() {
-  const { open } = useModal();
+  const { open } = useToast();
+  const { openModal } = useModal();
+
   const { mutateAsync: quizAnswerMutation, isSuccess } = useMutation(async () => {
     try {
-      postQuizAnswer({ answer, quizId });
-    } catch (err) {
-      console.log(err);
+      await postQuizAnswer({ answer, quizId });
+    } catch (err: unknown) {
+      if (isToksError(err) && err.message === 'error.already.submitted') {
+        await open({
+          type: 'danger',
+          title: '이미 퀴즈를 제출했습니다.',
+          time: 2000,
+        });
+      }
+
       // TODO: 400에러 떨어진 경우 toast 알람 띄우기.
     }
   });
@@ -39,8 +49,8 @@ export function QuizEditor() {
     }
   }, [answer]);
 
-  const openModal = async () => {
-    await open({
+  const openModalBox = async () => {
+    await openModal({
       children: (
         <>
           <SubmitModal quizId={quizId} />
@@ -51,7 +61,7 @@ export function QuizEditor() {
 
   const onClick = () => {
     quizAnswerMutation();
-    isSuccess ? openModal() : null;
+    isSuccess ? openModalBox() : null;
   };
 
   return (
