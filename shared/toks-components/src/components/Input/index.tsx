@@ -12,10 +12,11 @@ interface Props extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
   height?: number;
   label?: string;
   errorMessage?: string;
+  suffix?: React.ReactNode;
 }
 
 export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label = 'user', name, errorMessage, width, height, required, onFocus, onBlur, ...props }: Props, ref) => {
+  ({ label = 'user', name, errorMessage, width, height, required, onFocus, onBlur, suffix, ...props }: Props, ref) => {
     const [isFocus, setIsFocus] = useState(false);
 
     return (
@@ -42,6 +43,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
               setIsFocus(false);
             }}
           />
+          {suffix && suffix}
           {errorMessage && (
             <Image src="https://toks-web-assets.s3.amazonaws.com/ic-danger.svg" alt="경고" width={22} height={22} />
           )}

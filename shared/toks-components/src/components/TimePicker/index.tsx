@@ -11,6 +11,7 @@ interface TimePickerProps extends Partial<React.InputHTMLAttributes<HTMLInputEle
   defaultHour?: number;
   defaultMinute?: number;
   defaultAmpm?: AMPM;
+  label: string;
   setValue?: UseFormSetValue<FieldValues>;
 }
 
@@ -93,7 +94,10 @@ const useTimePicker = (defaultHour: number, defaultMinute: number, defaultAmpm: 
 };
 
 export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
-  ({ defaultHour = 0, defaultMinute = 0, defaultAmpm = 'AM', setValue, ...register }: TimePickerProps, ref) => {
+  (
+    { defaultHour = 0, defaultMinute = 0, defaultAmpm = 'AM', label, required, setValue, ...register }: TimePickerProps,
+    ref
+  ) => {
     const { hour, minute, ampm, hourError, minuteError, onHourUpdate, onMinuteUpdate, setAmpm } = useTimePicker(
       defaultHour,
       defaultMinute,
@@ -105,35 +109,51 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
     }, [hour, minute, ampm, setValue]);
 
     return (
-      <FlexRow>
-        <input type="hidden" {...register} name="timepicker" ref={ref} value={convertTimeFormat(hour, minute, ampm)} />
-        <FlexRow style={{ marginRight: '20px' }}>
-          <Input
-            label=""
-            name="hour"
-            placeholder={padZero(defaultHour)}
-            autoComplete="off"
-            maxLength={2}
-            onChange={onHourUpdate}
-            value={hourError && ''}
-            errorMessage={hourError}
+      <div>
+        <Text variant="headline">
+          {label}
+          {required && '*'}
+        </Text>
+        <FlexRow>
+          <input
+            type="hidden"
+            {...register}
+            name="timepicker"
+            ref={ref}
+            value={convertTimeFormat(hour, minute, ampm)}
           />
-          <Text variant="body01" style={{ margin: '0 6px' }}>
-            :
-          </Text>
-          <Input
-            label=""
-            name="minute"
-            placeholder={padZero(defaultMinute)}
-            autoComplete="off"
-            maxLength={2}
-            onChange={onMinuteUpdate}
-            value={minuteError && ''}
-            errorMessage={minuteError}
-          />
+          <FlexRow
+            style={{
+              marginRight: '20px',
+            }}
+          >
+            <Input
+              label=""
+              name="hour"
+              placeholder={padZero(defaultHour)}
+              autoComplete="off"
+              maxLength={2}
+              onChange={onHourUpdate}
+              value={hourError && ''}
+              errorMessage={hourError}
+            />
+            <Text variant="body01" style={{ margin: '0 6px' }}>
+              :
+            </Text>
+            <Input
+              label=""
+              name="minute"
+              placeholder={padZero(defaultMinute)}
+              autoComplete="off"
+              maxLength={2}
+              onChange={onMinuteUpdate}
+              value={minuteError && ''}
+              errorMessage={minuteError}
+            />
+          </FlexRow>
+          <ToggleSwitchButton ampm={ampm} setAmpm={setAmpm} />
         </FlexRow>
-        <ToggleSwitchButton ampm={ampm} setAmpm={setAmpm} />
-      </FlexRow>
+      </div>
     );
   }
 );
@@ -147,10 +167,14 @@ export const LeftToggleButton = styled.button`
   padding: 13px;
   border: 0px;
   border-radius: 6px 0 0 6px;
+
+  cursor: pointer;
 `;
 
 export const RightToggleButton = styled.button`
   padding: 13px;
   border: 0px;
   border-radius: 0 6px 6px 0;
+
+  cursor: pointer;
 `;
