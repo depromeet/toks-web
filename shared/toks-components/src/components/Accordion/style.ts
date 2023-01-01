@@ -11,6 +11,7 @@ export const Summary = styled.summary`
   display: flex;
   list-style: none;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const Body = styled.div``;
