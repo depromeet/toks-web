@@ -59,6 +59,14 @@ const globalCss = css`
     box-sizing: inherit;
   }
 
+  button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+  }
+
   input,
   select,
   textarea,
@@ -74,6 +82,17 @@ const globalCss = css`
   a:focus,
   a:hover {
     text-decoration: none;
+  }
+
+  .blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
   }
 
   /* dropdown custom styling */
