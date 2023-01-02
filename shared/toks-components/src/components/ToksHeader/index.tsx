@@ -8,37 +8,48 @@ type MemberProps = {
   imgUrl: string;
   userName: string;
   onClickButton: VoidFunction;
+  onClickLogo: VoidFunction;
   login: true;
 };
 
 type NonMemberProps = {
   login: false;
   onClickButton: VoidFunction;
+  onClickLogo: VoidFunction;
 };
 
 type HeaderProps = MemberProps | NonMemberProps;
 
-function isMember(props: HeaderProps): props is MemberProps {
+type ProfileButtonProps = Omit<HeaderProps, 'onClickLogo'>;
+
+function isMember(props: ProfileButtonProps): props is MemberProps {
   if (props.login) {
     return true;
   }
   return false;
 }
 
-export function ToksHeader(props: HeaderProps) {
+export function ToksHeader({ onClickLogo, ...rest }: HeaderProps) {
   return (
     <Header>
-      <Image src="https://asset.tokstudy.com/logo.png" alt="toks study" draggable={false} width={70} height={24} />
-      <ProfileButton {...props} />
+      <ClickableImage
+        src="https://asset.tokstudy.com/logo.png"
+        alt="toks study"
+        draggable={false}
+        width={70}
+        height={24}
+        onClick={onClickLogo}
+      />
+      <ProfileButton {...rest} />
     </Header>
   );
 }
 
-function ProfileButton(props: HeaderProps) {
+function ProfileButton(props: ProfileButtonProps) {
   if (!isMember(props)) {
     return (
       <Button onClick={props.onClickButton}>
-        <Image
+        <ClickableImage
           src="https://asset.tokstudy.com/login-emoji.png"
           alt=""
           width={22}
@@ -56,7 +67,7 @@ function ProfileButton(props: HeaderProps) {
 
   return (
     <Button onClick={onClickButton}>
-      <Image src={imgUrl} alt="" width={22} height={22} style={{ borderRadius: '50%' }} />
+      <ClickableImage src={imgUrl} alt="" width={22} height={22} style={{ borderRadius: '50%' }} />
       <Text variant="subhead" style={{ textOverflow: 'ellipsis' }}>
         {userName}
       </Text>
@@ -67,7 +78,22 @@ function ProfileButton(props: HeaderProps) {
 ToksHeader.Skeleton = function () {
   return (
     <Header>
-      <Image src="https://asset.tokstudy.com/logo.png" alt="toks study" draggable={false} width={70} height={24} />
+      <ClickableImage
+        src="https://asset.tokstudy.com/logo.png"
+        alt="toks study"
+        draggable={false}
+        width={70}
+        height={24}
+      />
+      <Button>
+        <ClickableImage
+          src="https://asset.tokstudy.com/login-emoji.png"
+          alt=""
+          width={22}
+          height={22}
+          style={{ borderRadius: '50%' }}
+        />
+      </Button>
     </Header>
   );
 };
@@ -99,6 +125,12 @@ const Button = styled.button`
   background-color: ${theme.colors.gray110};
   border: 2px solid ${theme.colors.gray080};
 
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const ClickableImage = styled(Image)`
   &:hover {
     cursor: pointer;
   }

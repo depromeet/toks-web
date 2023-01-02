@@ -23,10 +23,11 @@ function StudyList() {
         <SSRSuspense fallback={<StudyCard.Skeleton />} key={study.id}>
           <StudyCard
             title={study.name}
-            tags={study.studyTags}
-            memberCount={study.studyUserCount}
+            tags={study.tags}
+            memberCount={study.userCount}
             studyId={study.id}
-            quizStatus={study.StudylatestquizStatus}
+            quizStatus={study.latestQuizStatus}
+            studyStatus={study.status}
             onClick={() => pushTo(PATHS.quiz.studyDetail({ studyId: study.id }))}
           />
         </SSRSuspense>
