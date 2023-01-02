@@ -1,6 +1,9 @@
 import { Button, useModal } from '@depromeet/toks-components';
 import { AnswerConfirmModal } from 'common/components/ModalContents/AnswerConfirmModal';
+import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
+import { QUERY_KEYS } from 'constants/queryKeys';
 import { useRouter } from 'next/router';
+import { useQuery } from 'react-query';
 
 export function VoteSubmitButton() {
   const { openModal } = useModal();
@@ -8,11 +11,19 @@ export function VoteSubmitButton() {
     query: { quizIdParams },
   } = useRouter();
 
+  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizIdParams), {
+    enabled: Boolean(quizIdParams),
+  });
+
+  if (!quiz) {
+    return null;
+  }
+
   const openModalBox = async () => {
     await openModal({
       children: (
         <>
-          <AnswerConfirmModal duration={100} quizId={Number(quizIdParams)} />
+          <AnswerConfirmModal duration={quiz.durationOfSecond} quizId={Number(quizIdParams)} />
         </>
       ),
     });
