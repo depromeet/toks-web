@@ -9,5 +9,5 @@ export const PeerAnswerWrapper = styled.div`
 
 export const Wrapper = styled.div`
   overflow-y: auto;
-  height: 60%;
+  height: 50%;
 `;

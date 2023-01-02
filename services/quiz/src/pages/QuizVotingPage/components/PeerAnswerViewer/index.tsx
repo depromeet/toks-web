@@ -3,7 +3,8 @@ import { Accordion, Button, Text, ToastViewer, UserAvatar } from '@depromeet/tok
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { useQuery } from 'react-query';
+
+import { useQuery, useQueryClient } from 'react-query';
 
 import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
 import { getQuizzesById } from 'common/remotes/quizzes';
@@ -18,6 +19,7 @@ export function PeerAnswerViewer() {
   } = useRouter();
   const [isFold, setIsFold] = useState(true);
 
+  const queryClient = useQueryClient();
   const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizzesById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
