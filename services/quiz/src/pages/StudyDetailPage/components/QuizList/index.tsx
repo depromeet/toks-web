@@ -8,9 +8,8 @@ import { useGetQuizList, useSetClientQuizList } from 'pages/StudyDetailPage/hook
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
 
-
 interface QuizListProps {
-  studyId : string | string[] | undefined
+  studyId: string | string[] | undefined;
 }
 
 const AddButton = styled.button`
@@ -35,26 +34,30 @@ const QuizAddButton = () => (
   </AddButton>
 );
 
-function QuizList({studyId} : QuizListProps) {
-  const { data: quizList, isError} = useGetQuizList(studyId);
+function QuizList({ studyId }: QuizListProps) {
+  const { data, isError } = useGetQuizList(studyId);
   const setQuizList = useSetClientQuizList();
 
-  if (isError || quizList == null) {
+  if (isError || data == null) {
     return null;
   }
 
+  const quizList = data.quizzes;
+
   const isNotQuizEmpty = quizList[0] !== undefined;
-  const isAllDone = quizList && quizList.every(quiz => quiz.quizStatus === 'DONE');
+  const isAllDone = quizList.every(quiz => quiz.quizStatus === 'DONE');
   const isAddableQuiz = !isNotQuizEmpty || (isNotQuizEmpty && isAllDone);
 
   const setQuizItemStatus = (quizId: number, newQuizStatus: QuizStatus) =>
-    setQuizList(quizList.map(quiz => (quizId === quiz.quizId ? { ...quiz, quizStatus: newQuizStatus } : quiz)));
+    setQuizList({
+      quizzes: quizList.map(quiz => (quizId === quiz.quizId ? { ...quiz, quizStatus: newQuizStatus } : quiz)),
+    });
 
   return (
     <List>
       <li>{isAddableQuiz && <QuizAddButton />}</li>
       {isNotQuizEmpty &&
-        quizList && quizList.map((quizItem, index) => (
+        quizList.map((quizItem, index) => (
           <QuizItem
             key={quizItem.quizId}
             round={quizList.length - index}
@@ -66,11 +69,10 @@ function QuizList({studyId} : QuizListProps) {
   );
 }
 
-export default ({studyId} : QuizListProps) => (
+export default ({ studyId }: QuizListProps) => (
   <ErrorBoundary renderFallback={() => null}>
     <SSRSuspense fallback={null}>
-      <QuizList
-        studyId={studyId} />
+      <QuizList studyId={studyId} />
     </SSRSuspense>
   </ErrorBoundary>
 );

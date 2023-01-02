@@ -2,9 +2,9 @@ import { User } from './user';
 
 export type QuizStatus = 'DONE' | 'TO_DO' | 'IN_PROGRESS';
 
-export interface QuizResponse {
+export type Quiz = {
   quizId: number;
-  quiz: string;
+  question: string;
   quizType: string;
   description: string;
   startedAt: string;
@@ -15,4 +15,8 @@ export interface QuizResponse {
   unSubmitters: User[];
   studyId: number;
   quizStatus: QuizStatus;
+};
+
+export interface QuizResponse {
+  quizzes: Quiz[];
 }

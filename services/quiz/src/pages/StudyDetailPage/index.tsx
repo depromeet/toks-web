@@ -16,8 +16,7 @@ export default function StudyDetailPage() {
     <Page>
       <Section>
         <FlexRow>
-          <StudyInfo
-            studyId={studyId} />
+          <StudyInfo studyId={studyId} />
           <StudyProgress />
         </FlexRow>
         <FlexRow css={{ marginTop: '80px' }}>
@@ -25,15 +24,13 @@ export default function StudyDetailPage() {
             <Text variant="title04" color="gray010">
               똑스
             </Text>
-            <QuizList 
-              studyId={studyId}/>
+            <QuizList studyId={studyId} />
           </QuizListWrapper>
           <RankingListWrapper css={{ marginLeft: '35px' }}>
             <Text variant="title04" color="gray010">
               똑순위
             </Text>
-            <RankingList
-              studyId={studyId}/>
+            <RankingList studyId={studyId} />
           </RankingListWrapper>
         </FlexRow>
       </Section>

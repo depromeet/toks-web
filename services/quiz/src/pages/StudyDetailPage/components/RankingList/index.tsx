@@ -7,34 +7,30 @@ import { RankingItem } from '../RankingItem';
 import { List } from './style';
 
 interface RankingListProps {
-  studyId : string | string[] | undefined
+  studyId: string | string[] | undefined;
 }
 
-function RankingList({studyId} : RankingListProps) {
+function RankingList({ studyId }: RankingListProps) {
   const { data: rankingList, isError } = useGetRankingList(studyId);
 
   if (isError || rankingList == null) {
     return null;
   }
 
-  console.log(rankingList)
-
   // TODO: 서버에서 랭킹 숫자 내려주냐 안내려주냐에 따라서 랭킹 추가하는 부분 구성해야 함
   return (
     <List>
-      {/* {rankingList && rankingList.map(rankItem => (
+      {rankingList.quizRanks.map(rankItem => (
         <RankingItem key={rankItem.rankingId} rankItem={rankItem} />
-      ))} */}
-      {rankingList.toString()}
+      ))}
     </List>
   );
 }
 
-export default ({studyId} : RankingListProps) => (
+export default ({ studyId }: RankingListProps) => (
   <ErrorBoundary renderFallback={() => null}>
     <SSRSuspense fallback={null}>
-      <RankingList
-        studyId={studyId} />
+      <RankingList studyId={studyId} />
     </SSRSuspense>
   </ErrorBoundary>
 );

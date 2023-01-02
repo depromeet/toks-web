@@ -1,4 +1,5 @@
 import { http } from '@depromeet/http';
+
 import { RankResponse } from '../models/rankingList';
 
 // export const getRankingList = () => {
@@ -6,5 +7,5 @@ import { RankResponse } from '../models/rankingList';
 // };
 
 export async function getRankingListById(studyId: string | string[] | undefined) {
-  return await http.get<RankResponse[]>(`/api/v1/quiz-ranks/studies/${studyId}`);
+  return await http.get<RankResponse>(`/api/v1/quiz-ranks/studies/${studyId}`);
 }

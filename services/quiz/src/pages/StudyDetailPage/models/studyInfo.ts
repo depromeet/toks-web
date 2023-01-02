@@ -1,4 +1,4 @@
-import { User, TagResponse } from '@depromeet/toks-components';
+import { TagResponse, User } from '@depromeet/toks-components';
 
 export interface StudyInfo {
   id: number;

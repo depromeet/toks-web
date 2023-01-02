@@ -1,5 +1,5 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
-import { Accordion, Button, Icon, QuizResponse, QuizStatus, Text, UserAvatar } from '@depromeet/toks-components';
+import { Accordion, Button, Icon, Quiz, QuizResponse, QuizStatus, Text, UserAvatar } from '@depromeet/toks-components';
 import { convertSecondToString, getInitialTimerSecond, getQuizItemStatus } from '@depromeet/toks-components/src/utils';
 import { useTimer } from '@depromeet/utils';
 import { ComponentProps, useEffect, useState } from 'react';
@@ -10,8 +10,8 @@ import { FlexRow, ListItem, Space } from './style';
 
 interface QuizItemProps {
   round: number;
-  quiz: QuizResponse;
-  setQuizItemStatus: (quizId: number, newQuizStatus: QuizStatus) => QuizResponse[] | undefined;
+  quiz: Quiz;
+  setQuizItemStatus: (quizId: number, newQuizStatus: QuizStatus) => QuizResponse | undefined;
 }
 
 type QuizItemColorMap = {
@@ -52,7 +52,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
     timestamp,
     durationOfSecond,
     quizStatus,
-    quiz: title,
+    question: title,
     creator,
     unSubmitters,
   } = quiz;
@@ -64,11 +64,11 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
   const onFold = () => setIsFold(!isFold);
 
   useEffect(() => {
-    if (time === 0) {
+    if (time === 0 && quizStatus !== 'DONE') {
       timerStop();
       setQuizItemStatus(quizId, 'DONE');
     }
-  }, [time, quizId, timerStop, setQuizItemStatus]);
+  }, [time, quizId, quizStatus, timerStop, setQuizItemStatus]);
 
   useEffect(() => {
     if (quizStatus === 'IN_PROGRESS') {
@@ -76,7 +76,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
     }
   }, [quizStatus, timerStart]);
 
-  // TO_DO => IN_PROGRESS를 감지하기 위한 useEffect
+  // // TO_DO => IN_PROGRESS를 감지하기 위한 useEffect
   useEffect(() => {
     const interval = setInterval(() => {
       const newQuizItemStatus = getQuizItemStatus(openDate, limitDate);

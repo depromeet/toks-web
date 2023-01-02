@@ -6,5 +6,5 @@ import { QuizResponse } from '@depromeet/toks-components/src/types/quiz';
 // };
 
 export async function getQuizListById(studyId: string | string[] | undefined) {
-  return await http.get<QuizResponse[]>(`/api/v1/quizzes/studies/${studyId}`);
+  return await http.get<QuizResponse>(`/api/v1/quizzes/studies/${studyId}`);
 }
