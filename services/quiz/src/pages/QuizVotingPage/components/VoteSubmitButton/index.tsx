@@ -3,10 +3,25 @@ import { AnswerConfirmModal } from 'common/components/ModalContents/AnswerConfir
 import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
 export function VoteSubmitButton() {
+  const [isDisable, setIsDisable] = useState(true);
   const { openModal } = useModal();
+  const { data: ans } = useQuery(QUERY_KEYS.GET_QUIZREPLY, {
+    initialData: '',
+    staleTime: Infinity,
+  });
+
+  useEffect(() => {
+    if (ans !== '') {
+      setIsDisable(false);
+    }
+  }, [ans]);
+
+  console.log(ans);
+
   const {
     query: { quizIdParams },
   } = useRouter();
@@ -38,6 +53,7 @@ export function VoteSubmitButton() {
       css={{ position: 'fixed', left: '100%', transform: 'translateX( -200px )', bottom: '20px' }}
       width={200}
       size="large"
+      disabled={isDisable}
     >
       똑표완료
     </Button>

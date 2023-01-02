@@ -7,11 +7,12 @@ import { useState } from 'react';
 import { useQuery, useQueryClient } from 'react-query';
 
 import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
-import { getQuizzesById } from 'common/remotes/quizzes';
+import { getQuizReplyById } from 'common/remotes/quizReply';
 import { getUser } from 'common/remotes/user';
 import { QUERY_KEYS } from 'constants/queryKeys';
 
 import { PeerAnswerWrapper, Wrapper } from './style';
+import { useSetClientQuizReply } from 'pages/QuizVotingPage/hooks/quizReplyList';
 
 export function PeerAnswerViewer() {
   const {
@@ -19,8 +20,8 @@ export function PeerAnswerViewer() {
   } = useRouter();
   const [isFold, setIsFold] = useState(true);
 
-  const queryClient = useQueryClient();
-  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizzesById(quizIdParams), {
+  const setQuizAplyLists = useSetClientQuizReply();
+  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizReplyById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
 
@@ -30,16 +31,22 @@ export function PeerAnswerViewer() {
     return null;
   }
 
-  const peerAnswer = quizzes.quizReplyHistories.filter(element => element.creator.nickname !== user.nickname);
+  const peerAnswers = quizzes.quizReplyHistories.filter(element => element.creator.nickname !== user.nickname);
+
+  const onClick = (id: number) => {
+    console.log(id);
+    setQuizAplyLists(peerAnswers.find(answer => id === answer.quizReplyHistoryId));
+  };
+
   return (
     <>
       <Flex css={{ justifyContent: 'space-between' }}>
         <Text variant="headline">팀원들의 답안도 확인해볼까요? </Text>
-        <DoneNumberNotice done={peerAnswer.length} />
+        <DoneNumberNotice done={peerAnswers.length} />
       </Flex>
       <Spacing size={16} />
       <Wrapper>
-        {peerAnswer.map(({ answer, creator }) => (
+        {peerAnswers.map(({ quizReplyHistoryId, answer, creator }) => (
           <PeerAnswerWrapper key={creator.userId}>
             <Accordion
               isFold={isFold}
@@ -56,7 +63,13 @@ export function PeerAnswerViewer() {
                       {creator.nickname}
                     </Text>
                   </Flex>
-                  <Button css={{ float: 'right' }} width={110} size="medium" type="general">
+                  <Button
+                    css={{ float: 'right' }}
+                    width={110}
+                    size="medium"
+                    type="general"
+                    onClick={() => onClick(quizReplyHistoryId)}
+                  >
                     똑표하기
                   </Button>
                 </Flex>

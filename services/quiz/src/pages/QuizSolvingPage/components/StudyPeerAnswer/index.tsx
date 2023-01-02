@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
 import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
-import { getQuizzesById } from 'common/remotes/quizzes';
+import { getQuizReplyById } from 'common/remotes/quizReply';
 import { QUERY_KEYS } from 'constants/queryKeys';
 
 import { AccordionCotainer, StudyPeerAnswerWrapper, SubmitNotice, TextContainer } from './style';
@@ -15,7 +15,7 @@ export function StudyPeerAnswer() {
     query: { quizIdParams },
   } = useRouter();
 
-  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizzesById(quizIdParams), {
+  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizReplyById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
 
