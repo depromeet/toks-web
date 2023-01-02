@@ -29,12 +29,11 @@ export function PeerAnswerViewer() {
   }
 
   const peerAnswer = quizzes.quizReplyHistories.filter(element => element.creator.nickname !== user.nickname);
-  console.log(peerAnswer);
   return (
     <>
       <Flex css={{ justifyContent: 'space-between' }}>
         <Text variant="headline">팀원들의 답안도 확인해볼까요? </Text>
-        <DoneNumberNotice done={6} />
+        <DoneNumberNotice done={peerAnswer.length} />
       </Flex>
       <Spacing size={16} />
       <Wrapper>

@@ -27,7 +27,7 @@ export function StudyPeerAnswer() {
     <>
       <Flex css={{ justifyContent: 'space-between' }}>
         <Text variant="headline">팀원들의 답안</Text>
-        <DoneNumberNotice done={6} />
+        <DoneNumberNotice done={quizzes.quizReplyHistories.length} />
       </Flex>
       <Spacing size={16} />
       <StudyPeerAnswerWrapper>
