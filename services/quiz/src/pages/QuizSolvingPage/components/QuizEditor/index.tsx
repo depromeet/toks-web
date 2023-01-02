@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { AnswerConfirmModal } from 'common/components/ModalContents/AnswerConfirmModal';
 import { SubmitModal } from 'common/components/ModalContents/SubmitModal';
 
 import { postQuizAnswer } from './remotes/quiz';
@@ -54,7 +53,6 @@ export function QuizEditor() {
       children: (
         <>
           <SubmitModal quizId={quizId} />
-          <AnswerConfirmModal />
         </>
       ),
     });
