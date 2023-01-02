@@ -1,7 +1,7 @@
-import { studyInfo } from 'mock/db';
+import { http } from '@depromeet/http';
 
 import { StudyInfo } from '../models/studyInfo';
 
-export const getStudyInfo = () => {
-  return new Promise<StudyInfo>(resolve => setTimeout(() => resolve(studyInfo), 800));
-};
+export async function getStudyInfoById(studyId: string | string[] | undefined) {
+  return await http.get<StudyInfo>(`/api/v1/studies/${studyId}`);
+}

@@ -1,9 +1,11 @@
-import { User } from '@depromeet/toks-components/src/types/user';
+import { TagResponse, User } from '@depromeet/toks-components';
 
 export interface StudyInfo {
-  studyId: number;
-  title: string;
+  id: number;
+  name: string;
   description: string;
-  studyTags: string[];
-  members: User[];
+  startedAt: string;
+  endedAt: string;
+  tags: TagResponse[];
+  users: User[];
 }

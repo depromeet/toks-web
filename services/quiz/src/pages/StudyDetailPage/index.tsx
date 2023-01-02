@@ -1,4 +1,5 @@
 import { Text } from '@depromeet/toks-components';
+import { useRouter } from 'next/router';
 
 import QuizList from './components/QuizList';
 import RankingList from './components/RankingList';
@@ -7,11 +8,15 @@ import { StudyProgress } from './components/StudyProgress';
 import { FlexRow, Page, QuizListWrapper, RankingListWrapper, Section } from './style';
 
 export default function StudyDetailPage() {
+  const {
+    query: { studyId },
+  } = useRouter();
+
   return (
     <Page>
       <Section>
         <FlexRow>
-          <StudyInfo />
+          <StudyInfo studyId={studyId} />
           <StudyProgress />
         </FlexRow>
         <FlexRow css={{ marginTop: '80px' }}>
@@ -19,13 +24,13 @@ export default function StudyDetailPage() {
             <Text variant="title04" color="gray010">
               똑스
             </Text>
-            <QuizList />
+            <QuizList studyId={studyId} />
           </QuizListWrapper>
           <RankingListWrapper css={{ marginLeft: '35px' }}>
             <Text variant="title04" color="gray010">
               똑순위
             </Text>
-            <RankingList />
+            <RankingList studyId={studyId} />
           </RankingListWrapper>
         </FlexRow>
       </Section>

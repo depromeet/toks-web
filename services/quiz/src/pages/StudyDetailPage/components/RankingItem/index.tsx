@@ -1,13 +1,13 @@
 import { theme } from '@depromeet/theme';
 import { Icon, Text, UserAvatar } from '@depromeet/toks-components';
 
-import { RankResponse } from 'pages/StudyDetailPage/models/rankingList';
+import { Rank } from 'pages/StudyDetailPage/models/rankingList';
 
 import { Item } from './style';
 
 interface RankingItemProps {
   ranking?: number;
-  rankItem: RankResponse;
+  rankItem: Rank;
 }
 
 const medals = ['ic-gold' as const, 'ic-silver' as const, 'ic-bronze' as const];
