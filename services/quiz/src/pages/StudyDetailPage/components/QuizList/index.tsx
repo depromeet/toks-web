@@ -8,6 +8,11 @@ import { useGetQuizList, useSetClientQuizList } from 'pages/StudyDetailPage/hook
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
 
+
+interface QuizListProps {
+  studyId : string | string[] | undefined
+}
+
 const AddButton = styled.button`
   display: block;
   width: 100%;
@@ -30,12 +35,16 @@ const QuizAddButton = () => (
   </AddButton>
 );
 
-function QuizList() {
-  const quizList = useGetQuizList();
+function QuizList({studyId} : QuizListProps) {
+  const { data: quizList, isError} = useGetQuizList(studyId);
   const setQuizList = useSetClientQuizList();
 
+  if (isError || quizList == null) {
+    return null;
+  }
+
   const isNotQuizEmpty = quizList[0] !== undefined;
-  const isAllDone = quizList.every(quiz => quiz.quizStatus === 'DONE');
+  const isAllDone = quizList && quizList.every(quiz => quiz.quizStatus === 'DONE');
   const isAddableQuiz = !isNotQuizEmpty || (isNotQuizEmpty && isAllDone);
 
   const setQuizItemStatus = (quizId: number, newQuizStatus: QuizStatus) =>
@@ -45,7 +54,7 @@ function QuizList() {
     <List>
       <li>{isAddableQuiz && <QuizAddButton />}</li>
       {isNotQuizEmpty &&
-        quizList.map((quizItem, index) => (
+        quizList && quizList.map((quizItem, index) => (
           <QuizItem
             key={quizItem.quizId}
             round={quizList.length - index}
@@ -57,10 +66,11 @@ function QuizList() {
   );
 }
 
-export default () => (
+export default ({studyId} : QuizListProps) => (
   <ErrorBoundary renderFallback={() => null}>
     <SSRSuspense fallback={null}>
-      <QuizList />
+      <QuizList
+        studyId={studyId} />
     </SSRSuspense>
   </ErrorBoundary>
 );

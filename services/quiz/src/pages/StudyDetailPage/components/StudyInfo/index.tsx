@@ -1,16 +1,22 @@
 import { SSRSuspense, Tag, Text, UserAvatar } from '@depromeet/toks-components';
 import { ErrorBoundary } from '@toss/error-boundary';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 
 import { useGetStudyInfo } from 'pages/StudyDetailPage/hooks/queries/studyInfo';
 
 import { Body, Footer, Header, Info, StudyTags } from './style';
 
-function StudyInfo() {
-  const {
-    query: { studyId },
-  } = useRouter();
+interface StudyInfoProps {
+  studyId : string | string[] | undefined
+}
 
+function StudyInfo({studyId} : StudyInfoProps) {
+  // const {
+  //   query: { studyId },
+  // } = useRouter();
+  
+  // TODO : 테스트 용 지워야 함.
+  // sessionStorage.setItem('accessToken', 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwb29oOTYwNDA3QG5hdmVyLmNvbSIsImlhdCI6MTY3MTQ3MTMwMiwiZXhwIjoyMDQ0NzE5MzAyfQ.sp4-Y5XvsnMfNfVe1wbWE9xnTsNMJT8dR1QTAuNsM7A');
   const { data: studyInfo, isError } = useGetStudyInfo(studyId);
 
   if (isError || studyInfo == null) {
@@ -63,10 +69,11 @@ function StudyInfo() {
   );
 }
 
-export default () => (
+export default ({studyId} : StudyInfoProps) => (
   <ErrorBoundary renderFallback={() => null}>
     <SSRSuspense fallback={null}>
-      <StudyInfo />
+      <StudyInfo 
+        studyId={studyId}/>
     </SSRSuspense>
   </ErrorBoundary>
 );
