@@ -5,6 +5,7 @@ export const PATHS = {
   quiz: {
     studyDetail: ({ studyId }: { studyId: number | string }) => `/quiz/study-detail/${studyId}`,
     solve: ({ quizId }: { quizId: number | string }) => `/quiz/solve/${quizId}`,
+    vote: ({ quizId }: { quizId: number | string }) => `/quiz/vote/${quizId}`,
   },
   onboarding: {
     createStudy: '/onboarding/create-study',

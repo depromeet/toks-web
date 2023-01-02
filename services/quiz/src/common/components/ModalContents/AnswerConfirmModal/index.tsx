@@ -1,5 +1,7 @@
-import { Button, Image, Text, Timer } from '@depromeet/toks-components';
+import { Button, Image, Text } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
+
+import { QuizTimer } from 'common/components/QuizTimer';
 
 export function AnswerConfirmModal() {
   return (
@@ -12,7 +14,7 @@ export function AnswerConfirmModal() {
       </Text>
       <Text variant="title03" color="gray040">
         {/* time = quiz.durationOfSecond 넘기기 */}
-        <Timer />ß
+        <QuizTimer duration={10} />
       </Text>
       <Image
         width={170}
