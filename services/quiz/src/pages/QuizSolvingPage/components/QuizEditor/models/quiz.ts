@@ -1,4 +1,4 @@
 export interface QuizAnswerRequest {
   answer: string;
-  quizIdParams: number;
+  quizId: number;
 }

@@ -1,6 +1,6 @@
-export interface Quiz {
+export interface QuizByIdResponse {
   quizId: number;
-  quiz: string;
+  question: string;
   quizType: string;
   description: string;
   startedAt: string;
@@ -14,4 +14,5 @@ export interface Quiz {
     profileImageUrl: string;
   };
   studyId: number;
+  round: number;
 }

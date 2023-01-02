@@ -9,7 +9,7 @@ interface AccordionProps {
   bodyNodes: ReactNode;
   backgroundColor: string;
   isFold: boolean;
-  onFold: () => void;
+  onFold?: () => void;
 }
 
 export function Accordion({ headerNodes, bodyNodes, backgroundColor, isFold, onFold }: AccordionProps) {
