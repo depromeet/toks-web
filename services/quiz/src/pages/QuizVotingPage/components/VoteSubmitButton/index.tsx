@@ -1,26 +1,45 @@
-import { Button, useModal } from '@depromeet/toks-components';
+import { isToksError } from '@depromeet/http';
+import { Button, useModal, useToast } from '@depromeet/toks-components';
 import { AnswerConfirmModal } from 'common/components/ModalContents/AnswerConfirmModal';
 import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { useRouter } from 'next/router';
+import { QuizReply } from 'pages/QuizVotingPage/hooks/quizReplyList';
 import { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
+import { postQuizLike } from './remotes/quizVote';
 
 export function VoteSubmitButton() {
   const [isDisable, setIsDisable] = useState(true);
+  const [quizReplyHistoryId, setQuizReplyHistoryId] = useState<number>();
   const { openModal } = useModal();
-  const { data: ans } = useQuery(QUERY_KEYS.GET_QUIZREPLY, {
-    initialData: '',
+  const { open } = useToast();
+
+  const { data: ans } = useQuery<QuizReply>(QUERY_KEYS.GET_QUIZREPLY, {
+    initialData: null,
     staleTime: Infinity,
   });
 
   useEffect(() => {
-    if (ans !== '') {
+    if (ans != null) {
       setIsDisable(false);
+      setQuizReplyHistoryId(ans.quizReplyHistoryId);
     }
   }, [ans]);
 
-  console.log(ans);
+  const { mutateAsync: quizVoteMutation, isSuccess } = useMutation(async () => {
+    try {
+      await postQuizLike(quizReplyHistoryId);
+    } catch (err: unknown) {
+      if (isToksError(err) && err.message === 'error.already.liked') {
+        await open({
+          type: 'danger',
+          title: '이미 투표를 완료했습니다.',
+          time: 2000,
+        });
+      }
+    }
+  });
 
   const {
     query: { quizIdParams },
@@ -45,7 +64,8 @@ export function VoteSubmitButton() {
   };
 
   const onClick = () => {
-    openModalBox();
+    quizVoteMutation();
+    isSuccess ? openModalBox() : null;
   };
   return (
     <Button

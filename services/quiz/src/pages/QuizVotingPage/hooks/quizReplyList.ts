@@ -1,8 +1,7 @@
-import { QuizReplyByIdResponse } from 'common/models/quizReply';
 import { QUERY_KEYS } from 'constants/queryKeys';
-import { useQueryClient, useQuery } from 'react-query';
+import { useQueryClient } from 'react-query';
 
-type QuizReply =
+export type QuizReply =
   | {
       quizReplyHistoryId: number;
       answer: string;
@@ -13,7 +12,8 @@ type QuizReply =
         profileImageUrl: string;
       };
     }
-  | undefined;
+  | undefined
+  | null;
 
 export const useSetClientQuizReply = () => {
   const queryClient = useQueryClient();
