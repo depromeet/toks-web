@@ -8,6 +8,7 @@ type VoteSubmitProps = {
   duration: number;
   quizId: string | number;
 };
+
 export function AnswerConfirmModal({ duration, quizId }: VoteSubmitProps) {
   const onClick = () => {
     pushTo(PATHS.quiz.check({ quizId }));
