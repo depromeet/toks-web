@@ -1,5 +1,6 @@
-import { QUERY_KEYS } from 'constants/queryKeys';
 import { useQueryClient } from 'react-query';
+
+import { QUERY_KEYS } from 'constants/queryKeys';
 
 export type QuizReply =
   | {

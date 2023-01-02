@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { Accordion, Button, Text, ToastViewer, UserAvatar } from '@depromeet/toks-components';
+import { Accordion, Text, ToastViewer, UserAvatar } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -12,15 +12,17 @@ import { getUser } from 'common/remotes/user';
 import { QUERY_KEYS } from 'constants/queryKeys';
 
 import { PeerAnswerWrapper, Wrapper } from './style';
-import { useSetClientQuizReply } from 'pages/QuizVotingPage/hooks/quizReplyList';
+import { VoteButton } from './VoteButton.tsx';
 
 export function PeerAnswerViewer() {
   const {
     query: { quizIdParams },
   } = useRouter();
+<<<<<<< HEAD
   const [isFold, setIsFold] = useState(true);
+=======
+>>>>>>> ea20ba8 (:sparkles: feat: 똑표하기 버튼 클릭시 활성화)
 
-  const setQuizAplyLists = useSetClientQuizReply();
   const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizReplyById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
@@ -33,11 +35,6 @@ export function PeerAnswerViewer() {
 
   const peerAnswers = quizzes.quizReplyHistories.filter(element => element.creator.nickname !== user.nickname);
 
-  const onClick = (id: number) => {
-    console.log(id);
-    setQuizAplyLists(peerAnswers.find(answer => id === answer.quizReplyHistoryId));
-  };
-
   return (
     <>
       <Flex css={{ justifyContent: 'space-between' }}>
@@ -49,8 +46,13 @@ export function PeerAnswerViewer() {
         {peerAnswers.map(({ quizReplyHistoryId, answer, creator }) => (
           <PeerAnswerWrapper key={creator.userId}>
             <Accordion
+<<<<<<< HEAD
               isFold={isFold}
               onFold={() => setIsFold(prev => !prev)}
+=======
+              isFold={false}
+              // onFold={onFold}
+>>>>>>> ea20ba8 (:sparkles: feat: 똑표하기 버튼 클릭시 활성화)
               backgroundColor={theme.colors.gray110}
               accordionStyle={{
                 padding: '22px 16px',
@@ -63,15 +65,7 @@ export function PeerAnswerViewer() {
                       {creator.nickname}
                     </Text>
                   </Flex>
-                  <Button
-                    css={{ float: 'right' }}
-                    width={110}
-                    size="medium"
-                    type="general"
-                    onClick={() => onClick(quizReplyHistoryId)}
-                  >
-                    똑표하기
-                  </Button>
+                  <VoteButton quizReplyHistoryId={quizReplyHistoryId} peerAnswers={peerAnswers} />
                 </Flex>
               }
               bodyNodes={

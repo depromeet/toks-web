@@ -1,12 +1,15 @@
 import { isToksError } from '@depromeet/http';
 import { Button, useModal, useToast } from '@depromeet/toks-components';
+import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { useMutation, useQuery } from 'react-query';
+
 import { AnswerConfirmModal } from 'common/components/ModalContents/AnswerConfirmModal';
 import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
 import { QUERY_KEYS } from 'constants/queryKeys';
-import { useRouter } from 'next/router';
 import { QuizReply } from 'pages/QuizVotingPage/hooks/quizReplyList';
-import { useEffect, useState } from 'react';
-import { useQuery, useMutation } from 'react-query';
+
 import { postQuizLike } from './remotes/quizVote';
 
 export function VoteSubmitButton() {
@@ -53,13 +56,11 @@ export function VoteSubmitButton() {
     return null;
   }
 
+  const durationTime = calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt));
+
   const openModalBox = async () => {
     await openModal({
-      children: (
-        <>
-          <AnswerConfirmModal duration={quiz.durationOfSecond} quizId={Number(quizIdParams)} />
-        </>
-      ),
+      children: <AnswerConfirmModal duration={durationTime} quizId={Number(quizIdParams)} />,
     });
   };
 
