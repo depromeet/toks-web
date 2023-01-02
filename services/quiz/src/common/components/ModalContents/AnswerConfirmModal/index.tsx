@@ -1,9 +1,18 @@
+import { PATHS, pushTo } from '@depromeet/path';
 import { Button, Image, Text } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 
 import { QuizTimer } from 'common/components/QuizTimer';
 
-export function AnswerConfirmModal() {
+type VoteSubmitProps = {
+  duration: number;
+  quizId: string | number;
+};
+export function AnswerConfirmModal({ duration, quizId }: VoteSubmitProps) {
+  const onClick = () => {
+    pushTo(PATHS.quiz.check({ quizId }));
+  };
+
   return (
     <Flex.Center direction="column">
       <Text variant="title03">똑스 풀기가 끝나면</Text>
@@ -14,7 +23,7 @@ export function AnswerConfirmModal() {
       </Text>
       <Text variant="title03" color="gray040">
         {/* time = quiz.durationOfSecond 넘기기 */}
-        <QuizTimer duration={10} />
+        <QuizTimer duration={duration} />
       </Text>
       <Image
         width={170}
@@ -23,7 +32,7 @@ export function AnswerConfirmModal() {
         src="https://toks-web-assets.s3.amazonaws.com/toks-emoji/expected_emoji.svg"
       />
       <Spacing size={20} />
-      <Button>확인했어요</Button>
+      <Button onClick={onClick}>확인했어요</Button>
     </Flex.Center>
   );
 }
