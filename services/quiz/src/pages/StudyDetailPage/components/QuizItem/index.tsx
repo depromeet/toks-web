@@ -2,6 +2,7 @@ import { KeyOfColors, theme } from '@depromeet/theme';
 import { Accordion, Button, Icon, Quiz, QuizResponse, QuizStatus, Text, UserAvatar } from '@depromeet/toks-components';
 import { convertSecondToString, getInitialTimerSecond, getQuizItemStatus } from '@depromeet/toks-components/src/utils';
 import { useTimer } from '@depromeet/utils';
+import { useRouter } from 'next/router';
 import { ComponentProps, useEffect, useState } from 'react';
 
 import { Divider } from 'common/components/Divider';
@@ -14,33 +15,37 @@ interface QuizItemProps {
   setQuizItemStatus: (quizId: number, newQuizStatus: QuizStatus) => QuizResponse | undefined;
 }
 
-type QuizItemColorMap = {
+type QuizItemMap = {
   [key in QuizStatus]: {
     buttonColor: ComponentProps<typeof Button>['type'];
     timerColor: KeyOfColors;
     backgroundColor: string;
     buttonName: string;
+    path: (quizId: number) => string;
   };
 };
 
-const QUIZ_ITEM: QuizItemColorMap = {
+const QUIZ_ITEM: QuizItemMap = {
   DONE: {
     buttonColor: 'general',
     timerColor: 'gray060',
     backgroundColor: theme.colors.gray110,
     buttonName: '똑스 확인하기',
+    path: (quizId: number) => `/vote/${quizId}`,
   },
   TO_DO: {
     buttonColor: 'primary',
     timerColor: 'primary',
     backgroundColor: theme.colors.gray100,
     buttonName: '똑스 풀기',
+    path: (quizId: number) => `/solve/${quizId}`,
   },
   IN_PROGRESS: {
     buttonColor: 'primary',
     timerColor: 'primary',
     backgroundColor: theme.colors.gray100,
     buttonName: '똑스 풀기',
+    path: (quizId: number) => `/solve/${quizId}`,
   },
 };
 
@@ -62,6 +67,8 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
 
   const [isFold, setIsFold] = useState(quizStatus === 'DONE');
   const onFold = () => setIsFold(!isFold);
+
+  const router = useRouter();
 
   useEffect(() => {
     if (time === 0 && quizStatus !== 'DONE') {
@@ -115,6 +122,10 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
               width={140}
               disabled={quizStatus === 'TO_DO'}
               size="medium"
+              onClick={event => {
+                event.stopPropagation();
+                router.push(QUIZ_ITEM[quizStatus].path(quizId));
+              }}
             >
               {QUIZ_ITEM[quizStatus].buttonName}
             </Button>
