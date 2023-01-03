@@ -15,7 +15,7 @@ export const getQuizItemStatus = (openDate: Date, limitDate: Date) => {
   return 'IN_PROGRESS';
 };
 
-const calculateRemainingSecond = (currentDate: Date, endDate: Date) => {
+export const calculateRemainingSecond = (currentDate: Date, endDate: Date) => {
   return differenceInSeconds(endDate, currentDate);
 };
 

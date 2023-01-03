@@ -1,4 +1,5 @@
 import { Icon, ImageViewer, Text, UserAvatar } from '@depromeet/toks-components';
+import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
@@ -26,6 +27,8 @@ export function QuizQuestion() {
   if (!quiz) {
     return null;
   }
+
+  const durationTime = calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt));
 
   quiz.imageUrls.map(url => (url ? urlArray.push({ src: url }) : null));
 
@@ -64,7 +67,7 @@ export function QuizQuestion() {
       <Flex css={{ textAlign: 'center' }}>
         <Icon iconName="ic-time" />
         <Text variant="title04" color="gray030" css={{ marginLeft: '10px' }}>
-          <QuizTimer duration={quiz.durationOfSecond} />
+          <QuizTimer duration={durationTime} />
         </Text>
       </Flex>
     </Wrapper>
