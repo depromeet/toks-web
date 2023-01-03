@@ -2,13 +2,12 @@ import { KeyOfColors, theme } from '@depromeet/theme';
 import { Accordion, Button, Icon, Quiz, QuizResponse, QuizStatus, Text, UserAvatar } from '@depromeet/toks-components';
 import { convertSecondToString, getInitialTimerSecond, getQuizItemStatus } from '@depromeet/toks-components/src/utils';
 import { useTimer } from '@depromeet/utils';
+import { useRouter } from 'next/router';
 import { ComponentProps, useEffect, useState } from 'react';
 
 import { Divider } from 'common/components/Divider';
 
 import { FlexRow, ListItem, Space } from './style';
-import { PATHS } from '@depromeet/path';
-import { useRouter } from 'next/router';
 
 interface QuizItemProps {
   round: number;
@@ -32,21 +31,21 @@ const QUIZ_ITEM: QuizItemMap = {
     timerColor: 'gray060',
     backgroundColor: theme.colors.gray110,
     buttonName: '똑스 확인하기',
-    path: (quizId: number) => `/vote/${quizId}`
+    path: (quizId: number) => `/vote/${quizId}`,
   },
   TO_DO: {
     buttonColor: 'primary',
     timerColor: 'primary',
     backgroundColor: theme.colors.gray100,
     buttonName: '똑스 풀기',
-    path: (quizId: number) => `/solve/${quizId}`
+    path: (quizId: number) => `/solve/${quizId}`,
   },
   IN_PROGRESS: {
     buttonColor: 'primary',
     timerColor: 'primary',
     backgroundColor: theme.colors.gray100,
     buttonName: '똑스 풀기',
-    path: (quizId: number) => `/solve/${quizId}`
+    path: (quizId: number) => `/solve/${quizId}`,
   },
 };
 
@@ -123,10 +122,11 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
               width={140}
               disabled={quizStatus === 'TO_DO'}
               size="medium"
-              onClick={(event) => {
+              onClick={event => {
                 event.stopPropagation();
                 router.push(QUIZ_ITEM[quizStatus].path(quizId));
-              }}>
+              }}
+            >
               {QUIZ_ITEM[quizStatus].buttonName}
             </Button>
           </>

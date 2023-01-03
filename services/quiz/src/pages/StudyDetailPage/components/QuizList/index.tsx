@@ -27,9 +27,8 @@ const AddButton = styled.button`
   justify-content: center;
 `;
 
-const QuizAddButton = ({...props} : HTMLAttributes<HTMLButtonElement>) => (
-  <AddButton
-    {...props}>
+const QuizAddButton = ({ ...props }: HTMLAttributes<HTMLButtonElement>) => (
+  <AddButton {...props}>
     <Icon iconName="ic-plus" />
     <Text variant="headline" color="gray010" css={{ margin: '0 0 0 10px' }} as="h5">
       똑스 만들기
@@ -60,12 +59,7 @@ function QuizList({ studyId }: QuizListProps) {
   // TODO : router 리터럴로 되어있는거 변경해야 함.
   return (
     <List>
-      <li>
-        {isAddableQuiz && 
-          <QuizAddButton 
-            onClick={() => router.push('/create')}/>
-        }
-      </li>
+      <li>{isAddableQuiz && <QuizAddButton onClick={() => router.push('/create')} />}</li>
       {isNotQuizEmpty &&
         quizList.map((quizItem, index) => (
           <QuizItem
