@@ -38,10 +38,21 @@ export function AnswerCheckList() {
   }
 
   const peerAnswers = quizzes.quizReplyHistories.filter(element => element.creator.nickname !== user.nickname);
-  //   const durationTime = calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt));
-  const durationTime = 1;
+  const durationTime = calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt));
   if (durationTime <= 0) {
-    return <Text>퀴즈 종료</Text>;
+    return (
+      <Wrapper>
+        <Flex css={{ justifyContent: 'space-between' }}>
+          <Text variant="headline" color="gray030">
+            우수한 답변
+          </Text>
+          <Text variant="body02" color="gray050">
+            잘한다잘한다하니까 너무 잘한다🙊
+          </Text>
+        </Flex>
+        <Spacing size={16} />
+      </Wrapper>
+    );
   } else {
     return (
       <Wrapper>
