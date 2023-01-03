@@ -57,6 +57,7 @@ function QuizList({ studyId }: QuizListProps) {
       quizzes: quizList.map(quiz => (quizId === quiz.quizId ? { ...quiz, quizStatus: newQuizStatus } : quiz)),
     });
 
+  // TODO : router 리터럴로 되어있는거 변경해야 함.
   return (
     <List>
       <li>
