@@ -50,11 +50,7 @@ export function QuizEditor() {
 
   const openModalBox = async () => {
     await openModal({
-      children: (
-        <>
-          <SubmitModal quizId={quizId} />
-        </>
-      ),
+      children: <SubmitModal quizId={quizId} />,
     });
   };
 

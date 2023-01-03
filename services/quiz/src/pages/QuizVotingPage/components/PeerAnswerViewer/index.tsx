@@ -3,8 +3,7 @@ import { Accordion, Text, ToastViewer, UserAvatar } from '@depromeet/toks-compon
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-
-import { useQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 
 import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
 import { getQuizReplyById } from 'common/remotes/quizReply';
@@ -18,10 +17,7 @@ export function PeerAnswerViewer() {
   const {
     query: { quizIdParams },
   } = useRouter();
-<<<<<<< HEAD
   const [isFold, setIsFold] = useState(true);
-=======
->>>>>>> ea20ba8 (:sparkles: feat: 똑표하기 버튼 클릭시 활성화)
 
   const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizReplyById(quizIdParams), {
     enabled: Boolean(quizIdParams),
@@ -46,13 +42,8 @@ export function PeerAnswerViewer() {
         {peerAnswers.map(({ quizReplyHistoryId, answer, creator }) => (
           <PeerAnswerWrapper key={creator.userId}>
             <Accordion
-<<<<<<< HEAD
               isFold={isFold}
               onFold={() => setIsFold(prev => !prev)}
-=======
-              isFold={false}
-              // onFold={onFold}
->>>>>>> ea20ba8 (:sparkles: feat: 똑표하기 버튼 클릭시 활성화)
               backgroundColor={theme.colors.gray110}
               accordionStyle={{
                 padding: '22px 16px',
