@@ -1,7 +1,7 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
-import { emoji, TOKS_HEADER_HEIGHT } from '../../constants';
 
+import { TOKS_HEADER_HEIGHT, emoji } from '../../constants';
 import { Image } from '../Image';
 import { Text } from '../Text';
 
