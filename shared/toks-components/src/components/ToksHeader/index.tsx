@@ -1,6 +1,7 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 
+import { TOKS_HEADER_HEIGHT, emoji } from '../../constants';
 import { Image } from '../Image';
 import { Text } from '../Text';
 
@@ -48,15 +49,9 @@ export function ToksHeader({ onClickLogo, ...rest }: HeaderProps) {
 function ProfileButton(props: ProfileButtonProps) {
   if (!isMember(props)) {
     return (
-      <Button onClick={props.onClickButton}>
-        <ClickableImage
-          src="https://asset.tokstudy.com/login-emoji.png"
-          alt=""
-          width={22}
-          height={22}
-          style={{ borderRadius: '50%' }}
-        />
-        <Text variant="subhead" style={{ textOverflow: 'ellipsis' }}>
+      <Button onClick={props.onClickButton} style={{ gap: 0, padding: '0 12px' }}>
+        <ClickableImage src={emoji.studying} alt="" width={40} height={40} style={{ borderRadius: '50%' }} />
+        <Text variant="subhead" style={{ textOverflow: 'ellipsis', transform: 'translate(0px, 0.6px)' }}>
           로그인
         </Text>
       </Button>
@@ -105,7 +100,7 @@ const Header = styled.header`
   display: flex;
   max-width: 1512px;
   min-width: 320px;
-  height: 70px;
+  height: ${TOKS_HEADER_HEIGHT};
   margin: 0 auto;
   padding: 0 20px;
   align-items: center;
