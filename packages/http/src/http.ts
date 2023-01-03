@@ -55,13 +55,35 @@ function createTossBankErrorFromAxiosError(error: AxiosError): ToksErrorResponse
   return error;
 }
 
-const authToken = {
-  access: typeof window === 'undefined' && typeof global !== 'undefined' ? null : sessionStorage.getItem('accessToken'),
-  refresh:
-    typeof window === 'undefined' && typeof global !== 'undefined' ? null : sessionStorage.getItem('refreshToken'),
+export const authToken = {
+  access: (() => {
+    try {
+      return sessionStorage.getItem('accessToken');
+    } catch (err) {
+      return null;
+    }
+  })(),
+  refresh: (() => {
+    try {
+      return sessionStorage.getItem('refreshToken');
+    } catch (err) {
+      return null;
+    }
+  })(),
+  refetch: () => {
+    authToken.access = sessionStorage.getItem('accessToken');
+    authToken.refresh = sessionStorage.getItem('refreshToken');
+    return;
+  },
+  destroy: () => {
+    sessionStorage.removeItem('accessToken');
+    sessionStorage.removeItem('refreshToken');
+    authToken.access = null;
+    authToken.refresh = null;
+  },
 };
 
-const redirectToLoginPage = () => {
+export const redirectToLoginPage = () => {
   const isDev = window.location.hostname === 'localhost';
   const isLoginPage = window.location.href.includes('/login');
 
@@ -75,7 +97,7 @@ const redirectToLoginPage = () => {
 //axios instance
 const instance: ToksHttpClient = axios.create({
   baseURL: 'https://api.tokstudy.com',
-  headers: { Authorization: authToken?.access, 'Content-Type': 'application/json; charset=utf-8' },
+  headers: { Authorization: authToken.access, 'Content-Type': 'application/json; charset=utf-8' },
   timeout: 5000,
 });
 
@@ -86,10 +108,12 @@ instance.interceptors.request.use(
       throw new Error(`config.header is undefined`);
     }
 
-    if (instance.defaults.headers.common['Authorization'] == null) {
-      instance.defaults.headers.common['Authorization'] = authToken?.access;
+    if (instance.defaults.headers.common['Authorization'] == null || config.headers['Authorization'] == null) {
+      authToken.refetch();
     }
 
+    config.headers['Authorization'] = authToken.access;
+    instance.defaults.headers.common['Authorization'] = authToken.access;
     return config;
   },
   function (error) {
@@ -112,6 +136,7 @@ instance.interceptors.response.use(
       redirectToLoginPage();
       // redirect가 완료되고, API가 종료될 수 있도록 delay를 추가합니다.
       await delay(500);
+      return null;
     } else {
       throw error;
     }

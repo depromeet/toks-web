@@ -1,4 +1,5 @@
 import { isToksError } from '@depromeet/http';
+import { formatISO } from 'date-fns';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
@@ -22,12 +23,22 @@ export const useCreateStudyForm = () => {
   const { mutate: createStudy } = useMutation(async () => {
     try {
       const values = getValues();
-      const { id } = await postStudy(values);
+
+      const { startedAt, endedAt } = values;
+
+      const formatStartedAt = formatISO(new Date(startedAt));
+      const foramtEndedAt = formatISO(new Date(endedAt));
+
+      const { id } = await postStudy({
+        ...values,
+        startedAt: formatStartedAt,
+        endedAt: foramtEndedAt,
+      });
       alert('스터디가 생성되었습니다.');
       await router.replace(`/create-complete/${id}`);
     } catch (error: unknown) {
       if (isToksError(error)) {
-        alert(error.message);
+        console.log(error);
       }
     }
   });

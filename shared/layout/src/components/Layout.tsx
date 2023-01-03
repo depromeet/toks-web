@@ -1,3 +1,4 @@
+import { logout as requestLogout } from '@depromeet/http';
 import { PATHS, pushTo } from '@depromeet/path';
 import { SSRSuspense, ToksHeader } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
@@ -8,17 +9,18 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, ReactNode } from 'react';
 import { useMutation } from 'react-query';
 
-import { logout as requestLogout } from '../remote/logout';
 import { safelyGetUser } from '../remote/user';
 import { UserMenu } from './UserMenu';
 
 function Component({ children }: { children: ReactNode }) {
-  const { data: user } = useSuspendedQuery(safelyGetUser.queryKey, safelyGetUser, { retry: false });
-  const { toggle } = useUserMenuDialog();
+  const { data: user, refetch } = useSuspendedQuery(safelyGetUser.queryKey, safelyGetUser, { retry: false });
+  const { toggle, close } = useUserMenuDialog();
 
   const { mutateAsync: logout, isLoading } = useMutation(async () => {
     try {
       await requestLogout();
+      await refetch();
+      close();
     } catch (err) {
       // TODO: alert, confirm 구현하기
       // TODO: 서버와 싱크 후, message를 에러 객체에 어떻게 담을지 정의하고 util만들기
@@ -31,11 +33,16 @@ function Component({ children }: { children: ReactNode }) {
   return (
     <StyledLayout>
       {isNonMember ? (
-        <ToksHeader login={false} onClickButton={() => pushTo(PATHS.login.main)} />
+        <ToksHeader
+          login={false}
+          onClickButton={() => pushTo(PATHS.login.main)}
+          onClickLogo={() => pushTo(PATHS.login.main)}
+        />
       ) : (
         <ToksHeader
           imgUrl={user.profileImageUrl}
           userName={user.nickname}
+          login
           onClickButton={() => {
             if (isLoading) {
               return;
@@ -48,6 +55,7 @@ function Component({ children }: { children: ReactNode }) {
               handleLogout: () => logout(),
             });
           }}
+          onClickLogo={() => pushTo(PATHS.home.myStudy)}
         />
       )}
 
@@ -58,7 +66,13 @@ function Component({ children }: { children: ReactNode }) {
 
 export function Layout(props: ComponentProps<typeof Component>) {
   return (
-    <SSRSuspense fallback={<ToksHeader.Skeleton />}>
+    <SSRSuspense
+      fallback={
+        <StyledLayout>
+          <ToksHeader.Skeleton />
+        </StyledLayout>
+      }
+    >
       <Component {...props} />
     </SSRSuspense>
   );
@@ -75,7 +89,7 @@ const StyledLayout = styled.main`
 
 function useUserMenuDialog() {
   const overlay = useOverlay();
-  const [isOpended, , , toggleState] = useBooleanState(false);
+  const [isOpended, , setClosedState, toggleState] = useBooleanState(false);
 
   const toggle = (props: ComponentProps<typeof UserMenu>) =>
     new Promise(resolve => {
@@ -115,7 +129,12 @@ function useUserMenuDialog() {
       }
     });
 
-  return { toggle };
+  const close = () => {
+    setClosedState();
+    overlay.close();
+  };
+
+  return { toggle, close };
 }
 
 /**@Note 필요하면 공통 컴포넌틀로 빼기 */

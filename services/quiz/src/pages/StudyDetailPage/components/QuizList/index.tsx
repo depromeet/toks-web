@@ -2,11 +2,17 @@ import { theme } from '@depromeet/theme';
 import { Icon, QuizStatus, SSRSuspense, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { ErrorBoundary } from '@toss/error-boundary';
+import { useRouter } from 'next/router';
+import { HTMLAttributes } from 'react';
 
 import { useGetQuizList, useSetClientQuizList } from 'pages/StudyDetailPage/hooks/queries/quizList';
 
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
+
+interface QuizListProps {
+  studyId: string | string[] | undefined;
+}
 
 const AddButton = styled.button`
   display: block;
@@ -21,8 +27,8 @@ const AddButton = styled.button`
   justify-content: center;
 `;
 
-const QuizAddButton = () => (
-  <AddButton>
+const QuizAddButton = ({ ...props }: HTMLAttributes<HTMLButtonElement>) => (
+  <AddButton {...props}>
     <Icon iconName="ic-plus" />
     <Text variant="headline" color="gray010" css={{ margin: '0 0 0 10px' }} as="h5">
       똑스 만들기
@@ -30,20 +36,30 @@ const QuizAddButton = () => (
   </AddButton>
 );
 
-function QuizList() {
-  const quizList = useGetQuizList();
+function QuizList({ studyId }: QuizListProps) {
+  const { data, isError } = useGetQuizList(studyId);
   const setQuizList = useSetClientQuizList();
+  const router = useRouter();
+
+  if (isError || data == null) {
+    return null;
+  }
+
+  const quizList = data.quizzes;
 
   const isNotQuizEmpty = quizList[0] !== undefined;
   const isAllDone = quizList.every(quiz => quiz.quizStatus === 'DONE');
   const isAddableQuiz = !isNotQuizEmpty || (isNotQuizEmpty && isAllDone);
 
   const setQuizItemStatus = (quizId: number, newQuizStatus: QuizStatus) =>
-    setQuizList(quizList.map(quiz => (quizId === quiz.quizId ? { ...quiz, quizStatus: newQuizStatus } : quiz)));
+    setQuizList({
+      quizzes: quizList.map(quiz => (quizId === quiz.quizId ? { ...quiz, quizStatus: newQuizStatus } : quiz)),
+    });
 
+  // TODO : router 리터럴로 되어있는거 변경해야 함.
   return (
     <List>
-      <li>{isAddableQuiz && <QuizAddButton />}</li>
+      <li>{isAddableQuiz && <QuizAddButton onClick={() => router.push('/create')} />}</li>
       {isNotQuizEmpty &&
         quizList.map((quizItem, index) => (
           <QuizItem
@@ -57,10 +73,10 @@ function QuizList() {
   );
 }
 
-export default () => (
+export default ({ studyId }: QuizListProps) => (
   <ErrorBoundary renderFallback={() => null}>
     <SSRSuspense fallback={null}>
-      <QuizList />
+      <QuizList studyId={studyId} />
     </SSRSuspense>
   </ErrorBoundary>
 );

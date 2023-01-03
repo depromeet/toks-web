@@ -1,7 +1,8 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
-import { Accordion, Button, Icon, QuizResponse, QuizStatus, Text, UserAvatar } from '@depromeet/toks-components';
+import { Accordion, Button, Icon, Quiz, QuizResponse, QuizStatus, Text, UserAvatar } from '@depromeet/toks-components';
 import { convertSecondToString, getInitialTimerSecond, getQuizItemStatus } from '@depromeet/toks-components/src/utils';
 import { useTimer } from '@depromeet/utils';
+import { useRouter } from 'next/router';
 import { ComponentProps, useEffect, useState } from 'react';
 
 import { Divider } from 'common/components/Divider';
@@ -10,37 +11,41 @@ import { FlexRow, ListItem, Space } from './style';
 
 interface QuizItemProps {
   round: number;
-  quiz: QuizResponse;
-  setQuizItemStatus: (quizId: number, newQuizStatus: QuizStatus) => QuizResponse[] | undefined;
+  quiz: Quiz;
+  setQuizItemStatus: (quizId: number, newQuizStatus: QuizStatus) => QuizResponse | undefined;
 }
 
-type QuizItemColorMap = {
+type QuizItemMap = {
   [key in QuizStatus]: {
     buttonColor: ComponentProps<typeof Button>['type'];
     timerColor: KeyOfColors;
     backgroundColor: string;
     buttonName: string;
+    path: (quizId: number) => string;
   };
 };
 
-const QUIZ_ITEM: QuizItemColorMap = {
+const QUIZ_ITEM: QuizItemMap = {
   DONE: {
     buttonColor: 'general',
     timerColor: 'gray060',
     backgroundColor: theme.colors.gray110,
     buttonName: '똑스 확인하기',
+    path: (quizId: number) => `/vote/${quizId}`,
   },
   TO_DO: {
     buttonColor: 'primary',
     timerColor: 'primary',
     backgroundColor: theme.colors.gray100,
     buttonName: '똑스 풀기',
+    path: (quizId: number) => `/solve/${quizId}`,
   },
   IN_PROGRESS: {
     buttonColor: 'primary',
     timerColor: 'primary',
     backgroundColor: theme.colors.gray100,
     buttonName: '똑스 풀기',
+    path: (quizId: number) => `/solve/${quizId}`,
   },
 };
 
@@ -52,7 +57,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
     timestamp,
     durationOfSecond,
     quizStatus,
-    quiz: title,
+    question: title,
     creator,
     unSubmitters,
   } = quiz;
@@ -60,15 +65,17 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
   const initialTime = getInitialTimerSecond(currentDate, durationOfSecond, limitDate, quizStatus);
   const { time, start: timerStart, stop: timerStop } = useTimer({ time: initialTime, enabled: false });
 
-  const [isFold, setIsFold] = useState(quizStatus !== 'DONE');
+  const [isFold, setIsFold] = useState(quizStatus === 'DONE');
   const onFold = () => setIsFold(!isFold);
 
+  const router = useRouter();
+
   useEffect(() => {
-    if (time === 0) {
+    if (time === 0 && quizStatus !== 'DONE') {
       timerStop();
       setQuizItemStatus(quizId, 'DONE');
     }
-  }, [time, quizId, timerStop, setQuizItemStatus]);
+  }, [time, quizId, quizStatus, timerStop, setQuizItemStatus]);
 
   useEffect(() => {
     if (quizStatus === 'IN_PROGRESS') {
@@ -76,7 +83,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
     }
   }, [quizStatus, timerStart]);
 
-  // TO_DO => IN_PROGRESS를 감지하기 위한 useEffect
+  // // TO_DO => IN_PROGRESS를 감지하기 위한 useEffect
   useEffect(() => {
     const interval = setInterval(() => {
       const newQuizItemStatus = getQuizItemStatus(openDate, limitDate);
@@ -93,6 +100,9 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
       <Accordion
         isFold={isFold}
         onFold={onFold}
+        accordionStyle={{
+          padding: '22px 28px',
+        }}
         backgroundColor={QUIZ_ITEM[quizStatus].backgroundColor}
         headerNodes={
           <>
@@ -112,6 +122,10 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
               width={140}
               disabled={quizStatus === 'TO_DO'}
               size="medium"
+              onClick={event => {
+                event.stopPropagation();
+                router.push(QUIZ_ITEM[quizStatus].path(quizId));
+              }}
             >
               {QUIZ_ITEM[quizStatus].buttonName}
             </Button>

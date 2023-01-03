@@ -1,4 +1,5 @@
-import { Button, useModal } from '@depromeet/toks-components';
+import { isToksError } from '@depromeet/http';
+import { Button, useModal, useToast } from '@depromeet/toks-components';
 import { Spacing } from '@toss/emotion-utils';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
@@ -14,15 +15,30 @@ import { Container, Wrapper } from './style';
 const Editor = dynamic(() => import('@depromeet/toks-components/src/components/Editor/Editor'), { ssr: false });
 
 export function QuizEditor() {
-  const { open } = useModal();
-  const { mutate: quizAnswerMutation } = useMutation(postQuizAnswer);
+  const { open } = useToast();
+  const { openModal } = useModal();
+
+  const { mutateAsync: quizAnswerMutation, isSuccess } = useMutation(async () => {
+    try {
+      await postQuizAnswer({ answer, quizId });
+    } catch (err: unknown) {
+      if (isToksError(err) && err.message === 'error.already.submitted') {
+        await open({
+          type: 'danger',
+          title: '이미 퀴즈를 제출했습니다.',
+          time: 2000,
+        });
+      }
+    }
+  });
+
   const [isDisabled, setIsDisabled] = useState(true);
   const [answer, setAnswer] = useState('');
 
   const {
-    query: { quizId },
+    query: { quizIdParams },
   } = useRouter();
-  const quizIdParams = Number(quizId);
+  const quizId = Number(quizIdParams);
 
   //button disable 제어
   useEffect(() => {
@@ -33,12 +49,11 @@ export function QuizEditor() {
     }
   }, [answer]);
 
-  const openModal = async () => {
-    await open({
+  const openModalBox = async () => {
+    await openModal({
       children: (
         <>
-          {/* TODO: 모달 먼저 만들었는데 deadcode 때문에 answerconfirm 모달 임시로 넣어둠. 추후 삭제 예정 */}
-          <SubmitModal />
+          <SubmitModal quizId={quizId} />
           <AnswerConfirmModal />
         </>
       ),
@@ -46,8 +61,8 @@ export function QuizEditor() {
   };
 
   const onClick = () => {
-    openModal();
-    quizAnswerMutation({ answer, quizIdParams });
+    quizAnswerMutation();
+    isSuccess ? openModalBox() : null;
   };
 
   return (

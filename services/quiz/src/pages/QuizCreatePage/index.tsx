@@ -17,7 +17,6 @@ const QuizCreatePage = () => {
         onSubmit={(e: React.FormEvent) => {
           e.preventDefault();
           const values = getValues() as QuizCreateForm;
-          console.log(values.imageFiles);
 
           if (!values.answer) {
             setError('answer', {
