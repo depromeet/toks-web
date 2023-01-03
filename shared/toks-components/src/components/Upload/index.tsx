@@ -15,99 +15,97 @@ export interface UploadProps extends React.InputHTMLAttributes<HTMLInputElement>
   height?: number;
 }
 
-export const Upload = forwardRef<HTMLInputElement, UploadProps>(
-  ({
-    accepts = ['png', 'jpeg'],
-    labelText,
-    multiple = false,
-    required,
-    height = 200,
-    labelStyle,
-    onDropFiles,
-    ...rest
-  }: UploadProps) => {
-    const { inputRef, labelRef, isDragActive, onRemoveFile, files } = useFileDrop({ accepts, multiple, onDropFiles });
+export const Upload = ({
+  accepts = ['png', 'jpeg'],
+  labelText,
+  multiple = false,
+  required,
+  height = 200,
+  labelStyle,
+  onDropFiles,
+  ...rest
+}: UploadProps) => {
+  const { inputRef, labelRef, isDragActive, onRemoveFile, files } = useFileDrop({ accepts, multiple, onDropFiles });
 
-    const renderFileList = () => {
-      if (isDragActive) {
-        return (
-          <Text variant="subhead" color="gray050">
-            파일을 놓으세요
-          </Text>
-        );
-      }
-
-      if (files.length === 0) {
-        return (
-          <>
-            <Icon iconName="ic-file" size={28} />
-            <Text variant="subhead" color="gray050">
-              {accepts.map(accept => `.${accept} `.toUpperCase())}
-            </Text>
-          </>
-        );
-      }
-
+  const renderFileList = () => {
+    if (isDragActive) {
       return (
-        <FileList>
-          {files.map((file, index) => (
-            <FileListItem as="li" key={`${file.name}-${index}-${file.stream}`}>
-              <div
-                style={{
-                  width: '80%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                }}
-              >
-                <Icon iconName="ic-file" />
-                <Text
-                  variant="body02"
-                  color="white"
-                  style={{
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                  }}
-                >
-                  {file.name}
-                </Text>
-              </div>
-              <InitialButton
-                type="button"
-                onClick={e => {
-                  e.preventDefault(); // label 클릭 시 input file이 열리는 것을 방지
-                  onRemoveFile(index);
-                }}
-              >
-                <Icon iconName="ic-delete" />
-              </InitialButton>
-            </FileListItem>
-          ))}
-        </FileList>
+        <Text variant="subhead" color="gray050">
+          파일을 놓으세요
+        </Text>
       );
-    };
+    }
+
+    if (files.length === 0) {
+      return (
+        <>
+          <Icon iconName="ic-file" size={28} />
+          <Text variant="subhead" color="gray050">
+            {accepts.map(accept => `.${accept} `.toUpperCase())}
+          </Text>
+        </>
+      );
+    }
 
     return (
-      <div>
-        <Text variant="headline">
-          {labelText}
-          {required && '*'}
-        </Text>
-        <StyledUpload
-          height={height}
-          ref={labelRef}
-          style={{
-            ...labelStyle,
-          }}
-        >
-          <input type="file" name="upload" className="blind" ref={inputRef} {...rest} />
-          {renderFileList()}
-        </StyledUpload>
-      </div>
+      <FileList>
+        {files.map((file, index) => (
+          <FileListItem as="li" key={`${file.name}-${index}-${file.stream}`}>
+            <div
+              style={{
+                width: '80%',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+            >
+              <Icon iconName="ic-file" />
+              <Text
+                variant="body02"
+                color="white"
+                style={{
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                }}
+              >
+                {file.name}
+              </Text>
+            </div>
+            <InitialButton
+              type="button"
+              onClick={e => {
+                e.preventDefault(); // label 클릭 시 input file이 열리는 것을 방지
+                onRemoveFile(index);
+              }}
+            >
+              <Icon iconName="ic-delete" />
+            </InitialButton>
+          </FileListItem>
+        ))}
+      </FileList>
     );
-  }
-);
+  };
+
+  return (
+    <div>
+      <Text variant="headline">
+        {labelText}
+        {required && '*'}
+      </Text>
+      <StyledUpload
+        height={height}
+        ref={labelRef}
+        style={{
+          ...labelStyle,
+        }}
+      >
+        <input type="file" name="upload" className="blind" ref={inputRef} {...rest} />
+        {renderFileList()}
+      </StyledUpload>
+    </div>
+  );
+};
 
 export const InitialButton = styled('button')`
   background-color: transparent;
