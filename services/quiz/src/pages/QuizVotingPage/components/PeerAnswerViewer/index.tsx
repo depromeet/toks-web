@@ -10,12 +10,13 @@ import { getUser } from 'common/remotes/user';
 import { QUERY_KEYS } from 'constants/queryKeys';
 
 import { PeerAnswerWrapper, Wrapper } from './style';
+import { useState } from 'react';
 
 export function PeerAnswerViewer() {
   const {
     query: { quizIdParams },
   } = useRouter();
-  // const [isFold, setIsFold] = useState(true);
+  const [isFold, setIsFold] = useState(true);
 
   const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizzesById(quizIdParams), {
     enabled: Boolean(quizIdParams),
@@ -40,8 +41,8 @@ export function PeerAnswerViewer() {
         {peerAnswer.map(({ answer, creator }) => (
           <PeerAnswerWrapper key={creator.userId}>
             <Accordion
-              isFold={false}
-              // onFold={() => setIsFold(!isFold)}
+              isFold={isFold}
+              onFold={() => setIsFold(prev => !prev)}
               backgroundColor={theme.colors.gray110}
               headerNodes={
                 <Flex css={{ alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>

@@ -12,19 +12,20 @@ interface AccordionProps {
   onFold?: () => void;
 }
 
-export function Accordion({ headerNodes, bodyNodes, backgroundColor, isFold, onFold }: AccordionProps) {
+export function Accordion({ headerNodes, bodyNodes, backgroundColor, isFold = true, onFold }: AccordionProps) {
+  console.log("IS FOLD", isFold)
   return (
     <Container style={{ backgroundColor }}>
-      <Details open={isFold} onToggle={onFold}>
+      <Details onClick={onFold}>
         <Summary>
           {headerNodes}
-          {isFold ? (
+          {!isFold ? (
             <Icon iconName="ic-chevron-up" style={{ marginLeft: '24px' }} />
           ) : (
             <Icon iconName="ic-chevron-down" style={{ marginLeft: '24px' }} />
           )}
         </Summary>
-        <Body>{bodyNodes}</Body>
+        {!isFold && <Body>{bodyNodes}</Body>}
       </Details>
     </Container>
   );
