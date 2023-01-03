@@ -14,8 +14,6 @@ export const Banner = () => {
       justify="center"
       align="center"
       css={{
-        height: '170px',
-        marginTop: '126px',
         gap: '43px',
       }}
     >
