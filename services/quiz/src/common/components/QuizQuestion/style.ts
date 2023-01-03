@@ -22,6 +22,9 @@ export const Line = styled.div`
 export const DescriptionContainer = styled.div`
   overflow: auto;
   height: 78%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const RoundInfo = styled.div`

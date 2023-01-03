@@ -30,6 +30,8 @@ export function MyAnswerViewer() {
   }
 
   const myAnswer = quizzes.quizReplyHistories.find(element => element.creator.nickname === user.nickname)?.answer;
+  console.log(myAnswer);
+  console.log(quizzes);
 
   return (
     <MyAnswerWrapper>
