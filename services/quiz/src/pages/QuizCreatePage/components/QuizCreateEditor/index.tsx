@@ -3,6 +3,7 @@ import { Icon, Input, Text } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
+import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 
 const DynamicEditor = dynamic(
   async () => {
@@ -12,7 +13,12 @@ const DynamicEditor = dynamic(
   { ssr: false }
 );
 
-export const QuizCreateEditor = () => {
+export interface QuizCreateEditorProps {
+  register: UseFormRegister<FieldValues>;
+  setValue: UseFormSetValue<FieldValues>;
+}
+
+export const QuizCreateEditor = ({ register, setValue }: QuizCreateEditorProps) => {
   const [isAddDescription, setIsAddDescription] = useState(false);
 
   return (
@@ -26,7 +32,14 @@ export const QuizCreateEditor = () => {
       }}
       direction="column"
     >
-      <Input label="문제" placeholder="퀴즈 문제를 입력하세요" required />
+      <Input
+        label="문제"
+        placeholder="퀴즈 문제를 입력하세요"
+        {...register('question', {
+          required: '문제를 입력해주세요',
+        })}
+        required
+      />
       <Flex justify="flex-end">
         {isAddDescription ? (
           <Input
@@ -41,6 +54,7 @@ export const QuizCreateEditor = () => {
                 }}
               />
             }
+            {...register('description')}
           />
         ) : (
           <button type="button" css={{ textAlign: 'right' }}>
@@ -61,10 +75,10 @@ export const QuizCreateEditor = () => {
       <div css={{ height: '100%' }}>
         <DynamicEditor
           label="답안"
-          required
           onChange={data => {
-            console.log(data);
+            setValue('answer', data);
           }}
+          required
         />
       </div>
     </Flex>
