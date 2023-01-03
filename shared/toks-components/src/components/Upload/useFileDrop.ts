@@ -14,17 +14,20 @@ function useFileDrop({ accepts, multiple, onDropFiles }: OptionProps) {
 
   const convertFileType = (fileType: string) => fileType.split('/')[1] ?? '';
 
-  const onChangeFile = (e: Event) => {
-    if (!(e.target as HTMLInputElement).files) {
-      return;
-    }
+  const onChangeFile = useCallback(
+    (e: Event) => {
+      if (!(e.target as HTMLInputElement).files) {
+        return;
+      }
 
-    const selectFiles = (e.target as HTMLInputElement).files as FileList;
-    const uploadFiles = Array.from(selectFiles);
+      const selectFiles = (e.target as HTMLInputElement).files as FileList;
+      const uploadFiles = Array.from(selectFiles);
 
-    onDropFiles(uploadFiles);
-    setFiles(prevFiles => [...prevFiles, ...uploadFiles]);
-  };
+      onDropFiles(uploadFiles);
+      setFiles(prevFiles => [...prevFiles, ...uploadFiles]);
+    },
+    [onDropFiles]
+  );
 
   const onDragFile = useCallback(
     (e: DragEvent) => {
@@ -46,7 +49,7 @@ function useFileDrop({ accepts, multiple, onDropFiles }: OptionProps) {
       onDropFiles(filteredFiles);
       setFiles(prevFiles => [...prevFiles, ...filteredFiles]);
     },
-    [accepts]
+    [accepts, onDropFiles]
   );
 
   const onDragEnter = useCallback((e: DragEvent) => {
@@ -135,7 +138,7 @@ function useFileDrop({ accepts, multiple, onDropFiles }: OptionProps) {
     return () => {
       input?.removeEventListener('change', onChangeFile);
     };
-  }, [inputRef]);
+  }, [inputRef, onChangeFile]);
 
   return {
     inputRef,
