@@ -43,6 +43,9 @@ export function StudyPeerAnswer() {
             <Accordion
               isFold={false}
               backgroundColor={theme.colors.gray120}
+              accordionStyle={{
+                padding: '22px 16px',
+              }}
               headerNodes={
                 <Flex css={{ alignItems: 'center' }}>
                   <UserAvatar image={creator.profileImageUrl} size="large" />
