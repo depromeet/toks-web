@@ -2,10 +2,11 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface OptionProps {
   accepts: string[];
-  multiple?: boolean;
+  multiple: boolean;
+  onDropFiles: (files: File[]) => void;
 }
 
-function useFileDrop(options: OptionProps) {
+function useFileDrop({ accepts, multiple, onDropFiles }: OptionProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const labelRef = useRef<HTMLLabelElement>(null);
   const [isDragActive, setIsDragActive] = useState(false);
@@ -21,6 +22,7 @@ function useFileDrop(options: OptionProps) {
     const selectFiles = (e.target as HTMLInputElement).files as FileList;
     const uploadFiles = Array.from(selectFiles);
 
+    onDropFiles(uploadFiles);
     setFiles(prevFiles => [...prevFiles, ...uploadFiles]);
   };
 
@@ -34,16 +36,17 @@ function useFileDrop(options: OptionProps) {
       const uploadFiles = Array.from(selectFiles);
       const filteredFiles = uploadFiles.filter(file => {
         const fileType = convertFileType(file.type);
-        const isAcceptFile = options?.accepts.includes(fileType);
+        const isAcceptFile = accepts.includes(fileType);
         if (!isAcceptFile) {
           alert(`${file.name}는 허용되지 않는 파일 형식입니다.`); // TODO: alert 대신 다른 방법으로 처리
         }
         return isAcceptFile;
       });
 
+      onDropFiles(filteredFiles);
       setFiles(prevFiles => [...prevFiles, ...filteredFiles]);
     },
-    [options?.accepts]
+    [accepts]
   );
 
   const onDragEnter = useCallback((e: DragEvent) => {
@@ -85,20 +88,20 @@ function useFileDrop(options: OptionProps) {
   }, []);
 
   useEffect(() => {
-    if (!inputRef.current || !options) {
+    if (!inputRef.current) {
       return;
     }
 
     const input = inputRef.current;
 
-    if (options.accepts) {
-      input.setAttribute('accept', options.accepts.join(', '));
+    if (accepts) {
+      input.setAttribute('accept', accepts.join(', '));
     }
 
-    if (options.multiple) {
+    if (multiple) {
       input.setAttribute('multiple', 'multiple');
     }
-  }, [inputRef, options]);
+  }, [inputRef, accepts, multiple]);
 
   useEffect(() => {
     if (!labelRef.current) {
