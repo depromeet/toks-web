@@ -2,6 +2,7 @@ import { theme } from '@depromeet/theme';
 import { Accordion, Button, Text, ToastViewer, UserAvatar } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 
 import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
@@ -10,7 +11,6 @@ import { getUser } from 'common/remotes/user';
 import { QUERY_KEYS } from 'constants/queryKeys';
 
 import { PeerAnswerWrapper, Wrapper } from './style';
-import { useState } from 'react';
 
 export function PeerAnswerViewer() {
   const {
@@ -44,6 +44,9 @@ export function PeerAnswerViewer() {
               isFold={isFold}
               onFold={() => setIsFold(prev => !prev)}
               backgroundColor={theme.colors.gray110}
+              accordionStyle={{
+                padding: '22px 16px',
+              }}
               headerNodes={
                 <Flex css={{ alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
                   <Flex css={{ alignItems: 'center' }}>

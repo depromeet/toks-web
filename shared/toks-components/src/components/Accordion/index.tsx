@@ -10,12 +10,19 @@ interface AccordionProps {
   backgroundColor: string;
   isFold: boolean;
   onFold?: () => void;
+  accordionStyle?: React.CSSProperties;
 }
 
-export function Accordion({ headerNodes, bodyNodes, backgroundColor, isFold = true, onFold }: AccordionProps) {
-  console.log("IS FOLD", isFold)
+export function Accordion({
+  headerNodes,
+  bodyNodes,
+  backgroundColor,
+  isFold = true,
+  onFold,
+  accordionStyle,
+}: AccordionProps) {
   return (
-    <Container style={{ backgroundColor }}>
+    <Container style={{ backgroundColor, ...accordionStyle }}>
       <Details onClick={onFold}>
         <Summary>
           {headerNodes}
