@@ -2,6 +2,7 @@ import { theme } from '@depromeet/theme';
 import { Accordion, Button, Text, ToastViewer, UserAvatar } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 
 import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
@@ -15,7 +16,7 @@ export function PeerAnswerViewer() {
   const {
     query: { quizIdParams },
   } = useRouter();
-  // const [isFold, setIsFold] = useState(true);
+  const [isFold, setIsFold] = useState(true);
 
   const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizzesById(quizIdParams), {
     enabled: Boolean(quizIdParams),
@@ -40,9 +41,12 @@ export function PeerAnswerViewer() {
         {peerAnswer.map(({ answer, creator }) => (
           <PeerAnswerWrapper key={creator.userId}>
             <Accordion
-              isFold={false}
-              // onFold={() => setIsFold(!isFold)}
+              isFold={isFold}
+              onFold={() => setIsFold(prev => !prev)}
               backgroundColor={theme.colors.gray110}
+              accordionStyle={{
+                padding: '22px 16px',
+              }}
               headerNodes={
                 <Flex css={{ alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
                   <Flex css={{ alignItems: 'center' }}>

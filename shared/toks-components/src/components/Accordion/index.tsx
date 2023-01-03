@@ -10,21 +10,29 @@ interface AccordionProps {
   backgroundColor: string;
   isFold: boolean;
   onFold?: () => void;
+  accordionStyle?: React.CSSProperties;
 }
 
-export function Accordion({ headerNodes, bodyNodes, backgroundColor, isFold, onFold }: AccordionProps) {
+export function Accordion({
+  headerNodes,
+  bodyNodes,
+  backgroundColor,
+  isFold = true,
+  onFold,
+  accordionStyle,
+}: AccordionProps) {
   return (
-    <Container style={{ backgroundColor }}>
-      <Details open={isFold} onToggle={onFold}>
+    <Container style={{ backgroundColor, ...accordionStyle }}>
+      <Details onClick={onFold}>
         <Summary>
           {headerNodes}
-          {isFold ? (
+          {!isFold ? (
             <Icon iconName="ic-chevron-up" style={{ marginLeft: '24px' }} />
           ) : (
             <Icon iconName="ic-chevron-down" style={{ marginLeft: '24px' }} />
           )}
         </Summary>
-        <Body>{bodyNodes}</Body>
+        {!isFold && <Body>{bodyNodes}</Body>}
       </Details>
     </Container>
   );
