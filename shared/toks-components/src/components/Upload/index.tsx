@@ -1,6 +1,5 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
-import { forwardRef } from 'react';
 
 import { Icon } from '../Icon';
 import { Text } from '../Text';
