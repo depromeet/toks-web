@@ -7,7 +7,7 @@ function Intro() {
       <img
         src="https://asset.tokstudy.com/onboarding-background.png"
         alt=""
-        style={{ position: 'absolute', bottom: 0, left: 0, width: '100vw', height: 'auto', zIndex: -1 }}
+        style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', height: 'auto', zIndex: -1 }}
       />
       <Banner />
     </Wrapper>
