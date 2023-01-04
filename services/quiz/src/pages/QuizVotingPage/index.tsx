@@ -5,6 +5,7 @@ import { QuizQuestion } from 'common/components/QuizQuestion';
 
 import { MyAnswerViewer } from './components/MyAnswerViewer';
 import { PeerAnswerViewer } from './components/PeerAnswerViewer';
+import { VoteSubmitButton } from './components/VoteSubmitButton';
 
 export default function QuizVotingPage() {
   return (
@@ -17,6 +18,7 @@ export default function QuizVotingPage() {
           <MyAnswerViewer />
           <Spacing size={50} />
           <PeerAnswerViewer />
+          <VoteSubmitButton />
         </Flex>
       </Flex>
     </>
