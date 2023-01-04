@@ -19,7 +19,7 @@ export function PeerAnswerViewer() {
   } = useRouter();
   const [isFold, setIsFold] = useState(true);
 
-  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizReplyById(quizIdParams), {
+  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZREPLIES_BY_ID, () => getQuizReplyById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
 

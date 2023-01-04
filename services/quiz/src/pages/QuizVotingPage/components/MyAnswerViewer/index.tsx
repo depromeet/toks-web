@@ -19,7 +19,7 @@ export function MyAnswerViewer() {
     query: { quizIdParams },
   } = useRouter();
 
-  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizReplyById(quizIdParams), {
+  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZREPLIES_BY_ID, () => getQuizReplyById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
 
@@ -30,8 +30,8 @@ export function MyAnswerViewer() {
   }
 
   const myAnswer = quizzes.quizReplyHistories.find(element => element.creator.nickname === user.nickname)?.answer;
-  console.log(myAnswer);
-  console.log(quizzes);
+  // console.log(myAnswer);
+  // console.log(quizzes);
 
   return (
     <MyAnswerWrapper>
