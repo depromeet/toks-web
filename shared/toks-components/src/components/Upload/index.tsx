@@ -8,6 +8,7 @@ import useFileDrop from './useFileDrop';
 export interface UploadProps extends React.InputHTMLAttributes<HTMLInputElement> {
   accepts?: string[];
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onDropFiles: (files: File[]) => void;
   labelText: string;
   labelStyle?: React.CSSProperties;
   height?: number;
@@ -16,13 +17,14 @@ export interface UploadProps extends React.InputHTMLAttributes<HTMLInputElement>
 export const Upload = ({
   accepts = ['png', 'jpeg'],
   labelText,
-  multiple,
+  multiple = false,
   required,
   height = 200,
   labelStyle,
+  onDropFiles,
   ...rest
 }: UploadProps) => {
-  const { inputRef, labelRef, isDragActive, onRemoveFile, files } = useFileDrop({ accepts, multiple });
+  const { inputRef, labelRef, isDragActive, onRemoveFile, files } = useFileDrop({ accepts, multiple, onDropFiles });
 
   const renderFileList = () => {
     if (isDragActive) {
