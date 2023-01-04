@@ -32,7 +32,7 @@ const PhotoAlbumWrapper = styled.div`
     width: 188px !important;
     border-radius: 8px;
     object-fit: cover !important;
-    :first-child {
+    :first-of-type {
       margin-left: 0px;
     }
     margin-left: 16px;
