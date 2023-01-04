@@ -13,7 +13,7 @@ const DynamicEditor = dynamic(
   { ssr: false }
 );
 
-export interface QuizCreateEditorProps {
+interface QuizCreateEditorProps {
   register: UseFormRegister<FieldValues>;
   setValue: UseFormSetValue<FieldValues>;
 }
