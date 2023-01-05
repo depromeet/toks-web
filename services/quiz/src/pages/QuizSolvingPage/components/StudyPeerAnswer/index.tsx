@@ -59,7 +59,6 @@ export function StudyPeerAnswer() {
           </AccordionCotainer>
         ))}
       </StudyPeerAnswerWrapper>
-      {/* <Text variant="subhead">답변 제출 완료 후, 확인 해보세요!</Text> */}
     </>
   );
 }

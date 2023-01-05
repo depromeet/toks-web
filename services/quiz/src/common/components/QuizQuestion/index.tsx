@@ -60,7 +60,7 @@ export function QuizQuestion({ myAnswer }: QuizQuestionProps) {
             똑스 답안
           </Text>
           <Spacing size={12} />
-          <ToastViewer answer={'hi'} />
+          <ToastViewer answer={myAnswer} />
         </>
       );
     } else {

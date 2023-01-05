@@ -11,6 +11,7 @@ import { QUERY_KEYS } from 'constants/queryKeys';
 import { QuizReply } from 'pages/QuizVotingPage/hooks/quizReplyList';
 
 import { postQuizLike } from './remotes/quizVote';
+import { Flex } from '@toss/emotion-utils';
 
 export function VoteSubmitButton() {
   const [isDisable, setIsDisable] = useState(true);
