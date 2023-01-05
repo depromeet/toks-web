@@ -8,7 +8,7 @@ import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
 import { getQuizReplyById } from 'common/remotes/quizReply';
 import { QUERY_KEYS } from 'constants/queryKeys';
 
-import { AccordionCotainer, StudyPeerAnswerWrapper, SubmitNotice, TextContainer } from './style';
+import { AccordionCotainer, StudyPeerAnswerWrapper, SubmitNotice, TextContainer, Wrapper } from './style';
 
 export function StudyPeerAnswer() {
   const {
@@ -24,12 +24,13 @@ export function StudyPeerAnswer() {
   }
 
   return (
-    <>
+    <Wrapper>
+      <Spacing size={'5vh'} />
       <Flex css={{ justifyContent: 'space-between' }}>
         <Text variant="headline">팀원들의 답안</Text>
         <DoneNumberNotice done={quizzes.quizReplyHistories.length} />
       </Flex>
-      <Spacing size={16} />
+      <Spacing size={'2vh'} />
       <StudyPeerAnswerWrapper>
         {quizzes?.quizReplyHistories.map(({ creator }) => (
           <AccordionCotainer key={creator.userId}>
@@ -59,6 +60,6 @@ export function StudyPeerAnswer() {
           </AccordionCotainer>
         ))}
       </StudyPeerAnswerWrapper>
-    </>
+    </Wrapper>
   );
 }

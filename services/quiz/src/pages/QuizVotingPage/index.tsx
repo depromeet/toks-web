@@ -12,11 +12,10 @@ export default function QuizVotingPage() {
     <>
       <QuizNav mainTitle="똑표 하기" studyId={1} />
       <Spacing size={25} />
-      <Flex>
+      <Flex css={{ height: '100%' }}>
         <QuizQuestion />
-        <Flex direction="column" css={{ width: '50%' }}>
+        <Flex direction="column" css={{ width: '50%', height: '90vh', position: 'relative' }}>
           <MyAnswerViewer />
-          <Spacing size={50} />
           <PeerAnswerViewer />
           <VoteSubmitButton />
         </Flex>

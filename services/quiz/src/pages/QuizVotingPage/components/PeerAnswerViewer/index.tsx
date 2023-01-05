@@ -10,7 +10,7 @@ import { getQuizReplyById } from 'common/remotes/quizReply';
 import { getUser } from 'common/remotes/user';
 import { QUERY_KEYS } from 'constants/queryKeys';
 
-import { PeerAnswerWrapper, Wrapper } from './style';
+import { PeerAnswerContainer, PeerAnswerWrapper, Wrapper } from './style';
 import { VoteButton } from './VoteButton.tsx';
 
 export function PeerAnswerViewer() {
@@ -32,15 +32,16 @@ export function PeerAnswerViewer() {
   const peerAnswers = quizzes.quizReplyHistories.filter(element => element.creator.nickname !== user.nickname);
 
   return (
-    <>
+    <Wrapper>
+      <Spacing size={'5vh'} />
       <Flex css={{ justifyContent: 'space-between' }}>
         <Text variant="headline">팀원들의 답안도 확인해볼까요? </Text>
         <DoneNumberNotice done={peerAnswers.length} />
       </Flex>
-      <Spacing size={16} />
-      <Wrapper>
+      <Spacing size={'2vh'} />
+      <PeerAnswerWrapper>
         {peerAnswers.map(({ quizReplyHistoryId, answer, creator }) => (
-          <PeerAnswerWrapper key={creator.userId}>
+          <PeerAnswerContainer key={creator.userId}>
             <Accordion
               isFold={isFold}
               onFold={() => setIsFold(prev => !prev)}
@@ -66,9 +67,9 @@ export function PeerAnswerViewer() {
                 </>
               }
             />
-          </PeerAnswerWrapper>
+          </PeerAnswerContainer>
         ))}
-      </Wrapper>
-    </>
+      </PeerAnswerWrapper>
+    </Wrapper>
   );
 }

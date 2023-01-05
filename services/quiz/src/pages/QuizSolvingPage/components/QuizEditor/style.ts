@@ -2,7 +2,7 @@ import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  height: 350px;
+  height: 300px;
   width: 100%;
 `;
 
@@ -11,4 +11,5 @@ export const Wrapper = styled.div`
   background-color: ${theme.colors.gray110};
   border-radius: 16px;
   width: 100%;
+  height: 45vh;
 `;

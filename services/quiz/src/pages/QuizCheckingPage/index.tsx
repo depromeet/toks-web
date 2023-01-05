@@ -1,4 +1,4 @@
-import { Flex } from '@toss/emotion-utils';
+import { Flex, Spacing } from '@toss/emotion-utils';
 import { QuizQuestion } from 'common/components/QuizQuestion';
 import { useRouter } from 'next/router';
 import { AnswerCheckList } from './components/AnserCheckList';
@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { getQuizReplyById } from 'common/remotes/quizReply';
 import { getUser } from 'common/remotes/user';
+import { QuizNav } from 'common/components/QuizNav';
 
 export default function QuizCheckingPage() {
   const {
@@ -24,11 +25,15 @@ export default function QuizCheckingPage() {
 
   const myAnswer = quizzes.quizReplyHistories.find(element => element.creator.nickname === user.nickname)?.answer;
   return (
-    <Flex>
-      <QuizQuestion myAnswer={myAnswer} />
-      <Flex css={{ width: '50%' }}>
-        <AnswerCheckList />
+    <>
+      <QuizNav mainTitle="똑표 확인하기" studyId={1} />
+      <Spacing size={25} />
+      <Flex css={{ height: '100%' }}>
+        <QuizQuestion myAnswer={myAnswer} />
+        <Flex css={{ width: '50%' }}>
+          <AnswerCheckList />
+        </Flex>
       </Flex>
-    </Flex>
+    </>
   );
 }

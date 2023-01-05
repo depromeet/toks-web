@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   background-color: ${theme.colors.gray110};
   border-radius: 16px;
   width: 50%;
-  height: 82vh;
+  height: 80vh;
   margin-right: 52px;
 `;
 

@@ -9,7 +9,7 @@ import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
 import { getUser } from 'common/remotes/user';
 import { useState } from 'react';
 import { theme } from '@depromeet/theme';
-import { AnswerWrapper, Wrapper } from './style';
+import { AnswerContainer, AnswerWrapper, BestAnswerContainer, Wrapper } from './style';
 import { VoteCounter } from '../VoteCounter';
 import { getSortedQuizReplyById } from 'pages/QuizCheckingPage/remotes/sortingQuizAply';
 
@@ -54,46 +54,48 @@ export function AnswerCheckList() {
   );
   // console.log('rest', restAnswer);
   // console.log('best', bestAnswer);
-  const durationTime = calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt));
-  // const durationTime = 1;
+  // const durationTime = calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt));
+  const durationTime = 1;
   if (durationTime <= 0) {
     return (
       <Wrapper>
-        <Flex css={{ justifyContent: 'space-between' }}>
-          <Text variant="headline" color="gray030">
-            우수한 답변
-          </Text>
-          <Text variant="body02" color="gray050">
-            잘한다잘한다하니까 너무 잘한다🙊
-          </Text>
-        </Flex>
-        <Spacing size={16} />
-        <Accordion
-          isFold={isFold}
-          onFold={() => setIsFold(prev => !prev)}
-          backgroundColor={theme.colors.gray110}
-          accordionStyle={{
-            padding: '22px 16px',
-          }}
-          headerNodes={
-            <Flex css={{ alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
-              <Flex css={{ alignItems: 'center' }}>
-                <UserAvatar image={bestAnswer.creator.profileImageUrl} size="large" />
-                <Text css={{ marginLeft: '12px' }} variant="subhead" color="gray020">
-                  {bestAnswer.creator.nickname}
-                </Text>
+        <BestAnswerContainer>
+          <Flex css={{ justifyContent: 'space-between' }}>
+            <Text variant="headline" color="gray030">
+              우수한 답변
+            </Text>
+            <Text variant="body02" color="gray050">
+              잘한다잘한다하니까 너무 잘한다🙊
+            </Text>
+          </Flex>
+          <Spacing size={'2vh'} />
+          <Accordion
+            isFold={isFold}
+            onFold={() => setIsFold(prev => !prev)}
+            backgroundColor={theme.colors.gray110}
+            accordionStyle={{
+              padding: '22px 16px',
+            }}
+            headerNodes={
+              <Flex css={{ alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
+                <Flex css={{ alignItems: 'center' }}>
+                  <UserAvatar image={bestAnswer.creator.profileImageUrl} size="large" />
+                  <Text css={{ marginLeft: '12px' }} variant="subhead" color="gray020">
+                    {bestAnswer.creator.nickname}
+                  </Text>
+                </Flex>
+                <VoteCounter voteCount={bestAnswer.likeNumber} />
               </Flex>
-              <VoteCounter voteCount={bestAnswer.likeNumber} />
-            </Flex>
-          }
-          bodyNodes={
-            <>
-              <Spacing size={22} />
-              <ToastViewer answer={bestAnswer.answer} />
-            </>
-          }
-        />
-        <Spacing size={90} />
+            }
+            bodyNodes={
+              <>
+                <Spacing size={22} />
+                <ToastViewer answer={bestAnswer.answer} />
+              </>
+            }
+          />
+        </BestAnswerContainer>
+        <Spacing size={'7vh'} />
         <Flex css={{ justifyContent: 'space-between' }}>
           <Text variant="headline" color="gray030">
             팀원들의 답안 확인
@@ -102,54 +104,13 @@ export function AnswerCheckList() {
             울지말고 강해져라..!👊🏻
           </Text>
         </Flex>
-        <Spacing size={16} />
-        {restAnswer.map(({ answer, likeNumber, creator }) => (
-          <AnswerWrapper key={creator.userId}>
-            <Accordion
-              isFold={isRestAnswerFold}
-              onFold={() => setIsRestAnswerFold(prev => !prev)}
-              backgroundColor={theme.colors.gray110}
-              accordionStyle={{
-                padding: '22px 16px',
-              }}
-              headerNodes={
-                <Flex css={{ alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
-                  <Flex css={{ alignItems: 'center' }}>
-                    <UserAvatar image={creator.profileImageUrl} size="large" />
-                    <Text css={{ marginLeft: '12px' }} variant="subhead" color="gray020">
-                      {creator.nickname}
-                    </Text>
-                  </Flex>
-                  <VoteCounter voteCount={likeNumber} />
-                </Flex>
-              }
-              bodyNodes={
-                <>
-                  <Spacing size={22} />
-                  <ToastViewer answer={answer} />
-                </>
-              }
-            />
-          </AnswerWrapper>
-        ))}
-      </Wrapper>
-    );
-  } else {
-    return (
-      <Wrapper>
-        <Flex direction="column">
-          <Flex css={{ justifyContent: 'space-between' }}>
-            <Text variant="headline" color="gray030">
-              팀원들의 답안 확인
-            </Text>
-            <DoneNumberNotice done={sortedPeerAnswers.length} />
-          </Flex>
-          <Spacing size={16} />
-          {sortedPeerAnswers.map(({ answer, likeNumber, creator }) => (
-            <AnswerWrapper key={creator.userId}>
+        <Spacing size={'2vh'} />
+        <AnswerWrapper>
+          {restAnswer.map(({ answer, likeNumber, creator }) => (
+            <AnswerContainer key={creator.userId}>
               <Accordion
-                isFold={isFold}
-                onFold={() => setIsFold(prev => !prev)}
+                isFold={isRestAnswerFold}
+                onFold={() => setIsRestAnswerFold(prev => !prev)}
                 backgroundColor={theme.colors.gray110}
                 accordionStyle={{
                   padding: '22px 16px',
@@ -172,8 +133,53 @@ export function AnswerCheckList() {
                   </>
                 }
               />
-            </AnswerWrapper>
+            </AnswerContainer>
           ))}
+        </AnswerWrapper>
+      </Wrapper>
+    );
+  } else {
+    return (
+      <Wrapper>
+        <Flex direction="column">
+          <Flex css={{ justifyContent: 'space-between' }}>
+            <Text variant="headline" color="gray030">
+              팀원들의 답안 확인
+            </Text>
+            <DoneNumberNotice done={sortedPeerAnswers.length} />
+          </Flex>
+          <Flex direction="column" css={{ overflow: 'auto' }}>
+            <Spacing size={'2vh'} />
+            {sortedPeerAnswers.map(({ answer, likeNumber, creator }) => (
+              <AnswerContainer key={creator.userId}>
+                <Accordion
+                  isFold={isFold}
+                  onFold={() => setIsFold(prev => !prev)}
+                  backgroundColor={theme.colors.gray110}
+                  accordionStyle={{
+                    padding: '22px 16px',
+                  }}
+                  headerNodes={
+                    <Flex css={{ alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
+                      <Flex css={{ alignItems: 'center' }}>
+                        <UserAvatar image={creator.profileImageUrl} size="large" />
+                        <Text css={{ marginLeft: '12px' }} variant="subhead" color="gray020">
+                          {creator.nickname}
+                        </Text>
+                      </Flex>
+                      <VoteCounter voteCount={likeNumber} />
+                    </Flex>
+                  }
+                  bodyNodes={
+                    <>
+                      <Spacing size={22} />
+                      <ToastViewer answer={answer} />
+                    </>
+                  }
+                />
+              </AnswerContainer>
+            ))}
+          </Flex>
         </Flex>
       </Wrapper>
     );
