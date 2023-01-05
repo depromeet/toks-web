@@ -22,16 +22,26 @@ export function RankingItem({ rankItem }: RankingItemProps) {
       {isMedalItem(ranking) ? (
         <Icon height={32} iconName={medals[(ranking as number) - 1]} />
       ) : (
-        <Text variant="body02" color="gray040" css={{ padding: '0 5.5px' }}>
+        <Text variant="body02" color="gray040" css={{ width: '28px', textAlign: 'center' }}>
           {convertNoneRanking(ranking)}
         </Text>
       )}
       <UserAvatar image={user.profileImageUrl} size="large" css={{ marginLeft: '12px' }} />
-      <Text variant="body01" color="white" css={{ marginLeft: '12px', flex: 1 }}>
+      <Text
+        variant="body01"
+        color="white"
+        css={{
+          marginLeft: '12px',
+          flex: 1,
+          textOverflow: 'ellipsis',
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+        }}
+      >
         {user.nickname}
       </Text>
-      <Text variant="body03" color="gray060" css={{ marginLeft: '12px', flex: 1 }}>
-        {score} Toks
+      <Text variant="body03" color="gray060" css={{ marginLeft: '12px' }}>
+        {score ?? 0} Toks
       </Text>
     </Item>
   );

@@ -17,7 +17,6 @@ function RankingList({ studyId }: RankingListProps) {
     return null;
   }
 
-  // TODO: 서버에서 랭킹 숫자 내려주냐 안내려주냐에 따라서 랭킹 추가하는 부분 구성해야 함
   return (
     <List>
       {rankingList.quizRanks.map(rankItem => (
