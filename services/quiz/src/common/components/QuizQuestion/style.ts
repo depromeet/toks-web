@@ -34,6 +34,6 @@ export const RoundInfo = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  width: 188px;
+  width: 100%;
   height: 188px;
 `;

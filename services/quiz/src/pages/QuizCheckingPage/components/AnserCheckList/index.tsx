@@ -52,10 +52,9 @@ export function AnswerCheckList() {
   const restAnswer = sortedQuizReplies.quizReplyHistories.filter(
     element => element.quizReplyHistoryId !== bestAnswer.quizReplyHistoryId
   );
-  // console.log('rest', restAnswer);
-  // console.log('best', bestAnswer);
-  // const durationTime = calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt));
-  const durationTime = 1;
+
+  const durationTime = calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt));
+  // const durationTime = 1;
   if (durationTime <= 0) {
     return (
       <Wrapper>
