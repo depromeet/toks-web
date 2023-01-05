@@ -29,7 +29,6 @@ const AVATAR_SIZE = {
   xlarge: '40px',
 };
 
-// TODO : 디폴트 이미지가 직접 넘어오는지 빈 값으로 넘어오는지에 따라 디폴트 프로필 이미지 출력을 구현해야함
 export function UserAvatar({
   image,
   label,
@@ -40,17 +39,17 @@ export function UserAvatar({
   tooltip = false,
 }: ImageAvatarProps & LabelAvatarProps) {
   const tooltipContent = userName ?? userNames.join(', ');
-  // const avatarClassName = image ? `avatar--user_${id}` : `avatar--group_${id}`;
-
+  const isBaseProfileImage =
+    image === 'http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg';
+  const baseProfileImage = 'https://toks-web-assets.s3.amazonaws.com/toks-emoji/ic-base-profile.png'; //"https://asset.tokstudy.com/toks-emoji/ic-base-profile.png";
   return (
     <>
       {tooltip && <Tooltip target={`.${className}`} content={tooltipContent} position="bottom" />}
       <StyledAvatar
-        image={image}
+        image={isBaseProfileImage ? baseProfileImage : image}
         label={label}
         size={size}
         shape="circle"
-        // TODO: inline style로 적용한 부분 제외하기...^^ (현구님 따라해서 일단 저도 이렇게 했슴다..)
         style={{
           width: AVATAR_SIZE[size ?? 'normal'],
           height: AVATAR_SIZE[size ?? 'normal'],
