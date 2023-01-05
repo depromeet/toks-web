@@ -17,7 +17,10 @@ export default function StudyDetailPage() {
       <Section>
         <FlexRow>
           <StudyInfo studyId={studyId} />
-          <StudyProgress />
+          <StudyProgress
+            step='STEP3'
+            startedAt="2022-09-24T01:02:29"
+            endedAt="2023-01-14T00:03:03" />
         </FlexRow>
         <FlexRow css={{ marginTop: '80px' }}>
           <QuizListWrapper>
