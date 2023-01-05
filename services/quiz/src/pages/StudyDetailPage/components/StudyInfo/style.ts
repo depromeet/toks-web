@@ -17,3 +17,7 @@ export const Footer = styled.div`
 export const StudyTags = styled.div`
   margin-top: 20px;
 `;
+
+export const FlexRow = styled.div`
+  display: flex;
+`;

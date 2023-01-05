@@ -11,4 +11,4 @@ export const Frame = styled.div`
 export const FlexRow = styled.div`
   display: flex;
   align-items: end;
-`
+`;
