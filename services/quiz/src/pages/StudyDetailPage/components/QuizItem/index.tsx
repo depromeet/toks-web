@@ -19,6 +19,7 @@ type QuizItemMap = {
   [key in QuizStatus]: {
     buttonColor: ComponentProps<typeof Button>['type'];
     timerColor: KeyOfColors;
+    labelColor: string;
     backgroundColor: string;
     buttonName: string;
     path: (quizId: number) => string;
@@ -29,6 +30,7 @@ const QUIZ_ITEM: QuizItemMap = {
   DONE: {
     buttonColor: 'general',
     timerColor: 'gray060',
+    labelColor: theme.colors.gray120,
     backgroundColor: theme.colors.gray110,
     buttonName: '똑스 확인하기',
     path: (quizId: number) => `/vote/${quizId}`,
@@ -36,6 +38,7 @@ const QUIZ_ITEM: QuizItemMap = {
   TO_DO: {
     buttonColor: 'primary',
     timerColor: 'primary',
+    labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
     buttonName: '똑스 풀기',
     path: (quizId: number) => `/solve/${quizId}`,
@@ -43,6 +46,7 @@ const QUIZ_ITEM: QuizItemMap = {
   IN_PROGRESS: {
     buttonColor: 'primary',
     timerColor: 'primary',
+    labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
     buttonName: '똑스 풀기',
     path: (quizId: number) => `/solve/${quizId}`,
@@ -61,6 +65,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
     creator,
     unSubmitters,
   } = quiz;
+  const isMyQuiz = true; // 임시@@@!!
   const [limitDate, openDate, currentDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
   const initialTime = getInitialTimerSecond(currentDate, durationOfSecond, limitDate, quizStatus);
   const { time, start: timerStart, stop: timerStop } = useTimer({ time: initialTime, enabled: false });
@@ -109,9 +114,23 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               {round}회차
             </Text>
-            <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
+            <Text variant="headline" css={{ margin: '0 0 0 18px' }} as="h5">
               {title}
             </Text>
+            {isMyQuiz && 
+              <Text 
+                variant='body03' 
+                color='gray030' 
+                css={{
+                  padding: '4px 12px', 
+                  backgroundColor: QUIZ_ITEM[quizStatus].labelColor,
+                  borderRadius: '16px',
+                  marginLeft: "18px"
+                }}>
+                  내가 만든 똑스
+              </Text>
+            }
+            <Space css={{flex: 1}}/>
             {quizStatus === 'TO_DO' && (
               <Text color="primary" variant="body02" css={{ marginRight: '18px' }}>
                 기다려주세요!
