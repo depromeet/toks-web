@@ -3,7 +3,7 @@ import { Button, useModal, useToast } from '@depromeet/toks-components';
 import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
 import { Flex } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 
 import { AnswerConfirmModal } from 'common/components/ModalContents/AnswerConfirmModal';
