@@ -157,6 +157,7 @@ const LimitLineText = styled(Text)`
   height: 72px;
   text-align: center;
   text-overflow: ellipsis;
+  max-width: 100%;
 `;
 
 StudyCard.Plus = Plus;

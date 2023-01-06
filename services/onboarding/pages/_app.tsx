@@ -30,7 +30,7 @@ type AppPropsWithLayout = AppProps & {
 };
 
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? (page => page);
+  const getLayout = Component.getLayout ?? (page => <Layout>{page}</Layout>);
   const [queryClient] = useState(
     () =>
       new QueryClient({
@@ -61,13 +61,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       {/* Color Token 설정 */}
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
-          <OverlayProvider>
-            {getLayout(
-              <Layout>
-                <Component {...pageProps} />
-              </Layout>
-            )}
-          </OverlayProvider>
+          <OverlayProvider>{getLayout(<Component {...pageProps} />)}</OverlayProvider>
         </QueryClientProvider>
       </ThemeProvider>
     </>

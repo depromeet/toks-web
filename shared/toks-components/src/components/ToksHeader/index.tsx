@@ -1,7 +1,7 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 
-import { TOKS_HEADER_HEIGHT, emoji } from '../../constants';
+import { BP, TOKS_HEADER_HEIGHT, emoji } from '../../constants';
 import { Image } from '../Image';
 import { Text } from '../Text';
 
@@ -98,14 +98,19 @@ const Header = styled.header`
   left: 0;
   top: 0;
   display: flex;
-  max-width: 1512px;
+  max-width: 1320px;
   min-width: 320px;
+  width: 100vw;
   height: ${TOKS_HEADER_HEIGHT};
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 calc(9vw + 20px);
   align-items: center;
   z-index: 1;
   justify-content: space-between;
+
+  @media (max-width: ${BP.mobile}) {
+    padding: 0 16px;
+  }
 `;
 
 const Button = styled.button`

@@ -15,6 +15,8 @@ export type Quiz = {
   unSubmitters: User[];
   studyId: number;
   quizStatus: QuizStatus;
+  myQuiz: boolean;
+  round: number;
 };
 
 export interface QuizResponse {
