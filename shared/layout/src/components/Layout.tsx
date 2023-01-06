@@ -12,7 +12,7 @@ import { useMutation } from 'react-query';
 import { safelyGetUser } from '../remote/user';
 import { UserMenu } from './UserMenu';
 
-function Component({ children }: { children: ReactNode }) {
+function Component({ children, fullWidth = false }: { children: ReactNode; fullWidth?: boolean }) {
   const { data: user, refetch } = useSuspendedQuery(safelyGetUser.queryKey, safelyGetUser, { retry: false });
   const { toggle, close } = useUserMenuDialog();
 
@@ -31,7 +31,7 @@ function Component({ children }: { children: ReactNode }) {
   const isNonMember = user == null;
 
   return (
-    <StyledLayout>
+    <>
       {isNonMember ? (
         <ToksHeader
           login={false}
@@ -58,9 +58,8 @@ function Component({ children }: { children: ReactNode }) {
           onClickLogo={() => pushTo(PATHS.home.myStudy)}
         />
       )}
-
-      {children}
-    </StyledLayout>
+      <StyledLayout fullWidth={fullWidth}>{children}</StyledLayout>
+    </>
   );
 }
 
@@ -68,9 +67,10 @@ export function Layout(props: ComponentProps<typeof Component>) {
   return (
     <SSRSuspense
       fallback={
-        <StyledLayout>
+        <>
           <ToksHeader.Skeleton />
-        </StyledLayout>
+          <StyledLayout fullWidth={props.fullWidth ?? false}></StyledLayout>
+        </>
       }
     >
       <Component {...props} />
@@ -78,11 +78,11 @@ export function Layout(props: ComponentProps<typeof Component>) {
   );
 }
 
-const StyledLayout = styled.main`
+const StyledLayout = styled.main<{ fullWidth: boolean }>`
   position: relative;
   width: 100vw;
   max-width: 1320px;
-  padding: 0 9vw;
+  padding: 0 ${({ fullWidth }) => (fullWidth ? '0' : '9vw')};
   overflow: auto;
   margin: 0 auto;
 `;
