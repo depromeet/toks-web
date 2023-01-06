@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 export const StudyPeerAnswerWrapper = styled.div`
   overflow-y: auto;
-  height: 25vh;
+  height: 23vh;
 `;
 
 export const AccordionCotainer = styled.div`
@@ -34,5 +34,5 @@ export const TextContainer = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  height: 35vh;
+  height: 33vh;
 `;

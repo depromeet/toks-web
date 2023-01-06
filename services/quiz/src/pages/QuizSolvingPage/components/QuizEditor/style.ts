@@ -11,5 +11,5 @@ export const Wrapper = styled.div`
   background-color: ${theme.colors.gray110};
   border-radius: 16px;
   width: 100%;
-  height: 45vh;
+  height: 100%;
 `;

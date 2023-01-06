@@ -29,23 +29,25 @@ export function PeerAnswerList() {
   const peerAnswers = quizzes.quizReplyHistories.filter(element => element.creator.nickname !== user.nickname);
 
   return (
-    <Wrapper>
-      <Spacing size={'5vh'} />
-      <Flex css={{ justifyContent: 'space-between' }}>
-        <Text variant="headline">팀원들의 답안도 확인해볼까요? </Text>
-        <DoneNumberNotice done={peerAnswers.length} />
-      </Flex>
-      <Spacing size={'2vh'} />
-      <PeerAnswerWrapper>
-        {peerAnswers.map(({ quizReplyHistoryId, answer, creator }) => (
-          <PeerAnswerItem
-            creator={creator}
-            answer={answer}
-            quizReplyHistoryId={quizReplyHistoryId}
-            peerAnswers={peerAnswers}
-          />
-        ))}
-      </PeerAnswerWrapper>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <Spacing size={'5vh'} />
+        <Flex css={{ justifyContent: 'space-between' }}>
+          <Text variant="headline">팀원들의 답안도 확인해볼까요? </Text>
+          <DoneNumberNotice done={peerAnswers.length} />
+        </Flex>
+        <Spacing size={'2vh'} />
+        <PeerAnswerWrapper>
+          {peerAnswers.map(({ quizReplyHistoryId, answer, creator }) => (
+            <PeerAnswerItem
+              creator={creator}
+              answer={answer}
+              quizReplyHistoryId={quizReplyHistoryId}
+              peerAnswers={peerAnswers}
+            />
+          ))}
+        </PeerAnswerWrapper>
+      </Wrapper>
+    </>
   );
 }

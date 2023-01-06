@@ -11,6 +11,7 @@ import { QUERY_KEYS } from 'constants/queryKeys';
 import { QuizReply } from 'pages/QuizVotingPage/hooks/quizReplyList';
 
 import { postQuizLike } from './remotes/quizVote';
+import { Flex } from '@toss/emotion-utils';
 
 export function VoteSubmitButton() {
   const [isDisable, setIsDisable] = useState(true);
@@ -64,20 +65,23 @@ export function VoteSubmitButton() {
     });
   };
 
-  const onClick = (event: React.MouseEvent) => {
-    event.stopPropagation();
+  const onClick = () => {
     quizVoteMutation();
     isSuccess ? openModalBox() : null;
   };
   return (
-    <Button
-      onClick={(event: React.MouseEvent) => onClick(event)}
-      css={{ position: 'absolute', left: '100%', transform: 'translateX( -200px ) translateY(-100px)', top: '0%' }}
-      width={200}
-      size="large"
-      disabled={isDisable}
-    >
-      똑표완료
-    </Button>
+    <Flex css={{ position: 'absolute', bottom: '0%', left: '100%', transform: 'translateX( -200px )' }}>
+      <Button
+        onClick={onClick}
+        css={{
+          position: 'fixed',
+        }}
+        width={200}
+        size="large"
+        disabled={isDisable}
+      >
+        똑표완료
+      </Button>
+    </Flex>
   );
 }
