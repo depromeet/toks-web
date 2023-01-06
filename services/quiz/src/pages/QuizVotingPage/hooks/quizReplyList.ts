@@ -6,7 +6,7 @@ export type QuizReply =
   | {
       quizReplyHistoryId: number;
       answer: string;
-      likeNumber: number;
+      likeCount: number;
       creator: {
         userId: number;
         nickname: string;

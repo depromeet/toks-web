@@ -53,6 +53,20 @@ const globalCss = css`
     background-color: ${theme.colors.gray120};
   }
 
+  //스크롤바 커스텀
+  ::-webkit-scrollbar {
+    width: 4px; /* 스크롤바의 너비 */
+    height: 4px;
+  }
+  ::-webkit-scrollbar-track {
+    background: none;
+  }
+  ::-webkit-scrollbar-thumb {
+    /* height: 30%; 스크롤바의 길이 */
+    background: ${theme.colors.gray070}; /* 스크롤바의 색상 */
+    border-radius: 10px;
+  }
+
   *,
   *:before,
   *:after {

@@ -6,4 +6,5 @@ export const MyAnswerWrapper = styled.div`
   background-color: ${theme.colors.gray110};
   border-radius: 16px;
   width: 100%;
+  height: 27vh;
 `;
