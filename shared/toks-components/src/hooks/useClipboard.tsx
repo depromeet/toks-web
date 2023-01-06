@@ -10,8 +10,7 @@ export function useClipboard() {
     if (isSuccess) {
       await open({
         type: 'success',
-        title: '링크가 복사되었습니다.',
-        time: 2000,
+        title: '링크가 복사되었어요',
       });
       return;
     }

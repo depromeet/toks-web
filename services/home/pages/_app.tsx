@@ -5,8 +5,7 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ReactElement, ReactNode, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { OverlayProvider } from '@toss/use-overlay';
-import { GlobalStyle as ToksDesignSystemStyle } from '@depromeet/toks-components';
+import { GlobalStyle as ToksDesignSystemStyle, OverlayProvider } from '@depromeet/toks-components';
 import { Layout } from '@depromeet/layout';
 
 const normalizedStyles = css`
