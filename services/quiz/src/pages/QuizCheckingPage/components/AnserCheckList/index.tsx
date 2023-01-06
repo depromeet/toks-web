@@ -41,7 +41,7 @@ export function AnswerCheckList() {
   if (!sortedQuizReplies || !user) {
     return null;
   }
-  // console.log(sortedQuizReplies);
+  console.log(sortedQuizReplies);
   // console.log(user);
 
   const sortedPeerAnswers = sortedQuizReplies.quizReplyHistories.filter(
