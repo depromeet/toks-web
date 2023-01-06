@@ -12,8 +12,7 @@ export function QuizTimer({ duration }: QuizTimerProps) {
   const [isQuizClosed, setIsQuizClosed] = useState(false);
 
   useEffect(() => {
-    // 0초에 멈추고 똑스 종료로
-    if (time === 0) {
+    if (time === 0 || time < 0) {
       setIsQuizClosed(true);
       stop();
     }

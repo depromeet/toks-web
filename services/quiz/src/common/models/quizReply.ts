@@ -1,4 +1,4 @@
-export interface QuizzesByIdResponse {
+export interface QuizReplyByIdResponse {
   quizReplyHistories: [
     {
       quizReplyHistoryId: number;

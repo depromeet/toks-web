@@ -19,9 +19,10 @@ type QuizItemMap = {
   [key in QuizStatus]: {
     buttonColor: ComponentProps<typeof Button>['type'];
     timerColor: KeyOfColors;
+    labelColor: string;
     backgroundColor: string;
-    buttonName: string;
-    path: (quizId: number) => string;
+    buttonName: (myQuiz: boolean) => string;
+    path: (quizId: number, myQuiz: boolean) => string;
   };
 };
 
@@ -29,23 +30,26 @@ const QUIZ_ITEM: QuizItemMap = {
   DONE: {
     buttonColor: 'general',
     timerColor: 'gray060',
+    labelColor: theme.colors.gray120,
     backgroundColor: theme.colors.gray110,
-    buttonName: '똑스 확인하기',
+    buttonName: () => '똑스 확인하기',
     path: (quizId: number) => `/vote/${quizId}`,
   },
   TO_DO: {
     buttonColor: 'primary',
     timerColor: 'primary',
+    labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
-    buttonName: '똑스 풀기',
-    path: (quizId: number) => `/solve/${quizId}`,
+    buttonName: (myQuiz: boolean) => (myQuiz ? '똑표하기' : '똑스 풀기'),
+    path: (quizId: number, myQuiz: boolean) => (myQuiz ? `/vote/${quizId}` : `/solve/${quizId}`),
   },
   IN_PROGRESS: {
     buttonColor: 'primary',
     timerColor: 'primary',
+    labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
-    buttonName: '똑스 풀기',
-    path: (quizId: number) => `/solve/${quizId}`,
+    buttonName: (myQuiz: boolean) => (myQuiz ? '똑표하기' : '똑스 풀기'),
+    path: (quizId: number, myQuiz: boolean) => (myQuiz ? `/vote/${quizId}` : `/solve/${quizId}`),
   },
 };
 
@@ -57,6 +61,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
     timestamp,
     durationOfSecond,
     quizStatus,
+    myQuiz,
     question: title,
     creator,
     unSubmitters,
@@ -109,9 +114,24 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               {round}회차
             </Text>
-            <Text variant="headline" css={{ margin: '0 0 0 18px', flex: 1 }} as="h5">
+            <Text variant="headline" css={{ margin: '0 0 0 18px' }} as="h5">
               {title}
             </Text>
+            {myQuiz && (
+              <Text
+                variant="body03"
+                color="gray030"
+                css={{
+                  padding: '4px 12px',
+                  backgroundColor: QUIZ_ITEM[quizStatus].labelColor,
+                  borderRadius: '16px',
+                  marginLeft: '18px',
+                }}
+              >
+                내가 만든 똑스
+              </Text>
+            )}
+            <Space css={{ flex: 1 }} />
             {quizStatus === 'TO_DO' && (
               <Text color="primary" variant="body02" css={{ marginRight: '18px' }}>
                 기다려주세요!
@@ -124,10 +144,10 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
               size="medium"
               onClick={event => {
                 event.stopPropagation();
-                router.push(QUIZ_ITEM[quizStatus].path(quizId));
+                router.push(QUIZ_ITEM[quizStatus].path(quizId, myQuiz));
               }}
             >
-              {QUIZ_ITEM[quizStatus].buttonName}
+              {QUIZ_ITEM[quizStatus].buttonName(myQuiz)}
             </Button>
           </>
         }
