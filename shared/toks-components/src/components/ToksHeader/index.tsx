@@ -1,7 +1,7 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 
-import { BP, TOKS_HEADER_HEIGHT, emoji } from '../../constants';
+import { BP, TOKS_HEADER_HEIGHT, emoji, MAX_WIDTH, MIN_WIDTH } from '../../constants';
 import { Image } from '../Image';
 import { Text } from '../Text';
 
@@ -98,12 +98,12 @@ const Header = styled.header`
   left: 0;
   top: 0;
   display: flex;
-  max-width: 1320px;
-  min-width: 320px;
+  max-width: ${MAX_WIDTH};
+  min-width: ${MIN_WIDTH};
   width: 100vw;
   height: ${TOKS_HEADER_HEIGHT};
   margin: 0 auto;
-  padding: 0 calc(9vw + 20px);
+  padding: 0 96px;
   align-items: center;
   z-index: 1;
   justify-content: space-between;
