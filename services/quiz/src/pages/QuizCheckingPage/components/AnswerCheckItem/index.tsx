@@ -1,8 +1,10 @@
 import { theme } from '@depromeet/theme';
-import { Accordion, UserAvatar, Text, ToastViewer } from '@depromeet/toks-components';
+import { Accordion, Text, ToastViewer, UserAvatar } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
-import { QuizReplierResPonse } from 'common/models/quizReply';
 import { useState } from 'react';
+
+import { QuizReplierResPonse } from 'common/models/quizReply';
+
 import { VoteCounter } from '../VoteCounter';
 import { AnswerContainer } from './style';
 

@@ -1,4 +1,5 @@
 import { http } from '@depromeet/http';
+
 import { QuizReplyByIdResponses } from 'common/models/quizReply';
 
 export async function getSortedQuizReplyById(quizIdParams: string | string[] | undefined) {

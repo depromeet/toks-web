@@ -1,16 +1,18 @@
-import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
-import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
-import { QUERY_KEYS } from 'constants/queryKeys';
-import { useRouter } from 'next/router';
-import { useQuery } from 'react-query';
 import { Text } from '@depromeet/toks-components';
+import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
-import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
-import { getUser } from 'common/remotes/user';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { AnswerWrapper, BestAnswerContainer, Wrapper } from './style';
+import { useQuery } from 'react-query';
+
+import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
+import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
+import { getUser } from 'common/remotes/user';
+import { QUERY_KEYS } from 'constants/queryKeys';
 import { getSortedQuizReplyById } from 'pages/QuizCheckingPage/remotes/sortingQuizAply';
+
 import { AnswerCheckItem } from '../AnswerCheckItem';
+import { AnswerWrapper, BestAnswerContainer, Wrapper } from './style';
 
 export function AnswerCheckList() {
   const {
@@ -26,7 +28,7 @@ export function AnswerCheckList() {
     if (quiz) {
       setDurationTime(calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt)));
     }
-  }, [durationTime]);
+  }, [durationTime, quiz]);
 
   const { data: sortedQuizReplies } = useQuery(
     QUERY_KEYS.GET_SORTED_QUIZREPLY,

@@ -1,6 +1,7 @@
 import { isToksError } from '@depromeet/http';
 import { Button, useModal, useToast } from '@depromeet/toks-components';
 import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
+import { Flex } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
@@ -11,7 +12,6 @@ import { QUERY_KEYS } from 'constants/queryKeys';
 import { QuizReply } from 'pages/QuizVotingPage/hooks/quizReplyList';
 
 import { postQuizLike } from './remotes/quizVote';
-import { Flex } from '@toss/emotion-utils';
 
 export function VoteSubmitButton() {
   const [isDisable, setIsDisable] = useState(true);

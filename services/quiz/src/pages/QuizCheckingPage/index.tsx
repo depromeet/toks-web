@@ -1,12 +1,14 @@
 import { Flex, Spacing } from '@toss/emotion-utils';
-import { QuizQuestion } from 'common/components/QuizQuestion';
 import { useRouter } from 'next/router';
-import { AnswerCheckList } from './components/AnswerCheckList';
 import { useQuery } from 'react-query';
-import { QUERY_KEYS } from 'constants/queryKeys';
+
+import { QuizNav } from 'common/components/QuizNav';
+import { QuizQuestion } from 'common/components/QuizQuestion';
 import { getQuizReplyById } from 'common/remotes/quizReply';
 import { getUser } from 'common/remotes/user';
-import { QuizNav } from 'common/components/QuizNav';
+import { QUERY_KEYS } from 'constants/queryKeys';
+
+import { AnswerCheckList } from './components/AnswerCheckList';
 
 export default function QuizCheckingPage() {
   const {

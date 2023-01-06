@@ -1,11 +1,12 @@
 import { theme } from '@depromeet/theme';
-import { Accordion, ToastViewer, UserAvatar } from '@depromeet/toks-components';
+import { Accordion, Text, ToastViewer, UserAvatar } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useState } from 'react';
-import { Text } from '@depromeet/toks-components';
+
+import { EachQuizReplyByResponse, QuizReplierResPonse } from 'common/models/quizReply';
+
 import { VoteButton } from '../VoteButton.tsx';
 import { PeerAnswerContainer } from './style';
-import { EachQuizReplyByResponse, QuizReplierResPonse } from 'common/models/quizReply';
 
 type PeerAnswerItemProps = {
   creator: QuizReplierResPonse;

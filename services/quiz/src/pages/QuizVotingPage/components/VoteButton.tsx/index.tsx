@@ -1,9 +1,9 @@
 import { Button } from '@depromeet/toks-components';
+import React from 'react';
 import { useQuery } from 'react-query';
 
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { QuizReply, useSetClientQuizReply } from 'pages/QuizVotingPage/hooks/quizReplyList';
-import React from 'react';
 
 type VoteButtonProps = {
   peerAnswers: QuizReply[];
