@@ -1,6 +1,6 @@
 import { isToksError, logout as requestLogout } from '@depromeet/http';
 import { PATHS, pushTo } from '@depromeet/path';
-import { SSRSuspense, ToksHeader, useToast } from '@depromeet/toks-components';
+import { MAX_WIDTH, SSRSuspense, ToksHeader, useToast } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { useBooleanState } from '@toss/react';
 import { useSuspendedQuery } from '@toss/react-query';
@@ -83,7 +83,7 @@ export function Layout(props: ComponentProps<typeof Component>) {
 const StyledLayout = styled.main<{ fullWidth: boolean }>`
   position: relative;
   width: 100vw;
-  max-width: 1320px;
+  max-width: ${MAX_WIDTH};
   padding: 0 ${({ fullWidth }) => (fullWidth ? '0' : '9vw')};
   overflow: auto;
   margin: 0 auto;
