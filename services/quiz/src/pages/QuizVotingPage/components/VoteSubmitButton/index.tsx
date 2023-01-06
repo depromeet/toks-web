@@ -2,7 +2,7 @@ import { isToksError } from '@depromeet/http';
 import { Button, useModal, useToast } from '@depromeet/toks-components';
 import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 
 import { AnswerConfirmModal } from 'common/components/ModalContents/AnswerConfirmModal';
@@ -64,13 +64,14 @@ export function VoteSubmitButton() {
     });
   };
 
-  const onClick = () => {
+  const onClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
     quizVoteMutation();
     isSuccess ? openModalBox() : null;
   };
   return (
     <Button
-      onClick={onClick}
+      onClick={(event: React.MouseEvent) => onClick(event)}
       css={{ position: 'absolute', left: '100%', transform: 'translateX( -200px ) translateY(-100px)', top: '0%' }}
       width={200}
       size="large"

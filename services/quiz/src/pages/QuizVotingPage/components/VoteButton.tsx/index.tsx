@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { QuizReply, useSetClientQuizReply } from 'pages/QuizVotingPage/hooks/quizReplyList';
+import React from 'react';
 
 type VoteButtonProps = {
   peerAnswers: QuizReply[];
@@ -12,7 +13,8 @@ type VoteButtonProps = {
 export function VoteButton({ peerAnswers, quizReplyHistoryId }: VoteButtonProps) {
   const setQuizAplyLists = useSetClientQuizReply();
 
-  const onClick = (quizReplyHistoryId: number) => {
+  const onClick = (quizReplyHistoryId: number, event: React.MouseEvent) => {
+    event.stopPropagation();
     setQuizAplyLists(peerAnswers.find(answer => quizReplyHistoryId === answer?.quizReplyHistoryId));
   };
 
@@ -28,7 +30,7 @@ export function VoteButton({ peerAnswers, quizReplyHistoryId }: VoteButtonProps)
         width={110}
         size="medium"
         type="primary"
-        onClick={() => onClick(quizReplyHistoryId)}
+        onClick={(event: React.MouseEvent) => onClick(quizReplyHistoryId, event)}
       >
         똑표하기
       </Button>
@@ -40,7 +42,7 @@ export function VoteButton({ peerAnswers, quizReplyHistoryId }: VoteButtonProps)
         width={110}
         size="medium"
         type="general"
-        onClick={() => onClick(quizReplyHistoryId)}
+        onClick={(event: React.MouseEvent) => onClick(quizReplyHistoryId, event)}
       >
         똑표하기
       </Button>

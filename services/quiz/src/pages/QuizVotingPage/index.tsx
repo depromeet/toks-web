@@ -4,7 +4,7 @@ import { QuizNav } from 'common/components/QuizNav';
 import { QuizQuestion } from 'common/components/QuizQuestion';
 
 import { MyAnswerViewer } from './components/MyAnswerViewer';
-import { PeerAnswerViewer } from './components/PeerAnswerViewer';
+import { PeerAnswerList } from './components/PeerAnswerList';
 import { VoteSubmitButton } from './components/VoteSubmitButton';
 
 export default function QuizVotingPage() {
@@ -16,7 +16,7 @@ export default function QuizVotingPage() {
         <QuizQuestion />
         <Flex direction="column" css={{ width: '50%', height: '90vh', position: 'relative' }}>
           <MyAnswerViewer />
-          <PeerAnswerViewer />
+          <PeerAnswerList />
           <VoteSubmitButton />
         </Flex>
       </Flex>
