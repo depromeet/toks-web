@@ -83,7 +83,7 @@ export function AnswerCheckList() {
                     {bestAnswer.creator.nickname}
                   </Text>
                 </Flex>
-                <VoteCounter voteCount={bestAnswer.likeNumber} />
+                <VoteCounter voteCount={bestAnswer.likeCount} />
               </Flex>
             }
             bodyNodes={
@@ -105,7 +105,7 @@ export function AnswerCheckList() {
         </Flex>
         <Spacing size={'2vh'} />
         <AnswerWrapper>
-          {restAnswer.map(({ answer, likeNumber, creator }) => (
+          {restAnswer.map(({ answer, likeCount, creator }) => (
             <AnswerContainer key={creator.userId}>
               <Accordion
                 isFold={isRestAnswerFold}
@@ -122,7 +122,7 @@ export function AnswerCheckList() {
                         {creator.nickname}
                       </Text>
                     </Flex>
-                    <VoteCounter voteCount={likeNumber} />
+                    <VoteCounter voteCount={likeCount} />
                   </Flex>
                 }
                 bodyNodes={
@@ -149,7 +149,7 @@ export function AnswerCheckList() {
           </Flex>
           <Flex direction="column" css={{ overflow: 'auto' }}>
             <Spacing size={'2vh'} />
-            {sortedPeerAnswers.map(({ answer, likeNumber, creator }) => (
+            {sortedPeerAnswers.map(({ answer, likeCount, creator }) => (
               <AnswerContainer key={creator.userId}>
                 <Accordion
                   isFold={isFold}
@@ -166,7 +166,7 @@ export function AnswerCheckList() {
                           {creator.nickname}
                         </Text>
                       </Flex>
-                      <VoteCounter voteCount={likeNumber} />
+                      <VoteCounter voteCount={likeCount} />
                     </Flex>
                   }
                   bodyNodes={

@@ -3,7 +3,7 @@ export interface QuizReplyByIdResponse {
     {
       quizReplyHistoryId: number;
       answer: string;
-      likeNumber: number;
+      likeCount: number;
       creator: {
         userId: number;
         nickname: string;
