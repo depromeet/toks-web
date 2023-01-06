@@ -5,6 +5,7 @@ export * from './Text';
 export * from './SSRSuspense';
 export * from './Modal';
 export * from './ImageViewer';
+export * from './OverlayProvider';
 
 export * from './Editor';
 export * from './Timer';

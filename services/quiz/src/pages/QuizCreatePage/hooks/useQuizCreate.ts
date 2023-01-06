@@ -1,6 +1,6 @@
 import { isToksError } from '@depromeet/http';
 import { PATHS, pushTo } from '@depromeet/path';
-import { getStudyDetail } from '@depromeet/toks-components';
+import { getStudyDetail, useToast } from '@depromeet/toks-components';
 import { useSuspendedQuery } from '@toss/react-query';
 import { add, formatISO } from 'date-fns';
 import { useRouter } from 'next/router';
@@ -16,6 +16,7 @@ export const useQuizCreate = () => {
   const { data: study } = useSuspendedQuery(['study', studyId], () => getStudyDetail(Number(studyId)), {
     enabled: Boolean(studyId),
   });
+  const { open } = useToast();
 
   const { mutate: createQuiz } = useMutation(async (values: QuizCreateForm) => {
     try {
@@ -39,11 +40,12 @@ export const useQuizCreate = () => {
         startedAt: formatStartedAt,
         round: study.latestQuizRound + 1,
       });
-      alert('퀴즈가 생성되었습니다.');
-      await pushTo(PATHS.quiz.studyDetail({ studyId: id }));
+      await open({ title: '퀴즈가 생성되었습니다.', type: 'success', showOnNextPage: true });
+
+      pushTo(PATHS.quiz.studyDetail({ studyId: id }));
     } catch (error: unknown) {
       if (isToksError(error)) {
-        alert(error.message);
+        await open({ title: error.message, type: 'danger' });
       }
     }
   });
