@@ -1,16 +1,16 @@
+import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
 import { QuizNav } from 'common/components/QuizNav';
 import { QuizQuestion } from 'common/components/QuizQuestion';
+import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
 import { getQuizReplyById } from 'common/remotes/quizReply';
 import { getUser } from 'common/remotes/user';
 import { QUERY_KEYS } from 'constants/queryKeys';
 
 import { AnswerCheckList } from './components/AnswerCheckList';
-import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
-import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
 
 export default function QuizCheckingPage() {
   const {

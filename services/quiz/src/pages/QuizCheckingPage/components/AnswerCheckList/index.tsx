@@ -1,9 +1,9 @@
 import { Text } from '@depromeet/toks-components';
+import { useTimer } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { useTimer } from '@depromeet/utils';
 
 import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
 import { getUser } from 'common/remotes/user';

@@ -31,11 +31,15 @@ export function VoteSubmitButton() {
     }
   }, [ans]);
 
-  const { mutateAsync: quizVoteMutation, isSuccess } = useMutation(async () => {
+  const { mutateAsync: quizVoteMutation } = useMutation(async () => {
     try {
-      await postQuizLike(quizReplyHistoryId);
+      const res = await postQuizLike(quizReplyHistoryId);
+      if (res) {
+        openModalBox();
+      }
     } catch (err: unknown) {
       if (isToksError(err) && err.message === 'error.already.liked') {
+        console.log(err);
         await open({
           type: 'danger',
           title: '이미 투표를 완료했습니다.',
@@ -67,7 +71,6 @@ export function VoteSubmitButton() {
 
   const onClick = () => {
     quizVoteMutation();
-    isSuccess ? openModalBox() : null;
   };
   return (
     <Flex css={{ position: 'absolute', bottom: '0%', left: '100%', transform: 'translateX( -200px )' }}>
