@@ -1,6 +1,6 @@
-import { logout as requestLogout } from '@depromeet/http';
+import { isToksError, logout as requestLogout } from '@depromeet/http';
 import { PATHS, pushTo } from '@depromeet/path';
-import { SSRSuspense, ToksHeader } from '@depromeet/toks-components';
+import { SSRSuspense, ToksHeader, useToast } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { useBooleanState } from '@toss/react';
 import { useSuspendedQuery } from '@toss/react-query';
@@ -15,16 +15,18 @@ import { UserMenu } from './UserMenu';
 function Component({ children, fullWidth = false }: { children: ReactNode; fullWidth?: boolean }) {
   const { data: user, refetch } = useSuspendedQuery(safelyGetUser.queryKey, safelyGetUser, { retry: false });
   const { toggle, close } = useUserMenuDialog();
+  const { open } = useToast();
 
   const { mutateAsync: logout, isLoading } = useMutation(async () => {
     try {
+      await open({ title: '로그아웃 되었어요', type: 'success', showOnNextPage: true });
       await requestLogout();
       await refetch();
       close();
     } catch (err) {
-      // TODO: alert, confirm 구현하기
-      // TODO: 서버와 싱크 후, message를 에러 객체에 어떻게 담을지 정의하고 util만들기
-      window.alert(err);
+      if (isToksError(err)) {
+        await open({ title: err.message, type: 'danger' });
+      }
     }
   });
 
