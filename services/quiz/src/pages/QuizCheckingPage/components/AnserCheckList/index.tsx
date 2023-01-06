@@ -7,7 +7,7 @@ import { Accordion, Text, ToastViewer, UserAvatar } from '@depromeet/toks-compon
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
 import { getUser } from 'common/remotes/user';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { theme } from '@depromeet/theme';
 import { AnswerContainer, AnswerWrapper, BestAnswerContainer, Wrapper } from './style';
 import { VoteCounter } from '../VoteCounter';
@@ -19,6 +19,7 @@ export function AnswerCheckList() {
   } = useRouter();
   const [isFold, setIsFold] = useState(false);
   const [isRestAnswerFold, setIsRestAnswerFold] = useState(true);
+  const [durationTime, setDurationTime] = useState<number>();
 
   const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizIdParams), {
     enabled: Boolean(quizIdParams),
@@ -41,8 +42,6 @@ export function AnswerCheckList() {
   if (!sortedQuizReplies || !user) {
     return null;
   }
-  console.log(sortedQuizReplies);
-  // console.log(user);
 
   const sortedPeerAnswers = sortedQuizReplies.quizReplyHistories.filter(
     element => element.creator.nickname !== user.nickname
@@ -53,9 +52,11 @@ export function AnswerCheckList() {
     element => element.quizReplyHistoryId !== bestAnswer.quizReplyHistoryId
   );
 
-  const durationTime = calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt));
-  // const durationTime = 1;
-  if (durationTime <= 0) {
+  useEffect(() => {
+    setDurationTime(calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt)));
+  }, [durationTime]);
+
+  if (durationTime == null || durationTime <= 0) {
     return (
       <Wrapper>
         <BestAnswerContainer>

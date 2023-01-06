@@ -5,7 +5,7 @@ import { Viewer, ViewerProps } from '@toast-ui/react-editor';
 
 export interface ToastViewerProps extends ViewerProps {
   answer?: string;
-  height?: number;
+  height?: string;
 }
 export default function ToastViewer({ answer, height, ...rest }: ToastViewerProps) {
   return (
@@ -26,7 +26,7 @@ const ViewerWrapper = styled.div<ToastViewerProps>`
     border-radius: 8px;
     ${props => {
       return css`
-        height: ${props.height ? `${props.height}px` : '100%'} !important; ;
+        height: ${props.height ? `${props.height}` : '100%'} !important; ;
       `;
     }}
   }
