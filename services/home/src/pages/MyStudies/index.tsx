@@ -1,5 +1,5 @@
 import { Layout } from '@depromeet/layout';
-import { Text, TOKS_HEADER_HEIGHT } from '@depromeet/toks-components';
+import { TOKS_HEADER_HEIGHT, Text } from '@depromeet/toks-components';
 import { Flex } from '@toss/emotion-utils';
 import { ReactElement } from 'react';
 
