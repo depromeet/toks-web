@@ -39,6 +39,7 @@ export function PeerAnswerList() {
       <PeerAnswerWrapper>
         {peerAnswers.map(({ quizReplyHistoryId, answer, creator }) => (
           <PeerAnswerItem
+            key={creator.userId}
             creator={creator}
             answer={answer}
             quizReplyHistoryId={quizReplyHistoryId}

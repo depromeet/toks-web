@@ -85,7 +85,13 @@ export function AnswerCheckList() {
         <Spacing size={'2vh'} />
         <AnswerWrapper>
           {restAnswer.map(({ answer, likeCount, creator }) => (
-            <AnswerCheckItem answer={answer} likeCount={likeCount} creator={creator} isFold={true} />
+            <AnswerCheckItem
+              key={creator.userId}
+              answer={answer}
+              likeCount={likeCount}
+              creator={creator}
+              isFold={true}
+            />
           ))}
         </AnswerWrapper>
       </Wrapper>
@@ -103,7 +109,13 @@ export function AnswerCheckList() {
           <Flex direction="column" css={{ overflow: 'auto' }}>
             <Spacing size={'2vh'} />
             {sortedPeerAnswers.map(({ answer, likeCount, creator }) => (
-              <AnswerCheckItem answer={answer} likeCount={likeCount} creator={creator} isFold={false} />
+              <AnswerCheckItem
+                key={creator.userId}
+                answer={answer}
+                likeCount={likeCount}
+                creator={creator}
+                isFold={false}
+              />
             ))}
           </Flex>
         </Flex>

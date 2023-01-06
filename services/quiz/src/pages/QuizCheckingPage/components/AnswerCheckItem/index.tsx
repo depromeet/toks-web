@@ -18,7 +18,7 @@ export function AnswerCheckItem({ answer, likeCount, creator, isFold }: AnswerCh
   const [isAnswerFold, setIsAnswerFold] = useState(isFold);
 
   return (
-    <AnswerContainer key={creator.userId}>
+    <AnswerContainer>
       <Accordion
         isFold={isAnswerFold}
         onFold={() => setIsAnswerFold(prev => !prev)}

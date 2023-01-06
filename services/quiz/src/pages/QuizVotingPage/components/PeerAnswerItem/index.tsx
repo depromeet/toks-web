@@ -18,7 +18,7 @@ export function PeerAnswerItem({ quizReplyHistoryId, answer, creator, peerAnswer
   const [isFold, setIsFold] = useState(true);
 
   return (
-    <PeerAnswerContainer key={creator.userId}>
+    <PeerAnswerContainer>
       <Accordion
         isFold={isFold}
         onFold={() => setIsFold(prev => !prev)}
