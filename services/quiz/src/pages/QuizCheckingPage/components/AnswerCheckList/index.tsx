@@ -1,12 +1,11 @@
 import { Text } from '@depromeet/toks-components';
-import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
+import { useTimer } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
 import { DoneNumberNotice } from 'common/components/DoneNumberNotice';
-import { getQuizById } from 'common/components/QuizQuestion/remotes/quiz';
 import { getUser } from 'common/remotes/user';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { getSortedQuizReplyById } from 'pages/QuizCheckingPage/remotes/sortingQuizAply';
@@ -14,21 +13,23 @@ import { getSortedQuizReplyById } from 'pages/QuizCheckingPage/remotes/sortingQu
 import { AnswerCheckItem } from '../AnswerCheckItem';
 import { AnswerWrapper, BestAnswerContainer, Wrapper } from './style';
 
-export function AnswerCheckList() {
+export function AnswerCheckList({ durationTime }: { durationTime: number }) {
+  const [isQuizClosed, setIsQuizClosed] = useState(false);
+
   const {
     query: { quizIdParams },
   } = useRouter();
-  const [durationTime, setDurationTime] = useState<number>();
 
-  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizIdParams), {
-    enabled: Boolean(quizIdParams),
+  const { time, stop: timerStop } = useTimer({
+    time: durationTime,
   });
 
   useEffect(() => {
-    if (quiz) {
-      setDurationTime(calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt)));
+    if (time === 0 || time < 0) {
+      timerStop();
+      setIsQuizClosed(true);
     }
-  }, [durationTime, quiz]);
+  }, [time, timerStop]);
 
   const { data: sortedQuizReplies } = useQuery(
     QUERY_KEYS.GET_SORTED_QUIZREPLY,
@@ -53,7 +54,7 @@ export function AnswerCheckList() {
     element => element.quizReplyHistoryId !== bestAnswer.quizReplyHistoryId
   );
 
-  if (durationTime == null || durationTime <= 0) {
+  if (isQuizClosed) {
     return (
       <Wrapper>
         <BestAnswerContainer>
