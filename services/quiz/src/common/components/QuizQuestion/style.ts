@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   background-color: ${theme.colors.gray110};
   border-radius: 16px;
   width: 50%;
-  height: 82vh;
+  height: 80vh;
   margin-right: 52px;
 `;
 
@@ -22,6 +22,9 @@ export const Line = styled.div`
 export const DescriptionContainer = styled.div`
   overflow: auto;
   height: 78%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const RoundInfo = styled.div`
@@ -31,6 +34,6 @@ export const RoundInfo = styled.div`
 `;
 
 export const ImageContainer = styled.div`
-  width: 188px;
+  width: 100%;
   height: 188px;
 `;

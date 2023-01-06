@@ -1,20 +1,16 @@
-import { Text } from '@depromeet/toks-components';
-import { Spacing } from '@toss/emotion-utils';
-import dynamic from 'next/dynamic';
+import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
+import { QuizNav } from 'common/components/QuizNav';
+import { QuizQuestion } from 'common/components/QuizQuestion';
 import { getQuizReplyById } from 'common/remotes/quizReply';
 import { getUser } from 'common/remotes/user';
 import { QUERY_KEYS } from 'constants/queryKeys';
 
-import { MyAnswerWrapper } from './style';
+import { AnswerCheckList } from './components/AnswerCheckList';
 
-const ToastViewer = dynamic(() => import('@depromeet/toks-components/src/components/ToastViewer/ToastViewer'), {
-  ssr: false,
-});
-
-export function MyAnswerViewer() {
+export default function QuizCheckingPage() {
   const {
     query: { quizIdParams },
   } = useRouter();
@@ -30,12 +26,16 @@ export function MyAnswerViewer() {
   }
 
   const myAnswer = quizzes.quizReplyHistories.find(element => element.creator.nickname === user.nickname)?.answer;
-
   return (
-    <MyAnswerWrapper>
-      <Text variant="subhead">나의 답안</Text>
-      <Spacing size={16} />
-      <ToastViewer height={'18vh'} answer={myAnswer} />
-    </MyAnswerWrapper>
+    <>
+      <QuizNav mainTitle="똑표 확인하기" studyId={1} />
+      <Spacing size={25} />
+      <Flex css={{ height: '100%' }}>
+        <QuizQuestion myAnswer={myAnswer} />
+        <Flex css={{ width: '50%' }}>
+          <AnswerCheckList />
+        </Flex>
+      </Flex>
+    </>
   );
 }

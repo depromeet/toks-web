@@ -1,4 +1,4 @@
-import { Icon, ImageViewer, Text, UserAvatar } from '@depromeet/toks-components';
+import { Icon, ImageViewer, Text, ToastViewer, UserAvatar } from '@depromeet/toks-components';
 import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
@@ -13,7 +13,11 @@ import { DescriptionContainer, ImageContainer, Line, RoundInfo, Wrapper } from '
 type ImageUrl = {
   src: string;
 };
-export function QuizQuestion() {
+
+type QuizQuestionProps = {
+  myAnswer?: string | undefined;
+};
+export function QuizQuestion({ myAnswer }: QuizQuestionProps) {
   const {
     query: { quizIdParams },
   } = useRouter();
@@ -32,6 +36,38 @@ export function QuizQuestion() {
 
   quiz.imageUrls.map(url => (url ? urlArray.push({ src: url }) : null));
 
+  const showImages = () => {
+    if (urlArray.length !== 0) {
+      return (
+        <>
+          <ImageContainer>
+            <ImageViewer photos={urlArray} />
+          </ImageContainer>
+          <Spacing size={24} />
+        </>
+      );
+    } else {
+      return null;
+    }
+  };
+
+  const showMyAnswer = () => {
+    if (myAnswer != null) {
+      return (
+        <>
+          <Spacing size={32} />
+          <Text variant="headline" color="gray020">
+            똑스 답안
+          </Text>
+          <Spacing size={12} />
+          <ToastViewer answer={myAnswer} />
+        </>
+      );
+    } else {
+      return null;
+    }
+  };
+
   return (
     <Wrapper>
       <RoundInfo>
@@ -49,18 +85,12 @@ export function QuizQuestion() {
       <Spacing size={24} />
       <Text variant="title04">Q. {quiz?.question}</Text>
       <Spacing size={24} />
-      {urlArray.length !== 0 ? (
-        <>
-          <ImageContainer>
-            <ImageViewer photos={urlArray} />
-          </ImageContainer>
-          <Spacing size={24} />
-        </>
-      ) : null}
+      {showImages()}
       <DescriptionContainer>
         <Text variant="body02" color="gray040">
           {quiz?.description}
         </Text>
+        {showMyAnswer()}
       </DescriptionContainer>
       <Line />
       <Spacing size={16} />

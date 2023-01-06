@@ -12,11 +12,10 @@ export default function QuizSolvingPage() {
     <>
       <QuizNav mainTitle="똑스 풀기" studyId={1} />
       <Spacing size={25} />
-      <Flex>
+      <Flex css={{ height: '100%' }}>
         <QuizQuestion />
         <Flex direction="column" css={{ width: '50%' }}>
           <QuizEditor />
-          <Spacing size={56} />
           <StudyPeerAnswer />
         </Flex>
       </Flex>

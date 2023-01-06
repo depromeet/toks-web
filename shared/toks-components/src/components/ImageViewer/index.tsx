@@ -28,11 +28,13 @@ export function ImageViewer({ photos }: Props) {
 }
 
 const PhotoAlbumWrapper = styled.div`
+  width: 100%;
+  overflow-x: auto;
   .react-photo-album--photo {
     width: 188px !important;
     border-radius: 8px;
     object-fit: cover !important;
-    :first-child {
+    :first-of-type {
       margin-left: 0px;
     }
     margin-left: 16px;
