@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { Icon, QuizStatus, SSRSuspense, Text } from '@depromeet/toks-components';
+import { Icon, QuizStatus, SSRSuspense, Text, TextBallon } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { ErrorBoundary } from '@toss/error-boundary';
 import { useRouter } from 'next/router';
@@ -58,17 +58,20 @@ function QuizList({ studyId }: QuizListProps) {
 
   // TODO : router 리터럴로 되어있는거 변경해야 함.
   return (
-    <List>
+    <List css={{ position: 'relative' }}>
       <li>{isAddableQuiz && <QuizAddButton onClick={() => router.push('/create')} />}</li>
-      {isNotQuizEmpty &&
-        quizList.map((quizItem, index) => (
+      {isNotQuizEmpty ? (
+        quizList.map(quizItem => (
           <QuizItem
             key={quizItem.quizId}
-            round={quizList.length - index}
+            round={quizItem.round}
             quiz={quizItem}
             setQuizItemStatus={setQuizItemStatus}
           />
-        ))}
+        ))
+      ) : (
+        <TextBallon title="첫 똑스를 추가해 주세요!" />
+      )}
     </List>
   );
 }

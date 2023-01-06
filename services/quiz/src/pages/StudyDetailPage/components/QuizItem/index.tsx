@@ -40,16 +40,16 @@ const QUIZ_ITEM: QuizItemMap = {
     timerColor: 'primary',
     labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
-    buttonName: (myQuiz: boolean) => myQuiz? '똑표하기' : '똑스 풀기',
-    path: (quizId: number, myQuiz: boolean) => myQuiz? `/vote/${quizId}` : `/solve/${quizId}`,
+    buttonName: (myQuiz: boolean) => (myQuiz ? '똑표하기' : '똑스 풀기'),
+    path: (quizId: number, myQuiz: boolean) => (myQuiz ? `/vote/${quizId}` : `/solve/${quizId}`),
   },
   IN_PROGRESS: {
     buttonColor: 'primary',
     timerColor: 'primary',
     labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
-    buttonName: (myQuiz: boolean) => myQuiz? '똑표하기' : '똑스 풀기',
-    path: (quizId: number, myQuiz: boolean) => myQuiz? `/vote/${quizId}` : `/solve/${quizId}`,
+    buttonName: (myQuiz: boolean) => (myQuiz ? '똑표하기' : '똑스 풀기'),
+    path: (quizId: number, myQuiz: boolean) => (myQuiz ? `/vote/${quizId}` : `/solve/${quizId}`),
   },
 };
 
@@ -117,20 +117,21 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
             <Text variant="headline" css={{ margin: '0 0 0 18px' }} as="h5">
               {title}
             </Text>
-            {myQuiz && 
-              <Text 
-                variant='body03' 
-                color='gray030' 
+            {myQuiz && (
+              <Text
+                variant="body03"
+                color="gray030"
                 css={{
-                  padding: '4px 12px', 
+                  padding: '4px 12px',
                   backgroundColor: QUIZ_ITEM[quizStatus].labelColor,
                   borderRadius: '16px',
-                  marginLeft: "18px"
-                }}>
-                  내가 만든 똑스
+                  marginLeft: '18px',
+                }}
+              >
+                내가 만든 똑스
               </Text>
-            }
-            <Space css={{flex: 1}}/>
+            )}
+            <Space css={{ flex: 1 }} />
             {quizStatus === 'TO_DO' && (
               <Text color="primary" variant="body02" css={{ marginRight: '18px' }}>
                 기다려주세요!
