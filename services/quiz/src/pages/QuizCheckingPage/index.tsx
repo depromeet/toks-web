@@ -1,7 +1,7 @@
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { QuizQuestion } from 'common/components/QuizQuestion';
 import { useRouter } from 'next/router';
-import { AnswerCheckList } from './components/AnserCheckList';
+import { AnswerCheckList } from './components/AnswerCheckList';
 import { useQuery } from 'react-query';
 import { QUERY_KEYS } from 'constants/queryKeys';
 import { getQuizReplyById } from 'common/remotes/quizReply';

@@ -22,6 +22,12 @@ export function AnswerCheckList() {
     enabled: Boolean(quizIdParams),
   });
 
+  useEffect(() => {
+    if (quiz) {
+      setDurationTime(calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt)));
+    }
+  }, [durationTime]);
+
   const { data: sortedQuizReplies } = useQuery(
     QUERY_KEYS.GET_SORTED_QUIZREPLY,
     () => getSortedQuizReplyById(quizIdParams),
@@ -31,15 +37,6 @@ export function AnswerCheckList() {
   );
 
   const { data: user } = useQuery(QUERY_KEYS.GET_USER_INFO, getUser);
-
-  if (!quiz) {
-    return null;
-  }
-
-  useEffect(() => {
-    // setDurationTime(calculateRemainingSecond(new Date(quiz.timestamp), new Date(quiz.endedAt)));
-    setDurationTime(1);
-  }, [durationTime]);
 
   if (!sortedQuizReplies || !user) {
     return null;
