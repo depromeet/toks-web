@@ -1,7 +1,7 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 
-import { BP, TOKS_HEADER_HEIGHT, emoji, MAX_WIDTH, MIN_WIDTH } from '../../constants';
+import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT, emoji } from '../../constants';
 import { Image } from '../Image';
 import { Text } from '../Text';
 
