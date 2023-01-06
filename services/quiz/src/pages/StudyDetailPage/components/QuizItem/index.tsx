@@ -21,8 +21,8 @@ type QuizItemMap = {
     timerColor: KeyOfColors;
     labelColor: string;
     backgroundColor: string;
-    buttonName: string;
-    path: (quizId: number) => string;
+    buttonName: (myQuiz: boolean) => string;
+    path: (quizId: number, myQuiz: boolean) => string;
   };
 };
 
@@ -32,7 +32,7 @@ const QUIZ_ITEM: QuizItemMap = {
     timerColor: 'gray060',
     labelColor: theme.colors.gray120,
     backgroundColor: theme.colors.gray110,
-    buttonName: '똑스 확인하기',
+    buttonName: () => '똑스 확인하기',
     path: (quizId: number) => `/vote/${quizId}`,
   },
   TO_DO: {
@@ -40,16 +40,16 @@ const QUIZ_ITEM: QuizItemMap = {
     timerColor: 'primary',
     labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
-    buttonName: '똑스 풀기',
-    path: (quizId: number) => `/solve/${quizId}`,
+    buttonName: (myQuiz: boolean) => myQuiz? '똑표하기' : '똑스 풀기',
+    path: (quizId: number, myQuiz: boolean) => myQuiz? `/vote/${quizId}` : `/solve/${quizId}`,
   },
   IN_PROGRESS: {
     buttonColor: 'primary',
     timerColor: 'primary',
     labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
-    buttonName: '똑스 풀기',
-    path: (quizId: number) => `/solve/${quizId}`,
+    buttonName: (myQuiz: boolean) => myQuiz? '똑표하기' : '똑스 풀기',
+    path: (quizId: number, myQuiz: boolean) => myQuiz? `/vote/${quizId}` : `/solve/${quizId}`,
   },
 };
 
@@ -61,11 +61,11 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
     timestamp,
     durationOfSecond,
     quizStatus,
+    myQuiz,
     question: title,
     creator,
     unSubmitters,
   } = quiz;
-  const isMyQuiz = true; // 임시@@@!!
   const [limitDate, openDate, currentDate] = [new Date(endedAt), new Date(startedAt), new Date(timestamp)];
   const initialTime = getInitialTimerSecond(currentDate, durationOfSecond, limitDate, quizStatus);
   const { time, start: timerStart, stop: timerStop } = useTimer({ time: initialTime, enabled: false });
@@ -117,7 +117,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
             <Text variant="headline" css={{ margin: '0 0 0 18px' }} as="h5">
               {title}
             </Text>
-            {isMyQuiz && 
+            {myQuiz && 
               <Text 
                 variant='body03' 
                 color='gray030' 
@@ -143,10 +143,10 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
               size="medium"
               onClick={event => {
                 event.stopPropagation();
-                router.push(QUIZ_ITEM[quizStatus].path(quizId));
+                router.push(QUIZ_ITEM[quizStatus].path(quizId, myQuiz));
               }}
             >
-              {QUIZ_ITEM[quizStatus].buttonName}
+              {QUIZ_ITEM[quizStatus].buttonName(myQuiz)}
             </Button>
           </>
         }
