@@ -55,8 +55,8 @@ const globalCss = css`
 
   //스크롤바 커스텀
   ::-webkit-scrollbar {
-    width: 4px; /* 스크롤바의 너비 */
-    height: 4px;
+    width: 20px; /* 스크롤바의 너비 */
+    height: 20px;
   }
   ::-webkit-scrollbar-track {
     background: none;
@@ -65,6 +65,8 @@ const globalCss = css`
     /* height: 30%; 스크롤바의 길이 */
     background: ${theme.colors.gray070}; /* 스크롤바의 색상 */
     border-radius: 10px;
+    background-clip: padding-box;
+    border: 8px solid transparent;
   }
 
   *,
