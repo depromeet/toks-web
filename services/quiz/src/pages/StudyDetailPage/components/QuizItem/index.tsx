@@ -33,7 +33,7 @@ const QUIZ_ITEM: QuizItemMap = {
     labelColor: theme.colors.gray120,
     backgroundColor: theme.colors.gray110,
     buttonName: () => '똑스 확인하기',
-    path: (quizId: number) => `/vote/${quizId}`,
+    path: (quizId: number) => `/check/${quizId}`,
   },
   TO_DO: {
     buttonColor: 'primary',
