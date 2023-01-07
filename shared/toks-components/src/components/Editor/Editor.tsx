@@ -103,7 +103,6 @@ const EditorWrapper = styled.div`
   }
 
   .toastui-editor-defaultUI-toolbar {
-    border-radius: 8px 8px 0 0 !important;
     background-color: ${theme.colors.gray100};
     border: none;
   }
