@@ -43,7 +43,7 @@ const StudyListRow = styled(Flex)`
   align-self: flex-start;
   width: min(100%, 1260px);
   margin: 0 auto;
-  padding: 100px 20px;
+  padding: 8px 20px;
   overflow-x: auto;
 `;
 

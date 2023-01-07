@@ -50,7 +50,7 @@ const UserMenuCard = styled.div`
   padding: 28px;
   right: 0;
   top: 70px;
-  right: calc(9vw + 20px);
+  right: 96px;
 
   position: absolute;
   width: 254px;

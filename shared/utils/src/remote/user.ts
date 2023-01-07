@@ -1,6 +1,6 @@
 import { http, isToksError } from '@depromeet/http';
 
-interface User {
+export interface User {
   email: string;
   nickname: string;
   thumbnailImageUrl: string;
@@ -8,7 +8,7 @@ interface User {
 }
 
 async function getUser() {
-  return await http.get<User>('/api/v1/user');
+  return await http.get<User>('/api/v1/user', { public: true });
 }
 
 export async function safelyGetUser() {

@@ -1,6 +1,7 @@
 import { isToksError } from '@depromeet/http';
 import { Button, useModal, useToast } from '@depromeet/toks-components';
 import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
+import { Flex } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
@@ -30,11 +31,15 @@ export function VoteSubmitButton() {
     }
   }, [ans]);
 
-  const { mutateAsync: quizVoteMutation, isSuccess } = useMutation(async () => {
+  const { mutateAsync: quizVoteMutation } = useMutation(async () => {
     try {
-      await postQuizLike(quizReplyHistoryId);
+      const res = await postQuizLike(quizReplyHistoryId);
+      if (res) {
+        openModalBox();
+      }
     } catch (err: unknown) {
       if (isToksError(err) && err.message === 'error.already.liked') {
+        console.log(err);
         await open({
           type: 'danger',
           title: '이미 투표를 완료했습니다.',
@@ -66,17 +71,20 @@ export function VoteSubmitButton() {
 
   const onClick = () => {
     quizVoteMutation();
-    isSuccess ? openModalBox() : null;
   };
   return (
-    <Button
-      onClick={onClick}
-      css={{ position: 'fixed', left: '100%', transform: 'translateX( -200px )', bottom: '20px' }}
-      width={200}
-      size="large"
-      disabled={isDisable}
-    >
-      똑표완료
-    </Button>
+    <Flex css={{ position: 'absolute', bottom: '0%', left: '100%', transform: 'translateX( -200px )' }}>
+      <Button
+        onClick={onClick}
+        css={{
+          position: 'fixed',
+        }}
+        width={200}
+        size="large"
+        disabled={isDisable}
+      >
+        똑표완료
+      </Button>
+    </Flex>
   );
 }

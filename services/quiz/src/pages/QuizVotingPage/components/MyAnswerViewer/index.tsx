@@ -19,7 +19,7 @@ export function MyAnswerViewer() {
     query: { quizIdParams },
   } = useRouter();
 
-  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZZES_BY_ID, () => getQuizReplyById(quizIdParams), {
+  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZREPLIES_BY_ID, () => getQuizReplyById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
 
@@ -35,7 +35,7 @@ export function MyAnswerViewer() {
     <MyAnswerWrapper>
       <Text variant="subhead">나의 답안</Text>
       <Spacing size={16} />
-      <ToastViewer height={163} answer={myAnswer} />
+      <ToastViewer height={'18vh'} answer={myAnswer} />
     </MyAnswerWrapper>
   );
 }

@@ -1,43 +1,45 @@
-import { PATHS, pushTo } from '@depromeet/path';
-import { ProgressSpinner, SSRSuspense } from '@depromeet/toks-components';
+import { PATHS, replaceTo } from '@depromeet/path';
+import { SSRSuspense } from '@depromeet/toks-components';
+import { safelyGetUser, useQueryParam } from '@depromeet/utils';
 import { assert } from '@toss/assert';
-import { Flex } from '@toss/emotion-utils';
 import { ErrorBoundary } from '@toss/error-boundary';
+import { useSuspendedQuery } from '@toss/react-query';
+import { isServer } from '@toss/utils';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useQueryClient } from 'react-query';
 
 import { getUserinfo } from 'pages/MyName/remote/nickName';
 
 function KakaoAuth() {
   const router = useRouter();
+  const queryClient = useQueryClient();
+  const accessToken = useQueryParam('accessToken', { suspense: true });
+  const refreshToken = useQueryParam('refreshToken', { suspense: true });
 
-  useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const accessToken = params.get('accessToken');
-    const refreshToken = params.get('refreshToken');
+  assert(accessToken != null && refreshToken != null, '로그인이 정상적으로 처리되지 않았습니다.');
 
-    if (accessToken && refreshToken) {
-      sessionStorage.setItem('accessToken', accessToken);
-      sessionStorage.setItem('refreshToken', refreshToken);
-    }
+  if (!isServer() && accessToken && refreshToken) {
+    sessionStorage.setItem('accessToken', accessToken);
+    sessionStorage.setItem('refreshToken', refreshToken);
+    queryClient.refetchQueries(safelyGetUser.queryKey);
+  }
 
-    assert(accessToken != null && refreshToken != null, '로그인이 정상적으로 처리되지 않았습니다.');
-
-    // 토큰 저장 후 API 호출해야함. 따라서 react query 이용 X
-    getUserinfo({ accessToken }).then(result => {
-      if (result.nickname === '닉네임을 등록해주세요') {
-        router.push(PATHS.login.nickname);
-      } else {
-        pushTo(PATHS.home.myStudy);
+  useSuspendedQuery(getUserinfo.queryKey(accessToken), () => getUserinfo({ accessToken }), {
+    onSuccess: user => {
+      if (user == null) {
+        router.reload();
+        return;
       }
-    });
-  }, [router]);
 
-  return (
-    <Flex.Center css={{ marginTop: '250px' }}>
-      <ProgressSpinner />
-    </Flex.Center>
-  );
+      if (user.nickname === '닉네임을 등록해주세요') {
+        router.replace(PATHS.login.nickname);
+      } else {
+        replaceTo(PATHS.home.myStudy);
+      }
+    },
+  });
+
+  return null;
 }
 
 export default () => (

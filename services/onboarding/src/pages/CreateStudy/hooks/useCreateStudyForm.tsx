@@ -1,4 +1,5 @@
 import { isToksError } from '@depromeet/http';
+import { useToast } from '@depromeet/toks-components';
 import { formatISO } from 'date-fns';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
@@ -15,10 +16,12 @@ export const useCreateStudyForm = () => {
     getValues,
     handleSubmit,
     setValue,
-    formState: { isDirty, isValid, errors },
+    formState: { isValid, errors },
   } = useForm<CreateStudyFormValues>({ mode: 'onChange' });
 
   const router = useRouter();
+
+  const { open } = useToast();
 
   const { mutate: createStudy } = useMutation(async () => {
     try {
@@ -34,16 +37,17 @@ export const useCreateStudyForm = () => {
         startedAt: formatStartedAt,
         endedAt: foramtEndedAt,
       });
-      alert('스터디가 생성되었습니다.');
+
+      await open({ title: '스터디가 생성되었습니다.', type: 'success', showOnNextPage: true });
       await router.replace(`/create-complete/${id}`);
     } catch (error: unknown) {
       if (isToksError(error)) {
-        console.log(error);
+        await open({ title: error.message, type: 'danger' });
       }
     }
   });
 
-  const isDisabled = !isDirty || !isValid;
+  const isDisabled = !isValid;
 
   const isMaxLength = useCallback((maxLength: number) => {
     return {

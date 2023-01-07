@@ -17,9 +17,12 @@ export function QuizEditor() {
   const { open } = useToast();
   const { openModal } = useModal();
 
-  const { mutateAsync: quizAnswerMutation, isSuccess } = useMutation(async () => {
+  const { mutateAsync: quizAnswerMutation } = useMutation(async () => {
     try {
-      await postQuizAnswer({ answer, quizId });
+      const res = await postQuizAnswer({ answer, quizId });
+      if (res) {
+        openModalBox();
+      }
     } catch (err: unknown) {
       if (isToksError(err) && err.message === 'error.already.submitted') {
         await open({
@@ -56,7 +59,6 @@ export function QuizEditor() {
 
   const onClick = () => {
     quizAnswerMutation();
-    isSuccess ? openModalBox() : null;
   };
 
   return (

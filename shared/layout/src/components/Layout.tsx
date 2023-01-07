@@ -1,42 +1,59 @@
-import { logout as requestLogout } from '@depromeet/http';
+import { isToksError, logout as requestLogout } from '@depromeet/http';
 import { PATHS, pushTo } from '@depromeet/path';
-import { SSRSuspense, ToksHeader } from '@depromeet/toks-components';
+import { MAX_WIDTH, SSRSuspense, ToksHeader, useToast } from '@depromeet/toks-components';
+import { useSafelyGetUser } from '@depromeet/utils';
 import styled from '@emotion/styled';
 import { useBooleanState } from '@toss/react';
-import { useSuspendedQuery } from '@toss/react-query';
 import { useOverlay } from '@toss/use-overlay';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, ReactNode } from 'react';
 import { useMutation } from 'react-query';
 
-import { safelyGetUser } from '../remote/user';
 import { UserMenu } from './UserMenu';
 
-function Component({ children }: { children: ReactNode }) {
-  const { data: user, refetch } = useSuspendedQuery(safelyGetUser.queryKey, safelyGetUser, { retry: false });
+function Component({ children, fullWidth = false }: { children: ReactNode; fullWidth?: boolean }) {
+  const { data: user, refetch } = useSafelyGetUser();
   const { toggle, close } = useUserMenuDialog();
+  const { open } = useToast();
 
   const { mutateAsync: logout, isLoading } = useMutation(async () => {
     try {
+      await open({ title: '로그아웃 되었어요', type: 'success', showOnNextPage: true });
       await requestLogout();
       await refetch();
       close();
     } catch (err) {
-      // TODO: alert, confirm 구현하기
-      // TODO: 서버와 싱크 후, message를 에러 객체에 어떻게 담을지 정의하고 util만들기
-      window.alert(err);
+      if (isToksError(err)) {
+        await open({ title: err.message, type: 'danger' });
+      }
     }
   });
 
   const isNonMember = user == null;
 
   return (
-    <StyledLayout>
+    <>
       {isNonMember ? (
         <ToksHeader
           login={false}
-          onClickButton={() => pushTo(PATHS.login.main)}
-          onClickLogo={() => pushTo(PATHS.login.main)}
+          onClickButton={() => {
+            const isLoginPage = window.location.href.includes('/login');
+
+            if (isLoginPage) {
+              return;
+            }
+
+            pushTo(PATHS.login.main);
+          }}
+          onClickLogo={() => {
+            const isLoginPage = window.location.href.includes('/login');
+
+            if (isLoginPage) {
+              return;
+            }
+
+            pushTo(PATHS.login.main);
+          }}
         />
       ) : (
         <ToksHeader
@@ -58,9 +75,8 @@ function Component({ children }: { children: ReactNode }) {
           onClickLogo={() => pushTo(PATHS.home.myStudy)}
         />
       )}
-
-      {children}
-    </StyledLayout>
+      <StyledLayout fullWidth={fullWidth}>{children}</StyledLayout>
+    </>
   );
 }
 
@@ -68,9 +84,10 @@ export function Layout(props: ComponentProps<typeof Component>) {
   return (
     <SSRSuspense
       fallback={
-        <StyledLayout>
+        <>
           <ToksHeader.Skeleton />
-        </StyledLayout>
+          <StyledLayout fullWidth={props.fullWidth ?? false}></StyledLayout>
+        </>
       }
     >
       <Component {...props} />
@@ -78,11 +95,11 @@ export function Layout(props: ComponentProps<typeof Component>) {
   );
 }
 
-const StyledLayout = styled.main`
+const StyledLayout = styled.main<{ fullWidth: boolean }>`
   position: relative;
   width: 100vw;
-  max-width: 1320px;
-  padding: 0 9vw;
+  max-width: ${MAX_WIDTH};
+  padding: 0 ${({ fullWidth }) => (fullWidth ? '96px' : '9vw')};
   overflow: auto;
   margin: 0 auto;
 `;

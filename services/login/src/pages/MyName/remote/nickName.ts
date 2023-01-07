@@ -10,6 +10,8 @@ export async function getUserinfo({ accessToken }: { accessToken: string }) {
   });
 }
 
+getUserinfo.queryKey = (accessToken: string) => ['getUserinfo', accessToken];
+
 export async function patchNickname(nickname: SetNickname): Promise<SetNickname> {
   return await http.patch<SetNickname>('/api/v1/user/nickname', nickname);
 }
