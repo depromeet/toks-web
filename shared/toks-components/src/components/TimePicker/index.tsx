@@ -66,7 +66,7 @@ const useTimePicker = (defaultHour: number, defaultMinute: number, defaultAmpm: 
       setHourError(undefined);
     } else {
       setHour('');
-      setHourError('0-12사이의 숫자를 입력해주세요');
+      setHourError('0-12사이 숫자 입력');
     }
   };
 
@@ -77,7 +77,7 @@ const useTimePicker = (defaultHour: number, defaultMinute: number, defaultAmpm: 
       setMinuteError(undefined);
     } else {
       setMinute('');
-      setMinuteError('0-59사이의 숫자를 입력해주세요');
+      setMinuteError('0-59 사이 숫자 입력');
     }
   };
 
@@ -127,29 +127,33 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
               marginRight: '20px',
             }}
           >
-            <Input
-              label=""
-              name="hour"
-              placeholder={padZero(defaultHour)}
-              autoComplete="off"
-              maxLength={2}
-              onChange={onHourUpdate}
-              value={hourError && ''}
-              errorMessage={hourError}
-            />
+            <div>
+              <Input
+                label=""
+                name="hour"
+                placeholder={padZero(defaultHour)}
+                autoComplete="off"
+                maxLength={2}
+                onChange={onHourUpdate}
+                value={hourError && ''}
+              />
+              {hourError && <Text variant="body03" color="danger" style={{position: 'absolute'}}>{hourError}</Text>}
+            </div>
             <Text variant="body01" style={{ margin: '0 6px' }}>
               :
             </Text>
-            <Input
-              label=""
-              name="minute"
-              placeholder={padZero(defaultMinute)}
-              autoComplete="off"
-              maxLength={2}
-              onChange={onMinuteUpdate}
-              value={minuteError && ''}
-              errorMessage={minuteError}
-            />
+            <div>
+              <Input
+                label=""
+                name="minute"
+                placeholder={padZero(defaultMinute)}
+                autoComplete="off"
+                maxLength={2}
+                onChange={onMinuteUpdate}
+                value={minuteError && ''}
+              />
+              {minuteError && <Text variant="body03" color="danger" style={{position: 'absolute'}}>{minuteError}</Text>}
+            </div>
           </FlexRow>
           <ToggleSwitchButton ampm={ampm} setAmpm={setAmpm} />
         </FlexRow>
