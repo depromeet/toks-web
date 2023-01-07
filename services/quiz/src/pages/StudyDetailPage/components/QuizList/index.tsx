@@ -70,7 +70,7 @@ function QuizList({ studyId }: QuizListProps) {
           />
         ))
       ) : (
-        <TextBallon title="첫 똑스를 추가해 주세요!" />
+        <TextBallon title="첫 똑스를 추가해 주세요!" direction="bottom" width={202} />
       )}
     </List>
   );
