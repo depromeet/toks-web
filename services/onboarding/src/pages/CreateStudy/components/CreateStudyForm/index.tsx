@@ -35,12 +35,12 @@ export const CreateStudyForm = () => {
           errorMessage={errors.name?.message}
         />
         <Input
-          {...register('description', {
-            maxLength: isMaxLength(50),
-          })}
           label="스터디 설명"
           placeholder="스터디 목표나 간단한 소개를 작성해주세요. (50자 이내)"
           errorMessage={errors.description?.message}
+          {...register('description', {
+            maxLength: isMaxLength(50),
+          })}
         />
         <Flex css={gutter('horizontal', 24)}>
           <Calendar
@@ -69,6 +69,9 @@ export const CreateStudyForm = () => {
         <Controller
           name="capacity"
           control={control}
+          rules={{
+            required: isRequiredText('스터디 인원'),
+          }}
           render={({ field }) => <DropDown {...field} options={STUDY_CATEGORY_OPTIONS} label="스터디 인원" required />}
         />
         <Controller
