@@ -63,7 +63,10 @@ function ProfileButton(props: ProfileButtonProps) {
   return (
     <Button onClick={onClickButton}>
       <ClickableImage src={imgUrl} alt="" width={22} height={22} style={{ borderRadius: '50%' }} />
-      <Text variant="subhead" style={{ textOverflow: 'ellipsis' }}>
+      <Text
+        variant="subhead"
+        style={{ display: 'block', textOverflow: 'ellipsis', width: '100%', whiteSpace: 'nowrap', overflow: 'hidden' }}
+      >
         {userName}
       </Text>
     </Button>
@@ -119,7 +122,7 @@ const Button = styled.button`
   display: flex;
   gap: 6px;
   height: 44px;
-  width: 120px;
+  /* width: 140px; */
   align-items: center;
   border-radius: 25px;
   padding: 11px 22px;
