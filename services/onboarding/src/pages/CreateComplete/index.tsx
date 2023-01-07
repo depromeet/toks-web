@@ -1,12 +1,13 @@
-import { FullHeight, flex } from '@toss/emotion-utils';
+import { FULL_HEIGHT } from '@depromeet/toks-components';
+import { Flex } from '@toss/emotion-utils';
 
 import { StudyInfoBox } from './components/StudyInfoBox';
 
 const CreateComplete = () => {
   return (
-    <FullHeight css={flex('center', 'center')}>
+    <Flex.Center css={{ height: FULL_HEIGHT }}>
       <StudyInfoBox />
-    </FullHeight>
+    </Flex.Center>
   );
 };
 

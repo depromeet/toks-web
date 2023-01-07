@@ -1,4 +1,5 @@
-import { Flex, FullHeight } from '@toss/emotion-utils';
+import { FULL_HEIGHT } from '@depromeet/toks-components';
+import { Flex } from '@toss/emotion-utils';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -12,7 +13,7 @@ const QuizCreatePage = () => {
   const { createQuiz } = useQuizCreate();
 
   return (
-    <FullHeight>
+    <Flex.Center css={{ height: FULL_HEIGHT }}>
       <form
         onSubmit={(e: React.FormEvent) => {
           e.preventDefault();
@@ -38,7 +39,7 @@ const QuizCreatePage = () => {
           <QuizCreateInputList register={register} setValue={setValue} control={control} />
         </Flex>
       </form>
-    </FullHeight>
+    </Flex.Center>
   );
 };
 

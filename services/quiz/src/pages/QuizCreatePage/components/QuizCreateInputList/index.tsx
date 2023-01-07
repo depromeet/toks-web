@@ -40,7 +40,7 @@ export const QuizCreateInputList = ({ register, setValue, control }: QuizCreateI
           gap: '24px',
         }}
       >
-        <Button htmlType="button" type="ghost">
+        <Button htmlType="reset" type="ghost">
           다시 만들기
         </Button>
         <Button htmlType="submit">똑스 만들기 완료</Button>

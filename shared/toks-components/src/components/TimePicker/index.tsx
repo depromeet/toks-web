@@ -55,15 +55,20 @@ const convertTimeFormat = (hour: string, minute: string, ampm: AMPM) => {
 const useTimePicker = (defaultHour: number, defaultMinute: number, defaultAmpm: AMPM) => {
   const [hour, setHour] = useState(padZero(defaultHour));
   const [minute, setMinute] = useState(padZero(defaultMinute));
-  const [hourError, setHourError] = useState<string>();
-  const [minuteError, setMinuteError] = useState<string>();
+  const [hourError, setHourError] = useState<string>('');
+  const [minuteError, setMinuteError] = useState<string>('');
   const [ampm, setAmpm] = useState(defaultAmpm);
 
   const onHourUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: newHour } = e.target;
+
+    if (minuteError) {
+      setMinuteError('');
+    }
+
     if (Number(newHour) <= 12) {
       setHour(newHour);
-      setHourError(undefined);
+      setHourError('');
     } else {
       setHour('');
       setHourError('0-12사이의 숫자를 입력해주세요');
@@ -72,9 +77,14 @@ const useTimePicker = (defaultHour: number, defaultMinute: number, defaultAmpm: 
 
   const onMinuteUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: newMinute } = e.target;
+
+    if (hourError) {
+      setHourError('');
+    }
+
     if (Number(newMinute) < 60) {
       setMinute(newMinute);
-      setMinuteError(undefined);
+      setMinuteError('');
     } else {
       setMinute('');
       setMinuteError('0-59사이의 숫자를 입력해주세요');

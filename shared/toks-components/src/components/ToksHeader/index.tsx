@@ -49,7 +49,7 @@ export function ToksHeader({ onClickLogo, ...rest }: HeaderProps) {
 function ProfileButton(props: ProfileButtonProps) {
   if (!isMember(props)) {
     return (
-      <Button onClick={props.onClickButton} style={{ gap: 0, padding: '0 12px' }}>
+      <Button onClick={props.onClickButton} style={{ gap: 0, padding: '0 22px 0 12px' }}>
         <ClickableImage src={emoji.studying} alt="" width={40} height={40} style={{ borderRadius: '50%' }} />
         <Text variant="subhead" style={{ textOverflow: 'ellipsis', transform: 'translate(0px, 0.6px)' }}>
           로그인
@@ -101,7 +101,7 @@ const Header = styled.header`
   left: 0;
   top: 0;
   display: flex;
-  max-width: ${MAX_WIDTH};
+
   min-width: ${MIN_WIDTH};
   width: 100vw;
   height: ${TOKS_HEADER_HEIGHT};
@@ -111,6 +111,10 @@ const Header = styled.header`
   z-index: 1;
   justify-content: space-between;
   background-color: ${theme.colors.gray120};
+
+  @media (min-width: ${MAX_WIDTH}) {
+    padding: 0 calc(96px + (100vw - ${MAX_WIDTH}) / 2);
+  }
 
   @media (max-width: ${BP.mobile}) {
     padding: 0 16px;
@@ -122,7 +126,7 @@ const Button = styled.button`
   display: flex;
   gap: 6px;
   height: 44px;
-  /* width: 140px; */
+  max-width: 254px;
   align-items: center;
   border-radius: 25px;
   padding: 11px 22px;
