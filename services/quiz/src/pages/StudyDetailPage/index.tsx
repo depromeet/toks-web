@@ -3,7 +3,7 @@ import { Text } from '@depromeet/toks-components';
 import { assert } from '@toss/assert';
 import { useRouter } from 'next/router';
 import { ReactElement } from 'react';
-import { assert } from '@toss/assert';
+
 import QuizList from './components/QuizList';
 import RankingList from './components/RankingList';
 import StudyInfo from './components/StudyInfo';
