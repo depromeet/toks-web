@@ -1,19 +1,18 @@
 import { isToksError, logout as requestLogout } from '@depromeet/http';
 import { PATHS, pushTo } from '@depromeet/path';
 import { MAX_WIDTH, SSRSuspense, ToksHeader, useToast } from '@depromeet/toks-components';
+import { useSafelyGetUser } from '@depromeet/utils';
 import styled from '@emotion/styled';
 import { useBooleanState } from '@toss/react';
-import { useSuspendedQuery } from '@toss/react-query';
 import { useOverlay } from '@toss/use-overlay';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ComponentProps, ReactNode } from 'react';
 import { useMutation } from 'react-query';
 
-import { safelyGetUser } from '../remote/user';
 import { UserMenu } from './UserMenu';
 
 function Component({ children, fullWidth = false }: { children: ReactNode; fullWidth?: boolean }) {
-  const { data: user, refetch } = useSuspendedQuery(safelyGetUser.queryKey, safelyGetUser, { retry: false });
+  const { data: user, refetch } = useSafelyGetUser();
   const { toggle, close } = useUserMenuDialog();
   const { open } = useToast();
 
@@ -37,8 +36,24 @@ function Component({ children, fullWidth = false }: { children: ReactNode; fullW
       {isNonMember ? (
         <ToksHeader
           login={false}
-          onClickButton={() => pushTo(PATHS.login.main)}
-          onClickLogo={() => pushTo(PATHS.login.main)}
+          onClickButton={() => {
+            const isLoginPage = window.location.href.includes('/login');
+
+            if (isLoginPage) {
+              return;
+            }
+
+            pushTo(PATHS.login.main);
+          }}
+          onClickLogo={() => {
+            const isLoginPage = window.location.href.includes('/login');
+
+            if (isLoginPage) {
+              return;
+            }
+
+            pushTo(PATHS.login.main);
+          }}
         />
       ) : (
         <ToksHeader
@@ -84,7 +99,7 @@ const StyledLayout = styled.main<{ fullWidth: boolean }>`
   position: relative;
   width: 100vw;
   max-width: ${MAX_WIDTH};
-  padding: 0 ${({ fullWidth }) => (fullWidth ? '0' : '9vw')};
+  padding: 0 ${({ fullWidth }) => (fullWidth ? '96px' : '9vw')};
   overflow: auto;
   margin: 0 auto;
 `;

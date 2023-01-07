@@ -1,14 +1,18 @@
 import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, isAxiosError } from 'axios';
 
+type ToksRequestConfig = AxiosRequestConfig & {
+  public?: boolean;
+};
+
 export interface ToksHttpClient extends AxiosInstance {
-  request<T = any>(config: AxiosRequestConfig): Promise<T>;
-  get<T = any>(url: string, config?: AxiosRequestConfig): Promise<T>;
-  delete<T = any>(url: string, config?: AxiosRequestConfig): Promise<T>;
-  head<T = any>(url: string, config?: AxiosRequestConfig): Promise<T>;
-  options<T = any>(url: string, config?: AxiosRequestConfig): Promise<T>;
-  post<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
-  put<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
-  patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
+  request<T = any>(config: ToksRequestConfig): Promise<T>;
+  get<T = any>(url: string, config?: ToksRequestConfig): Promise<T>;
+  delete<T = any>(url: string, config?: ToksRequestConfig): Promise<T>;
+  head<T = any>(url: string, config?: ToksRequestConfig): Promise<T>;
+  options<T = any>(url: string, config?: ToksRequestConfig): Promise<T>;
+  post<T = any>(url: string, data?: any, config?: ToksRequestConfig): Promise<T>;
+  put<T = any>(url: string, data?: any, config?: ToksRequestConfig): Promise<T>;
+  patch<T = any>(url: string, data?: any, config?: ToksRequestConfig): Promise<T>;
 }
 
 export interface ToksErrorResponse {
@@ -101,19 +105,30 @@ const instance: ToksHttpClient = axios.create({
   timeout: 5000,
 });
 
+const publicAPIStore = new Set();
+
 //1. 요청 인터셉터
 instance.interceptors.request.use(
-  function (config) {
+  function (config: ToksRequestConfig) {
     if (config?.headers == null) {
       throw new Error(`config.header is undefined`);
     }
 
-    if (instance.defaults.headers.common['Authorization'] == null || config.headers['Authorization'] == null) {
-      authToken.refetch();
+    // 비회원 접근시 Login Page로 Redirect되는 로직을 막아줍니다.
+    if (config.public) {
+      publicAPIStore.add(config.url);
     }
 
-    config.headers['Authorization'] = authToken.access;
-    instance.defaults.headers.common['Authorization'] = authToken.access;
+    if (config.headers['Authorization'] == null) {
+      authToken.refetch();
+      config.headers['Authorization'] = authToken.access;
+    }
+
+    if (instance.defaults.headers.common['Authorization'] == null) {
+      authToken.refetch();
+      instance.defaults.headers.common['Authorization'] = authToken.access;
+    }
+
     return config;
   },
   function (error) {
@@ -130,7 +145,12 @@ instance.interceptors.response.use(
 //2. 응답 인터셉터
 instance.interceptors.response.use(
   response => response.data,
-  async function (error) {
+  async function (error: ToksError) {
+    if (publicAPIStore.has(error.response.config.url)) {
+      publicAPIStore.delete(error.response.config.url);
+      return null;
+    }
+
     if (isToksError(error) && error.status === 401) {
       //refresh 토큰 처리 로직 추가
       redirectToLoginPage();
