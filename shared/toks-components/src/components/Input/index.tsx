@@ -29,6 +29,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
         </label>
         <StyledInput width={width} height={height} isFocus={isFocus} isError={Boolean(errorMessage)} {...props}>
           <InitialInput
+            autoComplete="off"
             ref={ref}
             id={name}
             name={name}
