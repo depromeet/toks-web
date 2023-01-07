@@ -1,12 +1,13 @@
-import { FullHeight, flex } from '@toss/emotion-utils';
+import { FULL_HEIGHT } from '@depromeet/toks-components';
+import { Flex } from '@toss/emotion-utils';
 
 import { CreateStudyForm } from './components/CreateStudyForm';
 
 const CreateStudy = () => {
   return (
-    <FullHeight css={flex('center', 'center')}>
+    <Flex.Center css={{ height: FULL_HEIGHT }}>
       <CreateStudyForm />
-    </FullHeight>
+    </Flex.Center>
   );
 };
 

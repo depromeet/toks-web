@@ -1,4 +1,6 @@
+import { PATHS, pushTo } from '@depromeet/path';
 import { Button, Icon, Image, Tag, Text, getStudy, useClipboard } from '@depromeet/toks-components';
+import { assert } from '@toss/assert';
 import { kstFormat } from '@toss/date';
 import { Flex, Spacing, gutter } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
@@ -14,6 +16,8 @@ export const StudyInfoBox = () => {
   const {
     query: { studyId },
   } = useRouter();
+
+  assert(typeof studyId === 'string', '잘못된 형식의 스터디입니다.');
 
   const { copyToClipboard } = useClipboard();
   const { data: studyInfo, isError } = useQuery(['studyInfo', studyId], () => getStudy(Number(studyId)), {
@@ -100,7 +104,14 @@ export const StudyInfoBox = () => {
         />
       </Flex>
       <Flex css={gutter('horizontal', 24)}>
-        <Button type="general">완료</Button>
+        <Button
+          type="general"
+          onClick={() => {
+            pushTo(PATHS.quiz.studyDetail({ studyId }));
+          }}
+        >
+          완료
+        </Button>
         <Button
           css={{
             gap: '8px',

@@ -50,7 +50,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
           )}
         </StyledInput>
         {errorMessage && (
-          <Text variant="body02" color="danger">
+          <Text variant="body02" color="danger" style={{ position: 'absolute', bottom: '-20px', whiteSpace: 'pre' }}>
             {errorMessage}
           </Text>
         )}
@@ -80,6 +80,7 @@ export const InitialInputHoverStyle = css`
 
 const Wrapper = styled.div`
   display: flex;
+  position: relative;
   width: 100%;
   flex-direction: column;
   gap: 6px;

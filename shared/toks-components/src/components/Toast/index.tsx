@@ -119,5 +119,7 @@ const StyledToast = styled.div<{ direction: Props['direction'] }>`
   border: 1px solid ${theme.colors.gray020};
   background-color: ${theme.colors.gray010};
 
+  z-index: 999;
+
   ${theme.shadows.book01}
 `;

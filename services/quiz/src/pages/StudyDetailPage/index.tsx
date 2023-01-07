@@ -1,5 +1,6 @@
 import { Layout } from '@depromeet/layout';
 import { Text } from '@depromeet/toks-components';
+import { assert } from '@toss/assert';
 import { useRouter } from 'next/router';
 import { ReactElement } from 'react';
 
@@ -12,6 +13,8 @@ export default function StudyDetailPage() {
   const {
     query: { studyId },
   } = useRouter();
+
+  assert(typeof studyId === 'string', '유효하지 않은 스터디입니다.');
 
   return (
     <Page>

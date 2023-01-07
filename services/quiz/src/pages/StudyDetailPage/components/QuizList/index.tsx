@@ -1,3 +1,4 @@
+import { PATHS } from '@depromeet/path';
 import { theme } from '@depromeet/theme';
 import { Icon, QuizStatus, SSRSuspense, Text, TextBallon } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
@@ -11,7 +12,7 @@ import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
 
 interface QuizListProps {
-  studyId: string | string[] | undefined;
+  studyId: string;
 }
 
 const AddButton = styled.button`
@@ -59,7 +60,7 @@ function QuizList({ studyId }: QuizListProps) {
   // TODO : router 리터럴로 되어있는거 변경해야 함.
   return (
     <List css={{ position: 'relative' }}>
-      <li>{isAddableQuiz && <QuizAddButton onClick={() => router.push('/create')} />}</li>
+      <li>{isAddableQuiz && <QuizAddButton onClick={() => router.push(PATHS.quiz.create({ studyId }))} />}</li>
       {isNotQuizEmpty ? (
         quizList.map(quizItem => (
           <QuizItem
