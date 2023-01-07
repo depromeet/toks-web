@@ -1,1 +1,1 @@
-export {default} from 'pages/StudyDetailPage';
+export { default } from 'pages/StudyDetailPage';
