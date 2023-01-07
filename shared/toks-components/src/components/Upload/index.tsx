@@ -99,7 +99,7 @@ export const Upload = ({
           ...labelStyle,
         }}
       >
-        <input type="file" name="upload" className="blind" ref={inputRef} accept={accepts.join(',')} {...rest} />
+        <input type="file" name="upload" className="blind" ref={inputRef} {...rest} />
         {renderFileList()}
       </StyledUpload>
     </div>
