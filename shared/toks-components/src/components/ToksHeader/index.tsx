@@ -106,7 +106,7 @@ const Header = styled.header`
   width: 100vw;
   height: ${TOKS_HEADER_HEIGHT};
   margin: 0 auto;
-  padding: 0 9vw;
+  padding: 0 96px;
   align-items: center;
   z-index: 1;
   justify-content: space-between;
