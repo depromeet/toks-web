@@ -10,21 +10,36 @@ interface Props extends DropdownProps {
   width?: number;
   height?: number;
   label?: string;
+  errorMessage?: string;
 }
 
-export const DropDown = forwardRef<Dropdown, Props>(({ label, width, height, required, ...props }: Props, ref) => {
-  return (
-    <DropDownWrapper>
-      {label && (
-        <Text variant="headline" className="label">
-          {label}
-          {required && '*'}
-        </Text>
-      )}
-      <StyledDropdown ref={ref} width={width} height={height} required={required} {...props} />
-    </DropDownWrapper>
-  );
-});
+export const DropDown = forwardRef<Dropdown, Props>(
+  ({ label, width, height, required, errorMessage, ...props }: Props, ref) => {
+    return (
+      <DropDownWrapper>
+        {label && (
+          <Text variant="headline" className="label">
+            {label}
+            {required && '*'}
+          </Text>
+        )}
+        <StyledDropdown
+          ref={ref}
+          width={width}
+          height={height}
+          required={required}
+          isError={Boolean(errorMessage)}
+          {...props}
+        />
+        {errorMessage && (
+          <Text variant="body02" color="danger">
+            {errorMessage}
+          </Text>
+        )}
+      </DropDownWrapper>
+    );
+  }
+);
 
 const DropDownWrapper = styled.div`
   display: flex;
@@ -32,19 +47,19 @@ const DropDownWrapper = styled.div`
   gap: 8px;
 `;
 
-const StyledDropdown = styled(Dropdown)`
+const StyledDropdown = styled(Dropdown)<{ isError?: boolean }>`
   border-radius: 8px !important;
   padding: 14px 16px;
   background: ${theme.colors.gray100} !important;
   outline: none !important;
-  border: none !important;
   list-style: none !important;
   box-shadow: none !important;
 
   ${props => {
-    const { width, height } = props;
+    const { width, height, isError } = props;
 
     return css`
+      border: ${isError ? `1px solid ${theme.colors.danger} !important` : 'none !important'};
       width: ${width ? `${width}px` : '100%'};
       height: ${height ? `${height}px` : '48px'};
     `;

@@ -32,8 +32,7 @@ export default function Editor({ onChange, label, required, ...rest }: EditorPro
       </Text>
       <TuiEditor
         ref={editorRef}
-        initialEditType="wysiwyg"
-        viewer={false}
+        initialEditType="markdown"
         height="100%"
         toolbarItems={[['bold', 'italic', 'quote', 'code', 'codeblock']]}
         placeholder="내용을 입력하세요."
@@ -54,6 +53,31 @@ const EditorWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  .toastui-editor-defaultUI .toastui-editor-md-tab-container {
+    background-color: ${theme.colors.gray100} !important;
+  }
+
+  .toastui-editor-md-tab-container .toastui-editor-tabs {
+    height: 44px !important;
+    display: inline-block;
+  }
+  .toastui-editor-md-tab-container .tab-item {
+    background-color: transparent !important;
+    height: 44px !important;
+    line-height: 44px !important;
+    margin-top: 0;
+    border: none;
+
+    &.active {
+      color: ${theme.colors.white} !important;
+    }
+  }
+
+  .toastui-editor-dropdown-toolbar {
+    background-color: ${theme.colors.gray100};
+  }
+
   .toastui-editor-defaultUI {
     height: 100%;
     border-radius: 8px;
@@ -79,7 +103,6 @@ const EditorWrapper = styled.div`
   }
 
   .toastui-editor-defaultUI-toolbar {
-    border-radius: 8px 8px 0 0 !important;
     background-color: ${theme.colors.gray100};
     border: none;
   }
@@ -88,6 +111,14 @@ const EditorWrapper = styled.div`
     background-color: ${theme.colors.gray100};
   }
 
+  .toastui-editor-defaultUI .ProseMirror,
+  .toastui-editor-defaultUI {
+    color: ${theme.colors.white} !important;
+  }
+
+  .toastui-editor-md-code-block-line-background {
+    background-color: ${theme.colors.gray090};
+  }
   .toastui-editor-defaultUI-toolbar button {
     border: none;
   }
