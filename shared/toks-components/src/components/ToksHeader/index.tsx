@@ -103,10 +103,11 @@ const Header = styled.header`
   width: 100vw;
   height: ${TOKS_HEADER_HEIGHT};
   margin: 0 auto;
-  padding: 0 96px;
+  padding: 0 9vw;
   align-items: center;
   z-index: 1;
   justify-content: space-between;
+  background-color: ${theme.colors.gray120};
 
   @media (max-width: ${BP.mobile}) {
     padding: 0 16px;
