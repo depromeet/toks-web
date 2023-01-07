@@ -1,5 +1,7 @@
 import { Text } from '@depromeet/toks-components';
+import { Layout } from '@depromeet/layout';
 import { useRouter } from 'next/router';
+import { ReactElement } from 'react';
 
 import QuizList from './components/QuizList';
 import RankingList from './components/RankingList';
@@ -32,4 +34,8 @@ export default function StudyDetailPage() {
       </Section>
     </Page>
   );
+}
+
+StudyDetailPage.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
 }
