@@ -10,6 +10,7 @@ import { useGetQuizList, useSetClientQuizList } from 'pages/StudyDetailPage/hook
 
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
+import { PATHS } from '@depromeet/path';
 
 interface QuizListProps {
   studyId: string;

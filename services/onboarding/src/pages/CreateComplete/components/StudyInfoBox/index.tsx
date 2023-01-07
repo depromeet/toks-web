@@ -5,12 +5,13 @@ import { kstFormat } from '@toss/date';
 import { Flex, Spacing, gutter } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
-
+import { assert } from '@toss/assert';
 import { STUDY_CATEGORY_OPTIONS } from 'pages/CreateStudy/constants';
 
 import { StudyInfo } from '../StudyInfo';
 import { StudyTitle } from '../StudyTitle';
 import { Wrapper } from './style';
+import { pushTo, PATHS } from '@depromeet/path';
 
 export const StudyInfoBox = () => {
   const {
