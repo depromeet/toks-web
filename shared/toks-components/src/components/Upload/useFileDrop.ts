@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { formatAccepts } from './utils';
 
 interface OptionProps {
   accepts: string[];
@@ -98,7 +99,7 @@ function useFileDrop({ accepts, multiple, onDropFiles }: OptionProps) {
     const input = inputRef.current;
 
     if (accepts) {
-      input.setAttribute('accept', accepts.join(', '));
+      input.setAttribute('accept', formatAccepts(accepts));
     }
 
     if (multiple) {
