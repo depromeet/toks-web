@@ -1,3 +1,4 @@
+import { PATHS } from '@depromeet/path';
 import { theme } from '@depromeet/theme';
 import { Icon, QuizStatus, SSRSuspense, Text, TextBallon } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
@@ -9,7 +10,6 @@ import { useGetQuizList, useSetClientQuizList } from 'pages/StudyDetailPage/hook
 
 import { QuizItem } from '../../components/QuizItem';
 import { List } from './style';
-import { PATHS } from '@depromeet/path';
 
 interface QuizListProps {
   studyId: string;
