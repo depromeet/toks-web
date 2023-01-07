@@ -16,7 +16,7 @@ export const useCreateStudyForm = () => {
     getValues,
     handleSubmit,
     setValue,
-    formState: { isDirty, isValid, errors },
+    formState: { isValid, errors },
   } = useForm<CreateStudyFormValues>({ mode: 'onChange' });
 
   const router = useRouter();
@@ -47,7 +47,7 @@ export const useCreateStudyForm = () => {
     }
   });
 
-  const isDisabled = !isDirty || !isValid;
+  const isDisabled = !isValid;
 
   const isMaxLength = useCallback((maxLength: number) => {
     return {
