@@ -38,6 +38,7 @@ export function QuizEditor() {
   const [answer, setAnswer] = useState('');
 
   const quizIdParams = usePathParam('quizIdParams', { suspense: true });
+
   const quizId = Number(quizIdParams);
 
   //button disable 제어

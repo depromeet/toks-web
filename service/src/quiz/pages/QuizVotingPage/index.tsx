@@ -1,3 +1,4 @@
+import { useQueryParam } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 
 import { QuizNav } from 'quiz/common/components/QuizNav';
@@ -6,8 +7,19 @@ import { QuizQuestion } from 'quiz/common/components/QuizQuestion';
 import { MyAnswerViewer } from './components/MyAnswerViewer';
 import { PeerAnswerList } from './components/PeerAnswerList';
 import { VoteSubmitButton } from './components/VoteSubmitButton';
+import { useQuery } from 'react-query';
+import { QUERY_KEYS } from 'quiz/constants/queryKeys';
+import { getQuizById } from 'quiz/common/components/QuizQuestion/remotes/quiz';
 
 export default function QuizVotingPage() {
+  const quizIdParams = useQueryParam('quizIdParams', { suspense: true });
+
+  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizIdParams), {
+    enabled: Boolean(quizIdParams),
+  });
+  if (!quiz) {
+    return null;
+  }
   return (
     <>
       <QuizNav mainTitle="똑표 하기" studyId={1} />
