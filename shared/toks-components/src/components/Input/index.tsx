@@ -52,7 +52,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
           )}
         </StyledInput>
         {errorMessage && (
-          <Text variant="body02" color="danger" style={{ position: 'absolute', bottom: '-20px', whiteSpace: 'pre' }}>
+          <Text variant={errorMessageVariant}  color="danger" style={{ position: 'absolute', bottom: '-20px', whiteSpace: 'pre' }}>
             {errorMessage}
           </Text>
         )}
