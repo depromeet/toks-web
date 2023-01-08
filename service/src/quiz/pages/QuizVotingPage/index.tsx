@@ -1,15 +1,15 @@
 import { useQueryParam } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
+import { useQuery } from 'react-query';
 
 import { QuizNav } from 'quiz/common/components/QuizNav';
 import { QuizQuestion } from 'quiz/common/components/QuizQuestion';
+import { getQuizById } from 'quiz/common/components/QuizQuestion/remotes/quiz';
+import { QUERY_KEYS } from 'quiz/constants/queryKeys';
 
 import { MyAnswerViewer } from './components/MyAnswerViewer';
 import { PeerAnswerList } from './components/PeerAnswerList';
 import { VoteSubmitButton } from './components/VoteSubmitButton';
-import { useQuery } from 'react-query';
-import { QUERY_KEYS } from 'quiz/constants/queryKeys';
-import { getQuizById } from 'quiz/common/components/QuizQuestion/remotes/quiz';
 
 export default function QuizVotingPage() {
   const quizIdParams = useQueryParam('quizIdParams', { suspense: true });

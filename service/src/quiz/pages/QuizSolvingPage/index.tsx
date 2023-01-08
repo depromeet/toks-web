@@ -1,14 +1,14 @@
+import { useQueryParam } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
+import { useQuery } from 'react-query';
 
 import { QuizNav } from 'quiz/common/components/QuizNav';
 import { QuizQuestion } from 'quiz/common/components/QuizQuestion';
+import { getQuizById } from 'quiz/common/components/QuizQuestion/remotes/quiz';
+import { QUERY_KEYS } from 'quiz/constants/queryKeys';
 
 import { QuizEditor } from './components/QuizEditor';
 import { StudyPeerAnswer } from './components/StudyPeerAnswer';
-import { useQuery } from 'react-query';
-import { QUERY_KEYS } from 'quiz/constants/queryKeys';
-import { useQueryParam } from '@depromeet/utils';
-import { getQuizById } from 'quiz/common/components/QuizQuestion/remotes/quiz';
 
 export default function QuizSolvingPage() {
   const quizIdParams = useQueryParam('quizIdParams', { suspense: true });
