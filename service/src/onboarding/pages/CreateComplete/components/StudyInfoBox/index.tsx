@@ -1,6 +1,6 @@
 import { PATHS } from '@depromeet/path';
 import { Button, Icon, Image, Tag, Text, getStudy, useClipboard } from '@depromeet/toks-components';
-import { assert } from '@toss/assert';
+import { usePathParam } from '@depromeet/utils';
 import { kstFormat } from '@toss/date';
 import { Flex, Spacing, gutter } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
@@ -13,12 +13,8 @@ import { StudyTitle } from '../StudyTitle';
 import { Wrapper } from './style';
 
 export const StudyInfoBox = () => {
-  const {
-    query: { studyId },
-  } = useRouter();
+  const studyId = usePathParam('studyId', { suspense: true });
   const router = useRouter();
-
-  assert(typeof studyId === 'string', '잘못된 형식의 스터디입니다.');
 
   const { copyToClipboard } = useClipboard();
   const { data: studyInfo, isError } = useQuery(['studyInfo', studyId], () => getStudy(Number(studyId)), {

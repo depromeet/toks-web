@@ -4,18 +4,14 @@ import { ErrorBoundary } from '@toss/error-boundary';
 import { useGetStudyInfo } from 'quiz/pages/StudyDetailPage/hooks/queries/studyInfo';
 
 import { StudyProgress } from '../StudyProgress';
-import { Body, FlexRow, Footer, Header, Info, StudyTags } from './style';
+import { Body, FlexRow, Footer, Header, Info, Skeleton, StudyTags } from './style';
 
 interface StudyInfoProps {
-  studyId: string | string[] | undefined;
+  studyId: string;
 }
 
 function StudyInfo({ studyId }: StudyInfoProps) {
-  const { data: studyInfo, isError } = useGetStudyInfo(studyId);
-
-  if (isError || studyInfo == null) {
-    return null;
-  }
+  const { data: studyInfo } = useGetStudyInfo(studyId);
 
   const { name: title, description, tags: studyTags, users: members, startedAt, endedAt, progress } = studyInfo;
 
@@ -71,7 +67,7 @@ function StudyInfo({ studyId }: StudyInfoProps) {
 
 export default ({ studyId }: StudyInfoProps) => (
   <ErrorBoundary renderFallback={() => null}>
-    <SSRSuspense fallback={null}>
+    <SSRSuspense fallback={<Skeleton />}>
       <StudyInfo studyId={studyId} />
     </SSRSuspense>
   </ErrorBoundary>

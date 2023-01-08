@@ -1,8 +1,8 @@
 import { isToksError } from '@depromeet/http';
 import { Button, useModal, useToast } from '@depromeet/toks-components';
 import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
+import { usePathParam } from '@depromeet/utils';
 import { Flex } from '@toss/emotion-utils';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 
@@ -49,11 +49,9 @@ export function VoteSubmitButton() {
     }
   });
 
-  const {
-    query: { quizIdParams },
-  } = useRouter();
+  const quizIdParams = usePathParam('quizIdParams', { suspense: true });
 
-  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizIdParams), {
+  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID(quizIdParams), () => getQuizById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
 

@@ -1,7 +1,7 @@
 import { Text } from '@depromeet/toks-components';
+import { usePathParam } from '@depromeet/utils';
 import { Spacing } from '@toss/emotion-utils';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
 import { getQuizReplyById } from 'quiz/common/remotes/quizReply';
@@ -15,13 +15,15 @@ const ToastViewer = dynamic(() => import('@depromeet/toks-components/src/compone
 });
 
 export function MyAnswerViewer() {
-  const {
-    query: { quizIdParams },
-  } = useRouter();
+  const quizIdParams = usePathParam('quizIdParams', { suspense: true });
 
-  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZREPLIES_BY_ID, () => getQuizReplyById(quizIdParams), {
-    enabled: Boolean(quizIdParams),
-  });
+  const { data: quizzes } = useQuery(
+    QUERY_KEYS.GET_QUIZREPLIES_BY_ID(quizIdParams),
+    () => getQuizReplyById(quizIdParams),
+    {
+      enabled: Boolean(quizIdParams),
+    }
+  );
 
   const { data: user } = useQuery(QUERY_KEYS.GET_USER_INFO, getUser);
 

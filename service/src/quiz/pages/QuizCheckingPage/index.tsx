@@ -1,6 +1,6 @@
 import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
+import { usePathParam } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
-import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
 import { QuizNav } from 'quiz/common/components/QuizNav';
@@ -13,14 +13,16 @@ import { QUERY_KEYS } from 'quiz/constants/queryKeys';
 import { AnswerCheckList } from './components/AnswerCheckList';
 
 export default function QuizCheckingPage() {
-  const {
-    query: { quizIdParams },
-  } = useRouter();
+  const quizIdParams = usePathParam('quizIdParams', { suspense: true });
 
-  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZREPLIES_BY_ID, () => getQuizReplyById(quizIdParams), {
-    enabled: Boolean(quizIdParams),
-  });
-  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizIdParams), {
+  const { data: quizzes } = useQuery(
+    QUERY_KEYS.GET_QUIZREPLIES_BY_ID(quizIdParams),
+    () => getQuizReplyById(quizIdParams),
+    {
+      enabled: Boolean(quizIdParams),
+    }
+  );
+  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID(quizIdParams), () => getQuizById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
   const { data: user } = useQuery(QUERY_KEYS.GET_USER_INFO, getUser);

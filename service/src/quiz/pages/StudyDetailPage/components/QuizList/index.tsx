@@ -39,7 +39,7 @@ const QuizAddButton = ({ ...props }: HTMLAttributes<HTMLButtonElement>) => (
 
 function QuizList({ studyId }: QuizListProps) {
   const { data, isError } = useGetQuizList(studyId);
-  const setQuizList = useSetClientQuizList();
+  const setQuizList = useSetClientQuizList(studyId);
   const router = useRouter();
 
   if (isError || data == null) {

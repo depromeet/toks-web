@@ -1,6 +1,7 @@
 import { isToksError } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { getStudyDetail, useToast } from '@depromeet/toks-components';
+import { usePathParam } from '@depromeet/utils';
 import { useSuspendedQuery } from '@toss/react-query';
 import { add, formatISO } from 'date-fns';
 import { useRouter } from 'next/router';
@@ -10,9 +11,7 @@ import { postQuizCreate } from '../remotes/postQuizCreate';
 import { QuizCreateForm } from '../types';
 
 export const useQuizCreate = () => {
-  const {
-    query: { studyId },
-  } = useRouter();
+  const studyId = usePathParam('studyId', { suspense: true });
   const { data: study } = useSuspendedQuery(['study', studyId], () => getStudyDetail(Number(studyId)), {
     enabled: Boolean(studyId),
   });
