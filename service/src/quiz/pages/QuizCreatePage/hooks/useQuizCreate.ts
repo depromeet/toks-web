@@ -1,12 +1,12 @@
-import { http, isToksError } from '@depromeet/http';
+import { isToksError } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { getStudyDetail, useToast } from '@depromeet/toks-components';
 import { useSuspendedQuery } from '@toss/react-query';
 import { add, formatISO } from 'date-fns';
 import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
-import { postImageUpload } from '../remotes/postImageUpload';
 
+import { postImageUpload } from '../remotes/postImageUpload';
 import { postQuizCreate } from '../remotes/postQuizCreate';
 import { QuizCreateForm } from '../types';
 

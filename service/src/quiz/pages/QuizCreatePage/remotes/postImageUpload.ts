@@ -1,4 +1,5 @@
 import { http } from '@depromeet/http';
+
 import { PostImageUploadResponse } from '../types';
 
 export const postImageUpload = async (params: File[]) => {
