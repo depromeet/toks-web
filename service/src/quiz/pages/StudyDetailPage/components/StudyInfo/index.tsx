@@ -42,8 +42,8 @@ function StudyInfo({ studyId }: StudyInfoProps) {
             {description}
           </Text>
           <Tag.Row style={{ marginTop: '20px', padding: 0 }}>
-              {studyTags && studyTags.map(({ id, name }) => <Tag key={id} value={name} />)}
-            </Tag.Row>
+            {studyTags && studyTags.map(({ id, name }) => <Tag key={id} value={name} />)}
+          </Tag.Row>
         </Body>
         <Footer>
           {/* UserAvatar Group id가 여기서는 스터디 id가 되고 각 퀴즈에서는 퀴즈의 id가 됨 */}
@@ -62,7 +62,7 @@ function StudyInfo({ studyId }: StudyInfoProps) {
           </UserAvatar.Group>
         </Footer>
       </Info>
-      <Space css={{flex:1}}/>
+      <Space css={{ flex: 1 }} />
       <StudyProgress progress={progress} startedAt={startedAt} endedAt={endedAt} />
     </FlexRow>
   );
