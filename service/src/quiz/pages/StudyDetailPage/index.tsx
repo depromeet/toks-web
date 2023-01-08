@@ -1,6 +1,7 @@
 import { Layout } from '@depromeet/layout';
 import { Text } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
+import { Spacing } from '@toss/emotion-utils';
 import { ReactElement } from 'react';
 
 import QuizList from './components/QuizList';
@@ -30,6 +31,7 @@ export default function StudyDetailPage() {
           </RankingListWrapper>
         </FlexRow>
       </Section>
+      <Spacing size={120} />
     </Page>
   );
 }

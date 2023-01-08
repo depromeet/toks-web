@@ -1,5 +1,6 @@
 import { theme } from '@depromeet/theme';
-import { Icon, Input, Text } from '@depromeet/toks-components';
+import { Icon, Input, SSRSuspense, Text } from '@depromeet/toks-components';
+import styled from '@emotion/styled';
 import { Flex } from '@toss/emotion-utils';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
@@ -73,14 +74,26 @@ export const QuizCreateEditor = ({ register, setValue }: QuizCreateEditorProps) 
         )}
       </Flex>
       <div css={{ height: '100%' }}>
-        <DynamicEditor
-          label="답안"
-          onChange={data => {
-            setValue('answer', data);
-          }}
-          required
-        />
+        <SSRSuspense fallback={<Skeleton />}>
+          <DynamicEditor
+            label="답안"
+            onChange={data => {
+              setValue('answer', data);
+            }}
+            required
+          />
+        </SSRSuspense>
       </div>
     </Flex>
   );
 };
+
+const Skeleton = styled.div`
+  width: 416px;
+  height: 330px;
+
+  &:after {
+    content: '.';
+    visibility: hidden;
+  }
+`;
