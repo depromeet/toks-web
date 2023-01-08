@@ -4,7 +4,11 @@ export const Container = styled.div`
   border-radius: 12px;
 `;
 
-export const Details = styled.div``;
+export const Details = styled.div`
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 export const Summary = styled.div`
   display: flex;

@@ -7,7 +7,6 @@ export default function () {
   const router = useRouter();
 
   useLayoutEffect(() => {
-    console.log(router);
     safelyGetUser()
       .then(user => {
         if (user == null) {

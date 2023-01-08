@@ -20,11 +20,11 @@ function Component({ children, fullWidth = false }: { children: ReactNode; fullW
 
   const { mutateAsync: logout, isLoading } = useMutation(async () => {
     try {
-      await open({ title: '로그아웃 되었어요', type: 'success', showOnNextPage: true });
       await requestLogout();
-      await router.push(PATHS.login.main);
       await refetch();
+      await router.push(PATHS.login.main);
       close();
+      await open({ title: '로그아웃 되었어요', type: 'success' });
     } catch (err) {
       if (isToksError(err)) {
         await open({ title: err.message, type: 'danger' });
