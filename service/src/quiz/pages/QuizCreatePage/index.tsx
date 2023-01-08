@@ -1,18 +1,17 @@
-import { FULL_HEIGHT } from '@depromeet/toks-components';
+import { FULL_HEIGHT, getStudyDetail } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
 import { Flex } from '@toss/emotion-utils';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
 
 import { QuizNav } from 'quiz/common/components/QuizNav';
+import { QUERY_KEYS } from 'quiz/constants/queryKeys';
 
 import { QuizCreateEditor } from './components/QuizCreateEditor';
 import { QuizCreateInputList } from './components/QuizCreateInputList';
 import { useQuizCreate } from './hooks/useQuizCreate';
 import { QuizCreateForm } from './types';
-import { useQuery } from 'react-query';
-import { QUERY_KEYS } from 'quiz/constants/queryKeys';
-import { getStudyDetail } from '@depromeet/toks-components';
 
 const QuizCreatePage = () => {
   const { register, setValue, control, getValues, setError } = useForm();
