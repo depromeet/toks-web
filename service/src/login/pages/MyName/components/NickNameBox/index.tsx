@@ -2,11 +2,11 @@ import { isToksError } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { Button, Image, Input, Text, emoji, useToast } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
+import { useRouter } from 'next/router';
 
 import { useSetNickname } from 'login/hooks/query/useSetNickname';
 import { useCreateNicknameForm } from 'login/hooks/useCreateNicknameForm';
 import { Wrapper } from 'login/pages/MyName/components/style';
-import { useRouter } from 'next/router';
 
 export function NickNameBox() {
   const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText, setError } =

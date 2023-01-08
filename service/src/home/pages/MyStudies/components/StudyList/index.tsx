@@ -4,11 +4,11 @@ import styled from '@emotion/styled';
 import { Flex } from '@toss/emotion-utils';
 import { ErrorBoundary } from '@toss/error-boundary';
 import { useSuspendedQuery } from '@toss/react-query';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import { QUERY_KEYS } from 'home/constants/queryKeys';
 import { getMyStudies } from 'home/pages/MyStudies/remotes/study';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
 
 import StudyCard from '../StudyCard';
 
@@ -25,7 +25,7 @@ function StudyList() {
       router.prefetch(PATHS.quiz.studyDetail({ studyId: id }));
     });
     router.prefetch(PATHS.onboarding.createStudy);
-  }, [router]);
+  }, [router, studies]);
 
   return (
     <StudyListRow as="ul">

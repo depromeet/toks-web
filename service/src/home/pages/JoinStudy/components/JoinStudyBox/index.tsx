@@ -1,5 +1,6 @@
 import { PATHS } from '@depromeet/path';
 import { Button, Image, Tag, Text, getStudy } from '@depromeet/toks-components';
+import { assert } from '@toss/assert';
 import { kstFormat } from '@toss/date';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
@@ -11,7 +12,6 @@ import { StudyInfo } from 'home/pages/JoinStudy/components/StudyInfo';
 import { postStudyById } from 'home/pages/JoinStudy/remotes/study';
 
 import { STUDY_CATEGORY_OPTIONS } from './constants';
-import { assert } from '@toss/assert';
 
 export function JoinStudyBox() {
   const {
