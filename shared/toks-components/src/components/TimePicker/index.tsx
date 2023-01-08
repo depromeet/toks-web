@@ -109,12 +109,14 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
     }, [hour, minute, ampm, setValue]);
 
     return (
-      <div>
+      <div style={{height: '85px', flexGrow: 0 }}>
         <Text variant="headline">
           {label}
           {required && '*'}
         </Text>
-        <FlexRow>
+        <FlexRow style={{
+          alignItems: "flex-start"
+        }}>
           <input
             type="hidden"
             {...register}
@@ -124,10 +126,11 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
           />
           <FlexRow
             style={{
+              alignItems: 'stretch',
               marginRight: '20px',
             }}
           >
-            <div>
+            
               <Input
                 label=""
                 name="hour"
@@ -136,13 +139,14 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
                 maxLength={2}
                 onChange={onHourUpdate}
                 value={hourError && ''}
+                errorMessage={hourError}
+                errorMessageVariant='body03'
               />
-              {hourError && <Text variant="body03" color="danger" style={{position: 'absolute'}}>{hourError}</Text>}
-            </div>
+            <div style={{lineHeight: '48px', paddingTop: '6px'}}>
             <Text variant="body01" style={{ margin: '0 6px' }}>
               :
             </Text>
-            <div>
+            </div>
               <Input
                 label=""
                 name="minute"
@@ -151,9 +155,9 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
                 maxLength={2}
                 onChange={onMinuteUpdate}
                 value={minuteError && ''}
+                errorMessage={minuteError}
+                errorMessageVariant='body03'
               />
-              {minuteError && <Text variant="body03" color="danger" style={{position: 'absolute'}}>{minuteError}</Text>}
-            </div>
           </FlexRow>
           <ToggleSwitchButton ampm={ampm} setAmpm={setAmpm} />
         </FlexRow>
@@ -182,3 +186,12 @@ export const RightToggleButton = styled.button`
 
   cursor: pointer;
 `;
+
+// export const StyledTimeInput = styled(Input)`
+//   & + &::before {
+//     content: ":";
+//     margin: 0 10px;
+//     width: 1px;
+//     height: 100%;
+//   }
+// `;
