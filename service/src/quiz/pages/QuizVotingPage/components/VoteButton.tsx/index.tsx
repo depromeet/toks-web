@@ -1,29 +1,26 @@
 import { Button } from '@depromeet/toks-components';
+import { EachQuizReplyByResponse } from 'quiz/common/models/quizReply';
 import React from 'react';
-import { useQuery } from 'react-query';
 
-import { QUERY_KEYS } from 'quiz/constants/queryKeys';
-import { QuizReply, useSetClientQuizReply } from 'quiz/pages/QuizVotingPage/hooks/quizReplyList';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { votedAnswer } from '../../store/votedAnswer';
 
 type VoteButtonProps = {
-  peerAnswers: QuizReply[];
+  peerAnswers: EachQuizReplyByResponse[];
   quizReplyHistoryId: number;
 };
 
 export function VoteButton({ peerAnswers, quizReplyHistoryId }: VoteButtonProps) {
-  const setQuizAplyLists = useSetClientQuizReply();
+  const setVotedAnswer = useSetRecoilState(votedAnswer);
+  const votedAns = useRecoilValue(votedAnswer);
 
   const onClick = (quizReplyHistoryId: number, event: React.MouseEvent) => {
     event.stopPropagation();
-    setQuizAplyLists(peerAnswers.find(answer => quizReplyHistoryId === answer?.quizReplyHistoryId));
+    const selectedAnswer = peerAnswers.find(answer => quizReplyHistoryId === answer.quizReplyHistoryId);
+    selectedAnswer ? setVotedAnswer(selectedAnswer) : setVotedAnswer(null);
   };
 
-  const { data: ans } = useQuery<QuizReply>(QUERY_KEYS.GET_QUIZREPLY, {
-    initialData: null,
-    staleTime: Infinity,
-  });
-
-  if (quizReplyHistoryId === ans?.quizReplyHistoryId) {
+  if (quizReplyHistoryId === votedAns?.quizReplyHistoryId) {
     return (
       <Button
         css={{ float: 'right' }}
