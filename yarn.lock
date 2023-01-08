@@ -2730,9 +2730,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@services/toks@workspace:service":
+"@service/toks@workspace:service":
   version: 0.0.0-use.local
-  resolution: "@services/toks@workspace:service"
+  resolution: "@service/toks@workspace:service"
   dependencies:
     "@configs/babel": "workspace:configs/babel"
     "@configs/next": "workspace:configs/next"

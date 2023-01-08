@@ -1,5 +1,5 @@
 {
-  "name": "@services/toks",
+  "name": "@service/toks",
   "description": "Toks 서비스",
   "main": "index.js",
   "license": "UNLICENSED",
