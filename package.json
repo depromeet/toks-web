@@ -8,7 +8,7 @@
     "node": "16"
   },
   "workspaces": [
-    "services/*",
+    "service",
     "packages/*",
     "shared/*",
     "devops/*",
