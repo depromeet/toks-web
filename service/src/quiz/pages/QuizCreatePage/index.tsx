@@ -19,7 +19,7 @@ const QuizCreatePage = () => {
   const { createQuiz } = useQuizCreate();
   const studyId = usePathParam('studyId', { suspense: true });
 
-  const { data: studyInfo } = useQuery([QUERY_KEYS.GET_STUDY_INFO], () => getStudyDetail(studyId));
+  const { data: studyInfo } = useQuery(QUERY_KEYS.GET_STUDY_INFO(studyId), () => getStudyDetail(studyId));
   if (!studyInfo) {
     return null;
   }
