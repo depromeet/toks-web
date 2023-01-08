@@ -32,14 +32,17 @@ export const useCreateStudyForm = () => {
       const formatStartedAt = formatISO(new Date(startedAt));
       const foramtEndedAt = formatISO(new Date(endedAt));
 
-      const { id } = await postStudy({
-        ...values,
-        startedAt: formatStartedAt,
-        endedAt: foramtEndedAt,
-      });
-
-      await open({ title: '스터디가 생성되었습니다.', type: 'success', showOnNextPage: true });
-      await router.replace(`/create-complete/${id}`);
+      if (foramtEndedAt <= formatStartedAt) {
+        await open({ title: '스터디 일정을 다시 설정해주세요.', type: 'danger' });
+      } else {
+        const { id } = await postStudy({
+          ...values,
+          startedAt: formatStartedAt,
+          endedAt: foramtEndedAt,
+        });
+        await open({ title: '스터디가 생성되었습니다.', type: 'success', showOnNextPage: true });
+        await router.replace(`/create-complete/${id}`);
+      }
     } catch (error: unknown) {
       if (isToksError(error)) {
         await open({ title: error.message, type: 'danger' });
