@@ -1,8 +1,9 @@
 import { Button } from '@depromeet/toks-components';
-import { EachQuizReplyByResponse } from 'quiz/common/models/quizReply';
 import React from 'react';
-
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+
+import { EachQuizReplyByResponse } from 'quiz/common/models/quizReply';
+
 import { votedAnswer } from '../../store/votedAnswer';
 
 type VoteButtonProps = {

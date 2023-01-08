@@ -5,14 +5,14 @@ import { usePathParam } from '@depromeet/utils';
 import { Flex } from '@toss/emotion-utils';
 import { useEffect, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
+import { useRecoilValue } from 'recoil';
 
 import { AnswerConfirmModal } from 'quiz/common/components/ModalContents/AnswerConfirmModal';
 import { getQuizById } from 'quiz/common/components/QuizQuestion/remotes/quiz';
 import { QUERY_KEYS } from 'quiz/constants/queryKeys';
 
-import { postQuizLike } from './remotes/quizVote';
-import { useRecoilValue } from 'recoil';
 import { votedAnswer } from '../../store/votedAnswer';
+import { postQuizLike } from './remotes/quizVote';
 
 export function VoteSubmitButton() {
   const [isDisable, setIsDisable] = useState(true);

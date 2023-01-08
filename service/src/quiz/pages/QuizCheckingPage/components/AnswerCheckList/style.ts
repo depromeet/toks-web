@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 const ANSWERWRAPPER_HEIGHT = 'calc(80vh - 340px)';
 
 export const Wrapper = styled.div`
