@@ -30,14 +30,13 @@ export const useCreateStudyForm = () => {
       const { startedAt, endedAt } = values;
 
       const formatStartedAt = formatISO(new Date(startedAt));
-      const foramtEndedAt = formatISO(new Date(endedAt));
+      const formatEndedAt = formatISO(new Date(endedAt));
 
       const { id } = await postStudy({
         ...values,
         startedAt: formatStartedAt,
-        endedAt: foramtEndedAt,
+        endedAt: formatEndedAt,
       });
-
       await open({ title: '스터디가 생성되었습니다.', type: 'success', showOnNextPage: true });
       await router.replace(`/create-complete/${id}`);
     } catch (error: unknown) {
@@ -46,7 +45,6 @@ export const useCreateStudyForm = () => {
       }
     }
   });
-
   const isDisabled = !isValid;
 
   const isMaxLength = useCallback((maxLength: number) => {
@@ -68,5 +66,6 @@ export const useCreateStudyForm = () => {
     isDisabled,
     isMaxLength,
     isRequiredText,
+    getValues,
   };
 };

@@ -8,8 +8,11 @@ import { useCreateStudyForm } from 'onboarding/pages/CreateStudy/hooks/useCreate
 import { Wrapper } from './style';
 
 export const CreateStudyForm = () => {
-  const { register, control, createStudy, setValue, errors, isDisabled, isMaxLength, isRequiredText } =
+  const { register, control, createStudy, setValue, errors, isDisabled, isMaxLength, isRequiredText, getValues } =
     useCreateStudyForm();
+
+  const values = getValues();
+  const { startedAt } = values;
 
   return (
     <Wrapper>
@@ -57,6 +60,8 @@ export const CreateStudyForm = () => {
           <Calendar
             {...register('endedAt', {
               required: isRequiredText('종료일'),
+              disabled: startedAt ? false : true,
+              validate: v => new Date(v).getTime() > new Date(startedAt).getTime(),
             })}
             readOnlyInput
             required
