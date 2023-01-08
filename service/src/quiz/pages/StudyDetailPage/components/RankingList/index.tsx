@@ -7,7 +7,7 @@ import { RankingItem } from '../RankingItem';
 import { List } from './style';
 
 interface RankingListProps {
-  studyId: string | string[] | undefined;
+  studyId: string;
 }
 
 function RankingList({ studyId }: RankingListProps) {

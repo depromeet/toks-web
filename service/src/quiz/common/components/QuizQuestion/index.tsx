@@ -1,7 +1,7 @@
 import { Icon, ImageViewer, Text, ToastViewer, UserAvatar } from '@depromeet/toks-components';
 import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
+import { usePathParam } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
-import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
 import { getQuizById } from 'quiz/common/components/QuizQuestion/remotes/quiz';
@@ -18,13 +18,11 @@ type QuizQuestionProps = {
   myAnswer?: string | undefined;
 };
 export function QuizQuestion({ myAnswer }: QuizQuestionProps) {
-  const {
-    query: { quizIdParams },
-  } = useRouter();
+  const quizIdParams = usePathParam('quizIdParams', { suspense: true });
 
   const urlArray: ImageUrl[] = [];
 
-  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizIdParams), {
+  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID(quizIdParams), () => getQuizById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
 

@@ -1,8 +1,8 @@
 import { isToksError } from '@depromeet/http';
 import { Button, useModal, useToast } from '@depromeet/toks-components';
+import { usePathParam } from '@depromeet/utils';
 import { Spacing } from '@toss/emotion-utils';
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
@@ -37,9 +37,8 @@ export function QuizEditor() {
   const [isDisabled, setIsDisabled] = useState(true);
   const [answer, setAnswer] = useState('');
 
-  const {
-    query: { quizIdParams },
-  } = useRouter();
+  const quizIdParams = usePathParam('quizIdParams', { suspense: true });
+
   const quizId = Number(quizIdParams);
 
   //button disable 제어

@@ -6349,6 +6349,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@toss/react", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.3.0"],\
             ["@toss/react-query", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.0"],\
             ["@toss/use-overlay", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:1.1.0"],\
+            ["@toss/use-query-param", "virtual:61593cfa096851f06fc809fe1cdab76affb0eb619e68badf225a4b0699422db3ab00d1df20a5e7cc2170090770167a6dff5fe75adc656c065a37aba556eb6aac#npm:1.1.3"],\
             ["@toss/utils", "npm:1.3.0"],\
             ["@types/node", "npm:18.11.9"],\
             ["@types/react", "npm:18.0.21"],\
@@ -7319,6 +7320,27 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@toss/use-query-param", "npm:1.1.3"]\
           ],\
           "linkType": "SOFT"\
+        }],\
+        ["virtual:61593cfa096851f06fc809fe1cdab76affb0eb619e68badf225a4b0699422db3ab00d1df20a5e7cc2170090770167a6dff5fe75adc656c065a37aba556eb6aac#npm:1.1.3", {\
+          "packageLocation": "./.yarn/__virtual__/@toss-use-query-param-virtual-860e9814d3/0/cache/@toss-use-query-param-npm-1.1.3-aee9f2ca8a-cebc7702ec.zip/node_modules/@toss/use-query-param/",\
+          "packageDependencies": [\
+            ["@toss/use-query-param", "virtual:61593cfa096851f06fc809fe1cdab76affb0eb619e68badf225a4b0699422db3ab00d1df20a5e7cc2170090770167a6dff5fe75adc656c065a37aba556eb6aac#npm:1.1.3"],\
+            ["@types/next", null],\
+            ["@types/react", "npm:18.0.21"],\
+            ["@types/react-dom", "npm:18.0.6"],\
+            ["next", "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:12.3.3"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:2b84034f2ee9abf066cdd40f914365517e5a655184b1d71768de9fc65205326162e6f6ab5016e627c91cf725255b89c00a8a14624ffa4091ec69e703b49aa9b2#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/next",\
+            "@types/react-dom",\
+            "@types/react",\
+            "next",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
         }],\
         ["virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:1.1.3", {\
           "packageLocation": "./.yarn/__virtual__/@toss-use-query-param-virtual-a02bfa94d4/0/cache/@toss-use-query-param-npm-1.1.3-aee9f2ca8a-cebc7702ec.zip/node_modules/@toss/use-query-param/",\

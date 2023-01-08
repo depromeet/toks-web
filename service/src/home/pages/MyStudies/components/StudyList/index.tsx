@@ -24,6 +24,7 @@ function StudyList() {
     studies.forEach(({ id }) => {
       router.prefetch(PATHS.quiz.studyDetail({ studyId: id }));
     });
+
     router.prefetch(PATHS.onboarding.createStudy);
   }, [router, studies]);
 

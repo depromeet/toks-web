@@ -18,4 +18,12 @@ export const FlexRow = styled.div`
   display: flex;
 `;
 
+export const Skeleton = styled.div`
+  height: 225px;
+  &:after {
+    content: '.';
+    visibility: hidden;
+  }
+`;
+
 export const Space = styled.div``;

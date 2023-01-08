@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { match } from 'ts-pattern';
 
+import { TOKS_HEADER_HEIGHT } from '../../constants';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 
@@ -59,7 +60,7 @@ function SuccessIcon() {
 /**
  * 화면의 가장자리에서 얼마나 떨어질지에 대한 값
  */
-const EDGE_PADDING = '64px';
+const EDGE_PADDING = TOKS_HEADER_HEIGHT;
 
 const HorizontalCenterCss = css`
   left: 50%;
@@ -119,7 +120,7 @@ const StyledToast = styled.div<{ direction: Props['direction'] }>`
   border: 1px solid ${theme.colors.gray020};
   background-color: ${theme.colors.gray010};
 
-  z-index: 999;
+  z-index: 99999;
 
   ${theme.shadows.book01}
 `;
