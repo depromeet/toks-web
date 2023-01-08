@@ -19,8 +19,8 @@ export function NickNameBox() {
   const onSubmit = handleSubmit(async data => {
     try {
       await nicknameMutation(data.nickName);
-      await open({ title: '닉네임 생성을 완료했어요', type: 'success', showOnNextPage: true });
-      router.push(PATHS.home.myStudy);
+      await router.push(PATHS.home.myStudy);
+      await open({ title: '닉네임 생성을 완료했어요', type: 'success' });
     } catch (error: unknown) {
       if (isToksError(error) && error.code === '-20011') {
         setError('nickName', {

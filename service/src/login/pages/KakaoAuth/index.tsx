@@ -18,7 +18,7 @@ function KakaoAuth() {
 
   assert(accessToken != null && refreshToken != null, '로그인이 정상적으로 처리되지 않았습니다.');
 
-  if (!isServer() && accessToken && refreshToken) {
+  if (!isServer()) {
     sessionStorage.setItem('accessToken', accessToken);
     sessionStorage.setItem('refreshToken', refreshToken);
     queryClient.refetchQueries(safelyGetUser.queryKey);

@@ -4,7 +4,7 @@ import { Icon, QuizStatus, SSRSuspense, Text, TextBallon } from '@depromeet/toks
 import styled from '@emotion/styled';
 import { ErrorBoundary } from '@toss/error-boundary';
 import { useRouter } from 'next/router';
-import { HTMLAttributes } from 'react';
+import { HTMLAttributes, useEffect } from 'react';
 
 import { useGetQuizList, useSetClientQuizList } from 'quiz/pages/StudyDetailPage/hooks/queries/quizList';
 
@@ -41,6 +41,10 @@ function QuizList({ studyId }: QuizListProps) {
   const { data, isError } = useGetQuizList(studyId);
   const setQuizList = useSetClientQuizList(studyId);
   const router = useRouter();
+
+  useEffect(() => {
+    router.prefetch(PATHS.quiz.create({ studyId }));
+  }, [router, studyId]);
 
   if (isError || data == null) {
     return null;
