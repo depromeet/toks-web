@@ -8,5 +8,11 @@ export interface QuizCreateForm {
   durationOfSecond: number;
   studyId: number;
   round: number;
+  imageUrls?: string[];
   imageFiles?: File[];
+}
+
+export interface PostImageUploadResponse {
+  imageUrl: string;
+  id: number;
 }
