@@ -1,11 +1,12 @@
 import { isToksError, logout as requestLogout } from '@depromeet/http';
-import { PATHS, pushTo } from '@depromeet/path';
+import { PATHS } from '@depromeet/path';
 import { MAX_WIDTH, SSRSuspense, ToksHeader, useToast } from '@depromeet/toks-components';
 import { useSafelyGetUser } from '@depromeet/utils';
 import styled from '@emotion/styled';
 import { useBooleanState } from '@toss/react';
 import { useOverlay } from '@toss/use-overlay';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useRouter } from 'next/router';
 import { ComponentProps, ReactNode } from 'react';
 import { useMutation } from 'react-query';
 
@@ -15,11 +16,13 @@ function Component({ children, fullWidth = false }: { children: ReactNode; fullW
   const { data: user, refetch } = useSafelyGetUser();
   const { toggle, close } = useUserMenuDialog();
   const { open } = useToast();
+  const router = useRouter();
 
   const { mutateAsync: logout, isLoading } = useMutation(async () => {
     try {
       await open({ title: '로그아웃 되었어요', type: 'success', showOnNextPage: true });
       await requestLogout();
+      await router.push(PATHS.login.main);
       await refetch();
       close();
     } catch (err) {
@@ -37,22 +40,27 @@ function Component({ children, fullWidth = false }: { children: ReactNode; fullW
         <ToksHeader
           login={false}
           onClickButton={() => {
-            const isLoginPage = window.location.href.includes('/login');
+            const isLoginPage = router.pathname.includes('/login');
 
             if (isLoginPage) {
               return;
             }
 
-            pushTo(PATHS.login.main);
+            router.push(PATHS.login.main);
           }}
           onClickLogo={() => {
-            const isLoginPage = window.location.href.includes('/login');
+            if (!isNonMember) {
+              router.push(PATHS.home.myStudy);
+              return;
+            }
+
+            const isLoginPage = router.pathname.includes('/login');
 
             if (isLoginPage) {
               return;
             }
 
-            pushTo(PATHS.login.main);
+            router.push(PATHS.login.main);
           }}
         />
       ) : (
@@ -72,7 +80,7 @@ function Component({ children, fullWidth = false }: { children: ReactNode; fullW
               handleLogout: () => logout(),
             });
           }}
-          onClickLogo={() => pushTo(PATHS.home.myStudy)}
+          onClickLogo={() => router.push(PATHS.home.myStudy)}
         />
       )}
       <StyledLayout fullWidth={fullWidth}>{children}</StyledLayout>

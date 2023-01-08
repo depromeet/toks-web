@@ -15,24 +15,6 @@ export const PATHS = {
   },
   login: {
     main: '/login',
-    nickname: '/myName',
+    nickname: '/login/myName',
   },
 } as const;
-
-/**
- * @feat 외부 서비스로 이동할 때, 사용합니다 like router.push
- * https://nextjs.org/docs/api-reference/next/router#routerpush
- * */
-export const pushTo = (path: string) => {
-  window.location.href = `${window.location.origin}${path}`;
-  return;
-};
-
-/**
- * @feat 외부 서비스로 이동할 때, 사용합니다 like router.replace
- * https://nextjs.org/docs/api-reference/next/router#routerpush
- * */
-export const replaceTo = (path: string) => {
-  window.location.replace(`${window.location.origin}${path}`);
-  return;
-};
