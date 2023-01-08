@@ -12,9 +12,7 @@ export const CreateStudyForm = () => {
     useCreateStudyForm();
 
   const values = getValues();
-
-  const { startedAt, endedAt } = values;
-  console.log(startedAt, endedAt);
+  const { startedAt } = values;
 
   return (
     <Wrapper>
@@ -63,6 +61,7 @@ export const CreateStudyForm = () => {
             {...register('endedAt', {
               required: isRequiredText('종료일'),
               disabled: startedAt ? false : true,
+              validate: v => new Date(v).getTime() > new Date(startedAt).getTime(),
             })}
             readOnlyInput
             required

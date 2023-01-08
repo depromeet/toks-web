@@ -30,14 +30,12 @@ export const useCreateStudyForm = () => {
       const { startedAt, endedAt } = values;
 
       const formatStartedAt = formatISO(new Date(startedAt));
-      const formattEndedAt = formatISO(new Date(endedAt));
+      const formatEndedAt = formatISO(new Date(endedAt));
 
-      if (formattEndedAt <= formatStartedAt) {
-      }
       const { id } = await postStudy({
         ...values,
         startedAt: formatStartedAt,
-        endedAt: formattEndedAt,
+        endedAt: formatEndedAt,
       });
       await open({ title: '스터디가 생성되었습니다.', type: 'success', showOnNextPage: true });
       await router.replace(`/create-complete/${id}`);
