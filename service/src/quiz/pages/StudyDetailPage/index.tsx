@@ -1,7 +1,6 @@
 import { Layout } from '@depromeet/layout';
 import { Text } from '@depromeet/toks-components';
-import { assert } from '@toss/assert';
-import { useRouter } from 'next/router';
+import { usePathParam } from '@depromeet/utils';
 import { ReactElement } from 'react';
 
 import QuizList from './components/QuizList';
@@ -10,11 +9,7 @@ import StudyInfo from './components/StudyInfo';
 import { FlexRow, Page, QuizListWrapper, RankingListWrapper, Section } from './style';
 
 export default function StudyDetailPage() {
-  const {
-    query: { studyId },
-  } = useRouter();
-
-  assert(typeof studyId === 'string', '유효하지 않은 스터디입니다.');
+  const studyId = usePathParam('studyId', { suspense: true });
 
   return (
     <Page>

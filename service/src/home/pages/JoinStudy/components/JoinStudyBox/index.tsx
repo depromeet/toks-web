@@ -1,6 +1,6 @@
 import { PATHS } from '@depromeet/path';
 import { Button, Image, Tag, Text, getStudy } from '@depromeet/toks-components';
-import { assert } from '@toss/assert';
+import { usePathParam } from '@depromeet/utils';
 import { kstFormat } from '@toss/date';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
@@ -14,12 +14,8 @@ import { postStudyById } from 'home/pages/JoinStudy/remotes/study';
 import { STUDY_CATEGORY_OPTIONS } from './constants';
 
 export function JoinStudyBox() {
-  const {
-    query: { studyId },
-  } = useRouter();
+  const studyId = usePathParam('studyId', { suspense: true });
   const router = useRouter();
-
-  assert(typeof studyId === 'string', '유효하지 않은 스터디입니다.');
 
   const { mutate: studyMutation } = useMutation(async () => {
     try {

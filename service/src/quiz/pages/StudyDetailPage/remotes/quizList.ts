@@ -5,6 +5,6 @@ import { QuizResponse } from '@depromeet/toks-components/src/types/quiz';
 //   return new Promise<QuizResponse[]>(resolve => setTimeout(() => resolve(quizList), 1000));
 // };
 
-export async function getQuizListById(studyId: string | string[] | undefined) {
+export async function getQuizListById(studyId: string) {
   return await http.get<QuizResponse>(`/api/v1/quizzes/studies/${studyId}`);
 }

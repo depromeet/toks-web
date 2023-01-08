@@ -1,6 +1,6 @@
 import { Text } from '@depromeet/toks-components';
+import { usePathParam } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
-import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
 import { DoneNumberNotice } from 'quiz/common/components/DoneNumberNotice';
@@ -12,13 +12,15 @@ import { PeerAnswerItem } from '../PeerAnswerItem';
 import { PeerAnswerWrapper, Wrapper } from './style';
 
 export function PeerAnswerList() {
-  const {
-    query: { quizIdParams },
-  } = useRouter();
+  const quizIdParams = usePathParam('quizIdParams', { suspense: true });
 
-  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZREPLIES_BY_ID, () => getQuizReplyById(quizIdParams), {
-    enabled: Boolean(quizIdParams),
-  });
+  const { data: quizzes } = useQuery(
+    QUERY_KEYS.GET_QUIZREPLIES_BY_ID(quizIdParams),
+    () => getQuizReplyById(quizIdParams),
+    {
+      enabled: Boolean(quizIdParams),
+    }
+  );
 
   const { data: user } = useQuery(QUERY_KEYS.GET_USER_INFO, getUser);
 

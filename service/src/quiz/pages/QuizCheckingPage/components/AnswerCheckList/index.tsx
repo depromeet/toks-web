@@ -1,7 +1,6 @@
 import { Text } from '@depromeet/toks-components';
-import { useTimer } from '@depromeet/utils';
+import { usePathParam, useTimer } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
@@ -16,10 +15,7 @@ import { AnswerWrapper, BestAnswerContainer, Wrapper } from './style';
 export function AnswerCheckList({ durationTime }: { durationTime: number }) {
   const [isQuizClosed, setIsQuizClosed] = useState(false);
 
-  const {
-    query: { quizIdParams },
-  } = useRouter();
-
+  const quizIdParams = usePathParam('quizIdParams', { suspense: true });
   const { time, stop: timerStop } = useTimer({
     time: durationTime,
   });
@@ -32,7 +28,7 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
   }, [time, timerStop]);
 
   const { data: sortedQuizReplies } = useQuery(
-    QUERY_KEYS.GET_SORTED_QUIZREPLY,
+    QUERY_KEYS.GET_SORTED_QUIZREPLY(quizIdParams),
     () => getSortedQuizReplyById(quizIdParams),
     {
       enabled: Boolean(quizIdParams),

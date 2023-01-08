@@ -1,7 +1,7 @@
 import { theme } from '@depromeet/theme';
 import { Accordion, Text, UserAvatar } from '@depromeet/toks-components';
+import { usePathParam } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
-import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 
 import { DoneNumberNotice } from 'quiz/common/components/DoneNumberNotice';
@@ -11,13 +11,15 @@ import { QUERY_KEYS } from 'quiz/constants/queryKeys';
 import { AccordionCotainer, StudyPeerAnswerWrapper, SubmitNotice, TextContainer, Wrapper } from './style';
 
 export function StudyPeerAnswer() {
-  const {
-    query: { quizIdParams },
-  } = useRouter();
+  const quizIdParams = usePathParam('quizIdParams', { suspense: true });
 
-  const { data: quizzes } = useQuery(QUERY_KEYS.GET_QUIZREPLIES_BY_ID, () => getQuizReplyById(quizIdParams), {
-    enabled: Boolean(quizIdParams),
-  });
+  const { data: quizzes } = useQuery(
+    QUERY_KEYS.GET_QUIZREPLIES_BY_ID(quizIdParams),
+    () => getQuizReplyById(quizIdParams),
+    {
+      enabled: Boolean(quizIdParams),
+    }
+  );
 
   if (!quizzes) {
     return null;

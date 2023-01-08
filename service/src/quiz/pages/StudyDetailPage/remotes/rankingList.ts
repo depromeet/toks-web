@@ -6,6 +6,6 @@ import { RankResponse } from '../models/rankingList';
 //   return new Promise<RankResponse[]>(resolve => setTimeout(() => resolve(rankingList), 900));
 // };
 
-export async function getRankingListById(studyId: string | string[] | undefined) {
+export async function getRankingListById(studyId: string) {
   return await http.get<RankResponse>(`/api/v1/quiz-ranks/studies/${studyId}`);
 }
