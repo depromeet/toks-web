@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@toss/error-boundary';
 import { useGetStudyInfo } from 'quiz/pages/StudyDetailPage/hooks/queries/studyInfo';
 
 import { StudyProgress } from '../StudyProgress';
-import { Body, FlexRow, Footer, Header, Info, StudyTags } from './style';
+import { Body, FlexRow, Footer, Header, Info } from './style';
 
 interface StudyInfoProps {
   studyId: string | string[] | undefined;
@@ -21,7 +21,7 @@ function StudyInfo({ studyId }: StudyInfoProps) {
 
   return (
     <FlexRow>
-      <Info css={{ flex: 1 }}>
+      <Info>
         <Header>
           <Text
             color="white"
@@ -41,11 +41,9 @@ function StudyInfo({ studyId }: StudyInfoProps) {
           <Text color="gray020" variant="body02">
             {description}
           </Text>
-          <StudyTags>
-            <Tag.Row style={{ padding: 0 }}>
+          <Tag.Row style={{ marginTop: '20px', padding: 0 }}>
               {studyTags && studyTags.map(({ id, name }) => <Tag key={id} value={name} />)}
             </Tag.Row>
-          </StudyTags>
         </Body>
         <Footer>
           {/* UserAvatar Group id가 여기서는 스터디 id가 되고 각 퀴즈에서는 퀴즈의 id가 됨 */}
