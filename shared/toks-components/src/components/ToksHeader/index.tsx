@@ -65,7 +65,9 @@ function ProfileButton(props: ProfileButtonProps) {
 
   return (
     <Button onClick={onClickButton}>
-      <ClickableImage src={imgUrl} alt="" width={22} height={22} style={{ borderRadius: '50%' }} />
+      <ImageWrapper>
+        <ClickableImage src={imgUrl} alt="" width={22} height={22} style={{ borderRadius: '50%' }} />
+      </ImageWrapper>
       <Text
         variant="subhead"
         style={{ display: 'block', textOverflow: 'ellipsis', width: '100%', whiteSpace: 'nowrap', overflow: 'hidden' }}
@@ -161,4 +163,8 @@ const ClickableImage = styled(Image)`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const ImageWrapper = styled.div`
+  width: 22px;
 `;
