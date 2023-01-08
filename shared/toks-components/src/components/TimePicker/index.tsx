@@ -61,9 +61,8 @@ const useTimePicker = (defaultHour: number, defaultMinute: number, defaultAmpm: 
 
   const onHourUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: newHour } = e.target;
-
-    if (minuteError) {
-      setMinuteError('');
+    if (hourError) {
+      setHourError('');
     }
 
     if (Number(newHour) <= 12) {
@@ -78,8 +77,8 @@ const useTimePicker = (defaultHour: number, defaultMinute: number, defaultAmpm: 
   const onMinuteUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value: newMinute } = e.target;
 
-    if (hourError) {
-      setHourError('');
+    if (minuteError) {
+      setMinuteError('');
     }
 
     if (Number(newMinute) < 60) {
@@ -144,10 +143,9 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
               label=""
               name="hour"
               placeholder={padZero(defaultHour)}
-              autoComplete="off"
-              maxLength={2}
+              maxLength={3}
               onChange={onHourUpdate}
-              value={hourError && ''}
+              // value={hourError && ''}
               errorMessage={hourError}
               errorMessageVariant='body03'
             />
@@ -160,10 +158,9 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
               label=""
               name="minute"
               placeholder={padZero(defaultMinute)}
-              autoComplete="off"
               maxLength={2}
               onChange={onMinuteUpdate}
-              value={minuteError && ''}
+              // value={minuteError && ''}
               errorMessage={minuteError}
               errorMessageVariant='body03'
             />

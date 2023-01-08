@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@toss/error-boundary';
 import { useGetStudyInfo } from 'quiz/pages/StudyDetailPage/hooks/queries/studyInfo';
 
 import { StudyProgress } from '../StudyProgress';
-import { Body, FlexRow, Footer, Header, Info, Space, Skeleton } from './style';
+import { Body, FlexRow, Footer, Header, Info, Skeleton, Space } from './style';
 
 interface StudyInfoProps {
   studyId: string;
