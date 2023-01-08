@@ -10,7 +10,7 @@ import { QUERY_KEYS } from 'quiz/constants/queryKeys';
 import { getSortedQuizReplyById } from 'quiz/pages/QuizCheckingPage/remotes/sortingQuizAply';
 
 import { AnswerCheckItem } from '../AnswerCheckItem';
-import { AnswerWrapper, BestAnswerContainer, Wrapper } from './style';
+import { AnswerWrapper, Wrapper } from './style';
 
 export function AnswerCheckList({ durationTime }: { durationTime: number }) {
   const [isQuizClosed, setIsQuizClosed] = useState(false);
@@ -54,24 +54,22 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
   if (isQuizClosed) {
     return (
       <Wrapper>
-        <BestAnswerContainer>
-          <Flex css={{ justifyContent: 'space-between' }}>
-            <Text variant="headline" color="gray030">
-              우수한 답변
-            </Text>
-            <Text variant="body02" color="gray050">
-              잘한다잘한다하니까 너무 잘한다🙊
-            </Text>
-          </Flex>
-          <Spacing size={'2vh'} />
-          <AnswerCheckItem
-            creator={bestAnswer.creator}
-            answer={bestAnswer.answer}
-            likeCount={bestAnswer.likeCount}
-            isFold={false}
-          />
-        </BestAnswerContainer>
-        <Spacing size={'7vh'} />
+        <Flex css={{ justifyContent: 'space-between' }}>
+          <Text variant="headline" color="gray030">
+            우수한 답변
+          </Text>
+          <Text variant="body02" color="gray050">
+            잘한다잘한다하니까 너무 잘한다🙊
+          </Text>
+        </Flex>
+        <Spacing size={'12px'} />
+        <AnswerCheckItem
+          creator={bestAnswer.creator}
+          answer={bestAnswer.answer}
+          likeCount={bestAnswer.likeCount}
+          isFold={false}
+        />
+        <Spacing size={'90px'} />
         <Flex css={{ justifyContent: 'space-between' }}>
           <Text variant="headline" color="gray030">
             팀원들의 답안 확인
@@ -80,7 +78,7 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
             울지말고 강해져라..!👊🏻
           </Text>
         </Flex>
-        <Spacing size={'2vh'} />
+        <Spacing size={'16px'} />
         <AnswerWrapper>
           {restAnswer.map(({ answer, likeCount, creator }) => (
             <AnswerCheckItem

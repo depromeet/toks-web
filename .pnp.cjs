@@ -126,6 +126,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
               "@tanstack/react-query",\
               "virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:4.0.10"\
             ]],\
+            ["recoil", "virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:0.7.6"],\
             ["ts-pattern", "npm:4.0.5"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"],\
             ["webpack", "virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:5.75.0"]\
@@ -6377,6 +6378,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
               "virtual:bf385740268fd646fb11939e2de4db770daf461f5380f1f23f2a193c453ad695c7fa46bf5f9fd706cfde63c5461e698d99c5ae46eacb0c996ed6a8d7fbf19e4d#npm:4.0.10"\
             ]],\
             ["react-router-dom", "virtual:61593cfa096851f06fc809fe1cdab76affb0eb619e68badf225a4b0699422db3ab00d1df20a5e7cc2170090770167a6dff5fe75adc656c065a37aba556eb6aac#npm:6.6.1"],\
+            ["recoil", "virtual:61593cfa096851f06fc809fe1cdab76affb0eb619e68badf225a4b0699422db3ab00d1df20a5e7cc2170090770167a6dff5fe75adc656c065a37aba556eb6aac#npm:0.7.6"],\
             ["ts-pattern", "npm:4.0.5"],\
             ["ts-prune", "npm:0.10.3"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"],\
@@ -9870,6 +9872,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
               "@tanstack/react-query",\
               "virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:4.0.10"\
             ]],\
+            ["recoil", "virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:0.7.6"],\
             ["ts-pattern", "npm:4.0.5"],\
             ["typescript", "patch:typescript@npm%3A4.7.4#~builtin<compat/typescript>::version=4.7.4&hash=a1c5e5"],\
             ["webpack", "virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:5.75.0"]\
@@ -11542,6 +11545,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/grapheme-splitter-npm-1.0.4-648f2bf509-0c22ec54de.zip/node_modules/grapheme-splitter/",\
           "packageDependencies": [\
             ["grapheme-splitter", "npm:1.0.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["hamt_plus", [\
+        ["npm:1.0.2", {\
+          "packageLocation": "./.yarn/cache/hamt_plus-npm-1.0.2-67a52ee1df-af26ea32db.zip/node_modules/hamt_plus/",\
+          "packageDependencies": [\
+            ["hamt_plus", "npm:1.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -14496,6 +14508,59 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["readdirp", "npm:3.6.0"],\
             ["picomatch", "npm:2.3.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["recoil", [\
+        ["npm:0.7.6", {\
+          "packageLocation": "./.yarn/cache/recoil-npm-0.7.6-6f8de04e3d-2b31dd29a7.zip/node_modules/recoil/",\
+          "packageDependencies": [\
+            ["recoil", "npm:0.7.6"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:61593cfa096851f06fc809fe1cdab76affb0eb619e68badf225a4b0699422db3ab00d1df20a5e7cc2170090770167a6dff5fe75adc656c065a37aba556eb6aac#npm:0.7.6", {\
+          "packageLocation": "./.yarn/__virtual__/recoil-virtual-f5b9d15fa3/0/cache/recoil-npm-0.7.6-6f8de04e3d-2b31dd29a7.zip/node_modules/recoil/",\
+          "packageDependencies": [\
+            ["recoil", "virtual:61593cfa096851f06fc809fe1cdab76affb0eb619e68badf225a4b0699422db3ab00d1df20a5e7cc2170090770167a6dff5fe75adc656c065a37aba556eb6aac#npm:0.7.6"],\
+            ["@types/react", "npm:18.0.21"],\
+            ["@types/react-dom", "npm:18.0.6"],\
+            ["@types/react-native", null],\
+            ["hamt_plus", "npm:1.0.2"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:2b84034f2ee9abf066cdd40f914365517e5a655184b1d71768de9fc65205326162e6f6ab5016e627c91cf725255b89c00a8a14624ffa4091ec69e703b49aa9b2#npm:18.2.0"],\
+            ["react-native", null]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react-native",\
+            "@types/react",\
+            "react-dom",\
+            "react-native",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:0.7.6", {\
+          "packageLocation": "./.yarn/__virtual__/recoil-virtual-2ec8dc29ea/0/cache/recoil-npm-0.7.6-6f8de04e3d-2b31dd29a7.zip/node_modules/recoil/",\
+          "packageDependencies": [\
+            ["recoil", "virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:0.7.6"],\
+            ["@types/react", null],\
+            ["@types/react-dom", null],\
+            ["@types/react-native", null],\
+            ["hamt_plus", "npm:1.0.2"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:6245f8d7197665a29972bf49b07aa213ab4dbf01096fa34b00ebbb68ec2dfd5071b888c5fc986ed0c09805800e0c5af7a5d6e4f274939c9dc5420b693b2136de#npm:18.2.0"],\
+            ["react-native", null]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react-native",\
+            "@types/react",\
+            "react-dom",\
+            "react-native",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\

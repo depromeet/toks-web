@@ -5,12 +5,13 @@ import { usePathParam } from '@depromeet/utils';
 import { Flex } from '@toss/emotion-utils';
 import { useEffect, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
+import { useRecoilValue } from 'recoil';
 
 import { AnswerConfirmModal } from 'quiz/common/components/ModalContents/AnswerConfirmModal';
 import { getQuizById } from 'quiz/common/components/QuizQuestion/remotes/quiz';
 import { QUERY_KEYS } from 'quiz/constants/queryKeys';
-import { QuizReply } from 'quiz/pages/QuizVotingPage/hooks/quizReplyList';
 
+import { votedAnswer } from '../../store/votedAnswer';
 import { postQuizLike } from './remotes/quizVote';
 
 export function VoteSubmitButton() {
@@ -19,17 +20,14 @@ export function VoteSubmitButton() {
   const { openModal } = useModal();
   const { open } = useToast();
 
-  const { data: ans } = useQuery<QuizReply>(QUERY_KEYS.GET_QUIZREPLY, {
-    initialData: null,
-    staleTime: Infinity,
-  });
+  const votedAns = useRecoilValue(votedAnswer);
 
   useEffect(() => {
-    if (ans != null) {
+    if (votedAns != null) {
       setIsDisable(false);
-      setQuizReplyHistoryId(ans.quizReplyHistoryId);
+      setQuizReplyHistoryId(votedAns.quizReplyHistoryId);
     }
-  }, [ans]);
+  }, [votedAns]);
 
   const { mutateAsync: quizVoteMutation } = useMutation(async () => {
     try {
