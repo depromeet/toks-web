@@ -3,8 +3,8 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
 import { match } from 'ts-pattern';
-import { TOKS_HEADER_HEIGHT } from '../../constants';
 
+import { TOKS_HEADER_HEIGHT } from '../../constants';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 

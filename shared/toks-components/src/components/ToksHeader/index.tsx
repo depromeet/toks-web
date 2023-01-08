@@ -32,22 +32,20 @@ function isMember(props: ProfileButtonProps): props is MemberProps {
 
 export function ToksHeader({ onClickLogo, ...rest }: HeaderProps) {
   return (
-    <>
-      <Header>
-        <HeaderFilter />
-        <Flex style={{ zIndex: 2 }}>
-          <ClickableImage
-            src="https://asset.tokstudy.com/logo.png"
-            alt="toks study"
-            draggable={false}
-            width={70}
-            height={24}
-            onClick={onClickLogo}
-          />
-          <ProfileButton {...rest} />
-        </Flex>
-      </Header>
-    </>
+    <Header>
+      <HeaderFilter />
+      <Flex style={{ zIndex: 2 }}>
+        <ClickableImage
+          src="https://asset.tokstudy.com/logo.png"
+          alt="toks study"
+          draggable={false}
+          width={70}
+          height={24}
+          onClick={onClickLogo}
+        />
+        <ProfileButton {...rest} />
+      </Flex>
+    </Header>
   );
 }
 
