@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Info = styled.div`
-  width: 42%;
+  width: 50%;
 `;
 
 export const Header = styled.div``;
@@ -17,3 +17,5 @@ export const Footer = styled.div`
 export const FlexRow = styled.div`
   display: flex;
 `;
+
+export const Space = styled.div``;

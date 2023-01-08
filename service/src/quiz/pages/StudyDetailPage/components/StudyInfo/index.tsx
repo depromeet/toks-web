@@ -4,7 +4,7 @@ import { ErrorBoundary } from '@toss/error-boundary';
 import { useGetStudyInfo } from 'quiz/pages/StudyDetailPage/hooks/queries/studyInfo';
 
 import { StudyProgress } from '../StudyProgress';
-import { Body, FlexRow, Footer, Header, Info } from './style';
+import { Body, FlexRow, Footer, Header, Info, Space } from './style';
 
 interface StudyInfoProps {
   studyId: string | string[] | undefined;
@@ -62,6 +62,7 @@ function StudyInfo({ studyId }: StudyInfoProps) {
           </UserAvatar.Group>
         </Footer>
       </Info>
+      <Space css={{flex:1}}/>
       <StudyProgress progress={progress} startedAt={startedAt} endedAt={endedAt} />
     </FlexRow>
   );
