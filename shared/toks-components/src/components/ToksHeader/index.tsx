@@ -32,17 +32,22 @@ function isMember(props: ProfileButtonProps): props is MemberProps {
 
 export function ToksHeader({ onClickLogo, ...rest }: HeaderProps) {
   return (
-    <Header>
-      <ClickableImage
-        src="https://asset.tokstudy.com/logo.png"
-        alt="toks study"
-        draggable={false}
-        width={70}
-        height={24}
-        onClick={onClickLogo}
-      />
-      <ProfileButton {...rest} />
-    </Header>
+    <>
+      <Header>
+        <HeaderFilter />
+        <Flex style={{ zIndex: 2 }}>
+          <ClickableImage
+            src="https://asset.tokstudy.com/logo.png"
+            alt="toks study"
+            draggable={false}
+            width={70}
+            height={24}
+            onClick={onClickLogo}
+          />
+          <ProfileButton {...rest} />
+        </Flex>
+      </Header>
+    </>
   );
 }
 
@@ -107,10 +112,7 @@ const Header = styled.header`
   height: ${TOKS_HEADER_HEIGHT};
   margin: 0 auto;
   padding: 0 96px;
-  align-items: center;
-  z-index: 1;
-  justify-content: space-between;
-  background-color: ${theme.colors.gray120};
+  z-index: 2;
 
   @media (min-width: ${MAX_WIDTH}) {
     padding: 0 calc(96px + (100vw - ${MAX_WIDTH}) / 2);
@@ -119,6 +121,25 @@ const Header = styled.header`
   @media (max-width: ${BP.mobile}) {
     padding: 0 16px;
   }
+`;
+
+const Flex = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const HeaderFilter = styled.div`
+  background-color: rgba(23, 23, 23, 0.6);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 `;
 
 const Button = styled.button`
