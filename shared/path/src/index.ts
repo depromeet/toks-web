@@ -1,4 +1,5 @@
 export const PATHS = {
+  main: '/',
   home: {
     myStudy: '/home/my-studies',
   },
