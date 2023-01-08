@@ -16,6 +16,7 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
   const [isQuizClosed, setIsQuizClosed] = useState(false);
 
   const quizIdParams = usePathParam('quizIdParams', { suspense: true });
+
   const { time, stop: timerStop } = useTimer({
     time: durationTime,
   });
