@@ -71,7 +71,7 @@ const useTimePicker = (defaultHour: number, defaultMinute: number, defaultAmpm: 
       setHourError('');
     } else {
       setHour('');
-      setHourError('0-12사이의 숫자를 입력해주세요');
+      setHourError('0-12사이 숫자 입력');
     }
   };
 
@@ -87,7 +87,7 @@ const useTimePicker = (defaultHour: number, defaultMinute: number, defaultAmpm: 
       setMinuteError('');
     } else {
       setMinute('');
-      setMinuteError('0-59사이의 숫자를 입력해주세요');
+      setMinuteError('0-59 사이 숫자 입력');
     }
   };
 
@@ -119,12 +119,14 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
     }, [hour, minute, ampm, setValue]);
 
     return (
-      <div>
+      <div style={{height: '85px', flexGrow: 0 }}>
         <Text variant="headline">
           {label}
           {required && '*'}
         </Text>
-        <FlexRow>
+        <FlexRow style={{
+          alignItems: "flex-start"
+        }}>
           <input
             type="hidden"
             {...register}
@@ -134,6 +136,7 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
           />
           <FlexRow
             style={{
+              alignItems: 'stretch',
               marginRight: '20px',
             }}
           >
@@ -146,10 +149,13 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
               onChange={onHourUpdate}
               value={hourError && ''}
               errorMessage={hourError}
+              errorMessageVariant='body03'
             />
+            <div style={{lineHeight: '48px', paddingTop: '6px'}}>
             <Text variant="body01" style={{ margin: '0 6px' }}>
               :
             </Text>
+            </div>
             <Input
               label=""
               name="minute"
@@ -159,6 +165,7 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
               onChange={onMinuteUpdate}
               value={minuteError && ''}
               errorMessage={minuteError}
+              errorMessageVariant='body03'
             />
           </FlexRow>
           <ToggleSwitchButton ampm={ampm} setAmpm={setAmpm} />

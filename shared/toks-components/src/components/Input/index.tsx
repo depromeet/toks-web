@@ -5,6 +5,7 @@ import { forwardRef, useState } from 'react';
 
 import { Image } from '../Image';
 import { Text } from '../Text';
+import { Typography } from '../Text/token';
 
 interface Props extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
   name?: string;
@@ -12,11 +13,12 @@ interface Props extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
   height?: number;
   label?: string;
   errorMessage?: string;
+  errorMessageVariant?: Typography;
   suffix?: React.ReactNode;
 }
 
 export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label = 'user', name, errorMessage, width, height, required, onFocus, onBlur, suffix, ...props }: Props, ref) => {
+  ({ label = 'user', name, errorMessage, errorMessageVariant='body02', width, height, required, onFocus, onBlur, suffix, ...props }: Props, ref) => {
     const [isFocus, setIsFocus] = useState(false);
 
     return (
