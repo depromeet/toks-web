@@ -1,10 +1,11 @@
-import { isToksError } from '@depromeet/http';
+import { http, isToksError } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { getStudyDetail, useToast } from '@depromeet/toks-components';
 import { useSuspendedQuery } from '@toss/react-query';
 import { add, formatISO } from 'date-fns';
 import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
+import { postImageUpload } from '../remotes/postImageUpload';
 
 import { postQuizCreate } from '../remotes/postQuizCreate';
 import { QuizCreateForm } from '../types';
@@ -16,6 +17,7 @@ export const useQuizCreate = () => {
   const { data: study } = useSuspendedQuery(['study', studyId], () => getStudyDetail(Number(studyId)), {
     enabled: Boolean(studyId),
   });
+
   const { open } = useToast();
   const router = useRouter();
 
@@ -34,6 +36,12 @@ export const useQuizCreate = () => {
         return;
       }
 
+      if (values.imageFiles) {
+        const imageUrls = await postImageUpload(values.imageFiles);
+        console.log(imageUrls);
+        values.imageUrls = imageUrls;
+      }
+
       const { id } = await postQuizCreate({
         ...values,
         quizType: 'MARK_DOWN',
@@ -41,8 +49,8 @@ export const useQuizCreate = () => {
         startedAt: formatStartedAt,
         round: study.latestQuizRound + 1,
       });
-      await open({ title: '퀴즈가 생성되었습니다.', type: 'success', showOnNextPage: true });
 
+      await open({ title: '퀴즈가 생성되었습니다.', type: 'success', showOnNextPage: true });
       await router.push(PATHS.quiz.studyDetail({ studyId: id }));
     } catch (error: unknown) {
       if (isToksError(error)) {
