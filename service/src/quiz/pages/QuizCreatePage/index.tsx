@@ -1,5 +1,5 @@
 import { FULL_HEIGHT } from '@depromeet/toks-components';
-import { useQueryParam } from '@depromeet/utils';
+import { usePathParam } from '@depromeet/utils';
 import { Flex } from '@toss/emotion-utils';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -10,18 +10,27 @@ import { QuizCreateEditor } from './components/QuizCreateEditor';
 import { QuizCreateInputList } from './components/QuizCreateInputList';
 import { useQuizCreate } from './hooks/useQuizCreate';
 import { QuizCreateForm } from './types';
+import { useQuery } from 'react-query';
+import { QUERY_KEYS } from 'quiz/constants/queryKeys';
+import { getStudyDetail } from '@depromeet/toks-components';
 
 const QuizCreatePage = () => {
   const { register, setValue, control, getValues, setError } = useForm();
   const { createQuiz } = useQuizCreate();
-  const studyId = useQueryParam('studyId', { suspense: true });
-  if (!studyId) {
+  const studyId = usePathParam('studyId', { suspense: true });
+
+  const { data: studyInfo } = useQuery([QUERY_KEYS.GET_STUDY_INFO], () => getStudyDetail(studyId));
+  if (!studyInfo) {
     return null;
   }
 
   return (
     <>
-      <QuizNav mainTitle={''} studyId={studyId} />
+      <QuizNav
+        mainTitle={`${studyInfo.latestQuizRound + 1}회차 똑스 만들기`}
+        studyId={studyId}
+        subTitle={`${studyInfo.name}`}
+      />
       <Flex.Center css={{ height: FULL_HEIGHT }}>
         <form
           onSubmit={(e: React.FormEvent) => {

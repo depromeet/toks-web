@@ -1,4 +1,4 @@
-import { useQueryParam } from '@depromeet/utils';
+import { usePathParam } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useQuery } from 'react-query';
 
@@ -11,9 +11,9 @@ import { QuizEditor } from './components/QuizEditor';
 import { StudyPeerAnswer } from './components/StudyPeerAnswer';
 
 export default function QuizSolvingPage() {
-  const quizIdParams = useQueryParam('quizIdParams', { suspense: true });
+  const quizIdParams = usePathParam('quizIdParams', { suspense: true });
 
-  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID, () => getQuizById(quizIdParams), {
+  const { data: quiz } = useQuery([QUERY_KEYS.GET_QUIZ_BY_ID], () => getQuizById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
   if (!quiz) {
