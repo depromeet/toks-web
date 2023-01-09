@@ -1,4 +1,4 @@
-import { emoji, Text, Image } from '@depromeet/toks-components';
+import { Image, Text, emoji } from '@depromeet/toks-components';
 import { usePathParam, useTimer } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useEffect, useState } from 'react';
