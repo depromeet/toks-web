@@ -43,6 +43,7 @@
     "react-hook-form": "^7.41.2",
     "react-query": "npm:@tanstack/react-query@4.0.10",
     "react-router-dom": "^6.6.1",
+    "recoil": "^0.7.6",
     "ts-pattern": "^4.0.5",
     "yet-another-react-lightbox": "^2.2.3"
   },

@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { GlobalStyle as ToksDesignSystemStyle, OverlayProvider } from '@depromeet/toks-components';
 import { Layout } from '@depromeet/layout';
 import { theme } from '@depromeet/theme';
+import { RecoilRoot } from 'recoil';
 
 import 'yet-another-react-lightbox/styles.css';
 
@@ -61,7 +62,10 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       {/* Color Token 설정 */}
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
-          <OverlayProvider>{getLayout(<Component {...pageProps} />)}</OverlayProvider>
+          <OverlayProvider>
+            {' '}
+            <RecoilRoot>{getLayout(<Component {...pageProps} />)} </RecoilRoot>
+          </OverlayProvider>
         </QueryClientProvider>
       </ThemeProvider>
     </>

@@ -14,7 +14,7 @@ import { VoteSubmitButton } from './components/VoteSubmitButton';
 export default function QuizVotingPage() {
   const quizIdParams = usePathParam('quizIdParams', { suspense: true });
 
-  const { data: quiz } = useQuery([QUERY_KEYS.GET_QUIZ_BY_ID], () => getQuizById(quizIdParams), {
+  const { data: quiz } = useQuery(QUERY_KEYS.GET_QUIZ_BY_ID(quizIdParams), () => getQuizById(quizIdParams), {
     enabled: Boolean(quizIdParams),
   });
   if (!quiz) {

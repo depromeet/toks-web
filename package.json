@@ -39,6 +39,7 @@
     "@toss/use-query-param": "^1.1.3",
     "dotenv": "^10.0.0",
     "patch-package": "^6.4.7",
+    "recoil": "^0.7.6",
     "typescript": "4.7.4"
   },
   "devDependencies": {
