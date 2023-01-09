@@ -1,18 +1,24 @@
 import { Button, Calendar, DropDown, Input, InputChips, Text } from '@depromeet/toks-components';
 import { Flex, gutter, margin, size } from '@toss/emotion-utils';
-import { Controller } from 'react-hook-form';
+import { Controller, useWatch } from 'react-hook-form';
 
 import { STUDY_CATEGORY_OPTIONS } from 'onboarding/pages/CreateStudy/constants';
 import { useCreateStudyForm } from 'onboarding/pages/CreateStudy/hooks/useCreateStudyForm';
 
 import { Wrapper } from './style';
+import { add } from 'date-fns';
+import { useEffect } from 'react';
 
 export const CreateStudyForm = () => {
   const { register, control, createStudy, setValue, errors, isDisabled, isMaxLength, isRequiredText, getValues } =
     useCreateStudyForm();
 
-  const values = getValues();
-  const { startedAt } = values;
+  const startedAt = useWatch({ control, name: 'startedAt' });
+  const startedAtToWeeks = add(new Date(startedAt), { days: 7 });
+
+  useEffect(() => {
+    setValue('endedAt', '');
+  }, [startedAt]);
 
   return (
     <Wrapper>
@@ -55,20 +61,17 @@ export const CreateStudyForm = () => {
             label="스터디 시작일"
             minDate={new Date()}
             placeholder="날짜 선택"
-            errorMessage={errors.startedAt?.message}
           />
           <Calendar
             {...register('endedAt', {
               required: isRequiredText('종료일'),
-              disabled: startedAt ? false : true,
-              validate: v => new Date(v).getTime() > new Date(startedAt).getTime(),
+              disabled: !startedAt,
             })}
             readOnlyInput
             required
             label="스터디 종료일"
-            minDate={new Date()}
+            minDate={startedAtToWeeks}
             placeholder="날짜 선택"
-            errorMessage={errors.endedAt?.message}
           />
         </Flex>
         <Controller
