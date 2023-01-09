@@ -30,8 +30,11 @@ const QuizCreatePage = () => {
         studyId={studyId}
         subTitle={`${studyInfo.name}`}
       />
-      <Flex.Center css={{ height: FULL_HEIGHT }}>
+      <Flex css={{ marginTop: '101px' }}>
         <form
+          css={{
+            width: '100%',
+          }}
           onSubmit={(e: React.FormEvent) => {
             e.preventDefault();
             const values = getValues() as QuizCreateForm;
@@ -49,6 +52,8 @@ const QuizCreatePage = () => {
         >
           <Flex
             css={{
+              flex: 1,
+              width: '100%',
               gap: '48px',
             }}
           >
@@ -56,7 +61,7 @@ const QuizCreatePage = () => {
             <QuizCreateInputList register={register} setValue={setValue} control={control} />
           </Flex>
         </form>
-      </Flex.Center>
+      </Flex>
     </>
   );
 };
