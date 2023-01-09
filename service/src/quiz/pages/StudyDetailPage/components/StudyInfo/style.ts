@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Info = styled.div`
-  width: 678px;
+  width: 50%;
 `;
 
 export const Header = styled.div``;
@@ -12,10 +12,6 @@ export const Body = styled.div`
 
 export const Footer = styled.div`
   margin-top: 36px;
-`;
-
-export const StudyTags = styled.div`
-  margin-top: 20px;
 `;
 
 export const FlexRow = styled.div`
@@ -29,3 +25,5 @@ export const Skeleton = styled.div`
     visibility: hidden;
   }
 `;
+
+export const Space = styled.div``;

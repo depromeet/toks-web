@@ -33,7 +33,7 @@ const QUIZ_ITEM: QuizItemMap = {
     labelColor: theme.colors.gray120,
     backgroundColor: theme.colors.gray110,
     buttonName: () => '똑스 확인하기',
-    path: (quizId: number) => `/vote/${quizId}`,
+    path: (quizId: number) => `/quiz/check/${quizId}`,
   },
   TO_DO: {
     buttonColor: 'primary',
@@ -41,7 +41,7 @@ const QUIZ_ITEM: QuizItemMap = {
     labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
     buttonName: (myQuiz: boolean) => (myQuiz ? '똑표하기' : '똑스 풀기'),
-    path: (quizId: number, myQuiz: boolean) => (myQuiz ? `/vote/${quizId}` : `/solve/${quizId}`),
+    path: (quizId: number, myQuiz: boolean) => (myQuiz ? `/quiz/vote/${quizId}` : `/quiz/solve/${quizId}`),
   },
   IN_PROGRESS: {
     buttonColor: 'primary',
@@ -49,7 +49,7 @@ const QUIZ_ITEM: QuizItemMap = {
     labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
     buttonName: (myQuiz: boolean) => (myQuiz ? '똑표하기' : '똑스 풀기'),
-    path: (quizId: number, myQuiz: boolean) => (myQuiz ? `/vote/${quizId}` : `/solve/${quizId}`),
+    path: (quizId: number, myQuiz: boolean) => (myQuiz ? `/quiz/vote/${quizId}` : `/quiz/solve/${quizId}`),
   },
 };
 

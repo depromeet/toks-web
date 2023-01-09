@@ -19,8 +19,8 @@ function RankingList({ studyId }: RankingListProps) {
 
   return (
     <List>
-      {rankingList.quizRanks.map(rankItem => (
-        <RankingItem key={rankItem.rankingId} rankItem={rankItem} />
+      {rankingList.quizRanks.map((rankItem, index) => (
+        <RankingItem key={index} rankItem={rankItem} />
       ))}
     </List>
   );

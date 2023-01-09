@@ -15,11 +15,9 @@ export const FlexRow = styled.div`
 `;
 
 export const QuizListWrapper = styled.div`
-  max-width: 982px;
   width: 74%;
 `;
 
 export const RankingListWrapper = styled.div`
-  max-width: 304px;
-  width: 27%;
+  width: 26%;
 `;
