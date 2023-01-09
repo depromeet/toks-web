@@ -1,24 +1,19 @@
 import { Button, Calendar, DropDown, Input, InputChips, Text } from '@depromeet/toks-components';
 import { Flex, gutter, margin, size } from '@toss/emotion-utils';
-import { Controller, useWatch } from 'react-hook-form';
+import { add } from 'date-fns';
+import { Controller } from 'react-hook-form';
 
 import { STUDY_CATEGORY_OPTIONS } from 'onboarding/pages/CreateStudy/constants';
 import { useCreateStudyForm } from 'onboarding/pages/CreateStudy/hooks/useCreateStudyForm';
 
 import { Wrapper } from './style';
-import { add } from 'date-fns';
-import { useEffect } from 'react';
 
 export const CreateStudyForm = () => {
   const { register, control, createStudy, setValue, errors, isDisabled, isMaxLength, isRequiredText, getValues } =
     useCreateStudyForm();
 
-  const startedAt = useWatch({ control, name: 'startedAt' });
+  const { startedAt } = getValues();
   const startedAtToWeeks = add(new Date(startedAt), { days: 7 });
-
-  useEffect(() => {
-    setValue('endedAt', '');
-  }, [startedAt]);
 
   return (
     <Wrapper>

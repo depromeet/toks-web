@@ -1,4 +1,4 @@
-import { FULL_HEIGHT, getStudyDetail } from '@depromeet/toks-components';
+import { getStudyDetail } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
 import { Flex } from '@toss/emotion-utils';
 import React from 'react';
