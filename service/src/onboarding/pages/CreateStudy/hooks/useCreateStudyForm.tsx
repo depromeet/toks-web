@@ -39,8 +39,8 @@ export const useCreateStudyForm = () => {
         endedAt: formatEndedAt,
       });
 
-      await router.replace(PATHS.onboarding.createComplete(id));
-      await open({ title: '스터디가 생성되었습니다.', type: 'success' });
+      await open({ title: '스터디가 생성되었습니다.', type: 'success', showOnNextPage: true });
+      await router.push(PATHS.onboarding.createComplete({ studyId: id }));
     } catch (error: unknown) {
       if (isToksError(error)) {
         await open({ title: error.message, type: 'danger' });
