@@ -1,4 +1,5 @@
 import { isToksError } from '@depromeet/http';
+import { PATHS } from '@depromeet/path';
 import { useToast } from '@depromeet/toks-components';
 import { formatISO } from 'date-fns';
 import { useRouter } from 'next/router';
@@ -38,7 +39,7 @@ export const useCreateStudyForm = () => {
         endedAt: formatEndedAt,
       });
 
-      await router.replace(`/create-complete/${id}`);
+      await router.replace(PATHS.onboarding.createComplete(id));
       await open({ title: '스터디가 생성되었습니다.', type: 'success' });
     } catch (error: unknown) {
       if (isToksError(error)) {
