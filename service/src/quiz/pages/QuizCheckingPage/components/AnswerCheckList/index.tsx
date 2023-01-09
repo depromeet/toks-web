@@ -1,4 +1,4 @@
-import { Text } from '@depromeet/toks-components';
+import { Image, Text, emoji } from '@depromeet/toks-components';
 import { usePathParam, useTimer } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useEffect, useState } from 'react';
@@ -47,9 +47,21 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
   );
 
   const bestAnswer = sortedQuizReplies.quizReplyHistories[0];
+
   const restAnswer = sortedQuizReplies.quizReplyHistories.filter(
     element => element.quizReplyHistoryId !== bestAnswer.quizReplyHistoryId
   );
+
+  if (!bestAnswer || !restAnswer) {
+    return (
+      <Flex.Center css={{ margin: 'auto' }} direction="column">
+        <Image src={emoji.sad} width={170} height={170} alt="" />
+        <Text variant="title04" color="gray030">
+          해당 퀴즈에 작성된 답안이 없습니다.
+        </Text>
+      </Flex.Center>
+    );
+  }
 
   if (isQuizClosed) {
     return (
@@ -64,9 +76,9 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
         </Flex>
         <Spacing size={'12px'} />
         <AnswerCheckItem
-          creator={bestAnswer.creator}
-          answer={bestAnswer.answer}
-          likeCount={bestAnswer.likeCount}
+          creator={bestAnswer?.creator}
+          answer={bestAnswer?.answer}
+          likeCount={bestAnswer?.likeCount}
           isFold={false}
         />
         <Spacing size={'90px'} />
@@ -82,7 +94,7 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
         <AnswerWrapper>
           {restAnswer.map(({ answer, likeCount, creator }) => (
             <AnswerCheckItem
-              key={creator.userId}
+              key={creator?.userId}
               answer={answer}
               likeCount={likeCount}
               creator={creator}
@@ -106,7 +118,7 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
             <Spacing size={'2vh'} />
             {sortedPeerAnswers.map(({ answer, likeCount, creator }) => (
               <AnswerCheckItem
-                key={creator.userId}
+                key={creator?.userId}
                 answer={answer}
                 likeCount={likeCount}
                 creator={creator}
