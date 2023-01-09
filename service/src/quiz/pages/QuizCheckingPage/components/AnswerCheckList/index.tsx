@@ -57,7 +57,7 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
       <Flex.Center css={{ margin: 'auto' }} direction="column">
         <Image src={emoji.sad} width={170} height={170} alt="" />
         <Text variant="title04" color="gray030">
-          해당 퀴즈에 작성된 답변이 없습니다.
+          해당 퀴즈에 작성된 답안이 없습니다.
         </Text>
       </Flex.Center>
     );
