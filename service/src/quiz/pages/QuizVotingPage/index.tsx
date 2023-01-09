@@ -22,7 +22,7 @@ export default function QuizVotingPage() {
   }
   return (
     <>
-      <QuizNav mainTitle="똑표 하기" studyId={1} />
+      <QuizNav mainTitle="똑표 하기" studyId={quiz.studyId} />
       <Spacing size={25} />
       <Flex css={{ height: '100%' }}>
         <QuizQuestion />
