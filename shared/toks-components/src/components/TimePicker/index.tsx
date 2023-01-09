@@ -118,14 +118,16 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
     }, [hour, minute, ampm, setValue]);
 
     return (
-      <div style={{height: '85px', flexGrow: 0 }}>
+      <div style={{ height: '85px', flexGrow: 0 }}>
         <Text variant="headline">
           {label}
           {required && '*'}
         </Text>
-        <FlexRow style={{
-          alignItems: "flex-start"
-        }}>
+        <FlexRow
+          style={{
+            alignItems: 'flex-start',
+          }}
+        >
           <input
             type="hidden"
             {...register}
@@ -147,12 +149,12 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
               onChange={onHourUpdate}
               // value={hourError && ''}
               errorMessage={hourError}
-              errorMessageVariant='body03'
+              errorMessageVariant="body03"
             />
-            <div style={{lineHeight: '48px', paddingTop: '6px'}}>
-            <Text variant="body01" style={{ margin: '0 6px' }}>
-              :
-            </Text>
+            <div style={{ lineHeight: '48px', paddingTop: '6px' }}>
+              <Text variant="body01" style={{ margin: '0 6px' }}>
+                :
+              </Text>
             </div>
             <Input
               label=""
@@ -162,7 +164,7 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
               onChange={onMinuteUpdate}
               // value={minuteError && ''}
               errorMessage={minuteError}
-              errorMessageVariant='body03'
+              errorMessageVariant="body03"
             />
           </FlexRow>
           <ToggleSwitchButton ampm={ampm} setAmpm={setAmpm} />

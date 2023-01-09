@@ -18,7 +18,22 @@ interface Props extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
 }
 
 export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label = 'user', name, errorMessage, errorMessageVariant='body02', width, height, required, onFocus, onBlur, suffix, ...props }: Props, ref) => {
+  (
+    {
+      label = 'user',
+      name,
+      errorMessage,
+      errorMessageVariant = 'body02',
+      width,
+      height,
+      required,
+      onFocus,
+      onBlur,
+      suffix,
+      ...props
+    }: Props,
+    ref
+  ) => {
     const [isFocus, setIsFocus] = useState(false);
 
     return (
@@ -52,7 +67,11 @@ export const Input = forwardRef<HTMLInputElement, Props>(
           )}
         </StyledInput>
         {errorMessage && (
-          <Text variant={errorMessageVariant}  color="danger" style={{ position: 'absolute', bottom: '-20px', whiteSpace: 'pre' }}>
+          <Text
+            variant={errorMessageVariant}
+            color="danger"
+            style={{ position: 'absolute', bottom: '-20px', whiteSpace: 'pre' }}
+          >
             {errorMessage}
           </Text>
         )}
