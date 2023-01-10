@@ -11,6 +11,8 @@ import { theme } from '@depromeet/theme';
 import { RecoilRoot } from 'recoil';
 
 import 'yet-another-react-lightbox/styles.css';
+import { ErrorBoundary } from '@toss/error-boundary';
+import Error from 'components/Error';
 
 const normalizedStyles = css`
   ${emotionNormalize}
@@ -63,8 +65,13 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
       <ThemeProvider theme={theme}>
         <QueryClientProvider client={queryClient}>
           <OverlayProvider>
-            {' '}
-            <RecoilRoot>{getLayout(<Component {...pageProps} />)} </RecoilRoot>
+            <RecoilRoot>
+              {getLayout(
+                <ErrorBoundary renderFallback={() => <Error />}>
+                  <Component {...pageProps} />
+                </ErrorBoundary>
+              )}
+            </RecoilRoot>
           </OverlayProvider>
         </QueryClientProvider>
       </ThemeProvider>

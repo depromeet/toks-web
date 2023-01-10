@@ -100,6 +100,7 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
             .otherwise(() => 'general' as const)}
           css={{ justifySelf: 'flex-end' }}
           onClick={onClick}
+          disabled={studyStatus !== 'IN_PROGRESS'}
         >
           입장하기
         </Button>
