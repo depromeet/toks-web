@@ -41,7 +41,7 @@ export const useQuizCreate = () => {
         values.imageUrls = imageUrls;
       }
 
-      const { id } = await postQuizCreate({
+      const { studyId: createStudyId } = await postQuizCreate({
         ...values,
         quizType: 'MARK_DOWN',
         studyId: Number(studyId),
@@ -49,10 +49,8 @@ export const useQuizCreate = () => {
         round: study.latestQuizRound + 1,
       });
 
-      console.log(id);
-
       await open({ title: '퀴즈가 생성되었습니다.', type: 'success', showOnNextPage: true });
-      await router.push(PATHS.quiz.studyDetail({ studyId: id }));
+      await router.push(PATHS.quiz.studyDetail({ studyId: createStudyId }));
     } catch (error: unknown) {
       if (isToksError(error)) {
         await open({ title: error.message, type: 'danger' });
