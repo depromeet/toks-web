@@ -1,5 +1,5 @@
 import { Button, Calendar, DropDown, TimePicker, Upload } from '@depromeet/toks-components';
-import { Flex } from '@toss/emotion-utils';
+import { Flex, Spacing } from '@toss/emotion-utils';
 import { sub } from 'date-fns';
 import { Control, Controller, FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 
@@ -12,12 +12,14 @@ interface QuizCreateInputListProps {
   setValue: UseFormSetValue<QuizCreateForm>;
   control: Control<QuizCreateForm, number>;
   endedAt: string;
+  className?: string;
 }
 
-export const QuizCreateInputList = ({ register, setValue, control, endedAt }: QuizCreateInputListProps) => {
+export const QuizCreateInputList = ({ register, setValue, control, endedAt, className }: QuizCreateInputListProps) => {
   return (
     <Flex
       direction="column"
+      className={className}
       css={{
         width: '340px',
         gap: '24px',
@@ -46,11 +48,12 @@ export const QuizCreateInputList = ({ register, setValue, control, endedAt }: Qu
         onDropFiles={files => {
           setValue('imageFiles', files);
         }}
-        height={160}
+        height={140}
         labelText="추가하기"
         required
         multiple
       />
+      <Spacing size={16} />
       <Flex
         css={{
           gap: '24px',

@@ -19,19 +19,22 @@ const DynamicEditor = dynamic(
 interface QuizCreateEditorProps {
   register: UseFormRegister<QuizCreateForm>;
   setValue: UseFormSetValue<QuizCreateForm>;
+  className?: string;
 }
 
-export const QuizCreateEditor = ({ register, setValue }: QuizCreateEditorProps) => {
+export const QuizCreateEditor = ({ register, setValue, className }: QuizCreateEditorProps) => {
   const [isAddDescription, setIsAddDescription] = useState(false);
 
   return (
     <Flex
+      className={className}
       css={{
         gap: '24px',
         flex: 1,
         padding: '32px',
         backgroundColor: `${theme.colors.gray110}`,
         borderRadius: '16px',
+        height: 'fit-content',
       }}
       direction="column"
     >
@@ -75,7 +78,7 @@ export const QuizCreateEditor = ({ register, setValue }: QuizCreateEditorProps) 
           </button>
         )}
       </Flex>
-      <div css={{ height: '100%' }}>
+      <div css={{ height: '306px' }}>
         <SSRSuspense fallback={<Skeleton />}>
           <DynamicEditor
             label="답안"

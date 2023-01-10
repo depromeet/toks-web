@@ -12,7 +12,7 @@ import { useMutation } from 'react-query';
 
 import { UserMenu } from './UserMenu';
 
-function Component({ children, fullWidth = false }: { children: ReactNode; fullWidth?: boolean }) {
+function Component({ children, fullWidth = true }: { children: ReactNode; fullWidth?: boolean }) {
   const { data: user, refetch } = useSafelyGetUser();
   const { toggle, close } = useUserMenuDialog();
   const { open } = useToast();

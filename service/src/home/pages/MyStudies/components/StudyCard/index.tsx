@@ -84,7 +84,7 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
 
         <LimitLineText variant="title04">{title}</LimitLineText>
 
-        <Spacing size={17} />
+        <Spacing size={16} />
 
         <Tag.Row css={[width100, padding(0)]}>
           {tags.map(tag => (
@@ -92,7 +92,7 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
           ))}
         </Tag.Row>
 
-        <Spacing size={51} />
+        <Spacing size={50} />
 
         <Button
           type={match(quizStatus)
