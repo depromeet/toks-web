@@ -5,6 +5,7 @@ import { Flex } from '@toss/emotion-utils';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form';
+import { QuizCreateForm } from '../../types';
 
 const DynamicEditor = dynamic(
   async () => {
@@ -15,8 +16,8 @@ const DynamicEditor = dynamic(
 );
 
 interface QuizCreateEditorProps {
-  register: UseFormRegister<FieldValues>;
-  setValue: UseFormSetValue<FieldValues>;
+  register: UseFormRegister<QuizCreateForm>;
+  setValue: UseFormSetValue<QuizCreateForm>;
 }
 
 export const QuizCreateEditor = ({ register, setValue }: QuizCreateEditorProps) => {

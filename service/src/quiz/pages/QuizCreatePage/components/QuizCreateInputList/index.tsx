@@ -3,14 +3,17 @@ import { Flex } from '@toss/emotion-utils';
 import { Control, Controller, FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form';
 
 import { QUIZ_LIMIT_TIME } from 'quiz/pages/QuizCreatePage/constants';
+import { sub } from 'date-fns';
+import { QuizCreateForm } from '../../types';
 
 interface QuizCreateInputListProps {
-  register: UseFormRegister<FieldValues>;
-  setValue: UseFormSetValue<FieldValues>;
-  control: Control<FieldValues, number>;
+  register: UseFormRegister<QuizCreateForm>;
+  setValue: UseFormSetValue<QuizCreateForm>;
+  control: Control<QuizCreateForm, number>;
+  endedAt: string;
 }
 
-export const QuizCreateInputList = ({ register, setValue, control }: QuizCreateInputListProps) => {
+export const QuizCreateInputList = ({ register, setValue, control, endedAt }: QuizCreateInputListProps) => {
   return (
     <Flex
       direction="column"
@@ -24,8 +27,20 @@ export const QuizCreateInputList = ({ register, setValue, control }: QuizCreateI
         control={control}
         render={({ field }) => <DropDown {...field} label="제한 시간" options={QUIZ_LIMIT_TIME} required />}
       />
-      <Calendar label="똑스 공개 날짜" dateFormat="mm/dd/yy" minDate={new Date()} {...register('startedAt')} required />
-      <TimePicker label="똑스 공개 시간" setValue={setValue} {...register('timepicker')} required />
+      <Calendar
+        label="똑스 공개 날짜"
+        dateFormat="mm/dd/yy"
+        minDate={new Date()}
+        maxDate={sub(new Date(endedAt), { days: 1 })}
+        {...register('startedAt')}
+        required
+      />
+      <TimePicker
+        label="똑스 공개 시간"
+        setValue={setValue as unknown as UseFormSetValue<FieldValues>}
+        {...register('timepicker')}
+        required
+      />
       <Upload
         onDropFiles={files => {
           setValue('imageFiles', files);

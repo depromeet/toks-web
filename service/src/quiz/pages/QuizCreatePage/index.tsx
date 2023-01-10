@@ -12,9 +12,12 @@ import { QuizCreateEditor } from './components/QuizCreateEditor';
 import { QuizCreateInputList } from './components/QuizCreateInputList';
 import { useQuizCreate } from './hooks/useQuizCreate';
 import { QuizCreateForm } from './types';
+import { DEFAULT_QUIZ_FORM_VALUE } from './constants';
 
 const QuizCreatePage = () => {
-  const { register, setValue, control, getValues, setError } = useForm();
+  const { register, setValue, control, getValues, setError } = useForm<QuizCreateForm>({
+    defaultValues: DEFAULT_QUIZ_FORM_VALUE,
+  });
   const { createQuiz } = useQuizCreate();
   const studyId = usePathParam('studyId', { suspense: true });
 
@@ -37,7 +40,7 @@ const QuizCreatePage = () => {
           }}
           onSubmit={(e: React.FormEvent) => {
             e.preventDefault();
-            const values = getValues() as QuizCreateForm;
+            const values = getValues();
 
             if (!values.answer) {
               setError('answer', {
@@ -58,7 +61,12 @@ const QuizCreatePage = () => {
             }}
           >
             <QuizCreateEditor register={register} setValue={setValue} />
-            <QuizCreateInputList register={register} setValue={setValue} control={control} />
+            <QuizCreateInputList
+              register={register}
+              setValue={setValue}
+              control={control}
+              endedAt={studyInfo.endedAt}
+            />
           </Flex>
         </form>
       </Flex>

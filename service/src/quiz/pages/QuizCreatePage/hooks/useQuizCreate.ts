@@ -49,9 +49,10 @@ export const useQuizCreate = () => {
         round: study.latestQuizRound + 1,
       });
 
+      console.log(id);
+
       await open({ title: '퀴즈가 생성되었습니다.', type: 'success', showOnNextPage: true });
       await router.push(PATHS.quiz.studyDetail({ studyId: id }));
-      await open({ title: '퀴즈가 생성되었습니다.', type: 'success' });
     } catch (error: unknown) {
       if (isToksError(error)) {
         await open({ title: error.message, type: 'danger' });
