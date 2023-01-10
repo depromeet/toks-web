@@ -22,7 +22,7 @@ export const useQuizCreate = () => {
 
   const { mutate: createQuiz } = useMutation(async (values: QuizCreateForm) => {
     try {
-      const [hour, minute, second] = values.timepicker.split(':');
+      const [hour, minute, second] = values.timepicker?.split(':') ?? ['0', '0', '0'];
       const formatStartedAt = formatISO(
         add(new Date(values.startedAt), {
           hours: Number(hour),
@@ -49,9 +49,10 @@ export const useQuizCreate = () => {
         round: study.latestQuizRound + 1,
       });
 
+      console.log(id);
+
       await open({ title: '퀴즈가 생성되었습니다.', type: 'success', showOnNextPage: true });
       await router.push(PATHS.quiz.studyDetail({ studyId: id }));
-      await open({ title: '퀴즈가 생성되었습니다.', type: 'success' });
     } catch (error: unknown) {
       if (isToksError(error)) {
         await open({ title: error.message, type: 'danger' });

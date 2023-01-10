@@ -1,10 +1,10 @@
 export interface QuizCreateForm {
   question: string;
-  quizType: 'MARK_DOWN' | 'O_X';
+  quizType: string;
   description?: string;
   answer: string;
   startedAt: string;
-  timepicker: string;
+  timepicker?: string;
   durationOfSecond: number;
   studyId: number;
   round: number;
