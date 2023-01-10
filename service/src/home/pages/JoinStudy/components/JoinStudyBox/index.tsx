@@ -31,7 +31,6 @@ export function JoinStudyBox() {
           time: 2000,
         });
       }
-      console.log(err);
     }
   });
 
