@@ -86,7 +86,15 @@ export const StyledChip = styled('div')<{ isFocus?: boolean }>`
     flex-wrap: nowrap;
     background-color: ${theme.colors.gray100};
     overflow: auto;
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
+
+  & .p-chips .p-chips-multiple-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+
   & .p-chips .p-chips-multiple-container .p-chips-token {
     padding: 4px 12px;
     border-radius: 8px;
