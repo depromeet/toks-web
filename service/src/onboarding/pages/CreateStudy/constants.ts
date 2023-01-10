@@ -1,4 +1,5 @@
 import { CapacityResponse } from '@depromeet/toks-components';
+
 import { CreateStudyFormValues } from './components/CreateStudyForm/type';
 
 export const STUDY_CATEGORY_OPTIONS: Array<{ label: string; value: CapacityResponse }> = [
