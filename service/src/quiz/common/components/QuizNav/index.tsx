@@ -1,7 +1,7 @@
 import { PATHS } from '@depromeet/path';
 import { Icon, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
-import { Flex } from '@toss/emotion-utils';
+import { Flex, margin } from '@toss/emotion-utils';
 import Link from 'next/link';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 export function QuizNav({ mainTitle, subTitle, studyId }: Props) {
   return (
     <Flex direction="column">
-      <Flex css={{ marginLeft: '20px' }}>
+      <Flex css={margin.top(18)}>
         <Link href={PATHS.quiz.studyDetail({ studyId })} passHref prefetch>
           <IconButton iconName="ic-back" height={35} role="a" />
         </Link>

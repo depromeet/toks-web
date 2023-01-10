@@ -1,6 +1,6 @@
 import { getStudyDetail } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
-import { Flex } from '@toss/emotion-utils';
+import { Flex, height100, Spacing, width100 } from '@toss/emotion-utils';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
@@ -27,13 +27,14 @@ const QuizCreatePage = () => {
   }
 
   return (
-    <>
+    <Flex css={{ height: FULL_HEIGHT }} direction="column">
       <QuizNav
         mainTitle={`${studyInfo.latestQuizRound + 1}회차 똑스 만들기`}
         studyId={studyId}
         subTitle={`${studyInfo.name}`}
       />
-      <Flex css={{ marginTop: '101px' }}>
+      <Spacing size={100} />
+      <Flex.Center css={[height100, width100]}>
         <form
           css={{
             width: '100%',
@@ -52,25 +53,25 @@ const QuizCreatePage = () => {
 
             createQuiz(values);
           }}
+          css={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+            height: '100%',
+            position: 'relative',
+          }}
         >
-          <Flex
-            css={{
-              flex: 1,
-              width: '100%',
-              gap: '48px',
-            }}
-          >
-            <QuizCreateEditor register={register} setValue={setValue} />
-            <QuizCreateInputList
-              register={register}
-              setValue={setValue}
-              control={control}
-              endedAt={studyInfo.endedAt}
-            />
-          </Flex>
+          <QuizCreateEditor register={register} setValue={setValue} css={{ width: '70.7%', marginRight: '3.5%' }} />
+          <QuizCreateInputList
+            register={register}
+            setValue={setValue}
+            control={control}
+            endedAt={studyInfo.endedAt}
+            css={{ width: '25.8%' }}
+          />
         </form>
-      </Flex>
-    </>
+      </Flex.Center>
+    </Flex>
   );
 };
 

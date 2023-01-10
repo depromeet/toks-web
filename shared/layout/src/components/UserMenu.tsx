@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { Image, Text } from '@depromeet/toks-components';
+import { BP, Image, MAX_WIDTH, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Flex, Spacing } from '@toss/emotion-utils';
 
@@ -48,7 +48,6 @@ const UserMenuCard = styled.div`
   flex-direction: column;
   align-items: flex-start;
   padding: 28px;
-  right: 0;
   top: 70px;
   right: 96px;
 
@@ -60,6 +59,14 @@ const UserMenuCard = styled.div`
   background-color: ${theme.colors.gray100};
 
   ${theme.shadows.book01};
+
+  @media (min-width: ${MAX_WIDTH}) {
+    right: calc(96px + (100vw - ${MAX_WIDTH}) / 2);
+  }
+
+  @media (max-width: ${BP.mobile}) {
+    right: 16px;
+  }
 `;
 
 const UserInfo = styled.div`
