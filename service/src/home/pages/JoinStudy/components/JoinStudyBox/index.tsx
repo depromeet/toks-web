@@ -1,3 +1,4 @@
+import { isToksError } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { Button, Image, Tag, Text, getStudy, useToast } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
@@ -12,7 +13,6 @@ import { StudyInfo } from 'home/pages/JoinStudy/components/StudyInfo';
 import { postStudyById } from 'home/pages/JoinStudy/remotes/study';
 
 import { STUDY_CATEGORY_OPTIONS } from './constants';
-import { isToksError } from '@depromeet/http';
 
 export function JoinStudyBox() {
   const studyId = usePathParam('studyId', { suspense: true });
