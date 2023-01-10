@@ -1,5 +1,6 @@
+import { isToksError } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
-import { Button, Image, Tag, Text, getStudy } from '@depromeet/toks-components';
+import { Button, Image, Tag, Text, getStudy, useToast } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
 import { kstFormat } from '@toss/date';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
@@ -16,13 +17,20 @@ import { STUDY_CATEGORY_OPTIONS } from './constants';
 export function JoinStudyBox() {
   const studyId = usePathParam('studyId', { suspense: true });
   const router = useRouter();
+  const { open } = useToast();
 
   const { mutate: studyMutation } = useMutation(async () => {
     try {
       await postStudyById(studyId);
       await router.push(PATHS.quiz.studyDetail({ studyId }));
-    } catch (err) {
-      console.log(err);
+    } catch (err: unknown) {
+      if (isToksError(err) && err.message === 'error.invalid.already-join-user') {
+        await open({
+          type: 'danger',
+          title: '이미 해당 스터디에 참여하고 있습니다.',
+          time: 2000,
+        });
+      }
     }
   });
 
@@ -44,12 +52,16 @@ export function JoinStudyBox() {
     <Wrapper>
       <div>
         <Text variant="title03">{study.name}</Text>;{/* tag margin 위아래 10 고려하여 18->8 */}
-        <Spacing size={8} />
-        <Tag.Row>
-          {study.tags.map(({ id, name }) => (
-            <Tag key={id}>{name}</Tag>
-          ))}
-        </Tag.Row>
+        {study.tags.length > 0 && (
+          <>
+            <Spacing size={8} />
+            <Tag.Row>
+              {study.tags.map(({ id, name }) => (
+                <Tag key={id}>{name}</Tag>
+              ))}
+            </Tag.Row>
+          </>
+        )}
       </div>
       <Flex direction="column" css={{ gap: '32px' }}>
         <StudyInfo
