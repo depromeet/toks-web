@@ -1,6 +1,6 @@
 import { getStudyDetail } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
-import { Flex, height100, Spacing, width100 } from '@toss/emotion-utils';
+import { Flex, Spacing, height100, width100 } from '@toss/emotion-utils';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
