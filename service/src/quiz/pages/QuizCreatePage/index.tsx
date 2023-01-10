@@ -1,4 +1,4 @@
-import { getStudyDetail } from '@depromeet/toks-components';
+import { FULL_HEIGHT, getStudyDetail } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
 import { Flex, Spacing, height100, width100 } from '@toss/emotion-utils';
 import React from 'react';
@@ -37,7 +37,11 @@ const QuizCreatePage = () => {
       <Flex.Center css={[height100, width100]}>
         <form
           css={{
+            display: 'flex',
+            justifyContent: 'center',
             width: '100%',
+            height: '100%',
+            position: 'relative',
           }}
           onSubmit={(e: React.FormEvent) => {
             e.preventDefault();
@@ -52,13 +56,6 @@ const QuizCreatePage = () => {
             }
 
             createQuiz(values);
-          }}
-          css={{
-            display: 'flex',
-            justifyContent: 'center',
-            width: '100%',
-            height: '100%',
-            position: 'relative',
           }}
         >
           <QuizCreateEditor register={register} setValue={setValue} css={{ width: '70.7%', marginRight: '3.5%' }} />
