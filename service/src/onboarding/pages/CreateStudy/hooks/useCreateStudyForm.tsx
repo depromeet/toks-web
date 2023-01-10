@@ -1,4 +1,5 @@
 import { isToksError } from '@depromeet/http';
+import { PATHS } from '@depromeet/path';
 import { useToast } from '@depromeet/toks-components';
 import { formatISO } from 'date-fns';
 import { useRouter } from 'next/router';
@@ -7,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 
 import { CreateStudyFormValues } from '../components/CreateStudyForm/type';
+import { DEFAULT_STUDY_CREATE_FORM } from '../constants';
 import { postStudy } from '../remotes/study';
 
 export const useCreateStudyForm = () => {
@@ -17,7 +19,7 @@ export const useCreateStudyForm = () => {
     handleSubmit,
     setValue,
     formState: { isValid, errors },
-  } = useForm<CreateStudyFormValues>({ mode: 'onChange' });
+  } = useForm<CreateStudyFormValues>({ mode: 'onChange', defaultValues: DEFAULT_STUDY_CREATE_FORM });
 
   const router = useRouter();
 
@@ -38,8 +40,8 @@ export const useCreateStudyForm = () => {
         endedAt: formatEndedAt,
       });
 
-      await router.replace(`/create-complete/${id}`);
-      await open({ title: '스터디가 생성되었습니다.', type: 'success' });
+      await open({ title: '스터디가 생성되었습니다.', type: 'success', showOnNextPage: true });
+      await router.push(PATHS.onboarding.createComplete({ studyId: id }));
     } catch (error: unknown) {
       if (isToksError(error)) {
         await open({ title: error.message, type: 'danger' });
