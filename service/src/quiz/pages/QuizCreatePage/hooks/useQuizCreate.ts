@@ -30,7 +30,6 @@ export const useQuizCreate = () => {
 
       if (values.imageFiles) {
         const imageUrls = await postImageUpload(values.imageFiles);
-        console.log(imageUrls);
         values.imageUrls = imageUrls;
       }
 
