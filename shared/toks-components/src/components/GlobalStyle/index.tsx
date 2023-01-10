@@ -39,6 +39,7 @@ const globalCss = css`
   }
 
   body {
+    overflow-x: hidden;
     height: 100vh;
 
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
