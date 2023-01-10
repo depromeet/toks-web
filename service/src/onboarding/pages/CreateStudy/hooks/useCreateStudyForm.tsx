@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 
 import { CreateStudyFormValues } from '../components/CreateStudyForm/type';
+import { DEFAULT_STUDY_CREATE_FORM } from '../constants';
 import { postStudy } from '../remotes/study';
 
 export const useCreateStudyForm = () => {
@@ -18,7 +19,7 @@ export const useCreateStudyForm = () => {
     handleSubmit,
     setValue,
     formState: { isValid, errors },
-  } = useForm<CreateStudyFormValues>({ mode: 'onChange' });
+  } = useForm<CreateStudyFormValues>({ mode: 'onChange', defaultValues: DEFAULT_STUDY_CREATE_FORM });
 
   const router = useRouter();
 
