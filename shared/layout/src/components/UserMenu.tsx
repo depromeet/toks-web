@@ -10,11 +10,22 @@ interface Props {
   handleLogout: VoidFunction;
 }
 
+const KAKAO_BASE_IMAGE = 'http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg';
+const BASE_IMAGE = 'https://toks-web-assets.s3.amazonaws.com/toks-emoji/ic-base-profile.png';
+
 export function UserMenu({ img, name, nickname, handleLogout }: Props) {
+  const hasIndividualProfile = img !== KAKAO_BASE_IMAGE;
+
   return (
     <UserMenuCard>
       <UserInfo>
-        <Image src={img} alt="" width={40} height={40} style={{ borderRadius: '50%' }} />
+        <Image
+          src={hasIndividualProfile ? img : BASE_IMAGE}
+          alt=""
+          width={40}
+          height={40}
+          style={{ borderRadius: '50%' }}
+        />
         <Flex direction="column" align="flex-start" style={{ gap: '4px' }}>
           <Text variant="subhead" color="white">
             {name}
