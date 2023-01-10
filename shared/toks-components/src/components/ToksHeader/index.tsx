@@ -30,21 +30,21 @@ function isMember(props: ProfileButtonProps): props is MemberProps {
   return false;
 }
 
+const KAKAO_BASE_IMAGE = 'http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg';
+const BASE_IMAGE = 'https://toks-web-assets.s3.amazonaws.com/toks-emoji/ic-base-profile.png';
+
 export function ToksHeader({ onClickLogo, ...rest }: HeaderProps) {
   return (
     <Header>
-      <HeaderFilter />
-      <Flex style={{ zIndex: 2 }}>
-        <ClickableImage
-          src="https://asset.tokstudy.com/logo.png"
-          alt="toks study"
-          draggable={false}
-          width={70}
-          height={24}
-          onClick={onClickLogo}
-        />
-        <ProfileButton {...rest} />
-      </Flex>
+      <ClickableImage
+        src="https://asset.tokstudy.com/logo.png"
+        alt="toks study"
+        draggable={false}
+        width={70}
+        height={24}
+        onClick={onClickLogo}
+      />
+      <ProfileButton {...rest} />
     </Header>
   );
 }
@@ -66,7 +66,13 @@ function ProfileButton(props: ProfileButtonProps) {
   return (
     <Button onClick={onClickButton}>
       <ImageWrapper>
-        <ClickableImage src={imgUrl} alt="" width={22} height={22} style={{ borderRadius: '50%' }} />
+        <ClickableImage
+          src={imgUrl === KAKAO_BASE_IMAGE ? BASE_IMAGE : imgUrl}
+          alt=""
+          width={22}
+          height={22}
+          style={{ borderRadius: '50%' }}
+        />
       </ImageWrapper>
       <Text
         variant="subhead"
@@ -106,6 +112,8 @@ const Header = styled.header`
   left: 0;
   top: 0;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   min-width: ${MIN_WIDTH};
   width: 100vw;
@@ -121,25 +129,6 @@ const Header = styled.header`
   @media (max-width: ${BP.mobile}) {
     padding: 0 16px;
   }
-`;
-
-const Flex = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-const HeaderFilter = styled.div`
-  background-color: rgba(23, 23, 23, 0.6);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
 `;
 
 const Button = styled.button`

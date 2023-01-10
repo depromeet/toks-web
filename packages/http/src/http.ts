@@ -51,6 +51,7 @@ function createTossBankErrorFromAxiosError(error: AxiosError): ToksErrorResponse
     const toksError = error as ToksError;
 
     toksError.isToksError = true;
+    toksError.response = structuredClone(toksError.response);
     toksError.message = toksError.response.data.message;
     toksError.code = toksError.response.data.code ?? '';
     toksError.status = toksError.response.status;
@@ -146,8 +147,8 @@ instance.interceptors.response.use(
 instance.interceptors.response.use(
   response => response.data,
   async function (error: ToksError) {
-    if (publicAPIStore.has(error.response.config.url)) {
-      publicAPIStore.delete(error.response.config.url);
+    if (publicAPIStore.has(error.response?.config.url)) {
+      publicAPIStore.delete(error.response?.config.url);
       return null;
     }
 
