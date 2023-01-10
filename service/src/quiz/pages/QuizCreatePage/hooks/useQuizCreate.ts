@@ -22,7 +22,7 @@ export const useQuizCreate = () => {
 
   const { mutate: createQuiz } = useMutation(async (values: QuizCreateForm) => {
     try {
-      const [hour, minute, second] = values.timepicker.split(':');
+      const [hour, minute, second] = values.timepicker?.split(':') ?? ['0', '0', '0'];
       const formatStartedAt = formatISO(
         add(new Date(values.startedAt), {
           hours: Number(hour),
