@@ -3,7 +3,7 @@ import { PATHS } from '@depromeet/path';
 import { getStudyDetail, useToast } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
 import { useSuspendedQuery } from '@toss/react-query';
-import { add, formatISO } from 'date-fns';
+import { format } from 'date-fns';
 import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
 
@@ -22,14 +22,7 @@ export const useQuizCreate = () => {
 
   const { mutate: createQuiz } = useMutation(async (values: QuizCreateForm) => {
     try {
-      const [hour, minute, second] = values.timepicker?.split(':') ?? ['0', '0', '0'];
-      const formatStartedAt = formatISO(
-        add(new Date(values.startedAt), {
-          hours: Number(hour),
-          minutes: Number(minute),
-          seconds: Number(second),
-        })
-      );
+      const formatStartedAt = format(new Date(values.startedAt), 'yyyy-MM-dd').concat(`T${values.timepicker}+09:00`);
 
       if (!study) {
         return;
