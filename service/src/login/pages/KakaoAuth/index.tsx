@@ -25,16 +25,17 @@ function KakaoAuth() {
   }
 
   useSuspendedQuery(getUserinfo.queryKey(accessToken), () => getUserinfo({ accessToken }), {
-    onSuccess: user => {
+    onSuccess: async user => {
       if (user == null) {
         router.reload();
         return;
       }
 
+      await queryClient.refetchQueries(safelyGetUser.queryKey);
       if (user.nickname === '닉네임을 등록해주세요') {
-        router.replace(PATHS.login.nickname);
+        await router.replace(PATHS.login.nickname);
       } else {
-        router.replace(PATHS.home.myStudy);
+        await router.replace(PATHS.home.myStudy);
       }
     },
   });
