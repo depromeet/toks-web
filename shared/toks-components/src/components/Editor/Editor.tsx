@@ -19,7 +19,7 @@ export default function Editor({ onChange, label, required, ...rest }: EditorPro
   const editorRef = useRef<TuiEditor>(null);
   const handleChange = useDebounce(() => {
     if (editorRef.current) {
-      const data = editorRef.current.getInstance().getHTML();
+      const data = editorRef.current.getInstance().getMarkdown();
       onChange?.(data);
     }
   }, 200);
