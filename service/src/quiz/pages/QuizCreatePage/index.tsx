@@ -10,9 +10,9 @@ import { QUERY_KEYS } from 'quiz/constants/queryKeys';
 
 import { QuizCreateEditor } from './components/QuizCreateEditor';
 import { QuizCreateInputList } from './components/QuizCreateInputList';
+import { DEFAULT_QUIZ_FORM_VALUE } from './constants';
 import { useQuizCreate } from './hooks/useQuizCreate';
 import { QuizCreateForm } from './types';
-import { DEFAULT_QUIZ_FORM_VALUE } from './constants';
 
 const QuizCreatePage = () => {
   const { register, setValue, control, getValues, setError } = useForm<QuizCreateForm>({
