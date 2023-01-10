@@ -1,8 +1,7 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 
-const WRAPPER_HEIGHT = 'calc(80vh - 386px)';
-const ANSWERWRAPPER_HEIGHT = 'calc(73vh - 409px)';
+const ANSWERWRAPPER_HEIGHT = 'calc(73vh - 465px)';
 
 export const StudyPeerAnswerWrapper = styled.div`
   overflow-y: auto;
@@ -37,5 +36,5 @@ export const TextContainer = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  height: ${WRAPPER_HEIGHT};
+  height: 100%;
 `;

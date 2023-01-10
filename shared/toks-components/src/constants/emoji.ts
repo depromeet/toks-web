@@ -9,4 +9,5 @@ export const emoji = {
   sad: `${baseURL}sad_emoji.svg`, //슬픔
   spacedOut: `${baseURL}spaced_out_emoji.svg`, //멍
   studying: `${baseURL}studying_emoji.svg`, //보통-스터디 중
+  hood: `${baseURL}hood_emoji.svg`, // 후드
 } as const;

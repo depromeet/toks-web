@@ -8,16 +8,16 @@ import { getQuizById } from 'quiz/common/components/QuizQuestion/remotes/quiz';
 import { QUERY_KEYS } from 'quiz/constants/queryKeys';
 
 import { QuizTimer } from '../QuizTimer';
-import { DescriptionContainer, ImageContainer, Line, RoundInfo, Wrapper } from './style';
+import { DescriptionContainer, ImageContainer, Line, RoundInfo, StudyQuestionWrapper, ViewerContainer } from './style';
 
 type ImageUrl = {
   src: string;
 };
 
 type QuizQuestionProps = {
-  myAnswer?: string | undefined;
+  quizAnswer?: string | undefined;
 };
-export function QuizQuestion({ myAnswer }: QuizQuestionProps) {
+export function QuizQuestion({ quizAnswer }: QuizQuestionProps) {
   const quizIdParams = usePathParam('quizIdParams', { suspense: true });
 
   const urlArray: ImageUrl[] = [];
@@ -50,7 +50,7 @@ export function QuizQuestion({ myAnswer }: QuizQuestionProps) {
   };
 
   const showMyAnswer = () => {
-    if (myAnswer != null) {
+    if (quizAnswer != null) {
       return (
         <>
           <Spacing size={32} />
@@ -58,7 +58,9 @@ export function QuizQuestion({ myAnswer }: QuizQuestionProps) {
             똑스 답안
           </Text>
           <Spacing size={12} />
-          <ToastViewer answer={myAnswer} />
+          <ViewerContainer>
+            <ToastViewer answer={quizAnswer} />
+          </ViewerContainer>
         </>
       );
     } else {
@@ -67,7 +69,7 @@ export function QuizQuestion({ myAnswer }: QuizQuestionProps) {
   };
 
   return (
-    <Wrapper>
+    <StudyQuestionWrapper>
       <RoundInfo>
         <Text variant="body02" color="primary">
           {quiz.round}회차 진행 중
@@ -81,10 +83,10 @@ export function QuizQuestion({ myAnswer }: QuizQuestionProps) {
         </Text>
       </Flex>
       <Spacing size={24} />
-      <Text variant="title04">Q. {quiz?.question}</Text>
-      <Spacing size={24} />
-      {showImages()}
       <DescriptionContainer>
+        <Text variant="title04">Q. {quiz?.question}</Text>
+        <Spacing size={24} />
+        {showImages()}
         <Text variant="body02" color="gray040">
           {quiz?.description}
         </Text>
@@ -98,6 +100,6 @@ export function QuizQuestion({ myAnswer }: QuizQuestionProps) {
           <QuizTimer duration={durationTime} />
         </Text>
       </Flex>
-    </Wrapper>
+    </StudyQuestionWrapper>
   );
 }

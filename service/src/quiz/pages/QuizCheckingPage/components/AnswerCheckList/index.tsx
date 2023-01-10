@@ -1,16 +1,16 @@
-import { Image, Text, emoji } from '@depromeet/toks-components';
+import { Text } from '@depromeet/toks-components';
 import { usePathParam, useTimer } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 
 import { DoneNumberNotice } from 'quiz/common/components/DoneNumberNotice';
-import { getUser } from 'quiz/common/remotes/user';
 import { QUERY_KEYS } from 'quiz/constants/queryKeys';
 import { getSortedQuizReplyById } from 'quiz/pages/QuizCheckingPage/remotes/sortingQuizAply';
 
 import { AnswerCheckItem } from '../AnswerCheckItem';
-import { AnswerWrapper, Wrapper } from './style';
+import { EmptyAnswer } from '../EmptyAnswer';
+import { AnswerWrapper, AnswerWrapperDuringQuiz, Wrapper } from './style';
 
 export function AnswerCheckList({ durationTime }: { durationTime: number }) {
   const [isQuizClosed, setIsQuizClosed] = useState(false);
@@ -36,15 +36,9 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
     }
   );
 
-  const { data: user } = useQuery(QUERY_KEYS.GET_USER_INFO, getUser);
-
-  if (!sortedQuizReplies || !user) {
-    return null;
+  if (!sortedQuizReplies) {
+    return <EmptyAnswer />;
   }
-
-  const sortedPeerAnswers = sortedQuizReplies.quizReplyHistories.filter(
-    element => element.creator.nickname !== user.nickname
-  );
 
   const bestAnswer = sortedQuizReplies.quizReplyHistories[0];
 
@@ -53,14 +47,7 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
   );
 
   if (!bestAnswer || !restAnswer) {
-    return (
-      <Flex.Center css={{ margin: 'auto' }} direction="column">
-        <Image src={emoji.sad} width={170} height={170} alt="" />
-        <Text variant="title04" color="gray030">
-          해당 퀴즈에 작성된 답안이 없습니다.
-        </Text>
-      </Flex.Center>
-    );
+    return <EmptyAnswer />;
   }
 
   if (isQuizClosed) {
@@ -112,19 +99,21 @@ export function AnswerCheckList({ durationTime }: { durationTime: number }) {
             <Text variant="headline" color="gray030">
               팀원들의 답안 확인
             </Text>
-            <DoneNumberNotice done={sortedPeerAnswers.length} />
+            <DoneNumberNotice done={sortedQuizReplies.quizReplyHistories.length} />
           </Flex>
           <Flex direction="column" css={{ overflow: 'auto' }}>
-            <Spacing size={'2vh'} />
-            {sortedPeerAnswers.map(({ answer, likeCount, creator }) => (
-              <AnswerCheckItem
-                key={creator?.userId}
-                answer={answer}
-                likeCount={likeCount}
-                creator={creator}
-                isFold={false}
-              />
-            ))}
+            <Spacing size={'12px'} />
+            <AnswerWrapperDuringQuiz>
+              {sortedQuizReplies.quizReplyHistories.map(({ answer, likeCount, creator }) => (
+                <AnswerCheckItem
+                  key={creator?.userId}
+                  answer={answer}
+                  likeCount={likeCount}
+                  creator={creator}
+                  isFold={false}
+                />
+              ))}
+            </AnswerWrapperDuringQuiz>
           </Flex>
         </Flex>
       </Wrapper>

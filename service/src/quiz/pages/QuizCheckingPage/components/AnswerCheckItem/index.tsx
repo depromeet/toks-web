@@ -40,7 +40,7 @@ export function AnswerCheckItem({ answer, likeCount, creator, isFold }: AnswerCh
         bodyNodes={
           <>
             <Spacing size={22} />
-            <ToastViewer answer={answer} />
+            <ToastViewer height={'18vh'} answer={answer} />
           </>
         }
       />
