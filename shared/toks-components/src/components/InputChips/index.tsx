@@ -48,6 +48,7 @@ export const InputChips = forwardRef<HTMLInputElement, ChipsComponentProps>(
               onBlur?.(e);
               setIsFocus(false);
             }}
+            autoComplete="off"
           />
         </StyledChip>
       </Wrapper>
