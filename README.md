@@ -61,50 +61,8 @@
 </br>
 
 ## 오늘도 개발자가 안된다고 말했다. 🤦 🤦‍♀️ 🤦‍♀️
-<div style='display: flex'>
-<div style='flex: 1'>
-🕸 Front End
-<ul>
-<li>
-    <a href="https://github.com/minsgy">최민석</a>
-</li>
-<li>
-    <a href="https://github.com/LineGu">강현구</a>
-</li>
-<li>
-    <a href="https://github.com/chaaerim">김채림</a>
-</li>
-<li>
-    <a href="https://github.com/dengoyoon">윤두현</a>
-</li>
-</ul>
-</div>
-<div style='flex: 1'>
-🌐 Back End
-<ul>
-<li>
-    <a href="https://github.com/south-daria">남정윤</a>
-</li>
-<li>
-    <a href="https://github.com/hocaron">호선우</a>
-</li>
-<li>
-    <a href="https://github.com/SieunKiim">김시은</a>
-</li>
-</ul>
-</div>
-<div style='flex: 1'>
-🎨 Design
-<ul>
-<li>
-    김성념
-</li>
-<li>
-    이원희
-</li>
-<li>
-    유정현
-</li>
-</ul>
-</div>
-</div>
+🕸 FrontEnd
+|[최민석](https://github.com/minsgy)|[강현구](https://github.com/LineGu)|[김채림](https://github.com/chaaerim)|[윤두현](https://github.com/dengoyoon)|
+|:---:|:---:|:---:|:---:|
+|<img src='https://user-images.githubusercontent.com/89721027/211807096-bb1eba43-efc6-491c-bbc5-d6681187bf52.png' width="150px" height='150px'>|<img src='https://user-images.githubusercontent.com/89721027/211807305-d552c48e-219c-41bb-b808-e5222ba3774b.png' width="150px" height='150x'>|<img src='https://user-images.githubusercontent.com/89721027/211808345-c9c458af-6f66-44e0-8ad3-7d778966c140.png' width="150px" height='150px'>|<img src='https://user-images.githubusercontent.com/89721027/211808648-fa4b6a4c-6106-4df6-a2f0-df4e3324ed1b.png' width="150px" height='150px'>
+
