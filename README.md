@@ -11,7 +11,7 @@
 ![image](https://user-images.githubusercontent.com/47452547/211752764-51af3149-cebd-41f9-9df4-96e798f5c050.png)
 </br>
 </br>
-👱‍♂️ : 공부하고 싶은 욕심은 많은데 혼자서는 항상 작심삼일을 넘지 못하네요. 다같이 즐겁게 스터디를 할 수는 없을까요? 🥹
+👱‍♂️ : 공부하고 싶은 욕심은 많은데 혼자서는 항상 작심삼일을 넘지 못하네요. 다 같이 즐겁게 스터디를 할 수는 없을까요? 🥹
 
 👩 : 책을 샀는데 책이 너무 두꺼운거 있죠...? 이렇게 많은 양도 꾸준하게 공부해서 완료해보고 싶어요 😂
 
@@ -20,18 +20,31 @@
 개발자를 위한 스터디 Toks는 꾸준한 스터디를 함께 하여 하나씩 완성해 나가는 서비스를 제공하는 플랫폼 입니다.
 </br>
 </br>
-![image](https://user-images.githubusercontent.com/47452547/211763852-466f045e-656a-4e2a-8c6e-8326f81dc6db.png)
+![image](https://user-images.githubusercontent.com/47452547/211786235-da7c1bf8-4ddc-4d29-ae61-cc34b51ec789.png)
+</br>
 스터디를 생성하고 링크를 지인들과 공유해보세요!
 
-단 한 번의 절차로 원하는 스터디를 생성할 수 있습니다
+단 한 번의 절차로 원하는 스터디를 생성할 수 있습니다.
 </br>
 </br>
-![image](https://user-images.githubusercontent.com/47452547/211766740-656adc9e-0bbc-4fb1-bd0c-f4963ecc2621.png)
+![image](https://user-images.githubusercontent.com/47452547/211785797-dafc3256-6b39-40e3-ae6d-5cc9753b9010.png)
+</br>
+</br>
 팀원들과 함께 퀴즈를 만들고 제한 시간안에 풀어보세요!
 
-가장 마음에 드는 팀원의 답변에 투표를 해서 선의의 경쟁을 해보는건 어떨까요? 😎
+서로가 만든 퀴즈를 공유하며 목표한 분량을 복습할 수 있습니다.
+</br>
+</br>
+![image](https://user-images.githubusercontent.com/47452547/211787055-b73633d7-b429-4f16-849c-b5f292cb0091.png)
+</br>
+</br>
+제출된 답변들 중 가장 마음에 드는 답변에 투표해보세요.
 
-똑스와 함께 하나씩 하나씩 스터디를 완료하며 꾸준하게 지식을 쌓아보아요 🎉
+팀원들의 순위를 확인하며 선의의 경쟁을 할 수 있습니다 😎
+
+똑스와 함께 하나씩 하나씩 스터디를 완료하며 지식을 쌓아보러 가볼까요?
+
+<a href="https://tokstudy.com/login">개발자 스터디 플랫폼 Toks</a>
 </br>
 </br>
 ## Dev Stack
