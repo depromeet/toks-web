@@ -6,7 +6,7 @@ import { NickNameBox } from 'login/pages/MyName/components/NickNameBox';
 function MyName() {
   return (
     <Flex.Center direction="column">
-      <Text variant="title02" css={{ marginTop: '180px' }}>
+      <Text variant="title02" css={{ marginTop: '160px' }}>
         똑스 시작하기
       </Text>
       <Spacing size={60} />

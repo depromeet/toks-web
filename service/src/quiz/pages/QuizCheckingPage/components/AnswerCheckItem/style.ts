@@ -5,4 +5,5 @@ export const AnswerContainer = styled.div`
     margin: 0;
   }
   margin-top: 12px;
+  overflow: auto;
 `;

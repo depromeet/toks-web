@@ -1,5 +1,6 @@
 export interface QuizByIdResponse {
   quizId: number;
+  answer: string;
   question: string;
   quizType: string;
   description: string;

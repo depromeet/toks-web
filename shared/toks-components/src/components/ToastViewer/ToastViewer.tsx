@@ -22,6 +22,7 @@ const ViewerWrapper = styled.div<ToastViewerProps>`
 
   .toastui-editor-contents {
     background-color: ${theme.colors.gray100};
+    overflow: auto;
     padding: 10px;
     border-radius: 8px;
     ${props => {
