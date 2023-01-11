@@ -1,7 +1,8 @@
 import { isToksError } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { Button, Image, Tag, Text, getStudy, useToast } from '@depromeet/toks-components';
-import { useChangeToDate, usePathParam } from '@depromeet/utils';
+import { changeToDate } from '@depromeet/toks-components/src/utils';
+import { usePathParam } from '@depromeet/utils';
 import { kstFormat } from '@toss/date';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
@@ -23,13 +24,6 @@ export function JoinStudyBox() {
     enabled: Boolean(studyId),
   });
 
-  if (isError || study == null) {
-    return null;
-  }
-
-  const startDate = useChangeToDate(new Date(study.startedAt));
-  const todayDate = useChangeToDate(new Date());
-
   const { mutate: studyMutation } = useMutation(async () => {
     try {
       await postStudyById(studyId);
@@ -46,6 +40,12 @@ export function JoinStudyBox() {
       }
     }
   });
+  if (isError || study == null) {
+    return null;
+  }
+
+  const startDate = changeToDate(new Date(study.startedAt));
+  const todayDate = changeToDate(new Date());
 
   const onClick = () => {
     studyMutation();
