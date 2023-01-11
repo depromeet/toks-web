@@ -1,7 +1,7 @@
 import { isToksError } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { Button, Image, Tag, Text, getStudy, useToast } from '@depromeet/toks-components';
-import { usePathParam } from '@depromeet/utils';
+import { useChangeToDate, usePathParam } from '@depromeet/utils';
 import { kstFormat } from '@toss/date';
 import { Flex, Spacing, width100 } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
@@ -19,10 +19,23 @@ export function JoinStudyBox() {
   const router = useRouter();
   const { open } = useToast();
 
+  const { data: study, isError } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudy(Number(studyId)), {
+    enabled: Boolean(studyId),
+  });
+
+  if (isError || study == null) {
+    return null;
+  }
+
+  const startDate = useChangeToDate(new Date(study.startedAt));
+  const todayDate = useChangeToDate(new Date());
+
   const { mutate: studyMutation } = useMutation(async () => {
     try {
       await postStudyById(studyId);
-      await router.push(PATHS.quiz.studyDetail({ studyId }));
+      todayDate < startDate
+        ? await router.push(PATHS.home.myStudy)
+        : await router.push(PATHS.quiz.studyDetail({ studyId }));
     } catch (err: unknown) {
       if (isToksError(err) && err.message === 'error.invalid.already-join-user') {
         await open({
@@ -33,14 +46,6 @@ export function JoinStudyBox() {
       }
     }
   });
-
-  const { data: study, isError } = useQuery([QUERY_KEYS.GET_STUDY_BY_ID], () => getStudy(Number(studyId)), {
-    enabled: Boolean(studyId),
-  });
-
-  if (isError || study == null) {
-    return null;
-  }
 
   const onClick = () => {
     studyMutation();

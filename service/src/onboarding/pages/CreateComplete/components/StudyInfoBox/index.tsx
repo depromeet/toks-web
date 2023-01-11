@@ -11,6 +11,7 @@ import { STUDY_CATEGORY_OPTIONS } from 'onboarding/pages/CreateStudy/constants';
 import { StudyInfo } from '../StudyInfo';
 import { StudyTitle } from '../StudyTitle';
 import { Wrapper } from './style';
+import { useChangeToDate } from '@depromeet/utils';
 
 export const StudyInfoBox = () => {
   const studyId = usePathParam('studyId', { suspense: true });
@@ -29,6 +30,9 @@ export const StudyInfoBox = () => {
 
   const studyCategory = STUDY_CATEGORY_OPTIONS.find(({ value }) => value === capacity)?.label;
   const inviteLink = `${window.location.origin}/home/join-study/${studyId}`;
+
+  const startDate = useChangeToDate(new Date(startedAt));
+  const todayDate = useChangeToDate(new Date());
 
   return (
     <Wrapper>
@@ -102,7 +106,7 @@ export const StudyInfoBox = () => {
         <Button
           type="general"
           onClick={() => {
-            router.push(PATHS.quiz.studyDetail({ studyId }));
+            todayDate < startDate ? router.push(PATHS.home.myStudy) : router.push(PATHS.quiz.studyDetail({ studyId }));
           }}
         >
           완료
