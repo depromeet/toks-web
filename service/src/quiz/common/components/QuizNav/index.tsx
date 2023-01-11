@@ -21,7 +21,7 @@ export function QuizNav({ mainTitle, subTitle, studyId }: Props) {
           {mainTitle}
         </Text>
       </Flex>
-      <Text variant="headline" color="gray060" css={{ marginLeft: '66px' }}>
+      <Text variant="headline" color="gray060" css={{ marginLeft: '46px' }}>
         {subTitle}
       </Text>
     </Flex>
