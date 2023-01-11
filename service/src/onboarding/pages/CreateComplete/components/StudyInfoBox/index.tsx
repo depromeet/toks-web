@@ -1,5 +1,6 @@
 import { PATHS } from '@depromeet/path';
 import { Button, Icon, Image, Tag, Text, getStudy, useClipboard } from '@depromeet/toks-components';
+import { changeToDate } from '@depromeet/toks-components/src/utils';
 import { usePathParam } from '@depromeet/utils';
 import { kstFormat } from '@toss/date';
 import { Flex, Spacing, gutter } from '@toss/emotion-utils';
@@ -17,6 +18,7 @@ export const StudyInfoBox = () => {
   const router = useRouter();
 
   const { copyToClipboard } = useClipboard();
+
   const { data: studyInfo, isError } = useQuery(['studyInfo', studyId], () => getStudy(Number(studyId)), {
     enabled: Boolean(studyId),
   });
@@ -30,6 +32,8 @@ export const StudyInfoBox = () => {
   const studyCategory = STUDY_CATEGORY_OPTIONS.find(({ value }) => value === capacity)?.label;
   const inviteLink = `${window.location.origin}/home/join-study/${studyId}`;
 
+  const startDate = changeToDate(new Date(studyInfo!.startedAt));
+  const todayDate = changeToDate(new Date());
   return (
     <Wrapper>
       <div>
@@ -102,7 +106,7 @@ export const StudyInfoBox = () => {
         <Button
           type="general"
           onClick={() => {
-            router.push(PATHS.quiz.studyDetail({ studyId }));
+            todayDate < startDate ? router.push(PATHS.home.myStudy) : router.push(PATHS.quiz.studyDetail({ studyId }));
           }}
         >
           완료
