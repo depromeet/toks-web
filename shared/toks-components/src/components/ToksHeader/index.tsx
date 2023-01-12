@@ -38,15 +38,17 @@ function isMember(props: ProfileButtonProps): props is MemberProps {
 const KAKAO_BASE_IMAGE = 'http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg';
 const BASE_IMAGE = 'https://toks-web-assets.s3.amazonaws.com/toks-emoji/ic-base-profile.png';
 
-export function ToksHeader({ showCopyLinkButton= false, onClickLogo, ...rest }: HeaderProps) {
+export function ToksHeader({ showCopyLinkButton = false, onClickLogo, ...rest }: HeaderProps) {
   const { copyToClipboard } = useClipboard();
   const getStudyId = () => {
-    const splitedPathname = window.location.pathname.split('/')
-    const studyDetailIndex = splitedPathname.findIndex(path => path === 'study-detail')
+    const splitedPathname = window.location.pathname.split('/');
+    const studyDetailIndex = splitedPathname.findIndex(path => path === 'study-detail');
     return Number(splitedPathname[studyDetailIndex + 1]);
-  }
-  const inviteLink = showCopyLinkButton? `${window.location.origin}/home/join-study/${getStudyId()}` : `${window.location.origin}/login`;
-  
+  };
+  const inviteLink = showCopyLinkButton
+    ? `${window.location.origin}/home/join-study/${getStudyId()}`
+    : `${window.location.origin}/login`;
+
   return (
     <Header>
       <ClickableImage
@@ -57,23 +59,21 @@ export function ToksHeader({ showCopyLinkButton= false, onClickLogo, ...rest }: 
         height={24}
         onClick={onClickLogo}
       />
-      {
-        showCopyLinkButton && 
-          <StudyLinkCopyButton
-            onClick={() => copyToClipboard(inviteLink)}/>
-      }
+      {showCopyLinkButton && <StudyLinkCopyButton onClick={() => copyToClipboard(inviteLink)} />}
       <ProfileButton {...rest} />
     </Header>
   );
 }
 
-function StudyLinkCopyButton({onClick} : ButtonHTMLAttributes<HTMLButtonElement>) {
+function StudyLinkCopyButton({ onClick }: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <CopyButton onClick={onClick}>
-      <Icon color='gray070' size={28} iconName="ic-link" />
-      <Text color='gray070' variant="subhead">스터디 링크 복사</Text>
+      <Icon color="gray070" size={28} iconName="ic-link" />
+      <Text color="gray070" variant="subhead">
+        스터디 링크 복사
+      </Text>
     </CopyButton>
-  )
+  );
 }
 
 function ProfileButton(props: ProfileButtonProps) {
