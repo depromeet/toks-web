@@ -1,6 +1,6 @@
 import { PATHS } from '@depromeet/path';
 import { theme } from '@depromeet/theme';
-import { Button, Lottie, Tag, Text, TextBallon } from '@depromeet/toks-components';
+import { Button, Lottie, Tag, Text, TextBallon, useToast } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Flex, Spacing, padding, width100 } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
@@ -26,8 +26,17 @@ const LOTTIE_MAP = {
 
 function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus, studyId }: Props) {
   const router = useRouter();
+  const { open } = useToast();
+
   return (
-    <div css={{ position: 'relative' }}>
+    <div
+      css={{ position: 'relative' }}
+      onClick={() => {
+        if (studyStatus === 'READY') {
+          open({ title: '아직 스터디가 열리지 않았어요!', type: 'danger' });
+        }
+      }}
+    >
       {match(quizStatus)
         .with('UNCHECKED', () => (
           <TextBallon
@@ -95,8 +104,19 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
         <Spacing size={50} />
 
         <Button
-          type={match(quizStatus)
-            .with('UNCHECKED', 'UNSOLVED', () => 'primary' as const)
+          type={match({ quizStatus, studyStatus })
+            .when(
+              ({ quizStatus }) => quizStatus === 'UNCHECKED',
+              () => 'primary' as const
+            )
+            .when(
+              ({ quizStatus }) => quizStatus === 'UNSOLVED',
+              () => 'primary' as const
+            )
+            .when(
+              ({ studyStatus }) => studyStatus === 'READY',
+              () => 'primary' as const
+            )
             .otherwise(() => 'general' as const)}
           css={{ justifySelf: 'flex-end' }}
           onClick={onClick}

@@ -7,7 +7,7 @@ export const postImageUpload = async (params: File[]) => {
   const imageUrls = [];
 
   for (let i = 0; i < params.length; i++) {
-    await formData.append('image', params[i]);
+    formData.append('image', params[i]);
     const { imageUrl } = await http.post<PostImageUploadResponse>('/api/v1/images', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',

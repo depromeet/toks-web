@@ -2,12 +2,12 @@
 
 ## How To Run
 
-1. service 폴더에 위치해야 합니다.
-2. yarn dev 명령을 실행해 주세요.
+1. scripts/simulate.sh
 
 </br>
 
 ## Introduce Toks
+
 ![image](https://user-images.githubusercontent.com/47452547/211752764-51af3149-cebd-41f9-9df4-96e798f5c050.png)
 </br>
 </br>
@@ -47,7 +47,9 @@
 <a href="https://tokstudy.com/login">개발자 스터디 플랫폼 Toks</a>
 </br>
 </br>
+
 ## Dev Stack
+
 <p>
 <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white"/>
 <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/>
@@ -61,8 +63,8 @@
 </br>
 
 ## 오늘도 개발자가 안된다고 말했다. 🤦 🤦‍♀️ 🤦‍♀️
+
 🕸 FrontEnd
 |[최민석](https://github.com/minsgy)|[강현구](https://github.com/LineGu)|[김채림](https://github.com/chaaerim)|[윤두현](https://github.com/dengoyoon)|
 |:---:|:---:|:---:|:---:|
 |<img src='https://user-images.githubusercontent.com/89721027/211807096-bb1eba43-efc6-491c-bbc5-d6681187bf52.png' width="150px" height='150px'>|<img src='https://user-images.githubusercontent.com/89721027/211807305-d552c48e-219c-41bb-b808-e5222ba3774b.png' width="150px" height='150x'>|<img src='https://user-images.githubusercontent.com/89721027/211808345-c9c458af-6f66-44e0-8ad3-7d778966c140.png' width="150px" height='150px'>|<img src='https://user-images.githubusercontent.com/89721027/211808648-fa4b6a4c-6106-4df6-a2f0-df4e3324ed1b.png' width="150px" height='150px'>
-

@@ -8,6 +8,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "simulate": "next build && next start",
     "lint": "eslint -c .eslintrc.js 'src/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "yarn lint --fix",
     "typecheck": "tsc --noEmit",

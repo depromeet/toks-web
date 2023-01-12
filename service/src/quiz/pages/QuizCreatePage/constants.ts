@@ -16,4 +16,6 @@ export const DEFAULT_QUIZ_FORM_VALUE = {
   studyId: 0,
   round: 0,
   imageUrls: [],
+  imageFiles: [],
+  timepicker: undefined,
 };
