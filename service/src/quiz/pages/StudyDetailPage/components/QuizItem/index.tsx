@@ -117,7 +117,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
             <Text
               variant="headline"
               css={{
-                maxWidth: '56%',
+                maxWidth: '46%',
                 margin: '0 0 0 18px',
                 textOverflow: 'ellipsis',
                 overflow: 'hidden',
