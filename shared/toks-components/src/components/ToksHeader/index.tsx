@@ -9,6 +9,7 @@ import { Text } from '../Text';
 type MemberProps = {
   imgUrl: string;
   userName: string;
+  showCopyLinkButton?: boolean;
   onClickButton: VoidFunction;
   onClickLogo: VoidFunction;
   login: true;
@@ -16,6 +17,7 @@ type MemberProps = {
 
 type NonMemberProps = {
   login: false;
+  showCopyLinkButton?: boolean;
   onClickButton: VoidFunction;
   onClickLogo: VoidFunction;
 };
@@ -34,7 +36,7 @@ function isMember(props: ProfileButtonProps): props is MemberProps {
 const KAKAO_BASE_IMAGE = 'http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg';
 const BASE_IMAGE = 'https://toks-web-assets.s3.amazonaws.com/toks-emoji/ic-base-profile.png';
 
-export function ToksHeader({ onClickLogo, ...rest }: HeaderProps) {
+export function ToksHeader({ showCopyLinkButton= false, onClickLogo, ...rest }: HeaderProps) {
   return (
     <Header>
       <ClickableImage
@@ -45,7 +47,7 @@ export function ToksHeader({ onClickLogo, ...rest }: HeaderProps) {
         height={24}
         onClick={onClickLogo}
       />
-      <StudyLinkCopyButton/>
+      {showCopyLinkButton && <StudyLinkCopyButton/>}
       <ProfileButton {...rest} />
     </Header>
   );

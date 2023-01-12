@@ -12,6 +12,9 @@ import { useMutation } from 'react-query';
 
 import { UserMenu } from './UserMenu';
 
+const checkShowCopyLinkButton = (routerPath: string, paths: string[]) =>
+  paths.some(path => routerPath.includes(path))
+
 function Component({ children, fullWidth = true }: { children: ReactNode; fullWidth?: boolean }) {
   const { data: user, refetch } = useSafelyGetUser();
   const { toggle, close } = useUserMenuDialog();
@@ -33,7 +36,8 @@ function Component({ children, fullWidth = true }: { children: ReactNode; fullWi
   });
 
   const isNonMember = user == null;
-
+  console.log(router.pathname)
+  console.log(checkShowCopyLinkButton(router.pathname, ['/quiz/study-detail']))
   return (
     <>
       {isNonMember ? (
@@ -68,6 +72,9 @@ function Component({ children, fullWidth = true }: { children: ReactNode; fullWi
           imgUrl={user.profileImageUrl}
           userName={user.nickname}
           login
+          showCopyLinkButton={
+            checkShowCopyLinkButton(router.pathname, ['/quiz/study-detail'])
+          }
           onClickButton={() => {
             if (isLoading) {
               return;
