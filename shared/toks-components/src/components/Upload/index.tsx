@@ -1,7 +1,6 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
-import { useCombinedRefs } from '@toss/react';
-import { forwardRef, Ref, useEffect, useImperativeHandle } from 'react';
+import { Ref, forwardRef, useEffect, useImperativeHandle } from 'react';
 
 import { Icon } from '../Icon';
 import { Text } from '../Text';
@@ -38,6 +37,7 @@ export const Upload = forwardRef(
 
     useEffect(() => {
       onDropFiles(files);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [files]);
 
     useImperativeHandle(forwardRef, () => ({

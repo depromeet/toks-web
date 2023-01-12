@@ -1,5 +1,5 @@
 import { isServer } from '@toss/utils';
-import React, { ComponentProps, forwardRef, Suspense } from 'react';
+import React, { ComponentProps, Suspense, forwardRef } from 'react';
 
 const EditorComponent = React.lazy(() => import('./Editor'));
 

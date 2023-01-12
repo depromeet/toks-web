@@ -1,12 +1,12 @@
 import { theme } from '@depromeet/theme';
-import { Icon, Input, SSRSuspense, Text } from '@depromeet/toks-components';
+import { Editor, Icon, Input, SSRSuspense, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Flex } from '@toss/emotion-utils';
-import { ComponentProps, forwardRef, Ref, useState } from 'react';
+import { ComponentProps, forwardRef, useState } from 'react';
 import { UseFormRegister, UseFormSetValue } from 'react-hook-form';
 
 import { QuizCreateForm } from '../../types';
-import { Editor } from '@depromeet/toks-components';
+
 interface QuizCreateEditorProps {
   register: UseFormRegister<QuizCreateForm>;
   setValue: UseFormSetValue<QuizCreateForm>;

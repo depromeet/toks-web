@@ -5,7 +5,7 @@ import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import { Editor as TuiEditor, EditorProps as TuiEditorProps } from '@toast-ui/react-editor';
 import { useCombinedRefs, useDebounce } from '@toss/react';
 import Prism from 'prismjs';
-import { forwardRef, Ref, useRef } from 'react';
+import { Ref, forwardRef, useRef } from 'react';
 
 import { Text } from '../Text';
 

@@ -1,20 +1,12 @@
 import { Button, Calendar, DropDown, TimePicker, Upload } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { sub } from 'date-fns';
-import {
-  Control,
-  Controller,
-  FieldValues,
-  UseFormGetValues,
-  UseFormRegister,
-  UseFormReset,
-  UseFormSetValue,
-} from 'react-hook-form';
+import { ComponentProps, useRef } from 'react';
+import { Control, Controller, FieldValues, UseFormRegister, UseFormReset, UseFormSetValue } from 'react-hook-form';
 
 import { QUIZ_LIMIT_TIME } from 'quiz/pages/QuizCreatePage/constants';
 
 import { QuizCreateForm } from '../../types';
-import { ComponentProps, useRef } from 'react';
 
 interface QuizCreateInputListProps {
   register: UseFormRegister<QuizCreateForm>;
