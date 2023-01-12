@@ -36,6 +36,7 @@ export function QuizEditor() {
 
   const [isDisabled, setIsDisabled] = useState(true);
   const [answer, setAnswer] = useState('');
+  console.log(answer);
 
   const quizIdParams = usePathParam('quizIdParams', { suspense: true });
 
@@ -43,7 +44,7 @@ export function QuizEditor() {
 
   //button disable 제어
   useEffect(() => {
-    if (answer === '' || answer === '<p><br></p>') {
+    if (answer.trim() === '') {
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
