@@ -36,8 +36,7 @@ function Component({ children, fullWidth = true }: { children: ReactNode; fullWi
   });
 
   const isNonMember = user == null;
-  console.log(router.pathname)
-  console.log(checkShowCopyLinkButton(router.pathname, ['/quiz/study-detail']))
+
   return (
     <>
       {isNonMember ? (

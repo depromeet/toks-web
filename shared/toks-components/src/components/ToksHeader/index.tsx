@@ -1,7 +1,9 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
+import { ButtonHTMLAttributes } from 'react';
 
 import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT, emoji } from '../../constants';
+import { useClipboard } from '../../hooks';
 import { Icon } from '../Icon';
 import { Image } from '../Image';
 import { Text } from '../Text';
@@ -37,6 +39,14 @@ const KAKAO_BASE_IMAGE = 'http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1Y
 const BASE_IMAGE = 'https://toks-web-assets.s3.amazonaws.com/toks-emoji/ic-base-profile.png';
 
 export function ToksHeader({ showCopyLinkButton= false, onClickLogo, ...rest }: HeaderProps) {
+  const { copyToClipboard } = useClipboard();
+  const getStudyId = () => {
+    const splitedPathname = window.location.pathname.split('/')
+    const studyDetailIndex = splitedPathname.findIndex(path => path === 'study-detail')
+    return Number(splitedPathname[studyDetailIndex + 1]);
+  }
+  const inviteLink = showCopyLinkButton? `${window.location.origin}/home/join-study/${getStudyId()}` : `${window.location.origin}/login`;
+  
   return (
     <Header>
       <ClickableImage
@@ -47,15 +57,19 @@ export function ToksHeader({ showCopyLinkButton= false, onClickLogo, ...rest }: 
         height={24}
         onClick={onClickLogo}
       />
-      {showCopyLinkButton && <StudyLinkCopyButton/>}
+      {
+        showCopyLinkButton && 
+          <StudyLinkCopyButton
+            onClick={() => copyToClipboard(inviteLink)}/>
+      }
       <ProfileButton {...rest} />
     </Header>
   );
 }
 
-function StudyLinkCopyButton() {
+function StudyLinkCopyButton({onClick} : ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <CopyButton>
+    <CopyButton onClick={onClick}>
       <Icon color='gray070' size={28} iconName="ic-link" />
       <Text color='gray070' variant="subhead">스터디 링크 복사</Text>
     </CopyButton>
