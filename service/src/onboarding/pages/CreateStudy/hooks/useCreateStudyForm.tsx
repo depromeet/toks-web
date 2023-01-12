@@ -18,7 +18,8 @@ export const useCreateStudyForm = () => {
     getValues,
     handleSubmit,
     setValue,
-    formState: { isValid, errors },
+    watch,
+    formState: { errors },
   } = useForm<CreateStudyFormValues>({ mode: 'onChange', defaultValues: DEFAULT_STUDY_CREATE_FORM });
 
   const router = useRouter();
@@ -26,11 +27,10 @@ export const useCreateStudyForm = () => {
   const { open } = useToast();
 
   const { mutate: createStudy } = useMutation(async () => {
+    const values = getValues();
+    const { startedAt, endedAt } = values;
+
     try {
-      const values = getValues();
-
-      const { startedAt, endedAt } = values;
-
       const formatStartedAt = formatISO(new Date(startedAt));
       const formatEndedAt = formatISO(new Date(endedAt));
 
@@ -39,16 +39,19 @@ export const useCreateStudyForm = () => {
         startedAt: formatStartedAt,
         endedAt: formatEndedAt,
       });
+      await open({ title: '스터디가 생성되었습니다.', type: 'success', showOnNextPage: true, time: 2000 });
 
       await router.push(PATHS.onboarding.createComplete({ studyId: id }));
-      await open({ title: '스터디가 생성되었습니다.', type: 'success', showOnNextPage: true });
     } catch (error: unknown) {
       if (isToksError(error)) {
         await open({ title: error.message, type: 'danger' });
       }
     }
   });
-  const isDisabled = !isValid;
+  const { startedAt, endedAt } = getValues();
+  const isValid =
+    !watch(['name', 'startedAt', 'endedAt']).includes('') &&
+    new Date(endedAt).getTime() > new Date(startedAt).getTime();
 
   const isMaxLength = useCallback((maxLength: number) => {
     return {
@@ -66,7 +69,7 @@ export const useCreateStudyForm = () => {
     setValue,
     errors,
     control,
-    isDisabled,
+    isValid,
     isMaxLength,
     isRequiredText,
     getValues,
