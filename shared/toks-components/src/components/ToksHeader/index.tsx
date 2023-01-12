@@ -1,13 +1,17 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
+import { ButtonHTMLAttributes } from 'react';
 
 import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT, emoji } from '../../constants';
+import { useClipboard } from '../../hooks';
+import { Icon } from '../Icon';
 import { Image } from '../Image';
 import { Text } from '../Text';
 
 type MemberProps = {
   imgUrl: string;
   userName: string;
+  showCopyLinkButton?: boolean;
   onClickButton: VoidFunction;
   onClickLogo: VoidFunction;
   login: true;
@@ -15,6 +19,7 @@ type MemberProps = {
 
 type NonMemberProps = {
   login: false;
+  showCopyLinkButton?: boolean;
   onClickButton: VoidFunction;
   onClickLogo: VoidFunction;
 };
@@ -33,7 +38,17 @@ function isMember(props: ProfileButtonProps): props is MemberProps {
 const KAKAO_BASE_IMAGE = 'http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg';
 const BASE_IMAGE = 'https://toks-web-assets.s3.amazonaws.com/toks-emoji/ic-base-profile.png';
 
-export function ToksHeader({ onClickLogo, ...rest }: HeaderProps) {
+export function ToksHeader({ showCopyLinkButton = false, onClickLogo, ...rest }: HeaderProps) {
+  const { copyToClipboard } = useClipboard();
+  const getStudyId = () => {
+    const splitedPathname = window.location.pathname.split('/');
+    const studyDetailIndex = splitedPathname.findIndex(path => path === 'study-detail');
+    return Number(splitedPathname[studyDetailIndex + 1]);
+  };
+  const inviteLink = showCopyLinkButton
+    ? `${window.location.origin}/home/join-study/${getStudyId()}`
+    : `${window.location.origin}/login`;
+
   return (
     <Header>
       <ClickableImage
@@ -44,8 +59,20 @@ export function ToksHeader({ onClickLogo, ...rest }: HeaderProps) {
         height={24}
         onClick={onClickLogo}
       />
+      {showCopyLinkButton && <StudyLinkCopyButton onClick={() => copyToClipboard(inviteLink)} />}
       <ProfileButton {...rest} />
     </Header>
+  );
+}
+
+function StudyLinkCopyButton({ onClick }: ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <CopyButton onClick={onClick}>
+      <Icon color="gray070" size={28} iconName="ic-link" />
+      <Text color="gray070" variant="subhead">
+        스터디 링크 복사
+      </Text>
+    </CopyButton>
   );
 }
 
@@ -146,6 +173,14 @@ const Button = styled.button`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const CopyButton = styled.button`
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 35px;
 `;
 
 const ClickableImage = styled(Image)`

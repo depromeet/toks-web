@@ -23,10 +23,11 @@ export const Icon = ({ color, size = 28, width, height, iconName, wrapperProps, 
   );
 };
 
+// TODO: svg파일의 색깔이 fill아니면 stroke으로 칠해져 있는게 있어서 둘 다 지원 필요
 const StyledIcon = styled.i<{ color?: KeyOfColors }>`
   & > svg,
   & path {
-    fill: ${({ color }) => color && theme.colors[color]};
+    stroke: ${({ color }) => color && theme.colors[color]};
   }
   display: inline-flex;
   align-items: center;

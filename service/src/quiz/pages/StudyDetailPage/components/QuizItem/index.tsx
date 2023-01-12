@@ -114,7 +114,17 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               {round}회차
             </Text>
-            <Text variant="headline" css={{ margin: '0 0 0 18px' }} as="h5">
+            <Text
+              variant="headline"
+              css={{
+                maxWidth: '46%',
+                margin: '0 0 0 18px',
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+              }}
+              as="h5"
+            >
               {title}
             </Text>
             {myQuiz && (
@@ -173,9 +183,11 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
                 tooltip={true}
               />
               <Space css={{ flex: 1 }} />
-              <Text variant="subhead" css={{ margin: '0' }} as="h6">
-                똑스 안 푼 사람
-              </Text>
+              {unSubmitters.length !== 0 && (
+                <Text variant="subhead" css={{ margin: '0' }} as="h6">
+                  똑스 안 푼 사람
+                </Text>
+              )}
               <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ marginLeft: '22px' }}>
                 {unSubmitters.map(({ userId, profileImageUrl, nickname }) => (
                   <UserAvatar

@@ -116,6 +116,7 @@ const globalCss = css`
   .p-dropdown-panel {
     margin-top: 4px;
     border-radius: 8px;
+    overflow: hidden;
     background-color: ${theme.colors.gray100} !important;
   }
   .p-dropdown-items {
