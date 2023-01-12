@@ -2,6 +2,7 @@ import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 
 import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT, emoji } from '../../constants';
+import { Icon } from '../Icon';
 import { Image } from '../Image';
 import { Text } from '../Text';
 
@@ -44,9 +45,19 @@ export function ToksHeader({ onClickLogo, ...rest }: HeaderProps) {
         height={24}
         onClick={onClickLogo}
       />
+      <StudyLinkCopyButton/>
       <ProfileButton {...rest} />
     </Header>
   );
+}
+
+function StudyLinkCopyButton() {
+  return (
+    <CopyButton>
+      <Icon color='gray070' size={28} iconName="ic-link" />
+      <Text color='gray070' variant="subhead">스터디 링크 복사</Text>
+    </CopyButton>
+  )
 }
 
 function ProfileButton(props: ProfileButtonProps) {
@@ -146,6 +157,14 @@ const Button = styled.button`
   &:hover {
     cursor: pointer;
   }
+`;
+
+const CopyButton = styled.button`
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 35px;
 `;
 
 const ClickableImage = styled(Image)`
