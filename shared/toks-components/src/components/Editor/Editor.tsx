@@ -3,9 +3,9 @@ import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import codeSyntaxHighlight from '@toast-ui/editor-plugin-code-syntax-highlight';
 import { Editor as TuiEditor, EditorProps as TuiEditorProps } from '@toast-ui/react-editor';
-import { useDebounce } from '@toss/react';
+import { useCombinedRefs, useDebounce } from '@toss/react';
 import Prism from 'prismjs';
-import { useRef } from 'react';
+import { forwardRef, Ref, useRef } from 'react';
 
 import { Text } from '../Text';
 
@@ -15,11 +15,16 @@ export interface EditorProps extends TuiEditorProps {
   onChange: (data: string) => void;
 }
 
-export default function Editor({ onChange, label, required, ...rest }: EditorProps) {
-  const editorRef = useRef<TuiEditor>(null);
+export default forwardRef(function Editor(
+  { onChange, label, required, ...rest }: EditorProps,
+  forwardRef: Ref<TuiEditor>
+) {
+  const ref = useRef<TuiEditor | null>(null);
+  const editorRef = useCombinedRefs<TuiEditor>(forwardRef, ref);
+
   const handleChange = useDebounce(() => {
-    if (editorRef.current) {
-      const data = editorRef.current.getInstance().getMarkdown();
+    if (ref.current != null) {
+      const data = ref.current.getInstance().getMarkdown();
       onChange?.(data);
     }
   }, 200);
@@ -45,7 +50,7 @@ export default function Editor({ onChange, label, required, ...rest }: EditorPro
       />
     </EditorWrapper>
   );
-}
+});
 
 const EditorWrapper = styled.div`
   height: 100%;

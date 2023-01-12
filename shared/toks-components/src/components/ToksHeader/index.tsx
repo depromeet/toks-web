@@ -78,7 +78,7 @@ function ProfileButton(props: ProfileButtonProps) {
         variant="subhead"
         style={{ display: 'block', textOverflow: 'ellipsis', width: '100%', whiteSpace: 'nowrap', overflow: 'hidden' }}
       >
-        {userName}
+        {userName === '닉네임을 등록해주세요' ? 'Toks' : userName}
       </Text>
     </Button>
   );
