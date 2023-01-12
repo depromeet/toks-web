@@ -114,7 +114,17 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
             <Text variant="subhead" css={{ margin: '0' }} as="h6">
               {round}회차
             </Text>
-            <Text variant="headline" css={{ margin: '0 0 0 18px' }} as="h5">
+            <Text
+              variant="headline"
+              css={{
+                maxWidth: '46%',
+                margin: '0 0 0 18px',
+                textOverflow: 'ellipsis',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+              }}
+              as="h5"
+            >
               {title}
             </Text>
             {myQuiz && (
