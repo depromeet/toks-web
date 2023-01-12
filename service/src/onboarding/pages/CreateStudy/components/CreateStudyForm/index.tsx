@@ -9,7 +9,7 @@ import { useCreateStudyForm } from 'onboarding/pages/CreateStudy/hooks/useCreate
 import { Wrapper } from './style';
 
 export const CreateStudyForm = () => {
-  const { register, control, createStudy, setValue, errors, isDisabled, isMaxLength, isRequiredText, getValues } =
+  const { register, control, createStudy, setValue, errors, isValid, isMaxLength, isRequiredText, getValues } =
     useCreateStudyForm();
 
   const { startedAt } = getValues();
@@ -84,8 +84,8 @@ export const CreateStudyForm = () => {
             <InputChips {...field} onChange={e => setValue('tags', e.value)} label="스터디 관련 태그" />
           )}
         />
-        <Button type="primary" htmlType="submit" disabled={isDisabled}>
-          {isDisabled ? '필수 요소를 채워주세요' : '생성하기'}
+        <Button type="primary" htmlType="submit" disabled={!isValid}>
+          {!isValid ? '필수 요소를 채워주세요' : '생성하기'}
         </Button>
       </form>
     </Wrapper>
