@@ -3,18 +3,22 @@ import { http } from '@depromeet/http';
 import { PostImageUploadResponse } from '../types';
 
 export const postImageUpload = async (params: File[]) => {
-  const formData = new FormData();
-  const imageUrls = [];
+  try {
+    const imageUrls = await Promise.all(
+      params.map(async file => {
+        const formData = new FormData();
+        formData.append('image', file);
+        const { imageUrl } = await http.post<PostImageUploadResponse>('/api/v1/images', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
 
-  for (let i = 0; i < params.length; i++) {
-    await formData.append('image', params[i]);
-    const { imageUrl } = await http.post<PostImageUploadResponse>('/api/v1/images', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    imageUrls.push(imageUrl);
+        return imageUrl;
+      })
+    );
+    return imageUrls;
+  } catch (err) {
+    return [];
   }
-
-  return imageUrls;
 };

@@ -29,7 +29,12 @@ function StudyList() {
   }, [router, studies]);
 
   return (
-    <StudyListRow as="ul">
+    <StudyListRow
+      as="ul"
+      hasIssue={studies.some(
+        ({ latestQuizStatus }) => latestQuizStatus === 'UNCHECKED' || latestQuizStatus === 'UNSOLVED'
+      )}
+    >
       {studies.map(study => (
         <SSRSuspense fallback={<StudyCard.Skeleton />} key={study.id}>
           <StudyCard
@@ -49,12 +54,12 @@ function StudyList() {
   );
 }
 
-const StudyListRow = styled(Flex)`
+const StudyListRow = styled(Flex)<{ hasIssue?: boolean }>`
   gap: 32px;
   align-self: flex-start;
   width: min(100%, 1260px);
   margin: 0 auto;
-  padding: 8px 20px;
+  padding: ${({ hasIssue }) => (hasIssue ? `60px 20px 8px 20px` : '8px 20px')};
   overflow-x: auto;
 `;
 

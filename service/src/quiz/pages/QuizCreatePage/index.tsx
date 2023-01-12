@@ -1,7 +1,7 @@
 import { FULL_HEIGHT, getStudyDetail } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
 import { Flex, Spacing, height100, width100 } from '@toss/emotion-utils';
-import React from 'react';
+import React, { ComponentProps, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 
@@ -15,11 +15,12 @@ import { useQuizCreate } from './hooks/useQuizCreate';
 import { QuizCreateForm } from './types';
 
 const QuizCreatePage = () => {
-  const { register, setValue, control, getValues, setError } = useForm<QuizCreateForm>({
+  const { register, setValue, control, getValues, setError, reset } = useForm<QuizCreateForm>({
     defaultValues: DEFAULT_QUIZ_FORM_VALUE,
   });
   const { createQuiz } = useQuizCreate();
   const studyId = usePathParam('studyId', { suspense: true });
+  const editorRef: ComponentProps<typeof QuizCreateEditor>['ref'] = useRef(null);
 
   const { data: studyInfo } = useQuery(QUERY_KEYS.GET_STUDY_INFO(studyId), () => getStudyDetail(studyId));
   if (!studyInfo) {
@@ -58,8 +59,17 @@ const QuizCreatePage = () => {
             createQuiz(values);
           }}
         >
-          <QuizCreateEditor register={register} setValue={setValue} css={{ width: '70.7%', marginRight: '3.5%' }} />
+          <QuizCreateEditor
+            ref={editorRef}
+            register={register}
+            setValue={setValue}
+            css={{ width: '70.7%', marginRight: '3.5%' }}
+          />
           <QuizCreateInputList
+            reset={() => {
+              reset(DEFAULT_QUIZ_FORM_VALUE);
+              editorRef.current?.getInstance().reset();
+            }}
             register={register}
             setValue={setValue}
             control={control}

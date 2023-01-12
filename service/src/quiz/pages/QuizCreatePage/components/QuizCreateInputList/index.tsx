@@ -1,7 +1,8 @@
 import { Button, Calendar, DropDown, TimePicker, Upload } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { sub } from 'date-fns';
-import { Control, Controller, FieldValues, UseFormRegister, UseFormSetValue } from 'react-hook-form';
+import { ComponentProps, useRef } from 'react';
+import { Control, Controller, FieldValues, UseFormRegister, UseFormReset, UseFormSetValue } from 'react-hook-form';
 
 import { QUIZ_LIMIT_TIME } from 'quiz/pages/QuizCreatePage/constants';
 
@@ -13,9 +14,19 @@ interface QuizCreateInputListProps {
   control: Control<QuizCreateForm, number>;
   endedAt: string;
   className?: string;
+  reset: UseFormReset<QuizCreateForm>;
 }
 
-export const QuizCreateInputList = ({ register, setValue, control, endedAt, className }: QuizCreateInputListProps) => {
+export const QuizCreateInputList = ({
+  register,
+  setValue,
+  control,
+  endedAt,
+  className,
+  reset,
+}: QuizCreateInputListProps) => {
+  const uploadRef: ComponentProps<typeof Upload>['ref'] | null = useRef(null);
+
   return (
     <Flex
       direction="column"
@@ -52,6 +63,7 @@ export const QuizCreateInputList = ({ register, setValue, control, endedAt, clas
         labelText="추가하기"
         required
         multiple
+        ref={uploadRef}
       />
       <Spacing size={16} />
       <Flex
@@ -59,7 +71,14 @@ export const QuizCreateInputList = ({ register, setValue, control, endedAt, clas
           gap: '24px',
         }}
       >
-        <Button htmlType="reset" type="ghost">
+        <Button
+          htmlType="reset"
+          type="ghost"
+          onClick={() => {
+            uploadRef.current?.reset();
+            reset();
+          }}
+        >
           다시 만들기
         </Button>
         <Button htmlType="submit">똑스 만들기 완료</Button>
