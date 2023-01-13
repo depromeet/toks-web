@@ -5,7 +5,7 @@ const ANSWERWRAPPER_HEIGHT = 'calc(55vh - 95px)';
 const CREATOR_HEIGHT = 'calc(80vh - 45px)';
 
 export const PeerAnswerWrapper = styled.div<{ isQuizCreator: boolean }>`
-  overflow-y: auto;
+  /* overflow-y: auto; */
   ${props => {
     const { isQuizCreator } = props;
     return css`

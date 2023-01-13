@@ -69,7 +69,7 @@ export function VoteSubmitButton() {
     quizVoteMutation();
   };
   return (
-    <Flex css={{ position: 'absolute', bottom: '0%', left: '100%', transform: 'translateX( -200px )' }}>
+    <Flex css={{ position: 'fixed', bottom: '30px', right: '115px' }}>
       <Button
         onClick={onClick}
         css={{
