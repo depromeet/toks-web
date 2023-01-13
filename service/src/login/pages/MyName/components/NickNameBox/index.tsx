@@ -1,14 +1,14 @@
 import { getOriginUrl, isToksError } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { Button, Image, Input, Text, emoji, useToast } from '@depromeet/toks-components';
+import { safelyGetUser } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
+import { useQueryClient } from 'react-query';
 
 import { useSetNickname } from 'login/hooks/query/useSetNickname';
 import { useCreateNicknameForm } from 'login/hooks/useCreateNicknameForm';
 import { Wrapper } from 'login/pages/MyName/components/style';
-import { useQueryClient } from 'react-query';
-import { safelyGetUser } from '@depromeet/utils';
 
 export function NickNameBox() {
   const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText, setError } =
