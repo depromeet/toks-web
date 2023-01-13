@@ -18,7 +18,7 @@ interface Props {
 /**
  * @Note 아직 현재 필요한 기능만 구현한 상태입니다. 추가적인 디자인이 나오면, 추가 개발이 필요합니다.
  */
-export function TextBallon({ title, onClick, className, direction = 'top', color = 'primary', width }: Props) {
+export function TextBallon({ title, onClick, className, direction = 'top', color = 'primary_opacity', width }: Props) {
   return (
     <StyledBallon onClick={onClick} direction={direction} className={className} color={color} style={{ width }}>
       <Text variant="body02" color="gray010" style={{ fontWeight: 700 }}>
