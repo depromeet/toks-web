@@ -25,6 +25,7 @@ function Component({ children, fullWidth = true }: { children: ReactNode; fullWi
       await requestLogout();
       await refetch();
       await router.push(PATHS.login.main);
+
       close();
       await open({ title: '로그아웃 되었어요', type: 'success' });
     } catch (err) {

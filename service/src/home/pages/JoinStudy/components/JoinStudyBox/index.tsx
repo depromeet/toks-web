@@ -34,10 +34,26 @@ export function JoinStudyBox() {
       if (isToksError(err) && err.message === 'error.invalid.already-join-user') {
         await open({
           type: 'danger',
-          title: '이미 해당 스터디에 참여하고 있습니다.',
+          title: '이미 해당 스터디에 참여하고 있어요.',
           time: 2000,
         });
+        return;
       }
+
+      if (isToksError(err) && err.message === 'error.invalid.max-headcount') {
+        await open({
+          type: 'danger',
+          title: '스터디 정원이 초과 되었어요.',
+          time: 2000,
+        });
+        return;
+      }
+
+      await open({
+        type: 'danger',
+        title: '스터디 참여에 실패했어요.',
+        time: 2000,
+      });
     }
   });
   if (isError || study == null) {

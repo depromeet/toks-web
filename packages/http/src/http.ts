@@ -141,13 +141,14 @@ instance.interceptors.request.use(
 
     if (config.headers['Authorization'] == null) {
       authToken.refetch();
-      config.headers['Authorization'] = authToken.access;
     }
 
     if (instance.defaults.headers.common['Authorization'] == null) {
       authToken.refetch();
-      instance.defaults.headers.common['Authorization'] = authToken.access;
     }
+
+    config.headers['Authorization'] = authToken.access;
+    instance.defaults.headers.common['Authorization'] = authToken.access;
 
     return config;
   },
