@@ -7,7 +7,7 @@ import { useBooleanState } from '@toss/react';
 import { useOverlay } from '@toss/use-overlay';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
-import { ComponentProps, ReactNode } from 'react';
+import { ComponentProps, ReactNode, useLayoutEffect } from 'react';
 import { useMutation } from 'react-query';
 
 import { UserMenu } from './UserMenu';
@@ -36,6 +36,12 @@ function Component({ children, fullWidth = true }: { children: ReactNode; fullWi
   });
 
   const isNonMember = user == null;
+
+  useLayoutEffect(() => {
+    if (user?.nickname === '닉네임을 등록해주세요' && !window.location.pathname.includes('/login')) {
+      router.replace(PATHS.login.nickname);
+    }
+  }, [router, user]);
 
   return (
     <>

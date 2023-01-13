@@ -83,7 +83,7 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
         <Flex.Center
           css={{
             position: 'absolute',
-            boxShadow: '0 0 30px #FEE101',
+            boxShadow: studyStatus === 'FINISH' ? undefined : '0 0 30px #FEE101',
             border: 'none',
             borderRadius: '50%',
             top: '42px',
@@ -101,10 +101,10 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
               )
               .otherwise(() => LOTTIE_MAP.sleep)}
             alt=""
-            width={90}
-            height={90}
+            width={studyStatus === 'FINISH' ? 105 : 90}
+            height={studyStatus === 'FINISH' ? 105 : 90}
             loop
-            css={{ scale: '102%' }}
+            css={{ scale: '102%', transform: studyStatus === 'FINISH' ? 'translate(0px, -10px)' : undefined }}
           />
         </Flex.Center>
 
@@ -148,24 +148,29 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
   );
 }
 
-function Plus({ onClick }: { onClick: () => void }) {
+function Plus({ onClick, studyCount }: { onClick: () => void; studyCount: number }) {
   return (
-    <Card
-      css={{
-        justifyContent: 'center',
-        gap: '18px',
-        boxShadow: 'none',
-        border: 'none',
-      }}
-      onClick={onClick}
-    >
-      <Flex.Center css={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: theme.colors.gray090 }}>
-        <i className="pi pi-plus" style={{ fontSize: '36px', color: theme.colors.white }} />
-      </Flex.Center>
-      <Text variant="headline" color="gray070">
-        스터디 만들기
-      </Text>
-    </Card>
+    <div css={{ position: 'relative' }}>
+      {studyCount === 0 ? <TextBallon title="스터디를 추가해보세요!" /> : null}
+      <Card
+        css={{
+          justifyContent: 'center',
+          gap: '18px',
+          boxShadow: 'none',
+          border: 'none',
+        }}
+        onClick={onClick}
+      >
+        <Flex.Center
+          css={{ width: '80px', height: '80px', borderRadius: '50%', backgroundColor: theme.colors.gray090 }}
+        >
+          <i className="pi pi-plus" style={{ fontSize: '36px', color: theme.colors.white }} />
+        </Flex.Center>
+        <Text variant="headline" color="gray070">
+          스터디 만들기
+        </Text>
+      </Card>
+    </div>
   );
 }
 

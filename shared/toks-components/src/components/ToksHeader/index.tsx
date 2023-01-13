@@ -1,4 +1,5 @@
 import { theme } from '@depromeet/theme';
+import { colors } from '@depromeet/theme/dist/colors';
 import styled from '@emotion/styled';
 import { ButtonHTMLAttributes } from 'react';
 
@@ -141,6 +142,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: ${colors.gray120};
 
   min-width: ${MIN_WIDTH};
   width: 100vw;

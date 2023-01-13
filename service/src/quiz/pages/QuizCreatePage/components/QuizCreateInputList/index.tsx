@@ -19,6 +19,7 @@ import { QuizCreateForm } from '../../types';
 interface QuizCreateInputListProps {
   register: UseFormRegister<QuizCreateForm>;
   setValue: UseFormSetValue<QuizCreateForm>;
+
   watch: UseFormWatch<QuizCreateForm>;
   control: Control<QuizCreateForm, number>;
   endedAt: string;
@@ -111,6 +112,6 @@ const REQUIRED_FIELD: Array<Partial<keyof QuizCreateForm>> = [
 
 const isValidForm = (values: QuizCreateForm) => {
   return REQUIRED_FIELD.every(field => {
-    return values[field] != null && values[field] !== '' && values[field] !== 0 && values[field] !== '00:00:00';
+    return values[field] != null && values[field] !== '' && values[field] !== 0;
   });
 };
