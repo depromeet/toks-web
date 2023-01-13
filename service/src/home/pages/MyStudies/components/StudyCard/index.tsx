@@ -64,7 +64,7 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
           ({ quizStatus }) => quizStatus === 'UNSOLVED',
           () => (
             <TextBallon
-              title="똑스대장님이 똑스를 추가했어요!"
+              title="새로운 똑스가 추가되었어요!"
               onClick={() => router.push(PATHS.quiz.studyDetail({ studyId }))}
             />
           )
