@@ -55,6 +55,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
         />
         <meta name="referrer" content="no-referrer-when-downgrade" />
+        <link rel="icon" href="https://toks-web-assets.s3.amazonaws.com/toktok.ico" />
         <title>Toks</title>
       </Head>
 
