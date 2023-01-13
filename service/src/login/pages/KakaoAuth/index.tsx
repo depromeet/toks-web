@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { useQueryClient } from 'react-query';
 
 import { getUserinfo } from 'login/pages/MyName/remote/nickName';
+import { getOriginUrl } from '@depromeet/http';
 
 function KakaoAuth() {
   const router = useRouter();
@@ -35,7 +36,13 @@ function KakaoAuth() {
       if (user.nickname === '닉네임을 등록해주세요') {
         await router.replace(PATHS.login.nickname);
       } else {
-        await router.replace(PATHS.home.myStudy);
+        const originUrl = getOriginUrl();
+
+        if (originUrl != null) {
+          await router.replace(originUrl.path);
+        } else {
+          await router.replace(PATHS.home.myStudy);
+        }
       }
     },
   });
