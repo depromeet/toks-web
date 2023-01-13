@@ -20,7 +20,7 @@ export const useQuizCreate = () => {
   const { open } = useToast();
   const router = useRouter();
 
-  const { mutate: createQuiz } = useMutation(async (values: QuizCreateForm) => {
+  const { mutate: createQuiz, isLoading } = useMutation(async (values: QuizCreateForm) => {
     try {
       const formatStartedAt = format(new Date(values.startedAt), 'yyyy-MM-dd').concat(`T${values.timepicker}+09:00`);
 
@@ -54,5 +54,6 @@ export const useQuizCreate = () => {
   return {
     createQuiz,
     studyRound: study && study.latestQuizRound + 1,
+    isLoading,
   };
 };

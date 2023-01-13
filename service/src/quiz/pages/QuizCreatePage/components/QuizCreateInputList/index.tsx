@@ -19,7 +19,7 @@ import { QuizCreateForm } from '../../types';
 interface QuizCreateInputListProps {
   register: UseFormRegister<QuizCreateForm>;
   setValue: UseFormSetValue<QuizCreateForm>;
-
+  isLoading: boolean;
   watch: UseFormWatch<QuizCreateForm>;
   control: Control<QuizCreateForm, number>;
   endedAt: string;
@@ -35,6 +35,7 @@ export const QuizCreateInputList = ({
   endedAt,
   className,
   reset,
+  isLoading,
 }: QuizCreateInputListProps) => {
   const uploadRef: ComponentProps<typeof Upload>['ref'] | null = useRef(null);
 
@@ -94,7 +95,7 @@ export const QuizCreateInputList = ({
         >
           다시 만들기
         </Button>
-        <Button htmlType="submit" disabled={!isValidForm(watch())}>
+        <Button htmlType="submit" disabled={!isValidForm(watch()) || isLoading}>
           똑스 만들기 완료
         </Button>
       </Flex>
