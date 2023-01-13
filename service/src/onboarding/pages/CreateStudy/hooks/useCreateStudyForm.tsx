@@ -39,7 +39,7 @@ export const useCreateStudyForm = () => {
         startedAt: formatStartedAt,
         endedAt: formatEndedAt,
       });
-      await open({ title: '스터디가 생성되었습니다.', type: 'success', showOnNextPage: true, time: 2000 });
+      await open({ title: '스터디가 생성되었습니다.', type: 'success', time: 2000 });
 
       await router.push(PATHS.onboarding.createComplete({ studyId: id }));
     } catch (error: unknown) {
