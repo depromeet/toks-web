@@ -38,7 +38,7 @@ export function MyAnswerViewer() {
       <MyAnswerWrapper>
         <Text variant="subhead">나의 답안</Text>
         <Spacing size={16} />
-        <ToastViewer height={'18vh'} answer={myAnswer} />
+        <ToastViewer height={'18vh'} answer={myAnswer} overFlow="visible" />
       </MyAnswerWrapper>
       <Spacing size={'5vh'} />
     </>

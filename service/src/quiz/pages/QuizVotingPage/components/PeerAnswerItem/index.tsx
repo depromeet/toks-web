@@ -40,7 +40,7 @@ export function PeerAnswerItem({ quizReplyHistoryId, answer, creator, peerAnswer
         bodyNodes={
           <>
             <Spacing size={22} />
-            <ToastViewer height={'18vh'} answer={answer} />
+            <ToastViewer height={'18vh'} answer={answer} overFlow="visible" />
           </>
         }
       />
