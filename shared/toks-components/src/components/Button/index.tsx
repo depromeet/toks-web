@@ -1,9 +1,9 @@
+import { theme } from '@depromeet/theme';
+import { colors } from '@depromeet/theme/dist/colors';
 import styled from '@emotion/styled';
 import { Button as BaseButton } from 'primereact/button';
 import { ProgressSpinner } from 'primereact/progressspinner';
 import { ComponentProps } from 'react';
-import { theme } from '@depromeet/theme';
-import { colors } from '@depromeet/theme/dist/colors';
 
 type ButtonType = 'primary' | 'general' | 'ghost';
 
