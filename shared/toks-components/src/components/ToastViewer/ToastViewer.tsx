@@ -27,6 +27,9 @@ const ViewerWrapper = styled.div<ToastViewerProps>`
     padding: 10px;
     border-radius: 8px;
     ${props => {
+      if (props.overFlow === 'visible') {
+        return '';
+      }
       return css`
         height: ${props.height ? `${props.height}` : '100%'} !important; ;
       `;
