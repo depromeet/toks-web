@@ -23,32 +23,32 @@ interface QuizItemProps {
 //     backgroundColor: string;
 //     button: {
 //       string : {
-//         path: 
+//         path:
 //       }
 //     }
 //   };
 // };
 
 const QUIZ_BUTTON_TYPE = {
-  CHECK : {
-    buttonName: "똑스 확인하기",
-    path: (quizId: number) => `/quiz/check/${quizId}`
+  CHECK: {
+    buttonName: '똑스 확인하기',
+    path: (quizId: number) => `/quiz/check/${quizId}`,
   },
   VOTE: {
-    buttonName: "똑표하기",
+    buttonName: '똑표하기',
     path: (quizId: number) => `/quiz/vote/${quizId}`,
   },
   SOLVE: {
-    buttonName: "똑스 풀기",
+    buttonName: '똑스 풀기',
     path: (quizId: number) => `/quiz/solve/${quizId}`,
-  }
-}
+  },
+};
 
 const QUIZ_BUTTON_BY_SOLVED = {
-  SOLVED: () => QUIZ_BUTTON_TYPE["VOTE"],
-  VOTED: () => QUIZ_BUTTON_TYPE["CHECK"],
-  NONE:  (myQuiz: boolean) => myQuiz? QUIZ_BUTTON_TYPE["VOTE"] : QUIZ_BUTTON_TYPE["SOLVE"]
-}
+  SOLVED: () => QUIZ_BUTTON_TYPE['VOTE'],
+  VOTED: () => QUIZ_BUTTON_TYPE['CHECK'],
+  NONE: (myQuiz: boolean) => (myQuiz ? QUIZ_BUTTON_TYPE['VOTE'] : QUIZ_BUTTON_TYPE['SOLVE']),
+};
 
 const QUIZ_ITEM = {
   DONE: {
@@ -56,21 +56,23 @@ const QUIZ_ITEM = {
     timerColor: 'gray060',
     labelColor: theme.colors.gray120,
     backgroundColor: theme.colors.gray110,
-    button: () => QUIZ_BUTTON_TYPE["CHECK"],
+    button: () => QUIZ_BUTTON_TYPE['CHECK'],
   },
   TO_DO: {
     buttonColor: 'primary',
     timerColor: 'primary',
     labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
-    button: (quizSolvedType : "SOLVED" | "VOTED" | "NONE", myQuiz: boolean) => QUIZ_BUTTON_BY_SOLVED[quizSolvedType](myQuiz),
+    button: (quizSolvedType: 'SOLVED' | 'VOTED' | 'NONE', myQuiz: boolean) =>
+      QUIZ_BUTTON_BY_SOLVED[quizSolvedType](myQuiz),
   },
   IN_PROGRESS: {
     buttonColor: 'primary',
     timerColor: 'primary',
     labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
-    button: (quizSolvedType : "SOLVED" | "VOTED" | "NONE", myQuiz: boolean) => QUIZ_BUTTON_BY_SOLVED[quizSolvedType](myQuiz),
+    button: (quizSolvedType: 'SOLVED' | 'VOTED' | 'NONE', myQuiz: boolean) =>
+      QUIZ_BUTTON_BY_SOLVED[quizSolvedType](myQuiz),
   },
 };
 
@@ -191,7 +193,12 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
           <>
             <FlexRow css={{ marginTop: '36px' }}>
               <Icon iconName="ic-time" css={{ marginLeft: '3.2px' }} />
-              <Text variant="title04" color={QUIZ_ITEM[quizStatus].timerColor as KeyOfColors} css={{ margin: '0 0 0 9.2px' }} as="h4">
+              <Text
+                variant="title04"
+                color={QUIZ_ITEM[quizStatus].timerColor as KeyOfColors}
+                css={{ margin: '0 0 0 9.2px' }}
+                as="h4"
+              >
                 {convertSecondToString(time)}
               </Text>
             </FlexRow>
