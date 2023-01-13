@@ -87,6 +87,18 @@ export const authToken = {
   },
 };
 
+const REDIRECT_URL_STORAGE = 'redirectUrl';
+
+export const getOriginUrl = (): { host: string; path: string } | null => {
+  const originUrl = window.localStorage.getItem(REDIRECT_URL_STORAGE);
+
+  if (originUrl != null) {
+    return JSON.parse(originUrl);
+  }
+
+  return null;
+};
+
 export const redirectToLoginPage = () => {
   const isDev = window.location.hostname === 'localhost';
   const isLoginPage = window.location.href.includes('/login');
@@ -94,6 +106,14 @@ export const redirectToLoginPage = () => {
   if (isLoginPage) {
     return;
   }
+
+  window.localStorage.setItem(
+    REDIRECT_URL_STORAGE,
+    JSON.stringify({
+      host: isDev ? 'http://localhost:3000' : 'https://tokstudy.com',
+      path: window.location.pathname,
+    })
+  );
 
   window.location.href = isDev ? 'http://localhost:3000/login' : 'https://tokstudy.com/login';
 };

@@ -1,4 +1,4 @@
-import { isToksError } from '@depromeet/http';
+import { getOriginUrl, isToksError } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { Button, Image, Input, Text, emoji, useToast } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
@@ -19,7 +19,15 @@ export function NickNameBox() {
   const onSubmit = handleSubmit(async data => {
     try {
       await nicknameMutation(data.nickName);
-      await router.push(PATHS.home.myStudy);
+
+      const originUrl = getOriginUrl();
+
+      if (originUrl != null) {
+        await router.replace(originUrl.path);
+      } else {
+        await router.replace(PATHS.home.myStudy);
+      }
+
       await open({ title: '닉네임 생성을 완료했어요', type: 'success' });
     } catch (error: unknown) {
       if (isToksError(error) && error.code === '-20011') {

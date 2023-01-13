@@ -2,6 +2,7 @@ export const colors = {
   // darkmode
   primary: '#FF862F',
   primary_press: '#E96C12',
+  primary_opacity: '#744320',
   danger: '#EB4852',
   danger_press: '#C63135',
   success: '#39D878',
