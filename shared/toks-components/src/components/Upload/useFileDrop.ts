@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useToast } from '../../hooks';
 
+import { useToast } from '../../hooks';
 import { formatAccepts } from './utils';
 
 interface OptionProps {
   accepts: string[];
   multiple: boolean;
   onDropFiles: (files: File[]) => void;
-  maxCount: number
+  maxCount: number;
 }
 
 function useFileDrop({ accepts, multiple, onDropFiles, maxCount }: OptionProps) {
@@ -15,7 +15,7 @@ function useFileDrop({ accepts, multiple, onDropFiles, maxCount }: OptionProps) 
   const labelRef = useRef<HTMLLabelElement>(null);
   const [isDragActive, setIsDragActive] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
-  const {open} = useToast()
+  const { open } = useToast();
 
   const convertFileType = (fileType: string) => fileType.split('/')[1] ?? '';
 
@@ -28,15 +28,15 @@ function useFileDrop({ accepts, multiple, onDropFiles, maxCount }: OptionProps) 
       const selectFiles = (e.target as HTMLInputElement).files as FileList;
       const uploadFiles = Array.from(selectFiles);
 
-if(uploadFiles.length + files.length > maxCount) {
-open({title:'그만 넣읏에요', type:'danger'})
-  return;
-}
+      if (uploadFiles.length + files.length > maxCount) {
+        open({ title: '이미지는 3개까지 등록할 수 있어요.', type: 'danger' });
+        return;
+      }
 
       onDropFiles(uploadFiles);
       setFiles(prevFiles => [...prevFiles, ...uploadFiles]);
     },
-    [onDropFiles]
+    [onDropFiles, files, maxCount, open]
   );
 
   const onDragFile = useCallback(
@@ -56,15 +56,15 @@ open({title:'그만 넣읏에요', type:'danger'})
         return isAcceptFile;
       });
 
-      if(uploadFiles.length + files.length > maxCount) {
-open({title:'이미지는 3개까지 등록할 수 있어요.', type:'danger'})
-  return;
-}
+      if (uploadFiles.length + files.length > maxCount) {
+        open({ title: '이미지는 3개까지 등록할 수 있어요.', type: 'danger' });
+        return;
+      }
 
       onDropFiles(filteredFiles);
       setFiles(prevFiles => [...prevFiles, ...filteredFiles]);
     },
-    [accepts, onDropFiles]
+    [accepts, onDropFiles, files, maxCount, open]
   );
 
   const onDragEnter = useCallback((e: DragEvent) => {
