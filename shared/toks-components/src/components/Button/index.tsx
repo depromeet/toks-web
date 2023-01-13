@@ -1,3 +1,5 @@
+import { theme } from '@depromeet/theme';
+import { colors } from '@depromeet/theme/dist/colors';
 import styled from '@emotion/styled';
 import { Button as BaseButton } from 'primereact/button';
 import { ProgressSpinner } from 'primereact/progressspinner';
@@ -33,13 +35,13 @@ const BUTTON_COLOR: ButtonColorMap = {
   },
   hover: {
     primary: '#E96C12',
-    ghost: '#A5A5A5',
-    general: '#DFDFDF',
+    ghost: colors.gray070,
+    general: colors.gray040,
   },
   disabled: {
-    primary: 'rgba(255, 134, 47, 0.4)',
-    ghost: 'rgba(165, 165, 165, 0.4)',
-    general: 'rgba(223, 223, 223, 0.4)',
+    primary: `${theme.colors.primary_opacity}`,
+    ghost: colors.gray070,
+    general: colors.gray040,
   },
 };
 
@@ -98,5 +100,12 @@ const StyledBaseButton = styled(BaseButton)<{ buttontype: ButtonType }>`
   .p-progress-spinner-circle {
     animation: unset;
     stroke: ${({ buttontype }) => BUTTOON_TEXT_COLOR[buttontype]};
+  }
+
+  opacity: 1 !important;
+
+  .p-disabled,
+  .p-component:disabled {
+    opacity: 1 !important;
   }
 `;

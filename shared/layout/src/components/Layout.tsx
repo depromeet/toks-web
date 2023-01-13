@@ -38,7 +38,11 @@ function Component({ children, fullWidth = true }: { children: ReactNode; fullWi
   const isNonMember = user == null;
 
   useLayoutEffect(() => {
-    if (user?.nickname === '닉네임을 등록해주세요' && !window.location.pathname.includes('/login')) {
+    if (
+      user?.nickname === '닉네임을 등록해주세요' &&
+      !window.location.pathname.includes('/login') &&
+      !window.location.pathname.includes('/join-study')
+    ) {
       router.replace(PATHS.login.nickname);
     }
   }, [router, user]);

@@ -65,12 +65,12 @@ const useTimePicker = (defaultHour: number, defaultMinute: number, defaultAmpm: 
       setHourError('');
     }
 
-    if (Number(newHour) <= 12) {
+    if ((ampm === 'AM' && Number(newHour) < 12) || (ampm === 'PM' && Number(newHour) <= 12)) {
       setHour(newHour);
       setHourError('');
     } else {
       setHour('');
-      setHourError('0-12사이 숫자 입력');
+      setHourError('0-11사이 숫자 입력');
     }
   };
 

@@ -29,7 +29,7 @@ export function VoteSubmitButton() {
     }
   }, [votedAns]);
 
-  const { mutateAsync: quizVoteMutation } = useMutation(async () => {
+  const { mutateAsync: quizVoteMutation, isLoading } = useMutation(async () => {
     try {
       const res = await postQuizLike(quizReplyHistoryId);
       if (res) {
@@ -69,7 +69,7 @@ export function VoteSubmitButton() {
     quizVoteMutation();
   };
   return (
-    <Flex css={{ position: 'absolute', bottom: '0%', left: '100%', transform: 'translateX( -200px )' }}>
+    <Flex css={{ position: 'fixed', bottom: '30px', right: '115px' }}>
       <Button
         onClick={onClick}
         css={{
@@ -77,7 +77,7 @@ export function VoteSubmitButton() {
         }}
         width={200}
         size="large"
-        disabled={isDisable}
+        disabled={isDisable || isLoading}
       >
         똑표완료
       </Button>

@@ -24,7 +24,7 @@ export function JoinStudyBox() {
     enabled: Boolean(studyId),
   });
 
-  const { mutate: studyMutation } = useMutation(async () => {
+  const { mutate: studyMutation, isLoading } = useMutation(async () => {
     try {
       await postStudyById(studyId);
       todayDate < startDate
@@ -137,7 +137,7 @@ export function JoinStudyBox() {
           description={<Text variant="body01">{personnelDescription?.value}을 계획하고 있어요. </Text>}
         />
       </Flex>
-      <Button css={width100} onClick={onClick}>
+      <Button css={width100} onClick={onClick} disabled={isLoading}>
         참여하기
       </Button>
     </Wrapper>

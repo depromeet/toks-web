@@ -6,10 +6,11 @@ import { Viewer, ViewerProps } from '@toast-ui/react-editor';
 export interface ToastViewerProps extends ViewerProps {
   answer?: string;
   height?: string;
+  overFlow?: 'auto' | 'visible';
 }
-export default function ToastViewer({ answer, height, ...rest }: ToastViewerProps) {
+export default function ToastViewer({ answer, height, overFlow = 'auto', ...rest }: ToastViewerProps) {
   return (
-    <ViewerWrapper height={height}>
+    <ViewerWrapper height={height} overFlow={overFlow}>
       <Viewer initialValue={answer} theme="dark" {...rest} />
     </ViewerWrapper>
   );
@@ -18,14 +19,17 @@ export default function ToastViewer({ answer, height, ...rest }: ToastViewerProp
 const ViewerWrapper = styled.div<ToastViewerProps>`
   display: flex;
   flex-direction: column;
-  overflow-y: auto !important;
+  overflow-y: ${({ overFlow }) => overFlow} !important;
 
   .toastui-editor-contents {
     background-color: ${theme.colors.gray100};
-    overflow: auto;
+    overflow: ${({ overFlow }) => overFlow};
     padding: 10px;
     border-radius: 8px;
     ${props => {
+      if (props.overFlow === 'visible') {
+        return '';
+      }
       return css`
         height: ${props.height ? `${props.height}` : '100%'} !important; ;
       `;

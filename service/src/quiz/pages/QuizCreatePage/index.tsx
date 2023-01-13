@@ -20,7 +20,7 @@ const QuizCreatePage = () => {
     defaultValues: DEFAULT_QUIZ_FORM_VALUE,
   });
 
-  const { createQuiz } = useQuizCreate();
+  const { createQuiz, isLoading } = useQuizCreate();
   const studyId = usePathParam('studyId', { suspense: true });
   const editorRef: ComponentProps<typeof QuizCreateEditor>['ref'] = useRef(null);
   const { open } = useToast();
@@ -92,6 +92,7 @@ const QuizCreatePage = () => {
             control={control}
             endedAt={studyInfo.endedAt}
             css={{ width: '25.8%' }}
+            isLoading={isLoading}
           />
         </form>
       </Flex.Center>

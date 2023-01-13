@@ -9,8 +9,18 @@ import { useCreateStudyForm } from 'onboarding/pages/CreateStudy/hooks/useCreate
 import { Wrapper } from './style';
 
 export const CreateStudyForm = () => {
-  const { register, control, createStudy, setValue, errors, isValid, isMaxLength, isRequiredText, getValues } =
-    useCreateStudyForm();
+  const {
+    register,
+    control,
+    createStudy,
+    setValue,
+    errors,
+    isValid,
+    isMaxLength,
+    isRequiredText,
+    getValues,
+    isPostLoading,
+  } = useCreateStudyForm();
 
   const { startedAt } = getValues();
   const startedAtToWeeks = add(new Date(startedAt), { days: 7 });
@@ -81,10 +91,10 @@ export const CreateStudyForm = () => {
           name="tags"
           control={control}
           render={({ field }) => (
-            <InputChips {...field} onChange={e => setValue('tags', e.value)} label="스터디 관련 태그" />
+            <InputChips {...field} onChange={e => setValue('tags', e.value)} label="스터디 관련 태그" max={10} />
           )}
         />
-        <Button type="primary" htmlType="submit" disabled={!isValid}>
+        <Button type="primary" htmlType="submit" disabled={!isValid || isPostLoading}>
           {!isValid ? '필수 요소를 채워주세요' : '생성하기'}
         </Button>
       </form>

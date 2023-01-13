@@ -138,6 +138,10 @@ const EditorWrapper = styled.div`
     }
   }
 
+  .toastui-editor-md-code.toastui-editor-md-marked-text {
+    background-color: ${theme.colors.gray080};
+  }
+
   .toastui-editor-contents p {
     color: ${theme.colors.gray040};
 
