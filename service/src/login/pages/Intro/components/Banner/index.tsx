@@ -10,7 +10,7 @@ export const Banner = () => {
   const { open } = useToast();
   const { mutateAsync: login, isLoading } = useMutation(async () => {
     await requestLogin();
-    await open({ title: '로그인에 성공했어요', type: 'success', showOnNextPage: true });
+    await open({ title: '로그인에 성공했어요', type: 'success' });
   });
   const { data: user } = useSafelyGetUser();
 
