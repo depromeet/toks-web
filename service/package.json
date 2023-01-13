@@ -20,7 +20,7 @@
     "@depromeet/http": "workspace:packages/http",
     "@depromeet/layout": "workspace:shared/layout",
     "@depromeet/path": "workspace:shared/path",
-    "@depromeet/theme": "^0.0.1",
+    "@depromeet/theme": "^0.0.2",
     "@depromeet/toks-components": "workspace:shared/toks-components",
     "@depromeet/utils": "workspace:shared/utils",
     "@emotion/css": "^11.9.0",

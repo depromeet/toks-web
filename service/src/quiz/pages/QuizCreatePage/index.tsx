@@ -1,6 +1,7 @@
-import { FULL_HEIGHT, getStudyDetail } from '@depromeet/toks-components';
+import { FULL_HEIGHT, getStudyDetail, useToast } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
 import { Flex, Spacing, height100, width100 } from '@toss/emotion-utils';
+import { format, isBefore, isToday, parseISO } from 'date-fns';
 import React, { ComponentProps, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
@@ -22,6 +23,7 @@ const QuizCreatePage = () => {
   const { createQuiz } = useQuizCreate();
   const studyId = usePathParam('studyId', { suspense: true });
   const editorRef: ComponentProps<typeof QuizCreateEditor>['ref'] = useRef(null);
+  const { open } = useToast();
 
   const { data: studyInfo } = useQuery(QUERY_KEYS.GET_STUDY_INFO(studyId), () => getStudyDetail(studyId));
   if (!studyInfo) {
@@ -55,6 +57,19 @@ const QuizCreatePage = () => {
                 message: '답을 입력해주세요',
               });
               return;
+            }
+
+            if (isToday(new Date(values.startedAt))) {
+              if (values.timepicker != null) {
+                const settingDate = parseISO(
+                  format(new Date(), "yyyy-MM-dd'T'00:00:00").replace('00:00:00', values.timepicker)
+                );
+
+                if (isBefore(settingDate, new Date())) {
+                  open({ title: '퀴즈 시작 시간은 현재보다 빠를 수 없어요.', type: 'danger' });
+                  return;
+                }
+              }
             }
 
             createQuiz(values);

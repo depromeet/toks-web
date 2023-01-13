@@ -1,6 +1,6 @@
 import { getOriginUrl } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
-import { SSRSuspense } from '@depromeet/toks-components';
+import { SSRSuspense, useToast } from '@depromeet/toks-components';
 import { safelyGetUser, useQueryParam } from '@depromeet/utils';
 import { assert } from '@toss/assert';
 import { ErrorBoundary } from '@toss/error-boundary';
@@ -16,6 +16,7 @@ function KakaoAuth() {
   const queryClient = useQueryClient();
   const accessToken = useQueryParam('accessToken', { suspense: true });
   const refreshToken = useQueryParam('refreshToken', { suspense: true });
+  const { open } = useToast();
 
   assert(accessToken != null && refreshToken != null, '로그인이 정상적으로 처리되지 않았습니다.');
 
@@ -34,14 +35,17 @@ function KakaoAuth() {
 
       await queryClient.refetchQueries(safelyGetUser.queryKey);
       if (user.nickname === '닉네임을 등록해주세요') {
+        await open({ title: '로그인에 성공했어요', type: 'success' });
         await router.replace(PATHS.login.nickname);
       } else {
         const originUrl = getOriginUrl();
 
         if (originUrl != null) {
           await router.replace(originUrl.path);
+          await open({ title: '로그인에 성공했어요', type: 'success' });
         } else {
           await router.replace(PATHS.home.myStudy);
+          await open({ title: '로그인에 성공했어요', type: 'success' });
         }
       }
     },
