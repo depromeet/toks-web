@@ -15,7 +15,7 @@ export function NickNameBox() {
     useCreateNicknameForm();
   const queryClient = useQueryClient();
 
-  const { mutateAsync: nicknameMutation } = useSetNickname();
+  const { mutateAsync: nicknameMutation, isLoading } = useSetNickname();
   const { open } = useToast();
   const router = useRouter();
 
@@ -62,7 +62,7 @@ export function NickNameBox() {
           errorMessage={errors.nickName?.message}
         />
         <Spacing size={30} />
-        <Button type="primary" htmlType="submit" disabled={isDisabled}>
+        <Button type="primary" htmlType="submit" disabled={isDisabled || isLoading}>
           완료
         </Button>
       </form>

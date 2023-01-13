@@ -29,7 +29,7 @@ export function VoteSubmitButton() {
     }
   }, [votedAns]);
 
-  const { mutateAsync: quizVoteMutation } = useMutation(async () => {
+  const { mutateAsync: quizVoteMutation, isLoading } = useMutation(async () => {
     try {
       const res = await postQuizLike(quizReplyHistoryId);
       if (res) {
@@ -77,7 +77,7 @@ export function VoteSubmitButton() {
         }}
         width={200}
         size="large"
-        disabled={isDisable}
+        disabled={isDisable || isLoading}
       >
         똑표완료
       </Button>
