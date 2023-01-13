@@ -1,3 +1,4 @@
+import { getOriginUrl } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { SSRSuspense } from '@depromeet/toks-components';
 import { safelyGetUser, useQueryParam } from '@depromeet/utils';
@@ -9,7 +10,6 @@ import { useRouter } from 'next/router';
 import { useQueryClient } from 'react-query';
 
 import { getUserinfo } from 'login/pages/MyName/remote/nickName';
-import { getOriginUrl } from '@depromeet/http';
 
 function KakaoAuth() {
   const router = useRouter();
