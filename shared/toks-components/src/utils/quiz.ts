@@ -36,8 +36,6 @@ export const getInitialTimerSecond = (
 const padZero = (value = 0) => value.toString().padStart(2, '0');
 
 export const convertSecondToString = (second: number) => {
-  const day = Math.floor(second / (60 * 60 * 24));
-  second -= day * (60 * 60 * 24);
   const hh = Math.floor(second / (60 * 60));
   second -= hh * (60 * 60);
   const mm = Math.floor(second / 60);

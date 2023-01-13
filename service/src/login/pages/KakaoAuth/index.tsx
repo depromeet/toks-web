@@ -1,3 +1,4 @@
+import { getOriginUrl } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { SSRSuspense } from '@depromeet/toks-components';
 import { safelyGetUser, useQueryParam } from '@depromeet/utils';
@@ -35,7 +36,13 @@ function KakaoAuth() {
       if (user.nickname === '닉네임을 등록해주세요') {
         await router.replace(PATHS.login.nickname);
       } else {
-        await router.replace(PATHS.home.myStudy);
+        const originUrl = getOriginUrl();
+
+        if (originUrl != null) {
+          await router.replace(originUrl.path);
+        } else {
+          await router.replace(PATHS.home.myStudy);
+        }
       }
     },
   });
