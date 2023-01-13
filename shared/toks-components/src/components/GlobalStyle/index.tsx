@@ -225,6 +225,6 @@ const globalCss = css`
   // lightbox 상단 x 버튼
   .yarl__toolbar .yarl__button {
     padding-right: 114px !important;
-    color: ${theme.colors.gray080} !important;
+    color: ${theme.colors.white} !important;
   }
 `;
