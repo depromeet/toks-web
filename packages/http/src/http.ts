@@ -93,6 +93,7 @@ export const getOriginUrl = (): { host: string; path: string } | null => {
   const originUrl = window.localStorage.getItem(REDIRECT_URL_STORAGE);
 
   if (originUrl != null) {
+    window.localStorage.removeItem(REDIRECT_URL_STORAGE);
     return JSON.parse(originUrl);
   }
 

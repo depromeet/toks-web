@@ -31,10 +31,13 @@ function StudyList() {
   return (
     <StudyListRow
       as="ul"
-      hasissue={studies.some(
-        ({ latestQuizStatus, status }) =>
-          latestQuizStatus === 'UNCHECKED' || latestQuizStatus === 'UNSOLVED' || status === 'READY'
-      )}
+      hasissue={
+        studies.length === 0 ||
+        studies.some(
+          ({ latestQuizStatus, status }) =>
+            latestQuizStatus === 'UNCHECKED' || latestQuizStatus === 'UNSOLVED' || status === 'READY'
+        )
+      }
     >
       {studies.map(study => (
         <SSRSuspense fallback={<StudyCard.Skeleton />} key={study.id}>
@@ -51,7 +54,9 @@ function StudyList() {
         </SSRSuspense>
       ))}
 
-      {studies.length < MAX_STUDY_CNT && <StudyCard.Plus onClick={() => router.push(PATHS.onboarding.createStudy)} />}
+      {studies.length < MAX_STUDY_CNT && (
+        <StudyCard.Plus onClick={() => router.push(PATHS.onboarding.createStudy)} studyCount={studies.length} />
+      )}
     </StudyListRow>
   );
 }

@@ -21,7 +21,7 @@ export const Line = styled.div`
 
 export const DescriptionContainer = styled.div`
   overflow-y: auto;
-  height: 590px;
+  flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;

@@ -31,6 +31,14 @@ const ViewerWrapper = styled.div<ToastViewerProps>`
         height: ${props.height ? `${props.height}` : '100%'} !important; ;
       `;
     }}
+
+    & * {
+      color: ${theme.colors.gray040};
+    }
+
+    & code {
+      background-color: ${theme.colors.gray080};
+    }
   }
 
   .toastui-editor-contents p {

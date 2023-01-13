@@ -128,6 +128,16 @@ const EditorWrapper = styled.div`
     border: none;
   }
 
+  .toastui-editor-contents {
+    & * {
+      color: ${theme.colors.gray040};
+    }
+
+    & code {
+      background-color: ${theme.colors.gray080};
+    }
+  }
+
   .toastui-editor-contents p {
     color: ${theme.colors.gray040};
 
