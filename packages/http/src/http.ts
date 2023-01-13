@@ -62,26 +62,26 @@ function createTossBankErrorFromAxiosError(error: AxiosError): ToksErrorResponse
 export const authToken = {
   access: (() => {
     try {
-      return sessionStorage.getItem('accessToken');
+      return localStorage.getItem('accessToken');
     } catch (err) {
       return null;
     }
   })(),
   refresh: (() => {
     try {
-      return sessionStorage.getItem('refreshToken');
+      return localStorage.getItem('refreshToken');
     } catch (err) {
       return null;
     }
   })(),
   refetch: () => {
-    authToken.access = sessionStorage.getItem('accessToken');
-    authToken.refresh = sessionStorage.getItem('refreshToken');
+    authToken.access = localStorage.getItem('accessToken');
+    authToken.refresh = localStorage.getItem('refreshToken');
     return;
   },
   destroy: () => {
-    sessionStorage.removeItem('accessToken');
-    sessionStorage.removeItem('refreshToken');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
     authToken.access = null;
     authToken.refresh = null;
   },
