@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useToast } from '../../hooks';
 
 import { formatAccepts } from './utils';
 
@@ -6,13 +7,15 @@ interface OptionProps {
   accepts: string[];
   multiple: boolean;
   onDropFiles: (files: File[]) => void;
+  maxCount: number
 }
 
-function useFileDrop({ accepts, multiple, onDropFiles }: OptionProps) {
+function useFileDrop({ accepts, multiple, onDropFiles, maxCount }: OptionProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const labelRef = useRef<HTMLLabelElement>(null);
   const [isDragActive, setIsDragActive] = useState(false);
   const [files, setFiles] = useState<File[]>([]);
+  const {open} = useToast()
 
   const convertFileType = (fileType: string) => fileType.split('/')[1] ?? '';
 
@@ -24,6 +27,11 @@ function useFileDrop({ accepts, multiple, onDropFiles }: OptionProps) {
 
       const selectFiles = (e.target as HTMLInputElement).files as FileList;
       const uploadFiles = Array.from(selectFiles);
+
+if(uploadFiles.length + files.length > maxCount) {
+open({title:'그만 넣읏에요', type:'danger'})
+  return;
+}
 
       onDropFiles(uploadFiles);
       setFiles(prevFiles => [...prevFiles, ...uploadFiles]);
@@ -47,6 +55,11 @@ function useFileDrop({ accepts, multiple, onDropFiles }: OptionProps) {
         }
         return isAcceptFile;
       });
+
+      if(uploadFiles.length + files.length > maxCount) {
+open({title:'이미지는 3개까지 등록할 수 있어요.', type:'danger'})
+  return;
+}
 
       onDropFiles(filteredFiles);
       setFiles(prevFiles => [...prevFiles, ...filteredFiles]);

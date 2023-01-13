@@ -13,6 +13,7 @@ export interface UploadProps extends React.InputHTMLAttributes<HTMLInputElement>
   labelText: string;
   labelStyle?: React.CSSProperties;
   height?: number;
+  maxCount?:number
 }
 
 interface ResetRef {
@@ -29,11 +30,12 @@ export const Upload = forwardRef(
       height = 200,
       labelStyle,
       onDropFiles,
+      maxCount = 3,
       ...rest
     }: UploadProps,
     forwardRef: Ref<ResetRef>
   ) => {
-    const { inputRef, labelRef, isDragActive, onRemoveFile, files } = useFileDrop({ accepts, multiple, onDropFiles });
+    const { inputRef, labelRef, isDragActive, onRemoveFile, files } = useFileDrop({ accepts, multiple, onDropFiles, maxCount });
 
     useEffect(() => {
       onDropFiles(files);
