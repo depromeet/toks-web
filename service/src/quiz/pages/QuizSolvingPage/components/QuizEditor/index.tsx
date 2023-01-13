@@ -17,7 +17,7 @@ export function QuizEditor() {
   const { open } = useToast();
   const { openModal } = useModal();
 
-  const { mutateAsync: quizAnswerMutation } = useMutation(async () => {
+  const { mutateAsync: quizAnswerMutation, isLoading } = useMutation(async () => {
     try {
       const res = await postQuizAnswer({ answer, quizId });
       if (res) {
@@ -67,7 +67,13 @@ export function QuizEditor() {
         <Editor onChange={data => setAnswer(data)} />
       </Container>
       <Spacing size={20} />
-      <Button onClick={onClick} css={{ float: 'right' }} width={140} htmlType="submit" disabled={isDisabled}>
+      <Button
+        onClick={onClick}
+        css={{ float: 'right' }}
+        width={140}
+        htmlType="submit"
+        disabled={isDisabled || isLoading}
+      >
         제출하기
       </Button>
     </Wrapper>
