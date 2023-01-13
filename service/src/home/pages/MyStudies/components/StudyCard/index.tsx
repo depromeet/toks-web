@@ -3,9 +3,10 @@ import { theme } from '@depromeet/theme';
 import { Button, Lottie, Tag, Text, TextBallon, useToast } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Flex, Spacing, padding, width100 } from '@toss/emotion-utils';
-import { formatStartedAtToDecimalDay } from 'home/utils';
 import { useRouter } from 'next/router';
 import { match } from 'ts-pattern';
+
+import { formatStartedAtToDecimalDay } from 'home/utils';
 
 import { Study } from '../../models/study';
 
