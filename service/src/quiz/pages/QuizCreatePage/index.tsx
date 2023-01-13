@@ -15,9 +15,10 @@ import { useQuizCreate } from './hooks/useQuizCreate';
 import { QuizCreateForm } from './types';
 
 const QuizCreatePage = () => {
-  const { register, setValue, control, getValues, setError, reset } = useForm<QuizCreateForm>({
+  const { register, setValue, control, getValues, setError, reset, watch } = useForm<QuizCreateForm>({
     defaultValues: DEFAULT_QUIZ_FORM_VALUE,
   });
+
   const { createQuiz } = useQuizCreate();
   const studyId = usePathParam('studyId', { suspense: true });
   const editorRef: ComponentProps<typeof QuizCreateEditor>['ref'] = useRef(null);
@@ -72,6 +73,7 @@ const QuizCreatePage = () => {
             }}
             register={register}
             setValue={setValue}
+            watch={watch}
             control={control}
             endedAt={studyInfo.endedAt}
             css={{ width: '25.8%' }}
