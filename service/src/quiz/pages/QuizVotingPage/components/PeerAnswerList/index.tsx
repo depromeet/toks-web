@@ -11,7 +11,7 @@ import { QUERY_KEYS } from 'quiz/constants/queryKeys';
 import { PeerAnswerItem } from '../PeerAnswerItem';
 import { PeerAnswerWrapper, Wrapper } from './style';
 
-export function PeerAnswerList() {
+export function PeerAnswerList(isQuizCreator: { isQuizCreator: boolean }) {
   const quizIdParams = usePathParam('quizIdParams', { suspense: true });
 
   const { data: quizzes } = useQuery(
@@ -21,7 +21,6 @@ export function PeerAnswerList() {
       enabled: Boolean(quizIdParams),
     }
   );
-
   const { data: user } = useQuery(QUERY_KEYS.GET_USER_INFO, getUser);
 
   if (!quizzes || !user) {
@@ -29,16 +28,14 @@ export function PeerAnswerList() {
   }
 
   const peerAnswers = quizzes.quizReplyHistories.filter(element => element.creator.nickname !== user.nickname);
-
   return (
     <Wrapper>
-      <Spacing size={'5vh'} />
       <Flex css={{ justifyContent: 'space-between' }}>
         <Text variant="headline">팀원들의 답안도 확인해볼까요? </Text>
         <DoneNumberNotice done={peerAnswers.length} />
       </Flex>
       <Spacing size={'2vh'} />
-      <PeerAnswerWrapper>
+      <PeerAnswerWrapper isQuizCreator={isQuizCreator.isQuizCreator}>
         {peerAnswers.map(({ quizReplyHistoryId, answer, creator }) => (
           <PeerAnswerItem
             key={creator.userId}
