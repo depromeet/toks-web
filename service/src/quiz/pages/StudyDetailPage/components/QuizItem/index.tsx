@@ -15,41 +15,62 @@ interface QuizItemProps {
   setQuizItemStatus: (quizId: number, newQuizStatus: QuizStatus) => QuizResponse | undefined;
 }
 
-type QuizItemMap = {
-  [key in QuizStatus]: {
-    buttonColor: ComponentProps<typeof Button>['type'];
-    timerColor: KeyOfColors;
-    labelColor: string;
-    backgroundColor: string;
-    buttonName: (myQuiz: boolean) => string;
-    path: (quizId: number, myQuiz: boolean) => string;
-  };
-};
+// type QuizItemMap = {
+//   [key in QuizStatus]: {
+//     buttonColor: ComponentProps<typeof Button>['type'];
+//     timerColor: KeyOfColors;
+//     labelColor: string;
+//     backgroundColor: string;
+//     button: {
+//       string : {
+//         path: 
+//       }
+//     }
+//   };
+// };
 
-const QUIZ_ITEM: QuizItemMap = {
+const QUIZ_BUTTON_TYPE = {
+  CHECK : {
+    buttonName: "똑스 확인하기",
+    path: (quizId: number) => `/quiz/check/${quizId}`
+  },
+  VOTE: {
+    buttonName: "똑표하기",
+    path: (quizId: number) => `/quiz/vote/${quizId}`,
+  },
+  SOLVE: {
+    buttonName: "똑스 풀기",
+    path: (quizId: number) => `/quiz/solve/${quizId}`,
+  }
+}
+
+const QUIZ_BUTTON_BY_SOLVED = {
+  SOLVED: () => QUIZ_BUTTON_TYPE["VOTE"],
+  VOTED: () => QUIZ_BUTTON_TYPE["CHECK"],
+  NONE:  (myQuiz: boolean) => myQuiz? QUIZ_BUTTON_TYPE["VOTE"] : QUIZ_BUTTON_TYPE["SOLVE"]
+}
+
+const QUIZ_ITEM = {
   DONE: {
     buttonColor: 'general',
     timerColor: 'gray060',
     labelColor: theme.colors.gray120,
     backgroundColor: theme.colors.gray110,
-    buttonName: () => '똑스 확인하기',
-    path: (quizId: number) => `/quiz/check/${quizId}`,
+    button: () => QUIZ_BUTTON_TYPE["CHECK"],
   },
   TO_DO: {
     buttonColor: 'primary',
     timerColor: 'primary',
     labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
-    buttonName: (myQuiz: boolean) => (myQuiz ? '똑표하기' : '똑스 풀기'),
-    path: (quizId: number, myQuiz: boolean) => (myQuiz ? `/quiz/vote/${quizId}` : `/quiz/solve/${quizId}`),
+    button: (quizSolvedType : "SOLVED" | "VOTED" | "NONE", myQuiz: boolean) => QUIZ_BUTTON_BY_SOLVED[quizSolvedType](myQuiz),
   },
   IN_PROGRESS: {
     buttonColor: 'primary',
     timerColor: 'primary',
     labelColor: theme.colors.gray110,
     backgroundColor: theme.colors.gray100,
-    buttonName: (myQuiz: boolean) => (myQuiz ? '똑표하기' : '똑스 풀기'),
-    path: (quizId: number, myQuiz: boolean) => (myQuiz ? `/quiz/vote/${quizId}` : `/quiz/solve/${quizId}`),
+    button: (quizSolvedType : "SOLVED" | "VOTED" | "NONE", myQuiz: boolean) => QUIZ_BUTTON_BY_SOLVED[quizSolvedType](myQuiz),
   },
 };
 
@@ -62,6 +83,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
     durationOfSecond,
     quizStatus,
     myQuiz,
+    quizSolveStep,
     question: title,
     creator,
     unSubmitters,
@@ -74,6 +96,10 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
   const onFold = () => setIsFold(!isFold);
 
   const router = useRouter();
+
+  // 임시!
+  // NONE => SOLVED => VOTED
+  // const quizSolveStep = "" // "VOTED", "NONE"
 
   useEffect(() => {
     if (time === 0 && quizStatus !== 'DONE') {
@@ -148,16 +174,16 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
               </Text>
             )}
             <Button
-              type={QUIZ_ITEM[quizStatus].buttonColor}
+              type={QUIZ_ITEM[quizStatus].buttonColor as ComponentProps<typeof Button>['type']}
               width={140}
               disabled={quizStatus === 'TO_DO'}
               size="medium"
               onClick={event => {
                 event.stopPropagation();
-                router.push(QUIZ_ITEM[quizStatus].path(quizId, myQuiz));
+                router.push(QUIZ_ITEM[quizStatus].button(quizSolveStep, myQuiz).path(quizId));
               }}
             >
-              {QUIZ_ITEM[quizStatus].buttonName(myQuiz)}
+              {QUIZ_ITEM[quizStatus].button(quizSolveStep, myQuiz).buttonName}
             </Button>
           </>
         }
@@ -165,7 +191,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
           <>
             <FlexRow css={{ marginTop: '36px' }}>
               <Icon iconName="ic-time" css={{ marginLeft: '3.2px' }} />
-              <Text variant="title04" color={QUIZ_ITEM[quizStatus].timerColor} css={{ margin: '0 0 0 9.2px' }} as="h4">
+              <Text variant="title04" color={QUIZ_ITEM[quizStatus].timerColor as KeyOfColors} css={{ margin: '0 0 0 9.2px' }} as="h4">
                 {convertSecondToString(time)}
               </Text>
             </FlexRow>

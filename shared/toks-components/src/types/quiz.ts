@@ -12,6 +12,7 @@ export type Quiz = {
   durationOfSecond: number;
   timestamp: string;
   creator: User;
+  quizSolveStep: "NONE" | "SOLVED" | "VOTED";
   unSubmitters: User[];
   studyId: number;
   quizStatus: QuizStatus;
