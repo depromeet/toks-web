@@ -26,7 +26,7 @@ export const useCreateStudyForm = () => {
 
   const { open } = useToast();
 
-  const { mutate: createStudy } = useMutation(async () => {
+  const { mutate: createStudy, isLoading: isPostLoading } = useMutation(async () => {
     const values = getValues();
     const { startedAt, endedAt } = values;
 
@@ -73,5 +73,6 @@ export const useCreateStudyForm = () => {
     isMaxLength,
     isRequiredText,
     getValues,
+    isPostLoading,
   };
 };
