@@ -100,7 +100,7 @@ export const QuizCreateInputList = ({
   );
 };
 
-const REQUIRED_FIELD: Partial<keyof QuizCreateForm>[] = [
+const REQUIRED_FIELD: Array<Partial<keyof QuizCreateForm>> = [
   'question',
   'durationOfSecond',
   'timepicker',
