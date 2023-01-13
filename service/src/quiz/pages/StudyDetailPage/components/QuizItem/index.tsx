@@ -171,17 +171,18 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
             </FlexRow>
             <Divider css={{ marginTop: '22.25px' }} />
             <FlexRow css={{ marginTop: '14px' }}>
-              <Text variant="subhead" css={{ margin: '0' }} as="h6">
+              <Text variant="subhead" css={{ margin: '0 24px 0 0' }} as="h6">
                 똑스 만든사람
               </Text>
+
               <UserAvatar
                 image={creator.profileImageUrl}
                 userName={creator.nickname}
-                css={{ marginLeft: '22px' }}
                 size="large"
                 className={`avatar--user_${creator.userId}`}
                 tooltip={true}
               />
+
               <Space css={{ flex: 1 }} />
               {unSubmitters.length !== 0 && (
                 <Text variant="subhead" css={{ margin: '0' }} as="h6">
