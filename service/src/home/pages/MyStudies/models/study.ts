@@ -8,5 +8,6 @@ export interface Study {
     id: number;
     name: string;
   }>;
+  startedAt: string;
   status: 'READY' | 'IN_PROGRESS' | 'FINISH';
 }
