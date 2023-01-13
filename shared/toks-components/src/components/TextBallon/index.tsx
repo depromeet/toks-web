@@ -30,20 +30,20 @@ export function TextBallon({ title, onClick, className, direction = 'top', color
 
 export default TextBallon;
 
-const VALUE_BY_DIRECTION = {
+const getValueByDirection = (color: KeyOfColors) => ({
   top: {
     translateY: '-150%',
-    arrowBorderTop: `10px solid ${theme.colors.primary}`,
+    arrowBorderTop: `10px solid ${theme.colors[color]}`,
     arrowBorderBottom: `0px solid transparent`,
     afterTop: '32px',
   },
   bottom: {
     translateY: '0%',
     arrowBorderTop: '0px solid transparent',
-    arrowBorderBottom: `10px solid ${theme.colors.primary}`,
+    arrowBorderBottom: `10px solid ${theme.colors[color]}`,
     afterTop: '-5px',
   },
-};
+});
 
 const StyledBallon = styled.div<{ direction: Direction; color: KeyOfColors }>`
   position: absolute;
@@ -51,7 +51,7 @@ const StyledBallon = styled.div<{ direction: Direction; color: KeyOfColors }>`
   min-width: 220px;
   height: 36px;
   left: 50%;
-  transform: ${({ direction }) => `translate(-50%, ${VALUE_BY_DIRECTION[direction].translateY})`};
+  transform: ${({ direction, color }) => `translate(-50%, ${getValueByDirection(color)[direction].translateY})`};
   background: ${({ color }) => theme.colors[color]};
   color: ${theme.colors.gray010};
   border-radius: 32px;
@@ -59,13 +59,13 @@ const StyledBallon = styled.div<{ direction: Direction; color: KeyOfColors }>`
   text-align: center;
 
   &:after {
-    border-top: ${({ direction }) => VALUE_BY_DIRECTION[direction].arrowBorderTop};
+    border-top: ${({ direction, color }) => getValueByDirection(color)[direction].arrowBorderTop};
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: ${({ direction }) => VALUE_BY_DIRECTION[direction].arrowBorderBottom};
+    border-bottom: ${({ direction, color }) => getValueByDirection(color)[direction].arrowBorderBottom};
     content: '';
     position: absolute;
-    top: ${({ direction }) => VALUE_BY_DIRECTION[direction].afterTop};
+    top: ${({ direction, color }) => getValueByDirection(color)[direction].afterTop};
     left: 50%;
     transform: translate(-50%, 0%);
   }

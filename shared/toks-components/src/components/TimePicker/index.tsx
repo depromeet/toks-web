@@ -138,7 +138,7 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
           }}
         >
           <input
-            type="visible"
+            type="hidden"
             {...register}
             name="timepicker"
             ref={ref}
