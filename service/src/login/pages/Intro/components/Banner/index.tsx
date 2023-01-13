@@ -7,10 +7,8 @@ import { useMutation } from 'react-query';
 import { login as requestLogin } from 'login/pages/Intro/remote/login';
 
 export const Banner = () => {
-  const { open } = useToast();
   const { mutateAsync: login, isLoading } = useMutation(async () => {
     await requestLogin();
-    await open({ title: '로그인에 성공했어요', type: 'success' });
   });
   const { data: user } = useSafelyGetUser();
 

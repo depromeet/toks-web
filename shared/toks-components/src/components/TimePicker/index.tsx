@@ -104,7 +104,16 @@ const useTimePicker = (defaultHour: number, defaultMinute: number, defaultAmpm: 
 
 export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
   (
-    { defaultHour = 0, defaultMinute = 0, defaultAmpm = 'AM', label, required, setValue, ...register }: TimePickerProps,
+    {
+      defaultHour = 0,
+      defaultMinute = 0,
+      defaultAmpm = 'AM',
+      label,
+      required,
+      setValue,
+      value,
+      ...register
+    }: TimePickerProps,
     ref
   ) => {
     const { hour, minute, ampm, hourError, minuteError, onHourUpdate, onMinuteUpdate, setAmpm } = useTimePicker(
@@ -129,11 +138,11 @@ export const TimePicker = forwardRef<HTMLInputElement, TimePickerProps>(
           }}
         >
           <input
-            type="hidden"
+            type="visible"
             {...register}
             name="timepicker"
             ref={ref}
-            value={convertTimeFormat(hour, minute, ampm)}
+            value={value == null ? undefined : convertTimeFormat(hour, minute, ampm)}
           />
           <FlexRow
             style={{
