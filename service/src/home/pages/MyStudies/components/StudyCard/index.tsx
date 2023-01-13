@@ -6,6 +6,8 @@ import { Flex, Spacing, padding, width100 } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { match } from 'ts-pattern';
 
+import { formatStartedAtToDecimalDay } from 'home/utils';
+
 import { Study } from '../../models/study';
 
 interface Props {
@@ -16,6 +18,7 @@ interface Props {
   tags: Study['tags'];
   quizStatus: Study['latestQuizStatus'];
   studyStatus: Study['status'];
+  startedAt: Study['startedAt'];
 }
 
 const LOTTIE_MAP = {
@@ -24,7 +27,7 @@ const LOTTIE_MAP = {
   graduated: 'https://asset.tokstudy.com/lottie-toks-graduated.json',
 } as const;
 
-function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus, studyId }: Props) {
+function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus, studyId, startedAt }: Props) {
   const router = useRouter();
   const { open } = useToast();
 
@@ -37,19 +40,35 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
         }
       }}
     >
-      {match(quizStatus)
-        .with('UNCHECKED', () => (
-          <TextBallon
-            title="우수 답변을 확인해보세요!"
-            onClick={() => router.push(PATHS.quiz.studyDetail({ studyId }))}
-          />
-        ))
-        .with('UNSOLVED', () => (
-          <TextBallon
-            title="새로운 똑스가 추가되었어요!"
-            onClick={() => router.push(PATHS.quiz.studyDetail({ studyId }))}
-          />
-        ))
+      {match({ quizStatus, studyStatus })
+        .when(
+          ({ studyStatus }) => studyStatus === 'READY',
+          () => {
+            const diffDays = formatStartedAtToDecimalDay(startedAt);
+            const text = `시작까지 ${diffDays}일 남았어요!`;
+
+            console.log(text);
+            return <TextBallon title={text} />;
+          }
+        )
+        .when(
+          ({ quizStatus }) => quizStatus === 'UNCHECKED',
+          () => (
+            <TextBallon
+              title="우수 답변을 확인해보세요!"
+              onClick={() => router.push(PATHS.quiz.studyDetail({ studyId }))}
+            />
+          )
+        )
+        .when(
+          ({ quizStatus }) => quizStatus === 'UNSOLVED',
+          () => (
+            <TextBallon
+              title="똑스대장님이 똑스를 추가했어요!"
+              onClick={() => router.push(PATHS.quiz.studyDetail({ studyId }))}
+            />
+          )
+        )
         .otherwise(() => null)}
 
       <Card>

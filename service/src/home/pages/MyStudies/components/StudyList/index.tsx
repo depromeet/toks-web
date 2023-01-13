@@ -31,8 +31,9 @@ function StudyList() {
   return (
     <StudyListRow
       as="ul"
-      hasIssue={studies.some(
-        ({ latestQuizStatus }) => latestQuizStatus === 'UNCHECKED' || latestQuizStatus === 'UNSOLVED'
+      hasissue={studies.some(
+        ({ latestQuizStatus, status }) =>
+          latestQuizStatus === 'UNCHECKED' || latestQuizStatus === 'UNSOLVED' || status === 'READY'
       )}
     >
       {studies.map(study => (
@@ -44,6 +45,7 @@ function StudyList() {
             studyId={study.id}
             quizStatus={study.latestQuizStatus}
             studyStatus={study.status}
+            startedAt={study.startedAt}
             onClick={() => router.push(PATHS.quiz.studyDetail({ studyId: study.id }))}
           />
         </SSRSuspense>
@@ -54,12 +56,12 @@ function StudyList() {
   );
 }
 
-const StudyListRow = styled(Flex)<{ hasIssue?: boolean }>`
+const StudyListRow = styled(Flex)<{ hasissue?: boolean }>`
   gap: 32px;
   align-self: flex-start;
   width: min(100%, 1260px);
   margin: 0 auto;
-  padding: ${({ hasIssue }) => (hasIssue ? `60px 20px 8px 20px` : '8px 20px')};
+  padding: ${({ hasissue }) => (hasissue ? `60px 20px 8px 20px` : '8px 20px')};
   overflow-x: auto;
 `;
 
