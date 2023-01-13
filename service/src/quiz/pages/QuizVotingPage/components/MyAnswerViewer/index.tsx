@@ -34,10 +34,13 @@ export function MyAnswerViewer() {
   const myAnswer = quizzes.quizReplyHistories.find(element => element.creator.nickname === user.nickname)?.answer;
 
   return (
-    <MyAnswerWrapper>
-      <Text variant="subhead">나의 답안</Text>
-      <Spacing size={16} />
-      <ToastViewer height={'18vh'} answer={myAnswer} />
-    </MyAnswerWrapper>
+    <>
+      <MyAnswerWrapper>
+        <Text variant="subhead">나의 답안</Text>
+        <Spacing size={16} />
+        <ToastViewer height={'18vh'} answer={myAnswer} />
+      </MyAnswerWrapper>
+      <Spacing size={'5vh'} />
+    </>
   );
 }
