@@ -45,7 +45,7 @@ export const useQuizCreate = () => {
       await router.push(PATHS.quiz.studyDetail({ studyId: createStudyId }));
     } catch (error: unknown) {
       if (isToksError(error)) {
-        router.replace(PATHS.quiz.studyDetail({ studyId: studyId }));
+        router.replace(PATHS.quiz.studyDetail({ studyId }));
         await open({ title: error.message, type: 'danger' });
       }
     }
