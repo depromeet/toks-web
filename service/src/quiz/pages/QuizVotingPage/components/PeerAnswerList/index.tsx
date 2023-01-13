@@ -45,6 +45,7 @@ export function PeerAnswerList(isQuizCreator: { isQuizCreator: boolean }) {
             peerAnswers={peerAnswers}
           />
         ))}
+        <Spacing size={80} />
       </PeerAnswerWrapper>
     </Wrapper>
   );
