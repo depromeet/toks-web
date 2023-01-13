@@ -58,6 +58,7 @@ export const QuizCreateInputList = ({
         maxDate={sub(new Date(endedAt), { days: 1 })}
         {...register('startedAt')}
         required
+        readOnlyInput
       />
       <TimePicker
         label="똑스 공개 시간"
