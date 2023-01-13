@@ -7,10 +7,13 @@ import { useRouter } from 'next/router';
 import { useSetNickname } from 'login/hooks/query/useSetNickname';
 import { useCreateNicknameForm } from 'login/hooks/useCreateNicknameForm';
 import { Wrapper } from 'login/pages/MyName/components/style';
+import { useQueryClient } from 'react-query';
+import { safelyGetUser } from '@depromeet/utils';
 
 export function NickNameBox() {
   const { register, handleSubmit, errors, isDisabled, isMaxLength, isMinLength, isRequiredText, setError } =
     useCreateNicknameForm();
+  const queryClient = useQueryClient();
 
   const { mutateAsync: nicknameMutation } = useSetNickname();
   const { open } = useToast();
@@ -19,6 +22,8 @@ export function NickNameBox() {
   const onSubmit = handleSubmit(async data => {
     try {
       await nicknameMutation(data.nickName);
+
+      await queryClient.refetchQueries(safelyGetUser.queryKey);
 
       const originUrl = getOriginUrl();
 
