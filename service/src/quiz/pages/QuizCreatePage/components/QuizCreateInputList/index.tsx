@@ -2,7 +2,15 @@ import { Button, Calendar, DropDown, TimePicker, Upload } from '@depromeet/toks-
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { sub } from 'date-fns';
 import { ComponentProps, useRef } from 'react';
-import { Control, Controller, FieldValues, UseFormRegister, UseFormReset, UseFormSetValue } from 'react-hook-form';
+import {
+  Control,
+  Controller,
+  FieldValues,
+  UseFormRegister,
+  UseFormReset,
+  UseFormSetValue,
+  UseFormWatch,
+} from 'react-hook-form';
 
 import { QUIZ_LIMIT_TIME } from 'quiz/pages/QuizCreatePage/constants';
 
@@ -11,6 +19,7 @@ import { QuizCreateForm } from '../../types';
 interface QuizCreateInputListProps {
   register: UseFormRegister<QuizCreateForm>;
   setValue: UseFormSetValue<QuizCreateForm>;
+  watch: UseFormWatch<QuizCreateForm>;
   control: Control<QuizCreateForm, number>;
   endedAt: string;
   className?: string;
@@ -20,6 +29,7 @@ interface QuizCreateInputListProps {
 export const QuizCreateInputList = ({
   register,
   setValue,
+  watch,
   control,
   endedAt,
   className,
@@ -82,8 +92,24 @@ export const QuizCreateInputList = ({
         >
           다시 만들기
         </Button>
-        <Button htmlType="submit">똑스 만들기 완료</Button>
+        <Button htmlType="submit" disabled={!isValidForm(watch())}>
+          똑스 만들기 완료
+        </Button>
       </Flex>
     </Flex>
   );
+};
+
+const REQUIRED_FIELD: Partial<keyof QuizCreateForm>[] = [
+  'question',
+  'durationOfSecond',
+  'timepicker',
+  'startedAt',
+  'answer',
+];
+
+const isValidForm = (values: QuizCreateForm) => {
+  return REQUIRED_FIELD.every(field => {
+    return values[field] != null && values[field] !== '' && values[field] !== 0 && values[field] !== '00:00:00';
+  });
 };
