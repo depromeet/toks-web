@@ -1,5 +1,5 @@
 import { colors } from '@depromeet/theme/dist/colors';
-import { Button, Image, Text, useToast } from '@depromeet/toks-components';
+import { Button, Image, Text } from '@depromeet/toks-components';
 import { useSafelyGetUser } from '@depromeet/utils';
 import { Flex } from '@toss/emotion-utils';
 import { useMutation } from 'react-query';
