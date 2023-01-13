@@ -64,6 +64,7 @@ export const QuizCreateInputList = ({
         required
         multiple
         ref={uploadRef}
+        maxCount={3}
       />
       <Spacing size={16} />
       <Flex
