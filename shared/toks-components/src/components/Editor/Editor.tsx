@@ -138,7 +138,7 @@ const EditorWrapper = styled.div`
     }
   }
 
-  .toastui-editor-md-code .toastui-editor-md-marked-text {
+  .toastui-editor-md-code.toastui-editor-md-marked-text {
     background-color: ${theme.colors.gray080};
   }
 
