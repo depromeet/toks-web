@@ -79,6 +79,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
         />
+        {/* GA설정 */}
         <Script
           id="gtag-init"
           strategy="afterInteractive"
