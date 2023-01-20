@@ -20,14 +20,15 @@
 개발자를 위한 스터디 Toks는 꾸준한 스터디를 함께 하여 하나씩 완성해 나가는 서비스를 제공하는 플랫폼 입니다.
 </br>
 </br>
-![image](https://user-images.githubusercontent.com/47452547/211786235-da7c1bf8-4ddc-4d29-ae61-cc34b51ec789.png)
+![스터디 만들기](https://user-images.githubusercontent.com/89721027/213660371-60b60194-a344-477f-abff-9d8e21392934.png)
 </br>
 스터디를 생성하고 링크를 지인들과 공유해보세요!
 
 단 한 번의 절차로 원하는 스터디를 생성할 수 있습니다.
 </br>
 </br>
-![image](https://user-images.githubusercontent.com/47452547/211785797-dafc3256-6b39-40e3-ae6d-5cc9753b9010.png)
+![image](https://user-images.githubusercontent.com/89721027/213660513-ea807203-369c-4a81-86b4-ca7338e3fbf2.png)
+![image](https://user-images.githubusercontent.com/89721027/213660571-f7bfba05-513a-4ab4-ba0d-13987e5e2d6e.png)
 </br>
 </br>
 팀원들과 함께 퀴즈를 만들고 제한 시간안에 풀어보세요!
@@ -35,7 +36,8 @@
 서로가 만든 퀴즈를 공유하며 목표한 분량을 복습할 수 있습니다.
 </br>
 </br>
-![image](https://user-images.githubusercontent.com/47452547/211787055-b73633d7-b429-4f16-849c-b5f292cb0091.png)
+![image](https://user-images.githubusercontent.com/89721027/213660817-140cdc40-4bad-42c0-bbcd-2512d84e0ea8.png)
+![image](https://user-images.githubusercontent.com/89721027/213661214-0f3c13ef-0f72-46fd-a303-db3b58a09703.png)
 </br>
 </br>
 제출된 답변들 중 가장 마음에 드는 답변에 투표해보세요.
