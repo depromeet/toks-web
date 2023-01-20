@@ -3,7 +3,7 @@ import emotionNormalize from 'emotion-normalize';
 import { NextPage } from 'next';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ReactElement, ReactNode, useState, useEffect } from 'react';
+import { ReactElement, ReactNode, useState } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { GlobalStyle as ToksDesignSystemStyle, OverlayProvider } from '@depromeet/toks-components';
 import { Layout } from '@depromeet/layout';
@@ -13,9 +13,8 @@ import { RecoilRoot } from 'recoil';
 import 'yet-another-react-lightbox/styles.css';
 import { ErrorBoundary } from '@toss/error-boundary';
 import Error from 'components/Error';
-import { useRouter } from 'next/router';
 import * as gtag from '../lib/gtag';
-import Script from 'next/script';
+import { useAnalytics } from '../hooks/useAnalytics';
 
 const normalizedStyles = css`
   ${emotionNormalize}
@@ -48,20 +47,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         },
       })
   );
-  // GA 설정 시작
-  const router = useRouter();
-  useEffect(() => {
-    const handleRouteChange = (url: any) => {
-      gtag.pageview(url);
-    };
-    router.events.on('routeChangeComplete', handleRouteChange);
-    router.events.on('hashChangeComplete', handleRouteChange);
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
-      router.events.off('hashChangeComplete', handleRouteChange);
-    };
-  }, [router.events]);
-  // GA 설정 끝
+
+  // GA 설정
+  useAnalytics();
 
   return (
     <>
@@ -75,14 +63,9 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
         <link rel="icon" href="https://toks-web-assets.s3.amazonaws.com/toktok.ico" />
 
         <title>Toks</title>
-        <Script
-          strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
-        />
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
         {/* GA설정 */}
-        <Script
-          id="gtag-init"
-          strategy="afterInteractive"
+        <script
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];
@@ -95,7 +78,7 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
           }}
         />
         {/* hotjar 설정 */}
-        <Script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
     (function(h,o,t,j,a,r){

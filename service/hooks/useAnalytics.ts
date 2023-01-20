@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import * as gtag from '../lib/gtag';
 
-export function useAnalytics() {
+export const useAnalytics = () => {
   const router = useRouter();
   useEffect(() => {
     const handleRouteChange = (url: URL) => {
@@ -15,4 +15,4 @@ export function useAnalytics() {
       router.events.off('hashChangeComplete', handleRouteChange);
     };
   }, [router.events]);
-}
+};
