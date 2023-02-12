@@ -1,7 +1,6 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import {css} from '@emotion/react';
-// import { Tag as BaseTag } from 'primereact/tag';
 import { HTMLAttributes, ReactNode } from 'react';
 import { Text } from '../Text';
 
@@ -30,11 +29,33 @@ const TAG_COLOR : TagColorMap = {
   }
 }
 
+const StyledTag = styled.span<{color : TagColor}>`
+  /* TODO : 이걸 살려서 적용이 되게 변경해야 함.
+  padding: '4px 12px';
+  width: 'fit-content';
+  height: '28px';
+  border-radius: '8px';
+  white-space: 'nowrap';
+  letter-spacing: ' -0.6px';
+  text-align: 'left';
+  */
+  ${({color}) => css`
+    background: ${TAG_COLOR[color].background};
+    color: ${TAG_COLOR[color].color};
+  `}
+`
+
 export function Tag({ value, color = 'normal', ...restProps }: TagProps) {
   return (
     <StyledTag
       color={color}
       role="listitem"
+      style={{
+        padding: '4px 12px',
+        width: 'fit-content',
+        borderRadius: '8px',
+        whiteSpace: 'nowrap',
+      }}
       {...restProps}
     >
       <Text variant='body02' color={TAG_COLOR[color].color}>{value}</Text>
@@ -52,20 +73,6 @@ function Row({ children, ...props }: RowProps) {
 }
 
 Tag.Row = Row;
-
-const StyledTag = styled.span<{color : TagColor}>`
-  padding: '4px 12px';
-  width: '200px';
-  height: '28px';
-  border-radius: '8px';
-  white-space: 'nowrap';
-  letter-spacing: ' -0.6px';
-  text-align: 'left';
-  ${({color}) => css`
-    background: ${TAG_COLOR[color].background};
-    color: ${TAG_COLOR[color].color};
-  `}
-`
 
 const ListRow = styled.ul`
   display: flex;
