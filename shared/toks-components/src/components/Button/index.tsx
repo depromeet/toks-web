@@ -1,7 +1,7 @@
-import { theme } from '@depromeet/theme';
 import { colors } from '@depromeet/theme/dist/colors';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
+import { theme } from '@depromeet/theme';
 
 type ButtonType = 'primary' | 'general' | 'ghost';
 
@@ -86,14 +86,13 @@ const StyledButton = styled('button')<{
   font-weight: 700;
   font-size: 16px;
 
-  ${props => {
-    const { width, disabled, size, buttontype } = props;
+  ${({ width, disabled, size, buttontype }) => {
     return css`
-        background: ${BUTTON_COLOR[disabled ? 'disabled' : 'normal'][buttontype]};
-        width: ${width ? `${width}px` : '100%'};
-        height: ${BUTTON_HEIGHT[size]};
-        border: ${buttontype} !== 'ghost' ? 'none' : '1px solid #A5A5A5';
-        color: ${BUTTOON_TEXT_COLOR[buttontype]};
+      background: ${BUTTON_COLOR[disabled ? 'disabled' : 'normal'][buttontype]};
+      width: ${width ? `${width}px` : '100%'};
+      height: ${BUTTON_HEIGHT[size]};
+      border: ${buttontype !== 'ghost' ? 'none' : '1px solid #A5A5A5'};
+      color: ${BUTTOON_TEXT_COLOR[buttontype]};
     `;
   }}
   &:hover {
