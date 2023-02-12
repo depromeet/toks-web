@@ -1,34 +1,44 @@
-import { theme } from '@depromeet/theme';
+import { KeyOfColors, theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
-import { Tag as BaseTag } from 'primereact/tag';
-import { ComponentProps, HTMLAttributes, ReactNode } from 'react';
+import {css} from '@emotion/react';
+// import { Tag as BaseTag } from 'primereact/tag';
+import { HTMLAttributes, ReactNode } from 'react';
+import { Text } from '../Text';
 
-interface TagProps extends Omit<ComponentProps<typeof BaseTag>, 'color'> {
-  color?: 'highlight' | 'normal';
+type TagColor = 'highlight' | 'normal'
+
+type TagColorMap = {
+  [key in TagColor]: {
+    background: string,
+    color: KeyOfColors
+  };
+};
+
+interface TagProps extends HTMLAttributes<HTMLSpanElement> {
+  value: string;
+  color?: TagColor;
 }
 
-export function Tag({ color = 'normal', ...restProps }: TagProps) {
+const TAG_COLOR : TagColorMap = {
+  normal : {
+    background : theme.colors.gray080,
+    color : 'gray020'
+  },
+  highlight : {
+    background : theme.colors.primary_opacity,
+    color : 'primary'
+  }
+}
+
+export function Tag({ value, color = 'normal', ...restProps }: TagProps) {
   return (
-    <BaseTag
-      // TODO: inline style로 적용한 부분 제외하기
-      style={{
-        background: color === 'highlight' ? 'rgba(255, 134, 47, 0.2)' : theme.colors.gray080,
-        color: color === 'highlight' ? theme.colors.primary : theme.colors.gray020,
-        padding: '4px 12px',
-        width: 'fit-content',
-        height: '28px',
-        borderRadius: '8px',
-        whiteSpace: 'nowrap',
-        fontFamily: 'Spoqa Han Sans Neo',
-        fontSize: '14px',
-        fontWeight: '400',
-        lineHeight: '20px',
-        letterSpacing: ' -0.6px',
-        textAlign: 'left',
-      }}
+    <StyledTag
+      color={color}
       role="listitem"
       {...restProps}
-    />
+    >
+      <Text variant='body02' color={TAG_COLOR[color].color}>{value}</Text>
+    </StyledTag>
   );
 }
 
@@ -42,6 +52,20 @@ function Row({ children, ...props }: RowProps) {
 }
 
 Tag.Row = Row;
+
+const StyledTag = styled.span<{color : TagColor}>`
+  padding: '4px 12px';
+  width: '200px';
+  height: '28px';
+  border-radius: '8px';
+  white-space: 'nowrap';
+  letter-spacing: ' -0.6px';
+  text-align: 'left';
+  ${({color}) => css`
+    background: ${TAG_COLOR[color].background};
+    color: ${TAG_COLOR[color].color};
+  `}
+`
 
 const ListRow = styled.ul`
   display: flex;
