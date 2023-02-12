@@ -31,15 +31,11 @@ const TAG_COLOR: TagColorMap = {
 };
 
 const StyledTag = styled.span<{ color: TagColor }>`
-  /* TODO : 이걸 살려서 적용이 되게 변경해야 함.
-  padding: '4px 12px';
-  width: 'fit-content';
-  height: '28px';
-  border-radius: '8px';
-  white-space: 'nowrap';
-  letter-spacing: ' -0.6px';
-  text-align: 'left';
-  */
+  padding: 4px 12px;
+  width: fit-content;
+  height: 28px;
+  border-radius: 8px;
+  white-space: nowrap;
   ${({ color }) => css`
     background: ${TAG_COLOR[color].background};
     color: ${TAG_COLOR[color].color};
@@ -51,12 +47,6 @@ export function Tag({ value, color = 'normal', ...restProps }: TagProps) {
     <StyledTag
       color={color}
       role="listitem"
-      style={{
-        padding: '4px 12px',
-        width: 'fit-content',
-        borderRadius: '8px',
-        whiteSpace: 'nowrap',
-      }}
       {...restProps}
     >
       <Text variant="body02" color={TAG_COLOR[color].color}>
