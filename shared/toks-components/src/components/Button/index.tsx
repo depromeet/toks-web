@@ -1,7 +1,7 @@
+import { theme } from '@depromeet/theme';
 import { colors } from '@depromeet/theme/dist/colors';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { theme } from '@depromeet/theme';
 
 type ButtonType = 'primary' | 'general' | 'ghost';
 
@@ -9,12 +9,15 @@ type ButtonSize = 'medium' | 'large';
 
 type ButtonStatus = 'normal' | 'hover' | 'disabled';
 
-interface Props {
+type ButtonHTMLType = 'button' | 'reset' | 'submit' | undefined;
+
+interface Props extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   type?: ButtonType;
   width?: number;
   size?: ButtonSize;
   buttonStyle?: React.CSSProperties;
   disabled?: boolean;
+  htmlType?: ButtonHTMLType;
 }
 
 type ButtonColorMap = {
@@ -53,7 +56,7 @@ const BUTTON_HEIGHT: { [key in ButtonSize]: string } = {
 };
 
 // TODO: 다크 모드 대응
-export function Button({ type = 'primary', width, size = 'medium', disabled, buttonStyle, ...rest }: Props) {
+export function Button({ type = 'primary', width, size = 'medium', disabled, buttonStyle, htmlType, ...rest }: Props) {
   return (
     <StyledButton
       style={{
@@ -63,6 +66,7 @@ export function Button({ type = 'primary', width, size = 'medium', disabled, but
       size={size}
       buttontype={type}
       disabled={disabled}
+      type={htmlType}
       {...rest}
     />
   );

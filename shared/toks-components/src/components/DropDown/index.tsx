@@ -1,10 +1,10 @@
+import { theme } from '@depromeet/theme';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 import { Dropdown, DropdownProps } from 'primereact/dropdown';
+import { forwardRef } from 'react';
 
 import { Text } from '../Text';
-import { css } from '@emotion/react';
-import { forwardRef } from 'react';
-import styled from '@emotion/styled';
-import { theme } from '@depromeet/theme';
 
 interface Props extends DropdownProps {
   width?: number;
