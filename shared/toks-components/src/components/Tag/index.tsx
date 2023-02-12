@@ -44,11 +44,7 @@ const StyledTag = styled.span<{ color: TagColor }>`
 
 export function Tag({ value, color = 'normal', ...restProps }: TagProps) {
   return (
-    <StyledTag
-      color={color}
-      role="listitem"
-      {...restProps}
-    >
+    <StyledTag color={color} role="listitem" {...restProps}>
       <Text variant="body02" color={TAG_COLOR[color].color}>
         {value}
       </Text>
