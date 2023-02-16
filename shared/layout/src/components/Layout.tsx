@@ -1,7 +1,7 @@
 import { isToksError, logout as requestLogout } from '@depromeet/http';
 import { PATHS } from '@depromeet/path';
 import { MAX_WIDTH, SSRSuspense, ToksHeader, useToast } from '@depromeet/toks-components';
-import { useSafelyGetUser } from '@depromeet/utils';
+import { useSafelyGetUser, useLogin } from '@depromeet/utils';
 import styled from '@emotion/styled';
 import { useBooleanState } from '@toss/react';
 import { useOverlay } from '@toss/use-overlay';
@@ -19,6 +19,8 @@ function Component({ children, fullWidth = true }: { children: ReactNode; fullWi
   const { toggle, close } = useUserMenuDialog();
   const { open } = useToast();
   const router = useRouter();
+
+  const {login} = useLogin();
 
   const { mutateAsync: logout, isLoading } = useMutation(async () => {
     try {
@@ -56,6 +58,7 @@ function Component({ children, fullWidth = true }: { children: ReactNode; fullWi
             const isLoginPage = router.pathname.includes('/login');
 
             if (isLoginPage) {
+              login();
               return;
             }
 
