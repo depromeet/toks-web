@@ -4,7 +4,7 @@ import { useSafelyGetUser } from '@depromeet/utils';
 import { Flex } from '@toss/emotion-utils';
 import { useMutation } from 'react-query';
 
-import { login as requestLogin } from 'login/pages/Intro/remote/login';
+import { login as requestLogin } from '@depromeet/utils';
 
 export const Banner = () => {
   const { mutateAsync: login, isLoading } = useMutation(async () => {
