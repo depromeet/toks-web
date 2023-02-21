@@ -45,20 +45,37 @@ export function UserAvatar({
 
   return (
     <>
-      {tooltip && <Tooltip target={`.${className}`} content={tooltipContent} position="bottom" />}
-      <StyledAvatar
-        image={isBaseProfileImage ? baseProfileImage : image}
-        label={label}
-        size={size}
-        shape="circle"
-        style={{
-          width: AVATAR_SIZE[size ?? 'normal'],
-          height: AVATAR_SIZE[size ?? 'normal'],
-          backgroundColor: `${theme.colors.gray060}`,
-          border: `1px solid ${theme.colors.gray100}`,
-        }}
-        className={className}
-      />
+      {tooltip ? (
+        <Tooltip message={tooltipContent} direction="bottom">
+          <StyledAvatar
+            image={isBaseProfileImage ? baseProfileImage : image}
+            label={label}
+            size={size}
+            shape="circle"
+            style={{
+              width: AVATAR_SIZE[size ?? 'normal'],
+              height: AVATAR_SIZE[size ?? 'normal'],
+              backgroundColor: `${theme.colors.gray060}`,
+              border: `1px solid ${theme.colors.gray100}`,
+            }}
+            className={className}
+          />
+        </Tooltip>
+      ) : (
+        <StyledAvatar
+          image={isBaseProfileImage ? baseProfileImage : image}
+          label={label}
+          size={size}
+          shape="circle"
+          style={{
+            width: AVATAR_SIZE[size ?? 'normal'],
+            height: AVATAR_SIZE[size ?? 'normal'],
+            backgroundColor: `${theme.colors.gray060}`,
+            border: `1px solid ${theme.colors.gray100}`,
+          }}
+          className={className}
+        />
+      )}
     </>
   );
 }
