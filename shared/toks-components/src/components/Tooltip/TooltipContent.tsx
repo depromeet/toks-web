@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { isBottom, PositionType, DirectionType } from '.';
+
+import { DirectionType, PositionType, isBottom } from '.';
 import { Text } from '../Text';
 
 export const TooltipContent = ({
