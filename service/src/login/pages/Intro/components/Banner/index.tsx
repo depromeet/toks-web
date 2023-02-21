@@ -1,15 +1,11 @@
 import { colors } from '@depromeet/theme/dist/colors';
 import { Button, Image, Text } from '@depromeet/toks-components';
-import { useSafelyGetUser } from '@depromeet/utils';
+import { useLogin, useSafelyGetUser } from '@depromeet/utils';
 import { Flex } from '@toss/emotion-utils';
-import { useMutation } from 'react-query';
-
-import { login as requestLogin } from 'login/pages/Intro/remote/login';
 
 export const Banner = () => {
-  const { mutateAsync: login, isLoading } = useMutation(async () => {
-    await requestLogin();
-  });
+  const { login, isLoading } = useLogin();
+
   const { data: user } = useSafelyGetUser();
 
   const isAleadyLogined = user != null;
