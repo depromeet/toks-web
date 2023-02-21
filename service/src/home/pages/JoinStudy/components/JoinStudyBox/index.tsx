@@ -78,7 +78,7 @@ export function JoinStudyBox() {
             <Spacing size={8} />
             <Tag.Row>
               {study.tags.map(({ id, name }) => (
-                <Tag key={id}>{name}</Tag>
+                <Tag key={id} value={name} />
               ))}
             </Tag.Row>
           </>
