@@ -1,7 +1,7 @@
+import { theme } from '@depromeet/theme';
 import { colors } from '@depromeet/theme/dist/colors';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { theme } from '@depromeet/theme';
 
 type ButtonType = 'primary' | 'general' | 'ghost';
 
