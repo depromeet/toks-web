@@ -4,7 +4,7 @@ import { useLogin, useSafelyGetUser } from '@depromeet/utils';
 import { Flex } from '@toss/emotion-utils';
 
 export const Banner = () => {
-  const { login, isLoading } = useLogin();
+  const { login } = useLogin();
 
   const { data: user } = useSafelyGetUser();
 
