@@ -1,24 +1,23 @@
 import { theme } from '@depromeet/theme';
 import { colors } from '@depromeet/theme/dist/colors';
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Button as BaseButton } from 'primereact/button';
-import { ProgressSpinner } from 'primereact/progressspinner';
-import { ComponentProps } from 'react';
 
 type ButtonType = 'primary' | 'general' | 'ghost';
 
 type ButtonSize = 'medium' | 'large';
 
-type BaseButtonProps = ComponentProps<typeof BaseButton>;
-
 type ButtonStatus = 'normal' | 'hover' | 'disabled';
 
-interface Props extends Omit<BaseButtonProps, 'type'> {
+type ButtonHTMLType = 'button' | 'reset' | 'submit' | undefined;
+
+interface Props extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   type?: ButtonType;
   width?: number;
-  htmlType?: BaseButtonProps['type'];
   size?: ButtonSize;
   buttonStyle?: React.CSSProperties;
+  disabled?: boolean;
+  htmlType?: ButtonHTMLType;
 }
 
 type ButtonColorMap = {
@@ -57,36 +56,45 @@ const BUTTON_HEIGHT: { [key in ButtonSize]: string } = {
 };
 
 // TODO: 다크 모드 대응
-export function Button({ type = 'primary', width, size = 'medium', disabled, htmlType, buttonStyle, ...rest }: Props) {
+export function Button({ type = 'primary', width, size = 'medium', disabled, buttonStyle, htmlType, ...rest }: Props) {
   return (
-    <StyledBaseButton
-      // TODO: inline style로 적용한 부분 제외하기
+    <StyledButton
       style={{
-        background: BUTTON_COLOR[disabled ? 'disabled' : 'normal'][type],
-        borderRadius: '32px',
-        width: width ?? '100%',
-        height: BUTTON_HEIGHT[size],
-        border: type !== 'ghost' ? 'none' : '1px solid #A5A5A5',
-        color: BUTTOON_TEXT_COLOR[type],
-        fontWeight: '700',
-        fontSize: '16px',
         ...buttonStyle,
       }}
+      width={width}
+      size={size}
       buttontype={type}
-      type={htmlType}
       disabled={disabled}
-      loadingIcon={<ProgressSpinner strokeWidth="6px" style={{ width: '26px', height: '26px', margin: 0 }} />}
+      type={htmlType}
       {...rest}
     />
   );
 }
 
-const StyledBaseButton = styled(BaseButton)<{ buttontype: ButtonType }>`
+const StyledButton = styled('button')<{
+  buttontype: ButtonType;
+  disabled?: boolean;
+  width?: number;
+  size: ButtonSize;
+}>`
+  border-radius: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 14px;
+  font-weight: 700;
+  font-size: 16px;
 
+  ${({ width, disabled, size, buttontype }) => {
+    return css`
+      background: ${BUTTON_COLOR[disabled ? 'disabled' : 'normal'][buttontype]};
+      width: ${width ? `${width}px` : '100%'};
+      height: ${BUTTON_HEIGHT[size]};
+      border: ${buttontype !== 'ghost' ? 'none' : '1px solid #A5A5A5'};
+      color: ${BUTTOON_TEXT_COLOR[buttontype]};
+    `;
+  }}
   &:hover {
     background: ${({ buttontype }) => BUTTON_COLOR.hover[buttontype]} !important;
   }
@@ -95,17 +103,5 @@ const StyledBaseButton = styled(BaseButton)<{ buttontype: ButtonType }>`
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-  }
-
-  .p-progress-spinner-circle {
-    animation: unset;
-    stroke: ${({ buttontype }) => BUTTOON_TEXT_COLOR[buttontype]};
-  }
-
-  opacity: 1 !important;
-
-  .p-disabled,
-  .p-component:disabled {
-    opacity: 1 !important;
   }
 `;

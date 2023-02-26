@@ -4,7 +4,7 @@ import { useLogin, useSafelyGetUser } from '@depromeet/utils';
 import { Flex } from '@toss/emotion-utils';
 
 export const Banner = () => {
-  const { login, isLoading } = useLogin();
+  const { login } = useLogin();
 
   const { data: user } = useSafelyGetUser();
 
@@ -27,11 +27,10 @@ export const Banner = () => {
         width={200}
         size="large"
         onClick={() => login()}
-        loading={isLoading}
-        icon={<Image src="https://asset.tokstudy.com/kakao-logo.png" alt="" width={28} height={28} />}
         buttonStyle={{ fontSize: '18px', color: colors.gray110 }}
         disabled={isAleadyLogined}
       >
+        <Image src="https://asset.tokstudy.com/kakao-logo.png" alt="" width={28} height={28} />
         Kakao 로그인
       </Button>
     </Flex>
