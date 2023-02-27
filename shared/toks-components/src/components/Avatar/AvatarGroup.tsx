@@ -9,7 +9,7 @@ export interface AvatarGroupProps {
   size?: AvatarProps['size'];
 }
 
-export const AvatarGroup = ({ children, viewCount = 2, size = 'large' }: AvatarGroupProps) => {
+export const AvatarGroup = ({ children, viewCount = 5, size = 'large' }: AvatarGroupProps) => {
   const avatars = Children.toArray(children)
     .filter(element => {
       if (isValidElement(element) && element.type === Avatar) {
