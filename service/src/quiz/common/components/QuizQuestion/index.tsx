@@ -1,4 +1,4 @@
-import { Icon, ImageViewer, Text, ToastViewer, UserAvatar } from '@depromeet/toks-components';
+import { Avatar, Icon, ImageViewer, Text, ToastViewer } from '@depromeet/toks-components';
 import { calculateRemainingSecond } from '@depromeet/toks-components/src/utils';
 import { usePathParam } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
@@ -77,7 +77,7 @@ export function QuizQuestion({ quizAnswer }: QuizQuestionProps) {
       </RoundInfo>
       <Spacing size={16} />
       <Flex css={{ alignItems: 'center' }}>
-        <UserAvatar image={quiz?.creator.profileImageUrl} size="large" />
+        <Avatar src={quiz?.creator.profileImageUrl} size="large" alt={quiz?.creator.nickname} />
         <Text variant="subhead" color="gray040" css={{ marginLeft: '12px' }}>
           {quiz?.creator.nickname}
         </Text>

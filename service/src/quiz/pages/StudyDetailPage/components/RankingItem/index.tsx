@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { Icon, Text, UserAvatar } from '@depromeet/toks-components';
+import { Avatar, Icon, Text } from '@depromeet/toks-components';
 
 import { Rank } from 'quiz/pages/StudyDetailPage/models/rankingList';
 
@@ -26,7 +26,7 @@ export function RankingItem({ rankItem }: RankingItemProps) {
           {convertNoneRanking(ranking)}
         </Text>
       )}
-      <UserAvatar image={user.profileImageUrl} size="large" css={{ marginLeft: '12px' }} />
+      <Avatar src={user.profileImageUrl} size="large" alt={user.nickname} />
       <Text
         variant="body01"
         color="white"
