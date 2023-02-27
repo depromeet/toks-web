@@ -115,15 +115,6 @@ ToksHeader.Skeleton = function () {
         width={70}
         height={24}
       />
-      <Button>
-        <ClickableImage
-          src="https://asset.tokstudy.com/login-emoji.png"
-          alt=""
-          width={22}
-          height={22}
-          style={{ borderRadius: '50%' }}
-        />
-      </Button>
     </Header>
   );
 };
