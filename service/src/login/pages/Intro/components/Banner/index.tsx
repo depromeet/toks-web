@@ -23,11 +23,11 @@ export const Banner = () => {
         개발자를 위한 스터디, 똑스-잇!
       </Text>
       <Button
-        type="general"
+        type="primary"
         width={200}
         size="large"
         onClick={() => login()}
-        buttonStyle={{ fontSize: '18px', color: colors.gray110 }}
+        buttonStyle={{ fontSize: '18px', color: colors.white }}
         disabled={isAleadyLogined}
       >
         <Image src="https://asset.tokstudy.com/kakao-logo.png" alt="" width={28} height={28} />
