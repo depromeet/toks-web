@@ -15,6 +15,7 @@ export default class ToksHomepageDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <div id="portal" />
         </body>
       </Html>
     );
