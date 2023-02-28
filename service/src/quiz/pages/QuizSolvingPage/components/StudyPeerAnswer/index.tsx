@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { Accordion, Text, UserAvatar } from '@depromeet/toks-components';
+import { Accordion, Avatar, Text } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useQuery } from 'react-query';
@@ -51,7 +51,7 @@ export function StudyPeerAnswer() {
               }}
               headerNodes={
                 <Flex css={{ alignItems: 'center' }}>
-                  <UserAvatar image={creator.profileImageUrl} size="large" />
+                  <Avatar src={creator.profileImageUrl} size="large" alt={creator.nickname} />
                   <Text css={{ marginLeft: '12px' }} variant="subhead" color="gray020">
                     {creator.nickname}
                   </Text>

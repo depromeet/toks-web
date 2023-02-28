@@ -1,4 +1,4 @@
-import { SSRSuspense, Tag, Text, UserAvatar } from '@depromeet/toks-components';
+import { Avatar, SSRSuspense, Tag, Text } from '@depromeet/toks-components';
 import { ErrorBoundary } from '@toss/error-boundary';
 
 import { useGetStudyInfo } from 'quiz/pages/StudyDetailPage/hooks/queries/studyInfo';
@@ -42,20 +42,13 @@ function StudyInfo({ studyId }: StudyInfoProps) {
           </Tag.Row>
         </Body>
         <Footer>
-          {/* UserAvatar Group id가 여기서는 스터디 id가 되고 각 퀴즈에서는 퀴즈의 id가 됨 */}
-          <UserAvatar.Group view={6} id={studyId as string} groupType="study">
+          {/* Avatar Group id가 여기서는 스터디 id가 되고 각 퀴즈에서는 퀴즈의 id가 됨 */}
+          <Avatar.Group>
             {members &&
               members.map(({ userId, nickname, profileImageUrl }) => (
-                <UserAvatar
-                  key={userId}
-                  userName={nickname}
-                  image={profileImageUrl}
-                  size="large"
-                  className={`avatar--user_${userId}`}
-                  tooltip={true}
-                />
+                <Avatar key={userId} tooltipContent={nickname} src={profileImageUrl} size="large" alt={nickname} />
               ))}
-          </UserAvatar.Group>
+          </Avatar.Group>
         </Footer>
       </Info>
       <Space css={{ flex: 1 }} />

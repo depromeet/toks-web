@@ -15,7 +15,7 @@ export * from './Lottie';
 
 export * from './Accordion';
 export * from 'primereact/autocomplete';
-export * from './UserAvatar';
+export * from './Avatar';
 
 export * from 'primereact/badge';
 export * from 'primereact/blockui';
