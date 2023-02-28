@@ -20,10 +20,14 @@ export const Tooltip = ({
   children,
   message,
   direction = 'bottom',
+  isVisibleTooltip = true,
+  style,
 }: {
   children: React.ReactNode;
   message: string;
   direction?: DirectionType;
+  isVisibleTooltip?: boolean;
+  style?: React.CSSProperties;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const [show, setShow] = useState(false);
@@ -44,10 +48,11 @@ export const Tooltip = ({
         display: 'inline-block',
         minWidth: 0,
         position: 'relative',
+        ...style,
       }}
     >
       {children}
-      {show && (
+      {show && isVisibleTooltip && (
         <TooltipPortal>
           <TooltipContent
             direction={direction}
