@@ -140,7 +140,7 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
           css={{ justifySelf: 'flex-end' }}
           onClick={onClick}
         >
-          {studyStatus !== 'IN_PROGRESS' ? <>복습하기</> : <>입장하기</>}
+          {studyStatus !== 'IN_PROGRESS' ? '복습하기' : '입장하기'}
         </Button>
       </Card>
     </div>
