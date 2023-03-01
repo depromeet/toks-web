@@ -1,9 +1,14 @@
-import { theme } from '@depromeet/theme';
+import { KeyOfColors, theme } from '@depromeet/theme';
 import { colors } from '@depromeet/theme/dist/colors';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-type ButtonType = 'primary' | 'general' | 'ghost';
+import { Icon } from '../Icon';
+import { IconName } from '../Icon/icons';
+import { Text } from '../Text';
+import { Typography } from '../Text/token';
+
+type ButtonType = 'primary' | 'general' | 'ghost' | 'danger';
 
 type ButtonSize = 'medium' | 'large';
 
@@ -11,13 +16,17 @@ type ButtonStatus = 'normal' | 'hover' | 'disabled';
 
 type ButtonHTMLType = 'button' | 'reset' | 'submit' | undefined;
 
+type ButtonIconType = 'timer' | 'loading' | 'kakao';
+
 interface Props extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
+  icon?: ButtonIconType;
   type?: ButtonType;
   width?: number;
   size?: ButtonSize;
   buttonStyle?: React.CSSProperties;
   disabled?: boolean;
   htmlType?: ButtonHTMLType;
+  children: React.ReactNode;
 }
 
 type ButtonColorMap = {
@@ -31,23 +40,32 @@ const BUTTON_COLOR: ButtonColorMap = {
     primary: '#FF862F',
     ghost: 'transparent',
     general: '#FFFFFF',
+    danger: '#EB4852',
   },
   hover: {
     primary: '#E96C12',
     ghost: colors.gray070,
     general: colors.gray040,
+    danger: '#C63135',
   },
   disabled: {
     primary: `${theme.colors.primary_opacity}`,
-    ghost: colors.gray070,
-    general: colors.gray040,
+    ghost: colors.gray080,
+    general: colors.gray060,
+    danger: '#71292B',
   },
 };
 
-const BUTTOON_TEXT_COLOR: { [key in ButtonType]: string } = {
-  primary: '#fff',
-  general: '#000',
-  ghost: '#fff',
+const BUTTOON_TEXT_COLOR: { [key in ButtonType]: KeyOfColors } = {
+  primary: 'white',
+  general: 'gray110',
+  ghost: 'white',
+  danger: 'white',
+};
+
+const BUTTOON_TEXT_SIZE: { [key in ButtonSize]: Typography } = {
+  large: 'subhead',
+  medium: 'headline',
 };
 
 const BUTTON_HEIGHT: { [key in ButtonSize]: string } = {
@@ -55,8 +73,30 @@ const BUTTON_HEIGHT: { [key in ButtonSize]: string } = {
   medium: '46px',
 };
 
+const ICON_SIZE: { [key in ButtonSize]: number } = {
+  large: 28,
+  medium: 26,
+};
+
+const ICON_NAME: { [key in ButtonIconType]: IconName } = {
+  timer: 'ic-time',
+  loading: 'ic-spinner',
+  kakao: 'ic-kakao',
+};
+
 // TODO: 다크 모드 대응
-export function Button({ type = 'primary', width, size = 'medium', disabled, buttonStyle, htmlType, ...rest }: Props) {
+// TODO: spinner 로티로 변경
+export function Button({
+  icon,
+  type = 'primary',
+  width,
+  size = 'medium',
+  disabled,
+  buttonStyle,
+  htmlType,
+  children,
+  ...rest
+}: Props) {
   return (
     <StyledButton
       style={{
@@ -68,7 +108,12 @@ export function Button({ type = 'primary', width, size = 'medium', disabled, but
       disabled={disabled}
       type={htmlType}
       {...rest}
-    />
+    >
+      {icon && <Icon size={ICON_SIZE[size]} iconName={ICON_NAME[icon]} />}
+      <Text color={BUTTOON_TEXT_COLOR[type]} variant={BUTTOON_TEXT_SIZE[size]}>
+        {children}
+      </Text>
+    </StyledButton>
   );
 }
 

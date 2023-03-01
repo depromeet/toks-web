@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { Accordion, Text, ToastViewer, UserAvatar } from '@depromeet/toks-components';
+import { Accordion, Avatar, Text, ToastViewer } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { useState } from 'react';
 
@@ -29,7 +29,7 @@ export function AnswerCheckItem({ answer, likeCount, creator, isFold }: AnswerCh
         headerNodes={
           <Flex css={{ alignItems: 'center', width: '100%', justifyContent: 'space-between' }}>
             <Flex css={{ alignItems: 'center' }}>
-              <UserAvatar image={creator.profileImageUrl} size="large" />
+              <Avatar src={creator.profileImageUrl} size="large" alt={creator.nickname} />
               <Text css={{ marginLeft: '12px' }} variant="subhead" color="gray020">
                 {creator.nickname}
               </Text>

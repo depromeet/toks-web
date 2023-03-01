@@ -1,5 +1,5 @@
 import { KeyOfColors, theme } from '@depromeet/theme';
-import { Accordion, Button, Icon, Quiz, QuizResponse, QuizStatus, Text, UserAvatar } from '@depromeet/toks-components';
+import { Accordion, Avatar, Button, Icon, Quiz, QuizResponse, QuizStatus, Text } from '@depromeet/toks-components';
 import { convertSecondToString, getInitialTimerSecond, getQuizItemStatus } from '@depromeet/toks-components/src/utils';
 import { useTimer } from '@depromeet/utils';
 import { useRouter } from 'next/router';
@@ -207,33 +207,24 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
               <Text variant="subhead" css={{ margin: '0 24px 0 0' }} as="h6">
                 똑스 만든사람
               </Text>
-
-              <UserAvatar
-                image={creator.profileImageUrl}
-                userName={creator.nickname}
-                size="large"
-                className={`avatar--user_${creator.userId}`}
-                tooltip={true}
-              />
-
+              <Avatar src={creator.profileImageUrl} tooltipContent={creator.nickname} size="large" alt="제작자" />
               <Space css={{ flex: 1 }} />
-              {unSubmitters.length !== 0 && (
-                <Text variant="subhead" css={{ margin: '0' }} as="h6">
-                  똑스 안 푼 사람
-                </Text>
-              )}
-              <UserAvatar.Group view={6} id="8" groupType="quiz" css={{ marginLeft: '22px' }}>
-                {unSubmitters.map(({ userId, profileImageUrl, nickname }) => (
-                  <UserAvatar
-                    key={userId}
-                    image={profileImageUrl}
-                    userName={nickname}
-                    size="large"
-                    className={`avatar--user_${userId}`}
-                    tooltip={true}
-                  />
-                ))}
-              </UserAvatar.Group>
+              <FlexRow
+                css={{
+                  gap: '12px',
+                }}
+              >
+                {unSubmitters.length !== 0 && (
+                  <Text variant="subhead" css={{ margin: '0' }} as="h6">
+                    똑스 안 푼 사람
+                  </Text>
+                )}
+                <Avatar.Group>
+                  {unSubmitters.map(({ userId, profileImageUrl, nickname }) => (
+                    <Avatar key={userId} src={profileImageUrl} tooltipContent={nickname} size="large" alt={nickname} />
+                  ))}
+                </Avatar.Group>
+              </FlexRow>
             </FlexRow>
           </>
         }
