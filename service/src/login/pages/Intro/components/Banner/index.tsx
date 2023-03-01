@@ -28,7 +28,7 @@ export const Banner = () => {
         width={200}
         size="large"
         onClick={() => login()}
-        buttonStyle={{ fontSize: '18px', color: colors.gray110 }}
+        buttonStyle={{ fontSize: '18px', color: colors.white }}
         disabled={isAleadyLogined}
       >
         Kakao 로그인
