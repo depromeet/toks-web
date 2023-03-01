@@ -3,7 +3,7 @@ import { colors } from '@depromeet/theme/dist/colors';
 import styled from '@emotion/styled';
 import { ButtonHTMLAttributes } from 'react';
 
-import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT, emoji } from '../../constants';
+import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT } from '../../constants';
 import { useClipboard } from '../../hooks';
 import { Icon } from '../Icon';
 import { Image } from '../Image';
@@ -79,14 +79,7 @@ function StudyLinkCopyButton({ onClick }: ButtonHTMLAttributes<HTMLButtonElement
 
 function ProfileButton(props: ProfileButtonProps) {
   if (!isMember(props)) {
-    return (
-      <Button onClick={props.onClickButton} style={{ gap: 0, padding: '0 22px 0 12px' }}>
-        <ClickableImage src={emoji.studying} alt="" width={40} height={40} style={{ borderRadius: '50%' }} />
-        <Text variant="subhead" style={{ textOverflow: 'ellipsis', transform: 'translate(0px, 0.6px)' }}>
-          로그인
-        </Text>
-      </Button>
-    );
+    return null;
   }
 
   const { imgUrl, userName, onClickButton } = props;
@@ -122,15 +115,6 @@ ToksHeader.Skeleton = function () {
         width={70}
         height={24}
       />
-      <Button>
-        <ClickableImage
-          src="https://asset.tokstudy.com/login-emoji.png"
-          alt=""
-          width={22}
-          height={22}
-          style={{ borderRadius: '50%' }}
-        />
-      </Button>
     </Header>
   );
 };
