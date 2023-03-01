@@ -16,7 +16,7 @@ type ButtonStatus = 'normal' | 'hover' | 'disabled';
 
 type ButtonHTMLType = 'button' | 'reset' | 'submit' | undefined;
 
-type ButtonIconType = 'timer' | 'loading' | 'kakao';
+type ButtonIconType = 'timer' | 'loading' | 'kakao' | 'link';
 
 interface Props extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
   icon?: ButtonIconType;
@@ -82,6 +82,7 @@ const ICON_NAME: { [key in ButtonIconType]: IconName } = {
   timer: 'ic-time',
   loading: 'ic-spinner',
   kakao: 'ic-kakao',
+  link: 'ic-link',
 };
 
 // TODO: 다크 모드 대응

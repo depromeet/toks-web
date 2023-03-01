@@ -112,13 +112,13 @@ export const StudyInfoBox = () => {
           완료
         </Button>
         <Button
+          icon="link"
           css={{
             gap: '8px',
           }}
           onClick={() => copyToClipboard(inviteLink)}
         >
-          <Icon size={28} iconName="ic-link" />
-          <Text variant="headline">링크 공유하기</Text>
+          링크 공유하기
         </Button>
       </Flex>
     </Wrapper>
