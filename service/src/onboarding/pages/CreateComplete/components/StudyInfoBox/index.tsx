@@ -1,5 +1,5 @@
 import { PATHS } from '@depromeet/path';
-import { Button, Icon, Image, Tag, Text, getStudy, useClipboard } from '@depromeet/toks-components';
+import { Button, Image, Tag, Text, getStudy, useClipboard } from '@depromeet/toks-components';
 import { changeToDate } from '@depromeet/toks-components/src/utils';
 import { usePathParam } from '@depromeet/utils';
 import { kstFormat } from '@toss/date';
