@@ -1,7 +1,9 @@
 import { theme } from '@depromeet/theme';
 import styled from '@emotion/styled';
 import { ReactNode } from 'react';
+
 import { Button } from '../Button';
+
 export interface ModalProps {
   children: ReactNode;
   type?: 'alert' | 'confirm';
