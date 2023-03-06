@@ -112,7 +112,7 @@ export const StudyInfoBox = () => {
           완료
         </Button>
         <Button
-          icon="link"
+          icon="ic-link"
           css={{
             gap: '8px',
           }}
