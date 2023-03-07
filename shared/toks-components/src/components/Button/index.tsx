@@ -16,10 +16,8 @@ type ButtonStatus = 'normal' | 'hover' | 'disabled';
 
 type ButtonHTMLType = 'button' | 'reset' | 'submit' | undefined;
 
-type ButtonIconType = 'timer' | 'loading' | 'kakao';
-
 interface Props extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
-  icon?: ButtonIconType;
+  icon?: IconName;
   type?: ButtonType;
   width?: number;
   size?: ButtonSize;
@@ -78,12 +76,6 @@ const ICON_SIZE: { [key in ButtonSize]: number } = {
   medium: 26,
 };
 
-const ICON_NAME: { [key in ButtonIconType]: IconName } = {
-  timer: 'ic-time',
-  loading: 'ic-spinner',
-  kakao: 'ic-kakao',
-};
-
 // TODO: 다크 모드 대응
 // TODO: spinner 로티로 변경
 export function Button({
@@ -109,7 +101,7 @@ export function Button({
       type={htmlType}
       {...rest}
     >
-      {icon && <Icon size={ICON_SIZE[size]} iconName={ICON_NAME[icon]} />}
+      {icon && <Icon size={ICON_SIZE[size]} iconName={icon} />}
       <Text color={BUTTOON_TEXT_COLOR[type]} variant={BUTTOON_TEXT_SIZE[size]}>
         {children}
       </Text>

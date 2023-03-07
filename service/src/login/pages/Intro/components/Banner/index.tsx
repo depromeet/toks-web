@@ -23,7 +23,7 @@ export const Banner = () => {
         개발자를 위한 스터디, 똑스-잇!
       </Text>
       <Button
-        icon={isLoading ? 'loading' : 'kakao'}
+        icon={isLoading ? 'ic-spinner' : 'ic-kakao'}
         type="primary"
         width={200}
         size="large"

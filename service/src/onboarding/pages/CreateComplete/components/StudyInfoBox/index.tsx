@@ -1,5 +1,5 @@
 import { PATHS } from '@depromeet/path';
-import { Button, Icon, Image, Tag, Text, getStudy, useClipboard } from '@depromeet/toks-components';
+import { Button, Image, Tag, Text, getStudy, useClipboard } from '@depromeet/toks-components';
 import { changeToDate } from '@depromeet/toks-components/src/utils';
 import { usePathParam } from '@depromeet/utils';
 import { kstFormat } from '@toss/date';
@@ -112,13 +112,13 @@ export const StudyInfoBox = () => {
           완료
         </Button>
         <Button
+          icon="ic-link"
           css={{
             gap: '8px',
           }}
           onClick={() => copyToClipboard(inviteLink)}
         >
-          <Icon size={28} iconName="ic-link" />
-          <Text variant="headline">링크 공유하기</Text>
+          링크 공유하기
         </Button>
       </Flex>
     </Wrapper>
