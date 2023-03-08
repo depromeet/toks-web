@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 
-import { Image as ImageComponent, Text, Tooltip } from '@depromeet/toks-components';
+import { Image as ImageComponent, Text, Tooltip, imageUrl } from '@depromeet/toks-components';
 
 import { AvatarGroup } from './AvatarGroup';
 import { AVATAR_SIZE } from './constants';
@@ -22,7 +22,7 @@ export interface AvatarProps {
 }
 
 export function Avatar({
-  src = 'https://toks-web-assets.s3.amazonaws.com/toks-emoji/ic-base-profile.png',
+  src = imageUrl.baseToks,
   isVisibleTooltip = false,
   tooltipContent,
   size = 'small',
