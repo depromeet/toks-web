@@ -3,7 +3,7 @@ import { colors } from '@depromeet/theme/dist/colors';
 import styled from '@emotion/styled';
 import { ButtonHTMLAttributes } from 'react';
 
-import { BP, imageUrl, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT } from '../../constants';
+import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT, imageUrl } from '../../constants';
 import { useClipboard } from '../../hooks';
 import { Icon } from '../Icon';
 import { Image } from '../Image';
@@ -105,13 +105,7 @@ function ProfileButton(props: ProfileButtonProps) {
 ToksHeader.Skeleton = function () {
   return (
     <Header>
-      <ClickableImage
-        src={imageUrl.logo}
-        alt="toks study"
-        draggable={false}
-        width={70}
-        height={24}
-      />
+      <ClickableImage src={imageUrl.logo} alt="toks study" draggable={false} width={70} height={24} />
     </Header>
   );
 };

@@ -33,6 +33,7 @@ export function Avatar({
   ...rest
 }: AvatarProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+  const isKakaoBaseUrl = (src: string) => src === imageUrl.baseKakao;
 
   useEffect(() => {
     const image = new Image();
@@ -55,7 +56,7 @@ export function Avatar({
                 block
                 width={AVATAR_SIZE[size]}
                 height={AVATAR_SIZE[size]}
-                src={src}
+                src={isKakaoBaseUrl(src) ? imageUrl.baseToks : src}
                 style={{
                   opacity: isLoaded ? 1 : 0,
                 }}
@@ -70,7 +71,7 @@ export function Avatar({
             block
             width={AVATAR_SIZE[size]}
             height={AVATAR_SIZE[size]}
-            src={src}
+            src={isKakaoBaseUrl(src) ? imageUrl.baseToks : src}
             style={{
               opacity: isLoaded ? 1 : 0,
             }}
