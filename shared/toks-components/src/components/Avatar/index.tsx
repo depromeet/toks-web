@@ -56,7 +56,7 @@ export function Avatar({
                 block
                 width={AVATAR_SIZE[size]}
                 height={AVATAR_SIZE[size]}
-                src={isKakaoBaseUrl(src) ? imageUrl.baseToks : src}
+                src={isKakaoBaseUrl(src) ? imageUrl.baseToksGrey : src}
                 style={{
                   opacity: isLoaded ? 1 : 0,
                 }}
@@ -71,7 +71,7 @@ export function Avatar({
             block
             width={AVATAR_SIZE[size]}
             height={AVATAR_SIZE[size]}
-            src={isKakaoBaseUrl(src) ? imageUrl.baseToks : src}
+            src={isKakaoBaseUrl(src) ? imageUrl.baseToksGrey : src}
             style={{
               opacity: isLoaded ? 1 : 0,
             }}

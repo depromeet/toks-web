@@ -46,7 +46,7 @@ function StudyInfo({ studyId }: StudyInfoProps) {
           <Avatar.Group>
             {members &&
               members.map(({ userId, nickname, profileImageUrl }) => (
-                <Avatar key={userId} tooltipContent={nickname} src={profileImageUrl} size="large" alt={nickname} />
+                <Avatar key={userId} tooltipContent={nickname} src={profileImageUrl} size="small" alt={nickname} />
               ))}
           </Avatar.Group>
         </Footer>
