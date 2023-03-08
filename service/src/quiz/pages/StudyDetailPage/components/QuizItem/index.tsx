@@ -219,9 +219,9 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
                     똑스 안 푼 사람
                   </Text>
                 )}
-                <Avatar.Group>
+                <Avatar.Group size="medium" >
                   {unSubmitters.map(({ userId, profileImageUrl, nickname }) => (
-                    <Avatar key={userId} src={profileImageUrl} tooltipContent={nickname} size="medium" alt={nickname} />
+                    <Avatar key={userId} src={profileImageUrl} tooltipContent={nickname} alt={nickname} />
                   ))}
                 </Avatar.Group>
               </FlexRow>
