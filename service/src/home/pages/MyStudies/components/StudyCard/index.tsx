@@ -6,7 +6,7 @@ import { Flex, Spacing, padding, width100 } from '@toss/emotion-utils';
 import { useRouter } from 'next/router';
 import { match } from 'ts-pattern';
 
-import { formatStartedAtToDecimalDay } from 'home/utils';
+import { formatStartedAtDay, formatStartedAtToDecimalDay } from 'home/utils';
 
 import { Study } from '../../models/study';
 
@@ -22,9 +22,10 @@ interface Props {
 }
 
 const LOTTIE_MAP = {
-  sleep: 'https://asset.tokstudy.com/lottie-toks-sleep.json',
-  awake: 'https://asset.tokstudy.com/lottie-toks-base.json',
-  graduated: 'https://asset.tokstudy.com/lottie-toks-graduated.json',
+  sleep: 'https://toks-web-assets.s3.amazonaws.com/lottie-toks-sleep.json',
+  awake: 'https://asset.tokstudy.com/lottie-toks-awake.json',
+  graduated: 'https://asset.tokstudy.com/lottie-toks-graduate.json',
+  wait: 'https://asset.tokstudy.com/lottie-toks-wait.json',
 } as const;
 
 function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus, studyId, startedAt }: Props) {
@@ -47,7 +48,6 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
             const diffDays = formatStartedAtToDecimalDay(startedAt);
             const text = `시작까지 ${diffDays}일 남았어요!`;
 
-            console.log(text);
             return <TextBallon title={text} />;
           }
         )
@@ -83,7 +83,6 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
         <Flex.Center
           css={{
             position: 'absolute',
-            boxShadow: studyStatus === 'FINISH' ? undefined : '0 0 30px #FEE101',
             border: 'none',
             borderRadius: '50%',
             top: '42px',
@@ -98,6 +97,10 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
               .when(
                 ({ quizStatus }) => quizStatus === 'UNCHECKED' || quizStatus === 'UNSOLVED',
                 () => LOTTIE_MAP.awake
+              )
+              .when(
+                ({ studyStatus }) => studyStatus === 'READY',
+                () => LOTTIE_MAP.wait
               )
               .otherwise(() => LOTTIE_MAP.sleep)}
             alt=""
@@ -121,27 +124,27 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
         </Tag.Row>
 
         <Spacing size={50} />
+        {studyStatus === 'READY' ? (
+          <Text variant="body01">{formatStartedAtDay(startedAt)}에 만나요</Text>
+        ) : (
+          <Button
+            type={match({ quizStatus, studyStatus })
+              .when(
+                ({ quizStatus }) => quizStatus === 'UNCHECKED',
+                () => 'primary' as const
+              )
+              .when(
+                ({ quizStatus }) => quizStatus === 'UNSOLVED',
+                () => 'primary' as const
+              )
 
-        <Button
-          type={match({ quizStatus, studyStatus })
-            .when(
-              ({ quizStatus }) => quizStatus === 'UNCHECKED',
-              () => 'primary' as const
-            )
-            .when(
-              ({ quizStatus }) => quizStatus === 'UNSOLVED',
-              () => 'primary' as const
-            )
-            .when(
-              ({ studyStatus }) => studyStatus === 'READY',
-              () => 'primary' as const
-            )
-            .otherwise(() => 'general' as const)}
-          css={{ justifySelf: 'flex-end' }}
-          onClick={onClick}
-        >
-          {studyStatus !== 'IN_PROGRESS' ? '복습하기' : '입장하기'}
-        </Button>
+              .otherwise(() => 'general' as const)}
+            css={{ justifySelf: 'flex-end' }}
+            onClick={onClick}
+          >
+            {studyStatus === 'FINISH' ? '복습하기' : '입장하기'}
+          </Button>
+        )}
       </Card>
     </div>
   );
