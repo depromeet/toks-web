@@ -23,7 +23,7 @@ export const useQuizCreate = () => {
   const { mutate: createQuiz, isLoading } = useMutation(async (values: QuizCreateForm) => {
     try {
       const formatStartedAt = format(new Date(values.startedAt), 'yyyy-MM-dd').concat(`T${values.timepicker}+09:00`);
-
+      const numberDuration = Number(values.durationOfSecond);
       if (!study) {
         return;
       }
@@ -38,6 +38,7 @@ export const useQuizCreate = () => {
         quizType: 'MARK_DOWN',
         studyId: Number(studyId),
         startedAt: formatStartedAt,
+        durationOfSecond: numberDuration,
         round: study.latestQuizRound + 1,
       });
 

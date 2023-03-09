@@ -1,17 +1,18 @@
 import { theme } from '@depromeet/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { forwardRef, useState } from 'react';
-import { Icon } from '../Icon';
+import React, { forwardRef, useEffect, useState } from 'react';
 
+import { useForwardRef } from '../../hooks/useForwardRef';
+import { Icon } from '../Icon';
 import { Text } from '../Text';
 
 type DropdownOption = {
   label: string;
-  value: number;
+  value: number | string;
 };
 
-interface DropdownProps {
+interface DropdownProps extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
   width?: number;
   label?: string;
   required?: boolean;
@@ -19,10 +20,34 @@ interface DropdownProps {
   options: DropdownOption[];
 }
 
-export const DropDown = forwardRef<HTMLDivElement, DropdownProps>(
-  ({ width, options, label, required, errorMessage }: DropdownProps) => {
+export const DropDown = forwardRef<HTMLInputElement, DropdownProps>(
+  ({ width, options, label, required, errorMessage, ...rest }: DropdownProps, ref) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectItem, setSelectItem] = useState('');
+    const inputRef = useForwardRef<HTMLInputElement>(ref);
+
+    const handleClick = (value: number | string) => {
+      // 버튼 활성화때문에 onChange이벤트 트리거 필요
+      const input = document.querySelector('#input');
+      if (input) {
+        const nativeInputValueSetter = Object?.getOwnPropertyDescriptor(
+          window.HTMLInputElement.prototype,
+          'value'
+        )?.set;
+        nativeInputValueSetter?.call(input, value);
+        const event = new Event('change', { bubbles: true });
+        input.dispatchEvent(event);
+      }
+    };
+
+    const handleMouseDown = (e: React.MouseEvent) => e.preventDefault();
+
+    // ref 초기화 시 화면도 초기화
+    useEffect(() => {
+      if (!inputRef.current.value) {
+        setSelectItem('');
+      }
+    }, [inputRef.current?.value, inputRef]);
 
     return (
       <DropDownWrapper>
@@ -40,9 +65,17 @@ export const DropDown = forwardRef<HTMLDivElement, DropdownProps>(
           onClick={() => setIsOpen(prev => !prev)}
           width={width}
         >
-          <span>
-            <Text variant="body02">{selectItem}</Text>
-          </span>
+          <DropDownInput
+            hidden
+            defaultValue=""
+            readOnly
+            id="input"
+            type="text"
+            autoComplete="off"
+            ref={inputRef}
+            {...rest}
+          />
+          <Text variant="body02">{selectItem}</Text>
           <div>{isOpen ? <Icon iconName="ic-chevron-up" /> : <Icon iconName="ic-chevron-down" />}</div>
           {isOpen && (
             <DropDownOptions>
@@ -50,8 +83,9 @@ export const DropDown = forwardRef<HTMLDivElement, DropdownProps>(
                 <DropDownOption
                   key={value}
                   isSelected={selectItem === label ? true : false}
-                  onMouseDown={e => {
-                    e.stopPropagation();
+                  onMouseDown={(e: React.MouseEvent) => {
+                    handleClick(value);
+                    handleMouseDown(e);
                     setSelectItem(label);
                     setIsOpen(false);
                   }}
@@ -84,16 +118,21 @@ const DropDownContainer = styled('div')<{ width?: number }>`
   /* min-height: 1.5rem; */
   background: ${theme.colors.gray100};
   align-items: center;
-  padding: 11px 16px;
+  padding: 9px 16px;
   border-radius: 8px;
   outline: none;
   justify-content: space-between;
-
   ${({ width }) => {
     return css`
       width: ${width ? `${width}px` : '100%'};
     `;
   }}
+`;
+
+const DropDownInput = styled.input`
+  border: none;
+  outline: none;
+  cursor: pointer;
 `;
 
 const DropDownOptions = styled.ul`
@@ -106,7 +145,7 @@ const DropDownOptions = styled.ul`
   max-height: 200px;
   overflow-y: auto;
   border-radius: 8px;
-  top: calc(100% + 4px);
+  top: 54px;
   left: 0;
   z-index: 1010;
 `;
@@ -120,7 +159,6 @@ const DropDownOption = styled('li')<{ isSelected: boolean }>`
       background: ${isSelected ? `${theme.colors.gray080}` : `${theme.colors.gray100}`};
     `;
   }}
-
   padding: 13px 16px;
   cursor: pointer;
 `;
