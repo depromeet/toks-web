@@ -1,6 +1,6 @@
 import { User } from './user';
 
-export type CapacityResponse = 'SMALL' | 'MEDIUM' | 'LARGE';
+export type CapacityResponse = 'SMALL' | 'MEDIUM' | 'LARGE' | '';
 
 export interface TagResponse {
   id: number;
