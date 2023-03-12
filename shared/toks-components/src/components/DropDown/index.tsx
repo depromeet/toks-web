@@ -1,20 +1,54 @@
 import { theme } from '@depromeet/theme';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Dropdown, DropdownProps } from 'primereact/dropdown';
-import { forwardRef } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 
+import { useForwardRef } from '../../hooks/useForwardRef';
+import { Icon } from '../Icon';
 import { Text } from '../Text';
 
-interface Props extends DropdownProps {
+type DropdownOption = {
+  label: string;
+  value: number | string;
+};
+
+interface DropdownProps extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
   width?: number;
-  height?: number;
   label?: string;
+  required?: boolean;
   errorMessage?: string;
+  options: DropdownOption[];
 }
 
-export const DropDown = forwardRef<Dropdown, Props>(
-  ({ label, width, height, required, errorMessage, ...props }: Props, ref) => {
+export const DropDown = forwardRef<HTMLInputElement, DropdownProps>(
+  ({ width, options, label, required, errorMessage, ...rest }: DropdownProps, ref) => {
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectItem, setSelectItem] = useState('');
+    const inputRef = useForwardRef<HTMLInputElement>(ref);
+
+    const handleClick = (value: number | string) => {
+      // 버튼 활성화때문에 onChange이벤트 트리거 필요
+      const input = document.querySelector('#input');
+      if (input) {
+        const nativeInputValueSetter = Object?.getOwnPropertyDescriptor(
+          window.HTMLInputElement.prototype,
+          'value'
+        )?.set;
+        nativeInputValueSetter?.call(input, value);
+        const event = new Event('change', { bubbles: true });
+        input.dispatchEvent(event);
+      }
+    };
+
+    const handleMouseDown = (e: React.MouseEvent) => e.preventDefault();
+
+    // ref 초기화 시 화면도 초기화
+    useEffect(() => {
+      if (!inputRef.current.value) {
+        setSelectItem('');
+      }
+    }, [inputRef.current?.value, inputRef]);
+
     return (
       <DropDownWrapper>
         {label && (
@@ -23,14 +57,45 @@ export const DropDown = forwardRef<Dropdown, Props>(
             {required && '*'}
           </Text>
         )}
-        <StyledDropdown
-          ref={ref}
+        <DropDownContainer
+          tabIndex={0}
+          onBlur={() => {
+            setIsOpen(false);
+          }}
+          onClick={() => setIsOpen(prev => !prev)}
           width={width}
-          height={height}
-          required={required}
-          isError={Boolean(errorMessage)}
-          {...props}
-        />
+        >
+          <DropDownInput
+            hidden
+            defaultValue=""
+            readOnly
+            id="input"
+            type="text"
+            autoComplete="off"
+            ref={inputRef}
+            {...rest}
+          />
+          <Text variant="body02">{selectItem}</Text>
+          <div>{isOpen ? <Icon iconName="ic-chevron-up" /> : <Icon iconName="ic-chevron-down" />}</div>
+          {isOpen && (
+            <DropDownOptions>
+              {options.map(({ label, value }) => (
+                <DropDownOption
+                  key={value}
+                  isSelected={selectItem === label ? true : false}
+                  onMouseDown={(e: React.MouseEvent) => {
+                    handleClick(value);
+                    handleMouseDown(e);
+                    setSelectItem(label);
+                    setIsOpen(false);
+                  }}
+                >
+                  <Text variant="body02">{label}</Text>
+                </DropDownOption>
+              ))}
+            </DropDownOptions>
+          )}
+        </DropDownContainer>
         {errorMessage && (
           <Text variant="body02" color="danger">
             {errorMessage}
@@ -44,47 +109,56 @@ export const DropDown = forwardRef<Dropdown, Props>(
 const DropDownWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 `;
-
-const StyledDropdown = styled(Dropdown)<{ isError?: boolean }>`
-  border-radius: 8px !important;
-  padding: 14px 16px;
-  background: ${theme.colors.gray100} !important;
-  outline: none !important;
-  list-style: none !important;
-  box-shadow: none !important;
-
-  ${props => {
-    const { width, height, isError } = props;
-
+const DropDownContainer = styled('div')<{ width?: number }>`
+  cursor: pointer;
+  display: flex;
+  position: relative;
+  /* min-height: 1.5rem; */
+  background: ${theme.colors.gray100};
+  align-items: center;
+  padding: 9px 16px;
+  border-radius: 8px;
+  outline: none;
+  justify-content: space-between;
+  ${({ width }) => {
     return css`
-      border: ${isError ? `1px solid ${theme.colors.danger} !important` : 'none !important'};
       width: ${width ? `${width}px` : '100%'};
-      height: ${height ? `${height}px` : '48px'};
     `;
   }}
+`;
 
-  .p-placeholder {
-    color: ${theme.colors.gray070};
-    padding: 0;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    font-family: 'Spoqa Han Sans Neo' !important ;
-  }
+const DropDownInput = styled.input`
+  border: none;
+  outline: none;
+  cursor: pointer;
+`;
 
-  .p-inputtext {
-    padding: 0;
-    color: ${theme.colors.white};
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-  }
+const DropDownOptions = styled.ul`
+  margin: 0;
+  padding: 0;
+  background: ${theme.colors.gray100};
+  width: 100%;
+  position: absolute;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 8px;
+  top: 54px;
+  left: 0;
+  z-index: 1010;
+`;
 
-  .p-dropdown-trigger-icon {
-    padding-right: 6px;
-    color: transparent !important;
-    background-image: url('https://toks-web-assets.s3.amazonaws.com/disabledTrigger.svg');
+const DropDownOption = styled('li')<{ isSelected: boolean }>`
+  :hover {
+    background: ${theme.colors.gray070};
   }
+  ${({ isSelected }) => {
+    return css`
+      background: ${isSelected ? `${theme.colors.gray080}` : `${theme.colors.gray100}`};
+    `;
+  }}
+  padding: 13px 16px;
+  cursor: pointer;
 `;

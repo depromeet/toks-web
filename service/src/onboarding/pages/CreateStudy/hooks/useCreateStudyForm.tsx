@@ -51,7 +51,8 @@ export const useCreateStudyForm = () => {
   const { startedAt, endedAt } = getValues();
   const isValid =
     !watch(['name', 'startedAt', 'endedAt']).includes('') &&
-    new Date(endedAt).getTime() > new Date(startedAt).getTime();
+    new Date(endedAt).getTime() > new Date(startedAt).getTime() &&
+    watch('capacity') !== '';
 
   const isMaxLength = useCallback((maxLength: number) => {
     return {
