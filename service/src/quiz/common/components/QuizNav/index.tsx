@@ -14,7 +14,9 @@ export function QuizNav({ mainTitle, subTitle, studyId }: Props) {
     <Flex direction="column">
       <Flex css={margin.top(18)}>
         <Link href={PATHS.quiz.studyDetail({ studyId })} passHref prefetch>
-          <IconButton iconName="ic-back" height={35} role="a" />
+          <a>
+            <IconButton iconName="ic-back" height={35} role="a" />
+          </a>
         </Link>
 
         <Text variant="title03" css={{ marginLeft: '18px' }}>

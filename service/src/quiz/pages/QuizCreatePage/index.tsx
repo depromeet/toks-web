@@ -50,7 +50,6 @@ const QuizCreatePage = () => {
           onSubmit={(e: React.FormEvent) => {
             e.preventDefault();
             const values = getValues();
-
             if (!values.answer) {
               setError('answer', {
                 type: 'required',
