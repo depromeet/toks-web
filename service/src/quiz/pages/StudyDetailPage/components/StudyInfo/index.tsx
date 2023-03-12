@@ -43,10 +43,10 @@ function StudyInfo({ studyId }: StudyInfoProps) {
         </Body>
         <Footer>
           {/* Avatar Group id가 여기서는 스터디 id가 되고 각 퀴즈에서는 퀴즈의 id가 됨 */}
-          <Avatar.Group>
+          <Avatar.Group size="medium">
             {members &&
               members.map(({ userId, nickname, profileImageUrl }) => (
-                <Avatar key={userId} tooltipContent={nickname} src={profileImageUrl} size="large" alt={nickname} />
+                <Avatar key={userId} tooltipContent={nickname} src={profileImageUrl} alt={nickname} />
               ))}
           </Avatar.Group>
         </Footer>

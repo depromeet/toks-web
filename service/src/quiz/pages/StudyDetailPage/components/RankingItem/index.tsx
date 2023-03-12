@@ -26,7 +26,7 @@ export function RankingItem({ rankItem }: RankingItemProps) {
           {convertNoneRanking(ranking)}
         </Text>
       )}
-      <Avatar src={user.profileImageUrl} size="large" alt={user.nickname} />
+      <Avatar src={user.profileImageUrl} size="medium" alt={user.nickname} />
       <Text
         variant="body01"
         color="white"
