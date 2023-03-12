@@ -2,15 +2,7 @@ import { Button, Calendar, DropDown, TimePicker, Upload } from '@depromeet/toks-
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { sub } from 'date-fns';
 import { ComponentProps, useRef } from 'react';
-import {
-  Control,
-  Controller,
-  FieldValues,
-  UseFormRegister,
-  UseFormReset,
-  UseFormSetValue,
-  UseFormWatch,
-} from 'react-hook-form';
+import { Control, FieldValues, UseFormRegister, UseFormReset, UseFormSetValue, UseFormWatch } from 'react-hook-form';
 
 import { QUIZ_LIMIT_TIME } from 'quiz/pages/QuizCreatePage/constants';
 
@@ -31,14 +23,12 @@ export const QuizCreateInputList = ({
   register,
   setValue,
   watch,
-  control,
   endedAt,
   className,
   reset,
   isLoading,
 }: QuizCreateInputListProps) => {
   const uploadRef: ComponentProps<typeof Upload>['ref'] | null = useRef(null);
-
   return (
     <Flex
       direction="column"
@@ -48,11 +38,7 @@ export const QuizCreateInputList = ({
         gap: '24px',
       }}
     >
-      <Controller
-        name="durationOfSecond"
-        control={control}
-        render={({ field }) => <DropDown {...field} label="제한 시간" options={QUIZ_LIMIT_TIME} required />}
-      />
+      <DropDown {...register('durationOfSecond')} label="제한 시간" options={QUIZ_LIMIT_TIME} required />
       <Calendar
         label="똑스 공개 날짜"
         dateFormat="mm/dd/yy"

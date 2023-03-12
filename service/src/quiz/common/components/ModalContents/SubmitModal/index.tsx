@@ -1,12 +1,7 @@
-import { PATHS } from '@depromeet/path';
-import { Button, Image, Text } from '@depromeet/toks-components';
+import { Image, Text } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
-import Link from 'next/link';
 
-type SubmitModalProps = {
-  quizId: number | string;
-};
-export function SubmitModal({ quizId }: SubmitModalProps) {
+export function SubmitModal() {
   return (
     <Flex.Center direction="column">
       <Text variant="title03">제출 완료!</Text>
@@ -19,9 +14,6 @@ export function SubmitModal({ quizId }: SubmitModalProps) {
         src="https://toks-web-assets.s3.amazonaws.com/toks-emoji/expected_emoji.svg"
       />
       <Spacing size={30} />
-      <Link href={PATHS.quiz.vote({ quizId })} passHref prefetch>
-        <Button role="a">당신의 팀원에게 똑표하세요</Button>
-      </Link>
     </Flex.Center>
   );
 }

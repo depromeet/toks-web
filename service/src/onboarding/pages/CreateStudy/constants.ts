@@ -13,6 +13,6 @@ export const DEFAULT_STUDY_CREATE_FORM: CreateStudyFormValues = {
   description: '',
   startedAt: '',
   endedAt: '',
-  capacity: 'SMALL',
+  capacity: '',
   tags: [],
 };

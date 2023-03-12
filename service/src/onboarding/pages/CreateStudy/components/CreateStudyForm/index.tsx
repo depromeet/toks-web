@@ -22,9 +22,10 @@ export const CreateStudyForm = () => {
     isPostLoading,
   } = useCreateStudyForm();
 
-  const { startedAt } = getValues();
+  const { startedAt, capacity } = getValues();
   const startedAtToWeeks = add(new Date(startedAt), { days: 7 });
 
+  console.log(capacity);
   return (
     <Wrapper>
       <Text as="h2" variant="title03" css={{ textAlign: 'center' }}>
@@ -79,13 +80,14 @@ export const CreateStudyForm = () => {
             placeholder="날짜 선택"
           />
         </Flex>
-        <Controller
-          name="capacity"
-          control={control}
-          rules={{
+
+        <DropDown
+          {...register('capacity', {
             required: isRequiredText('스터디 인원'),
-          }}
-          render={({ field }) => <DropDown {...field} options={STUDY_CATEGORY_OPTIONS} label="스터디 인원" required />}
+          })}
+          options={STUDY_CATEGORY_OPTIONS}
+          label="스터디 인원"
+          required
         />
         <Controller
           name="tags"

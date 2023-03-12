@@ -1,8 +1,10 @@
 import { isToksError } from '@depromeet/http';
+import { PATHS } from '@depromeet/path';
 import { Button, useModal, useToast } from '@depromeet/toks-components';
 import { usePathParam } from '@depromeet/utils';
 import { Spacing } from '@toss/emotion-utils';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
@@ -15,6 +17,7 @@ const Editor = dynamic(() => import('@depromeet/toks-components/src/components/E
 
 export function QuizEditor() {
   const { open } = useToast();
+  const { push } = useRouter();
   const { openModal } = useModal();
 
   const { mutateAsync: quizAnswerMutation, isLoading } = useMutation(async () => {
@@ -53,7 +56,10 @@ export function QuizEditor() {
 
   const openModalBox = async () => {
     await openModal({
-      children: <SubmitModal quizId={quizId} />,
+      children: <SubmitModal />,
+      onConfirm: () => {
+        push(PATHS.quiz.vote({ quizId }));
+      },
     });
   };
 
