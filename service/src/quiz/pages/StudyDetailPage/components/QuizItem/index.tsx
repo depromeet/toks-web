@@ -207,7 +207,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
               <Text variant="subhead" css={{ margin: '0 24px 0 0' }} as="h6">
                 똑스 만든사람
               </Text>
-              <Avatar src={creator.profileImageUrl} tooltipContent={creator.nickname} size="large" alt="제작자" />
+              <Avatar src={creator.profileImageUrl} tooltipContent={creator.nickname} size="medium" alt="제작자" />
               <Space css={{ flex: 1 }} />
               <FlexRow
                 css={{
@@ -219,9 +219,9 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
                     똑스 안 푼 사람
                   </Text>
                 )}
-                <Avatar.Group>
+                <Avatar.Group size="medium">
                   {unSubmitters.map(({ userId, profileImageUrl, nickname }) => (
-                    <Avatar key={userId} src={profileImageUrl} tooltipContent={nickname} size="large" alt={nickname} />
+                    <Avatar key={userId} src={profileImageUrl} tooltipContent={nickname} alt={nickname} />
                   ))}
                 </Avatar.Group>
               </FlexRow>

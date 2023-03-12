@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { BP, Image, MAX_WIDTH, Text } from '@depromeet/toks-components';
+import { BP, Image, MAX_WIDTH, Text, imageUrl } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Flex, Spacing } from '@toss/emotion-utils';
 
@@ -10,17 +10,14 @@ interface Props {
   handleLogout: VoidFunction;
 }
 
-const KAKAO_BASE_IMAGE = 'http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg';
-const BASE_IMAGE = 'https://toks-web-assets.s3.amazonaws.com/toks-emoji/ic-base-profile.png';
-
 export function UserMenu({ img, name, nickname, handleLogout }: Props) {
-  const hasIndividualProfile = img !== KAKAO_BASE_IMAGE;
+  const hasIndividualProfile = img !== imageUrl.baseKakao;
 
   return (
     <UserMenuCard>
       <UserInfo>
         <Image
-          src={hasIndividualProfile ? img : BASE_IMAGE}
+          src={hasIndividualProfile ? img : imageUrl.baseToks}
           alt=""
           width={40}
           height={40}

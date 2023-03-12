@@ -3,7 +3,7 @@ import { colors } from '@depromeet/theme/dist/colors';
 import styled from '@emotion/styled';
 import { ButtonHTMLAttributes } from 'react';
 
-import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT } from '../../constants';
+import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT, imageUrl } from '../../constants';
 import { useClipboard } from '../../hooks';
 import { Icon } from '../Icon';
 import { Image } from '../Image';
@@ -36,9 +36,6 @@ function isMember(props: ProfileButtonProps): props is MemberProps {
   return false;
 }
 
-const KAKAO_BASE_IMAGE = 'http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg';
-const BASE_IMAGE = 'https://toks-web-assets.s3.amazonaws.com/toks-emoji/ic-base-profile.png';
-
 export function ToksHeader({ showCopyLinkButton = false, onClickLogo, ...rest }: HeaderProps) {
   const { copyToClipboard } = useClipboard();
   const getStudyId = () => {
@@ -53,7 +50,7 @@ export function ToksHeader({ showCopyLinkButton = false, onClickLogo, ...rest }:
   return (
     <Header>
       <ClickableImage
-        src="https://asset.tokstudy.com/logo.png"
+        src={imageUrl.logo}
         alt="toks study"
         draggable={false}
         width={70}
@@ -88,7 +85,7 @@ function ProfileButton(props: ProfileButtonProps) {
     <Button onClick={onClickButton}>
       <ImageWrapper>
         <ClickableImage
-          src={imgUrl === KAKAO_BASE_IMAGE ? BASE_IMAGE : imgUrl}
+          src={imgUrl === imageUrl.baseKakao ? imageUrl.baseToks : imgUrl}
           alt=""
           width={22}
           height={22}
@@ -108,13 +105,7 @@ function ProfileButton(props: ProfileButtonProps) {
 ToksHeader.Skeleton = function () {
   return (
     <Header>
-      <ClickableImage
-        src="https://asset.tokstudy.com/logo.png"
-        alt="toks study"
-        draggable={false}
-        width={70}
-        height={24}
-      />
+      <ClickableImage src={imageUrl.logo} alt="toks study" draggable={false} width={70} height={24} />
     </Header>
   );
 };
