@@ -2,7 +2,7 @@ name: Release Tag
 on:
   push:
     branches:
-      - release
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
