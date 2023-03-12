@@ -104,10 +104,10 @@ function StudyCard({ title, tags, onClick, memberCount, quizStatus, studyStatus,
               )
               .otherwise(() => LOTTIE_MAP.sleep)}
             alt=""
-            width={studyStatus === 'FINISH' ? 105 : 90}
-            height={studyStatus === 'FINISH' ? 105 : 90}
+            width={130}
+            height={130}
             loop
-            css={{ scale: '102%', transform: studyStatus === 'FINISH' ? 'translate(0px, -10px)' : undefined }}
+            css={{ transform: studyStatus === 'FINISH' ? 'translate(0px, -10px)' : undefined }}
           />
         </Flex.Center>
 
