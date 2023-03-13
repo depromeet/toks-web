@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 
-import { Image as ImageComponent, Text, Tooltip, imageUrl } from '@depromeet/toks-components';
+import { Image as ImageComponent, Text, Tooltip, IMAGE_URL } from '@depromeet/toks-components';
 
 import { AvatarGroup } from './AvatarGroup';
 import { AVATAR_SIZE } from './constants';
@@ -22,7 +22,7 @@ export interface AvatarProps {
 }
 
 export function Avatar({
-  src = imageUrl.baseToks,
+  src = IMAGE_URL.BASE_TOKS,
   isVisibleTooltip = false,
   tooltipContent,
   size = 'small',
@@ -33,7 +33,7 @@ export function Avatar({
   ...rest
 }: AvatarProps) {
   const [isLoaded, setIsLoaded] = useState(false);
-  const isKakaoBaseUrl = (src: string) => src === imageUrl.baseKakao;
+  const isKakaoBaseUrl = (src: string) => src === IMAGE_URL.BASE_KAKAO;
 
   useEffect(() => {
     const image = new Image();
@@ -56,7 +56,7 @@ export function Avatar({
                 block
                 width={AVATAR_SIZE[size]}
                 height={AVATAR_SIZE[size]}
-                src={isKakaoBaseUrl(src) ? imageUrl.baseToksGrey : src}
+                src={isKakaoBaseUrl(src) ? IMAGE_URL.BASE_TOKS_GREY : src}
                 style={{
                   opacity: isLoaded ? 1 : 0,
                 }}
@@ -71,7 +71,7 @@ export function Avatar({
             block
             width={AVATAR_SIZE[size]}
             height={AVATAR_SIZE[size]}
-            src={isKakaoBaseUrl(src) ? imageUrl.baseToksGrey : src}
+            src={isKakaoBaseUrl(src) ? IMAGE_URL.BASE_TOKS_GREY : src}
             style={{
               opacity: isLoaded ? 1 : 0,
             }}

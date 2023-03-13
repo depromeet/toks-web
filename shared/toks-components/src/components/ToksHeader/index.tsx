@@ -3,7 +3,7 @@ import { colors } from '@depromeet/theme/dist/colors';
 import styled from '@emotion/styled';
 import { ButtonHTMLAttributes } from 'react';
 
-import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT, imageUrl } from '../../constants';
+import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT, IMAGE_URL } from '../../constants';
 import { useClipboard } from '../../hooks';
 import { Icon } from '../Icon';
 import { Image } from '../Image';
@@ -50,7 +50,7 @@ export function ToksHeader({ showCopyLinkButton = false, onClickLogo, ...rest }:
   return (
     <Header>
       <ClickableImage
-        src={imageUrl.logo}
+        src={IMAGE_URL.LOGO}
         alt="toks study"
         draggable={false}
         width={70}
@@ -85,7 +85,7 @@ function ProfileButton(props: ProfileButtonProps) {
     <Button onClick={onClickButton}>
       <ImageWrapper>
         <ClickableImage
-          src={imgUrl === imageUrl.baseKakao ? imageUrl.baseToks : imgUrl}
+          src={imgUrl === IMAGE_URL.BASE_KAKAO ? IMAGE_URL.BASE_TOKS : imgUrl}
           alt=""
           width={22}
           height={22}
@@ -105,7 +105,7 @@ function ProfileButton(props: ProfileButtonProps) {
 ToksHeader.Skeleton = function () {
   return (
     <Header>
-      <ClickableImage src={imageUrl.logo} alt="toks study" draggable={false} width={70} height={24} />
+      <ClickableImage src={IMAGE_URL.LOGO} alt="toks study" draggable={false} width={70} height={24} />
     </Header>
   );
 };
