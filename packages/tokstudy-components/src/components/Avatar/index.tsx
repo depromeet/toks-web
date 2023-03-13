@@ -1,9 +1,8 @@
 import { theme } from '@depromeet/theme';
+import { Image as ImageComponent, Text, Tooltip, imageUrl } from '@depromeet/toks-components';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-
-import { Image as ImageComponent, Text, Tooltip, imageUrl } from '@depromeet/toks-components';
 
 import { AvatarGroup } from './AvatarGroup';
 import { AVATAR_SIZE } from './constants';

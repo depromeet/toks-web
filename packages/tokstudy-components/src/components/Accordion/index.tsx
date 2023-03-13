@@ -1,6 +1,5 @@
-import { ReactNode } from 'react';
-
 import { Icon } from '@depromeet/toks-components';
+import { ReactNode } from 'react';
 
 import { Body, Container, Details, Summary } from './style';
 
