@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { BP, Image, MAX_WIDTH, Text, imageUrl } from '@depromeet/toks-components';
+import { BP, IMAGE_URL, Image, MAX_WIDTH, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Flex, Spacing } from '@toss/emotion-utils';
 
@@ -11,13 +11,13 @@ interface Props {
 }
 
 export function UserMenu({ img, name, nickname, handleLogout }: Props) {
-  const hasIndividualProfile = img !== imageUrl.baseKakao;
+  const hasIndividualProfile = img !== IMAGE_URL.BASE_KAKAO;
 
   return (
     <UserMenuCard>
       <UserInfo>
         <Image
-          src={hasIndividualProfile ? img : imageUrl.baseToks}
+          src={hasIndividualProfile ? img : IMAGE_URL.BASE_TOKS}
           alt=""
           width={40}
           height={40}
