@@ -1,5 +1,6 @@
-import { QuizStatus } from '..';
 import { differenceInSeconds } from 'date-fns';
+
+import { QuizStatus } from '..';
 
 export const getQuizItemStatus = (openDate: Date, limitDate: Date) => {
   const currentDate = new Date();

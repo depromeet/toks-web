@@ -1,6 +1,6 @@
-import { Icon } from '../Icon';
 import { ReactNode } from 'react';
 
+import { Icon } from '../Icon';
 import { Body, Container, Details, Summary } from './style';
 
 interface AccordionProps {
