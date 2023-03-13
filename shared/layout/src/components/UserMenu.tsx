@@ -1,5 +1,5 @@
 import { theme } from '@depromeet/theme';
-import { BP, Image, MAX_WIDTH, Text, IMAGE_URL } from '@depromeet/toks-components';
+import { BP, IMAGE_URL, Image, MAX_WIDTH, Text } from '@depromeet/toks-components';
 import styled from '@emotion/styled';
 import { Flex, Spacing } from '@toss/emotion-utils';
 
