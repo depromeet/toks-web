@@ -1,9 +1,10 @@
 {
-  "name": "@depromeet/toks-components",
+  "name": "@depromeet/tokstudy-components",
   "description": "toks components",
   "main": "src/index.ts",
   "module": "src/index.ts",
   "sideEffects": false,
+  "version": "1.0.0",
   "scripts": {
     "lint": "eslint -c .eslintrc.js '{pages,src}/**/*.{js,jsx,ts,tsx}'",
     "lint:fix": "yarn lint --fix",

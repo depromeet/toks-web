@@ -15,7 +15,6 @@
     "configs/*",
     "admin.toks.com"
   ],
-  "private": true,
   "scripts": {
     "depromeet": "depromeet",
     "prepare": "husky install",
