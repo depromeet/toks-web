@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 
-import { Image as ImageComponent, Text, Tooltip, IMAGE_URL } from '@depromeet/toks-components';
+import { IMAGE_URL, Image as ImageComponent, Text, Tooltip } from '@depromeet/toks-components';
 
 import { AvatarGroup } from './AvatarGroup';
 import { AVATAR_SIZE } from './constants';

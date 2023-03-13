@@ -3,7 +3,7 @@ import { colors } from '@depromeet/theme/dist/colors';
 import styled from '@emotion/styled';
 import { ButtonHTMLAttributes } from 'react';
 
-import { BP, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT, IMAGE_URL } from '../../constants';
+import { BP, IMAGE_URL, MAX_WIDTH, MIN_WIDTH, TOKS_HEADER_HEIGHT } from '../../constants';
 import { useClipboard } from '../../hooks';
 import { Icon } from '../Icon';
 import { Image } from '../Image';
