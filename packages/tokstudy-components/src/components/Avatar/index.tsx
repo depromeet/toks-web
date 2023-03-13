@@ -1,11 +1,12 @@
 import { theme } from '@depromeet/theme';
-import { Image as ImageComponent, Text, Tooltip, imageUrl } from '@depromeet/toks-components';
+import { Image as ImageComponent, Text, Tooltip } from '..';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 
 import { AvatarGroup } from './AvatarGroup';
 import { AVATAR_SIZE } from './constants';
+import { imageUrl } from '../../constants';
 
 export type AvatarSize = 'small' | 'medium' | 'large';
 
