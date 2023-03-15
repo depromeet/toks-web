@@ -19,17 +19,7 @@ interface QuizCreateInputListProps {
   reset: UseFormReset<QuizCreateForm>;
 }
 
-export const QuizCreateInputList = ({
-  register,
-  setValue,
-  watch,
-  endedAt,
-  className,
-  reset,
-  isLoading,
-}: QuizCreateInputListProps) => {
-  const uploadRef: ComponentProps<typeof Upload>['ref'] | null = useRef(null);
-
+const useConfirmModal = (confirmCallback: () => void) => {
   const { openModal, close } = useModal();
   const openConfirmModal = async () => {
     await openModal({
@@ -48,9 +38,9 @@ export const QuizCreateInputList = ({
         </Flex.Center>
       ),
       type: 'confirm',
+      buttonText: '다시 만들기',
       onConfirm: () => {
-        uploadRef.current?.reset();
-        reset();
+        confirmCallback();
         close();
       },
       onCancel: () => {
@@ -58,6 +48,24 @@ export const QuizCreateInputList = ({
       },
     });
   };
+
+  return { openConfirmModal, close };
+};
+
+export const QuizCreateInputList = ({
+  register,
+  setValue,
+  watch,
+  endedAt,
+  className,
+  reset,
+  isLoading,
+}: QuizCreateInputListProps) => {
+  const uploadRef: ComponentProps<typeof Upload>['ref'] | null = useRef(null);
+  const { openConfirmModal } = useConfirmModal(() => {
+    uploadRef.current?.reset();
+    reset();
+  });
   return (
     <Flex
       direction="column"
