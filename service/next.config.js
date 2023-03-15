@@ -1,12 +1,19 @@
 const path = require('path');
 const { spawnSync } = require('child_process');
+const os = require('os');
 
 // NOTE: '__dirname'이 yarn v2 virtual 경로로 잡히므로 실제 경로로 변환해줍니다.
+const isWindows = os.platform() === 'win32';
+const WINDOW_DIRNAME = __dirname.replaceAll('\\', '/').replace("C:", "");
+const WINDOWS_ROOT_PATH = path.resolve(__dirname, '..').replaceAll('\\', '/').replace("C:", "");
+const DIRNAME = isWindows ? WINDOW_DIRNAME : __dirname;
 const ROOT_PATH = path.resolve(__dirname, '..');
-const envs = require('@configs/next/config')({ packageDir: __dirname });
+const envs = require('@configs/next/config')({ packageDir: DIRNAME });
 const publicRuntimeConfig = createRuntimeConfig(envs);
+
+
 const { NODE_ENV, ENV, ...publicRuntimeConfigWithoutNodeEnv } = publicRuntimeConfig;
-const babelLoaderTargetLocations = getBabelLoaderTargetLocations(__dirname);
+const babelLoaderTargetLocations = getBabelLoaderTargetLocations(DIRNAME);
 
 /** @type {import('next').NextConfig} */
 // TODO: 센트리 Config 연결
@@ -14,7 +21,7 @@ module.exports = {
   basePath: '',
   experimental: {
     scrollRestoration: true,
-    outputFileTracingRoot: path.join(__dirname, '../'),
+    outputFileTracingRoot: path.join(DIRNAME, '../'),
   },
   output: 'standalone',
   env: publicRuntimeConfigWithoutNodeEnv,
@@ -67,8 +74,10 @@ function createRuntimeConfig(config) {
 }
 
 function getBabelLoaderTargetLocations(currentServiceLocation) {
-  const { stdout } = spawnSync('yarn', ['workspaces', 'list', '--json'], {
-    cwd: ROOT_PATH,
+
+  const yarnCmd = isWindows ? 'yarn.cmd' : 'yarn';
+  const { stdout } = spawnSync(yarnCmd, ['workspaces', 'list', '--json'], {
+    cwd: isWindows ? WINDOWS_ROOT_PATH : ROOT_PATH,
     encoding: 'utf8',
   });
 
