@@ -1,4 +1,4 @@
-import { Button, Calendar, DropDown, TimePicker, Upload } from '@depromeet/toks-components';
+import { Button, Calendar, DropDown, Text, TimePicker, Upload, useModal } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 import { sub } from 'date-fns';
 import { ComponentProps, useRef } from 'react';
@@ -29,6 +29,35 @@ export const QuizCreateInputList = ({
   isLoading,
 }: QuizCreateInputListProps) => {
   const uploadRef: ComponentProps<typeof Upload>['ref'] | null = useRef(null);
+
+  const { openModal, close } = useModal();
+  const openConfirmModal = async () => {
+    await openModal({
+      children: (
+        <Flex.Center direction="column">
+          <Text variant="title03" as="h3" css={{ margin: 0 }}>
+            작성 중인 퀴즈가 있어요.
+          </Text>
+          <Text variant="title03" as="h3" css={{ margin: 0 }}>
+            다시 만드시겠어요?
+          </Text>
+          <Text variant="body01" as="span" css={{ marginTop: '8px' }}>
+            다시 만들 경우, 지금까지 작성한 퀴즈 내용는 다시 복구할 수 없어요.
+          </Text>
+          <Spacing size={56} />
+        </Flex.Center>
+      ),
+      type: 'confirm',
+      onConfirm: () => {
+        uploadRef.current?.reset();
+        reset();
+        close();
+      },
+      onCancel: () => {
+        close();
+      },
+    });
+  };
   return (
     <Flex
       direction="column"
@@ -75,8 +104,7 @@ export const QuizCreateInputList = ({
           htmlType="reset"
           type="ghost"
           onClick={() => {
-            uploadRef.current?.reset();
-            reset();
+            openConfirmModal();
           }}
         >
           다시 만들기
