@@ -15,20 +15,6 @@ interface QuizItemProps {
   setQuizItemStatus: (quizId: number, newQuizStatus: QuizStatus) => QuizResponse | undefined;
 }
 
-// type QuizItemMap = {
-//   [key in QuizStatus]: {
-//     buttonColor: ComponentProps<typeof Button>['type'];
-//     timerColor: KeyOfColors;
-//     labelColor: string;
-//     backgroundColor: string;
-//     button: {
-//       string : {
-//         path:
-//       }
-//     }
-//   };
-// };
-
 const QUIZ_BUTTON_TYPE = {
   CHECK: {
     buttonName: '똑스 확인하기',
@@ -95,7 +81,6 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
   const { time, start: timerStart, stop: timerStop } = useTimer({ time: initialTime, enabled: false });
 
   const [isFold, setIsFold] = useState(quizStatus === 'DONE');
-  const onFold = () => setIsFold(!isFold);
 
   const router = useRouter();
 
@@ -132,7 +117,12 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
     <ListItem>
       <Accordion
         isFold={isFold}
-        onFold={onFold}
+        onFold={event => {
+          if ((event.target as Element).closest('button')) {
+            return;
+          }
+          setIsFold(!isFold);
+        }}
         accordionStyle={{
           padding: '22px 28px',
         }}
@@ -180,8 +170,7 @@ export function QuizItem({ round, quiz, setQuizItemStatus }: QuizItemProps) {
               width={140}
               disabled={quizStatus === 'TO_DO'}
               size="medium"
-              onClick={event => {
-                event.stopPropagation();
+              onClick={() => {
                 router.push(QUIZ_ITEM[quizStatus].button(quizSolveStep, myQuiz).path(quizId));
               }}
             >

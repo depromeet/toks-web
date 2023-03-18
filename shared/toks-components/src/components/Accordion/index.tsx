@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 import { Icon } from '@depromeet/toks-components';
 
@@ -9,7 +9,7 @@ interface AccordionProps {
   bodyNodes: ReactNode;
   backgroundColor: string;
   isFold: boolean;
-  onFold?: () => void;
+  onFold?: MouseEventHandler<HTMLDivElement>;
   accordionStyle?: React.CSSProperties;
 }
 
