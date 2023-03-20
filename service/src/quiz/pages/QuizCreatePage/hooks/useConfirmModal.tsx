@@ -1,9 +1,9 @@
 import { Text, useModal } from '@depromeet/toks-components';
 import { Flex, Spacing } from '@toss/emotion-utils';
 
-export const useConfirmModal = (confirmCallback: () => void) => {
+export const useConfirmModal = () => {
   const { openModal, close } = useModal();
-  const openConfirmModal = async () => {
+  const openConfirmModal = async (confirmCallback?: () => void) => {
     await openModal({
       children: (
         <Flex.Center direction="column">
@@ -22,7 +22,7 @@ export const useConfirmModal = (confirmCallback: () => void) => {
       type: 'confirm',
       buttonText: '다시 만들기',
       onConfirm: () => {
-        confirmCallback();
+        confirmCallback?.();
         close();
       },
       onCancel: () => {

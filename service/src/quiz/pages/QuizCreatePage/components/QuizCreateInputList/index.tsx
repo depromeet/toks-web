@@ -30,10 +30,7 @@ export const QuizCreateInputList = ({
   isLoading,
 }: QuizCreateInputListProps) => {
   const uploadRef: ComponentProps<typeof Upload>['ref'] | null = useRef(null);
-  const { openConfirmModal } = useConfirmModal(() => {
-    uploadRef.current?.reset();
-    reset();
-  });
+  const { openConfirmModal } = useConfirmModal();
   return (
     <Flex
       direction="column"
@@ -79,8 +76,13 @@ export const QuizCreateInputList = ({
         <Button
           htmlType="reset"
           type="ghost"
-          onClick={() => {
-            openConfirmModal();
+          onClick={event => {
+            event.preventDefault();
+            openConfirmModal(() => {
+              ((event.target as Element).closest('form') as HTMLFormElement).reset();
+              uploadRef.current?.reset();
+              reset();
+            });
           }}
         >
           다시 만들기
