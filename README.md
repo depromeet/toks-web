@@ -1,72 +1,36 @@
-![image](https://user-images.githubusercontent.com/47452547/211762786-bd1a3ab7-0481-491a-8797-97b698433f20.png)
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## How To Run
+## Getting Started
 
-1. scripts/simulate.sh
+First, run the development server:
 
-</br>
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-## Introduce Toks
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-![image](https://user-images.githubusercontent.com/47452547/211752764-51af3149-cebd-41f9-9df4-96e798f5c050.png)
-</br>
-</br>
-👱‍♂️ : 공부하고 싶은 욕심은 많은데 혼자서는 항상 작심삼일을 넘지 못하네요. 다 같이 즐겁게 스터디를 할 수는 없을까요? 🥹
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-👩 : 책을 샀는데 책이 너무 두꺼운거 있죠...? 이렇게 많은 양도 꾸준하게 공부해서 완료해보고 싶어요 😂
+[http://localhost:3000/api/hello](http://localhost:3000/api/hello) is an endpoint that uses [Route Handlers](https://beta.nextjs.org/docs/routing/route-handlers). This endpoint can be edited in `app/api/hello/route.ts`.
 
-프로 개발자를 꿈꾸는 당신! 공부해야할 내용이 산더미 같아 의욕을 잃은 적이 있나요?
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-개발자를 위한 스터디 Toks는 꾸준한 스터디를 함께 하여 하나씩 완성해 나가는 서비스를 제공하는 플랫폼 입니다.
-</br>
-</br>
-![스터디 만들기](https://user-images.githubusercontent.com/89721027/213660371-60b60194-a344-477f-abff-9d8e21392934.png)
-</br>
-스터디를 생성하고 링크를 지인들과 공유해보세요!
+## Learn More
 
-단 한 번의 절차로 원하는 스터디를 생성할 수 있습니다.
-</br>
-</br>
-![image](https://user-images.githubusercontent.com/89721027/213660513-ea807203-369c-4a81-86b4-ca7338e3fbf2.png)
-![image](https://user-images.githubusercontent.com/89721027/213660571-f7bfba05-513a-4ab4-ba0d-13987e5e2d6e.png)
-</br>
-</br>
-팀원들과 함께 퀴즈를 만들고 제한 시간안에 풀어보세요!
+To learn more about Next.js, take a look at the following resources:
 
-서로가 만든 퀴즈를 공유하며 목표한 분량을 복습할 수 있습니다.
-</br>
-</br>
-![image](https://user-images.githubusercontent.com/89721027/213660817-140cdc40-4bad-42c0-bbcd-2512d84e0ea8.png)
-![image](https://user-images.githubusercontent.com/89721027/213661214-0f3c13ef-0f72-46fd-a303-db3b58a09703.png)
-</br>
-</br>
-제출된 답변들 중 가장 마음에 드는 답변에 투표해보세요.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-팀원들의 순위를 확인하며 선의의 경쟁을 할 수 있습니다 😎
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-똑스와 함께 하나씩 하나씩 스터디를 완료하며 지식을 쌓아보러 가볼까요?
+## Deploy on Vercel
 
-<a href="https://tokstudy.com/login">개발자 스터디 플랫폼 Toks</a>
-</br>
-</br>
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## Dev Stack
-
-<p>
-<img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white"/>
-<img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/>
-<img src="https://img.shields.io/badge/Emotion-EFD1EA?style=flat-square&logo=css3&logoColor=white"/>
-<img src="https://img.shields.io/badge/ReactQuery-FF4154?style=flat-square&logo=ReactQuery&logoColor=white"/>
-<img src="https://img.shields.io/badge/Recoil-3578E5?style=flat-square&logo=react&logoColor=white"/>
-<img alt="ESLint" src="https://img.shields.io/badge/-ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white" />
-<img alt="Prettier" src="https://img.shields.io/badge/-Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=white" />
-<img alt="github actions" src="https://img.shields.io/badge/-GithubActions-2088FF?style=flat-square&logo=githubactions&logoColor=white" />
-</p>
-</br>
-
-## 오늘도 개발자가 안된다고 말했다. 🤦 🤦‍♀️ 🤦‍♀️
-
-🕸 FrontEnd
-|[최민석](https://github.com/minsgy)|[강현구](https://github.com/LineGu)|[김채림](https://github.com/chaaerim)|[윤두현](https://github.com/dengoyoon)|
-|:---:|:---:|:---:|:---:|
-|<img src='https://user-images.githubusercontent.com/89721027/211807096-bb1eba43-efc6-491c-bbc5-d6681187bf52.png' width="150px" height='150px'>|<img src='https://user-images.githubusercontent.com/89721027/211807305-d552c48e-219c-41bb-b808-e5222ba3774b.png' width="150px" height='150x'>|<img src='https://user-images.githubusercontent.com/89721027/211808345-c9c458af-6f66-44e0-8ad3-7d778966c140.png' width="150px" height='150px'>|<img src='https://user-images.githubusercontent.com/89721027/211808648-fa4b6a4c-6106-4df6-a2f0-df4e3324ed1b.png' width="150px" height='150px'>
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
