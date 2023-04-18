@@ -3236,38 +3236,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"portfolio@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "portfolio@workspace:."
-  dependencies:
-    "@emotion/react": ^11.10.0
-    "@emotion/styled": ^11.10.0
-    "@next/eslint-plugin-next": latest
-    "@stylelint/postcss-css-in-js": ^0.38.0
-    "@types/node": 18.7.13
-    "@types/react": 18.0.17
-    "@types/react-dom": 18.0.6
-    eslint: 8.22.0
-    eslint-config-next: 12.2.5
-    eslint-config-prettier: ^8.5.0
-    eslint-plugin-react-hooks: ^4.6.0
-    husky: ^8.0.1
-    lint-staged: ^13.0.3
-    next: 12.2.5
-    postcss: ^8.4.16
-    postcss-syntax: ^0.36.2
-    prettier: ^2.7.1
-    react: 18.2.0
-    react-dom: 18.2.0
-    stylelint: ^14.11.0
-    stylelint-config-prettier-scss: ^0.0.1
-    stylelint-config-recess-order: ^3.0.0
-    stylelint-config-recommended-scss: ^7.0.0
-    stylelint-prettier: ^2.0.0
-    typescript: 4.7.4
-  languageName: unknown
-  linkType: soft
-
 "postcss-media-query-parser@npm:^0.2.3":
   version: 0.2.3
   resolution: "postcss-media-query-parser@npm:0.2.3"
@@ -4165,6 +4133,38 @@ __metadata:
   checksum: f76fa01b3d5be85db6a2a143e24df9f60dd047d151062d0ba3df62953f2f697b16fe5dad9b0ac6191c7efc7b1d9dcaa4b768174b7b29da89d4428e64bc0a20ed
   languageName: node
   linkType: hard
+
+"toks-web@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "toks-web@workspace:."
+  dependencies:
+    "@emotion/react": ^11.10.0
+    "@emotion/styled": ^11.10.0
+    "@next/eslint-plugin-next": latest
+    "@stylelint/postcss-css-in-js": ^0.38.0
+    "@types/node": 18.7.13
+    "@types/react": 18.0.17
+    "@types/react-dom": 18.0.6
+    eslint: 8.22.0
+    eslint-config-next: 12.2.5
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-react-hooks: ^4.6.0
+    husky: ^8.0.1
+    lint-staged: ^13.0.3
+    next: 12.2.5
+    postcss: ^8.4.16
+    postcss-syntax: ^0.36.2
+    prettier: ^2.7.1
+    react: 18.2.0
+    react-dom: 18.2.0
+    stylelint: ^14.11.0
+    stylelint-config-prettier-scss: ^0.0.1
+    stylelint-config-recess-order: ^3.0.0
+    stylelint-config-recommended-scss: ^7.0.0
+    stylelint-prettier: ^2.0.0
+    typescript: 4.7.4
+  languageName: unknown
+  linkType: soft
 
 "trim-newlines@npm:^3.0.0":
   version: 3.0.1
