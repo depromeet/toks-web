@@ -2283,7 +2283,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mdx-js/react@npm:^2.1.5":
+"@mdx-js/react@npm:^2.1.5, @mdx-js/react@npm:^2.3.0":
   version: 2.3.0
   resolution: "@mdx-js/react@npm:2.3.0"
   dependencies:
@@ -3611,6 +3611,22 @@ __metadata:
     "@storybook/client-logger": 7.0.6
     "@storybook/preview-api": 7.0.6
   checksum: a73b833784c62ed0d39b56b384f83bbf40ead6cc8868e75b8c73d0f77de37ebf78bf8a2d20dd3eade216d74355687a57b9ec7786c7b58a325cda49ac70a96fe2
+  languageName: node
+  linkType: hard
+
+"@storybook/storybook-deployer@npm:^2.8.16":
+  version: 2.8.16
+  resolution: "@storybook/storybook-deployer@npm:2.8.16"
+  dependencies:
+    git-url-parse: ^12.0.0
+    glob: ^7.1.3
+    parse-repo: ^1.0.4
+    shelljs: ^0.8.1
+    yargs: ^15.0.0
+  bin:
+    storybook-to-aws-s3: bin/storybook_to_aws_s3
+    storybook-to-ghpages: bin/storybook_to_ghpages
+  checksum: 06d02d9da9e6242de89436973e0a0d8126bcac5a89e7356815b095073d7c3b8c5ec7e9216183b18a9ec9c120455634a08388ddf67b1192cda748577768f07bd2
   languageName: node
   linkType: hard
 
@@ -5586,7 +5602,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"camelcase@npm:^5.3.1":
+"camelcase@npm:^5.0.0, camelcase@npm:^5.3.1":
   version: 5.3.1
   resolution: "camelcase@npm:5.3.1"
   checksum: e6effce26b9404e3c0f301498184f243811c30dfe6d0b9051863bd8e4034d09c8c2923794f280d6827e5aa055f6c434115ff97864a16a963366fb35fd673024b
@@ -5797,6 +5813,17 @@ __metadata:
   version: 2.6.2
   resolution: "clipanion@npm:2.6.2"
   checksum: 7a1dfc8c9ae70362fc12a8d148827b584f598c9f983143a847b33a84ec8a8c3a51e5888131a3e9847cddfa38096d17a38ced870ee2fd4bef5babb971ec198287
+  languageName: node
+  linkType: hard
+
+"cliui@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "cliui@npm:6.0.0"
+  dependencies:
+    string-width: ^4.2.0
+    strip-ansi: ^6.0.0
+    wrap-ansi: ^6.2.0
+  checksum: 4fcfd26d292c9f00238117f39fc797608292ae36bac2168cfee4c85923817d0607fe21b3329a8621e01aedf512c99b7eaa60e363a671ffd378df6649fb48ae42
   languageName: node
   linkType: hard
 
@@ -7832,7 +7859,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-caller-file@npm:^2.0.5":
+"get-caller-file@npm:^2.0.1, get-caller-file@npm:^2.0.5":
   version: 2.0.5
   resolution: "get-caller-file@npm:2.0.5"
   checksum: b9769a836d2a98c3ee734a88ba712e62703f1df31b94b784762c433c27a386dd6029ff55c2a920c392e33657d80191edbf18c61487e198844844516f843496b9
@@ -7922,6 +7949,25 @@ __metadata:
   bin:
     giget: dist/cli.mjs
   checksum: 76ad0f7e792ee95dd6c4e1096697fdcce61a2a3235a6c21761fc3e0d1053342074ce71c80059d6d4363fd34152e5d7b2e58221412f300c852ff7d4a12d0321fe
+  languageName: node
+  linkType: hard
+
+"git-up@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "git-up@npm:6.0.0"
+  dependencies:
+    is-ssh: ^1.4.0
+    parse-url: ^7.0.2
+  checksum: 145a1f546d7a078cdfc2616556e518e634d134e34a31c6bf2ed89e44158659cb525dbd451c338121f7107f55cef066d0b37a7bbf178555befc9304b3940b435e
+  languageName: node
+  linkType: hard
+
+"git-url-parse@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "git-url-parse@npm:12.0.0"
+  dependencies:
+    git-up: ^6.0.0
+  checksum: b4c8530b816202ecf9d4dabf755f785a314a096b56145018385b3d7171e862f9d0d9b38cce620c0af354b269750fe7b2d9aa95815c7150922090a11dac4ab1e6
   languageName: node
   linkType: hard
 
@@ -8859,6 +8905,15 @@ __metadata:
   dependencies:
     call-bind: ^1.0.2
   checksum: 9508929cf14fdc1afc9d61d723c6e8d34f5e117f0bffda4d97e7a5d88c3a8681f633a74f8e3ad1fe92d5113f9b921dc5ca44356492079612f9a247efbce7032a
+  languageName: node
+  linkType: hard
+
+"is-ssh@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "is-ssh@npm:1.4.0"
+  dependencies:
+    protocols: ^2.0.1
+  checksum: 75eaa17b538bee24b661fbeb0f140226ac77e904a6039f787bea418431e2162f1f9c4c4ccad3bd169e036cd701cc631406e8c505d9fa7e20164e74b47f86f40f
   languageName: node
   linkType: hard
 
@@ -10432,7 +10487,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"normalize-url@npm:^6.0.1":
+"normalize-url@npm:^6.0.1, normalize-url@npm:^6.1.0":
   version: 6.1.0
   resolution: "normalize-url@npm:6.1.0"
   checksum: 4a4944631173e7d521d6b80e4c85ccaeceb2870f315584fa30121f505a6dfd86439c5e3fdd8cd9e0e291290c41d0c3599f0cb12ab356722ed242584c30348e50
@@ -10801,6 +10856,34 @@ __metadata:
     json-parse-even-better-errors: ^2.3.0
     lines-and-columns: ^1.1.6
   checksum: 62085b17d64da57f40f6afc2ac1f4d95def18c4323577e1eced571db75d9ab59b297d1d10582920f84b15985cbfc6b6d450ccbf317644cfa176f3ed982ad87e2
+  languageName: node
+  linkType: hard
+
+"parse-path@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "parse-path@npm:5.0.0"
+  dependencies:
+    protocols: ^2.0.0
+  checksum: e9f670559cd8e535f39f548bf5d41ad96a220190ea98df33d0babd9dfaa7c3c70ee2e55394078517d5e7e93c6a39c8eac1261ed3f9e68033656614fc954262e8
+  languageName: node
+  linkType: hard
+
+"parse-repo@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "parse-repo@npm:1.0.4"
+  checksum: b0d32a182cdb2287adfb1d9141f7f694890e0ad659e80f75ec2e266339c5a728328f08cb72caf85cb7524b5dbbc4122b17efdd48e0d17d96ed9863ec512e0141
+  languageName: node
+  linkType: hard
+
+"parse-url@npm:^7.0.2":
+  version: 7.0.2
+  resolution: "parse-url@npm:7.0.2"
+  dependencies:
+    is-ssh: ^1.4.0
+    normalize-url: ^6.1.0
+    parse-path: ^5.0.0
+    protocols: ^2.0.1
+  checksum: 3e26852706bebe9fac409909316716dee52883d2fb5c82d65577effba1507abb7bc42bb59ce0ba6c8659168fb99acf89000bd8fe096ed3ad7124fa85227436d7
   languageName: node
   linkType: hard
 
@@ -11337,6 +11420,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"protocols@npm:^2.0.0, protocols@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "protocols@npm:2.0.1"
+  checksum: 4a9bef6aa0449a0245ded319ac3cbfd032c3e76ebb562777037a3a832c99253d0e8bc2847f7be350236df620a11f7d4fe683ea7f59a2cc14c69f746b6259eda4
+  languageName: node
+  linkType: hard
+
 "proxy-addr@npm:~2.0.7":
   version: 2.0.7
   resolution: "proxy-addr@npm:2.0.7"
@@ -11862,6 +11952,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"require-main-filename@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "require-main-filename@npm:2.0.0"
+  checksum: e9e294695fea08b076457e9ddff854e81bffbe248ed34c1eec348b7abbd22a0d02e8d75506559e2265e96978f3c4720bd77a6dad84755de8162b357eb6c778c7
+  languageName: node
+  linkType: hard
+
 "resolve-alpn@npm:^1.0.0":
   version: 1.2.1
   resolution: "resolve-alpn@npm:1.2.1"
@@ -12302,7 +12399,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shelljs@npm:^0.8.5":
+"shelljs@npm:^0.8.1, shelljs@npm:^0.8.5":
   version: 0.8.5
   resolution: "shelljs@npm:0.8.5"
   dependencies:
@@ -13245,6 +13342,7 @@ __metadata:
     "@babel/preset-typescript": ^7.21.4
     "@emotion/react": ^11.10.0
     "@emotion/styled": ^11.10.0
+    "@mdx-js/react": ^2.3.0
     "@next/eslint-plugin-next": latest
     "@storybook/addon-essentials": ^7.0.6
     "@storybook/addon-interactions": ^7.0.6
@@ -13252,6 +13350,7 @@ __metadata:
     "@storybook/blocks": ^7.0.6
     "@storybook/nextjs": next
     "@storybook/react": ^7.0.6
+    "@storybook/storybook-deployer": ^2.8.16
     "@storybook/testing-library": ^0.0.14-next.2
     "@stylelint/postcss-css-in-js": ^0.38.0
     "@types/node": 18.7.13
@@ -13984,6 +14083,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"which-module@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "which-module@npm:2.0.1"
+  checksum: 1967b7ce17a2485544a4fdd9063599f0f773959cca24176dbe8f405e55472d748b7c549cd7920ff6abb8f1ab7db0b0f1b36de1a21c57a8ff741f4f1e792c52be
+  languageName: node
+  linkType: hard
+
 "which-typed-array@npm:^1.1.2, which-typed-array@npm:^1.1.9":
   version: 1.1.9
   resolution: "which-typed-array@npm:1.1.9"
@@ -14140,6 +14246,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"y18n@npm:^4.0.0":
+  version: 4.0.3
+  resolution: "y18n@npm:4.0.3"
+  checksum: 014dfcd9b5f4105c3bb397c1c8c6429a9df004aa560964fb36732bfb999bfe83d45ae40aeda5b55d21b1ee53d8291580a32a756a443e064317953f08025b1aa4
+  languageName: node
+  linkType: hard
+
 "y18n@npm:^5.0.5":
   version: 5.0.8
   resolution: "y18n@npm:5.0.8"
@@ -14175,10 +14288,39 @@ __metadata:
   languageName: node
   linkType: hard
 
+"yargs-parser@npm:^18.1.2":
+  version: 18.1.3
+  resolution: "yargs-parser@npm:18.1.3"
+  dependencies:
+    camelcase: ^5.0.0
+    decamelize: ^1.2.0
+  checksum: 60e8c7d1b85814594d3719300ecad4e6ae3796748b0926137bfec1f3042581b8646d67e83c6fc80a692ef08b8390f21ddcacb9464476c39bbdf52e34961dd4d9
+  languageName: node
+  linkType: hard
+
 "yargs-parser@npm:^20.2.2, yargs-parser@npm:^20.2.3, yargs-parser@npm:^20.2.9":
   version: 20.2.9
   resolution: "yargs-parser@npm:20.2.9"
   checksum: 8bb69015f2b0ff9e17b2c8e6bfe224ab463dd00ca211eece72a4cd8a906224d2703fb8a326d36fdd0e68701e201b2a60ed7cf81ce0fd9b3799f9fe7745977ae3
+  languageName: node
+  linkType: hard
+
+"yargs@npm:^15.0.0":
+  version: 15.4.1
+  resolution: "yargs@npm:15.4.1"
+  dependencies:
+    cliui: ^6.0.0
+    decamelize: ^1.2.0
+    find-up: ^4.1.0
+    get-caller-file: ^2.0.1
+    require-directory: ^2.1.1
+    require-main-filename: ^2.0.0
+    set-blocking: ^2.0.0
+    string-width: ^4.2.0
+    which-module: ^2.0.0
+    y18n: ^4.0.0
+    yargs-parser: ^18.1.2
+  checksum: 40b974f508d8aed28598087720e086ecd32a5fd3e945e95ea4457da04ee9bdb8bdd17fd91acff36dc5b7f0595a735929c514c40c402416bbb87c03f6fb782373
   languageName: node
   linkType: hard
 
