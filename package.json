@@ -41,7 +41,7 @@
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
     "babel-loader": "^9.1.2",
-    "chromatic": "^6.17.3",
+    "chromatic": "next",
     "core-js": "^3.30.1",
     "css-loader": "^6.7.3",
     "eslint": "8.22.0",

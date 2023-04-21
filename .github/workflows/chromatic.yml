@@ -17,14 +17,10 @@ jobs:
     # Job steps
     steps:
       - uses: actions/checkout@v1
-      - name: Install modules
+      - name: Install dependencies
       - run: |
-          yarn install
-          yarn chromatic --project-token=${{secrets.CHROMATIC_PROJECT_TOKEN}}
-        with:
-          exitZeroOnChanges: true
-          autoAcceptChanges: true
-
+          yarn
+          yarn chromatic --project-token=${{secrets.CHROMATIC_PROJECT_TOKEN}} --exit-zero-on-changes --auto-accept-changes
         #   #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/ to obtain it
         #   projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
       # pr comment로 스토리북 배포 링크 확인 가능한 액션

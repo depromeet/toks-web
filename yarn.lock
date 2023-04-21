@@ -5701,9 +5701,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromatic@npm:^6.17.3":
-  version: 6.17.3
-  resolution: "chromatic@npm:6.17.3"
+"chromatic@npm:next":
+  version: 6.17.4-next.0
+  resolution: "chromatic@npm:6.17.4-next.0"
   dependencies:
     "@discoveryjs/json-ext": ^0.5.7
     "@types/webpack-env": ^1.17.0
@@ -5712,7 +5712,7 @@ __metadata:
     chroma: bin/main.cjs
     chromatic: bin/main.cjs
     chromatic-cli: bin/main.cjs
-  checksum: 4ac84633a15993302c1d82a49d76adb7622f79c76ed2282960816a99f82263c115ffb4a7c86d61047f07b5d4d252515a3433481732b0e87af4be6c33e29f381f
+  checksum: 349b7954073d68938c94ab42b8f92b341a0cc10128a5a8c2962eead314de6980de0869ce555c164e08584af3c133df84b9f0169b9d655815528d7943407f1046
   languageName: node
   linkType: hard
 
@@ -13357,7 +13357,7 @@ __metadata:
     "@types/react": 18.0.17
     "@types/react-dom": 18.0.6
     babel-loader: ^9.1.2
-    chromatic: ^6.17.3
+    chromatic: next
     core-js: ^3.30.1
     css-loader: ^6.7.3
     eslint: 8.22.0
