@@ -11,7 +11,8 @@
     "stylelint:fix": "stylelint --fix \"**/*.tsx\"",
     "postinstall": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "yarn chromatic --project-token=09ea848e585d"
   },
   "dependencies": {
     "@babel/preset-react": "^7.18.6",
@@ -38,6 +39,7 @@
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
     "babel-loader": "^9.1.2",
+    "chromatic": "^6.17.3",
     "core-js": "^3.30.1",
     "css-loader": "^6.7.3",
     "eslint": "8.22.0",
@@ -64,5 +66,7 @@
   "lint-staged": {
     "*.tsx": "eslint --fix",
     "*.ts": "eslint --fix"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "toks-web@2.0.0"
 }
