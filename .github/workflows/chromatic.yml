@@ -9,15 +9,15 @@ on:
 
 # List of jobs
 jobs:
-  test:
+   test:
     # Operating System
     runs-on: ubuntu-latest
     outputs:
       status: ${{ job.status }}
     # Job steps
-     steps:
+    steps:
       - uses: actions/checkout@v1
-      - run: |
+      - run: | 
           yarn
           yarn chromatic --project-token=${{secrets.CHROMATIC_PROJECT_TOKEN}} --exit-zero-on-changes --auto-accept-changes
         #   #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/ to obtain it
