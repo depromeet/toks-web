@@ -1,0 +1,34 @@
+# Workflow name
+name: 'Storybook Deployment'
+
+# dev branch에 push되는 경우 배포
+on:
+  pull_request:
+    branches:
+      - dev
+
+# List of jobs
+jobs:
+  test:
+    # Operating System
+    runs-on: ubuntu-latest
+    outputs:
+      status: ${{ job.status }}
+    # Job steps
+    steps:
+      - uses: actions/checkout@v1
+      - run: yarn
+        #👇 Adds Chromatic as a step in the workflow
+      - uses: chromaui/action@v1
+        # Options required for Chromatic's GitHub Action
+        with:
+          #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/ to obtain it
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      # pr comment로 스토리북 배포 링크 확인 가능한 액션
+      - name: comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: '🚀storybook: ${{ steps.chromatic.outputs.storybookUrl }}'
