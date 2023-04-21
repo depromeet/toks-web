@@ -19,11 +19,11 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           yarn install
-          yarn chromatic --project-token=${{ secrets.CHROMATIC_PROJECT_TOKEN}}
-        with:
-          #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/ to obtain it
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+          yarn chromatic --project-token=${{secrets.CHROMATIC_PROJECT_TOKEN}}
+        # with:
+        #   #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/ to obtain it
+        #   projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+        #   token: ${{ secrets.GITHUB_TOKEN }}
       # pr comment로 스토리북 배포 링크 확인 가능한 액션
       - name: comment PR
         uses: thollander/actions-comment-pull-request@v1
