@@ -16,7 +16,7 @@ jobs:
       status: ${{ job.status }}
     # Job steps
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       - run: |
           yarn install
           yarn chromatic --project-token=${{secrets.CHROMATIC_PROJECT_TOKEN}}
