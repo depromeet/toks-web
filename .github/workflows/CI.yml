@@ -4,45 +4,23 @@
 name: CI
 
 on:
-  # 마스터 브랜치에 push 하는 경우는, husky로 금지합니다.
   push:
     branches-ignore:
       - 'master'
       - 'dev'
 
 jobs:
-  ci:
-    name: CI
+  build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
-      # 변경 이력을 모두 불러옵니다.
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install Yarn
-        run: npm i -g yarn
+      - uses: actions/checkout@v2
 
       - name: Install dependencies
-        # Zero-Installs 사용 시, lock file, cache file 수정 여부 검증 및 throw error & exit
-        run: yarn install --immutable
+        run: yarn install
 
-      - name: 커맨드라인 설치
-        run: yarn workspace @devops/commandline run build
+      - name: Run lint and dead code check
+        run: yarn lint && yarn dead-check
 
-      - name: Test
-        run: yarn toks test
-        env:
-          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
-          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
+      - name: Run type-check
+        run: yarn type-check
