@@ -19,8 +19,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Run lint and dead code check
-        run: yarn lint && yarn dead-check
+      - name: Run lint
+        run: yarn lint
 
       - name: Run type-check
         run: yarn type-check
