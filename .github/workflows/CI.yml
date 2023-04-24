@@ -1,0 +1,48 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: CI
+
+on:
+  # 마스터 브랜치에 push 하는 경우는, husky로 금지합니다.
+  push:
+    branches-ignore:
+      - 'master'
+      - 'dev'
+
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      # 변경 이력을 모두 불러옵니다.
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Yarn
+        run: npm i -g yarn
+
+      - name: Install dependencies
+        # Zero-Installs 사용 시, lock file, cache file 수정 여부 검증 및 throw error & exit
+        run: yarn install --immutable --immutable-cache
+
+      - name: 커맨드라인 설치
+        run: yarn workspace @devops/commandline run build
+
+      - name: Test
+        run: yarn toks test
+        env:
+          GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
