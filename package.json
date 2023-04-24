@@ -2,6 +2,9 @@
   "name": "toks-web",
   "version": "2.0.0",
   "private": true,
+  "workspaces": [
+    "devops/*"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
