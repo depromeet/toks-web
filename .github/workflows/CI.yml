@@ -36,7 +36,7 @@ jobs:
 
       - name: Install dependencies
         # Zero-Installs 사용 시, lock file, cache file 수정 여부 검증 및 throw error & exit
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
 
       - name: 커맨드라인 설치
         run: yarn workspace @devops/commandline run build
