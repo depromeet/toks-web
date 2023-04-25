@@ -1,6 +1,10 @@
-import React from "react";
+import React from 'react';
 
-const Hello = ({ name, big }) => {
+interface HelloProps {
+  name: string;
+  big: boolean;
+}
+const Hello = ({ name, big }: HelloProps) => {
   if (big) {
     return <h1>안녕하세요, {name}!</h1>;
   }
