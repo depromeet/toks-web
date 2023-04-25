@@ -1,11 +1,20 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-[ -n "$CI" ] && exit 0
+if [ -n "$CI" ]; then
+  exit 0
+fi
 
 branch=$(git branch --show-current)
-if [ "$branch" == "master" ]
-then
+if [ "$branch" = "master" ]; then
   echo "master 브랜치에 커밋하지 마세요!"
-  exit 1;
+  exit 1
 fi
+
+if [ "$branch" = "dev" ]; then
+  echo "dev 브랜치에 커밋하지 마세요!"
+  exit 1
+fi
+
+# yarn lint-staged
+# yarn stylelint:fix

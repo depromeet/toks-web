@@ -1,0 +1,6 @@
+{
+  "presets": [
+    ["@babel/react", { "runtime": "automatic" }],
+    ["@babel/typescript", { "onlyRemoveTypeImports": true }]
+  ]
+}
