@@ -10,8 +10,13 @@ on:
       - 'dev'
 
 jobs:
-  build:
+  ci:
+    name: CI
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
 
     steps:
       - uses: actions/checkout@v2
