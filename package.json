@@ -12,8 +12,7 @@
     "stylelint:fix": "stylelint --fix \"**/*.tsx\"",
     "postinstall": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "chromatic": "yarn chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@babel/preset-react": "^7.18.6",
