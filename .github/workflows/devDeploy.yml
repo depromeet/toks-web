@@ -52,7 +52,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.AWS_DEV_KEY }}
           source: './builds/.next.tar.gz'
-          target: '/home/ubuntu/builds/'
+          target: '/home/ubuntu/'
 
       - name: Express Deploy
         run: curl http://44.202.49.226:8080/deploy
