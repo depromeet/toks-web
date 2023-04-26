@@ -1,7 +1,7 @@
 echo "################## 개발서버 배포를 시작합니다.##################"
 
-git checkout feat/cd
-git pull origin feat/cd
+git checkout dev
+git pull origin dev
 
 echo "##################의존성 설치##################"
 
