@@ -28,7 +28,7 @@ jobs:
         run: npm i -g yarn
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable
 
       - name: 프로젝트 빌드
         run: yarn build
