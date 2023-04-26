@@ -1,4 +1,4 @@
-name: Dev Deploy
+name: Deploy
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   ci:
-    name: Dev Deploy
+    name: Dev
     runs-on: ubuntu-latest
 
     strategy:
@@ -47,7 +47,7 @@ jobs:
         with:
           host: '44.202.49.226'
           username: 'ubuntu'
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.AWS_DEV_KEY }}
           source: './builds/.next.tar.gz'
           target: 'ubuntu@ec2-44-202-49-226.compute-1.amazonaws.com:/home/ubuntu/builds/.next.tar.gz'
 
