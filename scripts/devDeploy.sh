@@ -25,6 +25,6 @@ mkdir -p ./builds/
 
 tar -czv .next > ./builds/.next.tar.gz
 
-scp -r -i ../../frontend-key.pem ./builds/.next.tar.gz ubuntu@${instance}:/home/ubuntu/builds/.next.tar.gz
+scp -r -i ../frontend-key.pem ./builds/.next.tar.gz ubuntu@${instance}:/home/ubuntu/builds/.next.tar.gz
 
 curl http://${ip}:8080/deploy
