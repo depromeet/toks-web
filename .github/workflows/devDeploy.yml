@@ -34,7 +34,7 @@ jobs:
         run: yarn build
 
       - name: Express Init
-        run: curl http://44.202.49.226:8080/init
+        run: curl http://${{ secrets.HOST_DEV }}:8080/init
 
       - name: 빌드 폴더 생성
         run: mkdir -p ./builds/
@@ -48,11 +48,11 @@ jobs:
       - name: 빌드 파일을 EC2로 전송
         uses: appleboy/scp-action@master
         with:
-          host: 44.202.49.226
-          username: ubuntu
+          host: ${{ secrets.HOST_DEV }}
+          username: ${{ secrets.AWS_USER_NAME }}
           key: ${{ secrets.AWS_DEV_KEY }}
           source: './builds/.next.tar.gz'
-          target: '/home/ubuntu/'
+          target: '/home/${{ secrets.AWS_USER_NAME }}/'
 
       - name: Express Deploy
-        run: curl http://44.202.49.226:8080/deploy
+        run: curl http://${{ secrets.HOST_DEV }}:8080/deploy
