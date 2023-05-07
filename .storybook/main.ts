@@ -6,7 +6,6 @@ module.exports = {
   },
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    '@storybook/addon-a11y',
     '@storybook/addon-essentials',
     '@storybook/addon-links',
     {
@@ -16,4 +15,11 @@ module.exports = {
       },
     },
   ],
+  framework: {
+    name: '@storybook/nextjs',
+    options: {},
+  },
+  docs: {
+    autodocs: 'tag',
+  },
 };
