@@ -1,22 +1,19 @@
-const config = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
-  framework: {
-    name: '@storybook/nextjs',
-    options: {}
+// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+
+module.exports = {
+  core: {
+    builder: 'webpack5',
   },
-  docs: {
-    autodocs: 'tag'
-  },
-  features: {
-    previewMdx2: true,
-  },
-  webpackFinal: async config => {
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      loader: require.resolve('babel-loader')
-    });
-    return config;
-  }
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: [
+    '@storybook/addon-a11y',
+    '@storybook/addon-essentials',
+    '@storybook/addon-links',
+    {
+      name: 'storybook-addon-swc',
+      options: {
+        enable: process.env.BUILD_TOOL === 'swc',
+      },
+    },
+  ],
 };
-export default config;
