@@ -10,9 +10,7 @@ module.exports = {
     '@storybook/addon-links',
     {
       name: 'storybook-addon-swc',
-      options: {
-        enable: process.env.BUILD_TOOL === 'swc',
-      },
+      options: {},
     },
   ],
   framework: {
