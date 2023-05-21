@@ -29,3 +29,6 @@ jobs:
 
       - name: Run type-check
         run: yarn type-check
+
+      - name: Run test-code
+        run: yarn test:ci
