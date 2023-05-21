@@ -1,8 +1,9 @@
+import styled from '@emotion/styled';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+
 import styles from '../styles/Home.module.css';
-import styled from '@emotion/styled';
 
 const ExampleComponentCSS = styled.div`
   width: 1rem;
@@ -12,9 +13,6 @@ const ExampleComponentCSS = styled.div`
 `;
 
 const Home: NextPage = () => {
-  const a = 'hi';
-  const b = 'hi';
-
   return (
     <div className={styles.container}>
       <Head>

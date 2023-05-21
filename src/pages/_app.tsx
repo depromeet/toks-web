@@ -1,7 +1,8 @@
 import '@/styles/globals.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
 import { useState } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import { spoqaHanSansNeo } from '@/styles/fonts/spoqaHanSansNeo/spoqaHanSansNeo';
 
 function MyApp({ Component, pageProps }: AppProps) {

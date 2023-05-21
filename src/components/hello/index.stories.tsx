@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Hello from '.';
 
 export default {
