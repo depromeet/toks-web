@@ -1,22 +1,23 @@
-const config = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-interactions'],
+// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+
+module.exports = {
+  core: {
+    builder: 'webpack5',
+  },
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-links',
+    {
+      name: 'storybook-addon-swc',
+      options: {},
+    },
+  ],
   framework: {
     name: '@storybook/nextjs',
-    options: {}
+    options: {},
   },
   docs: {
-    autodocs: 'tag'
+    autodocs: 'tag',
   },
-  features: {
-    previewMdx2: true,
-  },
-  webpackFinal: async config => {
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      loader: require.resolve('babel-loader')
-    });
-    return config;
-  }
 };
-export default config;
