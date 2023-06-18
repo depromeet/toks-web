@@ -2483,13 +2483,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/font@npm:^13.4.1":
-  version: 13.4.1
-  resolution: "@next/font@npm:13.4.1"
-  checksum: 7b365d45e38fb1ffda64e12a98679bfd3b00b95085da8ca1b0fb0d4a479edd45faa215f500f37b7180c78dd6cba5d6c3d915cef28420097fbc2a839046ac6994
-  languageName: node
-  linkType: hard
-
 "@next/swc-darwin-arm64@npm:13.4.6":
   version: 13.4.6
   resolution: "@next/swc-darwin-arm64@npm:13.4.6"
@@ -16375,7 +16368,6 @@ __metadata:
     "@babel/preset-typescript": ^7.21.4
     "@mdx-js/react": ^2.3.0
     "@next/eslint-plugin-next": latest
-    "@next/font": ^13.4.1
     "@storybook/addon-essentials": ^7.0.7
     "@storybook/addon-interactions": ^7.0.7
     "@storybook/addon-links": ^7.0.7
