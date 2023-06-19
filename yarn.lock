@@ -16112,6 +16112,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwind-merge@npm:^1.13.2":
+  version: 1.13.2
+  resolution: "tailwind-merge@npm:1.13.2"
+  checksum: 8f9de3bd1e6271f5980f863ab85e0103f062bf84d814d3188bf6870af7eb43725ea40493ef0693dedd652b668cbdfcd6544235b16b70d438ed20bca6118a9066
+  languageName: node
+  linkType: hard
+
+"tailwind-variants@npm:^0.1.8":
+  version: 0.1.8
+  resolution: "tailwind-variants@npm:0.1.8"
+  dependencies:
+    tailwind-merge: ^1.13.2
+  peerDependencies:
+    tailwindcss: "*"
+  checksum: a65421ffc9ce22ed9e9d5f5ac9c8afd43670a507fccf37a11dcf6a43da4b435594d9d343ff5a39141563a9baca76d36a711954db956721a5bed2cc821f5bdd11
+  languageName: node
+  linkType: hard
+
 "tailwindcss@npm:^3.3.2":
   version: 3.3.2
   resolution: "tailwindcss@npm:3.3.2"
@@ -16421,6 +16439,7 @@ __metadata:
     stylelint-config-recess-order: ^3.0.0
     stylelint-config-recommended-scss: ^7.0.0
     stylelint-prettier: ^2.0.0
+    tailwind-variants: ^0.1.8
     tailwindcss: ^3.3.2
     ts-jest: ^29.1.0
     typescript: 4.7.4
