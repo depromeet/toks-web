@@ -1,16 +1,13 @@
+const { withTV } = require('tailwind-variants/transformer');
+
+const { colors } = require('./style/theme/colors');
+const { shadows } = require('./style/theme/shadows');
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    './src/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+module.exports = withTV({
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-    },
+    extend: { colors, shadows },
   },
   plugins: [],
-}
+});
