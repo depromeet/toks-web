@@ -12,7 +12,7 @@ const button = tv({
 export default function Home() {
   return (
     <div>
-      <button className={button({ color: 'success' })}>Toks</button>
+      <button className={button({ shadow: 'book01' })}>Toks</button>
     </div>
   );
 }
