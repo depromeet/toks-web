@@ -1,11 +1,18 @@
-import { color } from '@/components/foundation/color';
+import { tv } from 'tailwind-variants';
 
+import { color } from '@/common/foundation/color';
+import { shadow } from '@/common/foundation/shadow';
+
+const button = tv({
+  variants: {
+    color,
+    shadow,
+  },
+});
 export default function Home() {
   return (
     <div>
-      <h1 className={color({ bgColor: 'primaryPress', textColor: 'success' })}>
-        Toks
-      </h1>
+      <button className={button({ shadow: 'book01' })}>Toks</button>
     </div>
   );
 }
