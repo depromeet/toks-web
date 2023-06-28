@@ -18,3 +18,5 @@ export const color = {
   primaryDefault: 'primary-default',
   primaryPress: 'primary-press',
 } as const;
+
+export type KeyOfColor = keyof typeof color;

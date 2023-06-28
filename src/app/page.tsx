@@ -1,7 +1,6 @@
 import { tv } from 'tailwind-variants';
 
-import { color } from '@/common/foundation/color';
-import { shadow } from '@/common/foundation/shadow';
+import { color, shadow } from '@/common/foundation';
 
 const button = tv({
   variants: {
