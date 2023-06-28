@@ -3,7 +3,7 @@ import { HTMLAttributes, ReactNode } from 'react';
 import {
   KeyOfColor,
   KeyOfTypography,
-  color,
+  textColor,
   typography,
 } from '@/common/foundation';
 
@@ -15,7 +15,8 @@ interface TextProps extends HTMLAttributes<HTMLSpanElement> {
 
 export function Text({ color = 'white', children, typo, ...rest }: TextProps) {
   return (
-    <span className={typography[typo]} {...rest}>
+    //${textColor[color]}
+    <span className={`${typography[typo]} ${textColor[color]}`} {...rest}>
       {children}
     </span>
   );
