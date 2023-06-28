@@ -3,7 +3,7 @@ import { Text } from '@/components';
 export default function Home() {
   return (
     <div>
-      <button>Toks</button>
+      <button className="bg-success shadow-book01">Toks</button>
       <Text typo="headingL" color="gray120">
         텍스트 입니다.
       </Text>
