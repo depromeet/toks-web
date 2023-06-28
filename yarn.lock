@@ -6123,7 +6123,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.4.14":
+"autoprefixer@npm:latest":
   version: 10.4.14
   resolution: "autoprefixer@npm:10.4.14"
   dependencies:
@@ -7031,6 +7031,13 @@ __metadata:
   dependencies:
     mimic-response: ^1.0.0
   checksum: 4e671cac39b11c60aa8ba0a450657194a5d6504df51bca3fac5b3bd0145c4f8e8464898f87c8406b83232e3bc5cca555f51c1f9c8ac023969ebfbf7f6bdabb2e
+  languageName: node
+  linkType: hard
+
+"clsx@npm:^1.2.1":
+  version: 1.2.1
+  resolution: "clsx@npm:1.2.1"
+  checksum: 30befca8019b2eb7dbad38cff6266cf543091dae2825c856a62a8ccf2c3ab9c2907c4d12b288b73101196767f66812365400a227581484a05f968b0307cfaf12
   languageName: node
   linkType: hard
 
@@ -13931,7 +13938,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.23, postcss@npm:^8.4.24":
+"postcss@npm:^8.4.23, postcss@npm:latest":
   version: 8.4.24
   resolution: "postcss@npm:8.4.24"
   dependencies:
@@ -13962,6 +13969,61 @@ __metadata:
   dependencies:
     fast-diff: ^1.1.2
   checksum: 00ce8011cf6430158d27f9c92cfea0a7699405633f7f1d4a45f07e21bf78e99895911cbcdc3853db3a824201a7c745bd49bfea8abd5fb9883e765a90f74f8392
+  languageName: node
+  linkType: hard
+
+"prettier-plugin-tailwindcss@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "prettier-plugin-tailwindcss@npm:0.3.0"
+  peerDependencies:
+    "@ianvs/prettier-plugin-sort-imports": "*"
+    "@prettier/plugin-pug": "*"
+    "@shopify/prettier-plugin-liquid": "*"
+    "@shufo/prettier-plugin-blade": "*"
+    "@trivago/prettier-plugin-sort-imports": "*"
+    prettier: ">=2.2.0"
+    prettier-plugin-astro: "*"
+    prettier-plugin-css-order: "*"
+    prettier-plugin-import-sort: "*"
+    prettier-plugin-jsdoc: "*"
+    prettier-plugin-marko: "*"
+    prettier-plugin-organize-attributes: "*"
+    prettier-plugin-organize-imports: "*"
+    prettier-plugin-style-order: "*"
+    prettier-plugin-svelte: "*"
+    prettier-plugin-twig-melody: "*"
+  peerDependenciesMeta:
+    "@ianvs/prettier-plugin-sort-imports":
+      optional: true
+    "@prettier/plugin-pug":
+      optional: true
+    "@shopify/prettier-plugin-liquid":
+      optional: true
+    "@shufo/prettier-plugin-blade":
+      optional: true
+    "@trivago/prettier-plugin-sort-imports":
+      optional: true
+    prettier-plugin-astro:
+      optional: true
+    prettier-plugin-css-order:
+      optional: true
+    prettier-plugin-import-sort:
+      optional: true
+    prettier-plugin-jsdoc:
+      optional: true
+    prettier-plugin-marko:
+      optional: true
+    prettier-plugin-organize-attributes:
+      optional: true
+    prettier-plugin-organize-imports:
+      optional: true
+    prettier-plugin-style-order:
+      optional: true
+    prettier-plugin-svelte:
+      optional: true
+    prettier-plugin-twig-melody:
+      optional: true
+  checksum: 007c09558433dac0c81d42fd9695f8ed17be56be2e446a03e2557f01ae8e26bb11945780f9afa4e6e90b861aad3fbfac6a65d381804273d5539e7d26b0a270c9
   languageName: node
   linkType: hard
 
@@ -16112,24 +16174,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tailwind-merge@npm:^1.13.2":
-  version: 1.13.2
-  resolution: "tailwind-merge@npm:1.13.2"
-  checksum: 8f9de3bd1e6271f5980f863ab85e0103f062bf84d814d3188bf6870af7eb43725ea40493ef0693dedd652b668cbdfcd6544235b16b70d438ed20bca6118a9066
-  languageName: node
-  linkType: hard
-
-"tailwind-variants@npm:^0.1.8":
-  version: 0.1.8
-  resolution: "tailwind-variants@npm:0.1.8"
-  dependencies:
-    tailwind-merge: ^1.13.2
-  peerDependencies:
-    tailwindcss: "*"
-  checksum: a65421ffc9ce22ed9e9d5f5ac9c8afd43670a507fccf37a11dcf6a43da4b435594d9d343ff5a39141563a9baca76d36a711954db956721a5bed2cc821f5bdd11
-  languageName: node
-  linkType: hard
-
 "tailwindcss@npm:^3.3.2":
   version: 3.3.2
   resolution: "tailwindcss@npm:3.3.2"
@@ -16408,10 +16452,11 @@ __metadata:
     "@types/react": 18.0.17
     "@types/react-dom": 18.0.6
     "@typescript-eslint/eslint-plugin": ^5.59.6
-    autoprefixer: ^10.4.14
+    autoprefixer: latest
     babel-jest: ^29.5.0
     babel-loader: ^9.1.2
     chromatic: next
+    clsx: ^1.2.1
     core-js: ^3.30.1
     css-loader: ^6.7.3
     eslint: 8.22.0
@@ -16426,9 +16471,10 @@ __metadata:
     jest-environment-jsdom: ^29.5.0
     lint-staged: ^13.0.3
     next: 13.4.6
-    postcss: ^8.4.24
+    postcss: latest
     postcss-syntax: ^0.36.2
     prettier: ^2.8.8
+    prettier-plugin-tailwindcss: ^0.3.0
     react: 18.2.0
     react-dom: 18.2.0
     storybook: ^7.0.7
@@ -16439,7 +16485,6 @@ __metadata:
     stylelint-config-recess-order: ^3.0.0
     stylelint-config-recommended-scss: ^7.0.0
     stylelint-prettier: ^2.0.0
-    tailwind-variants: ^0.1.8
     tailwindcss: ^3.3.2
     ts-jest: ^29.1.0
     typescript: 4.7.4
