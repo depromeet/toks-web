@@ -2164,6 +2164,7 @@ __metadata:
 "@esbuild/linux-x64@npm:0.17.19":
   version: 0.17.19
   resolution: "@esbuild/linux-x64@npm:0.17.19"
+  checksum: 03ff211ae04a0e225173f23b3cdbb068148d45ed4118ceef084c34958a2e475c6fdbff799e3ae4651a1941ae5f14cdd2ac6222cd44464018c2dad1a21dc38ef5
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
@@ -2171,7 +2172,6 @@ __metadata:
 "@esbuild/linux-x64@npm:0.18.10":
   version: 0.18.10
   resolution: "@esbuild/linux-x64@npm:0.18.10"
-  checksum: 0f8bf27ec87bcf20f27860a9a1565c26cd6091dd1f68fa35ad19773f1e368610fcebc7deb69cca4ebccd18fb7a1b2a8b512abd821b36527cd441c8e2ad3f415f
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
@@ -16703,7 +16703,7 @@ __metadata:
     "@babel/core": ^7.21.4
     "@babel/preset-react": ^7.18.6
     "@babel/preset-typescript": ^7.21.4
-    "@esbuild/linux-x64": "npm:0.18.10"
+    "@esbuild/linux-x64": "npm:0.17.19"
     "@mdx-js/react": ^2.3.0
     "@next/eslint-plugin-next": latest
     "@next/swc-linux-x64-gnu": "npm:13.4.6"
