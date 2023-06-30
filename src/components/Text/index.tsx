@@ -1,11 +1,10 @@
-import { HTMLAttributes, ReactNode } from 'react';
-
 import {
   KeyOfColor,
   KeyOfTypography,
   textColor,
   typography,
 } from '@/common/foundation';
+import { HTMLAttributes, ReactNode } from 'react';
 
 interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   color?: KeyOfColor;
