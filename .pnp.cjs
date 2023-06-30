@@ -31,8 +31,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/core", "npm:7.22.5"],\
             ["@babel/preset-react", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:7.22.5"],\
             ["@babel/preset-typescript", "virtual:c02c578f53392647b77bea25392265e87a00bcf249d883f95b10b8c4f368ffc8bbb86d4c574fdb975a8f9e5f8d3adcf86371f9df1835780d893b95b1069ee025#npm:7.22.5"],\
+            ["@esbuild/linux-x64", "npm:0.18.10"],\
             ["@mdx-js/react", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:2.3.0"],\
             ["@next/eslint-plugin-next", "npm:13.4.7"],\
+            ["@next/swc-linux-x64-gnu", "npm:13.4.6"],\
             ["@storybook/addon-essentials", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:7.0.24"],\
             ["@storybook/addon-interactions", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:7.0.24"],\
             ["@storybook/addon-links", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:7.0.24"],\
@@ -46,6 +48,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@stylelint/postcss-css-in-js", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:0.38.0"],\
             ["@swc/cli", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:0.1.62"],\
             ["@swc/core", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:1.3.67"],\
+            ["@swc/core-linux-x64-gnu", "npm:1.3.67"],\
             ["@tanstack/react-query", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:4.29.19"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:14.0.0"],\
@@ -22463,8 +22466,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@babel/core", "npm:7.22.5"],\
             ["@babel/preset-react", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:7.22.5"],\
             ["@babel/preset-typescript", "virtual:c02c578f53392647b77bea25392265e87a00bcf249d883f95b10b8c4f368ffc8bbb86d4c574fdb975a8f9e5f8d3adcf86371f9df1835780d893b95b1069ee025#npm:7.22.5"],\
+            ["@esbuild/linux-x64", "npm:0.18.10"],\
             ["@mdx-js/react", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:2.3.0"],\
             ["@next/eslint-plugin-next", "npm:13.4.7"],\
+            ["@next/swc-linux-x64-gnu", "npm:13.4.6"],\
             ["@storybook/addon-essentials", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:7.0.24"],\
             ["@storybook/addon-interactions", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:7.0.24"],\
             ["@storybook/addon-links", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:7.0.24"],\
@@ -22478,6 +22483,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@stylelint/postcss-css-in-js", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:0.38.0"],\
             ["@swc/cli", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:0.1.62"],\
             ["@swc/core", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:1.3.67"],\
+            ["@swc/core-linux-x64-gnu", "npm:1.3.67"],\
             ["@tanstack/react-query", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:4.29.19"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
             ["@testing-library/react", "virtual:761dffe4fd84fbf109b49dddbe49e455124b33b1c19b7e603416e95469250da2dddc4f5177266f0cc4b6e02935b9805ed8dc03170268a3cc50354e861cec8ad1#npm:14.0.0"],\

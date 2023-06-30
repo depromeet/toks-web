@@ -2171,6 +2171,7 @@ __metadata:
 "@esbuild/linux-x64@npm:0.18.10":
   version: 0.18.10
   resolution: "@esbuild/linux-x64@npm:0.18.10"
+  checksum: 0f8bf27ec87bcf20f27860a9a1565c26cd6091dd1f68fa35ad19773f1e368610fcebc7deb69cca4ebccd18fb7a1b2a8b512abd821b36527cd441c8e2ad3f415f
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
@@ -2761,6 +2762,7 @@ __metadata:
 "@next/swc-linux-x64-gnu@npm:13.4.6":
   version: 13.4.6
   resolution: "@next/swc-linux-x64-gnu@npm:13.4.6"
+  checksum: c8eee302ccb23f3cce410d69ecc252c19c42daec4caa6843df112e50da8045cbc7d60eab80beccfe2493b29924683552132fa0fdaa5efd405903c60366fb6cb2
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
@@ -4420,6 +4422,7 @@ __metadata:
 "@swc/core-linux-x64-gnu@npm:1.3.67":
   version: 1.3.67
   resolution: "@swc/core-linux-x64-gnu@npm:1.3.67"
+  checksum: beb1d1a4bcdca45c225f936a5dbca8eb9287c5e24d1298c638c401b426c4275b02d6cce728fcc9fbd2f431c0df6f325d78889d4c4f5c6fa6650745ea77e49a1a
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
@@ -16700,8 +16703,10 @@ __metadata:
     "@babel/core": ^7.21.4
     "@babel/preset-react": ^7.18.6
     "@babel/preset-typescript": ^7.21.4
+    "@esbuild/linux-x64": "npm:0.18.10"
     "@mdx-js/react": ^2.3.0
     "@next/eslint-plugin-next": latest
+    "@next/swc-linux-x64-gnu": "npm:13.4.6"
     "@storybook/addon-essentials": ^7.0.7
     "@storybook/addon-interactions": ^7.0.7
     "@storybook/addon-links": ^7.0.7
@@ -16715,6 +16720,7 @@ __metadata:
     "@stylelint/postcss-css-in-js": ^0.38.0
     "@swc/cli": ^0.1.62
     "@swc/core": ^1.3.56
+    "@swc/core-linux-x64-gnu": "npm:1.3.67"
     "@tanstack/react-query": ^4.29.5
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^14.0.0
