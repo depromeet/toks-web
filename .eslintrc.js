@@ -33,9 +33,7 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
-
     'react-hooks/exhaustive-deps': 'error',
-
     'no-implicit-coercion': 'error',
 
     // TypeScript에서 이미 잡고 있는 문제이기 때문에 + location, document 등의 global variable도 잡아서
@@ -206,6 +204,7 @@ module.exports = {
         words: ['사진', '이미지'],
       },
     ],
+    '@next/next/no-html-link-for-pages': ['error', 'packages/my-app/pages/'],
   },
   overrides: [
     {

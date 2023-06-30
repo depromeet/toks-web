@@ -1,5 +1,3 @@
-const { withTV } = require('tailwind-variants/transformer');
-
 const {
   colors,
   boxShadow,
@@ -9,10 +7,10 @@ const {
 } = require('./style/theme');
 
 /** @type {import('tailwindcss').Config} */
-module.exports = withTV({
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+module.exports = {
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: { colors, boxShadow, lineHeight, fontWeight, fontSize },
   },
   plugins: [],
-});
+};
