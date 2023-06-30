@@ -32,7 +32,7 @@ jobs:
         run: npm i -g yarn
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable --immutable-cache
 
       - name: Run lint
         run: yarn lint
