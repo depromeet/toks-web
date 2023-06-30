@@ -27,8 +27,11 @@ jobs:
       - name: Install Yarn
         run: npm i -g yarn
 
+      - name: Yarn set version berry
+        run: yarn set version berry
+
       - name: Install dependencies
-        run: yarn install --immutable
+        run: yarn install --immutable --immutable-cache
 
       - name: 프로젝트 빌드
         run: yarn build
