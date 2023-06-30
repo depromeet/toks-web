@@ -15,7 +15,6 @@ interface TextProps extends HTMLAttributes<HTMLSpanElement> {
 
 export function Text({ color = 'white', children, typo, ...rest }: TextProps) {
   return (
-    //${textColor[color]}
     <span className={`${typography[typo]} ${textColor[color]}`} {...rest}>
       {children}
     </span>
