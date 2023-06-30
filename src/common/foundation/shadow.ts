@@ -4,3 +4,5 @@ export const shadow = {
   profile: 'shadow-profile',
   tooltip: 'shadow-tooltip',
 };
+
+export type KeyOfShadow = keyof typeof shadow;

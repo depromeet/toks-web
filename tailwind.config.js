@@ -1,11 +1,16 @@
-const { colors } = require('./style/theme/colors');
-const { shadows } = require('./style/theme/shadows');
+const {
+  colors,
+  boxShadow,
+  lineHeight,
+  fontWeight,
+  fontSize,
+} = require('./style/theme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
-    extend: {colors , boxShadow: shadows},
+    extend: { colors, boxShadow, lineHeight, fontWeight, fontSize },
   },
   plugins: [],
-}
-
+};

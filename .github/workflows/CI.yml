@@ -19,10 +19,23 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Yarn
+        run: npm i -g yarn
+
+      - name: Yarn set version berry
+        run: yarn set version berry
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --immutable --immutable-cache
 
       - name: Run lint
         run: yarn lint
