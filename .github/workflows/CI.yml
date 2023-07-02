@@ -31,8 +31,8 @@ jobs:
       - name: Install Yarn
         run: npm i -g yarn
 
-      - name: Yarn set version berry
-        run: yarn set version berry
+      - name: Yarn set version 3.2.3
+        run: yarn set version 3.2.3
 
       - name: Install dependencies
         run: yarn install --immutable --immutable-cache
