@@ -1,3 +1,5 @@
+'use client';
+
 function QuizCarousel() {
   return <div>Quiz Carousel</div>;
 }
