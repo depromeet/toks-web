@@ -16,8 +16,23 @@ export function CommentList({ children }: CommentListProps) {
   const [isFold, setIsFold] = useState(() => comments.length > 3);
   return (
     <div>
-      <ul>{isFold ? Children.toArray(children).slice(0, 3) : children}</ul>
-      {isFold && <MoreViewButton onClick={() => setIsFold(false)} />}
+      <ul className={clsx('flex', 'flex-col', 'gap-y-4')}>
+        {isFold ? Children.toArray(children).slice(0, 3) : children}
+      </ul>
+      {isFold && (
+        <div
+          className={clsx(
+            'flex',
+            'justify-center',
+            'px-3',
+            'items-center',
+            'h-8',
+            'mt-8'
+          )}
+        >
+          <MoreViewButton onClick={() => setIsFold(false)} />
+        </div>
+      )}
     </div>
   );
 }

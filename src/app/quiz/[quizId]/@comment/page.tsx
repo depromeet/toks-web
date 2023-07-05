@@ -6,18 +6,41 @@ type Props = {
   };
 };
 
-function CommentPage({ params: { quizId } }: Props) {
+type CommentType = {
+  id: number;
+  quizId: number;
+  uid: number;
+  content: 'string';
+  createdAt: '2023-06-15T22:56:40';
+};
+
+const getCommentsByQuizId = async (quizId: string) => {
+  const comments: CommentType[] = await fetch(
+    `https://api.tokstudy.com/api/v1/quizzes/${quizId}/comments?page=0&size=100`
+  )
+    .then((result) => result.json())
+    .then((commentInfo) => commentInfo.content);
+  return comments;
+};
+
+async function CommentPage({ params: { quizId } }: Props) {
+  const comments = await getCommentsByQuizId(quizId);
   return (
     <div>
       <div>Comment Page : {quizId}</div>
-      <Comment
-        commentId={1}
-        profileImgUrl={undefined}
-        name="윤두현"
-        timeAgo="한 달 전"
-        comment="얼마나 구하기 귀는 위하여, 위하여서. 그들에게 기쁘며, 것은 위하여 인생에 피에 못할 보라. 그러므로 만물은 어디 앞이 온갖 피어나기 쓸쓸하랴?"
-        like={0}
-      />
+      <Comment.List>
+        {comments.slice(0, 2).map(({ id, uid, content, createdAt }) => (
+          <Comment
+            key={id}
+            commentId={id}
+            name={`사용자${uid}`}
+            comment={content}
+            timeAgo={createdAt}
+            profileImgUrl={undefined}
+            like={0}
+          />
+        ))}
+      </Comment.List>
     </div>
   );
 }

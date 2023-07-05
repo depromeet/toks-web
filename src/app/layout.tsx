@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={clsx(inter.className, bgColor['gray120'])}>
         <StyledLayout>{children}</StyledLayout>
       </body>
     </html>
@@ -25,9 +25,5 @@ export default function RootLayout({
 }
 
 function StyledLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <div className={clsx(bgColor['gray120'], 'px-5', 'h-screen')}>
-      {children}
-    </div>
-  );
+  return <div className={clsx('px-5', 'h-screen')}>{children}</div>;
 }
