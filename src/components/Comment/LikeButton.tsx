@@ -24,8 +24,7 @@ function LikeButton({ like, isLiked, className, ...rest }: LikeButtonProps) {
       onClick={() => setLikeState((prev) => prev + 1)}
     >
       <Image
-        // TODO : 좋아요 버튼이 선택됐을 때의 디자인이 달라질 수 있어서 이렇게 해놓음
-        src={isLiked ? ICON_URL.THUMBS_UP : ICON_URL.THUMBS_UP}
+        src={isLiked ? ICON_URL.THUMBS_UP : ICON_URL.THUMBS_UP_FILLED}
         alt="좋아요 버튼"
         width={18}
         height={18}
