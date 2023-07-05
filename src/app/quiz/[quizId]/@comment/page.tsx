@@ -29,7 +29,7 @@ async function CommentPage({ params: { quizId } }: Props) {
     <div>
       <div>Comment Page : {quizId}</div>
       <Comment.List>
-        {comments.slice(0, 2).map(({ id, uid, content, createdAt }) => (
+        {comments.map(({ id, uid, content, createdAt }) => (
           <Comment
             key={id}
             commentId={id}
