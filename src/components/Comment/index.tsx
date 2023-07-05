@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Text } from '../Text';
 
 interface CommentProps {
-  profileImgUrl?: string;
+  profileImgUrl: string | undefined;
   name: string;
   timeAgo: string;
   comment: string;
@@ -22,7 +22,12 @@ export function Comment({
   return (
     <div>
       <div>
-        <Image src={profileImgUrl ?? baseIcon} alt="프로필 아이콘" />
+        <Image
+          src={profileImgUrl ?? baseIcon}
+          alt="프로필 아이콘"
+          width={24}
+          height={24}
+        />
         <Text typo="bodyBold" color="white">
           {name}
         </Text>

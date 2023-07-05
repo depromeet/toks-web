@@ -1,4 +1,6 @@
 import './globals.css';
+import { bgColor } from '@/common/foundation';
+import clsx from 'clsx';
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -15,7 +17,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Layout>{children}</Layout>
+      </body>
     </html>
+  );
+}
+
+function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className={clsx(bgColor['gray120'], 'px-5', 'h-screen')}>
+      {children}
+    </div>
   );
 }
