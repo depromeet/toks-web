@@ -10,8 +10,8 @@ type CommentType = {
   id: number;
   quizId: number;
   uid: number;
-  content: 'string';
-  createdAt: '2023-06-15T22:56:40';
+  content: string;
+  createdAt: string;
 };
 
 const getCommentsByQuizId = async (quizId: string) => {
