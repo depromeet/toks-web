@@ -1,5 +1,8 @@
+import { ICON_URL } from '@/common/resourceUrl';
+import clsx from 'clsx';
 import Image from 'next/image';
 
+import LikeButton from './LikeButton';
 import { Text } from '../Text';
 
 interface CommentProps {
@@ -17,13 +20,11 @@ export function Comment({
   comment,
   like,
 }: CommentProps) {
-  const baseIcon =
-    'https://toks-web-assets.s3.amazonaws.com/emoji/ic_base-grey.svg';
   return (
     <div>
-      <div>
+      <div className={clsx('flex', 'gap-x-1.5', 'items-center')}>
         <Image
-          src={profileImgUrl ?? baseIcon}
+          src={profileImgUrl ?? ICON_URL.EMOJI_BASE_GRAY}
           alt="프로필 아이콘"
           width={24}
           height={24}
@@ -35,12 +36,12 @@ export function Comment({
           {timeAgo}
         </Text>
       </div>
-      <Text typo="body" color="gray20">
-        {comment}
-      </Text>
-      <Text typo="body" color="white">
-        {like}
-      </Text>
+      <div className={clsx('mt-1', 'ml-[30px]')}>
+        <Text typo="body" color="gray20">
+          {comment}
+        </Text>
+        <LikeButton className="mt-2" like={like} isLiked={false} />
+      </div>
     </div>
   );
 }
