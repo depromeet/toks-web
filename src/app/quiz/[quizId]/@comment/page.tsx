@@ -27,7 +27,6 @@ async function CommentPage({ params: { quizId } }: Props) {
   const comments = await getCommentsByQuizId(quizId);
   return (
     <div>
-      <div>Comment Page : {quizId}</div>
       <Comment.List>
         {comments.map(({ id, uid, content, createdAt }) => (
           <Comment
