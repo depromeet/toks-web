@@ -44,7 +44,7 @@ export function Comment({
           {comment}
         </Text>
         <LikeButton
-          commentId={commentId}
+          commentid={commentId}
           className="mt-2"
           like={like}
           isLiked={false}

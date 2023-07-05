@@ -9,7 +9,7 @@ import { Text } from '../Text';
 
 interface LikeButtonProps
   extends Omit<HTMLAttributes<HTMLSpanElement>, 'className'> {
-  commentId: number;
+  commentid: number;
   like: number;
   isLiked: boolean;
   className?: string;
