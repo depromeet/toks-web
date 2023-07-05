@@ -11,6 +11,7 @@ function CommentPage({ params: { quizId } }: Props) {
     <div>
       <div>Comment Page : {quizId}</div>
       <Comment
+        commentId={1}
         profileImgUrl={undefined}
         name="윤두현"
         timeAgo="한 달 전"

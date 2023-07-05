@@ -6,6 +6,7 @@ import LikeButton from './LikeButton';
 import { Text } from '../Text';
 
 interface CommentProps {
+  commentId: number;
   profileImgUrl: string | undefined;
   name: string;
   timeAgo: string;
@@ -14,6 +15,7 @@ interface CommentProps {
 }
 
 export function Comment({
+  commentId,
   profileImgUrl,
   name,
   timeAgo,
@@ -40,7 +42,12 @@ export function Comment({
         <Text typo="body" color="gray20">
           {comment}
         </Text>
-        <LikeButton className="mt-2" like={like} isLiked={false} />
+        <LikeButton
+          commentId={commentId}
+          className="mt-2"
+          like={like}
+          isLiked={false}
+        />
       </div>
     </div>
   );
