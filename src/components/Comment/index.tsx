@@ -2,6 +2,7 @@ import { ICON_URL } from '@/common/resourceUrl';
 import clsx from 'clsx';
 import Image from 'next/image';
 
+import { CommentList } from './CommentList';
 import LikeButton from './LikeButton';
 import { Text } from '../Text';
 
@@ -23,7 +24,7 @@ export function Comment({
   like,
 }: CommentProps) {
   return (
-    <div>
+    <li>
       <div className={clsx('flex', 'gap-x-1.5', 'items-center')}>
         <Image
           src={profileImgUrl ?? ICON_URL.EMOJI_BASE_GRAY}
@@ -49,6 +50,8 @@ export function Comment({
           isLiked={false}
         />
       </div>
-    </div>
+    </li>
   );
 }
+
+Comment.List = CommentList;
