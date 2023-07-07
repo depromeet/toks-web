@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { CommentList } from './CommentList';
 import LikeButton from './LikeButton';
-import { Text } from '../Text';
+import { Text } from '../../../Text';
 
 interface CommentProps {
   commentId: number;

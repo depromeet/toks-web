@@ -1,4 +1,4 @@
-import { Comment } from '@/components/Comment';
+import { Comment } from '@/components/pages/quiz/Comment';
 
 type Props = {
   params: {
