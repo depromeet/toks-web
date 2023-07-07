@@ -1,6 +1,6 @@
 'use client';
 
-import { ICON_URL } from '@/common/const/';
+import { ICON_URL } from '@/common/constants';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { Children, HTMLAttributes, useState } from 'react';
