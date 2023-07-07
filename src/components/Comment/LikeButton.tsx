@@ -1,6 +1,6 @@
 'use client';
 
-import { ICON_URL } from '@/common/resourceUrl';
+import { ICON_URL } from '@/common/const/';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { HTMLAttributes, useState } from 'react';
@@ -24,7 +24,7 @@ function LikeButton({ like, isLiked, className, ...rest }: LikeButtonProps) {
       onClick={() => setLikeState((prev) => prev + 1)}
     >
       <Image
-        src={isLiked ? ICON_URL.THUMBS_UP : ICON_URL.THUMBS_UP_FILLED}
+        src={isLiked ? ICON_URL.THUMBS_UP_FILLED : ICON_URL.THUMBS_UP}
         alt="좋아요 버튼"
         width={18}
         height={18}

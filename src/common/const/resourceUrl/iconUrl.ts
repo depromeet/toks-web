@@ -6,7 +6,7 @@ export const ICON_URL = {
     'https://toks-web-assets.s3.amazonaws.com/emoji/ic_drooling.svg',
   THUMBS_UP: 'https://toks-web-assets.s3.amazonaws.com/ic_thumbs-up.svg',
   THUMBS_UP_FILLED:
-    'https://toks-web-assets.s3.amazonaws.com/ic_thumbs-filled.svg',
+    'https://toks-web-assets.s3.amazonaws.com/ic_thumbs-up-filled.svg',
   CHEVRON_DOWN:
     'https://toks-web-assets.s3.amazonaws.com/chevron/ic_chevron-down.svg',
   CHEVRON_RIGHT:
