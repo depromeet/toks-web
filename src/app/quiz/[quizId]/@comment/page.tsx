@@ -1,26 +1,11 @@
-import { Comment } from '@/components/pages/quiz/Comment';
+import { Comment } from '@/components/pages/quiz/';
+
+import { getCommentsByQuizId } from '../remotes/comment';
 
 type Props = {
   params: {
     quizId: string;
   };
-};
-
-type CommentType = {
-  id: number;
-  quizId: number;
-  uid: number;
-  content: string;
-  createdAt: string;
-};
-
-const getCommentsByQuizId = async (quizId: string) => {
-  const comments: CommentType[] = await fetch(
-    `https://api.tokstudy.com/api/v1/quizzes/${quizId}/comments?page=0&size=100`
-  )
-    .then((result) => result.json())
-    .then((commentInfo) => commentInfo.content);
-  return comments;
 };
 
 async function CommentPage({ params: { quizId } }: Props) {
