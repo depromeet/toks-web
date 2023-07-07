@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { Children, HTMLAttributes, useState } from 'react';
 
-import { Text } from '../../../Text';
+import { Text } from '../../../shared';
 
 interface CommentListProps {
   children: React.ReactNode;
