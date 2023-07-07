@@ -17,7 +17,7 @@ export function CommentList({ children }: CommentListProps) {
   return (
     <div>
       <ul className={clsx('flex', 'flex-col', 'gap-y-4')}>
-        {isFold ? Children.toArray(children).slice(0, 3) : children}
+        {isFold ? comments.slice(0, 3) : children}
       </ul>
       {isFold && (
         <div
