@@ -23,27 +23,22 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Install Yarn
-        run: npm i -g yarn
-
-      - name: Yarn set version berry
-        run: yarn set version berry
+          cache: 'pnpm'
 
       - name: Install dependencies
-        run: yarn install --immutable --immutable-cache
+        run: pnpm install
 
-      - name: 프로젝트 빌드
-        run: yarn build
+      - name: Run lint
+        run: pnpm lint
+
+      - name: Run Build
+        run: pnpm build
 
       - name: Express Init
         run: curl http://${{ secrets.HOST_DEV }}:8080/init
 
       - name: 빌드 폴더 생성
         run: mkdir -p ./builds/
-
-      - name: gzip 설치
-        run: sudo apt-get install -y gzip
 
       - name: 빌드 파일을 압축
         run: tar -czv .next > ./builds/.next.tar.gz

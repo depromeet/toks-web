@@ -1,8 +1,6 @@
 module.exports = {
   // `extends`를 생략해도 이 파일이 있는 위치까지만 부모 eslintrc를 찾도록 제한함
-
   root: true,
-
   env: {
     es6: true,
     node: true,
@@ -11,10 +9,9 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   extends: [
     'eslint:recommended',
+    'plugin:@next/next/recommended',
     'plugin:@typescript-eslint/recommended',
     'eslint-config-prettier',
-    'next/core-web-vitals',
-    'plugin:storybook/recommended',
   ],
   plugins: [
     '@typescript-eslint',
@@ -204,7 +201,6 @@ module.exports = {
         words: ['사진', '이미지'],
       },
     ],
-    '@next/next/no-html-link-for-pages': ['error', 'packages/my-app/pages/'],
   },
   overrides: [
     {

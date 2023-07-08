@@ -1,5 +1,6 @@
-import { Carousel } from '@/components/pages/quiz';
 import React from 'react';
+
+import { Carousel } from '@/components/pages/quiz';
 
 type Props = {
   children: React.ReactNode;
