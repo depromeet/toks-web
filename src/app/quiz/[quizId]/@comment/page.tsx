@@ -1,11 +1,32 @@
+import { Comment } from '@/components/pages/quiz/';
+
+import { getCommentsByQuizId } from '../remotes/comment';
+
 type Props = {
   params: {
     quizId: string;
   };
 };
 
-function CommentPage({ params: { quizId } }: Props) {
-  return <div>Comment Page : {quizId}</div>;
+async function CommentPage({ params: { quizId } }: Props) {
+  const comments = await getCommentsByQuizId(quizId);
+  return (
+    <div>
+      <Comment.List>
+        {comments.map(({ id, uid, content, createdAt }) => (
+          <Comment
+            key={id}
+            commentId={id}
+            name={`사용자${uid}`}
+            comment={content}
+            timeAgo={createdAt}
+            profileImgUrl={undefined}
+            like={0}
+          />
+        ))}
+      </Comment.List>
+    </div>
+  );
 }
 
 export default CommentPage;
