@@ -1,6 +1,11 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
+
 import { Button, GhostButton, Text } from '@/common';
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div>
       <button className="bg-success shadow-book01">Toks</button>
@@ -47,6 +52,15 @@ export default function Home() {
           버튼
         </GhostButton>
       </div>
+      <Text
+        typo="headingL"
+        color="success"
+        onClick={() =>
+          router.push('https://api.tokstudy.com/oauth2/authorize/kakao')
+        }
+      >
+        login
+      </Text>
     </div>
   );
 }
