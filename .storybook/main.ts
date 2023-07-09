@@ -1,17 +1,10 @@
-// const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
-
-module.exports = {
-  core: {
-    builder: 'webpack5',
-  },
+import type { StorybookConfig } from '@storybook/nextjs';
+const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    '@storybook/addon-essentials',
     '@storybook/addon-links',
-    {
-      name: 'storybook-addon-swc',
-      options: {},
-    },
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
   ],
   framework: {
     name: '@storybook/nextjs',
@@ -21,3 +14,4 @@ module.exports = {
     autodocs: 'tag',
   },
 };
+export default config;

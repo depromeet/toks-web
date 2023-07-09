@@ -1,7 +1,8 @@
 import './globals.css';
-import { bgColor } from '@/common/foundation';
 import clsx from 'clsx';
 import { Inter } from 'next/font/google';
+
+import { bgColor } from '@/common/foundation';
 
 const inter = Inter({ subsets: ['latin'] });
 

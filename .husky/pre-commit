@@ -15,6 +15,3 @@ if [ "$branch" = "dev" ]; then
   echo "dev 브랜치에 커밋하지 마세요!"
   exit 1
 fi
-
-# yarn lint-staged
-# yarn stylelint:fix

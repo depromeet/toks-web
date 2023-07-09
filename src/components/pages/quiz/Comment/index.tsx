@@ -1,6 +1,7 @@
-import { ICON_URL } from '@/common/constants';
 import clsx from 'clsx';
 import Image from 'next/image';
+
+import { ICON_URL } from '@/common/constants';
 
 import { CommentList } from './CommentList';
 import LikeButton from './LikeButton';
