@@ -6,7 +6,7 @@ import { Children, HTMLAttributes, useState } from 'react';
 
 import { ICON_URL } from '@/common/constants';
 
-import { Text } from '../../../shared';
+import { Text } from '../../../../common/components';
 
 interface CommentListProps {
   children: React.ReactNode;

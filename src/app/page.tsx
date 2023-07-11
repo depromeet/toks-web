@@ -1,4 +1,4 @@
-import { Text } from '@/components/shared';
+import { Text } from '@/common/components';
 
 export default function Home() {
   return (

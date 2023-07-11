@@ -5,7 +5,7 @@ import { ICON_URL } from '@/common/constants';
 
 import { CommentList } from './CommentList';
 import LikeButton from './LikeButton';
-import { Text } from '../../../shared';
+import { Text } from '../../../../common/components';
 
 interface CommentProps {
   commentId: number;
