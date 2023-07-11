@@ -13,15 +13,15 @@ async function CommentPage({ params: { quizId } }: Props) {
   return (
     <div>
       <Comment.List>
-        {comments.map(({ id, uid, content, createdAt }) => (
+        {comments.map(({ id, nickname, content, likecount, createdAt }) => (
           <Comment
             key={id}
             commentId={id}
-            name={`사용자${uid}`}
+            name={nickname}
             comment={content}
             timeAgo={createdAt}
             profileImgUrl={undefined}
-            like={0}
+            like={likecount}
           />
         ))}
       </Comment.List>
