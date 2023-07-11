@@ -13,7 +13,7 @@ async function CommentPage({ params: { quizId } }: Props) {
   return (
     <div>
       <Comment.List>
-        {comments.map(({ id, nickname, content, likecount, createdAt }) => (
+        {comments.map(({ id, nickname, content, likeCount, createdAt }) => (
           <Comment
             key={id}
             commentId={id}
@@ -21,7 +21,7 @@ async function CommentPage({ params: { quizId } }: Props) {
             comment={content}
             timeAgo={createdAt}
             profileImgUrl={undefined}
-            like={likecount}
+            like={likeCount}
           />
         ))}
       </Comment.List>

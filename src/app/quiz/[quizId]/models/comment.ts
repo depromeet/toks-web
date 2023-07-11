@@ -3,7 +3,7 @@ export type CommentType = {
   nickname: string;
   quizId: number;
   uid: number;
-  likecount: number;
+  likeCount: number;
   content: string;
   createdAt: string;
 };
