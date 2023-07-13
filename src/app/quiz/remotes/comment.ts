@@ -19,6 +19,7 @@ export const postCommentByQuizId = async (quizId: string, comment: string) => {
       cache: 'no-store',
       method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         'X-TOKS-AUTH-TOKEN': DUHYEON_TOKEN,
       },
       body: JSON.stringify({
