@@ -4,9 +4,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { Children, HTMLAttributes, useState } from 'react';
 
-import { ICON_URL } from '@/common/constants';
-
-import { Text } from '../../../shared';
+import { ICON_URL, Text } from '@/common';
 
 interface CommentListProps {
   children: React.ReactNode;
