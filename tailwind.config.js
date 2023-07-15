@@ -37,6 +37,18 @@ module.exports = {
       width: {
         ...generatorTailwindConfigList(300, 2),
       },
+      minWidth: {
+        ...generatorTailwindConfigList(300, 2),
+      },
+      minHeight: {
+        ...generatorTailwindConfigList(300, 2),
+      },
+      maxWidth: {
+        ...generatorTailwindConfigList(300, 2),
+      },
+      maxHeight: {
+        ...generatorTailwindConfigList(300, 2),
+      },
     },
   },
   plugins: [],
