@@ -8,6 +8,11 @@ const meta: Meta<typeof Appbar> = {
   component: Appbar,
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
   tags: ['autodocs'],
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+    },
+  },
 };
 
 export default meta;
