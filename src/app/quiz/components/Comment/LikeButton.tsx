@@ -4,8 +4,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { HTMLAttributes, useState } from 'react';
 
-import { Text } from '@/common';
-import { ICON_URL } from '@/common/constants';
+import { ICON_URL, Text } from '@/common';
 
 interface LikeButtonProps
   extends Omit<HTMLAttributes<HTMLSpanElement>, 'className'> {
