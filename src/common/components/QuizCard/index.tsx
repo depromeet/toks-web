@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
 
+import { ICON_URL } from '@/common/constants';
+
 import type { QuizCardProps } from './types';
 import { Text } from '../Text';
 
@@ -27,12 +29,7 @@ export const QuizCard = ({
               backgroundColor: '#3E97FF',
             }}
           >
-            <Image
-              src="https://toks-web-assets.s3.amazonaws.com/ic_O.svg"
-              alt="OX 퀴즈 O"
-              width={24}
-              height={24}
-            />
+            <Image src={ICON_URL.O} alt="OX 퀴즈 O" width={24} height={24} />
           </div>
           <div
             className="flex flex-1 items-center justify-center"
@@ -40,12 +37,7 @@ export const QuizCard = ({
               backgroundColor: '#FF5B65',
             }}
           >
-            <Image
-              src="https://toks-web-assets.s3.amazonaws.com/ic_X.svg"
-              alt="OX 퀴즈 X"
-              width={22}
-              height={22}
-            />
+            <Image src={ICON_URL.X} alt="OX 퀴즈 X" width={22} height={22} />
           </div>
         </div>
       );
