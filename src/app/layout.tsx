@@ -20,6 +20,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={clsx(inter.className, bgColor['gray120'])}>
         <StyledLayout>{children}</StyledLayout>
+        <div id="portal" />
       </body>
     </html>
   );
