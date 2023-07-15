@@ -1,6 +1,5 @@
+import { Comment } from '../../components';
 import { getCommentsByQuizId } from '../remotes/comment';
-
-import { Comment } from '@/components/pages/quiz';
 
 type Props = {
   params: {
