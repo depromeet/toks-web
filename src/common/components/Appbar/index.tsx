@@ -28,7 +28,7 @@ export const Appbar = () => {
         <button
           className="flex items-center"
           onClick={(e) => {
-            e.preventDefault();
+            e.stopPropagation();
             // TODO: Login 페이지연결
             router.replace('/login');
           }}
