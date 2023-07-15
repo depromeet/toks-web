@@ -49,6 +49,9 @@ module.exports = {
       maxHeight: {
         ...generatorTailwindConfigList(300, 2),
       },
+      gap: {
+        ...generatorTailwindConfigList(100, 2),
+      },
     },
   },
   plugins: [],
