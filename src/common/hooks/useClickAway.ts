@@ -2,9 +2,8 @@ import { useEffect, useRef } from 'react';
 
 interface UseClickAwayProperties {
   callback: VoidFunction;
-  enabled: boolean;
 }
-export const useClickAway = ({ callback, enabled }: UseClickAwayProperties) => {
+export const useClickAway = ({ callback }: UseClickAwayProperties) => {
   const ref = useRef<HTMLDivElement>(null);
   const savedHandler = useRef<UseClickAwayProperties['callback']>(callback);
   // NOTE: Handler가 교체 될 경우에, event가 제거되고 다시 정의가 되는 걸 방지
@@ -20,7 +19,7 @@ export const useClickAway = ({ callback, enabled }: UseClickAwayProperties) => {
     }
 
     const handleEvent = (event: MouseEvent | TouchEvent) => {
-      const isEnabled = enabled && !element.contains(event.target as Node); // 이벤트 발생 요소가 포함되어 있는지 확인
+      const isEnabled = !element.contains(event.target as Node); // 이벤트 발생 요소가 포함되어 있는지 확인
       if (isEnabled) {
         savedHandler.current();
       }
@@ -33,7 +32,7 @@ export const useClickAway = ({ callback, enabled }: UseClickAwayProperties) => {
       document.removeEventListener('mousedown', handleEvent);
       document.removeEventListener('touchstart', handleEvent);
     };
-  }, [ref, enabled]);
+  }, [ref]);
 
   return ref;
 };

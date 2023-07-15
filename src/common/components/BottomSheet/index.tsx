@@ -18,7 +18,6 @@ export const BottomSheet = ({
     callback: () => {
       onClose();
     },
-    enabled: true,
   });
 
   return (
@@ -31,9 +30,6 @@ export const BottomSheet = ({
             'translate-y-0 animate-slide-up-bottom-sheet': isShow,
           }
         )}
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
       >
         {children}
       </div>
