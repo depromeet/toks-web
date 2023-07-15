@@ -21,7 +21,6 @@ export const 기본_BottomSheet: Story = {
       <>
         <button
           onClick={() => {
-            console.log('test1');
             setIsShow(true);
           }}
         >
@@ -30,7 +29,6 @@ export const 기본_BottomSheet: Story = {
         <BottomSheet
           isShow={isShow}
           onClose={() => {
-            console.log('test');
             setIsShow(false);
           }}
         >
