@@ -1,4 +1,4 @@
-import { Comment } from '@/components/pages/quiz/';
+import { Comment } from '@/components/pages/quiz';
 
 import { getCommentsByQuizId } from '../remotes/comment';
 
