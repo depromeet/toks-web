@@ -42,6 +42,7 @@ export const 기본사이즈_OX퀴즈: Story = {
     quizDescription: 'Title Text Title Text Title Text Title Text',
     likeCount: 10,
     commentCount: 10,
+    quizType: 'ox',
   },
 };
 
