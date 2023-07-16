@@ -2,10 +2,12 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
 
+import { ICON_URL } from '@/common/constants';
+
 import { AvatarProps } from './types';
 
 export const Avatar = ({
-  src = '',
+  src = ICON_URL.AVATAR_DEFAULT,
   size = 'M',
   name,
   ...rest

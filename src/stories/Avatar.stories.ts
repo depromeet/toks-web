@@ -13,7 +13,13 @@ const meta: Meta<typeof Avatar> = {
 export default meta;
 type Story = StoryObj<typeof Avatar>;
 
-export const 기본아바타: Story = {
+export const 이미지없을때_아바타: Story = {
+  args: {
+    name: '김코딩',
+  },
+};
+
+export const 기본_아바타: Story = {
   args: {
     src: 'https://source.unsplash.com/random/?programming',
     name: '김코딩',
