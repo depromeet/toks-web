@@ -1,5 +1,3 @@
-import clsx from 'clsx';
-
 import { Comment, CommentForm, GetStartedButton } from '@/app/quiz/components';
 import { getCommentsByQuizId } from '@/app/quiz/remotes/comment';
 
@@ -15,7 +13,7 @@ async function CommentPage({ params: { quizId } }: Props) {
   const isCommentEmpty = comments.length === 0;
   console.log(a++);
   return (
-    <div className={clsx('flex', 'flex-col', 'gap-8', 'mt-8')}>
+    <div className="mt-8 flex flex-col gap-8">
       <CommentForm quizId={quizId} commentCount={comments.length} />
       {!isCommentEmpty && (
         <Comment.List>

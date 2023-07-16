@@ -30,23 +30,14 @@ export function GetStartedButton({
       )}
       onClick={() => console.log('로그인 페이지로 이동')}
     >
-      <div className={clsx('flex', 'items-center')}>
+      <div className="flex items-center">
         <Image
           src={isCommentEmpty ? ICON_URL.EMOJI_NINJA : ICON_URL.EMOJI_DROOLING}
           alt="똑스 아이콘"
           width={48}
           height={48}
         />
-        <div
-          className={clsx(
-            'flex',
-            'flex-col',
-            'ml-2',
-            'flex-1',
-            'text-left',
-            'gap-0.5'
-          )}
-        >
+        <div className="ml-2 flex flex-1 flex-col gap-0.5 text-left">
           <Text typo="subheadingBold" color="white">
             {isCommentEmpty
               ? '제일 먼저 의견을 남겨볼까요?'

@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import Image from 'next/image';
 
 import { ICON_URL, Text } from '@/common';
@@ -24,7 +23,7 @@ export function Comment({
 }: CommentProps) {
   return (
     <li>
-      <div className={clsx('flex', 'gap-x-1.5', 'items-center')}>
+      <div className="flex items-center gap-x-1.5">
         <Image
           src={profileImgUrl ?? ICON_URL.EMOJI_BASE_GRAY}
           alt="프로필 아이콘"
@@ -38,7 +37,7 @@ export function Comment({
           {timeAgo}
         </Text>
       </div>
-      <div className={clsx('mt-1', 'ml-[30px]')}>
+      <div className="ml-[30px] mt-1">
         <Text typo="body" color="gray20">
           {comment}
         </Text>
