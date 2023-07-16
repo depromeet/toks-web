@@ -1,4 +1,4 @@
-export type CommentType = {
+export interface CommentType {
   id: number;
   nickname: string;
   quizId: number;
@@ -6,4 +6,4 @@ export type CommentType = {
   likeCount: number;
   content: string;
   createdAt: string;
-};
+}
