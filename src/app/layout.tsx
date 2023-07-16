@@ -27,5 +27,5 @@ export default function RootLayout({
 }
 
 function StyledLayout({ children }: { children: React.ReactNode }) {
-  return <div className={clsx('px-5', 'h-screen')}>{children}</div>;
+  return <div className={clsx('px-20px', 'h-screen')}>{children}</div>;
 }

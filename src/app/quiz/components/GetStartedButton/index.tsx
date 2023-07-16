@@ -24,9 +24,9 @@ export function GetStartedButton({
         className,
         bgColor['primaryDefault'],
         'w-full',
-        'rounded-2xl',
-        'px-4',
-        'py-5'
+        'rounded-16px',
+        'px-16px',
+        'py-20px'
       )}
       onClick={() => console.log('로그인 페이지로 이동')}
     >
@@ -37,7 +37,7 @@ export function GetStartedButton({
           width={48}
           height={48}
         />
-        <div className="ml-2 flex flex-1 flex-col gap-0.5 text-left">
+        <div className="ml-8px flex flex-1 flex-col gap-2px text-left">
           <Text typo="subheadingBold" color="white">
             {isCommentEmpty
               ? '제일 먼저 의견을 남겨볼까요?'

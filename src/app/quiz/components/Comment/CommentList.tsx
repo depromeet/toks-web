@@ -38,7 +38,7 @@ export function CommentList({ children }: CommentListProps) {
 
 function MoreViewButton({ onClick }: HTMLAttributes<HTMLSpanElement>) {
   return (
-    <button className="flex items-center gap-x-1" onClick={onClick}>
+    <button className="flex items-center gap-x-4px" onClick={onClick}>
       <Text typo="body" color="gray10">
         댓글 더보기
       </Text>

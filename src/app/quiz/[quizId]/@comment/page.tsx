@@ -13,7 +13,7 @@ async function CommentPage({ params: { quizId } }: Props) {
   const isCommentEmpty = comments.length === 0;
   console.log(a++);
   return (
-    <div className="mt-8 flex flex-col gap-8">
+    <div className="mt-32px flex flex-col gap-32px">
       <CommentForm quizId={quizId} commentCount={comments.length} />
       {!isCommentEmpty && (
         <Comment.List>

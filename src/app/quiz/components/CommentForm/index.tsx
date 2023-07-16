@@ -30,12 +30,15 @@ export function CommentForm({ commentCount, quizId }: CommentFormProps) {
       </Text>
       <input
         required
-        className="mt-1.5"
+        className="mt-6px"
         type="text"
         value={comment}
         onChange={(e) => setComment(e.target.value)}
       />
-      <button className={clsx('mt-3', bgColor['primaryDefault'])} type="submit">
+      <button
+        className={clsx('mt-12px', bgColor['primaryDefault'])}
+        type="submit"
+      >
         확인
       </button>
     </form>
