@@ -9,9 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install and Build 🔧
-        # This needs an Acces Token stored as "GH_TOKEN" 👇
         run: |
           pnpm install
           pnpm run deploy-storybook -- --ci
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
