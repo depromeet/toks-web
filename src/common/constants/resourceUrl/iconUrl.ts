@@ -1,4 +1,7 @@
 export const ICON_URL = {
+  O: 'https://toks-web-assets.s3.amazonaws.com/ic_O.svg',
+  X: 'https://toks-web-assets.s3.amazonaws.com/ic_X.svg',
+  TOKS_LOGO: 'https://toks-web-assets.s3.amazonaws.com/ic_toks_logo.svg',
   EMOJI_BASE_GRAY:
     'https://toks-web-assets.s3.amazonaws.com/emoji/ic_base-gray.svg',
   EMOJI_NINJA: 'https://toks-web-assets.s3.amazonaws.com/emoji/ic_ninja.svg',

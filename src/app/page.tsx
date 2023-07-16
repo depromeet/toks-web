@@ -1,4 +1,4 @@
-import { Text } from '@/common/components';
+import { Text } from '@/common';
 
 export default function Home() {
   return (

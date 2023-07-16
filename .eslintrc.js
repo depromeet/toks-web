@@ -1,22 +1,37 @@
 module.exports = {
   // `extends`를 생략해도 이 파일이 있는 위치까지만 부모 eslintrc를 찾도록 제한함
-  root: true,
   env: {
     es6: true,
-    node: true
+    node: true,
   },
   parser: '@typescript-eslint/parser',
-  extends: ['eslint:recommended', 'plugin:@next/next/recommended', 'plugin:@typescript-eslint/recommended', 'eslint-config-prettier', 'plugin:storybook/recommended'],
-  plugins: ['@typescript-eslint', 'import', 'prettier', 'react', 'react-hooks', 'jsx-a11y'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@next/next/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'eslint-config-prettier',
+    'plugin:storybook/recommended',
+  ],
+  plugins: [
+    '@typescript-eslint',
+    'import',
+    'prettier',
+    'react',
+    'react-hooks',
+    'jsx-a11y',
+  ],
   settings: {
     'import/resolver': {
-      typescript: {}
-    }
+      typescript: {},
+    },
   },
   rules: {
-    'prettier/prettier': ['error', {
-      endOfLine: 'auto'
-    }],
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
     'react-hooks/exhaustive-deps': 'error',
     'no-implicit-coercion': 'error',
     // TypeScript에서 이미 잡고 있는 문제이기 때문에 + location, document 등의 global variable도 잡아서
@@ -54,78 +69,117 @@ module.exports = {
     '@typescript-eslint/ban-types': 'warn',
     '@typescript-eslint/no-inferrable-types': 'warn',
     '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/naming-convention': ['error', {
-      format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
-      selector: 'variable',
-      leadingUnderscore: 'allow'
-    }, {
-      format: ['camelCase', 'PascalCase'],
-      selector: 'function',
-      filter: {
-        regex: '[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]',
-        match: false
-      }
-    }, {
-      format: ['PascalCase'],
-      selector: 'interface',
-      filter: {
-        regex: '[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]',
-        match: false
-      }
-    }, {
-      format: ['PascalCase'],
-      selector: 'typeAlias',
-      filter: {
-        regex: '[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]',
-        match: false
-      }
-    }],
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+        selector: 'variable',
+        leadingUnderscore: 'allow',
+      },
+      {
+        format: ['camelCase', 'PascalCase'],
+        selector: 'function',
+        filter: {
+          regex: '[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]',
+          match: false,
+        },
+      },
+      {
+        format: ['PascalCase'],
+        selector: 'interface',
+        filter: {
+          regex: '[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]',
+          match: false,
+        },
+      },
+      {
+        format: ['PascalCase'],
+        selector: 'typeAlias',
+        filter: {
+          regex: '[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]',
+          match: false,
+        },
+      },
+    ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/array-type': ['error', {
-      default: 'array-simple'
-    }],
-    '@typescript-eslint/no-unused-vars': ['error', {
-      ignoreRestSiblings: true
-    }],
-    '@typescript-eslint/member-ordering': ['error', {
-      default: ['public-static-field', 'private-static-field', 'public-instance-field', 'private-instance-field', 'public-constructor', 'private-constructor', 'public-instance-method', 'private-instance-method']
-    }],
-    'no-warning-comments': ['warn', {
-      terms: ['TODO', 'FIXME', 'XXX', 'BUG'],
-      location: 'anywhere'
-    }],
+    '@typescript-eslint/array-type': [
+      'error',
+      {
+        default: 'array-simple',
+      },
+    ],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      {
+        ignoreRestSiblings: true,
+      },
+    ],
+    '@typescript-eslint/member-ordering': [
+      'error',
+      {
+        default: [
+          'public-static-field',
+          'private-static-field',
+          'public-instance-field',
+          'private-instance-field',
+          'public-constructor',
+          'private-constructor',
+          'public-instance-method',
+          'private-instance-method',
+        ],
+      },
+    ],
     'object-shorthand': ['error', 'always'],
     'prefer-const': 'error',
     'no-var': 'error',
     curly: ['error', 'all'],
-    eqeqeq: ['error', 'always', {
-      null: 'ignore'
-    }],
+    eqeqeq: [
+      'error',
+      'always',
+      {
+        null: 'ignore',
+      },
+    ],
     'import/no-duplicates': 'error',
-    'import/order': ['error', {
-      groups: ['builtin', 'external', 'internal', ['index', 'sibling', 'parent'], 'object'],
-      // Import 구문 순서 정하고 싶으면 추가
-      pathGroups: [],
-      pathGroupsExcludedImportTypes: ['builtin'],
-      'newlines-between': 'always',
-      alphabetize: {
-        order: 'asc',
-        caseInsensitive: true
-      }
-    }],
-    'sort-imports': ['error', {
-      ignoreDeclarationSort: true,
-      ignoreMemberSort: false
-    }],
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          ['index', 'sibling', 'parent'],
+          'object',
+        ],
+        // Import 구문 순서 정하고 싶으면 추가
+        pathGroups: [],
+        pathGroupsExcludedImportTypes: ['builtin'],
+        'newlines-between': 'always',
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+      },
+    ],
+    'sort-imports': [
+      'error',
+      {
+        ignoreDeclarationSort: true,
+        ignoreMemberSort: false,
+      },
+    ],
     'import/newline-after-import': ['error'],
     'react-hooks/rules-of-hooks': 'error',
     'react/jsx-uses-react': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-key': 'warn',
     // 접근성, 충분히 잡히면 error로 올릴 예정
-    'jsx-a11y/alt-text': ['warn', {
-      img: ['Image', 'Dialog.Image']
-    }],
+    'jsx-a11y/alt-text': [
+      'warn',
+      {
+        img: ['Image', 'Dialog.Image'],
+      },
+    ],
     'jsx-a11y/aria-props': 'error',
     // 제대로된 aria-* 이름인지 확인
     'jsx-a11y/aria-proptypes': 'error',
@@ -143,15 +197,20 @@ module.exports = {
     // 서로 같이 쓰면 안되는 aria-* 가 있는지 확인하는룰
     'jsx-a11y/aria-unsupported-elements': 'warn',
     // 해당 element에서 미지원하는 aria가 들어있는지 확인하는 룰
-    'jsx-a11y/img-redundant-alt': ['warn', {
-      components: ['Image', 'Dialog.Image'],
-      words: ['사진', '이미지']
-    }]
+    'jsx-a11y/img-redundant-alt': [
+      'warn',
+      {
+        components: ['Image', 'Dialog.Image'],
+        words: ['사진', '이미지'],
+      },
+    ],
   },
-  overrides: [{
-    files: ['**/*.js', 'scripts/**/*.ts'],
-    rules: {
-      '@typescript-eslint/no-var-requires': 'warn'
-    }
-  }]
+  overrides: [
+    {
+      files: ['**/*.js', 'scripts/**/*.ts'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'warn',
+      },
+    },
+  ],
 };

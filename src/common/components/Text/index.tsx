@@ -14,9 +14,18 @@ interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   children: ReactNode;
 }
 
-export function Text({ color = 'white', children, typo, ...rest }: TextProps) {
+export function Text({
+  color = 'white',
+  children,
+  typo,
+  className,
+  ...rest
+}: TextProps) {
   return (
-    <span className={clsx(typography[typo], textColor[color])} {...rest}>
+    <span
+      className={clsx(typography[typo], textColor[color], className)}
+      {...rest}
+    >
       {children}
     </span>
   );

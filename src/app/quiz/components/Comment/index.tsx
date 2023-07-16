@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 
-import { ICON_URL } from '@/common/constants';
+import { ICON_URL, Text } from '@/common';
 
 import { CommentList } from './CommentList';
 import LikeButton from './LikeButton';
-import { Text } from '../../../../common/components';
 
 interface CommentProps {
   commentId: number;
@@ -15,7 +14,6 @@ interface CommentProps {
   comment: string;
   like: number;
 }
-
 export function Comment({
   commentId,
   profileImgUrl,
