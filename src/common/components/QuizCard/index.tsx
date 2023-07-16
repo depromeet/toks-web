@@ -121,7 +121,7 @@ export const QuizCard = ({
                 objectFit="cover"
                 objectPosition="center"
                 placeholder="blur"
-                blurDataURL="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrwcAAYMBABbFvRQAAAAASUVORK5CYII="
+                blurDataURL={ICON_URL.BLUR_BACKGROUND}
               />
             </div>
           ))
