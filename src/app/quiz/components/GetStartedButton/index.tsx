@@ -23,10 +23,7 @@ export function GetStartedButton({
       className={clsx(
         className,
         bgColor['primaryDefault'],
-        'w-full',
-        'rounded-16px',
-        'px-16px',
-        'py-20px'
+        'w-full rounded-16px px-16px py-20px'
       )}
       onClick={() => console.log('로그인 페이지로 이동')}
     >
