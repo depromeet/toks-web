@@ -1,6 +1,4 @@
-import Image from 'next/image';
-
-import { ICON_URL, Text } from '@/common';
+import { Avatar, Text } from '@/common';
 
 import { CommentList } from './CommentList';
 import LikeButton from './LikeButton';
@@ -24,12 +22,7 @@ export function Comment({
   return (
     <li>
       <div className="flex items-center gap-x-6px">
-        <Image
-          src={profileImgUrl ?? ICON_URL.EMOJI_BASE_GRAY}
-          alt="프로필 아이콘"
-          width={24}
-          height={24}
-        />
+        <Avatar src={profileImgUrl} name={name} size="S" />
         <Text typo="bodyBold" color="white">
           {name}
         </Text>
