@@ -18,14 +18,11 @@ export function CommentForm({ commentCount, quizId }: CommentFormProps) {
   const router = useRouter();
   return (
     <form
-      className={clsx('flex', 'flex-col')}
+      className="flex flex-col"
       onSubmit={(e) => {
         e.preventDefault();
         setComment('');
-        router.refresh();
-        // postCommentByQuizId(quizId, comment).then(() =>
-        //   router.replace(`quiz/${quizId}`)
-        // );
+        postCommentByQuizId(quizId, comment).then(() => router.refresh());
       }}
     >
       <Text typo="body" color="white">
