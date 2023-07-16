@@ -52,6 +52,28 @@ module.exports = {
       gap: {
         ...generatorTailwindConfigList(100, 2),
       },
+      keyframes: {
+        'fade-in-back-drop': {
+          '0%': {
+            opacity: '0',
+          },
+          '100%': {
+            opacity: '1',
+          },
+        },
+        'slide-up-bottom-sheet': {
+          '0%': {
+            transform: 'translateY(100%)',
+          },
+          '100%': {
+            transform: 'translateY(0)',
+          },
+        },
+      },
+      animation: {
+        'fade-in-back-drop': 'fade-in-back-drop 0.3s ease-in-out forwards',
+        'slide-up-bottom-sheet': 'slide-up-bottom-sheet 0.3s ease-out forwards',
+      },
     },
   },
   plugins: [],
