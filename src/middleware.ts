@@ -33,8 +33,9 @@ export async function middleware(request: NextRequest) {
   console.log('전역 미들웨어입니다.');
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('Content-Type', 'application/json; charset=utf-8');
-  requestHeaders.set('X-TOKS-AUTH-TOKEN', '');
+  requestHeaders.set('X-TOKS-AUTH-TOKEN', request.cookies.get('accessToken'));
   console.log(request.cookies);
+  console.log(new Date());
   //   const aT =
   //     request.cookies.get('accessToken') != null
   //       ? request.cookies.get('accessToken').value
