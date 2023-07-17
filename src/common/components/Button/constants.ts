@@ -1,13 +1,20 @@
 import { KeyOfColor, KeyOfTypography } from '@/common';
 
-import { ButtonColorMap, ButtonSize, ButtonType } from './type';
+import { BackgroundColorMap, ButtonSize, ButtonType } from './type';
 
 export const TEXT_COLOR_BY_BUTTON_TYPE: { [key in ButtonType]: KeyOfColor } = {
   general: 'gray110',
   primary: 'gray10',
 };
 
-export const BACKGROUND_COLOR_BY_BUTTON_TYPE: ButtonColorMap = {
+export const TEXT_COLOR_BY_GHOST_BUTTON_TYPE: {
+  [key in ButtonType]: KeyOfColor;
+} = {
+  general: 'gray10',
+  primary: 'primaryDefault',
+};
+
+export const BACKGROUND_COLOR_BY_BUTTON_TYPE: BackgroundColorMap = {
   default: {
     general: 'bg-gray-20',
     primary: 'bg-primary-default',
@@ -26,6 +33,14 @@ export const TYPO_BY_BUTTON_SIZE: { [key in ButtonSize]: KeyOfTypography } = {
   S: 'bodyBold',
   M: 'subheadingBold',
   L: 'subheadingBold',
+};
+
+export const TYPO_BY_GHOST_BUTTON_SIZE: {
+  [key in ButtonSize]: KeyOfTypography;
+} = {
+  S: 'body',
+  M: 'subheading',
+  L: 'subheading',
 };
 
 export const ICON_BY_BUTTON_SIZE: { [key in ButtonSize]: number } = {

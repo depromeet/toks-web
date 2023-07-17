@@ -1,4 +1,5 @@
-import { Button, Text } from '@/common';
+import { Button, GhostButton, Text } from '@/common';
+// import Button from '@/common/components/Button';
 
 export default function Home() {
   return (
@@ -43,6 +44,9 @@ export default function Home() {
         <Button buttonType="primary" size="L" disabled>
           버튼
         </Button>
+        <GhostButton buttonType="primary" size="M" iconName="CHEVRON_DOWN">
+          버튼
+        </GhostButton>
       </div>
     </div>
   );
