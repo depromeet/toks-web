@@ -1,4 +1,4 @@
-import { KeyOfColor, KeyOfTypography } from '@/common';
+import { KeyOfColor, KeyOfTypography, bgColor } from '@/common';
 
 import { ButtonColorMap, ButtonSize, ButtonType } from './type';
 
@@ -9,17 +9,17 @@ export const TEXT_COLOR_BY_BUTTON_TYPE: { [key in ButtonType]: KeyOfColor } = {
 
 export const BACKGROUND_COLOR_BY_BUTTON_TYPE: ButtonColorMap = {
   default: {
-    general: 'gray20',
-    primary: 'primaryDefault',
+    general: bgColor['gray20'],
+    primary: bgColor['primaryDefault'],
   },
   pressed: {
-    general: 'gray40',
-    primary: 'primaryPress',
+    general: bgColor['gray40'],
+    primary: bgColor['primaryPress'],
   },
   disabled: {
     // 안해도 될수도 있음
-    general: 'gray20',
-    primary: 'primaryDefault',
+    general: bgColor['gray20'],
+    primary: bgColor['primaryDefault'],
   },
 };
 
@@ -39,4 +39,16 @@ export const HEIGHT_BY_BUTTON_SIZE: { [key in ButtonSize]: string } = {
   S: 'h-32px',
   M: 'h-40px',
   L: 'h-48px',
+};
+
+export const PADDING_BY_BUTTON_SIZE: { [key in ButtonSize]: string } = {
+  S: 'px-12px',
+  M: 'px-16px',
+  L: 'px-16px',
+};
+
+export const GAP_BY_BUTTON_SIZE: { [key in ButtonSize]: string } = {
+  S: 'gap-4px',
+  M: 'gap-8px',
+  L: 'gap-8px',
 };

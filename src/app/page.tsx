@@ -1,4 +1,4 @@
-import { Text } from '@/common';
+import { Button, Text } from '@/common';
 
 export default function Home() {
   return (
@@ -28,6 +28,9 @@ export default function Home() {
       <Text typo="captionBold" color="gray10">
         텍스트 입니다.
       </Text>
+      <div>
+        <Button></Button>
+      </div>
     </div>
   );
 }
