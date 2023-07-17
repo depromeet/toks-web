@@ -1,4 +1,4 @@
-import { KeyOfColor, KeyOfTypography, bgColor } from '@/common';
+import { KeyOfColor, KeyOfTypography } from '@/common';
 
 import { ButtonColorMap, ButtonSize, ButtonType } from './type';
 
@@ -9,17 +9,16 @@ export const TEXT_COLOR_BY_BUTTON_TYPE: { [key in ButtonType]: KeyOfColor } = {
 
 export const BACKGROUND_COLOR_BY_BUTTON_TYPE: ButtonColorMap = {
   default: {
-    general: bgColor['gray20'],
-    primary: bgColor['primaryDefault'],
+    general: 'bg-gray-20',
+    primary: 'bg-primary-default',
   },
   pressed: {
-    general: bgColor['gray40'],
-    primary: bgColor['primaryPress'],
+    general: 'active:bg-gray-40',
+    primary: 'active:bg-primary-press',
   },
   disabled: {
-    // 안해도 될수도 있음
-    general: bgColor['gray20'],
-    primary: bgColor['primaryDefault'],
+    general: 'bg-gray-20 opacity-40',
+    primary: 'bg-primary-default opacity-40',
   },
 };
 

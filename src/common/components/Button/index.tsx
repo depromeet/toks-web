@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import Image from 'next/image';
 
@@ -18,7 +20,6 @@ export function Button({
   iconName,
   className,
   buttonType = 'primary',
-  width,
   size = 'M',
   disabled = false,
   children,
@@ -28,14 +29,13 @@ export function Button({
     <button
       className={clsx(
         className,
+        HEIGHT_BY_BUTTON_SIZE[size],
+        PADDING_BY_BUTTON_SIZE[size],
         BACKGROUND_COLOR_BY_BUTTON_TYPE[disabled ? 'disabled' : 'default'][
           buttonType
         ],
-        `active: ${BACKGROUND_COLOR_BY_BUTTON_TYPE['pressed'][buttonType]}`,
-        HEIGHT_BY_BUTTON_SIZE[size],
-        PADDING_BY_BUTTON_SIZE[size],
+        !disabled && BACKGROUND_COLOR_BY_BUTTON_TYPE['pressed'][buttonType],
         iconName && GAP_BY_BUTTON_SIZE[size],
-        width && `w-${width}px`,
         'flex items-center justify-center rounded-8px'
       )}
       disabled={disabled}

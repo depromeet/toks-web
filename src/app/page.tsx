@@ -29,7 +29,20 @@ export default function Home() {
         텍스트 입니다.
       </Text>
       <div>
-        <Button></Button>
+        <Button className="w-screen" buttonType="primary" size="S">
+          버튼
+        </Button>
+        <Button
+          className="w-150px"
+          buttonType="general"
+          size="M"
+          iconName="AVATAR_DEFAULT"
+        >
+          버튼
+        </Button>
+        <Button buttonType="primary" size="L" disabled>
+          버튼
+        </Button>
       </div>
     </div>
   );
