@@ -19,3 +19,5 @@ export const ICON_URL = {
   BLUR_BACKGROUND:
     'data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrwcAAYMBABbFvRQAAAAASUVORK5CYII=',
 };
+
+export type IconName = keyof typeof ICON_URL;
