@@ -1,4 +1,4 @@
-import { Text } from '@/components/shared';
+import { Text } from '@/common';
 
 const Nickname = () => {
   return (

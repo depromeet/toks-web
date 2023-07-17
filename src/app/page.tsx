@@ -6,6 +6,7 @@ import { Button, GhostButton, Text } from '@/common';
 
 export default function Home() {
   const router = useRouter();
+
   return (
     <div>
       <button className="bg-success shadow-book01">Toks</button>
