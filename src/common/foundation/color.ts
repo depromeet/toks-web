@@ -62,3 +62,4 @@ export const textColor = {
 } as const;
 
 export type KeyOfColor = keyof typeof color;
+export type ValueOfColor = (typeof bgColor)[keyof typeof bgColor];
