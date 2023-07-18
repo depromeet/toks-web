@@ -16,47 +16,43 @@ const meta: Meta<typeof Tab> = {
 export default meta;
 type Story = StoryObj<typeof Tab>;
 
-const TabComponentTemplate = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  return (
-    <Tab
-      onTabChange={setActiveIndex}
-      activeIndex={activeIndex}
-      tabs={['Tab 1', 'Tab 2', 'Tab 3']}
-    />
-  );
-};
-
 export const TabComponent: Story = {
-  render: TabComponentTemplate,
-};
-
-const TabComponentWithPagesTemplate = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const renderTabContent = () => {
-    switch (activeIndex) {
-      case 0:
-        return <div className="text-white">Tab 1</div>;
-      case 1:
-        return <div className="text-white">Tab 2</div>;
-      default:
-        return <div className="text-white">Tab 3</div>;
-    }
-  };
-
-  return (
-    <>
+  render: () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+    return (
       <Tab
         onTabChange={setActiveIndex}
         activeIndex={activeIndex}
         tabs={['Tab 1', 'Tab 2', 'Tab 3']}
       />
-      {renderTabContent()}
-    </>
-  );
+    );
+  },
 };
 
 export const TabComponentWithPages: Story = {
-  render: TabComponentWithPagesTemplate,
+  render: () => {
+    const [activeIndex, setActiveIndex] = useState(0);
+
+    const renderTabContent = () => {
+      switch (activeIndex) {
+        case 0:
+          return <div className="text-white">Tab 1</div>;
+        case 1:
+          return <div className="text-white">Tab 2</div>;
+        default:
+          return <div className="text-white">Tab 3</div>;
+      }
+    };
+
+    return (
+      <>
+        <Tab
+          onTabChange={setActiveIndex}
+          activeIndex={activeIndex}
+          tabs={['Tab 1', 'Tab 2', 'Tab 3']}
+        />
+        {renderTabContent()}
+      </>
+    );
+  },
 };
