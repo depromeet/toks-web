@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
@@ -40,19 +42,21 @@ export const Tab = ({ tabs, activeIndex, onTabChange }: TabProps) => {
   return (
     <div className="overflow-y-hidden border-b-1px border-solid border-gray-90 shadow-none">
       <div className="relative z-0 flex overflow-x-auto" ref={tabListRef}>
-        {tabs.map((tab, i) => {
-          const isSelected = activeIndex === i;
+        {tabs.map((tab, index) => {
+          const isSelected = activeIndex === index;
           return (
             <motion.button
-              key={i}
-              onClick={() => onTabChange(i)}
+              key={index}
+              onClick={() => {
+                onTabChange(index);
+              }}
               className={clsx(
                 'flex h-40px flex-1 items-center justify-center',
                 {
                   'text-primary-default': isSelected,
                 }
               )}
-              ref={(ref) => childRef.current.set(i, ref)}
+              ref={(ref) => childRef.current.set(index, ref)}
             >
               <Text typo={isSelected ? 'bodyBold' : 'body'} color="white">
                 {tab}
