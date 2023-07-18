@@ -1,0 +1,14 @@
+name: Build & Deploy Storybook
+on:
+  push:
+    branches: [dev]
+    paths: ['src/stories/**']
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install and Build 🔧
+        run: |
+          pnpm install
+          pnpm run deploy-storybook -- --ci

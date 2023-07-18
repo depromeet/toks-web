@@ -11,7 +11,8 @@
     "stylelint:fix": "stylelint --fix \"**/*.tsx\"",
     "postinstall": "husky install",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "deploy-storybook": "storybook-to-ghpages"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.29.5",
@@ -38,6 +39,7 @@
     "@storybook/blocks": "7.0.26",
     "@storybook/nextjs": "7.0.26",
     "@storybook/react": "7.0.26",
+    "@storybook/storybook-deployer": "^2.8.16",
     "@storybook/testing-library": "0.0.14-next.2",
     "@stylelint/postcss-css-in-js": "^0.38.0",
     "@testing-library/jest-dom": "^5.16.5",
