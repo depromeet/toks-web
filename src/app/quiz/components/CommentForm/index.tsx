@@ -1,12 +1,10 @@
 'use client';
 
-import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { postCommentByQuizId } from '@/app/quiz/remotes/comment';
-import { Text } from '@/common/components';
-import { bgColor } from '@/common/foundation';
+import { Button, Text, bgColor } from '@/common';
 
 interface CommentFormProps {
   commentCount: number;
@@ -18,7 +16,7 @@ export function CommentForm({ commentCount, quizId }: CommentFormProps) {
   const router = useRouter();
   return (
     <form
-      className="flex flex-col"
+      className="flex shrink-0 flex-col"
       onSubmit={(e) => {
         e.preventDefault();
         setComment('');
@@ -33,14 +31,20 @@ export function CommentForm({ commentCount, quizId }: CommentFormProps) {
         className="mt-6px"
         type="text"
         value={comment}
+        aria-label="댓글 작성 입력"
         onChange={(e) => setComment(e.target.value)}
       />
-      <button
-        className={clsx('mt-12px', bgColor['primaryDefault'])}
-        type="submit"
-      >
-        확인
-      </button>
+      <div className="mt-12px flex justify-end">
+        <Button
+          className={bgColor['primaryDefault']}
+          buttonType="primary"
+          size="S"
+          type="submit"
+          aria-label="작성 확인 버튼"
+        >
+          확인
+        </Button>
+      </div>
     </form>
   );
 }
