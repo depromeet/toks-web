@@ -35,28 +35,21 @@ async function getNewToken({
 export async function middleware(request: NextRequest) {
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('Content-Type', 'application/json');
-  if (request.cookies.get('accessToken') != null) {
-    requestHeaders.set(
-      'X-TOKS-AUTH-TOKEN',
-      request.cookies.get('accessToken')!.value
-    );
+
+  const { value: accessCookieValue } = request.cookies.get('accessToken') ?? {};
+  const { value: refreshCookieValue } =
+    request.cookies.get('refreshToken') ?? {};
+
+  if (accessCookieValue) {
+    requestHeaders.set('X-TOKS-AUTH-TOKEN', accessCookieValue);
   }
 
-  const aT =
-    request.cookies.get('accessToken') != null
-      ? request.cookies.get('accessToken')!.value
-      : '';
-
-  const rT =
-    request.cookies.get('refreshToken') != null
-      ? request.cookies.get('refreshToken')!.value
-      : '';
+  const aT = accessCookieValue ?? '';
+  const rT = refreshCookieValue ?? '';
 
   const res = await getAuthStatus({
     accessToken: aT,
   });
-  //
-  console.log(res.status, 'resres');
 
   if (res.status === 200) {
     return NextResponse.next();
@@ -75,7 +68,6 @@ export async function middleware(request: NextRequest) {
         // 쿠키에 다시 세팅하는 로직
         const response = NextResponse.next();
         response.cookies.set('accessToken', token.data.accessToken);
-
         return response;
       }
     } catch (error) {
