@@ -1,6 +1,12 @@
-import { Button, GhostButton, Text } from '@/common';
+'use client';
+
+import { useRouter } from 'next/navigation';
+
+import { Text } from '@/common';
 
 export default function Home() {
+  const router = useRouter();
+
   return (
     <div>
       <button className="bg-success shadow-book01">Toks</button>
@@ -28,25 +34,15 @@ export default function Home() {
       <Text typo="captionBold" color="gray10">
         텍스트 입니다.
       </Text>
-      <div>
-        <Button className="w-screen" buttonType="primary" size="S">
-          버튼
-        </Button>
-        <Button
-          className="w-150px"
-          buttonType="general"
-          size="M"
-          iconName="AVATAR_DEFAULT"
-        >
-          버튼
-        </Button>
-        <Button buttonType="primary" size="L" disabled>
-          버튼
-        </Button>
-        <GhostButton buttonType="primary" size="M" iconName="CHEVRON_DOWN">
-          버튼
-        </GhostButton>
-      </div>
+      <Text
+        typo="headingL"
+        color="success"
+        onClick={() =>
+          router.push('https://api.tokstudy.com/oauth2/authorize/kakao')
+        }
+      >
+        login
+      </Text>
     </div>
   );
 }
