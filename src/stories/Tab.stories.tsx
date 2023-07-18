@@ -1,3 +1,5 @@
+'use client';
+
 /* eslint-disable storybook/prefer-pascal-case */
 import type { Meta, StoryObj } from '@storybook/react';
 
