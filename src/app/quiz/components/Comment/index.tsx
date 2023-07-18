@@ -1,7 +1,4 @@
-import clsx from 'clsx';
-import Image from 'next/image';
-
-import { ICON_URL, Text } from '@/common';
+import { Avatar, Text } from '@/common';
 
 import { CommentList } from './CommentList';
 import LikeButton from './LikeButton';
@@ -24,13 +21,8 @@ export function Comment({
 }: CommentProps) {
   return (
     <li>
-      <div className={clsx('flex', 'gap-x-1.5', 'items-center')}>
-        <Image
-          src={profileImgUrl ?? ICON_URL.EMOJI_BASE_GRAY}
-          alt="프로필 아이콘"
-          width={24}
-          height={24}
-        />
+      <div className="flex items-center gap-x-6px">
+        <Avatar src={profileImgUrl} name={name} size="S" />
         <Text typo="bodyBold" color="white">
           {name}
         </Text>
@@ -38,13 +30,13 @@ export function Comment({
           {timeAgo}
         </Text>
       </div>
-      <div className={clsx('mt-1', 'ml-[30px]')}>
+      <div className="ml-30px mt-4px">
         <Text typo="body" color="gray20">
           {comment}
         </Text>
         <LikeButton
           commentid={commentId}
-          className="mt-2"
+          className="mt-8px"
           like={like}
           isLiked={false}
         />

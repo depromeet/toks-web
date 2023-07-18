@@ -15,7 +15,7 @@ export function CommentList({ children }: CommentListProps) {
   const [isFold, setIsFold] = useState(() => comments.length > 3);
   return (
     <div>
-      <ul className={clsx('flex', 'flex-col', 'gap-y-4')}>
+      <ul className="flex flex-col gap-y-4">
         {isFold ? comments.slice(0, 3) : children}
       </ul>
       {isFold && (
@@ -38,10 +38,7 @@ export function CommentList({ children }: CommentListProps) {
 
 function MoreViewButton({ onClick }: HTMLAttributes<HTMLSpanElement>) {
   return (
-    <button
-      className={clsx('flex', 'gap-x-1', 'items-center')}
-      onClick={onClick}
-    >
+    <button className="flex items-center gap-x-4px" onClick={onClick}>
       <Text typo="body" color="gray10">
         댓글 더보기
       </Text>

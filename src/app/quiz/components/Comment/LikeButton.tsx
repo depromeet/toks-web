@@ -18,7 +18,7 @@ function LikeButton({ like, isLiked, className, ...rest }: LikeButtonProps) {
   const [likeState, setLikeState] = useState(like);
   return (
     <button
-      className={clsx(className, 'flex', 'items-center', 'gap-x-1')}
+      className={clsx(className, 'flex', 'items-center', 'gap-x-4px')}
       {...rest}
       onClick={() => setLikeState((prev) => prev + 1)}
     >

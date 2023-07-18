@@ -1,5 +1,4 @@
 import { Button, GhostButton, Text } from '@/common';
-// import Button from '@/common/components/Button';
 
 export default function Home() {
   return (

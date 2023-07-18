@@ -14,13 +14,10 @@ export const Avatar = ({
 }: AvatarProps) => {
   return (
     <div
-      className={clsx(
-        'relative inline-block overflow-hidden rounded-full ring-2 ring-white',
-        {
-          'h-30px w-30px': size === 'M',
-          'h-24px w-24px': size === 'S',
-        }
-      )}
+      className={clsx('relative inline-block overflow-hidden rounded-full', {
+        'h-30px w-30px': size === 'M',
+        'h-24px w-24px': size === 'S',
+      })}
     >
       <Image alt={`${name} 아바타`} src={src} layout="fill" {...rest} />
     </div>

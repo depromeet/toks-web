@@ -1,5 +1,5 @@
-import { Comment } from '../../components';
-import { getCommentsByQuizId } from '../remotes/comment';
+import { Comment, CommentForm, GetStartedButton } from '@/app/quiz/components';
+import { getCommentsByQuizId } from '@/app/quiz/remotes/comment';
 
 type Props = {
   params: {
@@ -7,23 +7,30 @@ type Props = {
   };
 };
 
+let a = 1;
 async function CommentPage({ params: { quizId } }: Props) {
   const comments = await getCommentsByQuizId(quizId);
+  const isCommentEmpty = comments.length === 0;
+  console.log(a++);
   return (
-    <div>
-      <Comment.List>
-        {comments.map(({ id, uid, content, createdAt }) => (
-          <Comment
-            key={id}
-            commentId={id}
-            name={`사용자${uid}`}
-            comment={content}
-            timeAgo={createdAt}
-            profileImgUrl={undefined}
-            like={0}
-          />
-        ))}
-      </Comment.List>
+    <div className="mt-32px flex flex-col gap-32px">
+      <CommentForm quizId={quizId} commentCount={comments.length} />
+      {!isCommentEmpty && (
+        <Comment.List>
+          {comments.map(({ id, nickname, content, likeCount, createdAt }) => (
+            <Comment
+              key={id}
+              commentId={id}
+              name={nickname}
+              comment={content}
+              timeAgo={createdAt}
+              profileImgUrl={undefined}
+              like={likeCount}
+            />
+          ))}
+        </Comment.List>
+      )}
+      <GetStartedButton isCommentEmpty={isCommentEmpty} />
     </div>
   );
 }
