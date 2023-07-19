@@ -6,3 +6,4 @@ export * from './PurePortal';
 export * from './BottomSheet';
 export * from './Avatar';
 export * from './Button';
+export * from './Tab';

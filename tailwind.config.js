@@ -19,6 +19,10 @@ module.exports = {
       lineHeight,
       fontWeight,
       fontSize,
+      borderColor: colors,
+      borderWidth: {
+        ...generatorTailwindConfigList(51, 1),
+      },
       padding: {
         ...generatorTailwindConfigList(100, 2),
       },
