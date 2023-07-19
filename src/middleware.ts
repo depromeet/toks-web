@@ -7,12 +7,18 @@ async function getAuthStatus({
 }: {
   accessToken: string;
 }): Promise<Response> {
+  let headers = {};
+
+  accessToken !== ''
+    ? (headers = {
+        'Content-Type': 'application/json; charset=utf-8',
+        'X-TOKS-AUTH-TOKEN': accessToken,
+      })
+    : (headers = { 'Content-Type': 'application/json; charset=utf-8' });
+
   return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/v1/auth/status`, {
     method: 'GET',
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      'X-TOKS-AUTH-TOKEN': accessToken,
-    },
+    headers,
   });
 }
 
