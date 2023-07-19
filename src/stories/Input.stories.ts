@@ -24,3 +24,11 @@ export const ERROR_INPUT: Story = {
     errorMessage: 'Error Message',
   },
 };
+
+export const 라벨_INPUT: Story = {
+  args: {
+    label: 'Label Text',
+    placeholder: 'Placeholder Text',
+    name: 'label-input',
+  },
+};

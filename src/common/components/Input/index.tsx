@@ -15,11 +15,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       label,
       name,
       errorMessage,
-      width,
-      height,
       onFocus,
       onBlur,
       suffix,
+      className,
       ...props
     }: InputProps,
     ref
@@ -27,7 +26,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const [isFocus, setIsFocus] = useState(false);
 
     return (
-      <div className="relative flex w-full flex-col gap-6px">
+      <div className={cn('relative flex w-full flex-col gap-6px', className)}>
         {label && (
           <label htmlFor={name}>
             <Text typo="body" color="white">
@@ -71,9 +70,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         </div>
         {errorMessage && (
           <Text
+            className="absolute -bottom-20px whitespace-pre"
             typo="caption"
             color="dangerDefault"
-            style={{ position: 'absolute', bottom: '-20px', whiteSpace: 'pre' }}
           >
             {errorMessage}
           </Text>
