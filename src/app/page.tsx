@@ -53,7 +53,7 @@ export default function Home() {
         textColor="gray110"
         backgroundColor="gray20"
         iconName="EMOJI_NINJA"
-        iconPosition="left"
+        iconPosition="LEFT"
       >
         일반 버튼
       </Button>

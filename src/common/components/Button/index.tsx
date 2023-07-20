@@ -20,7 +20,7 @@ export function Button({
   backgroundColor = 'transparent',
   size = 'S',
   typo = 'body',
-  iconPosition = 'right',
+  iconPosition = 'RIGHT',
   disabled = false,
   children,
   ...rest
@@ -39,7 +39,7 @@ export function Button({
       disabled={disabled}
       {...rest}
     >
-      {iconName && iconPosition === 'left' && (
+      {iconName && iconPosition === 'LEFT' && (
         <Image
           width={ICON_BY_BUTTON_SIZE[size]}
           height={ICON_BY_BUTTON_SIZE[size]}
@@ -50,7 +50,7 @@ export function Button({
       <Text typo={typo} color={textColor}>
         {children}
       </Text>
-      {iconName && iconPosition === 'right' && (
+      {iconName && iconPosition === 'RIGHT' && (
         <Image
           width={ICON_BY_BUTTON_SIZE[size]}
           height={ICON_BY_BUTTON_SIZE[size]}
