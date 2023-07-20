@@ -7,3 +7,4 @@ export * from './BottomSheet';
 export * from './Avatar';
 export * from './Button';
 export * from './Tab';
+export * from './Input';
