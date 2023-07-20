@@ -13,18 +13,41 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
+export const TEXT_BUTTON_1: Story = {
+  args: {
+    size: 'S',
+    textColor: 'gray10',
+    children: 'Button',
+    iconName: 'CHEVRON_DOWN',
+  },
+};
+
+export const TEXT_BUTTON_2: Story = {
+  args: {
+    size: 'M',
+    typo: 'subheading',
+    textColor: 'primaryDefault',
+    children: 'Button',
+    iconName: 'CHEVRON_DOWN',
+  },
+};
+
 export const PRIMARY_BUTTON_1: Story = {
   args: {
-    buttonType: 'primary',
     size: 'S',
+    typo: 'bodyBold',
+    backgroundColor: 'primaryDefault',
+    textColor: 'gray10',
     children: 'Button',
   },
 };
 
 export const PRIMARY_BUTTON_2: Story = {
   args: {
-    buttonType: 'primary',
     size: 'L',
+    typo: 'subheadingBold',
+    backgroundColor: 'primaryDefault',
+    textColor: 'gray10',
     children: 'Button',
     disabled: true,
   },
@@ -32,17 +55,21 @@ export const PRIMARY_BUTTON_2: Story = {
 
 export const PRIMARY_BUTTON_3: Story = {
   args: {
-    buttonType: 'primary',
     size: 'M',
+    typo: 'subheadingBold',
+    backgroundColor: 'primaryDefault',
+    textColor: 'gray10',
     children: 'Button',
-    className: 'w-300px',
+    className: 'w-full',
   },
 };
 
 export const GENERAL_BUTTON_1: Story = {
   args: {
-    buttonType: 'general',
     size: 'M',
+    typo: 'subheadingBold',
+    backgroundColor: 'gray20',
+    textColor: 'gray110',
     children: 'Button',
     disabled: true,
   },
@@ -50,9 +77,12 @@ export const GENERAL_BUTTON_1: Story = {
 
 export const GENERAL_BUTTON_2: Story = {
   args: {
-    buttonType: 'general',
     size: 'L',
+    typo: 'subheadingBold',
+    backgroundColor: 'gray20',
+    textColor: 'gray110',
     children: 'Button',
     iconName: 'EMOJI_NINJA',
+    iconPosition: 'left',
   },
 };

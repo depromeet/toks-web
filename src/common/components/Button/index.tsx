@@ -13,7 +13,6 @@ import {
 } from './constants';
 import { ButtonProps } from './type';
 
-export { GhostButton } from './GhostButton';
 export function Button({
   iconName,
   className,
