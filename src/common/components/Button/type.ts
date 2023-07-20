@@ -18,7 +18,7 @@ export interface ButtonProps
   iconName?: IconName;
   size?: ButtonSize;
   disabled?: boolean;
-  iconPosition?: string;
+  iconPosition?: IconPosition;
   textColor?: ButtonTextColor;
   /**
    * @Note
