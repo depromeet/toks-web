@@ -17,6 +17,7 @@ export const color = {
   dangerPress: 'danger-press',
   primaryDefault: 'primary-default',
   primaryPress: 'primary-press',
+  transparent: 'transparent',
 } as const;
 
 export const bgColor = {
@@ -38,6 +39,7 @@ export const bgColor = {
   dangerPress: 'bg-danger-press',
   primaryDefault: 'bg-primary-default',
   primaryPress: 'bg-primary-press',
+  transparent: 'bg-transparent',
 } as const;
 
 export const textColor = {

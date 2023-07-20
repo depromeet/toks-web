@@ -3,16 +3,14 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 
-import { ICON_URL, Text } from '@/common';
+import { ICON_URL, Text, bgColor } from '@/common';
 
 import {
-  BACKGROUND_COLOR_BY_BUTTON_TYPE,
   GAP_BY_BUTTON_SIZE,
   HEIGHT_BY_BUTTON_SIZE,
   ICON_BY_BUTTON_SIZE,
   PADDING_BY_BUTTON_SIZE,
-  TEXT_COLOR_BY_BUTTON_TYPE,
-  TYPO_BY_BUTTON_SIZE,
+  PRESSED_BACKGROUND_BY_COLOR,
 } from './constants';
 import { ButtonProps } from './type';
 
@@ -20,8 +18,10 @@ export { GhostButton } from './GhostButton';
 export function Button({
   iconName,
   className,
-  buttonType = 'primary',
+  textColor = 'gray10',
+  backgroundColor = 'transparent',
   size = 'M',
+  typo = 'body',
   disabled = false,
   children,
   ...rest
@@ -32,11 +32,13 @@ export function Button({
         className,
         HEIGHT_BY_BUTTON_SIZE[size],
         PADDING_BY_BUTTON_SIZE[size],
-        BACKGROUND_COLOR_BY_BUTTON_TYPE[disabled ? 'disabled' : 'default'][
-          buttonType
-        ],
-        !disabled && BACKGROUND_COLOR_BY_BUTTON_TYPE['pressed'][buttonType],
-        iconName && GAP_BY_BUTTON_SIZE[size],
+        GAP_BY_BUTTON_SIZE[size],
+        bgColor[backgroundColor],
+        disabled ? 'opacity-40' : PRESSED_BACKGROUND_BY_COLOR[backgroundColor],
+        // BACKGROUND_COLOR_BY_BUTTON_TYPE[disabled ? 'disabled' : 'default'][
+        //   buttonType
+        // ],
+        // !disabled && BACKGROUND_COLOR_BY_BUTTON_TYPE['pressed'][buttonType],
         'flex items-center justify-center rounded-8px'
       )}
       disabled={disabled}
@@ -50,10 +52,7 @@ export function Button({
           alt="버튼 아이콘 입니다."
         />
       )}
-      <Text
-        typo={TYPO_BY_BUTTON_SIZE[size]}
-        color={TEXT_COLOR_BY_BUTTON_TYPE[buttonType]}
-      >
+      <Text typo={typo} color={textColor}>
         {children}
       </Text>
     </button>
