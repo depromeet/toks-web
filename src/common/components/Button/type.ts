@@ -2,7 +2,7 @@ import { IconName } from '@/common';
 
 export type ButtonSize = 'S' | 'M' | 'L';
 export type ButtonStatus = 'default' | 'pressed' | 'disabled';
-export type IconPosition = 'left' | 'right';
+export type IconPosition = 'LEFT' | 'RIGHT';
 export type ButtonTextColor = 'primaryDefault' | 'gray110' | 'gray10';
 export type ButtonBackgroundColor = 'primaryDefault' | 'gray20' | 'transparent';
 
