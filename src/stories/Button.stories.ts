@@ -83,6 +83,6 @@ export const GENERAL_BUTTON_2: Story = {
     textColor: 'gray110',
     children: 'Button',
     iconName: 'EMOJI_NINJA',
-    iconPosition: 'left',
+    iconPosition: 'LEFT',
   },
 };
