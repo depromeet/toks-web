@@ -18,6 +18,7 @@ export const ICON_URL = {
     'https://toks-web-assets.s3.amazonaws.com/chevron/ic_chevron-right.svg',
   BLUR_BACKGROUND:
     'data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrwcAAYMBABbFvRQAAAAASUVORK5CYII=',
+  DANGER: 'https://toks-web-assets.s3.amazonaws.com/legacy/ic-danger.svg',
 };
 
 export type IconName = keyof typeof ICON_URL;
