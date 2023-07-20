@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { Text } from '@/common';
+import { Button, Text } from '@/common';
 
 export default function Home() {
   const router = useRouter();
@@ -43,6 +43,20 @@ export default function Home() {
       >
         login
       </Text>
+      <Button iconName="CHEVRON_DOWN">글자 버튼</Button>
+      <Button size="M" typo="subheadingBold" backgroundColor="primaryDefault">
+        주황 버튼
+      </Button>
+      <Button
+        size="L"
+        typo="subheadingBold"
+        textColor="gray110"
+        backgroundColor="gray20"
+        iconName="EMOJI_NINJA"
+        iconPosition="left"
+      >
+        일반 버튼
+      </Button>
     </div>
   );
 }
