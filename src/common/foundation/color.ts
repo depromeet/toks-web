@@ -61,6 +61,7 @@ export const textColor = {
   dangerPress: 'text-danger-press',
   primaryDefault: 'text-primary-default',
   primaryPress: 'text-primary-press',
+  transparent: 'text-transparent',
 } as const;
 
 export type KeyOfColor = keyof typeof color;
