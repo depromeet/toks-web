@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { postCommentByQuizId } from '@/app/quiz/remotes/comment';
-import { Button, Text, bgColor } from '@/common';
+import { Button, Text } from '@/common';
 
 interface CommentFormProps {
   commentCount: number;
@@ -36,8 +36,9 @@ export function CommentForm({ commentCount, quizId }: CommentFormProps) {
       />
       <div className="mt-12px flex justify-end">
         <Button
-          className={bgColor['primaryDefault']}
-          buttonType="primary"
+          backgroundColor="primaryDefault"
+          typo="bodyBold"
+          textColor="gray10"
           size="S"
           type="submit"
           aria-label="작성 확인 버튼"

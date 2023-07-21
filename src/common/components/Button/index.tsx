@@ -1,48 +1,45 @@
 'use client';
 
-import clsx from 'clsx';
 import Image from 'next/image';
 
-import { ICON_URL, Text } from '@/common';
+import { ICON_URL, Text, bgColor, cn } from '@/common';
 
 import {
-  BACKGROUND_COLOR_BY_BUTTON_TYPE,
   GAP_BY_BUTTON_SIZE,
   HEIGHT_BY_BUTTON_SIZE,
   ICON_BY_BUTTON_SIZE,
   PADDING_BY_BUTTON_SIZE,
-  TEXT_COLOR_BY_BUTTON_TYPE,
-  TYPO_BY_BUTTON_SIZE,
+  PRESSED_BACKGROUND_BY_COLOR,
 } from './constants';
 import { ButtonProps } from './type';
 
-export { GhostButton } from './GhostButton';
 export function Button({
   iconName,
   className,
-  buttonType = 'primary',
-  size = 'M',
+  textColor = 'gray10',
+  backgroundColor = 'transparent',
+  size = 'S',
+  typo = 'body',
+  iconPosition = 'RIGHT',
   disabled = false,
   children,
   ...rest
 }: ButtonProps) {
   return (
     <button
-      className={clsx(
+      className={cn(
         className,
         HEIGHT_BY_BUTTON_SIZE[size],
         PADDING_BY_BUTTON_SIZE[size],
-        BACKGROUND_COLOR_BY_BUTTON_TYPE[disabled ? 'disabled' : 'default'][
-          buttonType
-        ],
-        !disabled && BACKGROUND_COLOR_BY_BUTTON_TYPE['pressed'][buttonType],
-        iconName && GAP_BY_BUTTON_SIZE[size],
+        GAP_BY_BUTTON_SIZE[size],
+        bgColor[backgroundColor],
+        disabled ? 'opacity-40' : PRESSED_BACKGROUND_BY_COLOR[backgroundColor],
         'flex items-center justify-center rounded-8px'
       )}
       disabled={disabled}
       {...rest}
     >
-      {iconName && (
+      {iconName && iconPosition === 'LEFT' && (
         <Image
           width={ICON_BY_BUTTON_SIZE[size]}
           height={ICON_BY_BUTTON_SIZE[size]}
@@ -50,12 +47,17 @@ export function Button({
           alt="버튼 아이콘 입니다."
         />
       )}
-      <Text
-        typo={TYPO_BY_BUTTON_SIZE[size]}
-        color={TEXT_COLOR_BY_BUTTON_TYPE[buttonType]}
-      >
+      <Text typo={typo} color={textColor}>
         {children}
       </Text>
+      {iconName && iconPosition === 'RIGHT' && (
+        <Image
+          width={ICON_BY_BUTTON_SIZE[size]}
+          height={ICON_BY_BUTTON_SIZE[size]}
+          src={ICON_URL[iconName]}
+          alt="버튼 아이콘 입니다."
+        />
+      )}
     </button>
   );
 }
