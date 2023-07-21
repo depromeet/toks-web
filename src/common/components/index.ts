@@ -8,4 +8,4 @@ export * from './Avatar';
 export * from './Button';
 export * from './Tab';
 export * from './Input';
-export * from './Carousel';
+export * from './QuizCarousel';
