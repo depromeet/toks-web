@@ -10,9 +10,11 @@ import 'swiper/css';
 export function Carousel() {
   const settings: SwiperCore = {
     spaceBetween: 8,
-    slidesPerView: 1.07,
+    slidesPerView: 1.03,
   };
   return (
+    // style={{ margin: '0 -20px', padding: '0 20px' }}
+    // -mx-20px px-20px
     <Swiper {...settings}>
       <SwiperSlide>
         <QuizCard
