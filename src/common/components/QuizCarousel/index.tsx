@@ -15,7 +15,7 @@ export function QuizCarousel({ className }: QuizCarouselProps) {
   };
   return (
     <div className={className}>
-      <Swiper style={{ margin: '0 -20px', padding: '0 20px' }} {...settings}>
+      <Swiper className="!important -mx-20px px-20px" {...settings}>
         <SwiperSlide>
           <QuizCard
             categoryTitle="카테고리"
