@@ -7,11 +7,9 @@ type Props = {
   };
 };
 
-let a = 1;
 async function CommentPage({ params: { quizId } }: Props) {
   const comments = await getCommentsByQuizId(quizId);
   const isCommentEmpty = comments.length === 0;
-  console.log(a++);
   return (
     <div className="mt-32px flex flex-col gap-32px">
       <CommentForm quizId={quizId} commentCount={comments.length} />
