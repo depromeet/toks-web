@@ -5,11 +5,14 @@ import { Button, ICON_URL, Input, Text, bgColor } from '@/common';
 
 const Nickname = () => {
   return (
-    <>
+    <div
+      className="relative h-[calc(100%-54px)]"
+      style={{ paddingTop: '85px' }}
+    >
       <div
         className={clsx(
           bgColor['gray110'],
-          'w-full rounded-16px px-16px py-24px'
+          'flex w-full flex-col items-center rounded-16px px-16px py-24px'
         )}
       >
         <Image
@@ -18,15 +21,22 @@ const Nickname = () => {
           width={52.5}
           height={52.5}
         />
-        <Text typo="headingM" color="white">
-          내 이름은 똑스야 너의 이름은 뭐니?
-        </Text>
-        <Input autoFocus className="mt-40px" label="닉네임 입력" />
+        <div className="mt-16px flex w-full flex-col items-center">
+          <Text typo="headingM" color="white">
+            내 이름은 똑스야 너의 이름은 뭐니?
+          </Text>
+          <Input autoFocus className="mt-40px" label="닉네임 입력" />
+        </div>
       </div>
-      <Button size="L" typo="subheadingBold" backgroundColor="primaryDefault">
+      <Button
+        className="absolute bottom-20px w-full"
+        size="L"
+        typo="subheadingBold"
+        backgroundColor="primaryDefault"
+      >
         완료
       </Button>
-    </>
+    </div>
   );
 };
 
