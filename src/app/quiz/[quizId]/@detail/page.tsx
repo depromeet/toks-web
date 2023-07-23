@@ -20,15 +20,19 @@ async function DetailPage({ params: { quizId } }: Props) {
         바텀시트 팝업의 닫기버튼, 어디가 좋을까?
       </Text>
       <div className="mt-48px">
-        <div className="relative flex gap-16px">
+        <div className="flex gap-16px">
           <QuizButton
-            isSubmitted={false}
+            isSubmitted={true}
             imageUrl="https://source.unsplash.com/random/daily"
+            percentage={55}
+            participationLabel="60% (600명)"
             name="하단"
           />
           <QuizButton
-            isSubmitted={false}
+            isSubmitted={true}
             imageUrl="https://source.unsplash.com/random/daily"
+            percentage={45}
+            participationLabel="40% (400명)"
             name="상단"
           />
         </div>
