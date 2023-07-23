@@ -1,39 +1,46 @@
+import clsx from 'clsx';
+
+import { QuizButton } from '@/app/quiz/components';
+import { Text, bgColor } from '@/common';
+
 type Props = {
   params: {
     quizId: string;
   };
 };
 
-// 임시 타입
-type QuizType = {
-  userId: string;
-  id: string;
-  title: string;
-  completed: boolean;
-};
-
-const getQuizDetail = async (quizId: string) => {
-  const result = await fetch(
-    // 테스트로 가져온 투두데이터
-    `https://jsonplaceholder.typicode.com/todos/${quizId}`
-  );
-  const todo: QuizType = await result.json();
-  return todo;
-};
-
 async function DetailPage({ params: { quizId } }: Props) {
-  const quizDetailData = await getQuizDetail(quizId);
+  console.log(quizId);
   return (
-    <div style={{ backgroundColor: '#d18760' }}>
-      <h1>퀴즈 디테일 영역 입니다.</h1>
-      <div>아이디 가져오기 가능 Quiz Id : {quizId}</div>
-      <div>Todo Title : {quizDetailData.title}</div>
-      <div>
-        Completed :
-        {quizDetailData.completed ? <span> Yes</span> : <span> No</span>}
+    <section className={clsx(bgColor['gray110'], 'mt-8px rounded-16px p-20px')}>
+      <Text className="block" typo="captionBold" color="primaryDefault">
+        UI/UX
+      </Text>
+      <Text className="mt-12px block " typo="headingL" color="gray10">
+        바텀시트 팝업의 닫기버튼, 어디가 좋을까?
+      </Text>
+      <div className="mt-48px">
+        <div className="relative flex gap-16px">
+          <QuizButton
+            isSubmitted={false}
+            imageUrl="https://source.unsplash.com/random/daily"
+            name="하단"
+          />
+          <QuizButton
+            isSubmitted={false}
+            imageUrl="https://source.unsplash.com/random/daily"
+            name="상단"
+          />
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
+
+// type QuizType = 'AB' | 'OX';
+
+// function QuizSolveArea() {}
+
+// function QuizAnswerArea() {}
 
 export default DetailPage;
