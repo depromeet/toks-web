@@ -1,38 +1,31 @@
 'use client';
 
 import clsx from 'clsx';
-import Image from 'next/image';
 
-import { ICON_URL, Text, bgColor } from '@/common';
+import { Text, bgColor } from '@/common';
 
 import { ProgressBar } from './ProgressBar';
+import { Thumbnail } from './Thumbnail';
 import { QuizButtonProps } from './type';
 
 export function QuizButton({
   isSubmitted,
   isSelected = false,
-  thumbnailType,
+  OXType,
   imageUrl,
   percentage = 0,
   participationLabel,
+  className,
   name,
 }: QuizButtonProps) {
   return (
-    <button className="flex flex-1 flex-col items-center">
-      {imageUrl && (
-        <div className="relative mb-24px aspect-square w-full">
-          <Image
-            src={imageUrl}
-            alt={`${name}사진`}
-            className="rounded-8px"
-            objectFit="cover"
-            objectPosition="center"
-            placeholder="blur"
-            layout="fill"
-            blurDataURL={ICON_URL.BLUR_BACKGROUND}
-          />
-        </div>
-      )}
+    <button className={clsx(className, 'flex flex-1 flex-col items-center')}>
+      <Thumbnail
+        className="mb-24px w-full"
+        OXType={OXType}
+        imageUrl={imageUrl}
+        name={name}
+      />
       <div
         className={clsx(
           bgColor['gray90'],
@@ -48,7 +41,7 @@ export function QuizButton({
           </Text>
         </div>
       </div>
-      {participationLabel && (
+      {isSubmitted && participationLabel && (
         <Text
           className="mt-14px"
           typo="bodyBold"

@@ -6,5 +6,6 @@ export interface QuizButtonProps
   imageUrl?: string;
   percentage?: number;
   participationLabel?: string;
+  className?: string;
   name: string;
 }

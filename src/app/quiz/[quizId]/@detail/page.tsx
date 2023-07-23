@@ -21,8 +21,8 @@ async function DetailPage({ params: { quizId } }: Props) {
       </Text>
       <div className="mt-48px">
         <div className="flex gap-16px">
-          <QuizButton
-            isSubmitted={true}
+          {/* <QuizButton
+            isSubmitted={false}
             imageUrl="https://source.unsplash.com/random/daily"
             percentage={55}
             participationLabel="60% (600명)"
@@ -30,13 +30,15 @@ async function DetailPage({ params: { quizId } }: Props) {
             name="하단"
           />
           <QuizButton
-            isSubmitted={true}
+            isSubmitted={false}
             imageUrl="https://source.unsplash.com/random/daily"
             percentage={45}
             participationLabel="40% (400명)"
             isSelected={false}
             name="상단"
-          />
+          /> */}
+          <QuizButton isSubmitted={false} OXType="O" name="예" />
+          <QuizButton isSubmitted={false} OXType="X" name="아니오" />
         </div>
       </div>
     </section>
