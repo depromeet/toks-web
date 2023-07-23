@@ -26,6 +26,7 @@ async function DetailPage({ params: { quizId } }: Props) {
             imageUrl="https://source.unsplash.com/random/daily"
             percentage={55}
             participationLabel="60% (600명)"
+            isSelected={true}
             name="하단"
           />
           <QuizButton
@@ -33,6 +34,7 @@ async function DetailPage({ params: { quizId } }: Props) {
             imageUrl="https://source.unsplash.com/random/daily"
             percentage={45}
             participationLabel="40% (400명)"
+            isSelected={false}
             name="상단"
           />
         </div>

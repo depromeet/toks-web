@@ -2,37 +2,21 @@
 
 import clsx from 'clsx';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
 import { ICON_URL, Text, bgColor } from '@/common';
 
-interface QuizButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  isSubmitted: boolean;
-  thumbnailType?: 'O' | 'X';
-  imageUrl?: string;
-  percentage?: number;
-  participationLabel?: string;
-  name: string;
-}
-
-const usePercentageAnimation = (percentage: number) => {
-  const [percentageAnimation, setPercentageAnimation] = useState(0);
-  useEffect(() => {
-    setPercentageAnimation(percentage);
-  }, [percentageAnimation, percentage]);
-  return percentageAnimation;
-};
+import { ProgressBar } from './ProgressBar';
+import { QuizButtonProps } from './type';
 
 export function QuizButton({
   isSubmitted,
+  isSelected = false,
   thumbnailType,
   imageUrl,
   percentage = 0,
   participationLabel,
   name,
 }: QuizButtonProps) {
-  const percentageAnimation = usePercentageAnimation(percentage);
   return (
     <button className="flex flex-1 flex-col items-center">
       {imageUrl && (
@@ -56,16 +40,7 @@ export function QuizButton({
         )}
       >
         {isSubmitted && (
-          <div
-            style={{
-              width: `${percentageAnimation}%`,
-              transition: 'width 0.5s ease',
-            }}
-            className={clsx(
-              bgColor['primaryDefault'],
-              'absolute z-0 h-full rounded-8px'
-            )}
-          ></div>
+          <ProgressBar percentage={percentage} isSelected={isSelected} />
         )}
         <div className="absolute z-10 flex h-full w-full items-center justify-center">
           <Text typo="bodyBold" color="gray10">
@@ -74,7 +49,11 @@ export function QuizButton({
         </div>
       </div>
       {participationLabel && (
-        <Text className="mt-14px" typo="bodyBold" color="primaryDefault">
+        <Text
+          className="mt-14px"
+          typo="bodyBold"
+          color={isSelected ? 'primaryDefault' : 'gray60'}
+        >
           {participationLabel}
         </Text>
       )}
