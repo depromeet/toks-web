@@ -1,12 +1,7 @@
 import clsx from 'clsx';
 import { HTMLAttributes, ReactNode } from 'react';
 
-import {
-  KeyOfColor,
-  KeyOfTypography,
-  textColor,
-  typography,
-} from '@/common/foundation';
+import { KeyOfColor, KeyOfTypography, textColor, typography } from '@/common';
 
 interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   color?: KeyOfColor;

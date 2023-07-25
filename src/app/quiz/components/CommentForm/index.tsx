@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 import { postCommentByQuizId } from '@/app/quiz/remotes/comment';
-import { Button, Text } from '@/common';
+import { Button, Input } from '@/common';
 
 interface CommentFormProps {
   commentCount: number;
@@ -23,14 +23,13 @@ export function CommentForm({ commentCount, quizId }: CommentFormProps) {
         postCommentByQuizId(quizId, comment).then(() => router.refresh());
       }}
     >
-      <Text typo="body" color="white">
-        댓글 {commentCount}
-      </Text>
-      <input
+      <Input
         required
         className="mt-6px"
         type="text"
+        placeholder="댓글을 남겨보세요."
         value={comment}
+        label={`댓글 ${commentCount}`}
         aria-label="댓글 작성 입력"
         onChange={(e) => setComment(e.target.value)}
       />

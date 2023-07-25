@@ -7,15 +7,13 @@ type Props = {
   };
 };
 
-let a = 1;
 async function CommentPage({ params: { quizId } }: Props) {
   const comments = await getCommentsByQuizId(quizId);
-  const isCommentEmpty = comments.length === 0;
-  console.log(a++);
+  const isEmptyComment = comments.length === 0;
   return (
     <div className="mt-32px flex flex-col gap-32px">
       <CommentForm quizId={quizId} commentCount={comments.length} />
-      {!isCommentEmpty && (
+      {!isEmptyComment && (
         <Comment.List>
           {comments.map(({ id, nickname, content, likeCount, createdAt }) => (
             <Comment
@@ -30,7 +28,7 @@ async function CommentPage({ params: { quizId } }: Props) {
           ))}
         </Comment.List>
       )}
-      <GetStartedButton isCommentEmpty={isCommentEmpty} />
+      <GetStartedButton isCommentEmpty={isEmptyComment} />
     </div>
   );
 }
