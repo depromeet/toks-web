@@ -23,6 +23,7 @@ export function Button({
   iconPosition = 'RIGHT',
   disabled = false,
   children,
+  'aria-label': ariaLabel,
   ...rest
 }: ButtonProps) {
   return (
@@ -36,6 +37,7 @@ export function Button({
         disabled ? 'opacity-40' : PRESSED_BACKGROUND_BY_COLOR[backgroundColor],
         'flex items-center justify-center rounded-8px'
       )}
+      aria-label={ariaLabel}
       disabled={disabled}
       {...rest}
     >
@@ -47,7 +49,7 @@ export function Button({
           alt="버튼 아이콘 입니다."
         />
       )}
-      <Text typo={typo} color={textColor}>
+      <Text typo={typo} color={textColor} aria-hidden={Boolean(ariaLabel)}>
         {children}
       </Text>
       {iconName && iconPosition === 'RIGHT' && (
