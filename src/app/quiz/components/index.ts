@@ -5,3 +5,4 @@ export * from './CommentForm';
 export * from './Carousel';
 export * from './GetStartedButton';
 export * from './QuizButton';
+export * from './QuizCarousel';

@@ -1,12 +1,21 @@
+import { QuizCarousel } from '@/app/quiz/components';
+import { Text } from '@/common';
+
 type Props = {
-  searchParams: {
-    categoryId: string;
+  params: {
+    quizId: string;
   };
 };
 
-async function RecommendatonPage({ searchParams }: Props) {
-  console.log(searchParams);
-  return <div style={{ backgroundColor: '#d18760' }}></div>;
+async function RecommendatonPage({ params: quizId }: Props) {
+  return (
+    <div className="mt-64px">
+      <Text className="inline-block" typo="subheadingBold" color="gray10">
+        더 많은 퀴즈를 확인해보세요
+      </Text>
+      <QuizCarousel className="mt-16px" />
+    </div>
+  );
 }
 
 export default RecommendatonPage;

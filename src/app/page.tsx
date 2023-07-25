@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { QuizCarousel, Text } from '@/common';
+import { Text } from '@/common';
 
 export default function Home() {
   const router = useRouter();
@@ -18,7 +18,6 @@ export default function Home() {
       >
         login
       </Text>
-      <QuizCarousel className="mt-20px" />
     </div>
   );
 }
