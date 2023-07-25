@@ -22,7 +22,7 @@ export const colors = {
   success: '#39D878',
 
   danger: {
-    default: '#EB4852',
+    default: '#FF5B65',
     press: '#C63135',
   },
 
