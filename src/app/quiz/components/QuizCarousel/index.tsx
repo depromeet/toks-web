@@ -8,68 +8,56 @@ import { QuizCard } from '@/common';
 import 'swiper/css';
 import { QuizCarouselProps } from './type';
 
-export function QuizCarousel({ className }: QuizCarouselProps) {
+export function QuizCarousel({
+  className,
+  quizRecommendModels,
+}: QuizCarouselProps) {
   const settings: SwiperCore = {
     spaceBetween: 8,
     slidesPerView: 1.03,
   };
+
+  const recommendQuizzes = quizRecommendModels.map(
+    ({ quiz, category, quizReplyHistoryCount, quizCommentCount }) => ({
+      quizId: quiz.id,
+      categoryTitle: category.name,
+      quizDescription: quiz.title,
+      images: Object.values(quiz.question.buttons)
+        .slice(0, 1)
+        .map((button) => button.imageUrl ?? '')
+        .filter((url) => url !== ''),
+      quizReplyHistoryCount,
+      quizCommentCount,
+      quizType: quiz.quizType,
+    })
+  );
+
   return (
     <div className={className}>
       <Swiper className="!important -mx-20px px-20px" {...settings}>
-        <SwiperSlide>
-          <QuizCard
-            categoryTitle="카테고리"
-            quizDescription="Title Text Title Text Title Text Title Text"
-            images={['https://source.unsplash.com/random/?programming']}
-            sizeType="small"
-            likeCount={10}
-            commentCount={10}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <QuizCard
-            categoryTitle="카테고리"
-            quizDescription="Title Text Title Text Title Text Title Text"
-            images={['https://source.unsplash.com/random/?programming']}
-            sizeType="small"
-            likeCount={10}
-            commentCount={10}
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <QuizCard
-            categoryTitle="카테고리"
-            quizDescription="Title Text Title Text Title Text Title Text"
-            images={[
-              'https://source.unsplash.com/random/?programming',
-              'https://source.unsplash.com/random/daily',
-            ]}
-            likeCount={10}
-            commentCount={10}
-            sizeType="small"
-            quizType="ox"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <QuizCard
-            categoryTitle="카테고리"
-            quizDescription="Title Text Title Text Title Text Title Text"
-            likeCount={10}
-            commentCount={10}
-            images={['https://source.unsplash.com/random/?programming']}
-            sizeType="small"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <QuizCard
-            categoryTitle="카테고리"
-            quizDescription="Title Text Title Text Title Text Title Text"
-            likeCount={10}
-            commentCount={10}
-            quizType="ox"
-            sizeType="small"
-          />
-        </SwiperSlide>
+        {recommendQuizzes.map(
+          ({
+            quizId,
+            categoryTitle,
+            quizDescription,
+            images,
+            quizReplyHistoryCount,
+            quizCommentCount,
+            quizType,
+          }) => (
+            <SwiperSlide key={quizId}>
+              <QuizCard
+                categoryTitle={categoryTitle}
+                quizDescription={quizDescription}
+                images={images}
+                sizeType="small"
+                likeCount={quizReplyHistoryCount}
+                commentCount={quizCommentCount}
+                quizType={quizType.startsWith('A_B_') ? 'default' : 'ox'}
+              />
+            </SwiperSlide>
+          )
+        )}
       </Swiper>
     </div>
   );
