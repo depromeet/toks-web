@@ -1,23 +1,27 @@
-// import clsx from 'clsx';
 import Image from 'next/image';
 
 import { ICON_URL, bgColor, cn } from '@/common';
 
 import { QuizButtonProps } from './type';
 
+interface ThumbnailProps
+  extends Pick<QuizButtonProps, 'OXType' | 'imageUrl' | 'className'> {
+  name?: string;
+}
+
 export function Thumbnail({
   OXType,
   imageUrl,
-  name,
+  name = '퀴즈',
   className,
-}: Pick<QuizButtonProps, 'OXType' | 'imageUrl' | 'name' | 'className'>) {
+}: ThumbnailProps) {
   return (
     <div
       className={cn(
-        'relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-8px',
-        className,
+        'relative flex aspect-square w-140px items-center justify-center overflow-hidden rounded-8px',
         OXType &&
-          (OXType === 'O' ? bgColor['blue10'] : bgColor['dangerDefault'])
+          (OXType === 'O' ? bgColor['blue10'] : bgColor['dangerDefault']),
+        className
       )}
     >
       {imageUrl && (

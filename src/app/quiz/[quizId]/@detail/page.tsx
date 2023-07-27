@@ -33,9 +33,9 @@ async function DetailPage({ params: { quizId } }: Props) {
         {title}
       </Text>
       <div className="mt-48px">
-        {oxImageUrl && (
+        {!isSubmitted && oxImageUrl && (
           <Thumbnail
-            className="mb-24px"
+            className="mb-24px w-full"
             imageUrl={oxImageUrl}
             name="OX퀴즈 설명"
           />
@@ -60,6 +60,21 @@ async function DetailPage({ params: { quizId } }: Props) {
                 name={button2.button.name}
               />
             </>
+          ) : isSubmitted ? (
+            <div className="flex flex-col items-center">
+              <Thumbnail OXType="O" />
+              <Text className="mt-20px " typo="headingL" color="gray10">
+                딩동댕! 정답이에요.
+              </Text>
+              <Text className="mt-2px " typo="bodyBold" color="blue10">
+                60% (600명)
+              </Text>
+              <Text className="mt-24px block" typo="body" color="white">
+                익숙한 경험에 따 작동되도록 기대하는 심리학 이론은 ‘제이콤의
+                법칙'이 많아요 어저고 저쩌고 어저고 저쩌고어저고 저쩌고어저고
+                저쩌고
+              </Text>
+            </div>
           ) : (
             <>
               <QuizButton

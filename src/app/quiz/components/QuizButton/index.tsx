@@ -23,7 +23,7 @@ export function QuizButton({
     <button className={clsx(className, 'flex flex-1 flex-col items-center')}>
       {(OXType || imageUrl) && (
         <Thumbnail
-          className="mb-24px"
+          className="mb-24px w-full"
           OXType={OXType}
           imageUrl={imageUrl}
           name={name}
