@@ -5,10 +5,7 @@ import { Button, ICON_URL, Input, Text, bgColor } from '@/common';
 
 const Nickname = () => {
   return (
-    <div
-      className="relative h-[calc(100%-54px)]"
-      style={{ paddingTop: '85px' }}
-    >
+    <div className="relative h-[calc(100%-54px)] pt-86px">
       <div
         className={clsx(
           bgColor['gray110'],
