@@ -61,7 +61,6 @@ export async function middleware(request: NextRequest) {
   });
 
   if (res.status === 200) {
-    // return NextResponse.next();
     return NextResponse.next({
       request: {
         headers: new Headers({ ...request.headers, isLogin: 'true' }),

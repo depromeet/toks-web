@@ -2,7 +2,7 @@ import { CommentType } from '@/app/quiz/models/comment';
 
 export const getCommentsByQuizId = async (quizId: string) => {
   const comments: CommentType[] = await fetch(
-    `https://api.tokstudy.com/api/v1/quizzes/${quizId}/comments?page=0&size=100`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/quizzes/${quizId}/comments?page=0&size=100`,
     { cache: 'no-store' }
   )
     .then((result) => result.json())
@@ -10,17 +10,28 @@ export const getCommentsByQuizId = async (quizId: string) => {
   return comments;
 };
 
+const getCookieMap = () => {
+  const cookieArray: string[][] = document.cookie
+    .split('; ')
+    .map((entry) => entry.split('='));
+
+  const iterableCookieArray: Array<readonly [string, string]> = cookieArray.map(
+    ([key, value]) => [key, value]
+  );
+
+  return new Map(iterableCookieArray);
+};
+
 export const postCommentByQuizId = async (quizId: string, comment: string) => {
-  const DUHYEON_TOKEN =
-    'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbmd1czA5MjdAbmF0ZS5jb20iLCJ1aWQiOjIsImlhdCI6MTY4ODIyNTcxNiwiaXNzIjoiMiIsImV4cCI6MTcxOTc2MTcxNn0.skBi7GdIbGeUAPv8D2ZKhTOov4kb0woQAtwnLFK2Hec';
+  const cookieMap = getCookieMap();
   const data: CommentType = await fetch(
-    `https://api.tokstudy.com/api/v1/quizzes/${quizId}/comments`,
+    `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/quizzes/${quizId}/comments`,
     {
       cache: 'no-store',
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-TOKS-AUTH-TOKEN': DUHYEON_TOKEN,
+        'X-TOKS-AUTH-TOKEN': cookieMap.get('accessToken') ?? '',
       },
       body: JSON.stringify({
         comment,
