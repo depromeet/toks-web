@@ -5,7 +5,7 @@ import { Button, ICON_URL, Input, Text, bgColor } from '@/common';
 
 const Nickname = () => {
   return (
-    <div className="h-main relative pt-86px">
+    <div className="relative h-main pt-86px">
       <div
         className={clsx(
           bgColor['gray110'],
