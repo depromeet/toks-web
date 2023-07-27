@@ -1,4 +1,5 @@
 import { CommentType } from '@/app/quiz/models/comment';
+import { getCookieMap } from '@/common';
 
 export const getCommentsByQuizId = async (quizId: string) => {
   const comments: CommentType[] = await fetch(
@@ -8,18 +9,6 @@ export const getCommentsByQuizId = async (quizId: string) => {
     .then((result) => result.json())
     .then((commentInfo) => commentInfo.data.content);
   return comments;
-};
-
-const getCookieMap = () => {
-  const cookieArray: string[][] = document.cookie
-    .split('; ')
-    .map((entry) => entry.split('='));
-
-  const iterableCookieArray: Array<readonly [string, string]> = cookieArray.map(
-    ([key, value]) => [key, value]
-  );
-
-  return new Map(iterableCookieArray);
 };
 
 export const postCommentByQuizId = async (quizId: string, comment: string) => {
