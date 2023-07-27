@@ -18,9 +18,9 @@ export function QuizCarousel({
   };
 
   const recommendQuizzes = quizRecommendModels.map(
-    ({ quiz, category, quizReplyHistoryCount, quizCommentCount }) => ({
+    ({ quiz, quizReplyHistoryCount, quizCommentCount }) => ({
       quizId: quiz.id,
-      categoryTitle: category.name,
+      tags: quiz.tags,
       quizDescription: quiz.title,
       images: Object.values(quiz.question.buttons)
         .slice(0, 1)
@@ -38,7 +38,7 @@ export function QuizCarousel({
         {recommendQuizzes.map(
           ({
             quizId,
-            categoryTitle,
+            tags,
             quizDescription,
             images,
             quizReplyHistoryCount,
@@ -47,7 +47,7 @@ export function QuizCarousel({
           }) => (
             <SwiperSlide key={quizId}>
               <QuizCard
-                categoryTitle={categoryTitle}
+                categoryTitle={tags.join(' ')}
                 quizDescription={quizDescription}
                 images={images}
                 sizeType="small"

@@ -1,6 +1,6 @@
-import { QuizRecommendModel } from '@/app/quiz/models/recommendation';
+import { QuizRecommendResponse } from '@/app/quiz/models/quiz';
 
 export interface QuizCarouselProps {
   className?: string;
-  quizRecommendModels: QuizRecommendModel[];
+  quizRecommendModels: QuizRecommendResponse[];
 }

@@ -1,5 +1,5 @@
 import { QuizCarousel } from '@/app/quiz/components';
-import { getRecommendationByQuizId } from '@/app/quiz/remotes/recommendation';
+import { getRecommendationByQuizId } from '@/app/quiz/remotes/quiz';
 import { Text } from '@/common';
 
 type Props = {
