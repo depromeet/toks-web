@@ -8,6 +8,7 @@ import { ProgressBar } from './ProgressBar';
 import { Thumbnail } from './Thumbnail';
 import { QuizButtonProps } from './type';
 
+export { Thumbnail };
 export function QuizButton({
   isSubmitted,
   isSelected = false,
@@ -22,7 +23,7 @@ export function QuizButton({
     <button className={clsx(className, 'flex flex-1 flex-col items-center')}>
       {(OXType || imageUrl) && (
         <Thumbnail
-          className="mb-24px w-full"
+          className="mb-24px"
           OXType={OXType}
           imageUrl={imageUrl}
           name={name}

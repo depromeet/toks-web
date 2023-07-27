@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { QuizButton } from '@/app/quiz/components';
+import { QuizButton, Thumbnail } from '@/app/quiz/components';
 import { getQuizDetailByQuizId } from '@/app/quiz/remotes/quiz';
 import { Text, bgColor } from '@/common';
 
@@ -23,6 +23,7 @@ async function DetailPage({ params: { quizId } }: Props) {
     },
     isSubmitted,
   } = await getQuizDetailByQuizId(quizId);
+
   return (
     <section className={clsx(bgColor['gray110'], 'mt-8px rounded-16px p-20px')}>
       <Text className="block" typo="captionBold" color="primaryDefault">
@@ -32,7 +33,13 @@ async function DetailPage({ params: { quizId } }: Props) {
         {title}
       </Text>
       <div className="mt-48px">
-        {oxImageUrl && '이미지 썸네일'}
+        {oxImageUrl && (
+          <Thumbnail
+            className="mb-24px"
+            imageUrl={oxImageUrl}
+            name="OX퀴즈 설명"
+          />
+        )}
         <div className="flex gap-16px">
           {quizType.startsWith('A_B_') ? (
             <>
@@ -55,8 +62,16 @@ async function DetailPage({ params: { quizId } }: Props) {
             </>
           ) : (
             <>
-              <QuizButton isSubmitted={isSubmitted} OXType="O" name="예" />
-              <QuizButton isSubmitted={isSubmitted} OXType="X" name="아니오" />
+              <QuizButton
+                isSubmitted={isSubmitted}
+                OXType={quizType === 'O_X_IMAGE' ? undefined : 'O'}
+                name="예"
+              />
+              <QuizButton
+                isSubmitted={isSubmitted}
+                OXType={quizType === 'O_X_IMAGE' ? undefined : 'X'}
+                name="아니오"
+              />
             </>
           )}
         </div>
@@ -64,11 +79,5 @@ async function DetailPage({ params: { quizId } }: Props) {
     </section>
   );
 }
-
-// type QuizType = 'AB' | 'OX';
-
-// function QuizSolveArea() {}
-
-// function QuizAnswerArea() {}
 
 export default DetailPage;
