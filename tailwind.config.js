@@ -37,6 +37,7 @@ module.exports = {
         ...generatorTailwindConfigList(100, 2),
       },
       height: {
+        main: 'calc(100% - 54px)',
         ...generatorTailwindConfigList(300, 2),
       },
       width: {
