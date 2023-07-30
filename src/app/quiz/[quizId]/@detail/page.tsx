@@ -21,14 +21,23 @@ async function DetailPage({ params: { quizId } }: Props) {
       },
       quizType,
     },
+    category: { name: categoryName },
     isSubmitted,
   } = await getQuizDetailByQuizId(quizId);
 
   return (
     <section className={clsx(bgColor['gray110'], 'mt-8px rounded-16px p-20px')}>
-      <Text className="block" typo="captionBold" color="primaryDefault">
-        {tags.join(' ')}
-      </Text>
+      <div className="flex gap-8px">
+        {[categoryName, ...tags].map((tagName, index) => (
+          <Text
+            key={`${tagName}-${index}`}
+            typo="captionBold"
+            color="primaryDefault"
+          >
+            {tagName}
+          </Text>
+        ))}
+      </div>
       <Text className="mt-12px block " typo="headingL" color="gray10">
         {title}
       </Text>
