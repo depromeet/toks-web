@@ -1,10 +1,9 @@
 'use client';
 
 import clsx from 'clsx';
-import Image from 'next/image';
-import { Children, HTMLAttributes, useState } from 'react';
+import { Children, useState } from 'react';
 
-import { ICON_URL, Text } from '@/common';
+import { Button } from '@/common';
 
 interface CommentListProps {
   children: React.ReactNode;
@@ -29,25 +28,15 @@ export function CommentList({ children }: CommentListProps) {
             'mt-8'
           )}
         >
-          <MoreViewButton onClick={() => setIsFold(false)} />
+          <Button
+            iconName="CHEVRON_DOWN"
+            onClick={() => setIsFold(false)}
+            aria-label="댓글 더보기 버튼"
+          >
+            댓글 더보기
+          </Button>
         </div>
       )}
     </div>
-  );
-}
-
-function MoreViewButton({ onClick }: HTMLAttributes<HTMLSpanElement>) {
-  return (
-    <button className="flex items-center gap-x-4px" onClick={onClick}>
-      <Text typo="body" color="gray10">
-        댓글 더보기
-      </Text>
-      <Image
-        src={ICON_URL.CHEVRON_DOWN}
-        alt="더보기 아이콘"
-        width={16}
-        height={16}
-      />
-    </button>
   );
 }

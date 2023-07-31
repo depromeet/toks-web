@@ -14,11 +14,15 @@ export const colors = {
     120: '#171717',
   },
 
+  blue: {
+    10: '#3E97FF',
+  },
+
   white: '#FFFFFF',
   success: '#39D878',
 
   danger: {
-    default: '#EB4852',
+    default: '#FF5B65',
     press: '#C63135',
   },
 

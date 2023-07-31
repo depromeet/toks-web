@@ -3,11 +3,9 @@
 import Image from 'next/image';
 import { forwardRef, useState } from 'react';
 
-import { ICON_URL } from '@/common/constants';
-import { cn } from '@/common/utils';
+import { ICON_URL, Text, cn, typography } from '@/common';
 
 import { InputProps } from './types';
-import { Text } from '../Text';
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   (
@@ -39,6 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             'align-center flex h-48px rounded-8px border-none bg-gray-100 px-14px py-0',
             'hover:border-2 hover:border-solid hover:border-white',
             'placeholder:text-gray-70',
+            typography['body'],
             {
               'border-2 border-solid border-primary-default': isFocus,
               'border-2 border-solid border-danger-default':
