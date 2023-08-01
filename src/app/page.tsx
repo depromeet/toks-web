@@ -2,14 +2,14 @@
 
 import { useRouter } from 'next/navigation';
 
-import { Text } from '@/common';
-import { FloatingButton } from '@/common/components/FloatingButton';
+import { QuizCarousel, Text } from '@/common';
+import { Tooltip } from '@/common/components/Tooltip';
 
 export default function Home() {
   const router = useRouter();
 
   return (
-    <div>
+    <div className="relative">
       <Text
         typo="headingL"
         color="success"
@@ -19,7 +19,12 @@ export default function Home() {
       >
         login
       </Text>
-      <FloatingButton />
+      <QuizCarousel className="mt-20px" />
+      <Tooltip message="관심있는 카테고리" isVisibleTooltip={true}>
+        <Text typo="headingL" color="success">
+          Tooltip
+        </Text>
+      </Tooltip>
     </div>
   );
 }

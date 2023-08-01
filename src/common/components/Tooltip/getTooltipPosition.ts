@@ -1,6 +1,5 @@
 import { RefObject } from 'react';
 
-// TODO: right 버전 추가
 export const getTooltipPosition = (ref: RefObject<HTMLDivElement>, gap = 5) => {
   const { left: tooltipLeft, top: tooltipTop } =
     ref.current?.getBoundingClientRect() || {
@@ -9,11 +8,11 @@ export const getTooltipPosition = (ref: RefObject<HTMLDivElement>, gap = 5) => {
     };
 
   const tooltipContentHeight = ref.current?.clientHeight ?? 0;
-  const tooltipContentWidth = ref.current?.clientWidth ?? 0;
+  //   const tooltipContentWidth = ref.current?.clientWidth ?? 0;
 
-  const left = tooltipLeft + tooltipContentWidth / 2;
+  const left = tooltipLeft;
 
-  const tooltipArrow = tooltipTop + tooltipContentHeight + 10;
+  const tooltipArrow = tooltipTop + tooltipContentHeight + 5;
   const top = tooltipArrow + gap;
 
   return {
