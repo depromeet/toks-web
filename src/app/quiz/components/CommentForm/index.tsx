@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useRef } from 'react';
 
 import { postCommentByQuizId } from '@/app/quiz/remotes/comment';
 import { Button, Input } from '@/common';
@@ -12,26 +12,30 @@ interface CommentFormProps {
 }
 
 export function CommentForm({ commentCount, quizId }: CommentFormProps) {
-  const [comment, setComment] = useState('');
+  const commentInputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
+
   return (
     <form
       className="flex shrink-0 flex-col"
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        setComment('');
-        postCommentByQuizId(quizId, comment).then(() => router.refresh());
+        if (commentInputRef.current) {
+          await postCommentByQuizId(quizId, commentInputRef.current.value);
+          await fetch('http://localhost:3000/api/revalidate?tag=quiz-comment');
+          commentInputRef.current.value = '';
+          router.refresh();
+        }
       }}
     >
       <Input
         required
+        ref={commentInputRef}
         className="mt-6px"
         type="text"
         placeholder="댓글을 남겨보세요."
-        value={comment}
         label={`댓글 ${commentCount}`}
         aria-label="댓글 작성 입력"
-        onChange={(e) => setComment(e.target.value)}
       />
       <div className="mt-12px flex justify-end">
         <Button
