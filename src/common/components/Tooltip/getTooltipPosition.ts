@@ -8,9 +8,9 @@ export const getTooltipPosition = (ref: RefObject<HTMLDivElement>, gap = 5) => {
     };
 
   const tooltipContentHeight = ref.current?.clientHeight ?? 0;
-  //   const tooltipContentWidth = ref.current?.clientWidth ?? 0;
+  const tooltipContentWidth = ref.current?.clientWidth ?? 0;
 
-  const left = tooltipLeft;
+  const left = tooltipLeft + tooltipContentWidth / 2 - 40;
 
   const tooltipArrow = tooltipTop + tooltipContentHeight + 5;
   const top = tooltipArrow + gap;

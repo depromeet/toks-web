@@ -20,7 +20,7 @@ export function TooltipContent({
         {message}
       </Text>
       <div
-        className="absolute -top-10px left-1/4 
+        className="absolute -top-10px left-40px 
      h-0 w-0
      border-x-5px border-b-10px
      border-x-transparent border-b-gray-90

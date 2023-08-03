@@ -21,8 +21,13 @@ export default function Home() {
       </Text>
       <QuizCarousel className="mt-20px" />
       <Tooltip message="관심있는 카테고리" isVisibleTooltip={true}>
+        <Text typo="subheading" color="success">
+          Tooltips!!
+        </Text>
+      </Tooltip>
+      <Tooltip message="관심있는" isVisibleTooltip={true}>
         <Text typo="headingL" color="success">
-          Tooltip
+          ?
         </Text>
       </Tooltip>
     </div>
