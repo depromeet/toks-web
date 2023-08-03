@@ -10,7 +10,7 @@ export function FloatingButton({
   return (
     <button
       className={clsx(
-        'z-99 flex h-50px w-50px flex-1 items-center justify-center rounded-full border-1px border-gray-70 bg-gray-90 hover:cursor-pointer',
+        'z-99 fixed bottom-56px right-26px flex h-50px w-50px flex-1 items-center justify-center rounded-full border-1px border-gray-70 bg-gray-90 hover:cursor-pointer',
         className
       )}
       {...rest}
