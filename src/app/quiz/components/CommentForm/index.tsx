@@ -21,10 +21,15 @@ export function CommentForm({ commentCount, quizId }: CommentFormProps) {
       onSubmit={async (e) => {
         e.preventDefault();
         if (commentInputRef.current) {
-          await postCommentByQuizId(quizId, commentInputRef.current.value);
-          await fetch('http://localhost:3000/api/revalidate?tag=quiz-comment');
-          commentInputRef.current.value = '';
-          router.refresh();
+          try {
+            await postCommentByQuizId(quizId, commentInputRef.current.value);
+            await fetch(
+              'http://localhost:3000/api/revalidate?tag=quiz-comment'
+            );
+            commentInputRef.current.value = '';
+          } finally {
+            router.refresh();
+          }
         }
       }}
     >
