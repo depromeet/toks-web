@@ -10,9 +10,9 @@ type Props = {
 
 async function RecommendatonPage({ params: { quizId } }: Props) {
   const quizRecommendModels = await getRecommendationByQuizId(quizId);
-  const isEmptyQuizzes = quizRecommendModels.length === 0;
+  const isQuizzesExist = quizRecommendModels.length !== 0;
   return (
-    isEmptyQuizzes && (
+    isQuizzesExist && (
       <div className="mt-64px">
         <Text className="inline-block" typo="subheadingBold" color="gray10">
           더 많은 퀴즈를 확인해보세요

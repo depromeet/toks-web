@@ -22,10 +22,7 @@ export function QuizCarousel({
       quizId: quiz.id,
       tags: quiz.tags,
       quizDescription: quiz.title,
-      images: Object.values(quiz.question.buttons)
-        .slice(0, 1)
-        .map((button) => button.imageUrl ?? '')
-        .filter((url) => url !== ''),
+      image: quiz.question.buttons['1'].imageUrl,
       quizReplyHistoryCount,
       quizCommentCount,
       quizType: quiz.quizType,
@@ -40,7 +37,7 @@ export function QuizCarousel({
             quizId,
             tags,
             quizDescription,
-            images,
+            image,
             quizReplyHistoryCount,
             quizCommentCount,
             quizType,
@@ -49,7 +46,7 @@ export function QuizCarousel({
               <QuizCard
                 categoryTitle={tags.join(' ')}
                 quizDescription={quizDescription}
-                images={images}
+                images={image ? [image] : []}
                 sizeType="small"
                 likeCount={quizReplyHistoryCount}
                 commentCount={quizCommentCount}
