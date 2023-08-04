@@ -61,7 +61,11 @@ export async function middleware(request: NextRequest) {
   });
 
   if (res.status === 200) {
-    return NextResponse.next();
+    return NextResponse.next({
+      request: {
+        headers: new Headers({ ...request.headers, isLogin: 'true' }),
+      },
+    });
   } else if (res.status === 401) {
     try {
       // refreshToken으로 accessToken refetch하는 로직
@@ -83,6 +87,11 @@ export async function middleware(request: NextRequest) {
       console.log(error);
     }
   }
+  return NextResponse.next({
+    request: {
+      headers: new Headers({ ...request.headers, isLogin: 'false' }),
+    },
+  });
 }
 
 export const config = {

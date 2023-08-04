@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { QuizCarousel, Text } from '@/common';
+import { Text } from '@/common';
 import { FloatingButton } from '@/common/components/FloatingButton';
 
 export default function Home() {
@@ -20,7 +20,6 @@ export default function Home() {
         login
       </Text>
       <FloatingButton />
-      <QuizCarousel className="mt-20px" />
     </div>
   );
 }

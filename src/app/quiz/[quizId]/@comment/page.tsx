@@ -1,3 +1,5 @@
+import { headers } from 'next/headers';
+
 import { Comment, CommentForm, GetStartedButton } from '@/app/quiz/components';
 import { getCommentsByQuizId } from '@/app/quiz/remotes/comment';
 
@@ -7,12 +9,21 @@ type Props = {
   };
 };
 
+const getIsLogin = () => {
+  const headerList = headers();
+  const isLogin = headerList.get('isLogin') === 'true';
+  return isLogin;
+};
+
 async function CommentPage({ params: { quizId } }: Props) {
   const comments = await getCommentsByQuizId(quizId);
   const isEmptyComment = comments.length === 0;
+  const isLogin = getIsLogin();
   return (
     <div className="mt-32px flex flex-col gap-32px">
-      <CommentForm quizId={quizId} commentCount={comments.length} />
+      {isLogin && (
+        <CommentForm quizId={quizId} commentCount={comments.length} />
+      )}
       {!isEmptyComment && (
         <Comment.List>
           {comments.map(({ id, nickname, content, likeCount, createdAt }) => (
@@ -28,7 +39,7 @@ async function CommentPage({ params: { quizId } }: Props) {
           ))}
         </Comment.List>
       )}
-      <GetStartedButton isCommentEmpty={isEmptyComment} />
+      {!isLogin && <GetStartedButton isCommentEmpty={isEmptyComment} />}
     </div>
   );
 }

@@ -6,7 +6,7 @@ type Props = {
 
 function QuizIdLayout({ detail, comment, recommendation }: Props) {
   return (
-    <div>
+    <div className="pb-80px">
       {detail}
       {comment}
       {recommendation}
