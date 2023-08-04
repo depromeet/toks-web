@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { Text } from '@/common';
+import { FloatingButton } from '@/common/components/FloatingButton';
 
 export default function Home() {
   const router = useRouter();
@@ -18,6 +19,7 @@ export default function Home() {
       >
         login
       </Text>
+      <FloatingButton />
     </div>
   );
 }
