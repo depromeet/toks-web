@@ -10,16 +10,19 @@ type Props = {
 
 async function RecommendatonPage({ params: { quizId } }: Props) {
   const quizRecommendModels = await getRecommendationByQuizId(quizId);
+  const isEmptyQuizzes = quizRecommendModels.length === 0;
   return (
-    <div className="mt-64px">
-      <Text className="inline-block" typo="subheadingBold" color="gray10">
-        더 많은 퀴즈를 확인해보세요
-      </Text>
-      <QuizCarousel
-        className="mt-16px"
-        quizRecommendModels={quizRecommendModels}
-      />
-    </div>
+    isEmptyQuizzes && (
+      <div className="mt-64px">
+        <Text className="inline-block" typo="subheadingBold" color="gray10">
+          더 많은 퀴즈를 확인해보세요
+        </Text>
+        <QuizCarousel
+          className="mt-16px"
+          quizRecommendModels={quizRecommendModels}
+        />
+      </div>
+    )
   );
 }
 
