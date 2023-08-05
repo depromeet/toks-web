@@ -28,7 +28,7 @@ export function Text({
   return createElement(
     as,
     {
-      className: cn(`${textColor[color]} ${typography[typo]}`, className),
+      className: `${textColor[color]} ${typography[typo]} ${className}`,
       ...rest,
     },
     [children]
