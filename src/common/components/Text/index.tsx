@@ -1,12 +1,6 @@
 import { HTMLAttributes, ReactNode, createElement } from 'react';
 
-import {
-  KeyOfColor,
-  KeyOfTypography,
-  cn,
-  textColor,
-  typography,
-} from '@/common';
+import { KeyOfColor, KeyOfTypography, textColor, typography } from '@/common';
 
 import { TEXT_TAGS } from './constants';
 
@@ -28,7 +22,7 @@ export function Text({
   return createElement(
     as,
     {
-      className: cn(`${textColor[color]} ${typography[typo]}`, className),
+      className: `${textColor[color]} ${typography[typo]} ${className}`,
       ...rest,
     },
     [children]
