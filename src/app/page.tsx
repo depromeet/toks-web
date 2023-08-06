@@ -20,14 +20,13 @@ export default function Home() {
         login
       </Text>
       <QuizCarousel className="mt-20px" />
-      <Tooltip message="관심있는 카테고리" isVisibleTooltip={true}>
+      <Tooltip
+        message="관심있는 카테고리"
+        isVisibleTooltip={true}
+        isFirstRender={true}
+      >
         <Text typo="subheading" color="success">
           Tooltips!!
-        </Text>
-      </Tooltip>
-      <Tooltip message="관심있는" isVisibleTooltip={true}>
-        <Text typo="headingL" color="success">
-          ?
         </Text>
       </Tooltip>
     </div>

@@ -1,3 +1,5 @@
+'use-client';
+
 import { createPortal } from 'react-dom';
 
 export const TooltipPortal = ({ children }: { children: React.ReactNode }) => {
