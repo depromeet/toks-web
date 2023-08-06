@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { QuizCarousel, Text } from '@/common';
+import { Text } from '@/common';
 import { Tooltip } from '@/common/components/Tooltip';
 
 export default function Home() {
@@ -19,7 +19,6 @@ export default function Home() {
       >
         login
       </Text>
-      <QuizCarousel className="mt-20px" />
       <Tooltip
         message="관심있는 카테고리"
         isVisibleTooltip={true}
