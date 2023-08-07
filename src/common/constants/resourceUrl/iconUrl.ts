@@ -12,6 +12,8 @@ export const ICON_URL = {
   THUMBS_UP: 'https://toks-web-assets.s3.amazonaws.com/ic_thumbs-up.svg',
   THUMBS_UP_FILLED:
     'https://toks-web-assets.s3.amazonaws.com/ic_thumbs-up-filled.svg',
+  CHEVRON_UP:
+    'https://toks-web-assets.s3.amazonaws.com/chevron/ic_chevron-up.svg',
   CHEVRON_DOWN:
     'https://toks-web-assets.s3.amazonaws.com/chevron/ic_chevron-down.svg',
   CHEVRON_RIGHT:
