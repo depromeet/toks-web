@@ -1,10 +1,9 @@
 import './globals.css';
 import clsx from 'clsx';
-import { Inter } from 'next/font/google';
+import localFont from 'next/font/local';
 
 import { bgColor } from '@/common/foundation';
-
-const inter = Inter({ subsets: ['latin'] });
+import QueryProvider from '@/common/providers/QueryProvider';
 
 export const metadata = {
   title: 'Create Next App',
@@ -18,8 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={clsx(inter.className, bgColor['gray120'])}>
-        <StyledLayout>{children}</StyledLayout>
+      <body className={clsx(pretendard.className, bgColor['gray120'])}>
+        <QueryProvider>
+          <StyledLayout>{children}</StyledLayout>
+        </QueryProvider>
         <div id="portal" />
       </body>
     </html>
@@ -29,3 +30,24 @@ export default function RootLayout({
 function StyledLayout({ children }: { children: React.ReactNode }) {
   return <div className={clsx('px-20px', 'h-screen')}>{children}</div>;
 }
+
+const pretendard = localFont({
+  src: './fonts/PretendardVariable.woff2',
+  display: 'swap',
+  fallback: [
+    'Pretendard',
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'system-ui',
+    'Roboto',
+    'Helvetica Neue',
+    'Segoe UI',
+    'Apple SD Gothic Neo',
+    'Noto Sans KR',
+    'Malgun Gothic',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'sans-serif',
+  ],
+});
