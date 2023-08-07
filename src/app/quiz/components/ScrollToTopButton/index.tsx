@@ -10,7 +10,7 @@ export function ScrollToTopButton() {
     <button
       className={clsx(
         bgColor['gray20'],
-        'flex h-40px w-40px items-center justify-center rounded-40px'
+        'fixed bottom-36px right-20px z-10 flex h-40px w-40px items-center justify-center rounded-40px'
       )}
     >
       <Image
