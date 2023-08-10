@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import React, { useRef } from 'react';
 
 import { QuizCard, Text } from '@/common';
@@ -9,6 +10,7 @@ import { useQuizListInfinityQuery } from '@/queries/useQuizListInfinityQuery';
 import { CARD_LIST_QUERY_DEFAULT } from '../constants';
 
 export const CardList = () => {
+  const router = useRouter();
   const observeBox = useRef<HTMLDivElement>(null);
   const {
     data = CARD_LIST_QUERY_DEFAULT,
@@ -40,6 +42,7 @@ export const CardList = () => {
           quizType={images.length === 0 ? 'ox' : 'default'}
           sizeType="large"
           images={images}
+          handleCardClick={() => router.push(`/quiz/${quiz.id}`)}
           {...quiz}
         />
       ))}

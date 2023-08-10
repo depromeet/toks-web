@@ -6,4 +6,5 @@ export interface QuizCardProps {
   images?: string[];
   sizeType?: 'large' | 'small';
   quizType?: 'default' | 'ox';
+  handleCardClick?: VoidFunction;
 }
