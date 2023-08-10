@@ -18,5 +18,9 @@ export const getQuizList = async ({
 
   const searchParams = new URLSearchParams(queryParams).toString();
 
-  return await http.get<GetQuizListResponse>(`api/v1/quizzes?${searchParams}`);
+  const { data } = await http.get<GetQuizListResponse>(
+    `api/v1/quizzes?${searchParams}`
+  );
+
+  return data;
 };

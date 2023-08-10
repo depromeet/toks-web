@@ -7,11 +7,13 @@ export interface GetQuizListRequest {
 }
 
 export interface GetQuizListResponse {
-  content: QuizContent[];
-  page: number;
-  size: number;
-  totalPage: number;
-  totalCount: number;
+  data: {
+    content: QuizContent[];
+    page: number;
+    size: number;
+    totalPage: number;
+    totalCount: number;
+  };
 }
 
 export interface QuizCategory {

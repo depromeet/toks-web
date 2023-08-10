@@ -2,7 +2,7 @@
 
 import React, { useRef } from 'react';
 
-import { QuizCard } from '@/common';
+import { QuizCard, Text } from '@/common';
 import { useIntersectionObserver } from '@/common/hooks';
 import { useQuizListInfinityQuery } from '@/queries/useQuizListInfinityQuery';
 
@@ -27,8 +27,21 @@ export const CardList = () => {
 
   return (
     <div className="flex flex-col gap-8px">
-      {quizList.map((quiz) => (
-        <QuizCard key={quiz.id} quizType="default" sizeType="large" {...quiz} />
+      {quizList?.length === 0 && (
+        <div className="flex h-40px flex-col items-center justify-center">
+          <Text typo="bodyBold" color="gray80">
+            퀴즈가 없습니다.
+          </Text>
+        </div>
+      )}
+      {quizList?.map(({ images, ...quiz }) => (
+        <QuizCard
+          key={quiz.id}
+          quizType={images.length === 0 ? 'ox' : 'default'}
+          sizeType="large"
+          images={images}
+          {...quiz}
+        />
       ))}
       {hasNextPage && <div ref={observeBox} />}
     </div>
