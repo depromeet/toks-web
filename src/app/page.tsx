@@ -3,13 +3,13 @@
 import { useRouter } from 'next/navigation';
 
 import { Text } from '@/common';
-import { FloatingButton } from '@/common/components/FloatingButton';
+import { Tooltip } from '@/common/components/Tooltip';
 
 export default function Home() {
   const router = useRouter();
 
   return (
-    <div>
+    <div className="relative">
       <Text
         typo="headingL"
         color="success"
@@ -19,7 +19,15 @@ export default function Home() {
       >
         login
       </Text>
-      <FloatingButton />
+      <Tooltip
+        message="관심있는 카테고리"
+        isVisibleTooltip={true}
+        isFirstRender={true}
+      >
+        <Text typo="subheading" color="success">
+          Tooltips!!
+        </Text>
+      </Tooltip>
     </div>
   );
 }
