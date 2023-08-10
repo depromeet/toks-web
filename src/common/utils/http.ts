@@ -1,11 +1,11 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
+import { getCookie } from 'cookies-next';
 
 import { API_URL } from '../constants';
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
-  withCredentials: true,
 });
 
 export interface HttpClient extends AxiosInstance {
@@ -34,4 +34,11 @@ export interface HttpClient extends AxiosInstance {
 
 export const http: HttpClient = axiosInstance;
 
+http.interceptors.request.use((config) => {
+  const accessToken = getCookie('accessToken');
+  if (accessToken) {
+    config.headers['X-TOKS-AUTH_TOKEN'] = `${accessToken}`;
+  }
+  return config;
+});
 http.interceptors.response.use((response) => response.data);
