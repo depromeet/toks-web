@@ -5,12 +5,14 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 
 import { ICON_URL } from '@/common/constants';
+import { useAuth } from '@/common/hooks';
 
 import { SSRSuspense } from '../SSRSuspense';
 import { Text } from '../Text';
 
-export const Appbar = ({ isLogin = false }: { isLogin?: boolean }) => {
+export const Appbar = () => {
   const router = useRouter();
+  const { isLogin } = useAuth();
 
   // TODO: useAppbar hook 구현
   return (
