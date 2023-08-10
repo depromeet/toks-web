@@ -9,6 +9,7 @@ import { useAuth } from '@/common/hooks';
 
 import { SSRSuspense } from '../SSRSuspense';
 import { Text } from '../Text';
+import { Tooltip } from '../Tooltip';
 
 export const Appbar = () => {
   const router = useRouter();
@@ -30,14 +31,16 @@ export const Appbar = () => {
               alt="toks 로고"
             />
             {/* TODO: POPOVER 구현 */}
-            <button type="button">
-              <Image
-                src={ICON_URL.CHEVRON_DOWN}
-                alt="카테고리 드롭다운"
-                width={24}
-                height={24}
-              />
-            </button>
+            <Tooltip isFirstRender message="관심있는 카테고리를 선택해보세요">
+              <button type="button">
+                <Image
+                  src={ICON_URL.CHEVRON_DOWN}
+                  alt="카테고리 드롭다운"
+                  width={24}
+                  height={24}
+                />
+              </button>
+            </Tooltip>
           </div>
           <button
             className="flex items-center"
