@@ -1,9 +1,23 @@
+'use client';
+
 import clsx from 'clsx';
 import Image from 'next/image';
 
 import { Button, ICON_URL, Input, Text, bgColor } from '@/common';
 
+import { useCreateNicknameForm } from './hooks/useCreateNicknameForm';
+
 const Nickname = () => {
+  const {
+    register,
+    errors,
+    isDisabled,
+    isMaxLength,
+    isMinLength,
+    isRequiredText,
+    hasExclamationMark,
+  } = useCreateNicknameForm();
+
   return (
     <div className="relative h-main pt-86px">
       <div
@@ -22,7 +36,18 @@ const Nickname = () => {
           <Text typo="headingM" color="white">
             내 이름은 똑스야 너의 이름은 뭐니?
           </Text>
-          <Input autoFocus className="mt-40px" label="닉네임 입력" />
+          <Input
+            {...register('nickname', {
+              required: isRequiredText(),
+              minLength: isMinLength(2),
+              maxLength: isMaxLength(6),
+              pattern: hasExclamationMark(/^[a-zA-Z0-9가-힣]+$/i),
+            })}
+            autoFocus
+            className="mt-40px"
+            label="닉네임 입력"
+            errorMessage={errors.nickname?.message}
+          />
         </div>
       </div>
       <Button
@@ -30,6 +55,7 @@ const Nickname = () => {
         size="L"
         typo="subheadingBold"
         backgroundColor="primaryDefault"
+        disabled={isDisabled}
       >
         완료
       </Button>
