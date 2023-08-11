@@ -2,21 +2,23 @@
 
 import clsx from 'clsx';
 import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { ICON_URL, bgColor } from '@/common';
+import { useThrottle } from '@/common/hooks';
 
 export function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
-  const handleScroll = useCallback(() => {
+  const handleScroll = useThrottle(() => {
+    console.log('hi');
     if (window.scrollY > 1000 && !isVisible) {
       setIsVisible(true);
     }
     if (window.scrollY < 1000 && isVisible) {
       setIsVisible(false);
     }
-  }, [isVisible]);
+  }, 300);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
