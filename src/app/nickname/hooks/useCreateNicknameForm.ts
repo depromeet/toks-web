@@ -1,5 +1,11 @@
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
+
+import { isToksError } from '@/common/utils/http';
+
+import { postNickname } from '../remotes/nickname';
 
 export interface CheckNicknameFormValues {
   nickname: string;
@@ -12,6 +18,8 @@ export const DEFAULT_NICKNAME_VALUE: CheckNicknameFormValues = {
 export const useCreateNicknameForm = () => {
   const {
     register,
+    getValues,
+    setError,
     formState: { isDirty, isValid, errors },
   } = useForm<CheckNicknameFormValues>({
     mode: 'onChange',
@@ -19,6 +27,7 @@ export const useCreateNicknameForm = () => {
   });
 
   const isDisabled = !isDirty || !isValid;
+  const router = useRouter();
 
   const isMaxLength = useCallback((maxLength: number) => {
     return {
@@ -41,6 +50,20 @@ export const useCreateNicknameForm = () => {
     };
   }, []);
 
+  const { mutate: nicknameMutation } = useMutation(async () => {
+    const nickname = getValues('nickname');
+    try {
+      const res = await postNickname(nickname);
+      if (res !== null) {
+        router.replace('/toks-main');
+      }
+    } catch (err: unknown) {
+      if (isToksError(err)) {
+        setError('nickname', { message: '이미 존재하는 닉네임입니다.' });
+      }
+    }
+  });
+
   const isRequiredText = useCallback(() => '닉네임은 2-10글자여야 합니다.', []);
 
   return {
@@ -49,6 +72,7 @@ export const useCreateNicknameForm = () => {
     isMinLength,
     isRequiredText,
     hasExclamationMark,
+    nicknameMutation,
     isDisabled,
     errors,
   };
