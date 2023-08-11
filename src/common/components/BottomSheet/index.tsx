@@ -1,27 +1,25 @@
 'use client';
 
 import clsx from 'clsx';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 
 import { useClickAway } from '@/common/hooks/useClickAway';
 
 import { BottomSheetProps } from './types';
-import { PureModal } from '../PurePortal';
+import { GlobalPortal } from '../GlobalPortal';
 
 export const BottomSheet = ({
   isShow,
   children,
   onClose,
-  ...rest
-}: BottomSheetProps) => {
+}: PropsWithChildren<BottomSheetProps>) => {
   const bottomSheetContentRef = useClickAway({
     callback: () => {
       onClose();
     },
   });
-
   return (
-    <PureModal isShow={isShow} {...rest}>
+    <GlobalPortal.Consumer>
       <div
         ref={bottomSheetContentRef}
         className={clsx(
@@ -33,6 +31,6 @@ export const BottomSheet = ({
       >
         {children}
       </div>
-    </PureModal>
+    </GlobalPortal.Consumer>
   );
 };

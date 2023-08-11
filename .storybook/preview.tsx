@@ -1,6 +1,7 @@
 import '../src/app/globals.css';
 import React from 'react';
 import type { Preview } from '@storybook/react';
+import { GlobalPortal } from '../src/common/components/GlobalPortal';
 
 const preview: Preview = {
   parameters: {
@@ -16,10 +17,9 @@ const preview: Preview = {
     // Adds theme switching support.
     // NOTE: requires setting "darkMode" to "class" in your tailwind config
     (Story) => (
-      <>
+      <GlobalPortal.Provider>
         <Story />
-        <div id="portal" />
-      </>
+      </GlobalPortal.Provider>
     ),
   ],
 };
