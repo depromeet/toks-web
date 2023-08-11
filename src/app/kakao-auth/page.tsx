@@ -1,15 +1,18 @@
 'use client';
 
-import { deleteCookie, setCookie } from 'cookies-next';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+import { useUserInfoQuery } from '@/queries';
 
 const KakaoAuth = () => {
   const params = useSearchParams();
   const router = useRouter();
+  const [accessToken, setAccessToken] = useState<string | null>('');
 
   useEffect(() => {
-    const accessToken = params.get('accessToken');
+    setAccessToken(params.get('accessToken'));
     const refreshToken = params.get('refreshToken');
 
     if (accessToken && refreshToken) {
@@ -17,9 +20,13 @@ const KakaoAuth = () => {
       deleteCookie('refreshToken');
       setCookie('accessToken', accessToken);
       setCookie('refreshToken', refreshToken);
-      router.push('/nickname');
+
+      // router.push('/nickname');
     }
-  }, [params, router]);
+  }, [params, router, accessToken]);
+
+  const { data: user } = useUserInfoQuery(accessToken as string);
+  console.log(user);
 
   return null;
 };

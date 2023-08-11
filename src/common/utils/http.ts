@@ -37,7 +37,7 @@ export const http: HttpClient = axiosInstance;
 http.interceptors.request.use((config) => {
   const accessToken = getCookie('accessToken');
   if (accessToken) {
-    config.headers['X-TOKS-AUTH_TOKEN'] = `${accessToken}`;
+    config.headers['X-TOKS-AUTH-TOKEN'] = `${accessToken}`;
   }
   return config;
 });
