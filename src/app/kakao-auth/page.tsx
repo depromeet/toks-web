@@ -1,10 +1,11 @@
 'use client';
 
-import { deleteCookie, getCookie, setCookie } from 'cookies-next';
+import { useQuery } from '@tanstack/react-query';
+import { deleteCookie, setCookie } from 'cookies-next';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { useUserInfoQuery } from '@/queries';
+import { getUserInfo } from '@/queries';
 
 const KakaoAuth = () => {
   const params = useSearchParams();
@@ -25,8 +26,22 @@ const KakaoAuth = () => {
     }
   }, [params, router, accessToken]);
 
-  const { data: user } = useUserInfoQuery(accessToken as string);
-  console.log(user);
+  const { data: user, isError } = useQuery(
+    ['userInfo', accessToken],
+    async () => {
+      try {
+        return await getUserInfo();
+      } catch (err: unknown) {
+        if (err.status === 404) {
+          router.replace('/nickname');
+        }
+      }
+    }
+  );
+
+  if (user && !isError) {
+    router.replace('/toks-main');
+  }
 
   return null;
 };
