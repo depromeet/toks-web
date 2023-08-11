@@ -22,8 +22,6 @@ const KakaoAuth = () => {
       deleteCookie('refreshToken');
       setCookie('accessToken', accessToken);
       setCookie('refreshToken', refreshToken);
-
-      // router.push('/nickname');
     }
   }, [params, router, accessToken]);
 
