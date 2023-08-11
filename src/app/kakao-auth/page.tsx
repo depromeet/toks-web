@@ -5,6 +5,7 @@ import { deleteCookie, setCookie } from 'cookies-next';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+import { isToksError } from '@/common/utils/http';
 import { getUserInfo } from '@/queries';
 
 const KakaoAuth = () => {
@@ -32,7 +33,7 @@ const KakaoAuth = () => {
       try {
         return await getUserInfo();
       } catch (err: unknown) {
-        if (err.status === 404) {
+        if (isToksError(err) && err.status === 404) {
           router.replace('/nickname');
         }
       }
