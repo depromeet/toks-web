@@ -1,3 +1,5 @@
+'use client';
+
 import { throttle } from 'lodash';
 import { useCallback, useEffect, useMemo } from 'react';
 
