@@ -7,11 +7,11 @@ import { isToksError } from '@/common/utils/http';
 
 import { postNickname } from '../remotes/nickname';
 
-export interface CheckNicknameFormValues {
+interface CheckNicknameFormValues {
   nickname: string;
 }
 
-export const DEFAULT_NICKNAME_VALUE: CheckNicknameFormValues = {
+const DEFAULT_NICKNAME_VALUE: CheckNicknameFormValues = {
   nickname: '',
 };
 
