@@ -16,6 +16,10 @@ export const ICON_URL = {
     'https://toks-web-assets.s3.amazonaws.com/chevron/ic_chevron-down.svg',
   CHEVRON_RIGHT:
     'https://toks-web-assets.s3.amazonaws.com/chevron/ic_chevron-right.svg',
+  CHEVRON_LEFT:
+    'https://toks-web-assets.s3.amazonaws.com/chevron/ic_chevron-left.svg',
+  CHEVRON_LEFT_BIG:
+    'https://toks-web-assets.s3.amazonaws.com/chevron/ic_chevron-left-big.svg',
   BLUR_BACKGROUND:
     'data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mOsrwcAAYMBABbFvRQAAAAASUVORK5CYII=',
   DANGER: 'https://toks-web-assets.s3.amazonaws.com/legacy/ic-danger.svg',

@@ -1,5 +1,11 @@
+import { BackHeader } from './components/BackHeader';
+
 const MyPage = () => {
-  return <h1>hi</h1>;
+  return (
+    <div>
+      <BackHeader />
+    </div>
+  );
 };
 
 export default MyPage;
