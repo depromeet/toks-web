@@ -64,7 +64,7 @@ export const useCreateNicknameForm = () => {
     }
   });
 
-  const isRequiredText = useCallback(() => '닉네임은 2-10글자여야 합니다.', []);
+  const isRequiredText = useCallback(() => '닉네임은 2-6글자여야 합니다.', []);
 
   return {
     register,
