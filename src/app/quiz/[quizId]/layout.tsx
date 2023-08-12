@@ -1,4 +1,4 @@
-import { ScrollToTopButton } from '../components';
+import { QuizProvider, ScrollToTopButton } from '@/app/quiz/components';
 
 type Props = {
   detail: React.ReactNode;
@@ -9,10 +9,12 @@ type Props = {
 function QuizIdLayout({ detail, comment, recommendation }: Props) {
   return (
     <div className="pb-80px">
-      {detail}
-      {comment}
-      {recommendation}
-      <ScrollToTopButton />
+      <QuizProvider>
+        {detail}
+        {comment}
+        {recommendation}
+        <ScrollToTopButton />
+      </QuizProvider>
     </div>
   );
 }

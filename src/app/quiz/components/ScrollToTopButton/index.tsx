@@ -4,14 +4,15 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
+import { useCommentListRef } from '@/app/quiz/hooks/useCommentListRef';
 import { ICON_URL, bgColor } from '@/common';
 import { useThrottle } from '@/common/hooks';
 
 export function ScrollToTopButton() {
+  const commentListRef = useCommentListRef();
   const [isVisible, setIsVisible] = useState(false);
 
   const handleScroll = useThrottle(() => {
-    console.log('hi');
     if (window.scrollY > 1000 && !isVisible) {
       setIsVisible(true);
     }
@@ -26,6 +27,7 @@ export function ScrollToTopButton() {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll]);
+
   return (
     <button
       className={clsx(
@@ -33,7 +35,10 @@ export function ScrollToTopButton() {
         'fixed bottom-36px right-20px z-10 flex h-40px w-40px items-center justify-center rounded-40px'
       )}
       onClick={() => {
-        window.scrollTo(0, 0);
+        if (commentListRef.current) {
+          (commentListRef.current as HTMLElement).scrollIntoView();
+          window.scrollBy(0, -54);
+        }
       }}
       style={{
         opacity: isVisible ? 1 : 0,
