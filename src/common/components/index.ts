@@ -8,3 +8,7 @@ export * from './Avatar';
 export * from './Button';
 export * from './Tab';
 export * from './Input';
+export * from './FloatingButton';
+export * from './Tooltip';
+export * from './SSRSuspense';
+export * from './GlobalPortal';

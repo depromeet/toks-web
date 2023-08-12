@@ -1,5 +1,4 @@
-import { PureModalProps } from '../PurePortal/types';
-
-export type BottomSheetProps = PureModalProps & {
+export interface BottomSheetProps {
+  isShow: boolean;
   onClose: VoidFunction;
-};
+}

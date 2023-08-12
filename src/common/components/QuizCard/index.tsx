@@ -15,6 +15,7 @@ export const QuizCard = ({
   commentCount = 0,
   sizeType = 'large',
   quizType = 'default',
+  handleCardClick,
 }: QuizCardProps) => {
   const isSmall = sizeType === 'small';
   const isOX = quizType === 'ox';
@@ -77,6 +78,8 @@ export const QuizCard = ({
 
   return (
     <div
+      role="button"
+      onClick={handleCardClick}
       className={clsx(
         'flex w-full min-w-180px justify-between gap-20px rounded-12px bg-gray-110 px-16px py-20px',
         isSmall ? 'h-160px' : 'h-220px'
