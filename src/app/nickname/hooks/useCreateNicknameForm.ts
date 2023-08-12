@@ -58,7 +58,7 @@ export const useCreateNicknameForm = () => {
         router.replace('/toks-main');
       }
     } catch (err: unknown) {
-      if (isToksError(err)) {
+      if (isToksError(err) && err.errorCode === 'DUPLICATED_NICKNAME') {
         setError('nickname', { message: '이미 존재하는 닉네임입니다.' });
       }
     }
