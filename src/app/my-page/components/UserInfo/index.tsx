@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-import { ICON_URL, IMAGE_URL } from '@/common';
+import { ICON_URL, IMAGE_URL, Text } from '@/common';
 import { useAuth } from '@/common/hooks';
 
 export const UserInfo = () => {
@@ -18,8 +18,25 @@ export const UserInfo = () => {
 
   console.log(user);
   return (
-    <div>
-      <Image src={profileImage} alt="프로필 이미지" width={96} height={96} />
+    <div className="w-full flex-col items-center text-center">
+      <div className="mx-auto mb-24px mt-20px h-96px w-96px overflow-hidden rounded-full">
+        <Image src={profileImage} alt="프로필 이미지" width={96} height={96} />
+      </div>
+      <div className="mb-8px flex w-full justify-center">
+        <Text typo="headingL" color="gray10">
+          {user?.nickname}
+        </Text>
+        <Image
+          className="ml-4px"
+          src={ICON_URL.CHEVRON_RIGHT}
+          alt="닉네임 수정 버튼"
+          width={24}
+          height={24}
+        />
+      </div>
+      <Text typo="body" color="gray40">
+        {user?.email}
+      </Text>
     </div>
   );
 };

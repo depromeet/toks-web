@@ -6,8 +6,8 @@ const MyPage = () => {
   return (
     <div>
       <BackHeader />
-      <LogoutBar />
       <UserInfo />
+      <LogoutBar />
     </div>
   );
 };
