@@ -16,7 +16,6 @@ export const UserInfo = () => {
     }
   }, [user]);
 
-  console.log(user);
   return (
     <div className="w-full flex-col items-center text-center">
       <div className="mx-auto mb-24px mt-20px h-96px w-96px overflow-hidden rounded-full">
