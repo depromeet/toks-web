@@ -1,21 +1,33 @@
-import { headers } from 'next/headers';
+'use client';
+import { useMutation } from '@tanstack/react-query';
+import { deleteCookie } from 'cookies-next';
 import Image from 'next/image';
 
 import { ICON_URL, Text } from '@/common';
 
+import { patchLogout } from '../../remotes/logout';
+
 export const LogoutBar = () => {
   // const [isShow, setIsShow] = useState(false);
-  const headersInstance = headers();
-  const authorization = headersInstance.get('isLogin');
-  console.log(authorization, 'hi', headersInstance);
 
-  // const onClick = () => {
-  //   // setIsShow(true)
-  //   console.log(authorization);
-  // };
+  const { mutate: logoutMutation } = useMutation(async () => {
+    try {
+      const res = await patchLogout();
+      deleteCookie('accessToken');
+      deleteCookie('refreshToken');
+      return res;
+    } catch (err: unknown) {
+      console.log(err);
+    }
+  });
+  const onClick = async () => {
+    logoutMutation();
+
+    console.log('logout');
+  };
   return (
     <div
-      // onClick={onClick}
+      onClick={() => onClick()}
       className="flex h-full w-full items-center justify-between rounded-12px bg-gray-100 px-20px py-16px"
     >
       <Text typo="subheadingBold" color="gray10">
