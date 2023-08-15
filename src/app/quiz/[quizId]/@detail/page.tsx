@@ -13,7 +13,7 @@ type Props = {
 async function DetailPage({ params: { quizId } }: Props) {
   const {
     quiz: {
-      title,
+      title: quizTitle,
       tags,
       question: {
         imageUrl: oxImageUrl,
@@ -24,6 +24,10 @@ async function DetailPage({ params: { quizId } }: Props) {
     category: { name: categoryName },
     isSubmitted,
   } = await getQuizDetailByQuizId(quizId);
+
+  const isQuizType = (type: string) => quizType.startsWith(type);
+  const isExistOXImage = Boolean(oxImageUrl);
+  const isVisibleOXImage = !isSubmitted && isExistOXImage;
 
   return (
     <section className={clsx(bgColor['gray110'], 'mt-8px rounded-16px p-20px')}>
@@ -39,10 +43,10 @@ async function DetailPage({ params: { quizId } }: Props) {
         ))}
       </div>
       <Text className="mt-12px block " typo="headingL" color="gray10">
-        {title}
+        {quizTitle}
       </Text>
       <div className="mt-48px">
-        {!isSubmitted && oxImageUrl && (
+        {isVisibleOXImage && (
           <Thumbnail
             className="mb-24px w-full"
             imageUrl={oxImageUrl}
@@ -50,7 +54,7 @@ async function DetailPage({ params: { quizId } }: Props) {
           />
         )}
         <div className="flex gap-16px">
-          {quizType.startsWith('A_B_') ? (
+          {isQuizType('A_B_') ? (
             <>
               <QuizButton
                 isSubmitted={isSubmitted}
@@ -88,12 +92,12 @@ async function DetailPage({ params: { quizId } }: Props) {
             <>
               <QuizButton
                 isSubmitted={isSubmitted}
-                OXType={quizType === 'O_X_IMAGE' ? undefined : 'O'}
+                OXType={isExistOXImage ? undefined : 'O'}
                 name="예"
               />
               <QuizButton
                 isSubmitted={isSubmitted}
-                OXType={quizType === 'O_X_IMAGE' ? undefined : 'X'}
+                OXType={isExistOXImage ? undefined : 'X'}
                 name="아니오"
               />
             </>
