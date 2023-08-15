@@ -7,7 +7,7 @@ import { isToksError } from '@/common/utils/http';
 
 import { postNickname } from '../remotes/nickname';
 
-interface CheckNicknameFormValues {
+export interface CheckNicknameFormValues {
   nickname: string;
 }
 
