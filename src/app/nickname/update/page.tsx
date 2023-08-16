@@ -4,19 +4,20 @@ import { useQuery } from '@tanstack/react-query';
 import { getCookie } from 'cookies-next';
 
 import { Button } from '@/common';
+import { QUERY_KEYS } from '@/common/constants/queryKeys';
 import { getUserInfo } from '@/queries';
 
 import { NicknameBox } from '../components/NicknameBox';
 import { useCreateNicknameForm } from '../hooks/useCreateNicknameForm';
 
 const UpdateNickname = () => {
-  const accessToken = getCookie('accessToken');
+  const accessToken = getCookie('accessToken') as string;
 
   const {
     data: user,
     isSuccess,
     isLoading,
-  } = useQuery(['userInfo', accessToken], async () => {
+  } = useQuery(QUERY_KEYS.GET_USER_INFO(accessToken), async () => {
     return await getUserInfo();
   });
 
