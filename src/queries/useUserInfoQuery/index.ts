@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { getUserInfo } from './apis';
+import { getUserInfo } from '@/common';
 
 export const useUserInfoQuery = (accessToken?: string) => {
   return useQuery({

@@ -5,9 +5,9 @@ import { deleteCookie, setCookie } from 'cookies-next';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+import { getUserInfo } from '@/common';
 import { QUERY_KEYS } from '@/common/constants/queryKeys';
 import { isToksError } from '@/common/utils/http';
-import { getUserInfo } from '@/queries';
 
 const KakaoAuth = () => {
   const params = useSearchParams();

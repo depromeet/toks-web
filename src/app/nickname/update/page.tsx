@@ -3,9 +3,8 @@
 import { useQuery } from '@tanstack/react-query';
 import { getCookie } from 'cookies-next';
 
-import { Button } from '@/common';
+import { Button, getUserInfo } from '@/common';
 import { QUERY_KEYS } from '@/common/constants/queryKeys';
-import { getUserInfo } from '@/queries';
 
 import { NicknameBox } from '../components/NicknameBox';
 import { useCreateNicknameForm } from '../hooks/useCreateNicknameForm';

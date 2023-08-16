@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import { isToksError } from '@/common/utils/http';
 
-import { postNickname } from '../remotes/nickname';
+import { patchNickname } from '../remotes/nickname';
 
 export interface CheckNicknameFormValues {
   nickname: string;
@@ -51,7 +51,7 @@ export const useCreateNicknameForm = () => {
   const { mutate: nicknameMutation } = useMutation(async () => {
     const nickname = getValues('nickname');
     try {
-      const res = await postNickname(nickname);
+      const res = await patchNickname(nickname);
       if (res !== null) {
         router.replace('/toks-main');
       }
