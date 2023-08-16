@@ -4,6 +4,7 @@ import {
   QuizButtonType,
   QuizDetailResponse,
   QuizRecommendResponse,
+  QuizSubmitRequest,
 } from '@/app/quiz/models/quiz';
 
 function getToken() {
@@ -32,9 +33,10 @@ export const getQuizDetailByQuizId = async (quizId: string) => {
   return quizDetail;
 };
 
+// 위 아래 둘 다 http 객체 이용하는거로 바꿔야 함. 클라이언트 컴포넌트에서 쓸거라서...
+
 export const postSubmitQuizByQuizId = async (
-  quizId: string,
-  answer: QuizButtonType
+  quizSubmitRequest: QuizSubmitRequest
 ) => {
   const authorization = getToken();
   const result = await fetch(
@@ -47,9 +49,7 @@ export const postSubmitQuizByQuizId = async (
           ? { 'X-TOKS-AUTH-TOKEN': authorization as string }
           : {}),
       },
-      body: JSON.stringify({
-        answer,
-      }),
+      body: JSON.stringify(quizSubmitRequest),
     }
   );
   return result;

@@ -10,5 +10,4 @@ export interface QuizButtonProps
   participationLabel?: string;
   className?: string;
   name: string;
-  handleSubmitQuiz: () => void;
 }

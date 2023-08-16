@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { useRouter } from 'next/navigation';
 
@@ -59,13 +61,13 @@ async function DetailPage({ params: { quizId } }: Props) {
     right: `${answerPercentage.right}% (${answerCount.right}명)`,
   };
 
-  // const handleSubmitQuiz = async (answer: QuizButtonType) => {
-  //   try {
-  //     await postSubmitQuizByQuizId(quizId, answer);
-  //   } finally {
-  //     router.refresh();
-  //   }
-  // };
+  const handleSubmitQuiz = async (answer: QuizButtonType) => {
+    try {
+      await postSubmitQuizByQuizId(quizId, answer);
+    } finally {
+      router.refresh();
+    }
+  };
 
   return (
     <section className={clsx(bgColor['gray110'], 'mt-8px rounded-16px p-20px')}>

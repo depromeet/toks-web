@@ -10,6 +10,10 @@ export interface QuizDetailResponse extends QuizResponse {
 
 export interface QuizRecommendResponse extends QuizResponse {}
 
+export interface QuizSubmitRequest {
+  answer: QuizButtonType;
+}
+
 export interface QuizResponse {
   quiz: Quiz;
   category: Category;
