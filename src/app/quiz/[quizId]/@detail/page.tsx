@@ -33,7 +33,7 @@ async function DetailPage({ params: { quizId } }: Props) {
   const isExistOXImage = Boolean(oxImageUrl);
   const isVisibleOXImage = !isSubmitted && isExistOXImage;
   const replyAnswer = quizReply?.answer;
-  const isOXCorrectAnswer = replyAnswer === oxAnswer;
+  const isOXCorrectAnswer = replyAnswer === oxAnswer; // 퀴즈의 정답이 1혹은 2 사용자의 답안은 O혹은 X로 넘어오는 문제 해결 안된 상태
   const checkSameQuizType = (type: string) => quizType.startsWith(type);
   const checkSelectedAnswer = (buttonType: QuizButtonType) =>
     replyAnswer === buttonType;
@@ -93,14 +93,18 @@ async function DetailPage({ params: { quizId } }: Props) {
               />
             </>
           ) : isSubmitted ? (
-            <div className="flex flex-col items-center">
+            <div className="mx-auto flex flex-col items-center">
               <Thumbnail OXType={isOXCorrectAnswer ? 'O' : 'X'} />
               <Text className="mt-20px " typo="headingL" color="gray10">
                 {isOXCorrectAnswer
                   ? '딩동댕! 정답이에요.'
                   : '앗, 오답이에요! 정답은...'}
               </Text>
-              <Text className="mt-2px " typo="bodyBold" color="blue10">
+              <Text
+                className="mt-2px "
+                typo="bodyBold"
+                color={isOXCorrectAnswer ? 'blue10' : 'dangerDefault'}
+              >
                 {checkSelectedAnswer('O')
                   ? `${answerPercentage.left}% (${answerCount.left}명)`
                   : `${answerPercentage.right}% (${answerCount.right}명)`}
