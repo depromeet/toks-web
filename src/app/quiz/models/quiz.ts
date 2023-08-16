@@ -14,7 +14,7 @@ export interface QuizResponse {
   quizReplyHistoryCount: number;
   quizCommentCount: number;
   answerReplyCount: number;
-  quizReply: QuizReply;
+  quizReply?: QuizReply;
   quizReplyCount: QuizReplyCount;
   isSubmitted: boolean;
 }
@@ -59,7 +59,7 @@ export interface QuizReply {
 export interface QuizReplyCount {
   totalCount: number;
   replyCount: {
-    [key in QuizButtonType]: ReplyCount;
+    [key in QuizButtonType]?: ReplyCount;
   };
 }
 

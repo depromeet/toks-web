@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 
 import { QuizButton, Thumbnail } from '@/app/quiz/components';
+import { QuizButtonType } from '@/app/quiz/models/quiz';
 import { getQuizDetailByQuizId } from '@/app/quiz/remotes/quiz';
 import { Text, bgColor } from '@/common';
 
@@ -22,12 +23,27 @@ async function DetailPage({ params: { quizId } }: Props) {
       quizType,
     },
     category: { name: categoryName },
+    quizReply,
+    quizReplyCount: { totalCount, replyCount },
     isSubmitted,
   } = await getQuizDetailByQuizId(quizId);
 
-  const isQuizType = (type: string) => quizType.startsWith(type);
   const isExistOXImage = Boolean(oxImageUrl);
   const isVisibleOXImage = !isSubmitted && isExistOXImage;
+  const replyAnswer = quizReply?.answer;
+  const checkSameQuizType = (type: string) => quizType.startsWith(type);
+  const checkSelectedAnswer = (buttonType: QuizButtonType) =>
+    replyAnswer === buttonType;
+
+  const answerCount = {
+    left: replyCount?.A?.count ?? replyCount?.O?.count ?? 0,
+    right: replyCount?.B?.count ?? replyCount?.X?.count ?? 0,
+  };
+
+  const answerPercentage = {
+    left: Math.floor((answerCount.left / totalCount) * 100),
+    right: Math.floor((answerCount.right / totalCount) * 100),
+  };
 
   return (
     <section className={clsx(bgColor['gray110'], 'mt-8px rounded-16px p-20px')}>
@@ -54,28 +70,28 @@ async function DetailPage({ params: { quizId } }: Props) {
           />
         )}
         <div className="flex gap-16px">
-          {isQuizType('A_B_') ? (
+          {checkSameQuizType('A_B_') ? (
             <>
               <QuizButton
                 isSubmitted={isSubmitted}
                 imageUrl={button1.imageUrl}
-                percentage={55}
-                participationLabel="60% (600명)"
-                isSelected={true}
+                percentage={answerPercentage.left}
+                participationLabel={`${answerPercentage.left}% (${answerCount.left}명)`}
+                isSelected={checkSelectedAnswer('A')}
                 name={button1.button.name}
               />
               <QuizButton
                 isSubmitted={isSubmitted}
                 imageUrl={button2.imageUrl}
-                percentage={45}
-                participationLabel="40% (400명)"
-                isSelected={false}
+                percentage={answerPercentage.right}
+                participationLabel={`${answerPercentage.right}% (${answerCount.right}명)`}
+                isSelected={checkSelectedAnswer('B')}
                 name={button2.button.name}
               />
             </>
           ) : isSubmitted ? (
             <div className="flex flex-col items-center">
-              <Thumbnail OXType="O" />
+              <Thumbnail OXType={replyAnswer as 'O' | 'X'} />
               <Text className="mt-20px " typo="headingL" color="gray10">
                 딩동댕! 정답이에요.
               </Text>
