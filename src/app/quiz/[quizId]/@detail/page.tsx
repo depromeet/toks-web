@@ -1,8 +1,12 @@
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
 
 import { QuizButton, Thumbnail } from '@/app/quiz/components';
 import { QuizButtonType } from '@/app/quiz/models/quiz';
-import { getQuizDetailByQuizId } from '@/app/quiz/remotes/quiz';
+import {
+  getQuizDetailByQuizId,
+  postSubmitQuizByQuizId,
+} from '@/app/quiz/remotes/quiz';
 import { Text, bgColor } from '@/common';
 
 type Props = {
@@ -12,6 +16,8 @@ type Props = {
 };
 
 async function DetailPage({ params: { quizId } }: Props) {
+  const router = useRouter();
+
   const {
     quiz: {
       title: quizTitle,
@@ -48,6 +54,19 @@ async function DetailPage({ params: { quizId } }: Props) {
     right: Math.floor((answerCount.right / totalCount) * 100),
   };
 
+  const answerParticipationLabel = {
+    left: `${answerPercentage.left}% (${answerCount.left}명)`,
+    right: `${answerPercentage.right}% (${answerCount.right}명)`,
+  };
+
+  // const handleSubmitQuiz = async (answer: QuizButtonType) => {
+  //   try {
+  //     await postSubmitQuizByQuizId(quizId, answer);
+  //   } finally {
+  //     router.refresh();
+  //   }
+  // };
+
   return (
     <section className={clsx(bgColor['gray110'], 'mt-8px rounded-16px p-20px')}>
       <div className="flex gap-8px">
@@ -79,17 +98,19 @@ async function DetailPage({ params: { quizId } }: Props) {
                 isSubmitted={isSubmitted}
                 imageUrl={button1.imageUrl}
                 percentage={answerPercentage.left}
-                participationLabel={`${answerPercentage.left}% (${answerCount.left}명)`}
+                participationLabel={answerParticipationLabel.left}
                 isSelected={checkSelectedAnswer('A')}
                 name={button1.button.name}
+                onClick={() => handleSubmitQuiz('A')}
               />
               <QuizButton
                 isSubmitted={isSubmitted}
                 imageUrl={button2.imageUrl}
                 percentage={answerPercentage.right}
-                participationLabel={`${answerPercentage.right}% (${answerCount.right}명)`}
+                participationLabel={answerParticipationLabel.right}
                 isSelected={checkSelectedAnswer('B')}
                 name={button2.button.name}
+                onClick={() => handleSubmitQuiz('B')}
               />
             </>
           ) : isSubmitted ? (
@@ -106,8 +127,8 @@ async function DetailPage({ params: { quizId } }: Props) {
                 color={isOXCorrectAnswer ? 'blue10' : 'dangerDefault'}
               >
                 {checkSelectedAnswer('O')
-                  ? `${answerPercentage.left}% (${answerCount.left}명)`
-                  : `${answerPercentage.right}% (${answerCount.right}명)`}
+                  ? answerParticipationLabel.left
+                  : answerParticipationLabel.right}
               </Text>
               <Text className="mt-24px block" typo="body" color="white">
                 {oxDescription}
@@ -119,11 +140,13 @@ async function DetailPage({ params: { quizId } }: Props) {
                 isSubmitted={isSubmitted}
                 OXType={isExistOXImage ? undefined : 'O'}
                 name="예"
+                onClick={() => handleSubmitQuiz('O')}
               />
               <QuizButton
                 isSubmitted={isSubmitted}
                 OXType={isExistOXImage ? undefined : 'X'}
                 name="아니오"
+                onClick={() => handleSubmitQuiz('X')}
               />
             </>
           )}

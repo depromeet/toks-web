@@ -1,6 +1,10 @@
 // import { headers } from 'next/headers';
 
-import { QuizDetailResponse, QuizRecommendResponse } from '../models/quiz';
+import {
+  QuizButtonType,
+  QuizDetailResponse,
+  QuizRecommendResponse,
+} from '@/app/quiz/models/quiz';
 
 function getToken() {
   // const headersInstance = headers();
@@ -26,6 +30,29 @@ export const getQuizDetailByQuizId = async (quizId: string) => {
   const quizDetailInfo = await result.json();
   const quizDetail: QuizDetailResponse = quizDetailInfo.data;
   return quizDetail;
+};
+
+export const postSubmitQuizByQuizId = async (
+  quizId: string,
+  answer: QuizButtonType
+) => {
+  const authorization = getToken();
+  const result = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/quizzes/${quizId}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        ...(authorization
+          ? { 'X-TOKS-AUTH-TOKEN': authorization as string }
+          : {}),
+      },
+      body: JSON.stringify({
+        answer,
+      }),
+    }
+  );
+  return result;
 };
 
 export const getRecommendationByQuizId = async (quizId: string) => {
