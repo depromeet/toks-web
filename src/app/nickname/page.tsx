@@ -32,6 +32,7 @@ const Nickname = () => {
           hasExclamationMark={hasExclamationMark}
           errors={errors}
           boxDescription="내 이름은 똑스야! 너의 이름은 뭐니?"
+          defaultValue=""
         />
         <Button
           className="absolute bottom-20px w-full"

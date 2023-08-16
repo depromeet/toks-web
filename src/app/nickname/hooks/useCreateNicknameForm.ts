@@ -11,11 +11,10 @@ export interface CheckNicknameFormValues {
   nickname: string;
 }
 
-const DEFAULT_NICKNAME_VALUE: CheckNicknameFormValues = {
-  nickname: '',
-};
-
 export const useCreateNicknameForm = () => {
+  // const DEFAULT_NICKNAME_VALUE: CheckNicknameFormValues = {
+  //   nickname: defaultValues,
+  // };
   const {
     register,
     getValues,
@@ -23,7 +22,6 @@ export const useCreateNicknameForm = () => {
     formState: { isDirty, isValid, errors },
   } = useForm<CheckNicknameFormValues>({
     mode: 'onChange',
-    defaultValues: DEFAULT_NICKNAME_VALUE,
   });
 
   const isDisabled = !isDirty || !isValid;

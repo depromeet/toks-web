@@ -1,4 +1,4 @@
-import { http } from '@/common/utils/http';
+import { http } from '@/common';
 
 export const postNickname = async (nickname: string) => {
   return await http.patch('/api/v1/user/nickname', { nickname });

@@ -23,6 +23,7 @@ type NicknameBoxProps = {
   };
   errors: FieldErrors<CheckNicknameFormValues>;
   boxDescription: string;
+  defaultValue: string;
 };
 
 export const NicknameBox = ({
@@ -33,6 +34,7 @@ export const NicknameBox = ({
   hasExclamationMark,
   errors,
   boxDescription,
+  defaultValue,
 }: NicknameBoxProps) => {
   return (
     <div
@@ -61,6 +63,7 @@ export const NicknameBox = ({
           autoFocus
           className="mt-40px"
           label="닉네임 입력"
+          defaultValue={defaultValue}
           errorMessage={errors.nickname?.message}
         />
       </div>
