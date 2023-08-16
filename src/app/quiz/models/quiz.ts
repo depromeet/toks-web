@@ -1,5 +1,7 @@
 export type QuizType = 'A_B_IMAGE' | 'A_B_SIMPLE' | 'O_X_IMAGE' | 'O_X_SIMPLE';
-export type QuizButtonType = 'A' | 'B' | 'O' | 'X';
+export type AB = 'A' | 'B';
+export type OX = 'O' | 'X';
+export type QuizButtonType = AB | OX;
 export type ButtonNumber = '1' | '2';
 
 export interface QuizDetailResponse extends QuizResponse {

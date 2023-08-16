@@ -21,6 +21,8 @@ async function DetailPage({ params: { quizId } }: Props) {
         buttons: { '1': button1, '2': button2 },
       },
       quizType,
+      description: oxDescription,
+      answer: oxAnswer,
     },
     category: { name: categoryName },
     quizReply,
@@ -31,6 +33,7 @@ async function DetailPage({ params: { quizId } }: Props) {
   const isExistOXImage = Boolean(oxImageUrl);
   const isVisibleOXImage = !isSubmitted && isExistOXImage;
   const replyAnswer = quizReply?.answer;
+  const isOXCorrectAnswer = replyAnswer === oxAnswer;
   const checkSameQuizType = (type: string) => quizType.startsWith(type);
   const checkSelectedAnswer = (buttonType: QuizButtonType) =>
     replyAnswer === buttonType;
@@ -91,17 +94,19 @@ async function DetailPage({ params: { quizId } }: Props) {
             </>
           ) : isSubmitted ? (
             <div className="flex flex-col items-center">
-              <Thumbnail OXType={replyAnswer as 'O' | 'X'} />
+              <Thumbnail OXType={isOXCorrectAnswer ? 'O' : 'X'} />
               <Text className="mt-20px " typo="headingL" color="gray10">
-                딩동댕! 정답이에요.
+                {isOXCorrectAnswer
+                  ? '딩동댕! 정답이에요.'
+                  : '앗, 오답이에요! 정답은...'}
               </Text>
               <Text className="mt-2px " typo="bodyBold" color="blue10">
-                60% (600명)
+                {checkSelectedAnswer('O')
+                  ? `${answerPercentage.left}% (${answerCount.left}명)`
+                  : `${answerPercentage.right}% (${answerCount.right}명)`}
               </Text>
               <Text className="mt-24px block" typo="body" color="white">
-                익숙한 경험에 따 작동되도록 기대하는 심리학 이론은 ‘제이콤의
-                법칙'이 많아요 어저고 저쩌고 어저고 저쩌고어저고 저쩌고어저고
-                저쩌고
+                {oxDescription}
               </Text>
             </div>
           ) : (
