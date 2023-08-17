@@ -1,14 +1,10 @@
 'use client';
 
 import clsx from 'clsx';
-import { useRouter } from 'next/navigation';
 
 import { QuizButton, Thumbnail } from '@/app/quiz/components';
+import { useGetQuizDetailQuery } from '@/app/quiz/hooks/useGetQuizDetailQuery';
 import { QuizButtonType } from '@/app/quiz/models/quiz';
-import {
-  getQuizDetailByQuizId,
-  postSubmitQuizByQuizId,
-} from '@/app/quiz/remotes/quiz';
 import { Text, bgColor } from '@/common';
 
 type Props = {
@@ -18,25 +14,21 @@ type Props = {
 };
 
 function DetailPage({ params: { quizId } }: Props) {
-  const router = useRouter();
-
   const {
-    quiz: {
-      title: quizTitle,
-      tags,
-      question: {
-        imageUrl: oxImageUrl,
-        buttons: { '1': button1, '2': button2 },
-      },
-      quizType,
-      description: oxDescription,
-      answer: oxAnswer,
-    },
-    category: { name: categoryName },
+    quizTitle,
+    tags,
+    oxImageUrl,
+    button1,
+    button2,
+    quizType,
+    oxDescription,
+    oxAnswer,
+    categoryName,
     quizReply,
-    quizReplyCount: { totalCount, replyCount },
+    totalCount,
+    replyCount,
     isSubmitted,
-  } = await getQuizDetailByQuizId(quizId);
+  } = useGetQuizDetailQuery(quizId);
 
   const isExistOXImage = Boolean(oxImageUrl);
   const isVisibleOXImage = !isSubmitted && isExistOXImage;
@@ -62,11 +54,12 @@ function DetailPage({ params: { quizId } }: Props) {
   };
 
   const handleSubmitQuiz = async (answer: QuizButtonType) => {
-    try {
-      await postSubmitQuizByQuizId(quizId, answer);
-    } finally {
-      router.refresh();
-    }
+    // try {
+    //   await postSubmitQuizByQuizId(quizId, answer);
+    // } finally {
+    //   router.refresh();
+    // }
+    answer;
   };
 
   return (
