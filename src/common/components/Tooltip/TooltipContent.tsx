@@ -14,13 +14,13 @@ export function TooltipContent({
         left: position.left,
         top: position.top,
       }}
-      className="z-10000 absolute -ml-6px rounded-8px bg-gray-90 px-16px py-6px"
+      className="absolute z-50 -ml-6px rounded-8px bg-gray-90 px-16px py-6px"
     >
       <Text typo="body" color="white">
         {message}
       </Text>
       <div
-        className="absolute -top-10px left-40px 
+        className="absolute -top-10px left-40px z-50 
      h-0 w-0
      border-x-5px border-b-10px
      border-x-transparent border-b-gray-90
