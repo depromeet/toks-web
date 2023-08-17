@@ -17,7 +17,7 @@ type Props = {
   };
 };
 
-async function DetailPage({ params: { quizId } }: Props) {
+function DetailPage({ params: { quizId } }: Props) {
   const router = useRouter();
 
   const {

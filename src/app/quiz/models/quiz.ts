@@ -11,6 +11,7 @@ export interface QuizDetailResponse extends QuizResponse {
 export interface QuizRecommendResponse extends QuizResponse {}
 
 export interface QuizSubmitRequest {
+  quizId: string;
   answer: QuizButtonType;
 }
 
