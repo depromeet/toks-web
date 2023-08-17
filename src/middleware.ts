@@ -61,9 +61,10 @@ export async function middleware(request: NextRequest) {
   });
 
   if (res.status === 200) {
+    requestHeaders.set('isLogin', 'true');
     return NextResponse.next({
       request: {
-        headers: new Headers({ ...request.headers, isLogin: 'true' }),
+        headers: requestHeaders,
       },
     });
   } else if (res.status === 401) {
@@ -87,13 +88,15 @@ export async function middleware(request: NextRequest) {
       console.log(error);
     }
   }
+
+  requestHeaders.set('isLogin', 'false');
   return NextResponse.next({
     request: {
-      headers: new Headers({ ...request.headers, isLogin: 'false' }),
+      headers: requestHeaders,
     },
   });
 }
 
 export const config = {
-  matcher: ['/nickname', '/quiz/:path*'],
+  matcher: ['/nickname', '/quiz/:path*', '/my-page'],
 };

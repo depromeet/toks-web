@@ -96,4 +96,4 @@ http.interceptors.request.use((config) => {
   }
   return config;
 });
-http.interceptors.response.use((response) => response.data);
+http.interceptors.response.use((response) => response.data.data);
