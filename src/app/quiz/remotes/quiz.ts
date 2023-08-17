@@ -34,7 +34,10 @@ import { http } from '@/common/utils/http';
 // };
 
 export const getQuizDetailByQuizId = async (quizId: string) => {
-  return await http.get<QuizDetailResponse>(`api/v1/quizzes/${quizId}`);
+  const { data } = await http.get<QuizDetailResponse>(
+    `api/v1/quizzes/${quizId}`
+  );
+  return data;
 };
 
 export const postSubmitQuizByQuizId = async ({

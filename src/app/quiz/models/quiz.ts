@@ -4,8 +4,8 @@ export type OX = 'O' | 'X';
 export type QuizButtonType = AB | OX;
 export type ButtonNumber = '1' | '2';
 
-export interface QuizDetailResponse extends QuizResponse {
-  isSubmitted: boolean;
+export interface QuizDetailResponse {
+  data: QuizResponse;
 }
 
 export interface QuizRecommendResponse extends QuizResponse {}

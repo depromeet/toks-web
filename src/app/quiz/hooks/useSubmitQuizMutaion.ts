@@ -1,20 +1,28 @@
 'use client';
 
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
 
-import { QuizSubmitRequest } from '@/app/quiz/models/quiz';
+import { QUERY_KEYS } from '@/app/quiz/constants/queryKeys';
+import { QuizButtonType } from '@/app/quiz/models/quiz';
 import { postSubmitQuizByQuizId } from '@/app/quiz/remotes/quiz';
 
-export const useSubmitQuizMutaion = () => {
+export const useSubmitQuizMutaion = (quizId: string) => {
   const router = useRouter();
+  const queryClient = useQueryClient();
+
   const { mutate: submitQuiz, isLoading } = useMutation(
-    async (values: QuizSubmitRequest) => {
+    async (answer: QuizButtonType) => {
       try {
-        await postSubmitQuizByQuizId(values);
+        await postSubmitQuizByQuizId({ quizId, answer });
       } finally {
         router.refresh();
       }
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(QUERY_KEYS.GET_QUIZ_DETAIL(quizId));
+      },
     }
   );
 
