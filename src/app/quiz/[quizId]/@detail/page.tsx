@@ -14,21 +14,25 @@ type Props = {
 };
 
 function DetailPage({ params: { quizId } }: Props) {
+  const quizDetail = useGetQuizDetailQuery(quizId);
+  if (quizDetail === null) {
+    return null;
+  }
   const {
     quizTitle,
     tags,
     oxImageUrl,
-    button1,
-    button2,
+    buttonLeft,
+    buttonRight,
     quizType,
     oxDescription,
     oxAnswer,
     categoryName,
     quizReply,
-    totalCount,
-    replyCount,
+    answerPercentage,
+    answerParticipationLabel,
     isSubmitted,
-  } = useGetQuizDetailQuery(quizId);
+  } = quizDetail;
 
   const isExistOXImage = Boolean(oxImageUrl);
   const isVisibleOXImage = !isSubmitted && isExistOXImage;
@@ -37,21 +41,6 @@ function DetailPage({ params: { quizId } }: Props) {
   const checkSameQuizType = (type: string) => quizType.startsWith(type);
   const checkSelectedAnswer = (buttonType: QuizButtonType) =>
     replyAnswer === buttonType;
-
-  const answerCount = {
-    left: replyCount?.A?.count ?? replyCount?.O?.count ?? 0,
-    right: replyCount?.B?.count ?? replyCount?.X?.count ?? 0,
-  };
-
-  const answerPercentage = {
-    left: Math.floor((answerCount.left / totalCount) * 100),
-    right: Math.floor((answerCount.right / totalCount) * 100),
-  };
-
-  const answerParticipationLabel = {
-    left: `${answerPercentage.left}% (${answerCount.left}명)`,
-    right: `${answerPercentage.right}% (${answerCount.right}명)`,
-  };
 
   const handleSubmitQuiz = async (answer: QuizButtonType) => {
     // try {
@@ -91,20 +80,20 @@ function DetailPage({ params: { quizId } }: Props) {
             <>
               <QuizButton
                 isSubmitted={isSubmitted}
-                imageUrl={button1.imageUrl}
+                imageUrl={buttonLeft.imageUrl}
                 percentage={answerPercentage.left}
                 participationLabel={answerParticipationLabel.left}
                 isSelected={checkSelectedAnswer('A')}
-                name={button1.button.name}
+                name={buttonLeft.button.name}
                 onClick={() => handleSubmitQuiz('A')}
               />
               <QuizButton
                 isSubmitted={isSubmitted}
-                imageUrl={button2.imageUrl}
+                imageUrl={buttonRight.imageUrl}
                 percentage={answerPercentage.right}
                 participationLabel={answerParticipationLabel.right}
                 isSelected={checkSelectedAnswer('B')}
-                name={button2.button.name}
+                name={buttonRight.button.name}
                 onClick={() => handleSubmitQuiz('B')}
               />
             </>

@@ -12,18 +12,19 @@ export const useGetQuizDetailQuery = (quizId: string) => {
     () => getQuizDetailByQuizId(quizId)
   );
 
-  if (isError || quizDetail === undefined) {
-    throw new Error('퀴즈 상세 데이터를 가져오는데에 실패헀습니다.');
+  if (isError) {
+    throw new Error('퀴즈 상세 데이터를 가져오는데 실패했습니다.');
+  }
+
+  if (quizDetail === undefined) {
+    return null;
   }
 
   const {
     quiz: {
       title: quizTitle,
       tags,
-      question: {
-        imageUrl: oxImageUrl,
-        buttons: { '1': button1, '2': button2 },
-      },
+      question: { imageUrl: oxImageUrl, buttons },
       quizType,
       description: oxDescription,
       answer: oxAnswer,
@@ -34,19 +35,37 @@ export const useGetQuizDetailQuery = (quizId: string) => {
     isSubmitted,
   } = quizDetail;
 
+  const buttonLeft = buttons.A ?? buttons.O;
+  const buttonRight = buttons.B ?? buttons.X;
+
+  const answerCount = {
+    left: replyCount?.A?.count ?? replyCount?.O?.count ?? 0,
+    right: replyCount?.B?.count ?? replyCount?.X?.count ?? 0,
+  };
+
+  const answerPercentage = {
+    left: Math.floor((answerCount.left / totalCount) * 100),
+    right: Math.floor((answerCount.right / totalCount) * 100),
+  };
+
+  const answerParticipationLabel = {
+    left: `${answerPercentage.left}% (${answerCount.left}명)`,
+    right: `${answerPercentage.right}% (${answerCount.right}명)`,
+  };
+
   return {
     quizTitle,
     tags,
     oxImageUrl,
-    button1,
-    button2,
+    buttonLeft,
+    buttonRight,
     quizType,
     oxDescription,
     oxAnswer,
     categoryName,
     quizReply,
-    totalCount,
-    replyCount,
+    answerPercentage,
+    answerParticipationLabel,
     isSubmitted,
   };
 };
