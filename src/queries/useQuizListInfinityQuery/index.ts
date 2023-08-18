@@ -26,17 +26,19 @@ export const useQuizListInfinityQuery = () => {
         if (quiz.question.imageUrl) {
           imageArray.push(quiz.question.imageUrl);
         }
-        // if (quiz.question.buttons[1].imageUrl) {
-        //   imageArray.push(quiz.question.buttons[1].imageUrl);
-        // }
-        // if (quiz.question.buttons[2].imageUrl) {
-        //   imageArray.push(quiz.question.buttons[2].imageUrl);
-        // }
-        imageArray.push(
-          ...(Object.values(quiz.question.buttons)
-            .map((button) => button?.imageUrl)
-            .filter((imageUrl) => imageUrl !== undefined) as string[])
-        );
+        if (quiz.question.buttons.A.imageUrl) {
+          imageArray.push(quiz.question.buttons.A.imageUrl);
+        }
+        if (quiz.question.buttons.B.imageUrl) {
+          imageArray.push(quiz.question.buttons.B.imageUrl);
+        }
+        if (quiz.question.buttons.O.imageUrl) {
+          imageArray.push(quiz.question.buttons.O.imageUrl);
+        }
+        if (quiz.question.buttons.X.imageUrl) {
+          imageArray.push(quiz.question.buttons.X.imageUrl);
+        }
+
         return imageArray;
       };
 
