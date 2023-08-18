@@ -18,9 +18,14 @@ export function QuizButton({
   participationLabel,
   className,
   name,
+  ...rest
 }: QuizButtonProps) {
   return (
-    <button className={clsx(className, 'flex flex-1 flex-col items-center')}>
+    <button
+      className={clsx(className, 'flex flex-1 flex-col items-center')}
+      disabled={isSubmitted}
+      {...rest}
+    >
       {(OXType || imageUrl) && (
         <Thumbnail
           className="mb-24px w-full"

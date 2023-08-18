@@ -7,7 +7,7 @@ import { QUERY_KEYS } from '@/app/quiz/constants/queryKeys';
 import { QuizButtonType } from '@/app/quiz/models/quiz';
 import { postSubmitQuizByQuizId } from '@/app/quiz/remotes/quiz';
 
-export const useSubmitQuizMutaion = (quizId: string) => {
+export const useSubmitQuizMutation = (quizId: string) => {
   const router = useRouter();
   const queryClient = useQueryClient();
 

@@ -3,7 +3,10 @@
 import clsx from 'clsx';
 
 import { QuizButton, Thumbnail } from '@/app/quiz/components';
-import { useGetQuizDetailQuery } from '@/app/quiz/hooks/useGetQuizDetailQuery';
+import {
+  useGetQuizDetailQuery,
+  useSubmitQuizMutation,
+} from '@/app/quiz/hooks/';
 import { QuizButtonType } from '@/app/quiz/models/quiz';
 import { Text, bgColor } from '@/common';
 
@@ -14,6 +17,7 @@ type Props = {
 };
 
 function DetailPage({ params: { quizId } }: Props) {
+  const { submitQuiz } = useSubmitQuizMutation(quizId);
   const quizDetail = useGetQuizDetailQuery(quizId);
   if (quizDetail === null) {
     return null;
@@ -41,15 +45,6 @@ function DetailPage({ params: { quizId } }: Props) {
   const checkSameQuizType = (type: string) => quizType.startsWith(type);
   const checkSelectedAnswer = (buttonType: QuizButtonType) =>
     replyAnswer === buttonType;
-
-  const handleSubmitQuiz = async (answer: QuizButtonType) => {
-    // try {
-    //   await postSubmitQuizByQuizId(quizId, answer);
-    // } finally {
-    //   router.refresh();
-    // }
-    answer;
-  };
 
   return (
     <section className={clsx(bgColor['gray110'], 'mt-8px rounded-16px p-20px')}>
@@ -85,7 +80,7 @@ function DetailPage({ params: { quizId } }: Props) {
                 participationLabel={answerParticipationLabel.left}
                 isSelected={checkSelectedAnswer('A')}
                 name={buttonLeft.button.name}
-                onClick={() => handleSubmitQuiz('A')}
+                onClick={() => submitQuiz('A')}
               />
               <QuizButton
                 isSubmitted={isSubmitted}
@@ -94,7 +89,7 @@ function DetailPage({ params: { quizId } }: Props) {
                 participationLabel={answerParticipationLabel.right}
                 isSelected={checkSelectedAnswer('B')}
                 name={buttonRight.button.name}
-                onClick={() => handleSubmitQuiz('B')}
+                onClick={() => submitQuiz('B')}
               />
             </>
           ) : isSubmitted ? (
@@ -124,13 +119,13 @@ function DetailPage({ params: { quizId } }: Props) {
                 isSubmitted={isSubmitted}
                 OXType={isExistOXImage ? undefined : 'O'}
                 name="예"
-                onClick={() => handleSubmitQuiz('O')}
+                onClick={() => submitQuiz('O')}
               />
               <QuizButton
                 isSubmitted={isSubmitted}
                 OXType={isExistOXImage ? undefined : 'X'}
                 name="아니오"
-                onClick={() => handleSubmitQuiz('X')}
+                onClick={() => submitQuiz('X')}
               />
             </>
           )}
