@@ -8,14 +8,14 @@ type Props = {
 
 function QuizIdLayout({ detail, comment, recommendation }: Props) {
   return (
-    <div className="pb-80px">
+    <main className="pb-80px">
       <QuizProvider>
         {detail}
         {comment}
         {recommendation}
         <ScrollToTopButton />
       </QuizProvider>
-    </div>
+    </main>
   );
 }
 

@@ -1,16 +1,28 @@
 export type QuizType = 'A_B_IMAGE' | 'A_B_SIMPLE' | 'O_X_IMAGE' | 'O_X_SIMPLE';
+export type AB = 'A' | 'B';
+export type OX = 'O' | 'X';
+export type QuizButtonType = AB | OX;
 
-export interface QuizDetailResponse extends QuizResponse {
-  isSubmitted: boolean;
+export interface QuizDetailResponse {
+  data: QuizResponse;
 }
 
 export interface QuizRecommendResponse extends QuizResponse {}
+
+export interface QuizSubmitRequest {
+  quizId: string;
+  answer: QuizButtonType;
+}
 
 export interface QuizResponse {
   quiz: Quiz;
   category: Category;
   quizReplyHistoryCount: number;
   quizCommentCount: number;
+  answerReplyCount: number;
+  quizReply?: QuizReply;
+  quizReplyCount: QuizReplyCount;
+  isSubmitted: boolean;
 }
 
 export interface Quiz {
@@ -28,8 +40,7 @@ export interface Question {
   question: string;
   imageUrl?: string;
   buttons: {
-    '1': QuizButton;
-    '2': QuizButton;
+    [key in QuizButtonType]: QuizButton;
   };
 }
 
@@ -43,4 +54,22 @@ export interface Category {
   depth: number;
   name: string;
   description: string;
+}
+
+export interface QuizReply {
+  id: number;
+  answer: string;
+  createdAt: string;
+}
+
+export interface QuizReplyCount {
+  totalCount: number;
+  replyCount: {
+    [key in QuizButtonType]?: ReplyCount;
+  };
+}
+
+export interface ReplyCount {
+  answer: string;
+  count: number;
 }
