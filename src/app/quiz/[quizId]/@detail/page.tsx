@@ -18,10 +18,12 @@ type Props = {
 
 function DetailPage({ params: { quizId } }: Props) {
   const { submitQuiz } = useSubmitQuizMutation(quizId);
-  const quizDetail = useGetQuizDetailQuery(quizId);
-  if (quizDetail === null) {
+  const { data: quizDetail } = useGetQuizDetailQuery(quizId);
+
+  if (quizDetail === undefined) {
     return null;
   }
+
   const {
     quizTitle,
     tags,
