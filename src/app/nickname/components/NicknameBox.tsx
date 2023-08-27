@@ -6,6 +6,11 @@ import { ICON_URL, Input, Text, bgColor } from '@/common';
 
 import { CheckNicknameFormValues } from '../hooks/useCreateNicknameForm';
 
+interface HookFormValidateProps {
+  value: number;
+  message: string;
+}
+
 type NicknameBoxProps = {
   register: UseFormRegister<CheckNicknameFormValues>;
   isRequiredText: () => string;
@@ -13,14 +18,8 @@ type NicknameBoxProps = {
     value: RegExp;
     message: string;
   };
-  isMaxLength: (maxLength: number) => {
-    value: number;
-    message: string;
-  };
-  isMinLength: (minLength: number) => {
-    value: number;
-    message: string;
-  };
+  isMaxLength: (maxLength: number) => HookFormValidateProps;
+  isMinLength: (minLength: number) => HookFormValidateProps;
   errors: FieldErrors<CheckNicknameFormValues>;
   boxDescription: string;
   defaultValue: string;
