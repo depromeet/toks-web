@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import { useState } from 'react';
 
 import { QuizButton, Thumbnail } from '@/app/quiz/components';
 import {
@@ -8,7 +9,7 @@ import {
   useSubmitQuizMutation,
 } from '@/app/quiz/hooks/';
 import { QuizButtonType } from '@/app/quiz/models/quiz';
-import { Text, bgColor } from '@/common';
+import { BottomSheet, Button, Text, bgColor } from '@/common';
 
 type Props = {
   params: {
@@ -19,6 +20,7 @@ type Props = {
 function DetailPage({ params: { quizId } }: Props) {
   const { submitQuiz } = useSubmitQuizMutation(quizId);
   const { data: quizDetail } = useGetQuizDetailQuery(quizId);
+  const [isShow, setIsShow] = useState(false);
 
   if (quizDetail === undefined) {
     return null;
@@ -43,13 +45,22 @@ function DetailPage({ params: { quizId } }: Props) {
   const isExistOXImage = Boolean(oxImageUrl);
   const isVisibleOXImage = !isSubmitted && isExistOXImage;
   const replyAnswer = quizReply?.answer;
-  const isOXCorrectAnswer = replyAnswer === oxAnswer; // 퀴즈의 정답이 1혹은 2 사용자의 답안은 O혹은 X로 넘어오는 문제 해결 안된 상태
+  const isOXCorrectAnswer = replyAnswer === oxAnswer;
   const checkSameQuizType = (type: string) => quizType.startsWith(type);
   const checkSelectedAnswer = (buttonType: QuizButtonType) =>
     replyAnswer === buttonType;
 
   return (
     <section className={clsx(bgColor['gray110'], 'mt-8px rounded-16px p-20px')}>
+      <Button
+        backgroundColor="primaryDefault"
+        textColor="gray10"
+        onClick={() => {
+          setIsShow(true);
+        }}
+      >
+        임시
+      </Button>
       <div className="flex gap-8px">
         {[categoryName, ...tags].map((tagName, index) => (
           <Text
@@ -133,6 +144,9 @@ function DetailPage({ params: { quizId } }: Props) {
           )}
         </div>
       </div>
+      <BottomSheet onClose={() => setIsShow(false)} isShow={isShow}>
+        <h1>hi</h1>
+      </BottomSheet>
     </section>
   );
 }
