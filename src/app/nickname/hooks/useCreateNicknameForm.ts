@@ -12,9 +12,6 @@ export interface CheckNicknameFormValues {
 }
 
 export const useCreateNicknameForm = () => {
-  // const DEFAULT_NICKNAME_VALUE: CheckNicknameFormValues = {
-  //   nickname: defaultValues,
-  // };
   const {
     register,
     getValues,
