@@ -5,15 +5,11 @@ import { useForm } from 'react-hook-form';
 
 import { isToksError } from '@/common/utils/http';
 
-import { postNickname } from '../remotes/nickname';
+import { patchNickname } from '../remotes/nickname';
 
-interface CheckNicknameFormValues {
+export interface CheckNicknameFormValues {
   nickname: string;
 }
-
-const DEFAULT_NICKNAME_VALUE: CheckNicknameFormValues = {
-  nickname: '',
-};
 
 export const useCreateNicknameForm = () => {
   const {
@@ -23,7 +19,6 @@ export const useCreateNicknameForm = () => {
     formState: { isDirty, isValid, errors },
   } = useForm<CheckNicknameFormValues>({
     mode: 'onChange',
-    defaultValues: DEFAULT_NICKNAME_VALUE,
   });
 
   const isDisabled = !isDirty || !isValid;
@@ -53,7 +48,7 @@ export const useCreateNicknameForm = () => {
   const { mutate: nicknameMutation } = useMutation(async () => {
     const nickname = getValues('nickname');
     try {
-      const res = await postNickname(nickname);
+      const res = await patchNickname(nickname);
       if (res !== null) {
         router.replace('/toks-main');
       }

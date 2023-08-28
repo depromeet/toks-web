@@ -13,7 +13,6 @@ const {
 module.exports = {
   important: true,
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
-  important: true,
   theme: {
     extend: {
       colors,
