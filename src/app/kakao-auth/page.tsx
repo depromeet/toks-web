@@ -5,8 +5,9 @@ import { deleteCookie, setCookie } from 'cookies-next';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
+import { getUserInfo } from '@/common';
+import { QUERY_KEYS } from '@/common/constants/queryKeys';
 import { isToksError } from '@/common/utils/http';
-import { getUserInfo } from '@/queries';
 
 const KakaoAuth = () => {
   const params = useSearchParams();
@@ -26,7 +27,7 @@ const KakaoAuth = () => {
   }, [params, router, accessToken]);
 
   const { data: user, isError } = useQuery(
-    ['userInfo', accessToken],
+    QUERY_KEYS.GET_USER_INFO(accessToken),
     async () => {
       try {
         return await getUserInfo();
