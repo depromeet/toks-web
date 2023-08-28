@@ -22,7 +22,7 @@ export function QuizCarousel({
       quizId: quiz.id,
       tags: quiz.tags,
       quizDescription: quiz.title,
-      image: quiz.question.buttons['1'].imageUrl,
+      image: quiz.question.buttons?.A?.imageUrl ?? quiz.question?.imageUrl,
       quizReplyHistoryCount,
       quizCommentCount,
       quizType: quiz.quizType,

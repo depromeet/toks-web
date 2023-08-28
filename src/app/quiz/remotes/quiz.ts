@@ -1,22 +1,13 @@
-import { QuizDetailResponse, QuizRecommendResponse } from '../models/quiz';
+import { QuizResponse, QuizSubmitRequest } from '@/app/quiz/models/quiz';
+import { http } from '@/common/utils/http';
 
 export const getQuizDetailByQuizId = async (quizId: string) => {
-  const result = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/quizzes/${quizId}`,
-    { cache: 'no-store' }
-  );
-  const quizDetailInfo = await result.json();
-  const quizDetail: QuizDetailResponse = quizDetailInfo.data;
-  return quizDetail;
+  return await http.get<QuizResponse>(`api/v1/quizzes/${quizId}`);
 };
 
-export const getRecommendationByQuizId = async (quizId: string) => {
-  const result = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/rec/quizzes?quizId=${quizId}`,
-    { cache: 'force-cache' }
-  );
-  const quizRecommendInfo = await result.json();
-  const quizRecommendModels: QuizRecommendResponse[] =
-    quizRecommendInfo.data.quizRecommendModels;
-  return quizRecommendModels;
+export const postSubmitQuizByQuizId = async ({
+  quizId,
+  answer,
+}: QuizSubmitRequest) => {
+  return await http.post(`api/v1/quizzes/${quizId}`, { answer });
 };
