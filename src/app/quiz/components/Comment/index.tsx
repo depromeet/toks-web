@@ -12,6 +12,7 @@ interface CommentProps {
   timeAgo: string;
   comment: string;
   like: number;
+  isLiked: boolean;
 }
 export function Comment({
   commentId,
@@ -20,6 +21,7 @@ export function Comment({
   timeAgo,
   comment,
   like,
+  isLiked,
 }: CommentProps) {
   const convertTimeAgoFormat = (timeAgo: string) => {
     const nowDate = new Date();
@@ -27,7 +29,7 @@ export function Comment({
     const diffSecond = differenceInSeconds(nowDate, createdDate);
     const MINUTE = 60;
     const HOUR = MINUTE * 60;
-    const DAY = HOUR * 12;
+    const DAY = HOUR * 24;
     const MONTH = DAY * 29;
     if (diffSecond < MINUTE) {
       return '방금 전';
@@ -62,7 +64,7 @@ export function Comment({
           commentid={commentId}
           className="mt-8px"
           like={like}
-          isLiked={false}
+          isLiked={isLiked}
         />
       </div>
     </li>

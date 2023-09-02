@@ -6,8 +6,15 @@ export interface CommentType {
   likeCount: number;
   content: string;
   createdAt: string;
+  profileImageUrl: string;
+  isLiked: boolean;
 }
 
 export interface CommentListResponse {
   content: CommentType[];
+}
+
+export interface CommentSubmitRequest {
+  quizId: string;
+  comment: string;
 }

@@ -1,9 +1,8 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 
-import { postCommentByQuizId } from '@/app/quiz/remotes/comment';
+import { useSubmitCommentMutation } from '@/app/quiz/hooks/useSubmitCommentMutation';
 import { Button, TextField } from '@/common';
 
 interface CommentFormProps {
@@ -12,8 +11,8 @@ interface CommentFormProps {
 }
 
 export function CommentForm({ commentCount, quizId }: CommentFormProps) {
+  const { submitComment } = useSubmitCommentMutation(quizId);
   const commentTextAreaRef = useRef<HTMLTextAreaElement>(null);
-  const router = useRouter();
 
   return (
     <form
@@ -22,13 +21,10 @@ export function CommentForm({ commentCount, quizId }: CommentFormProps) {
         e.preventDefault();
         if (commentTextAreaRef.current) {
           try {
-            await postCommentByQuizId(quizId, commentTextAreaRef.current.value);
-            await fetch(
-              'http://localhost:3000/api/revalidate?tag=quiz-comment'
-            );
+            submitComment(commentTextAreaRef.current.value);
             commentTextAreaRef.current.value = '';
-          } finally {
-            router.refresh();
+          } catch {
+            throw new Error('댓글 작성 요청에 실패하였습니다.');
           }
         }
       }}

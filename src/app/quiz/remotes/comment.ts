@@ -1,15 +1,8 @@
-import { CommentListResponse, CommentType } from '@/app/quiz/models/comment';
-import { getCookieMap, http } from '@/common';
-
-// export const getCommentsByQuizId = async (quizId: string) => {
-//   const result = await fetch(
-//     `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/quizzes/${quizId}/comments?page=0&size=100`,
-//     { next: { tags: ['quiz-comment'] } }
-//   );
-//   const commentInfo = await result.json();
-//   const comments: CommentType[] = commentInfo.data.content;
-//   return comments;
-// };
+import {
+  CommentListResponse,
+  CommentSubmitRequest,
+} from '@/app/quiz/models/comment';
+import { http } from '@/common';
 
 export const getCommentsByQuizId = async (quizId: string) => {
   return await http.get<CommentListResponse>(
@@ -17,26 +10,11 @@ export const getCommentsByQuizId = async (quizId: string) => {
   );
 };
 
-export const postCommentByQuizId = async (quizId: string, comment: string) => {
-  const cookieMap = getCookieMap();
-  const result = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/quizzes/${quizId}/comments`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-TOKS-AUTH-TOKEN': cookieMap.get('accessToken') ?? '',
-      },
-      body: JSON.stringify({
-        comment,
-      }),
-    }
-  );
-  const commentInfo = await result.json();
-  try {
-    const data: CommentType = commentInfo.data.content;
-    return data;
-  } catch {
-    throw new Error('댓글 작성 요청에 실패하였습니다.');
-  }
+export const postCommentByQuizId = async ({
+  quizId,
+  comment,
+}: CommentSubmitRequest) => {
+  return await http.post(`api/v1/quizzes/${quizId}/comments`, { comment });
 };
+
+// TODO: revalidate api 진짜로 필요 없을거 같으면 지우기. 일단은 냅둠.

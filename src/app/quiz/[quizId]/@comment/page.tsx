@@ -26,17 +26,28 @@ function CommentPage({ params: { quizId } }: Props) {
       )}
       {!isEmptyComment && (
         <Comment.List>
-          {comments.map(({ id, nickname, content, likeCount, createdAt }) => (
-            <Comment
-              key={id}
-              commentId={id}
-              name={nickname}
-              comment={content}
-              timeAgo={createdAt}
-              profileImgUrl={undefined}
-              like={likeCount}
-            />
-          ))}
+          {comments.map(
+            ({
+              id,
+              nickname,
+              content,
+              likeCount,
+              createdAt,
+              profileImageUrl,
+              isLiked,
+            }) => (
+              <Comment
+                key={id}
+                commentId={id}
+                name={nickname}
+                comment={content}
+                timeAgo={createdAt}
+                profileImgUrl={profileImageUrl}
+                like={likeCount}
+                isLiked={isLiked}
+              />
+            )
+          )}
         </Comment.List>
       )}
       {!isLogin && <GetStartedButton isCommentEmpty={isEmptyComment} />}
