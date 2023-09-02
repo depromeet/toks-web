@@ -55,7 +55,7 @@ export function Comment({
         </Text>
       </div>
       <div className="ml-30px mt-4px">
-        <Text typo="body" color="gray20">
+        <Text as="div" typo="body" color="gray20" className="whitespace-normal">
           {comment}
         </Text>
         <LikeButton
