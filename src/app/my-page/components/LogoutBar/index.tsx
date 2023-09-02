@@ -9,7 +9,6 @@ import { LogoutBottomSheet } from '../LogoutBottonSheet';
 
 export const LogoutBar = () => {
   const [isShow, setIsShow] = useState(false);
-  console.log(isShow);
 
   return (
     <div>
