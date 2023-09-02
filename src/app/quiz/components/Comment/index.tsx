@@ -7,6 +7,7 @@ import LikeButton from './LikeButton';
 
 interface CommentProps {
   commentId: number;
+  quizId: string;
   profileImgUrl: string | undefined;
   name: string;
   timeAgo: string;
@@ -16,6 +17,7 @@ interface CommentProps {
 }
 export function Comment({
   commentId,
+  quizId,
   profileImgUrl,
   name,
   timeAgo,
@@ -61,7 +63,8 @@ export function Comment({
           {comment}
         </Text>
         <LikeButton
-          commentid={commentId}
+          quizId={quizId}
+          commentId={commentId}
           className="mt-8px"
           like={like}
           isLiked={isLiked}

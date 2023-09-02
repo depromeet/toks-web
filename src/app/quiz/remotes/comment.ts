@@ -1,4 +1,5 @@
 import {
+  CommentLikeRequest,
   CommentListResponse,
   CommentSubmitRequest,
 } from '@/app/quiz/models/comment';
@@ -15,6 +16,18 @@ export const postCommentByQuizId = async ({
   comment,
 }: CommentSubmitRequest) => {
   return await http.post(`api/v1/quizzes/${quizId}/comments`, { comment });
+};
+
+export const postCommentLikeByCommentId = async ({
+  commentId,
+}: CommentLikeRequest) => {
+  return await http.post(`api/v1/comments/${commentId}/like`);
+};
+
+export const postCommentUnlikeByCommentId = async ({
+  commentId,
+}: CommentLikeRequest) => {
+  return await http.post(`api/v1/comments/${commentId}/unlike`);
 };
 
 // TODO: revalidate api 진짜로 필요 없을거 같으면 지우기. 일단은 냅둠.

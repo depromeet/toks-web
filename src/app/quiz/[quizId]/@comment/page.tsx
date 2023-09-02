@@ -38,6 +38,7 @@ function CommentPage({ params: { quizId } }: Props) {
             }) => (
               <Comment
                 key={id}
+                quizId={quizId}
                 commentId={id}
                 name={nickname}
                 comment={content}

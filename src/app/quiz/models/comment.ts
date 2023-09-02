@@ -18,3 +18,7 @@ export interface CommentSubmitRequest {
   quizId: string;
   comment: string;
 }
+
+export interface CommentLikeRequest {
+  commentId: string;
+}
