@@ -27,6 +27,10 @@ export const postCommentByQuizId = async (quizId: string, comment: string) => {
     }
   );
   const commentInfo = await result.json();
-  const data: CommentType = commentInfo.data.content;
-  return data;
+  try {
+    const data: CommentType = commentInfo.data.content;
+    return data;
+  } catch {
+    throw new Error('댓글 작성 요청에 실패하였습니다.');
+  }
 };

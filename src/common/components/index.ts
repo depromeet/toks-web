@@ -12,3 +12,4 @@ export * from './FloatingButton';
 export * from './Tooltip';
 export * from './SSRSuspense';
 export * from './GlobalPortal';
+export * from './TextField';
