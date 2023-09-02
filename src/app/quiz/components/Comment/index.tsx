@@ -1,3 +1,5 @@
+import { differenceInSeconds, format } from 'date-fns';
+
 import { Avatar, Text } from '@/common';
 
 import { CommentList } from './CommentList';
@@ -19,6 +21,28 @@ export function Comment({
   comment,
   like,
 }: CommentProps) {
+  const convertTimeAgoFormat = (timeAgo: string) => {
+    const nowDate = new Date();
+    const createdDate = new Date(timeAgo);
+    const diffSecond = differenceInSeconds(nowDate, createdDate);
+    const MINUTE = 60;
+    const HOUR = MINUTE * 60;
+    const DAY = HOUR * 12;
+    const MONTH = DAY * 29;
+    if (diffSecond < MINUTE) {
+      return '방금 전';
+    }
+    if (diffSecond < HOUR) {
+      return `${Math.floor(diffSecond / MINUTE)}분 전`;
+    }
+    if (diffSecond < DAY) {
+      return `${Math.floor(diffSecond / HOUR)}시간 전`;
+    }
+    if (diffSecond < MONTH) {
+      return `${Math.floor(diffSecond / DAY)}일 전`;
+    }
+    return format(createdDate, 'yyyy.MM.dd');
+  };
   return (
     <li>
       <div className="flex items-center gap-x-6px">
@@ -27,7 +51,7 @@ export function Comment({
           {name}
         </Text>
         <Text typo="caption" color="gray60">
-          {timeAgo}
+          {convertTimeAgoFormat(timeAgo)}
         </Text>
       </div>
       <div className="ml-30px mt-4px">
