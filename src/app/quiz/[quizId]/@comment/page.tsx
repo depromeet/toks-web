@@ -1,7 +1,8 @@
-import { headers } from 'next/headers';
+'use client';
 
 import { Comment, CommentForm, GetStartedButton } from '@/app/quiz/components';
-import { getCommentsByQuizId } from '@/app/quiz/remotes/comment';
+import { useGetCommentListQuery } from '@/app/quiz/hooks/useGetCommentListQuery';
+import { useAuth } from '@/common/hooks';
 
 type Props = {
   params: {
@@ -9,16 +10,15 @@ type Props = {
   };
 };
 
-const getIsLogin = () => {
-  const headerList = headers();
-  const isLogin = headerList.get('isLogin') === 'true';
-  return isLogin;
-};
+function CommentPage({ params: { quizId } }: Props) {
+  const { data: comments } = useGetCommentListQuery(quizId);
+  const { isLogin } = useAuth();
 
-async function CommentPage({ params: { quizId } }: Props) {
-  const comments = await getCommentsByQuizId(quizId);
+  if (comments === undefined) {
+    return null;
+  }
+
   const isEmptyComment = comments.length === 0;
-  const isLogin = getIsLogin();
   return (
     <div className="mt-32px flex flex-col gap-32px">
       {isLogin && (

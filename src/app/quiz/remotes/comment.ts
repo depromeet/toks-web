@@ -1,14 +1,20 @@
-import { CommentType } from '@/app/quiz/models/comment';
-import { getCookieMap } from '@/common';
+import { CommentListResponse, CommentType } from '@/app/quiz/models/comment';
+import { getCookieMap, http } from '@/common';
+
+// export const getCommentsByQuizId = async (quizId: string) => {
+//   const result = await fetch(
+//     `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/quizzes/${quizId}/comments?page=0&size=100`,
+//     { next: { tags: ['quiz-comment'] } }
+//   );
+//   const commentInfo = await result.json();
+//   const comments: CommentType[] = commentInfo.data.content;
+//   return comments;
+// };
 
 export const getCommentsByQuizId = async (quizId: string) => {
-  const result = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/quizzes/${quizId}/comments?page=0&size=100`,
-    { next: { tags: ['quiz-comment'] } }
+  return await http.get<CommentListResponse>(
+    `api/v1/quizzes/${quizId}/comments?page=0&size=100`
   );
-  const commentInfo = await result.json();
-  const comments: CommentType[] = commentInfo.data.content;
-  return comments;
 };
 
 export const postCommentByQuizId = async (quizId: string, comment: string) => {

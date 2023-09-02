@@ -7,3 +7,7 @@ export interface CommentType {
   content: string;
   createdAt: string;
 }
+
+export interface CommentListResponse {
+  content: CommentType[];
+}
