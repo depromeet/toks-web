@@ -46,7 +46,7 @@ export const Appbar = () => {
             className="flex items-center"
             onClick={() => {
               // TODO: Login 페이지연결
-              router.replace('/login');
+              router.replace('https://api.tokstudy.com/oauth2/authorize/kakao');
             }}
           >
             {/* TODO: 로그인 여부 분기 */}
