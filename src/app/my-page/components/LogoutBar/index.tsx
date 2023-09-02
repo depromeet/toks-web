@@ -1,33 +1,20 @@
 'use client';
-import { useMutation } from '@tanstack/react-query';
-import { deleteCookie } from 'cookies-next';
+
 import Image from 'next/image';
+import { useState } from 'react';
 
 import { ICON_URL, Text } from '@/common';
 
-import { patchLogout } from '../../remotes/logout';
+import { LogoutBottomSheet } from '../LogoutBottonSheet';
 
 export const LogoutBar = () => {
-  // const [isShow, setIsShow] = useState(false);
+  const [isShow, setIsShow] = useState(false);
+  console.log();
 
-  const { mutate: logoutMutation } = useMutation(async () => {
-    try {
-      const res = await patchLogout();
-      deleteCookie('accessToken');
-      deleteCookie('refreshToken');
-      return res;
-    } catch (err: unknown) {
-      console.log(err);
-    }
-  });
-  const onClick = async () => {
-    logoutMutation();
-
-    console.log('logout');
-  };
   return (
-    <div
-      onClick={() => onClick()}
+    <button
+      onClick={() => setIsShow(true)}
+      // onClick={() => onClick()}
       className="flex h-full w-full items-center justify-between rounded-12px bg-gray-100 px-20px py-16px"
     >
       <Text typo="subheadingBold" color="gray10">
@@ -39,9 +26,7 @@ export const LogoutBar = () => {
         width={24}
         height={24}
       />
-      {/* <BottomSheet onClose={() => setIsShow(false)} isShow={isShow}>
-        <h1>hi</h1>
-      </BottomSheet> */}
-    </div>
+      <LogoutBottomSheet onClick={() => setIsShow(false)} isShow={isShow} />
+    </button>
   );
 };
