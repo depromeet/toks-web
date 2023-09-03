@@ -1,11 +1,7 @@
-import { useMutation } from '@tanstack/react-query';
-import { deleteCookie } from 'cookies-next';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 import { BottomSheet, Button, ICON_URL, Text } from '@/common';
-
-import { patchLogout } from '../../remotes/logout';
+import { useLogoutQuery } from '@/queries';
 
 interface LogoutBottomSheetProps {
   onClose: VoidFunction;
@@ -16,19 +12,7 @@ export const LogoutBottomSheet = ({
   onClose,
   isShow,
 }: LogoutBottomSheetProps) => {
-  const router = useRouter();
-  const { mutate: logoutMutation } = useMutation(async () => {
-    try {
-      const res = await patchLogout();
-      deleteCookie('accessToken');
-      deleteCookie('refreshToken');
-      //   TODO: path name 바뀔수도
-      router.push('/toks-main');
-      return res;
-    } catch (err: unknown) {
-      console.log(err);
-    }
-  });
+  const { mutate: logoutMutation } = useLogoutQuery();
   const onLogout = async () => {
     onClose();
     logoutMutation();
