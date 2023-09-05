@@ -4,7 +4,11 @@ export type ButtonSize = 'S' | 'M' | 'L';
 export type ButtonStatus = 'default' | 'pressed' | 'disabled';
 export type IconPosition = 'LEFT' | 'RIGHT';
 export type ButtonTextColor = 'primaryDefault' | 'gray110' | 'gray10';
-export type ButtonBackgroundColor = 'primaryDefault' | 'gray20' | 'transparent';
+export type ButtonBackgroundColor =
+  | 'primaryDefault'
+  | 'gray20'
+  | 'transparent'
+  | 'gray70';
 
 export type ButtonTypography =
   | 'body'

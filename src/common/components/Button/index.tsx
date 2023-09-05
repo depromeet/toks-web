@@ -29,13 +29,13 @@ export function Button({
   return (
     <button
       className={cn(
-        className,
         HEIGHT_BY_BUTTON_SIZE[size],
         PADDING_BY_BUTTON_SIZE[size],
         GAP_BY_BUTTON_SIZE[size],
         bgColor[backgroundColor],
         disabled ? 'opacity-40' : PRESSED_BACKGROUND_BY_COLOR[backgroundColor],
-        'flex items-center justify-center rounded-8px'
+        'flex items-center justify-center rounded-8px',
+        className
       )}
       aria-label={ariaLabel}
       disabled={disabled}

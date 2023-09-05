@@ -3,9 +3,11 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { useSetRecoilState } from 'recoil';
 
 import { ICON_URL } from '@/common/constants';
 import { useAuth } from '@/common/hooks';
+import { isVisibleCategoryBottomSheetAtom } from '@/store';
 
 import { SSRSuspense } from '../SSRSuspense';
 import { Text } from '../Text';
@@ -14,6 +16,9 @@ import { Tooltip } from '../Tooltip';
 export const Appbar = () => {
   const router = useRouter();
   const { isLogin } = useAuth();
+  const setIsOpenCategoryBottomSheet = useSetRecoilState(
+    isVisibleCategoryBottomSheetAtom
+  );
 
   // TODO: useAppbar hook 구현
   return (
@@ -22,7 +27,13 @@ export const Appbar = () => {
     >
       <nav className="sticky left-0 right-0 top-0 z-50 h-54px bg-gray-120">
         <div className="flex h-full w-full items-center justify-between">
-          <div className="flex items-center gap-4px">
+          <div
+            className="flex items-center gap-4px"
+            role="button"
+            onClick={() => {
+              setIsOpenCategoryBottomSheet(true);
+            }}
+          >
             <Image
               layout="fixed"
               width={60}
