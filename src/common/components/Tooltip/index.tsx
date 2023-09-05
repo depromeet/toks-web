@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { getTooltipPosition } from './getTooltipPosition';
 import { TooltipContent } from './TooltipContent';
-import { TooltipPortal } from './TooltipPortal';
+import { GlobalPortal } from '../GlobalPortal';
 
 export interface PositionType {
   left?: number;
@@ -62,7 +62,7 @@ export function Tooltip({
     >
       {children}
       {show && isVisibleTooltip && (
-        <TooltipPortal>
+        <GlobalPortal.Consumer>
           <TooltipContent
             message={message}
             position={{
@@ -70,7 +70,7 @@ export function Tooltip({
               top: position.current?.top,
             }}
           />
-        </TooltipPortal>
+        </GlobalPortal.Consumer>
       )}
     </span>
   );
