@@ -21,7 +21,6 @@ export default function RootLayout({
         <QueryProvider>
           <StyledLayout>{children}</StyledLayout>
         </QueryProvider>
-        <div id="portal" />
       </body>
     </html>
   );
