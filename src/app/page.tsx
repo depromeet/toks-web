@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 
 import { Text } from '@/common';
+import { Toast } from '@/common/components/Toast';
 import { Tooltip } from '@/common/components/Tooltip';
 
 export default function Home() {
@@ -28,6 +29,7 @@ export default function Home() {
           Tooltips!!
         </Text>
       </Tooltip>
+      <Toast isShow={true} direction="top" type="failed" title="hi" />
     </div>
   );
 }
