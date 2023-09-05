@@ -26,21 +26,23 @@ export const useQuizListInfinityQuery = () => {
         if (quiz.question.imageUrl) {
           imageArray.push(quiz.question.imageUrl);
         }
-        if (quiz.question.buttons.A.imageUrl) {
+        if (quiz.question.buttons.A?.imageUrl) {
           imageArray.push(quiz.question.buttons.A.imageUrl);
         }
-        if (quiz.question.buttons.B.imageUrl) {
+        if (quiz.question.buttons.B?.imageUrl) {
           imageArray.push(quiz.question.buttons.B.imageUrl);
         }
-        if (quiz.question.buttons.O.imageUrl) {
+        if (quiz.question.buttons.O?.imageUrl) {
           imageArray.push(quiz.question.buttons.O.imageUrl);
         }
-        if (quiz.question.buttons.X.imageUrl) {
+        if (quiz.question.buttons.X?.imageUrl) {
           imageArray.push(quiz.question.buttons.X.imageUrl);
         }
 
         return imageArray;
       };
+
+      console.log(pages);
 
       const flattenContents = pages.flatMap(({ content }) => content);
 
