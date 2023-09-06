@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { ICON_URL, IMAGE_URL, Text } from '@/common';
@@ -9,6 +10,7 @@ import { useAuth } from '@/common/hooks';
 export const UserInfo = () => {
   const { user } = useAuth();
   const [profileImage, setProfileImage] = useState(ICON_URL.EMOJI_BASE_GRAY);
+  const router = useRouter();
 
   useEffect(() => {
     if (user && user.profileImageUrl !== IMAGE_URL.BASE_KAKAO) {
@@ -31,6 +33,7 @@ export const UserInfo = () => {
           alt="닉네임 수정 버튼"
           width={24}
           height={24}
+          onClick={() => router.push('/nickname/update')}
         />
       </div>
       <Text typo="body" color="gray40">

@@ -20,14 +20,14 @@ export const BottomSheet = ({
   // });
   return (
     <GlobalPortal.Consumer>
-      <Dimmer isShow={isShow} onClose={onClose} />
+      <Dimmer isShow={isShow} onClose={() => onClose()} />
       <div
         // ref={bottomSheetContentRef}
         style={{
           transition: 'transform 0.3s ease-out',
         }}
         className={cn(
-          'fixed bottom-0 left-0 right-0 z-50 h-486px w-full translate-y-full rounded-tl-16px rounded-tr-16px bg-gray-90',
+          'fixed bottom-0 left-0 right-0 z-50 h-auto w-full translate-y-full rounded-tl-16px rounded-tr-16px bg-gray-90',
           {
             'translate-y-0': isShow, //animate-slide-up-bottom-sheet
           }
