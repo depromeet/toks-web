@@ -1,10 +1,9 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { useRef } from 'react';
 
-import { postCommentByQuizId } from '@/app/quiz/remotes/comment';
-import { Button, Input } from '@/common';
+import { useSubmitCommentMutation } from '@/app/quiz/hooks/useSubmitCommentMutation';
+import { Button, TextField } from '@/common';
 
 interface CommentFormProps {
   commentCount: number;
@@ -12,32 +11,30 @@ interface CommentFormProps {
 }
 
 export function CommentForm({ commentCount, quizId }: CommentFormProps) {
-  const commentInputRef = useRef<HTMLInputElement>(null);
-  const router = useRouter();
+  const { submitComment } = useSubmitCommentMutation(quizId);
+  const commentTextAreaRef = useRef<HTMLTextAreaElement>(null);
 
   return (
     <form
       className="flex shrink-0 flex-col"
       onSubmit={async (e) => {
         e.preventDefault();
-        if (commentInputRef.current) {
+        if (commentTextAreaRef.current) {
           try {
-            await postCommentByQuizId(quizId, commentInputRef.current.value);
-            await fetch(
-              'http://localhost:3000/api/revalidate?tag=quiz-comment'
-            );
-            commentInputRef.current.value = '';
-          } finally {
-            router.refresh();
+            submitComment(commentTextAreaRef.current.value);
+            commentTextAreaRef.current.value = '';
+          } catch {
+            throw new Error('댓글 작성 요청에 실패하였습니다.');
           }
         }
       }}
     >
-      <Input
+      <TextField
         required
-        ref={commentInputRef}
+        ref={commentTextAreaRef}
         className="mt-6px"
         type="text"
+        height={82}
         placeholder="댓글을 남겨보세요."
         label={`댓글 ${commentCount}`}
         aria-label="댓글 작성 입력"

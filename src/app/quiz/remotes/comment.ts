@@ -1,32 +1,33 @@
-import { CommentType } from '@/app/quiz/models/comment';
-import { getCookieMap } from '@/common';
+import {
+  CommentLikeRequest,
+  CommentListResponse,
+  CommentSubmitRequest,
+} from '@/app/quiz/models/comment';
+import { http } from '@/common';
 
 export const getCommentsByQuizId = async (quizId: string) => {
-  const result = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/quizzes/${quizId}/comments?page=0&size=100`,
-    { next: { tags: ['quiz-comment'] } }
+  return await http.get<CommentListResponse>(
+    `api/v1/quizzes/${quizId}/comments?page=0&size=100`
   );
-  const commentInfo = await result.json();
-  const comments: CommentType[] = commentInfo.data.content;
-  return comments;
 };
 
-export const postCommentByQuizId = async (quizId: string, comment: string) => {
-  const cookieMap = getCookieMap();
-  const result = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/quizzes/${quizId}/comments`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-TOKS-AUTH-TOKEN': cookieMap.get('accessToken') ?? '',
-      },
-      body: JSON.stringify({
-        comment,
-      }),
-    }
-  );
-  const commentInfo = await result.json();
-  const data: CommentType = commentInfo.data.content;
-  return data;
+export const postCommentByQuizId = async ({
+  quizId,
+  comment,
+}: CommentSubmitRequest) => {
+  return await http.post(`api/v1/quizzes/${quizId}/comments`, { comment });
 };
+
+export const postCommentLikeByCommentId = async ({
+  commentId,
+}: CommentLikeRequest) => {
+  return await http.post(`api/v1/comments/${commentId}/like`);
+};
+
+export const postCommentUnlikeByCommentId = async ({
+  commentId,
+}: CommentLikeRequest) => {
+  return await http.post(`api/v1/comments/${commentId}/unlike`);
+};
+
+// TODO: revalidate api 진짜로 필요 없을거 같으면 지우기. 일단은 냅둠.

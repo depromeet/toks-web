@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
 
-import { ICON_URL } from '@/common/constants';
+import { ICON_URL, IMAGE_URL } from '@/common';
 
 import { AvatarProps } from './types';
 
@@ -19,7 +19,12 @@ export const Avatar = ({
         'h-24px w-24px': size === 'S',
       })}
     >
-      <Image alt={`${name} 아바타`} src={src} layout="fill" {...rest} />
+      <Image
+        alt={`${name} 아바타`}
+        src={src === IMAGE_URL.BASE_KAKAO ? ICON_URL.AVATAR_DEFAULT : src}
+        layout="fill"
+        {...rest}
+      />
     </div>
   );
 };
