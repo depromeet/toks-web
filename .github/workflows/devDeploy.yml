@@ -10,6 +10,9 @@ jobs:
     name: Dev
     runs-on: ubuntu-latest
 
+    env:
+      NEXT_PUBLIC_BASE_URL: ${{ secrets.BACKEND_BASE_URL }}
+
     strategy:
       matrix:
         node-version: [16.x]
