@@ -5,6 +5,7 @@ export const TEXT_TAGS = {
   dd: 'dd',
   del: 'del',
   dt: 'dt',
+  div: 'div',
   em: 'em',
   h1: 'h1',
   h2: 'h2',
