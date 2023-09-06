@@ -42,13 +42,7 @@ export const Appbar = () => {
               </button>
             </Tooltip>
           </div>
-          <button
-            className="flex items-center"
-            onClick={() => {
-              // TODO: Login 페이지연결
-              router.replace('/login');
-            }}
-          >
+          <button className="flex items-center">
             {/* TODO: 로그인 여부 분기 */}
             {isLogin ? (
               <Image
@@ -56,9 +50,20 @@ export const Appbar = () => {
                 alt="아바타 기본 이미지"
                 width={30}
                 height={30}
+                onClick={() => {
+                  router.replace('/my-page');
+                }}
               />
             ) : (
-              <Text color="gray10" typo="body">
+              <Text
+                color="gray10"
+                typo="body"
+                onClick={() => {
+                  router.replace(
+                    'https://api.tokstudy.com/oauth2/authorize/kakao'
+                  );
+                }}
+              >
                 로그인
               </Text>
             )}
