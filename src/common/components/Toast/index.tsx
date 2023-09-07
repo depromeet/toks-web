@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { ReactNode, useState } from 'react';
 
 import { ICON_URL } from '@/common/constants';
+import { useToast } from '@/common/hooks/useToast';
 import { cn } from '@/common/utils';
 
 import { GlobalPortal } from '../GlobalPortal';
@@ -12,15 +13,16 @@ import { Text } from '../Text';
 const VERTICAL = ['top', 'bottom'] as const;
 
 type VerticalDirection = (typeof VERTICAL)[number];
-type ToastType = 'success' | 'failed';
+export type ToastType = 'success' | 'failed';
 
 interface ToastProps {
   type: ToastType;
-  title: string;
+  title?: string;
   direction?: VerticalDirection;
   icon?: ReactNode;
   time?: number;
-  isShow: boolean;
+  isShow?: boolean;
+  showOnNextPage?: boolean;
 }
 const TOAST_OPENED_TIME = 3_000;
 
@@ -41,8 +43,13 @@ export const Toast = ({
   //   TODO: 추후 변경될 가능성 생각하여 반영
   direction = 'bottom',
   time = TOAST_OPENED_TIME,
+  showOnNextPage,
 }: ToastProps) => {
+  const { saveToastInfo } = useToast();
   const [isOpen, setIsOpen] = useState(isShow);
+  if (showOnNextPage) {
+    saveToastInfo({ type, time: TOAST_OPENED_TIME, showOnNextPage: false });
+  }
   return (
     <GlobalPortal.Consumer>
       <AnimatePresence>
