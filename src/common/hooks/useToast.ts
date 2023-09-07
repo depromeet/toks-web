@@ -1,17 +1,17 @@
-import { ComponentProps } from 'react';
+// import { ComponentProps } from 'react';
 
-import { Toast, ToastType } from '../components/Toast';
+import { ToastProps } from '../components/Toast';
 
 const LOCAL_STORAGE_KEY = '@depromeet/toast-key';
 
-interface Props extends ComponentProps<typeof Toast> {
-  type: ToastType;
-  time?: number;
-  showOnNextPage?: boolean;
-}
+// interface Props extends ComponentProps<typeof Toast> {
+//   type: ToastType;
+//   time?: number;
+//   showOnNextPage?: boolean;
+// }
 
 export const useToast = () => {
-  const saveToastInfo = (info: Props) => {
+  const saveToastInfo = (info: ToastProps) => {
     const prevData = window.localStorage.getItem(LOCAL_STORAGE_KEY);
 
     if (prevData != null) {
@@ -26,7 +26,7 @@ export const useToast = () => {
     window.localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(info));
   };
 
-  const getSavedToastInfo = (): Props | null => {
+  const getSavedToastInfo = (): ToastProps | null => {
     const data = window.localStorage.getItem(LOCAL_STORAGE_KEY);
     return data != null ? JSON.parse(data) : null;
   };

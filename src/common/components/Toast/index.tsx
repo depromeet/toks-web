@@ -15,7 +15,7 @@ const VERTICAL = ['top', 'bottom'] as const;
 type VerticalDirection = (typeof VERTICAL)[number];
 export type ToastType = 'success' | 'failed';
 
-interface ToastProps {
+export interface ToastProps {
   type: ToastType;
   title?: string;
   direction?: VerticalDirection;
@@ -48,7 +48,15 @@ export const Toast = ({
   const { saveToastInfo } = useToast();
   const [isOpen, setIsOpen] = useState(isShow);
   if (showOnNextPage) {
-    saveToastInfo({ type, time: TOAST_OPENED_TIME, showOnNextPage: false });
+    saveToastInfo({
+      type,
+      isShow,
+      title,
+      direction,
+      time: TOAST_OPENED_TIME,
+      showOnNextPage: false,
+    });
+    return null;
   }
   return (
     <GlobalPortal.Consumer>

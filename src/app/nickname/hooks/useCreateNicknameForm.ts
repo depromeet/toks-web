@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { useToast } from '@/common/hooks/useToast';
 import { isToksError } from '@/common/utils/http';
 
 import { patchNickname } from '../remotes/nickname';
@@ -23,6 +24,7 @@ export const useCreateNicknameForm = () => {
 
   const isDisabled = !isDirty || !isValid;
   const router = useRouter();
+  const { saveToastInfo, clearSavedToast } = useToast();
 
   const isMaxLength = useCallback((maxLength: number) => {
     return {
@@ -50,6 +52,14 @@ export const useCreateNicknameForm = () => {
     try {
       const res = await patchNickname(nickname);
       if (res !== null) {
+        clearSavedToast();
+        saveToastInfo({
+          showOnNextPage: true,
+          isShow: true,
+          direction: 'top',
+          type: 'success',
+          title: '닉네임 설정을 완료하였어요.',
+        });
         router.replace('/toks-main');
       }
     } catch (err: unknown) {
