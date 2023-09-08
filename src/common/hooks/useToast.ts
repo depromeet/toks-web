@@ -4,12 +4,6 @@ import { ToastProps } from '../components/Toast';
 
 const LOCAL_STORAGE_KEY = '@depromeet/toast-key';
 
-// interface Props extends ComponentProps<typeof Toast> {
-//   type: ToastType;
-//   time?: number;
-//   showOnNextPage?: boolean;
-// }
-
 export const useToast = () => {
   const saveToastInfo = (info: ToastProps) => {
     const prevData = window.localStorage.getItem(LOCAL_STORAGE_KEY);
