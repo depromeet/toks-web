@@ -10,8 +10,6 @@ function ToksMainPage() {
   const { getSavedToastInfo, clearSavedToast } = useToast();
   const [toastData, setToastData] = useState<ToastProps | null>(null);
 
-  console.log(toastData);
-
   useEffect(() => {
     setToastData(getSavedToastInfo());
     clearSavedToast();
