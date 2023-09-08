@@ -12,7 +12,7 @@ export interface CheckNicknameFormValues {
   nickname: string;
 }
 
-export const useCreateNicknameForm = () => {
+export const useCreateNicknameForm = (pathName: string) => {
   const {
     register,
     getValues,
@@ -56,11 +56,13 @@ export const useCreateNicknameForm = () => {
         saveToastInfo({
           showOnNextPage: true,
           isShow: true,
-          direction: 'top',
+          direction: 'bottom',
           type: 'success',
           title: '닉네임 설정을 완료하였어요.',
         });
-        router.replace('/toks-main');
+        pathName === '/nickname/update'
+          ? router.replace('/my-page')
+          : router.replace('/toks-main');
       }
     } catch (err: unknown) {
       if (isToksError(err) && err.errorCode === 'DUPLICATED_NICKNAME') {

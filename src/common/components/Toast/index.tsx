@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { ReactNode, useState } from 'react';
 
 import { ICON_URL } from '@/common/constants';
-import { useToast } from '@/common/hooks/useToast';
 import { cn } from '@/common/utils';
 
 import { GlobalPortal } from '../GlobalPortal';
@@ -43,21 +42,9 @@ export const Toast = ({
   //   TODO: 추후 변경될 가능성 생각하여 반영
   direction = 'bottom',
   time = TOAST_OPENED_TIME,
-  showOnNextPage,
 }: ToastProps) => {
-  const { saveToastInfo } = useToast();
   const [isOpen, setIsOpen] = useState(isShow);
-  if (showOnNextPage) {
-    saveToastInfo({
-      type,
-      isShow,
-      title,
-      direction,
-      time: TOAST_OPENED_TIME,
-      showOnNextPage: false,
-    });
-    return null;
-  }
+
   return (
     <GlobalPortal.Consumer>
       <AnimatePresence>

@@ -34,7 +34,7 @@ const KakaoAuth = () => {
     saveToastInfo({
       showOnNextPage: true,
       isShow: true,
-      direction: 'top',
+      direction: 'bottom',
       type: 'success',
       title: '로그인을 성공했어요.',
     });

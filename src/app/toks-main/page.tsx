@@ -1,14 +1,16 @@
 'use client';
 import { useEffect, useState } from 'react';
 
-import { FloatingButton, Toast } from '@/common';
+import { FloatingButton, Toast, ToastProps } from '@/common';
 import { useToast } from '@/common/hooks/useToast';
 
 import { CardList } from './components/CardList';
 
 function ToksMainPage() {
   const { getSavedToastInfo, clearSavedToast } = useToast();
-  const [toastData, setToastData] = useState<any>();
+  const [toastData, setToastData] = useState<ToastProps | null>(null);
+
+  console.log(toastData);
 
   useEffect(() => {
     setToastData(getSavedToastInfo());
@@ -22,7 +24,7 @@ function ToksMainPage() {
         <Toast
           isShow={toastData.isShow}
           type={toastData.type}
-          direction={toastData.top}
+          direction={toastData.direction}
           title={toastData.title}
         />
       )}
