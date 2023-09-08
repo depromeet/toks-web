@@ -61,7 +61,7 @@ export const Toast = ({
             <div
               className={cn(
                 TOAST_DIRECTION[direction],
-                'fixed right-2/4 z-50 flex w-fit translate-x-2/4 gap-6px rounded-8px bg-gray-90 px-24px py-12px'
+                'fixed right-2/4 z-50 box-border flex w-max translate-x-2/4 gap-6px rounded-8px bg-gray-90 px-24px py-12px'
               )}
             >
               <Image
@@ -70,7 +70,11 @@ export const Toast = ({
                 src={TOAST_ICON[type]}
                 alt="버튼 아이콘 입니다."
               />
-              <Text typo="subheading" color="white">
+              <Text
+                className="whitespace-nowrap"
+                typo="subheading"
+                color="white"
+              >
                 {title}
               </Text>
             </div>
