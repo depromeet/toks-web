@@ -2,6 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { getCookie } from 'cookies-next';
+import { usePathname } from 'next/navigation';
 
 import { Button, getUserInfo } from '@/common';
 import { QUERY_KEYS } from '@/common/constants/queryKeys';
@@ -10,6 +11,7 @@ import { NicknameBox } from '../components/NicknameBox';
 import { useCreateNicknameForm } from '../hooks/useCreateNicknameForm';
 
 const UpdateNickname = () => {
+  const pathName = usePathname();
   const accessToken = getCookie('accessToken') as string;
 
   const {
@@ -29,7 +31,7 @@ const UpdateNickname = () => {
     isRequiredText,
     hasExclamationMark,
     nicknameMutation,
-  } = useCreateNicknameForm();
+  } = useCreateNicknameForm(pathName);
 
   return (
     <div className="relative h-main pt-86px">

@@ -1,14 +1,34 @@
+'use client';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-import { Button, ICON_URL, Text } from '@/common';
+import { Button, ICON_URL, Text, Toast, ToastProps } from '@/common';
+import { useToast } from '@/common/hooks/useToast';
 
 import { BackHeader } from './components/BackHeader';
 import { LogoutBar } from './components/LogoutBar';
 import { UserInfo } from './components/UserInfo';
 
 const MyPage = () => {
+  const [toastData, setToastData] = useState<ToastProps | null>(null);
+  const { getSavedToastInfo, clearSavedToast } = useToast();
+
+  useEffect(() => {
+    setToastData(getSavedToastInfo());
+    clearSavedToast();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div>
+      {toastData && (
+        <Toast
+          isShow={toastData.isShow}
+          type={toastData.type}
+          direction={toastData.direction}
+          title={toastData.title}
+        />
+      )}
       <BackHeader />
       <UserInfo />
       <div className="h-40px" />

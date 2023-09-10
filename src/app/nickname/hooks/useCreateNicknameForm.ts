@@ -3,6 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { useToast } from '@/common/hooks/useToast';
 import { isToksError } from '@/common/utils/http';
 
 import { patchNickname } from '../remotes/nickname';
@@ -11,7 +12,7 @@ export interface CheckNicknameFormValues {
   nickname: string;
 }
 
-export const useCreateNicknameForm = () => {
+export const useCreateNicknameForm = (pathName: string) => {
   const {
     register,
     getValues,
@@ -23,6 +24,7 @@ export const useCreateNicknameForm = () => {
 
   const isDisabled = !isDirty || !isValid;
   const router = useRouter();
+  const { saveToastInfo, clearSavedToast } = useToast();
 
   const isMaxLength = useCallback((maxLength: number) => {
     return {
@@ -50,7 +52,17 @@ export const useCreateNicknameForm = () => {
     try {
       const res = await patchNickname(nickname);
       if (res !== null) {
-        router.replace('/toks-main');
+        clearSavedToast();
+        saveToastInfo({
+          showOnNextPage: true,
+          isShow: true,
+          direction: 'bottom',
+          type: 'success',
+          title: '닉네임 설정을 완료하였어요.',
+        });
+        pathName === '/nickname/update'
+          ? router.replace('/my-page')
+          : router.replace('/toks-main');
       }
     } catch (err: unknown) {
       if (isToksError(err) && err.errorCode === 'DUPLICATED_NICKNAME') {

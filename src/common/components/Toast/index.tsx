@@ -12,15 +12,16 @@ import { Text } from '../Text';
 const VERTICAL = ['top', 'bottom'] as const;
 
 type VerticalDirection = (typeof VERTICAL)[number];
-type ToastType = 'success' | 'failed';
+export type ToastType = 'success' | 'failed';
 
-interface ToastProps {
+export interface ToastProps {
   type: ToastType;
-  title: string;
+  title?: string;
   direction?: VerticalDirection;
   icon?: ReactNode;
   time?: number;
-  isShow: boolean;
+  isShow?: boolean;
+  showOnNextPage?: boolean;
 }
 const TOAST_OPENED_TIME = 3_000;
 
@@ -43,6 +44,7 @@ export const Toast = ({
   time = TOAST_OPENED_TIME,
 }: ToastProps) => {
   const [isOpen, setIsOpen] = useState(isShow);
+
   return (
     <GlobalPortal.Consumer>
       <AnimatePresence>
@@ -59,7 +61,7 @@ export const Toast = ({
             <div
               className={cn(
                 TOAST_DIRECTION[direction],
-                'fixed right-2/4 z-50 flex w-fit translate-x-2/4 gap-6px rounded-8px bg-gray-90 px-24px py-12px'
+                'fixed right-2/4 z-50 box-border flex w-max translate-x-2/4 gap-6px rounded-8px bg-gray-90 px-24px py-12px'
               )}
             >
               <Image
@@ -68,7 +70,11 @@ export const Toast = ({
                 src={TOAST_ICON[type]}
                 alt="버튼 아이콘 입니다."
               />
-              <Text typo="subheading" color="white">
+              <Text
+                className="whitespace-nowrap"
+                typo="subheading"
+                color="white"
+              >
                 {title}
               </Text>
             </div>

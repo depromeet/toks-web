@@ -1,11 +1,14 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
+
 import { Button } from '@/common';
 
 import { NicknameBox } from './components/NicknameBox';
 import { useCreateNicknameForm } from './hooks/useCreateNicknameForm';
 
 const Nickname = () => {
+  const pathName = usePathname();
   const {
     register,
     errors,
@@ -15,7 +18,7 @@ const Nickname = () => {
     isRequiredText,
     hasExclamationMark,
     nicknameMutation,
-  } = useCreateNicknameForm();
+  } = useCreateNicknameForm(pathName);
 
   return (
     <div className="relative h-main pt-86px">

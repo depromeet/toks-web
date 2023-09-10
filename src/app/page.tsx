@@ -2,9 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { Text } from '@/common';
-import { Toast } from '@/common/components/Toast';
-import { Tooltip } from '@/common/components/Tooltip';
+import { Text, Tooltip } from '@/common';
 
 export default function Home() {
   const router = useRouter();
@@ -29,7 +27,6 @@ export default function Home() {
           Tooltips!!
         </Text>
       </Tooltip>
-      <Toast isShow={true} direction="top" type="failed" title="로그인 실패" />
     </div>
   );
 }
