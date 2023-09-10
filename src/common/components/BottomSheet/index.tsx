@@ -12,6 +12,7 @@ export const BottomSheet = ({
   isShow,
   children,
   onClose,
+  className,
 }: PropsWithChildren<BottomSheetProps>) => {
   // const bottomSheetContentRef = useClickAway({
   //   callback: () => {
@@ -30,7 +31,8 @@ export const BottomSheet = ({
           'fixed bottom-0 left-0 right-0 z-50 h-auto w-full translate-y-full rounded-tl-16px rounded-tr-16px bg-gray-90',
           {
             'translate-y-0': isShow, //animate-slide-up-bottom-sheet
-          }
+          },
+          className
         )}
       >
         {children}

@@ -3,7 +3,7 @@ import { Quiz } from '@/app/quiz/models/quiz';
 export interface GetQuizListRequest {
   page: number;
   size: number;
-  categoryIds: number[];
+  categoryIds: string[];
 }
 
 export interface GetQuizListResponse {

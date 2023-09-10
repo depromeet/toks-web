@@ -1,15 +1,35 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
+import { useRecoilValue } from 'recoil';
 
 import { Quiz } from '@/app/quiz/models/quiz';
+import { useAuth } from '@/common/hooks';
+import { selectedTemporaryCategoryAtom } from '@/store';
 
 import { getQuizList } from './apis';
+import { useSelectedCategoriesQuery } from '../useSelectedCategoriesQuery';
 
 export const useQuizListInfinityQuery = () => {
+  const { isLogin } = useAuth();
+  const selectedTemporaryCategory = useRecoilValue(
+    selectedTemporaryCategoryAtom
+  );
+  const { data: selectedUserCategory } = useSelectedCategoriesQuery();
+
+  const selectedCategoryIds = isLogin
+    ? selectedUserCategory
+    : selectedTemporaryCategory;
+
   return useInfiniteQuery({
-    queryKey: ['quizList'],
+    queryKey: [
+      'quizList',
+      {
+        categoryIds: isLogin ? selectedUserCategory : selectedTemporaryCategory,
+      },
+      isLogin,
+    ],
     queryFn: ({ pageParam = 0 }) => {
       return getQuizList({
-        categoryIds: [],
+        categoryIds: selectedCategoryIds || [],
         page: pageParam,
         size: 15,
       });
@@ -41,8 +61,6 @@ export const useQuizListInfinityQuery = () => {
 
         return imageArray;
       };
-
-      console.log(pages);
 
       const flattenContents = pages.flatMap(({ content }) => content);
 
