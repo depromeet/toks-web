@@ -4,6 +4,7 @@ export const PRESSED_BACKGROUND_BY_COLOR: {
   [key in ButtonBackgroundColor]: string;
 } = {
   gray20: 'active:bg-gray-40',
+  gray70: 'active:bg-gray-70',
   primaryDefault: 'active:bg-primary-press',
   transparent: 'active:bg-transparent',
 };
