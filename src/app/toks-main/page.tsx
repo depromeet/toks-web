@@ -30,7 +30,7 @@ function ToksMainPage() {
       <CardList />
       <FloatingButton />
       <CategoryBottomSheet />
-    </>
+    </div>
   );
 }
 
