@@ -28,10 +28,13 @@ export function Thumbnail({
         <Image
           src={imageUrl}
           alt={`${name}사진`}
-          objectFit="cover"
-          objectPosition="center"
-          placeholder="blur"
-          layout="fill"
+          sizes="100vw"
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+          fill={true}
+          priority={true}
           blurDataURL={ICON_URL.BLUR_BACKGROUND}
         />
       )}
