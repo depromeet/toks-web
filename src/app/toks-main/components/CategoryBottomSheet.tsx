@@ -31,33 +31,11 @@ export const CategoryBottomSheet = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   usePreventScroll(isShow);
 
-  const renderTabContent = () => {
-    const panel = categoryQuery?.panels[selectedTab];
-    if (!panel || panel.length === 0) {
-      return null;
-    }
-
-    const buttons = panel.map(({ id, name }) => ({
-      label: name,
-      value: id,
-    }));
-
-    return (
-      <CategoryButtonGroups
-        buttons={buttons}
-        selectedButtons={selectedLocalCategory}
-        onClick={(value) => {
-          if (selectedLocalCategory.includes(value)) {
-            setSelectedLocalCategories((prev) => {
-              return prev.filter((v) => v !== value);
-            });
-            return;
-          }
-          setSelectedLocalCategories((prev) => [...prev, value]);
-        }}
-      />
-    );
-  };
+  const panel = categoryQuery?.panels[selectedTab];
+  const buttons = panel?.map(({ id, name }) => ({
+    label: name,
+    value: id,
+  }));
 
   return (
     <BottomSheet
@@ -87,7 +65,19 @@ export const CategoryBottomSheet = () => {
           setSelectedTab(index);
         }}
       />
-      {renderTabContent()}
+      <CategoryButtonGroups
+        buttons={buttons ?? []}
+        selectedButtons={selectedLocalCategory}
+        onClick={(value) => {
+          if (selectedLocalCategory.includes(value)) {
+            setSelectedLocalCategories((prev) => {
+              return prev.filter((v) => v !== value);
+            });
+            return;
+          }
+          setSelectedLocalCategories((prev) => [...prev, value]);
+        }}
+      />
       <div className="mt-auto px-20px py-24px">
         <Button
           className="h-48px w-full"
