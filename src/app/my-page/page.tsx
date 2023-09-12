@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { Button, ICON_URL, Text, Toast, ToastProps } from '@/common';
 import { useToast } from '@/common/hooks/useToast';
 
-import { BackHeader } from './components/BackHeader';
 import { LogoutBar } from './components/LogoutBar';
 import { UserInfo } from './components/UserInfo';
 
@@ -29,7 +28,6 @@ const MyPage = () => {
           title={toastData.title}
         />
       )}
-      <BackHeader />
       <UserInfo />
       <div className="h-40px" />
       <LogoutBar />

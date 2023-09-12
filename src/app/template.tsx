@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 import { RecoilRoot } from 'recoil';
 
-import { Appbar, GlobalPortal } from '@/common';
+import { Appbar, BackHeader, GlobalPortal } from '@/common';
 
 import { CategoryBottomSheet } from './toks-main/components/CategoryBottomSheet';
 
@@ -15,7 +15,7 @@ export default function Template({ children }: StrictPropsWithChildren) {
   return (
     <RecoilRoot>
       <GlobalPortal.Provider>
-        {pathName !== '/my-page' ? <Appbar /> : null}
+        {pathName === '/toks-main' ? <Appbar /> : <BackHeader />}
         {children}
         <CategoryBottomSheet />
       </GlobalPortal.Provider>
