@@ -5,6 +5,7 @@ import { FloatingButton, Toast, ToastProps } from '@/common';
 import { useToast } from '@/common/hooks/useToast';
 
 import { CardList } from './components/CardList';
+import { CategoryBottomSheet } from './components/CategoryBottomSheet';
 
 function ToksMainPage() {
   const { getSavedToastInfo, clearSavedToast } = useToast();
@@ -28,6 +29,7 @@ function ToksMainPage() {
       )}
       <CardList />
       <FloatingButton />
+      <CategoryBottomSheet />
     </div>
   );
 }

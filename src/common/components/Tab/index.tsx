@@ -40,7 +40,7 @@ export const Tab = ({ tabs, activeIndex, onTabChange }: TabProps) => {
   }, [activeIndex]);
 
   return (
-    <div className="overflow-y-hidden border-b-1px border-solid border-gray-90 shadow-none">
+    <div className="overflow-y-hidden border-b-1px border-solid border-gray-80 shadow-none">
       <div className="relative z-0 flex overflow-x-auto" ref={tabListRef}>
         {tabs.map((tab, index) => {
           const isSelected = activeIndex === index;

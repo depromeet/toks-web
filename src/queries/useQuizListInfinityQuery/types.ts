@@ -3,17 +3,15 @@ import { Quiz } from '@/app/quiz/models/quiz';
 export interface GetQuizListRequest {
   page: number;
   size: number;
-  categoryIds: number[];
+  categoryIds: string[];
 }
 
 export interface GetQuizListResponse {
-  data: {
-    content: QuizContent[];
-    page: number;
-    size: number;
-    totalPage: number;
-    totalCount: number;
-  };
+  content: QuizContent[];
+  page: number;
+  size: number;
+  totalPage: number;
+  totalCount: number;
 }
 
 export interface QuizCategory {

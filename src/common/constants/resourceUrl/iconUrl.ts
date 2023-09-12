@@ -1,6 +1,7 @@
 export const ICON_URL = {
   O: 'https://toks-web-assets.s3.amazonaws.com/ic_O.svg',
   X: 'https://toks-web-assets.s3.amazonaws.com/ic_X.svg',
+  CLOSE: 'https://toks-web-assets.s3.amazonaws.com/ic_close.svg',
   SMALL_X: 'https://toks-web-assets.s3.amazonaws.com/ic_small_x.svg',
   TOKS_LOGO: 'https://toks-web-assets.s3.amazonaws.com/ic_toks_logo.svg',
   AVATAR_DEFAULT:
