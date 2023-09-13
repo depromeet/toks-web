@@ -1,5 +1,6 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import SwiperCore from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -12,6 +13,8 @@ export function QuizCarousel({
   className,
   quizRecommendModels,
 }: QuizCarouselProps) {
+  const router = useRouter();
+
   const settings: SwiperCore = {
     spaceBetween: 8,
     slidesPerView: 1.03,
@@ -51,6 +54,7 @@ export function QuizCarousel({
                 likeCount={quizReplyHistoryCount}
                 commentCount={quizCommentCount}
                 quizType={quizType.startsWith('A_B_') ? 'default' : 'ox'}
+                handleCardClick={() => router.push(`/quiz/${quizId}`)}
               />
             </SwiperSlide>
           )

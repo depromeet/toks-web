@@ -62,7 +62,7 @@ export const Appbar = () => {
                 width={30}
                 height={30}
                 onClick={() => {
-                  router.replace('/my-page');
+                  router.push('/my-page');
                 }}
               />
             ) : (

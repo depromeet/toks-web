@@ -120,10 +120,16 @@ export const QuizCard = ({
                 src={src}
                 alt={src}
                 loading="lazy"
-                layout="fill"
-                objectFit="cover"
-                objectPosition="center"
-                placeholder="blur"
+                fill={true}
+                sizes="100vw"
+                style={{
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                }}
+                // layout="fill"
+                // objectFit="cover"
+                // objectPosition="center"
+                // placeholder="blur"
                 blurDataURL={ICON_URL.BLUR_BACKGROUND}
               />
             </div>
