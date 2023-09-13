@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 
 import { FloatingButton, Toast, ToastProps } from '@/common';
-import { useToast } from '@/common/hooks/useToast';
+import { useToast } from '@/common/hooks';
 
 import { CardList } from './components/CardList';
 import { CategoryBottomSheet } from './components/CategoryBottomSheet';
