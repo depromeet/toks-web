@@ -25,17 +25,15 @@ export function Thumbnail({
       )}
     >
       {imageUrl && (
-        <Image
+        <img
           src={imageUrl}
           alt={`${name}사진`}
-          sizes="100vw"
           style={{
+            width: '100%',
+            height: '100%',
             objectFit: 'cover',
             objectPosition: 'center',
           }}
-          fill={true}
-          priority={true}
-          blurDataURL={ICON_URL.BLUR_BACKGROUND}
         />
       )}
       {OXType && (

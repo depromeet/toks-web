@@ -115,14 +115,15 @@ export const QuizCard = ({
         ) : (
           images?.map((src, index) => (
             <div className="relative h-full" key={`${src}-${index}`}>
-              <Image
+              <img
                 className="flex-1"
                 src={src}
                 alt={src}
                 loading="lazy"
-                fill={true}
-                sizes="100vw"
+                // fill={true}
                 style={{
+                  width: '100%',
+                  height: '100%',
                   objectFit: 'cover',
                   objectPosition: 'center',
                 }}
@@ -130,7 +131,7 @@ export const QuizCard = ({
                 // objectFit="cover"
                 // objectPosition="center"
                 // placeholder="blur"
-                blurDataURL={ICON_URL.BLUR_BACKGROUND}
+                // blurDataURL={ICON_URL.BLUR_BACKGROUND}
               />
             </div>
           ))
