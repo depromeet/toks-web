@@ -25,7 +25,7 @@ async function getAuthStatus({
   });
 }
 
-async function getNewToken({
+export async function getNewToken({
   refreshToken,
 }: {
   refreshToken: string;
