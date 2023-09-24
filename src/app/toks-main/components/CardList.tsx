@@ -27,6 +27,8 @@ export const CardList = () => {
 
   const { pages: quizList } = data;
 
+  console.log(quizList);
+
   return (
     <div className="flex flex-col gap-8px">
       {quizList?.length === 0 && (

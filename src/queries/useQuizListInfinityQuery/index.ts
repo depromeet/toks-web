@@ -65,17 +65,11 @@ export const useQuizListInfinityQuery = () => {
       const flattenContents = pages.flatMap(({ content }) => content);
 
       const formatterQuizList = flattenContents.map(
-        ({
-          quiz,
-          category,
-          quizReplyHistoryCount,
-          answerReplyCount,
-          quizCommentCount,
-        }) => ({
+        ({ quiz, category, quizReplyHistoryCount, quizCommentCount }) => ({
           id: quiz.id,
           categoryTitle: category.name,
           likeCount: quizReplyHistoryCount,
-          commentCount: quizCommentCount + answerReplyCount,
+          commentCount: quizCommentCount,
           quizDescription: quiz.question.question,
           images: generatorImageArray(quiz),
         })
