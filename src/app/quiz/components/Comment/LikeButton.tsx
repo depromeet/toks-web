@@ -41,7 +41,7 @@ function LikeButton({
         width={18}
         height={18}
       />
-      <Text typo="body" color="white">
+      <Text typo="body" color={isLiked ? 'primaryDefault' : 'white'}>
         {like}
       </Text>
     </button>
