@@ -25,7 +25,7 @@ async function getAuthStatus({
   });
 }
 
-async function getNewToken({
+export async function getNewToken({
   refreshToken,
 }: {
   refreshToken: string;
@@ -98,5 +98,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/nickname', '/quiz/:path*', '/my-page'],
+  matcher: ['/nickname', '/quiz/:path*', '/my-page', '/toks-main'],
 };
