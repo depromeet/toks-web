@@ -36,12 +36,12 @@ function LikeButton({
       onClick={() => (isLiked ? unlikeComment : likeComment)()}
     >
       <Image
-        src={isLiked ? ICON_URL.THUMBS_UP_FILLED : ICON_URL.THUMBS_UP}
+        src={!isLiked ? ICON_URL.THUMBS_UP_FILLED : ICON_URL.THUMBS_UP}
         alt="좋아요 버튼"
         width={18}
         height={18}
       />
-      <Text typo="body" color="white">
+      <Text typo="body" color={!isLiked ? 'primaryDefault' : 'white'}>
         {like}
       </Text>
     </button>
