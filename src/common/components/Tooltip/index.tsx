@@ -58,6 +58,7 @@ export function Tooltip({
         display: 'inline-block',
         minWidth: 0,
         position: 'relative',
+        height: '24px',
       }}
     >
       {children}
