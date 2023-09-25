@@ -130,7 +130,7 @@ http.interceptors.response.use(
 const publicAPIStore = new Set();
 
 http.interceptors.response.use(
-  (response) => response.data,
+  (response) => response.data.data,
   async function (error: ToksError) {
     const requestUrl = error.config?.url ?? error.response?.config.url;
 
@@ -178,7 +178,6 @@ http.interceptors.request.use((config) => {
 
   return config;
 });
-http.interceptors.response.use((response) => response.data.data);
 
 function delay(time: number) {
   return new Promise((res) => setTimeout(res, time));
