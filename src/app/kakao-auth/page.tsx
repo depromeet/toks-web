@@ -5,7 +5,7 @@ import { deleteCookie, setCookie } from 'cookies-next';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { getUserInfo } from '@/common';
+import { getFirstUserInfo } from '@/common';
 import { QUERY_KEYS } from '@/common/constants/queryKeys';
 import { useToast } from '@/common/hooks/useToast';
 import { isToksError } from '@/common/utils/http';
@@ -44,7 +44,7 @@ const KakaoAuth = () => {
     QUERY_KEYS.GET_USER_INFO(accessToken),
     async () => {
       try {
-        return await getUserInfo();
+        return await getFirstUserInfo({ accessToken: accessToken as string });
       } catch (err: unknown) {
         if (isToksError(err) && err.status === 404) {
           router.replace('/nickname');
