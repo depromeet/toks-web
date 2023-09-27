@@ -43,7 +43,7 @@ export const Appbar = () => {
             />
             {/* TODO: POPOVER 구현 */}
             <Tooltip isFirstRender message="관심있는 카테고리를 선택해보세요">
-              <button type="button">
+              <button type="button" className="h-fit">
                 <Image
                   src={ICON_URL.CHEVRON_DOWN}
                   alt="카테고리 드롭다운"

@@ -55,11 +55,11 @@ export function Tooltip({
       onMouseOver={() => handleToggleTooltip(true)}
       ref={ref}
       style={{
-        display: 'inline-block',
+        // display: 'inline-block',
         minWidth: 0,
         position: 'relative',
-        height: '24px',
       }}
+      className="aline-middle flex h-auto"
     >
       {children}
       {show && isVisibleTooltip && (
