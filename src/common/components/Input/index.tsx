@@ -35,7 +35,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         <div
           className={cn(
             'align-center flex h-48px rounded-8px border-none bg-gray-100 px-14px py-0',
-            'hover:border-2 hover:border-solid hover:border-white',
             'placeholder:text-gray-70',
             typography['body'],
             {
