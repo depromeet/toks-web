@@ -7,6 +7,7 @@ import { HTMLAttributes } from 'react';
 import { Text } from '@/common/components';
 import { ICON_URL } from '@/common/constants';
 import { bgColor } from '@/common/foundation';
+import { useRouter } from 'next/navigation';
 
 interface GetStartedButtonProps
   extends Omit<HTMLAttributes<HTMLButtonElement>, 'className'> {
@@ -18,6 +19,8 @@ export function GetStartedButton({
   className,
   isCommentEmpty,
 }: GetStartedButtonProps) {
+  const router = useRouter();
+  bgColor;
   return (
     <button
       className={clsx(
@@ -25,7 +28,9 @@ export function GetStartedButton({
         bgColor['primaryDefault'],
         'w-full rounded-16px px-16px py-20px'
       )}
-      onClick={() => console.log('로그인 페이지로 이동')}
+      onClick={() => {
+        router.replace('https://api.tokstudy.com/oauth2/authorize/kakao');
+      }}
     >
       <div className="flex items-center">
         <Image

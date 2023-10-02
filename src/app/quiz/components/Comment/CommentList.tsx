@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { Children, useState } from 'react';
+import { Children, useEffect, useState } from 'react';
 
 import { useCommentListRef } from '@/app/quiz/hooks/useCommentListRef';
 import { Button } from '@/common';
@@ -14,10 +14,14 @@ export function CommentList({ children }: CommentListProps) {
   const commentListRef = useCommentListRef();
   const comments = Children.toArray(children);
   const [isFold, setIsFold] = useState(() => comments.length > 3);
+  useEffect(() => {
+    console.log(comments);
+    // comments변화를 여기서 감지해서 isFold업데이트
+  }, [comments]);
   return (
     <div ref={commentListRef}>
       <ul className="flex flex-col gap-y-4">
-        {isFold ? comments.slice(0, 3) : children}
+        {comments.length > 3 ? comments.slice(0, 3) : children}
       </ul>
       {isFold && (
         <div
