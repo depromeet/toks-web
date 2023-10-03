@@ -15,13 +15,14 @@ export function CommentList({ children }: CommentListProps) {
   const comments = Children.toArray(children);
   const [isFold, setIsFold] = useState(() => comments.length > 3);
   useEffect(() => {
-    console.log(comments);
-    // comments변화를 여기서 감지해서 isFold업데이트
-  }, [comments]);
+    if (isFold === false && comments.length > 3) {
+      setIsFold(true);
+    }
+  }, [children]);
   return (
     <div ref={commentListRef}>
       <ul className="flex flex-col gap-y-4">
-        {comments.length > 3 ? comments.slice(0, 3) : children}
+        {isFold ? comments.slice(0, 3) : children}
       </ul>
       {isFold && (
         <div

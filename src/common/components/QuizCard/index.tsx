@@ -75,7 +75,6 @@ export const QuizCard = ({
       </div>
     );
   };
-  console.log(quizDescription, images);
   return (
     <div
       role="button"
