@@ -71,6 +71,7 @@ export const useQuizListInfinityQuery = () => {
           likeCount: quizReplyHistoryCount,
           commentCount: quizCommentCount,
           quizDescription: quiz.question.question,
+          quizType: quiz.quizType,
           images: generatorImageArray(quiz),
         })
       );
