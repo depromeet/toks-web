@@ -54,6 +54,10 @@ export const TextField = forwardRef<HTMLTextAreaElement, TextFieldProps>(
             ref={ref}
             id={name}
             name={name}
+            style={{
+              resize: 'none',
+              touchAction: 'manipulation',
+            }}
             onFocus={(e) => {
               onFocus?.(e);
               setIsFocus(true);
