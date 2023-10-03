@@ -2,12 +2,12 @@
 
 import clsx from 'clsx';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { HTMLAttributes } from 'react';
 
 import { Text } from '@/common/components';
 import { ICON_URL } from '@/common/constants';
 import { bgColor } from '@/common/foundation';
-import { useRouter } from 'next/navigation';
 
 interface GetStartedButtonProps
   extends Omit<HTMLAttributes<HTMLButtonElement>, 'className'> {

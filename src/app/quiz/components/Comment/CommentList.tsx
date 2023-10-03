@@ -18,6 +18,7 @@ export function CommentList({ children }: CommentListProps) {
     if (isFold === false && comments.length > 3) {
       setIsFold(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [children]);
   return (
     <div ref={commentListRef}>

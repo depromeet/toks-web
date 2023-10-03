@@ -35,7 +35,6 @@ export const TextField = forwardRef<HTMLTextAreaElement, TextFieldProps>(
         <div
           className={cn(
             'align-center flex rounded-8px border-none bg-gray-100 px-16px py-14px',
-            'hover:border-2 hover:border-solid hover:border-white',
             'placeholder:text-gray-70',
             typography['body'],
             {
