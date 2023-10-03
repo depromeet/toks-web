@@ -75,7 +75,7 @@ export const QuizCard = ({
       </div>
     );
   };
-
+  console.log(quizDescription, images);
   return (
     <div
       role="button"
@@ -109,21 +109,22 @@ export const QuizCard = ({
           </Text>
         </div>
       </div>
-      <div className="flex w-full flex-1 flex-col justify-between overflow-hidden rounded-8px">
-        {isOX ? (
+      <div className="flex h-full w-120px flex-col justify-between overflow-hidden rounded-8px">
+        {isOX && images?.length === 0 ? (
           <OxQuizThumbnail />
         ) : (
           images?.map((src, index) => (
-            <div className="relative h-full" key={`${src}-${index}`}>
+            <div
+              className={images.length > 1 ? 'h-1/2' : 'h-full'}
+              key={`${src}-${index}`}
+            >
               <img
-                className="flex-1"
+                className="h-full w-full"
                 src={src}
                 alt={src}
                 loading="lazy"
                 // fill={true}
                 style={{
-                  width: '100%',
-                  height: '100%',
                   objectFit: 'cover',
                   objectPosition: 'center',
                 }}

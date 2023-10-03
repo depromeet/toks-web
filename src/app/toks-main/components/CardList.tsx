@@ -36,10 +36,10 @@ export const CardList = () => {
           </Text>
         </div>
       )}
-      {quizList?.map(({ images, ...quiz }) => (
+      {quizList?.map(({ images, quizType, ...quiz }) => (
         <QuizCard
           key={quiz.id}
-          quizType={images.length === 0 ? 'ox' : 'default'}
+          quizType={quizType.startsWith('A_B_') ? 'default' : 'ox'}
           sizeType="large"
           images={images}
           handleCardClick={() => router.push(`/quiz/${quiz.id}`)}
