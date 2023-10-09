@@ -49,7 +49,7 @@ const UpdateNickname = () => {
             hasExclamationMark={hasExclamationMark}
             errors={errors}
             boxDescription="어떤 이름으로 바꿔볼까요?"
-            defaultValue=""
+            defaultValue={user.nickname}
           />
         )}
         <Button

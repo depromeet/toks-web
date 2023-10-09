@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/image';
+import { useRef } from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 
 import { ICON_URL, Input, Text, bgColor } from '@/common';
@@ -35,8 +36,19 @@ export const NicknameBox = ({
   boxDescription,
   defaultValue,
 }: NicknameBoxProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     inputRef.current?.click();
+  //     inputRef.current?.focus();
+  //     // console.log(inputRef.current);
+  //   }, 250);
+  // }, []);
+
   return (
     <div
+      // ref={divRef}
       className={clsx(
         bgColor['gray110'],
         'flex w-full flex-col items-center rounded-16px px-16px py-24px'
@@ -60,6 +72,7 @@ export const NicknameBox = ({
             maxLength: isMaxLength(6),
             pattern: hasExclamationMark(/^[a-zA-Z0-9가-힣]+$/i),
           })}
+          ref={inputRef}
           className="mt-40px"
           label="닉네임 입력"
           defaultValue={defaultValue}
