@@ -34,7 +34,7 @@ const Nickname = () => {
   }, []);
 
   return (
-    <div ref={divRef} style={{ height: `100vh` }} className="relative pt-86px">
+    <div ref={divRef} className="relative h-main pt-86px">
       {toastData && (
         <Toast
           isShow={toastData.isShow}

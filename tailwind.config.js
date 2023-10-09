@@ -37,7 +37,7 @@ module.exports = {
         ...generatorTailwindConfigList(100, 2),
       },
       height: {
-        main: 'calc(100vh - 54px)',
+        main: 'calc(var(--vh, 1vh) * 100 - 54px);',
         ...generatorTailwindConfigList(300, 2),
       },
       width: {
