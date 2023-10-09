@@ -1,8 +1,10 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-import { Button } from '@/common';
+import { Button, Toast, ToastProps } from '@/common';
+import { useToast } from '@/common/hooks';
 
 import { NicknameBox } from './components/NicknameBox';
 import { useCreateNicknameForm } from './hooks/useCreateNicknameForm';
@@ -19,9 +21,25 @@ const Nickname = () => {
     hasExclamationMark,
     nicknameMutation,
   } = useCreateNicknameForm(pathName);
+  const { getSavedToastInfo, clearSavedToast } = useToast();
+  const [toastData, setToastData] = useState<ToastProps | null>(null);
+
+  useEffect(() => {
+    setToastData(getSavedToastInfo());
+    clearSavedToast();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="relative h-main pt-86px">
+      {toastData && (
+        <Toast
+          isShow={toastData.isShow}
+          type={toastData.type}
+          direction={toastData.direction}
+          title={toastData.title}
+        />
+      )}
       <form
         onSubmit={(e) => {
           e.preventDefault(), nicknameMutation();

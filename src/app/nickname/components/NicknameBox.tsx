@@ -53,13 +53,13 @@ export const NicknameBox = ({
           {boxDescription}
         </Text>
         <Input
+          autoFocus={true}
           {...register('nickname', {
             required: isRequiredText(),
             minLength: isMinLength(2),
             maxLength: isMaxLength(6),
             pattern: hasExclamationMark(/^[a-zA-Z0-9가-힣]+$/i),
           })}
-          autoFocus={true}
           className="mt-40px"
           label="닉네임 입력"
           defaultValue={defaultValue}
