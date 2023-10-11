@@ -17,15 +17,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <meta
-        name="viewport"
-        content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
-      />
-      <link
-        rel="icon"
-        href="https://toks-web-assets.s3.amazonaws.com/legacy/toktok.ico"
-        sizes="any"
-      />
+      <head>
+        <meta
+          name="viewport"
+          content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
+        />
+        <link
+          rel="icon"
+          href="https://toks-web-assets.s3.amazonaws.com/legacy/toktok.ico"
+        />
+      </head>
       <body className={clsx(pretendard.className, bgColor['gray120'])}>
         <QueryProvider>
           <StyledLayout>{children}</StyledLayout>
