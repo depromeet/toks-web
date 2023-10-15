@@ -38,7 +38,7 @@ export default function RootLayout({
 }
 
 function StyledLayout({ children }: { children: React.ReactNode }) {
-  return <div className={clsx('px-20px', 'h-full')}>{children}</div>;
+  return <div className={clsx('px-20px', 'h-screen')}>{children}</div>;
 }
 
 const pretendard = localFont({

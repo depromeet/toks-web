@@ -82,12 +82,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    // ({ addUtilities }) => {
-    //   addUtilities({
-    //     '.min-safe-h-screen': {
-    //     },
-    //   });
-    // },
-  ],
+  plugins: [],
 };

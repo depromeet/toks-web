@@ -19,7 +19,7 @@ const MyPage = () => {
   }, []);
 
   return (
-    <div className="h-main">
+    <div className="mobile-safe-min-h-screen">
       {toastData && (
         <Toast
           isShow={toastData.isShow}
