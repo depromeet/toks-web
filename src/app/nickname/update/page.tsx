@@ -36,7 +36,7 @@ const UpdateNickname = () => {
   const divRef = useWindowResize();
 
   return (
-    <div ref={divRef} className="min-safe-h-screen relative pt-86px">
+    <div ref={divRef} className="mobile-safe-h-screen relative pt-86px">
       <form
         onSubmit={(e) => {
           e.preventDefault(), nicknameMutation();
