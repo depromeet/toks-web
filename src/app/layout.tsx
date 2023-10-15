@@ -25,6 +25,7 @@ export default function RootLayout({
         <link
           rel="icon"
           href="https://toks-web-assets.s3.amazonaws.com/legacy/toktok.ico"
+          sizes="any"
         />
       </head>
       <body className={clsx(pretendard.className, bgColor['gray120'])}>
@@ -37,7 +38,7 @@ export default function RootLayout({
 }
 
 function StyledLayout({ children }: { children: React.ReactNode }) {
-  return <div className={clsx('px-20px', 'h-screen')}>{children}</div>;
+  return <div className={clsx('px-20px', 'h-full')}>{children}</div>;
 }
 
 const pretendard = localFont({

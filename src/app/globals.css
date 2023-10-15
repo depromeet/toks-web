@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .min-safe-h-screen {
+    /* equivalent to 100dvh in major browsers */
+    min-height: calc(var(--vh, 1vh) * 100 - 54px);
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    .min-safe-h-screen {
+      /* for ios safari 15, safe-area-inset-bottom is 0, so a special fix apply here */
+      min-height: calc(var(--vh, 1vh) * 100 - 54px);
+      min-height: -webkit-fill-available;
+    }
+  }
+}

@@ -19,7 +19,7 @@ const MyPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="h-main">
       {toastData && (
         <Toast
           isShow={toastData.isShow}
