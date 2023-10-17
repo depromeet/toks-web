@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 
 import { Button, getUserInfo } from '@/common';
 import { QUERY_KEYS } from '@/common/constants/queryKeys';
+import { useWindowResize } from '@/common/hooks/useWindowResize';
 
 import { NicknameBox } from '../components/NicknameBox';
 import { useCreateNicknameForm } from '../hooks/useCreateNicknameForm';
@@ -32,9 +33,10 @@ const UpdateNickname = () => {
     hasExclamationMark,
     nicknameMutation,
   } = useCreateNicknameForm(pathName);
+  const divRef = useWindowResize();
 
   return (
-    <div className="relative h-main pt-86px">
+    <div ref={divRef} className="mobile-safe-h-screen relative pt-86px">
       <form
         onSubmit={(e) => {
           e.preventDefault(), nicknameMutation();

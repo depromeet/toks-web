@@ -19,8 +19,8 @@ export const UserInfo = () => {
   }, [user]);
 
   return (
-    <div className="w-full flex-col items-center text-center">
-      <div className="mx-auto mb-24px mt-20px h-96px w-96px overflow-hidden rounded-full">
+    <div className="w-full flex-col items-center pt-20px text-center">
+      <div className="mx-auto mb-24px h-96px w-96px overflow-hidden rounded-full">
         <Image src={profileImage} alt="프로필 이미지" width={96} height={96} />
       </div>
       <div className="mb-8px flex w-full justify-center">
