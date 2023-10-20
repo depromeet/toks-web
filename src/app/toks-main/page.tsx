@@ -5,11 +5,12 @@ import { FloatingButton, Toast, ToastProps } from '@/common';
 import { useToast } from '@/common/hooks';
 
 import { CardList } from './components/CardList';
-import { CategoryBottomSheet } from './components/CategoryBottomSheet';
+import { OnboardingBottomSheet } from './components/OnboardingBottomSheet';
 
 function ToksMainPage() {
   const { getSavedToastInfo, clearSavedToast } = useToast();
   const [toastData, setToastData] = useState<ToastProps | null>(null);
+  const [isShow, setIsShow] = useState(false);
 
   useEffect(() => {
     setToastData(getSavedToastInfo());
@@ -17,6 +18,7 @@ function ToksMainPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  console.log(isShow);
   return (
     <div>
       {toastData && (
@@ -28,8 +30,8 @@ function ToksMainPage() {
         />
       )}
       <CardList />
-      <FloatingButton />
-      <CategoryBottomSheet />
+      <FloatingButton onClick={() => setIsShow(true)} />
+      <OnboardingBottomSheet onClose={() => setIsShow(false)} isShow={isShow} />
     </div>
   );
 }
