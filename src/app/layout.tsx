@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 
 import { bgColor } from '@/common/foundation';
 import QueryProvider from '@/common/providers/QueryProvider';
+import * as gtag from '@/common/utils';
 
 export const metadata = {
   title: '똑스',
@@ -26,6 +27,24 @@ export default function RootLayout({
           rel="icon"
           href="https://toks-web-assets.s3.amazonaws.com/legacy/toktok.ico"
           sizes="any"
+        />
+        <title>Toks</title>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+        />
+        {/* GA설정 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
         />
       </head>
       <body
