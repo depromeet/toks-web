@@ -2,16 +2,9 @@ import Image from 'next/image';
 
 import { BottomSheet, Button, ICON_URL, Text } from '@/common';
 import { useLogoutQuery } from '@/queries';
+import { BottomSheetProps } from '@/types/bottomsheet';
 
-interface LogoutBottomSheetProps {
-  onClose: VoidFunction;
-  isShow: boolean;
-}
-
-export const LogoutBottomSheet = ({
-  onClose,
-  isShow,
-}: LogoutBottomSheetProps) => {
+export const LogoutBottomSheet = ({ onClose, isShow }: BottomSheetProps) => {
   const { mutate: logoutMutation } = useLogoutQuery();
   const onLogout = async () => {
     onClose();

@@ -30,6 +30,7 @@ export const ICON_URL = {
   DANGER: 'https://toks-web-assets.s3.amazonaws.com/legacy/ic-danger.svg',
   SUCCESS: 'https://toks-web-assets.s3.amazonaws.com/ic-success.svg',
   FAILED: 'https://toks-web-assets.s3.amazonaws.com/ic-failed.svg',
+  KAKAO: 'https://toks-web-assets.s3.amazonaws.com/ic-kakao.svg',
 };
 
 export type IconName = keyof typeof ICON_URL;

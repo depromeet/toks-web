@@ -7,6 +7,7 @@ export const PRESSED_BACKGROUND_BY_COLOR: {
   gray70: 'active:bg-gray-70',
   primaryDefault: 'active:bg-primary-press',
   transparent: 'active:bg-transparent',
+  kakaoBackground: 'active:bg-kakao-background',
 };
 
 export const ICON_BY_BUTTON_SIZE: { [key in ButtonSize]: number } = {

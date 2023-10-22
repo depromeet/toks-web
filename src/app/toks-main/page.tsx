@@ -5,11 +5,12 @@ import { FloatingButton, Toast, ToastProps } from '@/common';
 import { useToast } from '@/common/hooks';
 
 import { CardList } from './components/CardList';
-import { CategoryBottomSheet } from './components/CategoryBottomSheet';
+import { MainPageBottomSheet } from './components/MainPageBottomSheet';
 
 function ToksMainPage() {
   const { getSavedToastInfo, clearSavedToast } = useToast();
   const [toastData, setToastData] = useState<ToastProps | null>(null);
+  const [isShow, setIsShow] = useState(false);
 
   useEffect(() => {
     setToastData(getSavedToastInfo());
@@ -28,8 +29,8 @@ function ToksMainPage() {
         />
       )}
       <CardList />
-      <FloatingButton />
-      <CategoryBottomSheet />
+      <FloatingButton onClick={() => setIsShow(true)} />
+      <MainPageBottomSheet onClose={() => setIsShow(false)} isShow={isShow} />
     </div>
   );
 }

@@ -12,6 +12,9 @@ jobs:
 
     env:
       NEXT_PUBLIC_BASE_URL: ${{ secrets.BACKEND_BASE_URL }}
+      NEXT_PUBLIC_GA_ID: ${{ secrets.GA_ID }}
+      NEXT_PUBLIC_HJID: ${{ secrets.HOTJAR_HJID }}
+      NEXT_PUBLIC_HJSV: ${{ secrets.HOTJAR_HJSV }}
 
     strategy:
       matrix:
