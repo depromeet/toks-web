@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 
 import { bgColor } from '@/common/foundation';
 import QueryProvider from '@/common/providers/QueryProvider';
+import * as gtag from '@/common/utils';
 
 export const metadata = {
   title: '똑스',
@@ -26,6 +27,39 @@ export default function RootLayout({
           rel="icon"
           href="https://toks-web-assets.s3.amazonaws.com/legacy/toktok.ico"
           sizes="any"
+        />
+        <title>Toks</title>
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+        />
+        {/* GA설정 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gtag.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
+        />
+        {/* hotjar 설정 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:${process.env.NEXT_PUBLIC_HJID},hjsv:${process.env.NEXT_PUBLIC_HJSV}};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+`,
+          }}
         />
       </head>
       <body
