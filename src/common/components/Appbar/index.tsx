@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useSetRecoilState } from 'recoil';
 
-import { ICON_URL } from '@/common/constants';
+import { ICON_URL, LOGIN_URL } from '@/common/constants';
 import { useAuth } from '@/common/hooks';
 import { isVisibleCategoryBottomSheetAtom } from '@/store';
 
