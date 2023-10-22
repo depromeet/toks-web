@@ -5,7 +5,7 @@ import { FloatingButton, Toast, ToastProps } from '@/common';
 import { useToast } from '@/common/hooks';
 
 import { CardList } from './components/CardList';
-import { OnboardingBottomSheet } from './components/OnboardingBottomSheet';
+import { MainPageBottomSheet } from './components/MainPageBottomSheet';
 
 function ToksMainPage() {
   const { getSavedToastInfo, clearSavedToast } = useToast();
@@ -30,7 +30,7 @@ function ToksMainPage() {
       )}
       <CardList />
       <FloatingButton onClick={() => setIsShow(true)} />
-      <OnboardingBottomSheet onClose={() => setIsShow(false)} isShow={isShow} />
+      <MainPageBottomSheet onClose={() => setIsShow(false)} isShow={isShow} />
     </div>
   );
 }
