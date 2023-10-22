@@ -59,6 +59,8 @@ export const OnboardingCarousel = () => {
         </Button>
       ) : (
         <Button
+          iconName="KAKAO"
+          iconPosition="LEFT"
           className="absolute bottom-0px w-full"
           size="L"
           textColor="kakaoText"
