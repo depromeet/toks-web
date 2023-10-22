@@ -4,23 +4,10 @@ import Slider from 'react-slick';
 
 import { Button } from '@/common';
 
+import { ONBOARDING_IMAGES } from '../constants/imageUrl';
+
 // import 'slick-carousel/slick/slick.css';
 // import 'slick-carousel/slick/slick-theme.css';
-
-const ONBOARDING_IMAGES = [
-  {
-    url: 'https://toks-web-assets.s3.amazonaws.com/onboarding/onboarding-1.svg',
-    idx: 'onboarding-1',
-  },
-  {
-    url: 'https://toks-web-assets.s3.amazonaws.com/onboarding/onboarding-2.svg',
-    idx: 'onboarding-2',
-  },
-  {
-    url: 'https://toks-web-assets.s3.amazonaws.com/onboarding/onboarding-3.svg',
-    idx: 'onboarding-3',
-  },
-];
 
 export const OnboardingCarousel = () => {
   const slider = useRef<Slider>(null);
@@ -47,7 +34,7 @@ export const OnboardingCarousel = () => {
           className="w-full"
           {...setting}
         >
-          {ONBOARDING_IMAGES.map(({ url }) => (
+          {ONBOARDING_IMAGES.map((url) => (
             <div key={url}>
               <Image
                 className="m-auto"
@@ -74,11 +61,12 @@ export const OnboardingCarousel = () => {
         <Button
           className="absolute bottom-0px w-full"
           size="L"
+          textColor="kakaoText"
           typo="subheadingBold"
-          backgroundColor="primaryDefault"
+          backgroundColor="kakaoBackground"
           onClick={() => console.log('login')}
         >
-          로그인
+          카카오로 쉽게 로그인하기
         </Button>
       )}
     </div>

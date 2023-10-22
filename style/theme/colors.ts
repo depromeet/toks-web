@@ -30,4 +30,9 @@ export const colors = {
     default: '#FF862F',
     press: '#E96C12',
   },
+
+  kakao: {
+    background: '#FDE500',
+    text: '#352020',
+  },
 } as const;
