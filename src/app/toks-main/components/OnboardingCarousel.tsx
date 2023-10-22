@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
+import '../style/carousel.css';
 
 import { Button } from '@/common';
 
@@ -21,13 +22,14 @@ export const OnboardingCarousel = () => {
     infinite: false,
     slidesToShow: 1,
     slidesToScroll: 1,
+    dotsClass: 'dots_custom',
   };
 
   console.log(slider.current);
 
   return (
     <div className="relative w-full">
-      <div className="pb-100px">
+      <div className="pb-50px">
         <Slider
           ref={slider}
           beforeChange={(slide, newSlide) => setCurrentSlide(newSlide)}
