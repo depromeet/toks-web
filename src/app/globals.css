@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+
 @layer components {
   .body-h-screen {
     /* equivalent to 100dvh in major browsers */

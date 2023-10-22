@@ -18,7 +18,6 @@ function ToksMainPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(isShow);
   return (
     <div>
       {toastData && (
