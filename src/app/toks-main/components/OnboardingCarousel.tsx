@@ -1,20 +1,18 @@
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
 import '../style/carousel.css';
 
-import { Button } from '@/common';
+import { Button, LOGIN_URL } from '@/common';
 
 import { ONBOARDING_IMAGES } from '../constants/imageUrl';
 
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
-
 export const OnboardingCarousel = () => {
   const slider = useRef<Slider>(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const router = useRouter();
 
-  console.log(currentSlide);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const setting = {
     arrows: false,
@@ -24,8 +22,6 @@ export const OnboardingCarousel = () => {
     slidesToScroll: 1,
     dotsClass: 'dots_custom',
   };
-
-  console.log(slider.current);
 
   return (
     <div className="relative w-full">
@@ -68,7 +64,9 @@ export const OnboardingCarousel = () => {
           textColor="kakaoText"
           typo="subheadingBold"
           backgroundColor="kakaoBackground"
-          onClick={() => console.log('login')}
+          onClick={() => {
+            router.replace(LOGIN_URL);
+          }}
         >
           카카오로 쉽게 로그인하기
         </Button>

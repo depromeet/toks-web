@@ -70,9 +70,7 @@ export const Appbar = () => {
                 color="gray10"
                 typo="body"
                 onClick={() => {
-                  router.replace(
-                    'https://api.tokstudy.com/oauth2/authorize/kakao'
-                  );
+                  router.replace(LOGIN_URL);
                 }}
               >
                 로그인
