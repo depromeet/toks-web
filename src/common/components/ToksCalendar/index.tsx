@@ -62,6 +62,12 @@ export function ToksCalendar({
             ></div>
           );
         }}
+        onActiveStartDateChange={({ action, activeStartDate }) => {
+          if (activeStartDate) {
+            // console.log(format(activeStartDate, 'yyyy.MM').split('.'));
+            console.log(new Date(activeStartDate));
+          }
+        }}
         {...rest}
       />
       <div className="flex justify-center gap-12px">
