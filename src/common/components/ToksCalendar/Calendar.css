@@ -97,16 +97,18 @@
 .react-calendar__year-view .react-calendar__tile,
 .react-calendar__decade-view .react-calendar__tile,
 .react-calendar__century-view .react-calendar__tile {
-  padding: 2em 0.5em;
+  /* padding: 2em 0.5em; */
 }
 
 .react-calendar__tile {
-  max-width: 100%;
+  /* max-width: 100%; */
   padding: 10px 6.6667px;
-  background: none;
+  /* background: none; */
   text-align: center;
   line-height: 16px;
   pointer-events: none;
+  width: 33.1px;
+  /* height: 33.1px; */
   font-size: 14px;
   font-weight: 400;
 }
@@ -131,4 +133,22 @@
 
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
+}
+
+.highlight1 {
+  color: #ffffff;
+  border-radius: 100px;
+  background: rgba(255, 134, 47, 0.2);
+}
+
+.highlight2 {
+  color: #ffffff;
+  border-radius: 47.294px;
+  background: rgba(255, 134, 47, 0.5);
+}
+
+.highlight3 {
+  color: #ffffff;
+  border-radius: 47.294px;
+  background: #ff862f;
 }

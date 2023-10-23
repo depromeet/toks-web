@@ -1,17 +1,25 @@
 'use client';
-import { textColor } from '@/common';
-import { format } from 'date-fns';
-import Calendar from 'react-calendar';
-import './Calendar.css';
+
+import { ToksCalendar } from '@/common';
 
 export default function () {
   return (
     <div>
-      <Calendar
-        locale="ko-KO"
-        className={textColor['white']}
-        calendarType="US"
-        formatDay={(_, date) => format(date, 'd')}
+      <ToksCalendar
+        calendarDates={[
+          {
+            date: '2023-09-06',
+            count: 4,
+          },
+          {
+            date: '2023-09-16',
+            count: 1,
+          },
+          {
+            date: '2023-09-30',
+            count: 3,
+          },
+        ]}
       />
     </div>
   );
