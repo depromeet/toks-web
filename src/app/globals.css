@@ -6,11 +6,6 @@
 @import '~slick-carousel/slick/slick-theme.css';
 
 @layer components {
-  /* .webkit-flex {
-    display: flex;
-    -webkit-justify-content: center;
-    -webkit-align-items: center;
-  } */
   .body-h-screen {
     /* equivalent to 100dvh in major browsers */
     margin: 0;
