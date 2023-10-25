@@ -7,6 +7,7 @@ export const ICON_URL = {
   AVATAR_DEFAULT:
     'https://toks-web-assets.s3.amazonaws.com/ic_toks_avatar_default.svg',
   EMOJI_ROCKET: 'https://toks-web-assets.s3.amazonaws.com/emoji/ic_rocket.svg',
+  EMOJI_CODING: 'https://toks-web-assets.s3.amazonaws.com/emoji/ic_coding.svg',
   EMOJI_BASE_GRAY:
     'https://toks-web-assets.s3.amazonaws.com/emoji/ic_base-gray.svg',
   EMOJI_NINJA: 'https://toks-web-assets.s3.amazonaws.com/emoji/ic_ninja.svg',

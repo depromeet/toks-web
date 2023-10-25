@@ -62,13 +62,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={clsx(
-          pretendard.className,
-          bgColor['gray120'],
-          'body-h-screen'
-        )}
-      >
+      <body className={clsx(pretendard.className, bgColor['gray120'])}>
         <QueryProvider>
           <StyledLayout>{children}</StyledLayout>
         </QueryProvider>
@@ -78,7 +72,11 @@ export default function RootLayout({
 }
 
 function StyledLayout({ children }: { children: React.ReactNode }) {
-  return <div className={clsx('px-20px', 'main-h-screen')}>{children}</div>;
+  return (
+    <div style={{ minHeight: '100dvh' }} className={clsx('px-20px')}>
+      {children}
+    </div>
+  );
 }
 
 const pretendard = localFont({

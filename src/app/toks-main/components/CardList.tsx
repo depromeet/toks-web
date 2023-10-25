@@ -3,10 +3,11 @@
 import { useRouter } from 'next/navigation';
 import React, { useRef } from 'react';
 
-import { QuizCard, Text } from '@/common';
+import { QuizCard } from '@/common';
 import { useIntersectionObserver } from '@/common/hooks';
 import { useQuizListInfinityQuery } from '@/queries/useQuizListInfinityQuery';
 
+import { QuizNotice } from './QuizNotice';
 import { CARD_LIST_QUERY_DEFAULT } from '../constants';
 
 export const CardList = () => {
@@ -28,12 +29,10 @@ export const CardList = () => {
   const { pages: quizList } = data;
 
   return (
-    <div className="flex flex-col gap-8px">
+    <div className="flex h-full flex-col gap-8px">
       {quizList?.length === 0 && (
-        <div className="flex h-40px flex-col items-center justify-center">
-          <Text typo="bodyBold" color="gray80">
-            퀴즈가 없습니다.
-          </Text>
+        <div className="flex h-main items-center justify-center">
+          <QuizNotice />
         </div>
       )}
       {quizList?.map(({ images, quizType, ...quiz }) => (
