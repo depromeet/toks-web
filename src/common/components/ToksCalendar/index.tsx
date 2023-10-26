@@ -1,23 +1,36 @@
 import { textColor, bgColor, Text } from '@/common';
 import clsx from 'clsx';
-import { format } from 'date-fns';
+import { format, getMonth, getYear } from 'date-fns';
+import { useState } from 'react';
 import Calendar, { CalendarProps } from 'react-calendar';
 import './Calendar.css';
+import { useGetCalendarQuery } from './useGetCalendarQuery';
 
-type CalendarDatesType = {
-  date: string;
-  count: number;
+const useChangeCalendar = () => {
+  const todayDate = new Date();
+  const [yearMonth, setYearMonth] = useState(() => [
+    getYear(todayDate),
+    getMonth(todayDate) + 1,
+  ]);
+
+  const [year, month] = yearMonth;
+
+  return {
+    year,
+    month,
+    setYearMonth,
+  };
 };
 
-interface ToksCalendarProps extends CalendarProps {
-  calendarDates: CalendarDatesType[];
-}
+export function ToksCalendar({ ...rest }: CalendarProps) {
+  const { year, month, setYearMonth } = useChangeCalendar();
+  const { data, isLoading } = useGetCalendarQuery(year, month);
+  if (isLoading || data === undefined) {
+    return <Text typo="headingL">로딩</Text>;
+  }
 
-export function ToksCalendar({
-  calendarDates,
-  className,
-  ...rest
-}: ToksCalendarProps) {
+  const calendarDates = data.calendar;
+
   const countByDate = new Map(
     calendarDates.map(({ date, count }) => [date, count])
   );
@@ -62,10 +75,12 @@ export function ToksCalendar({
             ></div>
           );
         }}
-        onActiveStartDateChange={({ action, activeStartDate }) => {
+        onActiveStartDateChange={({ activeStartDate }) => {
           if (activeStartDate) {
-            // console.log(format(activeStartDate, 'yyyy.MM').split('.'));
-            console.log(new Date(activeStartDate));
+            setYearMonth([
+              getYear(activeStartDate),
+              getMonth(activeStartDate) + 1,
+            ]);
           }
         }}
         {...rest}
