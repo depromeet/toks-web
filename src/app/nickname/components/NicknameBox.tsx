@@ -59,7 +59,6 @@ export const NicknameBox = ({
             maxLength: isMaxLength(6),
             pattern: hasExclamationMark(/^[a-zA-Z0-9가-힣]+$/i),
           })}
-          autoFocus
           className="mt-40px"
           label="닉네임 입력"
           defaultValue={defaultValue}

@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { HTMLAttributes } from 'react';
 
 import { Text } from '@/common/components';
-import { ICON_URL } from '@/common/constants';
+import { ICON_URL, LOGIN_URL } from '@/common/constants';
 import { bgColor } from '@/common/foundation';
 
 interface GetStartedButtonProps
@@ -29,7 +29,7 @@ export function GetStartedButton({
         'w-full rounded-16px px-16px py-20px'
       )}
       onClick={() => {
-        router.replace('https://api.tokstudy.com/oauth2/authorize/kakao');
+        router.replace(LOGIN_URL);
       }}
     >
       <div className="flex items-center">

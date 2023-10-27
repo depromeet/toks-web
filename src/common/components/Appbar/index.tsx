@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useSetRecoilState } from 'recoil';
 
-import { ICON_URL } from '@/common/constants';
+import { ICON_URL, LOGIN_URL } from '@/common/constants';
 import { useAuth } from '@/common/hooks';
 import { isVisibleCategoryBottomSheetAtom } from '@/store';
 
@@ -70,9 +70,7 @@ export const Appbar = () => {
                 color="gray10"
                 typo="body"
                 onClick={() => {
-                  router.replace(
-                    'https://api.tokstudy.com/oauth2/authorize/kakao'
-                  );
+                  router.replace(LOGIN_URL);
                 }}
               >
                 로그인

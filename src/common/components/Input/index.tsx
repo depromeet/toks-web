@@ -43,7 +43,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 Boolean(errorMessage),
             }
           )}
-          {...props}
         >
           <input
             className="h-full w-full border-none bg-transparent text-white outline-none"

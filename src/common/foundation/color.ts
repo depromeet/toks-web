@@ -19,9 +19,13 @@ export const color = {
   primaryDefault: 'primary-default',
   primaryPress: 'primary-press',
   transparent: 'transparent',
+  kakaoBackground: 'kakao-background',
+  kakaoText: 'kakao-text',
 } as const;
 
 export const bgColor = {
+  kakaoBackground: 'bg-kakao-background',
+  kakaoText: 'bg-kakao-text',
   gray10: 'bg-gray-10',
   gray20: 'bg-gray-20',
   gray30: 'bg-gray-30',
@@ -45,6 +49,8 @@ export const bgColor = {
 } as const;
 
 export const textColor = {
+  kakaoText: 'text-kakao-text',
+  kakaoBackground: 'text-kakao-background',
   gray10: 'text-gray-10',
   gray20: 'text-gray-20',
   gray30: 'text-gray-30',

@@ -10,6 +10,7 @@ type Props = {
 
 async function RecommendatonPage({ params: { quizId } }: Props) {
   const quizRecommendModels = await getRecommendationByQuizId(quizId);
+  console.log(quizRecommendModels);
   const isQuizzesExist = quizRecommendModels.length !== 0;
   return (
     isQuizzesExist && (
