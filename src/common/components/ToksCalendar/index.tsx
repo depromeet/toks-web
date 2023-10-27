@@ -6,8 +6,7 @@ import { useEffect, useState } from 'react';
 import Calendar, { CalendarProps } from 'react-calendar';
 
 import './Calendar.css';
-import { Text, bgColor, textColor } from '@/common';
-import { useChangeCalendar } from '@/common/hooks';
+import { Text, bgColor, textColor, useChangeCalendar } from '@/common';
 
 import { getCalendar } from './api';
 import { CalendarDate } from './type';
