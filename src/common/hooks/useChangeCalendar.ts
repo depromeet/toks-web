@@ -1,3 +1,5 @@
+'use state';
+
 import { getMonth, getYear } from 'date-fns';
 import { useState } from 'react';
 
