@@ -2,11 +2,11 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
-import '../style/carousel.css';
+import '../../style/carousel.css';
 
 import { Button, LOGIN_URL } from '@/common';
 
-import { ONBOARDING_IMAGES } from '../constants/imageUrl';
+import { ONBOARDING_IMAGES } from '../../constants/imageUrl';
 
 export const OnboardingCarousel = () => {
   const slider = useRef<Slider>(null);
