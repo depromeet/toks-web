@@ -1,4 +1,4 @@
-type CalendarDate = {
+export type CalendarDate = {
   date: string;
   count: number;
 };

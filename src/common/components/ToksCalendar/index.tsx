@@ -1,10 +1,11 @@
 import { textColor, bgColor, Text } from '@/common';
 import clsx from 'clsx';
 import { format, getMonth, getYear } from 'date-fns';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Calendar, { CalendarProps } from 'react-calendar';
 import './Calendar.css';
-import { useGetCalendarQuery } from './useGetCalendarQuery';
+import { CalendarDate, CalendarResponse } from './type';
+import { getCalendar } from './api';
 
 const useChangeCalendar = () => {
   const todayDate = new Date();
@@ -24,12 +25,15 @@ const useChangeCalendar = () => {
 
 export function ToksCalendar({ ...rest }: CalendarProps) {
   const { year, month, setYearMonth } = useChangeCalendar();
-  const { data, isLoading } = useGetCalendarQuery(year, month);
-  if (isLoading || data === undefined) {
-    return <Text typo="headingL">로딩</Text>;
-  }
+  const [calendarDates, setCalendarDates] = useState<CalendarDate[]>([]);
 
-  const calendarDates = data.calendar;
+  useEffect(() => {
+    async function fetchAndSetCalendarDates() {
+      const data = await getCalendar(year, month);
+      setCalendarDates(data.calendar);
+    }
+    fetchAndSetCalendarDates();
+  }, [year, month]);
 
   const countByDate = new Map(
     calendarDates.map(({ date, count }) => [date, count])
