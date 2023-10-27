@@ -1,2 +1,2 @@
 export * from './resourceUrl';
-export * from './api';
+export * from './url';

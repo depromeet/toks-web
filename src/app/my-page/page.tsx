@@ -1,8 +1,16 @@
 'use client';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { Button, ICON_URL, Text, Toast, ToastProps } from '@/common';
+import {
+  Button,
+  GOOGLE_FORM_URL,
+  ICON_URL,
+  Text,
+  Toast,
+  ToastProps,
+} from '@/common';
 import { useToast } from '@/common/hooks/useToast';
 
 import { LogoutBar } from './components/LogoutBar';
@@ -10,6 +18,7 @@ import { UserInfo } from './components/UserInfo';
 
 const MyPage = () => {
   const [toastData, setToastData] = useState<ToastProps | null>(null);
+  const router = useRouter();
   const { getSavedToastInfo, clearSavedToast } = useToast();
   useEffect(() => {
     setToastData(getSavedToastInfo());
@@ -47,6 +56,9 @@ const MyPage = () => {
           size="L"
           typo="subheadingBold"
           backgroundColor="primaryDefault"
+          onClick={() => {
+            router.push(GOOGLE_FORM_URL);
+          }}
         >
           이런 퀴즈가 있었으면 좋겠어요
         </Button>
