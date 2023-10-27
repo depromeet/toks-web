@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 
 import { Button, ICON_URL } from '@/common';
+import { QUERY_KEYS } from '@/common/constants/queryKeys';
 
 import { QuizProgress } from './QuizProgress';
 import { getProgress } from '../../remotes/progress';
@@ -12,13 +13,16 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
   const month = date.getMonth() + 1;
   const year = date.getFullYear();
 
-  const { data: progress } = useQuery(['user'], async () => {
-    try {
-      return await getProgress(month, year);
-    } catch (e) {
-      console.log(e);
+  const { data: progress } = useQuery(
+    QUERY_KEYS.GET_PROGRESS_INFO(month, year),
+    async () => {
+      try {
+        return await getProgress(month, year);
+      } catch (e) {
+        console.log(e);
+      }
     }
-  });
+  );
 
   console.log(progress);
   return (
