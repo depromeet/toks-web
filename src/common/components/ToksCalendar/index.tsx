@@ -1,3 +1,5 @@
+'use client';
+
 import clsx from 'clsx';
 import { format, getMonth, getYear } from 'date-fns';
 import { useEffect, useState } from 'react';
