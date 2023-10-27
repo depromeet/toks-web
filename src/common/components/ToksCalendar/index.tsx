@@ -5,27 +5,12 @@ import { format, getMonth, getYear } from 'date-fns';
 import { useEffect, useState } from 'react';
 import Calendar, { CalendarProps } from 'react-calendar';
 
-import { Text, bgColor, textColor } from '@/common';
-
 import './Calendar.css';
+import { Text, bgColor, textColor } from '@/common';
+import { useChangeCalendar } from '@/common/hooks';
+
 import { getCalendar } from './api';
 import { CalendarDate } from './type';
-
-const useChangeCalendar = () => {
-  const todayDate = new Date();
-  const [yearMonth, setYearMonth] = useState(() => [
-    getYear(todayDate),
-    getMonth(todayDate) + 1,
-  ]);
-
-  const [year, month] = yearMonth;
-
-  return {
-    year,
-    month,
-    setYearMonth,
-  };
-};
 
 export function ToksCalendar({ ...rest }: CalendarProps) {
   const { year, month, setYearMonth } = useChangeCalendar();
