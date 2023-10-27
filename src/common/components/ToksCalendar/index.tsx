@@ -1,11 +1,13 @@
-import { textColor, bgColor, Text } from '@/common';
 import clsx from 'clsx';
 import { format, getMonth, getYear } from 'date-fns';
 import { useEffect, useState } from 'react';
 import Calendar, { CalendarProps } from 'react-calendar';
+
+import { Text, bgColor, textColor } from '@/common';
+
 import './Calendar.css';
-import { CalendarDate, CalendarResponse } from './type';
 import { getCalendar } from './api';
+import { CalendarDate } from './type';
 
 const useChangeCalendar = () => {
   const todayDate = new Date();
@@ -41,9 +43,15 @@ export function ToksCalendar({ ...rest }: CalendarProps) {
 
   const getHighlightClassName = (date: Date) => {
     const count = countByDate.get(format(date, 'yyyy-MM-dd'));
-    if (count === undefined) return;
-    if (count <= 1) return 'highlight1';
-    if (count <= 3) return 'highlight2';
+    if (count === undefined) {
+      return;
+    }
+    if (count <= 1) {
+      return 'highlight1';
+    }
+    if (count <= 3) {
+      return 'highlight2';
+    }
     return 'highlight3';
   };
 
