@@ -33,6 +33,7 @@
     "next": "13.4.9",
     "postcss": "8.4.25",
     "react": "18.2.0",
+    "react-calendar": "^4.6.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.4",
     "react-slick": "^0.29.0",
