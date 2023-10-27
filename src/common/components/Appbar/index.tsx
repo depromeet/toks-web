@@ -15,7 +15,7 @@ import { Tooltip } from '../Tooltip';
 
 export const Appbar = () => {
   const router = useRouter();
-  const { isLogin } = useAuth();
+  const { isLogin, user } = useAuth();
   const setIsOpenCategoryBottomSheet = useSetRecoilState(
     isVisibleCategoryBottomSheetAtom
   );
@@ -56,15 +56,18 @@ export const Appbar = () => {
           <button className="flex items-center">
             {/* TODO: 로그인 여부 분기 */}
             {isLogin ? (
-              <Image
-                src={ICON_URL.AVATAR_DEFAULT}
-                alt="아바타 기본 이미지"
-                width={30}
-                height={30}
-                onClick={() => {
-                  router.push('/my-page');
-                }}
-              />
+              <div className="relative h-[30px] w-[30px]">
+                <Image
+                  className="rounded-full"
+                  src={user?.profileImageUrl || ICON_URL.AVATAR_DEFAULT}
+                  alt="아바타"
+                  fill
+                  objectFit="cover"
+                  onClick={() => {
+                    router.push('/my-page');
+                  }}
+                />
+              </div>
             ) : (
               <Text
                 color="gray10"
