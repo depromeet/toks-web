@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 
-import { Button, ICON_URL, ToksCalendar } from '@/common';
+import { Button, ICON_URL, Text, ToksCalendar, useSetDate } from '@/common';
 import { QUERY_KEYS } from '@/common/constants/queryKeys';
 
 import { QuizProgress } from './QuizProgress';
@@ -9,9 +9,7 @@ import { getProgress } from '../../remotes/progress';
 import { BottomSheetProps } from '../../types/bottomsheet';
 
 export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
-  const date = new Date();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
+  const { year, month } = useSetDate();
 
   const { data: progress } = useQuery(
     QUERY_KEYS.GET_PROGRESS_INFO(month, year),
@@ -24,7 +22,6 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
     }
   );
 
-  console.log(progress);
   return (
     <div className="flex flex-col px-20px py-16px">
       <button className="flex justify-end">
@@ -38,6 +35,23 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
           }}
         />
       </button>
+      <div className="my-20px flex justify-between">
+        <div className="flex flex-col">
+          <Text typo="headingL">{progress?.username}님,</Text>
+          <div>
+            <Text color="primaryDefault" typo="headingL">
+              {progress?.attendance}번째{' '}
+            </Text>
+            <Text typo="headingL">출석 성공!</Text>
+          </div>
+        </div>
+        <Image
+          src={ICON_URL.EMOJI_CODING}
+          alt="none quiz emoji"
+          width={53}
+          height={53}
+        />
+      </div>
       {progress && (
         <QuizProgress
           todayDescription={progress.description1}
