@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import Image from 'next/image';
 
-import { Button, ICON_URL } from '@/common';
+import { Button, ICON_URL, ToksCalendar } from '@/common';
 import { QUERY_KEYS } from '@/common/constants/queryKeys';
 
 import { QuizProgress } from './QuizProgress';
@@ -44,6 +44,9 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
           totalDescription={progress.description2}
         />
       )}
+      <div className="h-16px" />
+      <ToksCalendar />
+      <div className="h-20px" />
       <Button
         onClick={() => onClose()}
         className="w-full"
