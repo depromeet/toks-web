@@ -14,18 +14,19 @@ export async function generateMetadata({
   params: { quizId },
 }: Props): Promise<Metadata> {
   const quizRecommendModels = await getRecommendationByQuizId(quizId);
+  const isQuizzesExist = quizRecommendModels.length !== 0;
 
   return {
     openGraph: {
-      title:
-        quizRecommendModels.length !== 0
-          ? '이런 퀴즈도 있어요!'
-          : '똑스 : 지식을 키우는 첫 시작!',
-      description:
-        quizRecommendModels.length !== 0
-          ? quizRecommendModels[0].quiz.title
-          : '똑스와 함께, 퀴즈로 똑똑해지고 더 나은 습관 만들기',
-      images: '',
+      title: isQuizzesExist
+        ? '이런 퀴즈도 있어요!'
+        : '똑스 : 지식을 키우는 첫 시작!',
+      description: isQuizzesExist
+        ? quizRecommendModels[0].quiz.title
+        : '똑스와 함께, 퀴즈로 똑똑해지고 더 나은 습관 만들기',
+      images: '/toks-og.png',
+      type: 'website',
+      siteName: 'Toks',
     },
   };
 }
