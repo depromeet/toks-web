@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '똑스 : 지식을 키우는 첫 시작!',
     description: '똑스와 함께, 퀴즈로 똑똑해지고 더 나은 습관 만들기',
-    images: '/toks-og.png',
+    images: 'https://toks-web-assets.s3.amazonaws.com/toks-og.png',
     type: 'website',
     siteName: 'Toks',
     url: 'https://tokstudy.com/',
@@ -87,7 +87,11 @@ function StyledLayout({ children }: { children: React.ReactNode }) {
 }
 
 const pretendard = localFont({
-  src: './fonts/PretendardVariable.woff2',
+  src: [
+    { path: './fonts/Pretendard-Regular.woff2', weight: '400' },
+    { path: './fonts/Pretendard-SemiBold.woff2', weight: '600' },
+    { path: './fonts/Pretendard-Bold.woff2', weight: '700' },
+  ],
   display: 'swap',
   fallback: [
     'Pretendard',
