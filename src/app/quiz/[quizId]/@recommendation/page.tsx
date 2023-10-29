@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+
 import { QuizCarousel } from '@/app/quiz/components';
 import { getRecommendationByQuizId } from '@/app/quiz/remotes/recommendation';
 import { Text } from '@/common';
@@ -8,9 +10,28 @@ type Props = {
   };
 };
 
+export async function generateMetadata({
+  params: { quizId },
+}: Props): Promise<Metadata> {
+  const quizRecommendModels = await getRecommendationByQuizId(quizId);
+
+  return {
+    openGraph: {
+      title:
+        quizRecommendModels.length !== 0
+          ? '이런 퀴즈도 있어요!'
+          : '똑스 : 지식을 키우는 첫 시작!',
+      description:
+        quizRecommendModels.length !== 0
+          ? quizRecommendModels[0].quiz.title
+          : '똑스와 함께, 퀴즈로 똑똑해지고 더 나은 습관 만들기',
+      images: '',
+    },
+  };
+}
+
 async function RecommendatonPage({ params: { quizId } }: Props) {
   const quizRecommendModels = await getRecommendationByQuizId(quizId);
-  console.log(quizRecommendModels);
   const isQuizzesExist = quizRecommendModels.length !== 0;
   return (
     isQuizzesExist && (
