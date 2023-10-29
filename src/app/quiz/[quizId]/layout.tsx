@@ -6,7 +6,6 @@ type Props = {
 };
 
 function QuizIdLayout({ detail, recommendation }: Props) {
-  console.log(detail, recommendation);
   return (
     <main className="pb-80px">
       <QuizProvider>
