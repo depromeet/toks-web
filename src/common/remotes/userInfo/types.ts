@@ -1,6 +1,6 @@
 export interface GetUserInfo {
   email: string;
   nickname: string;
-  thumbnailimageUrl: string;
+  thumbnailImageUrl: string;
   profileImageUrl: string;
 }

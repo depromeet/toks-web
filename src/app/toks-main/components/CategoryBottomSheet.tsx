@@ -49,7 +49,7 @@ export const CategoryBottomSheet = () => {
         <Text typo="headingM" color="white">
           관심 카테고리 선택
         </Text>
-        <button>
+        <button onClick={() => setIsShow(false)}>
           <Image src={ICON_URL.CLOSE} alt="close" width={24} height={24} />
         </button>
       </div>
