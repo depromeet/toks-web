@@ -1,14 +1,21 @@
 import './globals.css';
 import clsx from 'clsx';
+import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import { bgColor } from '@/common/foundation';
 import QueryProvider from '@/common/providers/QueryProvider';
 import * as gtag from '@/common/utils';
 
-export const metadata = {
-  title: '똑스',
-  description: 'toks에서 퀴즈를 풀어보세요.',
+export const metadata: Metadata = {
+  openGraph: {
+    title: '똑스 : 지식을 키우는 첫 시작!',
+    description: '똑스와 함께, 퀴즈로 똑똑해지고 더 나은 습관 만들기',
+    images: '/toks-og.png',
+    type: 'website',
+    siteName: 'Toks',
+    url: 'https://tokstudy.com/',
+  },
 };
 
 export default function RootLayout({
