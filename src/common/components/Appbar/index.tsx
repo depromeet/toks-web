@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import { useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 
 import { ICON_URL, LOGIN_URL } from '@/common/constants';
 import { useAuth } from '@/common/hooks';
@@ -15,10 +15,9 @@ import { Tooltip } from '../Tooltip';
 
 export const Appbar = () => {
   const router = useRouter();
-  const { isLogin } = useAuth();
-  const setIsOpenCategoryBottomSheet = useSetRecoilState(
-    isVisibleCategoryBottomSheetAtom
-  );
+  const { isLogin, user } = useAuth();
+  const [isOpenCategoryBottomSheet, setIsOpenCategoryBottomSheet] =
+    useRecoilState(isVisibleCategoryBottomSheetAtom);
 
   // TODO: useAppbar hook 구현
   return (
@@ -42,7 +41,11 @@ export const Appbar = () => {
               alt="toks 로고"
             />
             {/* TODO: POPOVER 구현 */}
-            <Tooltip isFirstRender message="관심있는 카테고리를 선택해보세요">
+            <Tooltip
+              isFirstRender
+              message="관심있는 카테고리를 선택해보세요"
+              isVisibleTooltip={!isOpenCategoryBottomSheet}
+            >
               <button type="button" className="h-fit">
                 <Image
                   src={ICON_URL.CHEVRON_DOWN}
@@ -56,15 +59,18 @@ export const Appbar = () => {
           <button className="flex items-center">
             {/* TODO: 로그인 여부 분기 */}
             {isLogin ? (
-              <Image
-                src={ICON_URL.AVATAR_DEFAULT}
-                alt="아바타 기본 이미지"
-                width={30}
-                height={30}
-                onClick={() => {
-                  router.push('/my-page');
-                }}
-              />
+              <div className="relative h-[30px] w-[30px]">
+                <Image
+                  className="rounded-full"
+                  src={user?.profileImageUrl || ICON_URL.AVATAR_DEFAULT}
+                  alt="아바타"
+                  fill
+                  objectFit="cover"
+                  onClick={() => {
+                    router.push('/my-page');
+                  }}
+                />
+              </div>
             ) : (
               <Text
                 color="gray10"

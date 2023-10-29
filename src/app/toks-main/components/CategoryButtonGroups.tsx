@@ -29,6 +29,7 @@ export const CategoryButtonGroups = ({
                 className="w-[calc(50%-7.5px)] justify-start"
                 size="L"
                 textColor="gray10"
+                typo="bodyBold"
                 backgroundColor={isSelected ? 'primaryDefault' : 'gray70'}
                 onClick={() => {
                   onClick(value);

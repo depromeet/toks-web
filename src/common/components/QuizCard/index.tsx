@@ -93,13 +93,13 @@ export const QuizCard = ({
           {categoryTitle}
         </Text>
         <Text
-          className="inline-block pt-12px"
+          className="inline-flex flex-1 -translate-y-0.5 items-center pt-12px"
           typo={isSmall ? 'subheadingBold' : 'headingM'}
           color="gray10"
         >
           {quizDescription}
         </Text>
-        <div className="mt-auto flex gap-8px">
+        <div className="flex gap-8px">
           <Text typo="caption" color="gray50">
             🔥 참여 {likeCount}명
           </Text>
