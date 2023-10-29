@@ -87,7 +87,11 @@ function StyledLayout({ children }: { children: React.ReactNode }) {
 }
 
 const pretendard = localFont({
-  src: './fonts/PretendardVariable.woff2',
+  src: [
+    { path: './fonts/Pretendard-Regular.woff2', weight: '400' },
+    { path: './fonts/Pretendard-SemiBold.woff2', weight: '600' },
+    { path: './fonts/Pretendard-Bold.woff2', weight: '700' },
+  ],
   display: 'swap',
   fallback: [
     'Pretendard',
