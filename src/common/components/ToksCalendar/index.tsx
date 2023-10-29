@@ -6,13 +6,13 @@ import { useEffect, useState } from 'react';
 import Calendar, { CalendarProps } from 'react-calendar';
 
 import './Calendar.css';
-import { Text, bgColor, textColor, useChangeCalendar } from '@/common';
+import { Text, bgColor, textColor, useSetDate } from '@/common';
 
 import { getCalendar } from './api';
 import { CalendarDate } from './type';
 
 export function ToksCalendar({ ...rest }: CalendarProps) {
-  const { year, month, setYearMonth } = useChangeCalendar();
+  const { year, month, setYearMonth } = useSetDate();
   const [calendarDates, setCalendarDates] = useState<CalendarDate[]>([]);
 
   useEffect(() => {
