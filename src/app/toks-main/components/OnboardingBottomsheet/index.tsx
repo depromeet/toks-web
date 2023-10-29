@@ -3,14 +3,9 @@ import Image from 'next/image';
 import { ICON_URL, Text } from '@/common';
 
 import { OnboardingCarousel } from './OnboardingCarousel';
+import { BottomSheetProps } from '../../types/bottomsheet';
 
-type OnboardingBottomSheetProps = {
-  onClose: () => void;
-};
-
-export const OnboardingBottomSheet = ({
-  onClose,
-}: OnboardingBottomSheetProps) => {
+export const OnboardingBottomSheet = ({ onClose }: BottomSheetProps) => {
   return (
     <div className="relative px-20px py-24px">
       <div className="flex items-center justify-between pb-22px">

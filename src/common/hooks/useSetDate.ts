@@ -3,7 +3,7 @@
 import { getMonth, getYear } from 'date-fns';
 import { useState } from 'react';
 
-export const useChangeCalendar = () => {
+export const useSetDate = () => {
   const todayDate = new Date();
   const [yearMonth, setYearMonth] = useState(() => [
     getYear(todayDate),
