@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import { Metadata } from 'next';
 
 import {
   Comment,
@@ -24,11 +25,17 @@ type Props = {
   };
 };
 
+export async function generateMetadata({
+  params: { quizId },
+}: Props): Promise<Metadata> {}
+
 function DetailPage({ params: { quizId } }: Props) {
   const { submitQuiz } = useSubmitQuizMutation(quizId);
   const { data: quizDetail } = useGetQuizDetailQuery(quizId);
   const { data: comments } = useGetCommentListQuery(quizId);
   const { isLogin } = useAuth();
+
+  console.log(quizId, quizDetail);
 
   if (comments === undefined) {
     return null;
