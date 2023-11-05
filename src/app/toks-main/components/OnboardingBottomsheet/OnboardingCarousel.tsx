@@ -34,7 +34,11 @@ export const OnboardingCarousel = () => {
         >
           {ONBOARDING_IMAGES.map((url) => (
             <div key={url}>
-              <Image className="m-auto" alt="onboarding" src={url} />
+              <Image
+                className="m-auto h-420px w-336px small-mobile:h-380px small-mobile:w-280px"
+                alt="onboarding"
+                src={url}
+              />
             </div>
           ))}
         </Slider>
