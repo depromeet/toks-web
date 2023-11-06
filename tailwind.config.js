@@ -76,6 +76,9 @@ module.exports = {
           },
         },
       },
+      screens: {
+        'small-mobile': { raw: '(max-height: 670px),(max-width:380px)' },
+      },
       animation: {
         'fade-in-back-drop': 'fade-in-back-drop 0.3s ease-in-out forwards',
         'slide-up-bottom-sheet': 'slide-up-bottom-sheet 0.3s ease-out forwards',

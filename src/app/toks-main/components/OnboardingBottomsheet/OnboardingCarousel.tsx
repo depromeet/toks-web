@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
-import '../../style/carousel.css';
 
+import '../../style/carousel.css';
 import { Button, LOGIN_URL } from '@/common';
 
 import { ONBOARDING_IMAGES } from '../../constants/imageUrl';
@@ -35,9 +35,7 @@ export const OnboardingCarousel = () => {
           {ONBOARDING_IMAGES.map((url) => (
             <div key={url}>
               <Image
-                className="m-auto"
-                width={335}
-                height={420}
+                className="m-auto h-420px w-336px small-mobile:h-380px small-mobile:w-280px"
                 alt="onboarding"
                 src={url}
               />

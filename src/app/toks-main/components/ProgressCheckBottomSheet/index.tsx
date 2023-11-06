@@ -23,7 +23,7 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
   );
 
   return (
-    <div className="flex flex-col px-20px py-16px">
+    <div className="flex flex-col justify-center px-20px py-16px">
       <button className="flex justify-end">
         <Image
           src={ICON_URL.CLOSE}
@@ -58,9 +58,9 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
           totalDescription={progress.description2}
         />
       )}
-      <div className="h-16px" />
-      <ToksCalendar />
-      <div className="h-20px" />
+      <div className="m-auto mb-20px mt-16px w-fit">
+        <ToksCalendar />
+      </div>
       <Button
         onClick={() => onClose()}
         className="w-full"

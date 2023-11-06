@@ -28,7 +28,7 @@ export default function RootLayout({
       <head>
         <meta
           name="viewport"
-          content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
+          content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width, height=device-height"
         />
         <link
           rel="icon"
