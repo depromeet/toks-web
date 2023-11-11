@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
-import { bgColor } from '@/common/foundation';
 import QueryProvider from '@/common/providers/QueryProvider';
 import * as gtag from '@/common/utils';
 
@@ -69,7 +68,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={clsx(pretendard.className, bgColor['gray120'])}>
+      <body className={clsx(pretendard.className)}>
         <QueryProvider>
           <StyledLayout>{children}</StyledLayout>
         </QueryProvider>
@@ -80,7 +79,7 @@ export default function RootLayout({
 
 function StyledLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-gray-70">
+    <div className="bg-mainLayout">
       <div
         style={{ minHeight: '100dvh', maxWidth: '480px' }}
         className={clsx('mx-auto bg-gray-120 px-20px')}

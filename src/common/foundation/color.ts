@@ -21,6 +21,7 @@ export const color = {
   transparent: 'transparent',
   kakaoBackground: 'kakao-background',
   kakaoText: 'kakao-text',
+  mainLayout: 'mainLayout',
 } as const;
 
 export const bgColor = {
@@ -46,6 +47,7 @@ export const bgColor = {
   primaryDefault: 'bg-primary-default',
   primaryPress: 'bg-primary-press',
   transparent: 'bg-transparent',
+  mainLayout: 'bg-mainLayout',
 } as const;
 
 export const textColor = {
