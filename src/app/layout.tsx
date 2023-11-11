@@ -80,8 +80,13 @@ export default function RootLayout({
 
 function StyledLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ minHeight: '100dvh' }} className={clsx('px-20px')}>
-      {children}
+    <div className="bg-gray-70">
+      <div
+        style={{ minHeight: '100dvh', maxWidth: '480px' }}
+        className={clsx('mx-auto bg-gray-120 px-20px')}
+      >
+        {children}
+      </div>
     </div>
   );
 }
