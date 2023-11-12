@@ -14,7 +14,7 @@ export function TooltipContent({
         left: position.left,
         top: position.top,
       }}
-      className="absolute z-50 -ml-6px rounded-8px bg-gray-90 px-16px py-6px"
+      className="fixed z-50 -ml-6px rounded-8px bg-gray-90 px-16px py-6px"
     >
       <Text typo="body" color="white">
         {message}

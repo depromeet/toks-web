@@ -21,7 +21,7 @@ export type TooltipProps = {
 export function Tooltip({
   children,
   message,
-  delay = 3000,
+  delay = 9000,
   isFirstRender = false,
   isVisibleTooltip = true,
 }: TooltipProps) {
