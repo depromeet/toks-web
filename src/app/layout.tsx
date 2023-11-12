@@ -71,7 +71,7 @@ export default function RootLayout({
           }}
         />
       </Head>
-      <body className={clsx(pretendard.className, bgColor['gray120'])}>
+      <body className={clsx(pretendard.className, bgColor['mainLayout'])}>
         <QueryProvider>
           <StyledLayout>{children}</StyledLayout>
         </QueryProvider>
@@ -82,7 +82,10 @@ export default function RootLayout({
 
 function StyledLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div style={{ minHeight: '100dvh' }} className={clsx('px-20px')}>
+    <div
+      style={{ minHeight: '100dvh' }}
+      className={clsx('mx-auto max-w-main bg-gray-120 px-20px')}
+    >
       {children}
     </div>
   );
