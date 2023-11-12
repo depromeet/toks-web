@@ -5,6 +5,8 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { QUERY_KEYS } from '@/app/quiz/constants/queryKeys';
 import { postCommentLikeByCommentId } from '@/app/quiz/remotes/comment';
 
+import { CommentListResponse } from '../models/comment';
+
 export const useLikeCommentMutation = (commentId: string, quizId: string) => {
   const queryClient = useQueryClient();
 
@@ -16,8 +18,35 @@ export const useLikeCommentMutation = (commentId: string, quizId: string) => {
         throw new Error('댓글 좋아요 요청에 실패하였습니다.');
       }
     },
+
     {
-      onSuccess: () => {
+      onMutate: async () => {
+        await queryClient.cancelQueries(QUERY_KEYS.GET_COMMENT_LIST(quizId));
+
+        const previousLiked: CommentListResponse | undefined =
+          queryClient.getQueryData(QUERY_KEYS.GET_COMMENT_LIST(quizId));
+        console.log(previousLiked);
+        queryClient.setQueryData(QUERY_KEYS.GET_COMMENT_LIST(quizId), () => {
+          return {
+            ...previousLiked,
+            content: previousLiked?.content.map((el) => {
+              if (el.id === Number(commentId)) {
+                el.isLiked = !el.isLiked;
+              }
+              return el;
+            }),
+          };
+        });
+        return { previousLiked };
+      },
+      onError: (err, previousLiked) => {
+        queryClient.setQueryData(
+          QUERY_KEYS.GET_COMMENT_LIST(quizId),
+          previousLiked
+        );
+        console.log(err);
+      },
+      onSettled: () => {
         queryClient.invalidateQueries(QUERY_KEYS.GET_COMMENT_LIST(quizId));
       },
     }
