@@ -8,10 +8,10 @@ export function FloatingButton({
   ...rest
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <div className="sticky bottom-56px flex justify-end">
+    <div className="pointer-events-none	sticky bottom-56px flex justify-end">
       <button
         className={clsx(
-          'z-99 flex h-50px w-50px items-center justify-center rounded-full border-1px border-gray-70 bg-gray-90 hover:cursor-pointer',
+          'z-99 pointer-events-auto flex h-50px w-50px items-center justify-center rounded-full border-1px border-gray-70 bg-gray-90 hover:cursor-pointer',
           className
         )}
         {...rest}
