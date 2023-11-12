@@ -19,7 +19,7 @@ function ToksMainPage() {
   }, []);
 
   return (
-    <div>
+    <div className="flex-col">
       {toastData && (
         <Toast
           isShow={toastData.isShow}

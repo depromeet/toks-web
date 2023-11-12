@@ -8,19 +8,21 @@ export function FloatingButton({
   ...rest
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
-    <button
-      className={clsx(
-        'z-99 fixed bottom-56px right-26px flex h-50px w-50px flex-1 items-center justify-center rounded-full border-1px border-gray-70 bg-gray-90 hover:cursor-pointer',
-        className
-      )}
-      {...rest}
-    >
-      <Image
-        src={ICON_URL.EMOJI_DROOLING}
-        alt="똑스 아이콘"
-        width={32}
-        height={32}
-      />
-    </button>
+    <div className="sticky bottom-56px flex justify-end">
+      <button
+        className={clsx(
+          'z-99 flex h-50px w-50px items-center justify-center rounded-full border-1px border-gray-70 bg-gray-90 hover:cursor-pointer',
+          className
+        )}
+        {...rest}
+      >
+        <Image
+          src={ICON_URL.EMOJI_DROOLING}
+          alt="똑스 아이콘"
+          width={32}
+          height={32}
+        />
+      </button>
+    </div>
   );
 }
