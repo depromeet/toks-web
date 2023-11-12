@@ -50,8 +50,8 @@ module.exports = {
         ...generatorTailwindConfigList(300, 2),
       },
       maxWidth: {
-        ...generatorTailwindConfigList(300, 2),
         main: '480px',
+        ...generatorTailwindConfigList(300, 2),
       },
       maxHeight: {
         ...generatorTailwindConfigList(300, 2),

@@ -73,6 +73,7 @@ export const textColor = {
   primaryDefault: 'text-primary-default',
   primaryPress: 'text-primary-press',
   transparent: 'text-transparent',
+  mainLayout: 'text-mainLayout',
 } as const;
 
 export type KeyOfColor = keyof typeof color;
