@@ -6,7 +6,10 @@ import { HTMLAttributes } from 'react';
 
 import { useLikeCommentMutation } from '@/app/quiz/hooks/useLikeCommentMutation';
 import { useUnlikeCommentMutation } from '@/app/quiz/hooks/useUnlikeCommentMutation';
-import { ICON_URL, Text } from '@/common';
+import { Text } from '@/common';
+
+import like_off from '../../../../../public/img/icon/like_off.svg';
+import like_on from '../../../../../public/img/icon/like_on.svg';
 
 interface LikeButtonProps
   extends Omit<HTMLAttributes<HTMLSpanElement>, 'className'> {
@@ -36,7 +39,7 @@ function LikeButton({
       onClick={() => (isLiked ? unlikeComment : likeComment)()}
     >
       <Image
-        src={isLiked ? ICON_URL.THUMBS_UP_FILLED : ICON_URL.THUMBS_UP}
+        src={isLiked ? like_on : like_off}
         alt="좋아요 버튼"
         width={18}
         height={18}

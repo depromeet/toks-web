@@ -2,21 +2,15 @@
 
 import clsx from 'clsx';
 
-import {
-  Comment,
-  CommentForm,
-  GetStartedButton,
-  QuizButton,
-  Thumbnail,
-} from '@/app/quiz/components';
+import { QuizButton, Thumbnail } from '@/app/quiz/components';
 import {
   useGetQuizDetailQuery,
   useSubmitQuizMutation,
 } from '@/app/quiz/hooks/';
-import { useGetCommentListQuery } from '@/app/quiz/hooks/useGetCommentListQuery';
 import { QuizButtonType } from '@/app/quiz/models/quiz';
 import { Text, bgColor } from '@/common';
-import { useAuth } from '@/common/hooks';
+
+import { Comments } from '../../components/Comment/Comments';
 
 type Props = {
   params: {
@@ -27,12 +21,6 @@ type Props = {
 function DetailPage({ params: { quizId } }: Props) {
   const { submitQuiz } = useSubmitQuizMutation(quizId);
   const { data: quizDetail } = useGetQuizDetailQuery(quizId);
-  const { data: comments } = useGetCommentListQuery(quizId);
-  const { isLogin } = useAuth();
-
-  if (comments === undefined) {
-    return null;
-  }
 
   if (quizDetail === undefined) {
     return null;
@@ -61,8 +49,6 @@ function DetailPage({ params: { quizId } }: Props) {
   const checkSameQuizType = (type: string) => quizType.startsWith(type);
   const checkSelectedAnswer = (buttonType: QuizButtonType) =>
     replyAnswer === buttonType;
-
-  const isEmptyComment = comments.length === 0;
 
   return (
     <div>
@@ -153,41 +139,7 @@ function DetailPage({ params: { quizId } }: Props) {
           </div>
         </div>
       </section>
-      {isSubmitted && (
-        <div className="mt-32px flex flex-col gap-32px">
-          {isLogin && (
-            <CommentForm quizId={quizId} commentCount={comments.length} />
-          )}
-          {!isEmptyComment && (
-            <Comment.List>
-              {comments.map(
-                ({
-                  id,
-                  nickname,
-                  content,
-                  likeCount,
-                  createdAt,
-                  profileImageUrl,
-                  isLiked,
-                }) => (
-                  <Comment
-                    key={id}
-                    quizId={quizId}
-                    commentId={id}
-                    name={nickname}
-                    comment={content}
-                    timeAgo={createdAt}
-                    profileImgUrl={profileImageUrl}
-                    like={likeCount}
-                    isLiked={isLiked}
-                  />
-                )
-              )}
-            </Comment.List>
-          )}
-          {!isLogin && <GetStartedButton isCommentEmpty={isEmptyComment} />}
-        </div>
-      )}
+      <Comments quizId={quizId} isSubmitted={isSubmitted} />
     </div>
   );
 }
