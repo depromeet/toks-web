@@ -35,4 +35,5 @@ export const colors = {
     background: '#FDE500',
     text: '#352020',
   },
+  mainLayout: '#2A2A2A',
 } as const;
