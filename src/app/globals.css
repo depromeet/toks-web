@@ -5,6 +5,24 @@
 @import '~slick-carousel/slick/slick.css';
 @import '~slick-carousel/slick/slick-theme.css';
 
+@layer base {
+  /* 스크롤바 커스텀 */
+  ::-webkit-scrollbar {
+    width: 20px; /* 스크롤바의 너비 */
+    height: 20px;
+  }
+  ::-webkit-scrollbar-track {
+    background: none;
+  }
+  ::-webkit-scrollbar-thumb {
+    /* height: 30%; 스크롤바의 길이 */
+    background: #6f6f6f; /* 스크롤바의 색상 */
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 8px solid transparent;
+  }
+}
+
 @layer components {
   .body-h-screen {
     /* equivalent to 100dvh in major browsers */
