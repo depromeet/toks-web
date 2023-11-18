@@ -38,6 +38,7 @@ module.exports = {
       },
       height: {
         main: 'calc(100dvh - 54px)',
+        bottomSheet: 'calc(80vh - 220px)',
         ...generatorTailwindConfigList(300, 2),
       },
       width: {
@@ -54,6 +55,7 @@ module.exports = {
         ...generatorTailwindConfigList(300, 2),
       },
       maxHeight: {
+        bottomSheetImage: 'calc(80vh - 220px)',
         ...generatorTailwindConfigList(300, 2),
       },
       gap: {
