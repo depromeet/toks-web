@@ -55,7 +55,9 @@ module.exports = {
         ...generatorTailwindConfigList(300, 2),
       },
       maxHeight: {
-        bottomSheetImage: 'calc(80vh - 220px)',
+        bottomSheet: '90dvh',
+        bottomSheetImage: 'calc(80dvh - 220px)',
+        progressBottomSheet: 'calc(90dvh - 200px)',
         ...generatorTailwindConfigList(300, 2),
       },
       gap: {

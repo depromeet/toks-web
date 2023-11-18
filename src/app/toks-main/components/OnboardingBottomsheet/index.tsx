@@ -7,7 +7,7 @@ import { BottomSheetProps } from '../../types/bottomsheet';
 
 export const OnboardingBottomSheet = ({ onClose }: BottomSheetProps) => {
   return (
-    <div style={{ maxHeight: '80vh' }} className="relative px-20px py-24px">
+    <div className="relative max-h-bottomSheet px-20px py-24px">
       <div className="mx-auto flex w-full items-center justify-between pb-22px">
         <Text typo="headingM" color="gray10">
           똑스와 함께 시작해볼까요?

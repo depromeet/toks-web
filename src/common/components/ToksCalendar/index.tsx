@@ -42,12 +42,7 @@ export function ToksCalendar({ ...rest }: CalendarProps) {
   };
 
   return (
-    <div
-      className={clsx(
-        'w-fit rounded-12px p-24px small-mobile:h-312px small-mobile:p-20px',
-        bgColor['gray110']
-      )}
-    >
+    <div className={clsx('w-fit rounded-12px p-24px', bgColor['gray110'])}>
       <Calendar
         locale="ko-KO"
         className={textColor['white']}

@@ -23,8 +23,8 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
   );
 
   return (
-    <div className="flex flex-col justify-center px-20px py-16px small-mobile:items-center">
-      <button className="flex justify-end small-mobile:hidden">
+    <div className="flex max-h-bottomSheet flex-col justify-center px-20px py-16px">
+      <button className="flex justify-end">
         <Image
           src={ICON_URL.CLOSE}
           alt="close"
@@ -35,8 +35,8 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
           }}
         />
       </button>
-      <div className="my-20px flex justify-between small-mobile:my-12px small-mobile:w-320px">
-        <div className="flex flex-col small-mobile:flex-row">
+      <div className="my-20px flex justify-between">
+        <div className="flex flex-col">
           <Text typo="headingL">{progress?.username}님, </Text>
           <div>
             <Text color="primaryDefault" typo="headingL">
@@ -48,34 +48,24 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
         <Image
           src={ICON_URL.EMOJI_CODING}
           alt="none quiz emoji"
-          className="small-mobile:hidden"
           width={53}
           height={53}
         />
-        <button className="flex hidden justify-end small-mobile:block">
-          <Image
-            src={ICON_URL.CLOSE}
-            alt="close"
-            width={24}
-            height={24}
-            onClick={() => {
-              onClose();
-            }}
-          />
-        </button>
       </div>
-      {progress && (
-        <QuizProgress
-          todayDescription={progress.description1}
-          totalDescription={progress.description2}
-        />
-      )}
-      <div className="m-auto mb-20px mt-16px w-fit small-mobile:mb-16px small-mobile:mt-12px small-mobile:w-320px">
-        <ToksCalendar />
+      <div className="max-h-progressBottomSheet overflow-auto">
+        {progress && (
+          <QuizProgress
+            todayDescription={progress.description1}
+            totalDescription={progress.description2}
+          />
+        )}
+        <div className="m-auto mb-20px mt-16px w-fit">
+          <ToksCalendar />
+        </div>
       </div>
       <Button
         onClick={() => onClose()}
-        className="w-full small-mobile:w-320px"
+        className="w-full"
         size="L"
         typo="subheadingBold"
         backgroundColor="primaryDefault"

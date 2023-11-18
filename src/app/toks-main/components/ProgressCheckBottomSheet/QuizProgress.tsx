@@ -10,11 +10,11 @@ export const QuizProgress = ({
   totalDescription,
 }: QuizProgressProps) => {
   return (
-    <div className="flex flex-col rounded-12px bg-gray-100 px-20px py-16px small-mobile:w-320px small-mobile:py-12px">
+    <div className="flex flex-col rounded-12px bg-gray-100 px-20px py-16px">
       <Text color="gray40" typo="bodyBold">
         🔥 {todayDescription}
       </Text>
-      <div className="h-8px small-mobile:h-4px"></div>
+      <div className="h-8px"></div>
       <Text color="gray40" typo="bodyBold">
         🔥 {totalDescription}
       </Text>
