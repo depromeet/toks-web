@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button, Text } from '@/common';
+import { Button, Text, cn } from '@/common';
 
 interface CategoryButton {
   label: string;
@@ -11,15 +11,17 @@ interface CategoryButtonGroupsProps {
   buttons: CategoryButton[];
   selectedButtons: string[];
   onClick: (value: string) => void;
+  className?: string;
 }
 
 export const CategoryButtonGroups = ({
   buttons,
   onClick,
   selectedButtons,
+  className,
 }: CategoryButtonGroupsProps) => {
   return (
-    <div className="px-20px py-24px">
+    <div className={cn('px-20px py-24px', className)}>
       <div className="flex flex-wrap gap-[15px]">
         {buttons.length > 0 ? (
           buttons.map(({ value, label }) => {

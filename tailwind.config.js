@@ -38,7 +38,9 @@ module.exports = {
       },
       height: {
         main: 'calc(100dvh - 54px)',
-        bottomSheet: 'calc(80vh - 220px)',
+        categoryBottomSheet: '90dvh',
+        categoryArea: 'calc(90dvh - 200px)',
+        onboardingBottomSheet: 'calc(80vh - 220px)',
         ...generatorTailwindConfigList(300, 2),
       },
       width: {
