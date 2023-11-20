@@ -7,7 +7,7 @@ import {
   useGetQuizDetailQuery,
   useSubmitQuizMutation,
 } from '@/app/quiz/hooks/';
-import { QuizButtonType } from '@/app/quiz/models/quiz';
+import { OX, QuizButtonType } from '@/app/quiz/models/quiz';
 import { Text, bgColor } from '@/common';
 
 import { Comments } from '../../components/Comment/Comments';
@@ -101,20 +101,19 @@ function DetailPage({ params: { quizId } }: Props) {
               </>
             ) : isSubmitted ? (
               <div className="mx-auto flex flex-col items-center">
-                <Thumbnail OXType={isOXCorrectAnswer ? 'O' : 'X'} />
+                <Thumbnail OXType={oxAnswer as OX} />
                 <Text className="mt-20px " typo="headingL" color="gray10">
                   {isOXCorrectAnswer
-                    ? '딩동댕! 정답이에요.'
-                    : '앗, 오답이에요! 정답은...'}
+                    ? `딩동댕! 정답은 ${oxAnswer}에요.`
+                    : `앗, 정답은 ${oxAnswer}에요.`}
                 </Text>
-                <Text
-                  className="mt-2px "
-                  typo="bodyBold"
-                  color={isOXCorrectAnswer ? 'blue10' : 'dangerDefault'}
-                >
-                  {checkSelectedAnswer('O')
-                    ? answerParticipationLabel.left
-                    : answerParticipationLabel.right}
+                <Text className="mt-2px " typo="bodyBold" color="gray60">
+                  {clsx(
+                    '정답률',
+                    oxAnswer === 'O'
+                      ? answerParticipationLabel.left
+                      : answerParticipationLabel.right
+                  )}
                 </Text>
                 <Text className="mt-24px block" typo="body" color="white">
                   {oxDescription}

@@ -92,13 +92,15 @@ export const QuizCard = ({
         >
           {categoryTitle}
         </Text>
-        <Text
-          className="inline-flex flex-1 -translate-y-0.5 items-center pt-12px"
-          typo={isSmall ? 'subheadingBold' : 'headingM'}
-          color="gray10"
-        >
-          {quizDescription}
-        </Text>
+        <div className="inline-flex flex-1 -translate-y-0.5 items-center pt-12px">
+          <Text
+            className={clsx({ 'line-clamp-3': isSmall })}
+            typo={isSmall ? 'subheadingBold' : 'headingM'}
+            color="gray10"
+          >
+            {quizDescription}
+          </Text>
+        </div>
         <div className="flex gap-8px">
           <Text typo="caption" color="gray50">
             🔥 참여 {likeCount}명
