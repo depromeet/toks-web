@@ -39,7 +39,7 @@ export const CategoryBottomSheet = () => {
 
   return (
     <BottomSheet
-      className="flex flex-col "
+      className="flex h-categoryBottomSheet flex-col "
       isShow={isShow}
       onClose={() => {
         setIsShow(false);
@@ -61,6 +61,7 @@ export const CategoryBottomSheet = () => {
         }}
       />
       <CategoryButtonGroups
+        className="h-categoryArea overflow-auto"
         buttons={buttons ?? []}
         selectedButtons={selectedLocalCategory}
         onClick={(value) => {

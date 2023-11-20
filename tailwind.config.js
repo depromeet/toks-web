@@ -38,6 +38,9 @@ module.exports = {
       },
       height: {
         main: 'calc(100dvh - 54px)',
+        categoryBottomSheet: '90dvh',
+        categoryArea: 'calc(90dvh - 200px)',
+        onboardingBottomSheet: 'calc(80dvh - 220px)',
         ...generatorTailwindConfigList(300, 2),
       },
       width: {
@@ -54,6 +57,9 @@ module.exports = {
         ...generatorTailwindConfigList(300, 2),
       },
       maxHeight: {
+        bottomSheet: '90dvh',
+        bottomSheetImage: 'calc(80dvh - 220px)',
+        progressBottomSheet: 'calc(90dvh - 200px)',
         ...generatorTailwindConfigList(300, 2),
       },
       gap: {

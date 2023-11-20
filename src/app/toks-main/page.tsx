@@ -1,8 +1,10 @@
 'use client';
 import { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 
 import { FloatingButton, Toast, ToastProps } from '@/common';
 import { useToast } from '@/common/hooks';
+import { isVisibleFloatingButtonBottomSheetAtom } from '@/store';
 
 import { CardList } from './components/CardList';
 import { MainPageBottomSheet } from './components/MainPageBottomSheet';
@@ -10,7 +12,9 @@ import { MainPageBottomSheet } from './components/MainPageBottomSheet';
 function ToksMainPage() {
   const { getSavedToastInfo, clearSavedToast } = useToast();
   const [toastData, setToastData] = useState<ToastProps | null>(null);
-  const [isShow, setIsShow] = useState(false);
+
+  const [isOpenFloatingButtonBottomSheet, setIsOpenFloatingButtonBottomSheet] =
+    useRecoilState(isVisibleFloatingButtonBottomSheetAtom);
 
   useEffect(() => {
     setToastData(getSavedToastInfo());
@@ -29,8 +33,13 @@ function ToksMainPage() {
         />
       )}
       <CardList />
-      <FloatingButton onClick={() => setIsShow(true)} />
-      <MainPageBottomSheet onClose={() => setIsShow(false)} isShow={isShow} />
+      <FloatingButton
+        onClick={() => setIsOpenFloatingButtonBottomSheet(true)}
+      />
+      <MainPageBottomSheet
+        onClose={() => setIsOpenFloatingButtonBottomSheet(false)}
+        isShow={isOpenFloatingButtonBottomSheet}
+      />
     </div>
   );
 }

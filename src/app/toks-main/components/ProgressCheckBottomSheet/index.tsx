@@ -23,7 +23,7 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
   );
 
   return (
-    <div className="flex flex-col justify-center px-20px py-16px">
+    <div className="flex max-h-bottomSheet flex-col justify-center px-20px py-16px">
       <button className="flex justify-end">
         <Image
           src={ICON_URL.CLOSE}
@@ -37,7 +37,7 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
       </button>
       <div className="my-20px flex justify-between">
         <div className="flex flex-col">
-          <Text typo="headingL">{progress?.username}님,</Text>
+          <Text typo="headingL">{progress?.username}님, </Text>
           <div>
             <Text color="primaryDefault" typo="headingL">
               {progress?.attendance}번째{' '}
@@ -52,14 +52,16 @@ export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
           height={53}
         />
       </div>
-      {progress && (
-        <QuizProgress
-          todayDescription={progress.description1}
-          totalDescription={progress.description2}
-        />
-      )}
-      <div className="m-auto mb-20px mt-16px w-fit">
-        <ToksCalendar />
+      <div className="max-h-progressBottomSheet overflow-auto">
+        {progress && (
+          <QuizProgress
+            todayDescription={progress.description1}
+            totalDescription={progress.description2}
+          />
+        )}
+        <div className="m-auto mb-20px mt-16px w-fit">
+          <ToksCalendar />
+        </div>
       </div>
       <Button
         onClick={() => onClose()}

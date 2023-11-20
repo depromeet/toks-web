@@ -3,11 +3,14 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { ICON_URL, LOGIN_URL } from '@/common/constants';
 import { useAuth } from '@/common/hooks';
-import { isVisibleCategoryBottomSheetAtom } from '@/store';
+import {
+  isVisibleCategoryBottomSheetAtom,
+  isVisibleFloatingButtonBottomSheetAtom,
+} from '@/store';
 
 import { SSRSuspense } from '../SSRSuspense';
 import { Text } from '../Text';
@@ -18,6 +21,9 @@ export const Appbar = () => {
   const { isLogin, user } = useAuth();
   const [isOpenCategoryBottomSheet, setIsOpenCategoryBottomSheet] =
     useRecoilState(isVisibleCategoryBottomSheetAtom);
+  const isOpenFloatingButtonBottomSheet = useRecoilValue(
+    isVisibleFloatingButtonBottomSheetAtom
+  );
 
   // TODO: useAppbar hook 구현
   return (
@@ -44,7 +50,9 @@ export const Appbar = () => {
             <Tooltip
               isFirstRender
               message="관심있는 카테고리를 선택해보세요"
-              isVisibleTooltip={!isOpenCategoryBottomSheet}
+              isVisibleTooltip={
+                !isOpenCategoryBottomSheet && !isOpenFloatingButtonBottomSheet
+              }
             >
               <button type="button" className="h-fit">
                 <Image

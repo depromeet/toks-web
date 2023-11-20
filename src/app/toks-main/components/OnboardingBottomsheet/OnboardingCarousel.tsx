@@ -33,12 +33,8 @@ export const OnboardingCarousel = () => {
           {...setting}
         >
           {ONBOARDING_IMAGES.map((url) => (
-            <div key={url}>
-              <Image
-                className="m-auto h-420px w-336px small-mobile:h-380px small-mobile:w-280px"
-                alt="onboarding"
-                src={url}
-              />
+            <div key={url} className="max-h-bottomSheetImage overflow-auto">
+              <Image className="w-full" alt="onboarding" src={url} />
             </div>
           ))}
         </Slider>
@@ -46,7 +42,7 @@ export const OnboardingCarousel = () => {
       {currentSlide !== 2 ? (
         <Button
           onClick={() => slider?.current?.slickNext()}
-          className="absolute bottom-0px w-full"
+          className="absolute bottom-0px left-0 right-0 mx-auto w-full"
           size="L"
           typo="subheadingBold"
           backgroundColor="primaryDefault"
@@ -57,7 +53,7 @@ export const OnboardingCarousel = () => {
         <Button
           iconName="KAKAO"
           iconPosition="LEFT"
-          className="absolute bottom-0px w-full"
+          className="absolute bottom-0px left-0 right-0 mx-auto w-full"
           size="L"
           textColor="kakaoText"
           typo="subheadingBold"
