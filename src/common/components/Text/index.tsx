@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { HTMLAttributes, ReactNode, createElement } from 'react';
 
 import { KeyOfColor, KeyOfTypography, textColor, typography } from '@/common';
@@ -22,7 +23,7 @@ export function Text({
   return createElement(
     as,
     {
-      className: `${textColor[color]} ${typography[typo]} ${className}`,
+      className: clsx(textColor[color], typography[typo], className),
       ...rest,
     },
     [children]
