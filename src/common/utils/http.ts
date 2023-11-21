@@ -39,6 +39,7 @@ export const http: HttpClient = axiosInstance;
 
 // uuid
 export const uuid = {
+  FIELD_NAME: 'TOKS-USER-KEY',
   uuid: (() => {
     try {
       return localStorage.getItem('uuid');
@@ -200,8 +201,8 @@ http.interceptors.request.use((config) => {
     config.headers['X-TOKS-AUTH-TOKEN'] = accessToken;
     http.defaults.headers.common['X-TOKS-AUTH-TOKEN'] = accessToken;
     uuid.destroy();
-    config.headers['TOKS-USER-KEY'] = '';
-    http.defaults.headers.common['TOKS-USER-KEY'] = '';
+    config.headers[uuid.FIELD_NAME] = '';
+    http.defaults.headers.common[uuid.FIELD_NAME] = '';
   } else {
     let toksUserKey = uuid.uuid;
     if (toksUserKey == null) {
@@ -209,13 +210,13 @@ http.interceptors.request.use((config) => {
       toksUserKey = uuid.uuid;
     }
     if (toksUserKey) {
-      config.headers['TOKS-USER-KEY'] = toksUserKey;
-      http.defaults.headers.common['TOKS-USER-KEY'] = toksUserKey;
+      config.headers[uuid.FIELD_NAME] = toksUserKey;
+      http.defaults.headers.common[uuid.FIELD_NAME] = toksUserKey;
     } else {
       const newToksUserKey = uuidv4();
       localStorage.setItem('uuid', newToksUserKey);
-      config.headers['TOKS-USER-KEY'] = newToksUserKey;
-      http.defaults.headers.common['TOKS-USER-KEY'] = newToksUserKey;
+      config.headers[uuid.FIELD_NAME] = newToksUserKey;
+      http.defaults.headers.common[uuid.FIELD_NAME] = newToksUserKey;
     }
   }
   return config;
