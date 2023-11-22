@@ -7,9 +7,11 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 
 import { ICON_URL, LOGIN_URL } from '@/common/constants';
 import { useAuth } from '@/common/hooks';
+import { useSelectedCategoriesQuery } from '@/queries';
 import {
   isVisibleCategoryBottomSheetAtom,
   isVisibleFloatingButtonBottomSheetAtom,
+  selectedTemporaryCategoryAtom,
 } from '@/store';
 
 import { SSRSuspense } from '../SSRSuspense';
@@ -24,6 +26,21 @@ export const Appbar = () => {
   const isOpenFloatingButtonBottomSheet = useRecoilValue(
     isVisibleFloatingButtonBottomSheetAtom
   );
+  const localSelectedCategoryArray = useRecoilValue(
+    selectedTemporaryCategoryAtom
+  );
+  const { data: serverSelectedCategory = [] } = useSelectedCategoriesQuery();
+
+  const renderCategoryCountBadge = () => {
+    if (isLogin && serverSelectedCategory.length > 0) {
+      return serverSelectedCategory.length;
+    }
+    if (!isLogin && localSelectedCategoryArray.length > 0) {
+      return localSelectedCategoryArray.length;
+    }
+
+    return null;
+  };
 
   // TODO: useAppbar hook 구현
   return (
@@ -63,6 +80,13 @@ export const Appbar = () => {
                 />
               </button>
             </Tooltip>
+            {renderCategoryCountBadge() && (
+              <div className="flex h-[26px] w-[26px] items-center justify-center rounded-6px bg-primary-default text-white">
+                <Text typo="subheadingBold" color="white">
+                  {renderCategoryCountBadge()}
+                </Text>
+              </div>
+            )}
           </div>
           <button className="flex items-center">
             {/* TODO: 로그인 여부 분기 */}
