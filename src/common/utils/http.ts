@@ -4,6 +4,7 @@ import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 
 import { getNewToken } from '@/middleware';
 
+import { uuidv4 } from './uuid';
 import { API_URL } from '../constants';
 
 const axiosInstance = axios.create({
@@ -36,6 +37,31 @@ export interface HttpClient extends AxiosInstance {
 
 export const http: HttpClient = axiosInstance;
 
+// uuid
+export const uuid = {
+  FIELD_NAME: 'TOKS-USER-KEY',
+  uuid: (() => {
+    try {
+      return localStorage.getItem('uuid');
+    } catch (err) {
+      return null;
+    }
+  })(),
+  refetch: () => {
+    uuid.uuid = localStorage.getItem('uuid');
+    return;
+  },
+  destroy: () => {
+    try {
+      localStorage.removeItem('uuid');
+      uuid.uuid = null;
+    } catch (err) {
+      console.log(err);
+    }
+  },
+};
+
+// login token
 export const authToken = {
   access: (() => {
     try {
@@ -174,8 +200,25 @@ http.interceptors.request.use((config) => {
   if (accessToken) {
     config.headers['X-TOKS-AUTH-TOKEN'] = accessToken;
     http.defaults.headers.common['X-TOKS-AUTH-TOKEN'] = accessToken;
+    uuid.destroy();
+    config.headers[uuid.FIELD_NAME] = '';
+    http.defaults.headers.common[uuid.FIELD_NAME] = '';
+  } else {
+    let toksUserKey = uuid.uuid;
+    if (toksUserKey == null) {
+      uuid.refetch();
+      toksUserKey = uuid.uuid;
+    }
+    if (toksUserKey) {
+      config.headers[uuid.FIELD_NAME] = toksUserKey;
+      http.defaults.headers.common[uuid.FIELD_NAME] = toksUserKey;
+    } else {
+      const newToksUserKey = uuidv4();
+      localStorage.setItem('uuid', newToksUserKey);
+      config.headers[uuid.FIELD_NAME] = newToksUserKey;
+      http.defaults.headers.common[uuid.FIELD_NAME] = newToksUserKey;
+    }
   }
-
   return config;
 });
 
