@@ -22,6 +22,10 @@ export const metadata: Metadata = {
     siteName: 'Toks',
     url: 'https://tokstudy.com/',
   },
+  icons: {
+    icon: 'https://toks-web-assets.s3.amazonaws.com/legacy/toktok.ico',
+  },
+  title: 'Toks',
 };
 
 export default function RootLayout({
@@ -32,12 +36,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head>
-        <link
-          rel="icon"
-          href="https://toks-web-assets.s3.amazonaws.com/legacy/toktok.ico"
-          sizes="any"
-        />
-        <title>Toks</title>
         <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
