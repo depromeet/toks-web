@@ -94,7 +94,7 @@ export const QuizCard = ({
         </Text>
         <div className="inline-flex flex-1 -translate-y-0.5 items-center pt-12px">
           <Text
-            className={clsx({ 'line-clamp-3': isSmall })}
+            className="line-clamp-3"
             typo={isSmall ? 'subheadingBold' : 'headingM'}
             color="gray10"
           >
