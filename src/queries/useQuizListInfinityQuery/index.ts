@@ -67,7 +67,7 @@ export const useQuizListInfinityQuery = () => {
       const formatterQuizList = flattenContents.map(
         ({ quiz, category, quizReplyHistoryCount, quizCommentCount }) => ({
           id: quiz.id,
-          categoryTitle: category.name,
+          categoryTitle: [category.name, ...quiz.tags].join(' '),
           likeCount: quizReplyHistoryCount,
           commentCount: quizCommentCount,
           quizDescription: quiz.question.question,
