@@ -35,7 +35,7 @@ export const useQuizListInfinityQuery = () => {
       });
     },
     getNextPageParam: ({ page = 0, totalPage }) => {
-      if (page >= totalPage) {
+      if (page >= totalPage - 1) {
         return undefined;
       }
       return page + 1;
