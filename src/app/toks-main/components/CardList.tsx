@@ -45,7 +45,7 @@ export const CardList = () => {
           {...quiz}
         />
       ))}
-      {hasNextPage && <div ref={observeBox} />}
+      <div ref={observeBox} />
     </div>
   );
 };
