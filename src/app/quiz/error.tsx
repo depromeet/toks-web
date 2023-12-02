@@ -16,9 +16,7 @@ function Error() {
         잠시 후에 다시 시도해 주세요.
       </Text>
       <Image
-        src={
-          'https://toks-web-assets.s3.amazonaws.com/legacy/toks-emoji/sad_emoji.svg'
-        }
+        src={'https://asset.tokstudy.com/legacy/toks-emoji/sad_emoji.svg'}
         width={200}
         height={200}
         alt="에러 아이콘"

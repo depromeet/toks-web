@@ -17,13 +17,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: '똑스 : 지식을 키우는 첫 시작!',
     description: '똑스와 함께, 퀴즈로 똑똑해지고 더 나은 습관 만들기',
-    images: 'https://toks-web-assets.s3.amazonaws.com/toks-og.png',
+    images: 'https://asset.tokstudy.com/toks-og.png',
     type: 'website',
     siteName: 'Toks',
     url: 'https://tokstudy.com/',
   },
   icons: {
-    icon: 'https://toks-web-assets.s3.amazonaws.com/legacy/toktok.ico',
+    icon: 'https://asset.tokstudy.com/legacy/toktok.ico',
   },
   title: 'Toks',
 };

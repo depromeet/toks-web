@@ -19,7 +19,7 @@ export async function generateMetadata({
     openGraph: {
       title: '이런 퀴즈도 있어요!',
       description: quizDetail.quiz.title,
-      images: 'https://toks-web-assets.s3.amazonaws.com/toks-og.png',
+      images: 'https://asset.tokstudy.com/toks-og.png',
       type: 'website',
       siteName: 'Toks',
     },
