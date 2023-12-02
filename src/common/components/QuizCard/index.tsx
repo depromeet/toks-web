@@ -53,7 +53,7 @@ export const QuizCard = ({
           }}
         >
           <Image
-            src="https://toks-web-assets.s3.amazonaws.com/ic_O.svg"
+            src="https://asset.tokstudy.com/ic_O.svg"
             alt="OX 퀴즈 O"
             width={38}
             height={38}
@@ -66,7 +66,7 @@ export const QuizCard = ({
           }}
         >
           <Image
-            src="https://toks-web-assets.s3.amazonaws.com/ic_X.svg"
+            src="https://asset.tokstudy.com/ic_X.svg"
             alt="OX 퀴즈 X"
             width={36}
             height={36}

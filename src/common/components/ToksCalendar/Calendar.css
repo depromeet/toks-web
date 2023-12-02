@@ -39,7 +39,7 @@
 }
 
 .react-calendar__navigation__prev-button {
-  background: url(https://toks-web-assets.s3.amazonaws.com/chevron/ic_chevron-calendar-left.svg)
+  background: url(https://asset.tokstudy.com/chevron/ic_chevron-calendar-left.svg)
     no-repeat;
   width: 24px;
   height: 24px;
@@ -47,7 +47,7 @@
 }
 
 .react-calendar__navigation__next-button {
-  background: url(https://toks-web-assets.s3.amazonaws.com/chevron/ic_chevron-calendar-right.svg)
+  background: url(https://asset.tokstudy.com/chevron/ic_chevron-calendar-right.svg)
     no-repeat;
   width: 24px;
   height: 24px;
