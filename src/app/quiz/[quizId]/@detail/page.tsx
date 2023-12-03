@@ -124,13 +124,13 @@ function DetailPage({ params: { quizId } }: Props) {
                 <QuizButton
                   isSubmitted={isSubmitted}
                   OXType={isExistOXImage ? undefined : 'O'}
-                  name="예"
+                  name={buttonLeft.button.name}
                   onClick={() => submitQuiz('O')}
                 />
                 <QuizButton
                   isSubmitted={isSubmitted}
                   OXType={isExistOXImage ? undefined : 'X'}
-                  name="아니오"
+                  name={buttonRight.button.name}
                   onClick={() => submitQuiz('X')}
                 />
               </>
