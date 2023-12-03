@@ -2,11 +2,13 @@
 
 import clsx from 'clsx';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { HTMLAttributes } from 'react';
 
 import { useLikeCommentMutation } from '@/app/quiz/hooks/useLikeCommentMutation';
 import { useUnlikeCommentMutation } from '@/app/quiz/hooks/useUnlikeCommentMutation';
-import { Text } from '@/common';
+import { Text, useAuth } from '@/common';
+import { LOGIN_URL } from '@/common/constants';
 
 import like_off from '../../../../../public/img/icon/like_off.svg';
 import like_on from '../../../../../public/img/icon/like_on.svg';
@@ -28,15 +30,20 @@ function LikeButton({
   className,
   ...rest
 }: LikeButtonProps) {
-  // Mutation을 통해서 좋아요, 좋아요 취소를 하게 되면 퀴즈 데이터 전체가 업데이트 되게 했는데
-  // 렌더링 효율이 떨어지는 것 같다면 데이터 업데이트가 아니라 useState로 숫자를 업데이트 하고 아이콘을 변경하는 방식으로 수정해야 함.
+  const { isLogin } = useAuth();
+  const router = useRouter();
   const { likeComment } = useLikeCommentMutation(String(commentId), quizId);
   const { unlikeComment } = useUnlikeCommentMutation(String(commentId), quizId);
   return (
     <button
       className={clsx(className, 'flex items-center gap-x-4px')}
       {...rest}
-      onClick={() => (isLiked ? unlikeComment : likeComment)()}
+      onClick={() => {
+        if (isLogin) {
+          return (isLiked ? unlikeComment : likeComment)();
+        }
+        router.replace(LOGIN_URL);
+      }}
     >
       <Image
         src={isLiked ? like_on : like_off}
