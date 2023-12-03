@@ -33,7 +33,7 @@ const Nickname = () => {
   const [toastData, setToastData] = useState<ToastProps | null>(null);
 
   useEffect(() => {
-    // 닉네임 설정 안하고 이탈한 경우 대비해 토큰 삭제
+    // 닉네임 설정을 마치지 않고 이탈한 경우 대비해 토큰 삭제
     deleteCookie('accessToken');
     deleteCookie('refreshToken');
     setToastData(getSavedToastInfo());
