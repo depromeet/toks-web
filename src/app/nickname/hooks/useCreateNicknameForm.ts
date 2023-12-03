@@ -15,8 +15,8 @@ export interface CheckNicknameFormValues {
 
 type NicknameFormType = {
   pathName: string;
-  accessToken: string;
-  refreshToken: string;
+  accessToken?: string;
+  refreshToken?: string;
 };
 
 export const useCreateNicknameForm = ({
