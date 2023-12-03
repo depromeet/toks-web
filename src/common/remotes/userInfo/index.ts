@@ -11,7 +11,7 @@ export async function getFirstUserInfo({
 }: {
   accessToken: string;
 }): Promise<Response> {
-  return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/v1/auth/status`, {
+  return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}api/v1/auth/my-infos`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
