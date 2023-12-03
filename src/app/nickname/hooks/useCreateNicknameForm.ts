@@ -61,8 +61,11 @@ export const useCreateNicknameForm = ({
   const { mutate: nicknameMutation } = useMutation(async () => {
     const nickname = getValues('nickname');
     // 먼저 쿠키 세팅을 해줘야 nickname patch 가능
-    setCookie('accessToken', accessToken);
-    setCookie('refreshToken', refreshToken);
+    if (accessToken && refreshToken) {
+      setCookie('accessToken', accessToken);
+      setCookie('refreshToken', refreshToken);
+    }
+
     try {
       const res = await patchNickname(nickname);
       if (res !== null) {
