@@ -32,7 +32,7 @@ const UpdateNickname = () => {
     isRequiredText,
     hasExclamationMark,
     nicknameMutation,
-  } = useCreateNicknameForm(pathName);
+  } = useCreateNicknameForm({ pathName });
   const divRef = useWindowResize();
 
   return (

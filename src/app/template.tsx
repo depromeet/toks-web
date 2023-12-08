@@ -15,9 +15,18 @@ export default function Template({ children }: StrictPropsWithChildren) {
   return (
     <RecoilRoot>
       <GlobalPortal.Provider>
-        {pathName === '/toks-main' ? <Appbar /> : <BackHeader />}
-        {children}
-        <CategoryBottomSheet />
+        {pathName === '/toks-main' ? (
+          <>
+            <Appbar />
+            {children}
+            <CategoryBottomSheet />
+          </>
+        ) : (
+          <>
+            <BackHeader />
+            {children}
+          </>
+        )}
       </GlobalPortal.Provider>
     </RecoilRoot>
   );

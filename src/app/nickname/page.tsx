@@ -1,5 +1,6 @@
 'use client';
 
+import { deleteCookie, getCookie } from 'cookies-next';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -12,6 +13,10 @@ import { useCreateNicknameForm } from './hooks/useCreateNicknameForm';
 
 const Nickname = () => {
   const pathName = usePathname();
+
+  const [accessToken] = useState<string>(getCookie('accessToken') as string);
+  const [refreshToken] = useState<string>(getCookie('refreshToken') as string);
+
   const {
     register,
     errors,
@@ -21,13 +26,16 @@ const Nickname = () => {
     isRequiredText,
     hasExclamationMark,
     nicknameMutation,
-  } = useCreateNicknameForm(pathName);
+  } = useCreateNicknameForm({ pathName, accessToken, refreshToken });
   const divRef = useWindowResize();
 
   const { getSavedToastInfo, clearSavedToast } = useToast();
   const [toastData, setToastData] = useState<ToastProps | null>(null);
 
   useEffect(() => {
+    // 닉네임 설정을 마치지 않고 이탈한 경우 대비해 토큰 삭제
+    deleteCookie('accessToken');
+    deleteCookie('refreshToken');
     setToastData(getSavedToastInfo());
     clearSavedToast();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,7 +53,8 @@ const Nickname = () => {
       )}
       <form
         onSubmit={(e) => {
-          e.preventDefault(), nicknameMutation();
+          e.preventDefault();
+          nicknameMutation();
         }}
       >
         <NicknameBox
