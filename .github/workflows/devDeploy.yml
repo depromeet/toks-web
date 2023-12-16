@@ -1,9 +1,9 @@
 name: Deploy
 
 on:
-  push:
-    branches:
-      - 'dev'
+  workflow_dispatch:
+  branches:
+    - 'dev'
 
 jobs:
   ci:
