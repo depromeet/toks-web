@@ -7,16 +7,25 @@ import { patchLogout } from './apis';
 export const useLogoutQuery = (options?: UseMutationOptions) => {
   const router = useRouter();
 
-  return useMutation(async () => {
-    try {
-      const res = await patchLogout();
-      deleteCookie('accessToken');
-      deleteCookie('refreshToken');
-      //   TODO: path name 바뀔수도
-      router.push('/toks-main');
-      return res;
-    } catch (err: unknown) {
-      console.log(err);
-    }
-  }, options);
+  return useMutation(
+    {
+      mutationFn: async () => {
+        try {
+          const res = await patchLogout();
+          deleteCookie('accessToken');
+          deleteCookie('refreshToken');
+          //   TODO: path name 바뀔수도
+          router.push('/toks-main');
+          return res;
+        } catch (err: unknown) {
+          console.log(err);
+        }
+      },
+      onSuccess: () => {
+        deleteCookie('accessToken');
+        deleteCookie('refreshToken');
+      },
+    },
+    ...options
+  );
 };
