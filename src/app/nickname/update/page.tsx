@@ -19,8 +19,11 @@ const UpdateNickname = () => {
     data: user,
     isSuccess,
     isLoading,
-  } = useQuery(QUERY_KEYS.GET_USER_INFO(accessToken), async () => {
-    return await getUserInfo();
+  } = useQuery({
+    queryKey: QUERY_KEYS.GET_USER_INFO(accessToken),
+    queryFn: async () => {
+      return await getUserInfo();
+    },
   });
 
   const {
