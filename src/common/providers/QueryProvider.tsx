@@ -1,7 +1,10 @@
 'use client';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import {
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query';
 import { PropsWithChildren, useState } from 'react';
 
 export default function QueryProvider({ children }: PropsWithChildren) {
@@ -14,13 +17,15 @@ export default function QueryProvider({ children }: PropsWithChildren) {
             refetchOnWindowFocus: false,
           },
         },
+        queryCache: new QueryCache({
+          onError: () => {
+            // TODO: error handling
+          },
+        }),
       })
   );
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {children}
-      <ReactQueryDevtools />
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 }

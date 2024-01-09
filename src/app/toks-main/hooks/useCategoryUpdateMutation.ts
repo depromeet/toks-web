@@ -34,7 +34,9 @@ export const useCategoryUpdateMutation = () => {
       }
     },
     onSettled: () => {
-      queryClient.invalidateQueries(['selectedCategories']);
+      queryClient.invalidateQueries({
+        queryKey: ['selectedCategories'],
+      });
     },
   });
 };

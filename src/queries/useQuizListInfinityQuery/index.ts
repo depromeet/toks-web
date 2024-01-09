@@ -27,10 +27,11 @@ export const useQuizListInfinityQuery = () => {
       },
       isLogin,
     ],
+    initialPageParam: 0,
     queryFn: ({ pageParam = 0 }) => {
       return getQuizList({
         categoryIds: selectedCategoryIds || [],
-        page: pageParam,
+        page: pageParam as number,
         size: 15,
       });
     },

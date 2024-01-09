@@ -11,16 +11,16 @@ import { BottomSheetProps } from '../../types/bottomsheet';
 export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
   const { year, month } = useSetDate();
 
-  const { data: progress } = useQuery(
-    QUERY_KEYS.GET_PROGRESS_INFO(month, year),
-    async () => {
+  const { data: progress } = useQuery({
+    queryKey: QUERY_KEYS.GET_PROGRESS_INFO(month, year),
+    queryFn: async () => {
       try {
         return await getProgress(month, year);
       } catch (e) {
         console.log(e);
       }
-    }
-  );
+    },
+  });
 
   return (
     <div className="flex max-h-bottomSheet flex-col justify-center px-20px py-16px">
