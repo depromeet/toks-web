@@ -2,10 +2,9 @@ import axios, { AxiosError, AxiosResponse, isAxiosError } from 'axios';
 import type { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 
-import { getNewToken } from '@/middleware';
-
 import { uuidv4 } from './uuid';
 import { API_URL } from '../constants';
+import { getNewToken } from '../remotes/token';
 
 const axiosInstance = axios.create({
   baseURL: API_URL,
@@ -225,3 +224,7 @@ http.interceptors.request.use((config) => {
 function delay(time: number) {
   return new Promise((res) => setTimeout(res, time));
 }
+
+export const httpAuth = axios.create({
+  baseURL: API_URL,
+});

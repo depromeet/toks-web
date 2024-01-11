@@ -1,19 +1,20 @@
 import './globals.css';
 import clsx from 'clsx';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
-import Head from 'next/head';
+import Script from 'next/script';
 
+import { AuthSessionProvider } from '@/common';
 import { bgColor } from '@/common/foundation';
 import QueryProvider from '@/common/providers/QueryProvider';
 import * as gtag from '@/common/utils';
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
 export const metadata: Metadata = {
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
   openGraph: {
     title: '똑스 : 지식을 키우는 첫 시작!',
     description: '똑스와 함께, 퀴즈로 똑똑해지고 더 나은 습관 만들기',
@@ -25,6 +26,7 @@ export const metadata: Metadata = {
   icons: {
     icon: 'https://asset.tokstudy.com/legacy/toktok.ico',
   },
+  metadataBase: new URL('https://tokstudy.com'),
   title: 'Toks',
 };
 
@@ -34,16 +36,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <Head>
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
-        />
-        {/* GA설정 */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+    <html lang="ko">
+      <Script
+        id="ga-script-1"
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+      />
+      {/* GA설정 */}
+      <Script
+        id="ga-script-2"
+        dangerouslySetInnerHTML={{
+          __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -51,12 +54,13 @@ export default function RootLayout({
               page_path: window.location.pathname,
             });
           `,
-          }}
-        />
-        {/* hotjar 설정 */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+        }}
+      />
+      {/* hotjar 설정 */}
+      <Script
+        id="hotjar-script"
+        dangerouslySetInnerHTML={{
+          __html: `
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:${process.env.NEXT_PUBLIC_HJID},hjsv:${process.env.NEXT_PUBLIC_HJSV}};
@@ -66,13 +70,14 @@ export default function RootLayout({
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 `,
-          }}
-        />
-      </Head>
+        }}
+      />
       <body className={clsx(pretendard.className, bgColor['mainLayout'])}>
-        <QueryProvider>
-          <StyledLayout>{children}</StyledLayout>
-        </QueryProvider>
+        <AuthSessionProvider>
+          <QueryProvider>
+            <StyledLayout>{children}</StyledLayout>
+          </QueryProvider>
+        </AuthSessionProvider>
       </body>
     </html>
   );

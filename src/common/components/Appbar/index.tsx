@@ -2,10 +2,11 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
-import { ICON_URL, LOGIN_URL } from '@/common/constants';
+import { ICON_URL } from '@/common/constants';
 import { useAuth } from '@/common/hooks';
 import { useSelectedCategoriesQuery } from '@/queries';
 import {
@@ -57,7 +58,6 @@ export const Appbar = () => {
             }}
           >
             <Image
-              layout="fixed"
               width={60}
               height={20}
               src={ICON_URL.TOKS_LOGO}
@@ -108,7 +108,7 @@ export const Appbar = () => {
                 color="gray10"
                 typo="body"
                 onClick={() => {
-                  router.replace(LOGIN_URL);
+                  signIn('kakao');
                 }}
               >
                 로그인

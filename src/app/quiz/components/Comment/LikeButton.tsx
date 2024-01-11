@@ -2,13 +2,12 @@
 
 import clsx from 'clsx';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 import { HTMLAttributes } from 'react';
 
 import { useLikeCommentMutation } from '@/app/quiz/hooks/useLikeCommentMutation';
 import { useUnlikeCommentMutation } from '@/app/quiz/hooks/useUnlikeCommentMutation';
 import { Text, useAuth } from '@/common';
-import { LOGIN_URL } from '@/common/constants';
 
 import like_off from '../../../../../public/img/icon/like_off.svg';
 import like_on from '../../../../../public/img/icon/like_on.svg';
@@ -31,7 +30,6 @@ function LikeButton({
   ...rest
 }: LikeButtonProps) {
   const { isLogin } = useAuth();
-  const router = useRouter();
   const { likeComment } = useLikeCommentMutation(String(commentId), quizId);
   const { unlikeComment } = useUnlikeCommentMutation(String(commentId), quizId);
   return (
@@ -42,7 +40,7 @@ function LikeButton({
         if (isLogin) {
           return (isLiked ? unlikeComment : likeComment)();
         }
-        router.replace(LOGIN_URL);
+        signIn('kakao');
       }}
     >
       <Image
