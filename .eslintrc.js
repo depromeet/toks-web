@@ -4,6 +4,7 @@ module.exports = {
     es6: true,
     node: true,
   },
+
   parser: '@typescript-eslint/parser',
   extends: [
     'eslint:recommended',
@@ -26,6 +27,7 @@ module.exports = {
     },
   },
   rules: {
+    '@next/next/no-img-element': 'off',
     'prettier/prettier': [
       'error',
       {

@@ -1,6 +1,6 @@
 import './globals.css';
 import clsx from 'clsx';
-import type { Metadata, Viewport } from 'next';
+import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import Script from 'next/script';
 
@@ -9,12 +9,12 @@ import { bgColor } from '@/common/foundation';
 import QueryProvider from '@/common/providers/QueryProvider';
 import * as gtag from '@/common/utils';
 
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-};
 export const metadata: Metadata = {
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
   openGraph: {
     title: '똑스 : 지식을 키우는 첫 시작!',
     description: '똑스와 함께, 퀴즈로 똑똑해지고 더 나은 습관 만들기',
