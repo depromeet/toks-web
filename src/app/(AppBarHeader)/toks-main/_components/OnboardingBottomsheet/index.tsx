@@ -4,7 +4,7 @@ import { ICON_URL } from '@/common';
 import { Text } from '@/common/components/Text';
 
 import { OnboardingCarousel } from './OnboardingCarousel';
-import { BottomSheetProps } from '../../_types/bottomsheet';
+import { BottomSheetProps } from '../../_lib/types/bottomsheet';
 
 export const OnboardingBottomSheet = ({ onClose }: BottomSheetProps) => {
   return (

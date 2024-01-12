@@ -3,7 +3,7 @@ import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
 
-import '../../_style/carousel.css';
+import '../../_lib/style/carousel.css';
 import { LOGIN_URL } from '@/common';
 import { Button } from '@/common/components/Button';
 

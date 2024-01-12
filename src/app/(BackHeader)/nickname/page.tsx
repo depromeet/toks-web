@@ -9,8 +9,8 @@ import { Toast, ToastProps } from '@/common/components/Toast';
 import { useToast } from '@/common/hooks';
 import { useWindowResize } from '@/common/hooks/useWindowResize';
 
-import { NicknameBox } from './components/NicknameBox';
-import { useCreateNicknameForm } from './hooks/useCreateNicknameForm';
+import { NicknameBox } from './_components/NicknameBox';
+import { useCreateNicknameForm } from './_lib/hooks/useCreateNicknameForm';
 
 const Nickname = () => {
   const pathName = usePathname();

@@ -8,8 +8,8 @@ import { ToksCalendar } from '@/common/components/ToksCalendar';
 import { QUERY_KEYS } from '@/common/constants/queryKeys';
 
 import { QuizProgress } from './QuizProgress';
-import { getProgress } from '../../_remotes/progress';
-import { BottomSheetProps } from '../../_types/bottomsheet';
+import { getProgress } from '../../_lib/remotes/progress';
+import { BottomSheetProps } from '../../_lib/types/bottomsheet';
 
 export const ProgressCheckBottomSheet = ({ onClose }: BottomSheetProps) => {
   const { year, month } = useSetDate();

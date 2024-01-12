@@ -17,7 +17,7 @@ import {
 } from '@/store';
 
 import { CategoryButtonGroups } from './CategoryButtonGroups';
-import { useCategoryUpdateMutation } from '../_hooks/useCategoryUpdateMutation';
+import { useCategoryUpdateMutation } from '../_lib/hooks/useCategoryUpdateMutation';
 
 export const CategoryBottomSheet = () => {
   const { isLogin } = useAuth();

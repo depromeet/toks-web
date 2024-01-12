@@ -6,7 +6,7 @@ import { ICON_URL, bgColor } from '@/common';
 import { Input } from '@/common/components/Input';
 import { Text } from '@/common/components/Text';
 
-import { CheckNicknameFormValues } from '../hooks/useCreateNicknameForm';
+import { CheckNicknameFormValues } from '../_lib/hooks/useCreateNicknameForm';
 
 interface HookFormValidateProps {
   value: number;
