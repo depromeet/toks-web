@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import {
   QuizProvider,
   ScrollToTopButton,
-} from '@/app/(BackHeader)/quiz/components';
+} from '@/app/(BackHeader)/quiz/_components';
 
 import { fetchQuizDetailByQuizID } from '../remotes/quiz';
 

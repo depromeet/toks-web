@@ -2,7 +2,8 @@
 
 import clsx from 'clsx';
 
-import { Text, bgColor } from '@/common';
+import { bgColor } from '@/common';
+import { Text } from '@/common/components/Text';
 
 import { ProgressBar } from './ProgressBar';
 import { Thumbnail } from './Thumbnail';

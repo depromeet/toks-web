@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { QuizContext } from '@/app/(BackHeader)/quiz/components';
+import { QuizContext } from '@/app/(BackHeader)/quiz/_components';
 
 export const useCommentListRef = () => {
   const context = useContext(QuizContext);

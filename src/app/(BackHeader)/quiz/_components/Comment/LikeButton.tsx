@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { HTMLAttributes } from 'react';
 
-import { useLikeCommentMutation } from '@/app/(BackHeader)/quiz/hooks/useLikeCommentMutation';
-import { useUnlikeCommentMutation } from '@/app/(BackHeader)/quiz/hooks/useUnlikeCommentMutation';
+import { useLikeCommentMutation } from '@/app/(BackHeader)/quiz/_hooks/useLikeCommentMutation';
+import { useUnlikeCommentMutation } from '@/app/(BackHeader)/quiz/_hooks/useUnlikeCommentMutation';
 import { useAuth } from '@/common';
 import { Text } from '@/common/components/Text';
 import { LOGIN_URL } from '@/common/constants';

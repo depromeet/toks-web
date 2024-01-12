@@ -2,10 +2,10 @@ import {
   Comment,
   CommentForm,
   GetStartedButton,
-} from '@/app/(BackHeader)/quiz/components';
+} from '@/app/(BackHeader)/quiz/_components';
 import { useAuth } from '@/common';
 
-import { useGetCommentListQuery } from '../../hooks/useGetCommentListQuery';
+import { useGetCommentListQuery } from '../../_hooks/useGetCommentListQuery';
 
 type CommentsProps = {
   quizId: string;
