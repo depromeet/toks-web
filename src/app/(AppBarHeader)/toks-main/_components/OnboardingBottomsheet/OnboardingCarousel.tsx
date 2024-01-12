@@ -22,6 +22,12 @@ export const OnboardingCarousel = () => {
     dotsClass: 'dots_custom',
   };
 
+  const IMAGE_URL = [
+    '/img/onboarding/onboarding-1.svg',
+    '/img/onboarding/onboarding-2.svg',
+    '/img/onboarding/onboarding-3.svg',
+  ];
+
   return (
     <div className="relative w-full">
       <div className="pb-50px">
@@ -31,13 +37,15 @@ export const OnboardingCarousel = () => {
           className="w-full"
           {...setting}
         >
-          {[
-            '/img/onboarding/onboarding-1.svg',
-            '/img/onboarding/onboarding-2.svg',
-            '/img/onboarding/onboarding-3.svg',
-          ].map((url) => (
+          {IMAGE_URL.map((url) => (
             <div key={url} className="max-h-bottomSheetImage overflow-auto">
-              <Image className="w-full" alt="onboarding" src={url} />
+              <Image
+                className="w-full"
+                alt="onboarding"
+                src={url}
+                width={500}
+                height={500}
+              />
             </div>
           ))}
         </Slider>
