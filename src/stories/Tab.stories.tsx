@@ -1,9 +1,9 @@
 'use client';
 
+import { Tab } from '@/common/components/Tab';
 /* eslint-disable storybook/prefer-pascal-case */
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Tab } from '@/common';
 import { useState } from 'react';
 
 const meta: Meta<typeof Tab> = {
