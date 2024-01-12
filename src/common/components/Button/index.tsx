@@ -2,8 +2,7 @@
 
 import Image from 'next/image';
 
-import { ICON_URL, bgColor, cn } from '@/common';
-import { Text } from '@/common/components/Text';
+import { ICON_URL, Text, bgColor, cn } from '@/common';
 
 import {
   GAP_BY_BUTTON_SIZE,

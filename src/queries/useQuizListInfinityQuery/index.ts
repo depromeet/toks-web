@@ -1,7 +1,7 @@
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { useRecoilValue } from 'recoil';
 
-import { Quiz } from '@/app/(BackHeader)/quiz/models/quiz';
+import { Quiz } from '@/app/quiz/models/quiz';
 import { useAuth } from '@/common/hooks';
 import { selectedTemporaryCategoryAtom } from '@/store';
 

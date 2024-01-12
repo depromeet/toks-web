@@ -5,11 +5,10 @@ import localFont from 'next/font/local';
 import Head from 'next/head';
 
 import { bgColor } from '@/common/foundation';
-import RootProvider from '@/common/providers';
+import QueryProvider from '@/common/providers/QueryProvider';
 import * as gtag from '@/common/utils';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tokstudy.com/'),
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -71,9 +70,9 @@ export default function RootLayout({
         />
       </Head>
       <body className={clsx(pretendard.className, bgColor['mainLayout'])}>
-        <RootProvider>
+        <QueryProvider>
           <StyledLayout>{children}</StyledLayout>
-        </RootProvider>
+        </QueryProvider>
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 /* eslint-disable storybook/prefer-pascal-case */
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Appbar } from '@/app/(AppBarHeader)/_components/Appbar';
+import { Appbar } from '@/common/components/Appbar';
 
 const meta: Meta<typeof Appbar> = {
   title: 'Common/Appbar',

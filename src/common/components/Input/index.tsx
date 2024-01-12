@@ -3,8 +3,7 @@
 import Image from 'next/image';
 import { forwardRef, useState } from 'react';
 
-import { ICON_URL, cn, typography } from '@/common';
-import { Text } from '@/common/components/Text';
+import { ICON_URL, Text, cn, typography } from '@/common';
 
 import { InputProps } from './types';
 

@@ -2,10 +2,9 @@
 
 import { forwardRef, useState } from 'react';
 
-import { cn, typography } from '@/common';
+import { Text, cn, typography } from '@/common';
 
 import { TextFieldProps } from './types';
-import { Text } from '../Text';
 
 export const TextField = forwardRef<HTMLTextAreaElement, TextFieldProps>(
   (
