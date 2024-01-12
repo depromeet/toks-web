@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 
-import { useSubmitCommentMutation } from '@/app/(BackHeader)/quiz/hooks/useSubmitCommentMutation';
+import { useSubmitCommentMutation } from '@/app/(BackHeader)/quiz/_hooks/useSubmitCommentMutation';
 import { Button } from '@/common/components/Button';
 import { TextField } from '@/common/components/TextField';
 

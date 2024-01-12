@@ -1,4 +1,4 @@
-import { QuizCarousel } from '@/app/(BackHeader)/quiz/components';
+import { QuizCarousel } from '@/app/(BackHeader)/quiz/_components';
 import { getRecommendationByQuizId } from '@/app/(BackHeader)/quiz/remotes/recommendation';
 import { Text } from '@/common/components/Text';
 

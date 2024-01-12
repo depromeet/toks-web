@@ -3,7 +3,7 @@
 import clsx from 'clsx';
 import { Children, useEffect, useState } from 'react';
 
-import { useCommentListRef } from '@/app/(BackHeader)/quiz/hooks/useCommentListRef';
+import { useCommentListRef } from '@/app/(BackHeader)/quiz/_hooks/useCommentListRef';
 import { Button } from '@/common/components/Button';
 
 interface CommentListProps {

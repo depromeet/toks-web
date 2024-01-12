@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
-import { useCommentListRef } from '@/app/(BackHeader)/quiz/hooks/useCommentListRef';
+import { useCommentListRef } from '@/app/(BackHeader)/quiz/_hooks/useCommentListRef';
 import { ICON_URL, bgColor } from '@/common';
 import { useThrottle } from '@/common/hooks';
 

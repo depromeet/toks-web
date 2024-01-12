@@ -2,16 +2,16 @@
 
 import clsx from 'clsx';
 
-import { QuizButton, Thumbnail } from '@/app/(BackHeader)/quiz/components';
+import { QuizButton, Thumbnail } from '@/app/(BackHeader)/quiz/_components';
 import {
   useGetQuizDetailQuery,
   useSubmitQuizMutation,
-} from '@/app/(BackHeader)/quiz/hooks';
+} from '@/app/(BackHeader)/quiz/_hooks';
 import { OX, QuizButtonType } from '@/app/(BackHeader)/quiz/models/quiz';
 import { bgColor } from '@/common';
 import { Text } from '@/common/components/Text';
 
-import { Comments } from '../../components/Comment/Comments';
+import { Comments } from '../../_components/Comment/Comments';
 
 type Props = {
   params: {
