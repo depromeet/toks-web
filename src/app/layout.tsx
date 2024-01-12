@@ -9,6 +9,7 @@ import RootProvider from '@/common/providers';
 import * as gtag from '@/common/utils';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tokstudy.com/'),
   viewport: {
     width: 'device-width',
     initialScale: 1,
