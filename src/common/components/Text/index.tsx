@@ -12,14 +12,14 @@ interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   as?: keyof typeof TEXT_TAGS;
 }
 
-export function Text({
+export const Text = ({
   color = 'white',
   children,
   typo,
   as = 'span',
   className,
   ...rest
-}: TextProps) {
+}: TextProps) => {
   return createElement(
     as,
     {
@@ -28,4 +28,4 @@ export function Text({
     },
     [children]
   );
-}
+};
