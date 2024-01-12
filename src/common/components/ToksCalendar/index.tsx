@@ -6,10 +6,11 @@ import { useEffect, useState } from 'react';
 import Calendar, { CalendarProps } from 'react-calendar';
 
 import './Calendar.css';
-import { Text, bgColor, textColor, useSetDate } from '@/common';
+import { bgColor, textColor, useSetDate } from '@/common';
 
 import { getCalendar } from './api';
 import { CalendarDate } from './type';
+import { Text } from '../Text';
 
 export function ToksCalendar({ ...rest }: CalendarProps) {
   const { year, month, setYearMonth } = useSetDate();

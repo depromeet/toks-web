@@ -5,7 +5,7 @@ import localFont from 'next/font/local';
 import Head from 'next/head';
 
 import { bgColor } from '@/common/foundation';
-import QueryProvider from '@/common/providers/QueryProvider';
+import RootProvider from '@/common/providers';
 import * as gtag from '@/common/utils';
 
 export const metadata: Metadata = {
@@ -70,9 +70,9 @@ export default function RootLayout({
         />
       </Head>
       <body className={clsx(pretendard.className, bgColor['mainLayout'])}>
-        <QueryProvider>
+        <RootProvider>
           <StyledLayout>{children}</StyledLayout>
-        </QueryProvider>
+        </RootProvider>
       </body>
     </html>
   );
