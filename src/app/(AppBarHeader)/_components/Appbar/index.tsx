@@ -53,7 +53,6 @@ export const Appbar = () => {
           }}
         >
           <Image
-            layout="fixed"
             width={60}
             height={20}
             src={ICON_URL.TOKS_LOGO}
