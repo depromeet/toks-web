@@ -1,4 +1,4 @@
-import { Quiz } from '@/app/(BackHeader)/quiz/models/quiz';
+import { Quiz } from '@/app/quiz/models/quiz';
 
 export interface GetQuizListRequest {
   page: number;

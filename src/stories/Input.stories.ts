@@ -1,5 +1,5 @@
 /* eslint-disable storybook/prefer-pascal-case */
-import { Input } from '@/common/components/Input';
+import { Input } from '@/common';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Input> = {

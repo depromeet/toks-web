@@ -1,6 +1,7 @@
 /* eslint-disable storybook/prefer-pascal-case */
-import { Button } from '@/common/components/Button';
 import type { Meta, StoryObj } from '@storybook/react';
+
+import { Button } from '@/common';
 
 const meta: Meta<typeof Button> = {
   title: 'Common/Button',

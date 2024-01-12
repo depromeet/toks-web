@@ -11,15 +11,6 @@ const nextConfig = {
   eslint: {
     dirs: ['src'],
   },
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/toks-main',
-        permanent: true,
-      },
-    ];
-  },
 };
 
 module.exports = nextConfig;
