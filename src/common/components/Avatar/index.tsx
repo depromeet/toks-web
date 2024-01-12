@@ -22,7 +22,7 @@ export const Avatar = ({
       <Image
         alt={`${name} 아바타`}
         src={src === IMAGE_URL.BASE_KAKAO ? ICON_URL.AVATAR_DEFAULT : src}
-        layout="fill"
+        fill
         {...rest}
       />
     </div>
