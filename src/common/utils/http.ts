@@ -42,18 +42,18 @@ export const uuid = {
   FIELD_NAME: 'TOKS-USER-KEY',
   uuid: (() => {
     try {
-      return localStorage.getItem('uuid');
+      return getCookie('uuid');
     } catch (err) {
       return null;
     }
   })(),
   refetch: () => {
-    uuid.uuid = localStorage.getItem('uuid');
+    uuid.uuid = getCookie('uuid');
     return;
   },
   destroy: () => {
     try {
-      localStorage.removeItem('uuid');
+      deleteCookie('uuid');
       uuid.uuid = null;
     } catch (err) {
       console.log(err);
@@ -214,7 +214,8 @@ http.interceptors.request.use((config) => {
       http.defaults.headers.common[uuid.FIELD_NAME] = toksUserKey;
     } else {
       const newToksUserKey = uuidv4();
-      localStorage.setItem('uuid', newToksUserKey);
+      setCookie('uuid', newToksUserKey);
+      console.log(newToksUserKey);
       config.headers[uuid.FIELD_NAME] = newToksUserKey;
       http.defaults.headers.common[uuid.FIELD_NAME] = newToksUserKey;
     }
