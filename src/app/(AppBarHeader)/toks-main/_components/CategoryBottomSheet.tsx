@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 
 import { ICON_URL } from '@/common';
@@ -40,6 +40,14 @@ export const CategoryBottomSheet = () => {
     label: name,
     value: id,
   }));
+
+  useEffect(() => {
+    setSelectedLocalCategories(selectedCategory);
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    setSelectedTab(0);
+  }, [isShow]);
 
   return (
     <BottomSheet

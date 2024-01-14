@@ -91,7 +91,7 @@ export const authToken = {
 };
 
 export const redirectToLoginPage = () => {
-  const isDev = window.location.hostname === 'localhost';
+  const isDev = process.env.NODE_ENV === 'development';
 
   window.location.href = isDev
     ? 'http://localhost:3000/toks-main'
@@ -215,7 +215,6 @@ http.interceptors.request.use((config) => {
     } else {
       const newToksUserKey = uuidv4();
       setCookie('uuid', newToksUserKey);
-      console.log(newToksUserKey);
       config.headers[uuid.FIELD_NAME] = newToksUserKey;
       http.defaults.headers.common[uuid.FIELD_NAME] = newToksUserKey;
     }

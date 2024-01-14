@@ -1,46 +1,14 @@
-'use client';
-import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
-
-import { FloatingButton } from '@/common/components/FloatingButton';
-import { Toast, ToastProps } from '@/common/components/Toast';
-import { useToast } from '@/common/hooks';
-import { isVisibleFloatingButtonBottomSheetAtom } from '@/store';
+import { Suspense } from 'react';
 
 import { CardList } from './_components/CardList';
-import { MainPageBottomSheet } from './_components/MainPageBottomSheet';
+import { SkeletonCardList } from './_components/SkeletonCard';
 
 function ToksMainPage() {
-  const { getSavedToastInfo, clearSavedToast } = useToast();
-  const [toastData, setToastData] = useState<ToastProps | null>(null);
-
-  const [isOpenFloatingButtonBottomSheet, setIsOpenFloatingButtonBottomSheet] =
-    useRecoilState(isVisibleFloatingButtonBottomSheetAtom);
-
-  useEffect(() => {
-    setToastData(getSavedToastInfo());
-    clearSavedToast();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <div className="flex-col">
-      {toastData && (
-        <Toast
-          isShow={toastData.isShow}
-          type={toastData.type}
-          direction={toastData.direction}
-          title={toastData.title}
-        />
-      )}
-      <CardList />
-      <FloatingButton
-        onClick={() => setIsOpenFloatingButtonBottomSheet(true)}
-      />
-      <MainPageBottomSheet
-        onClose={() => setIsOpenFloatingButtonBottomSheet(false)}
-        isShow={isOpenFloatingButtonBottomSheet}
-      />
+      <Suspense fallback={<SkeletonCardList />}>
+        <CardList />
+      </Suspense>
     </div>
   );
 }

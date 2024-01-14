@@ -5,6 +5,7 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { PropsWithChildren, useState } from 'react';
 import { RecoilRoot } from 'recoil';
 
@@ -33,6 +34,9 @@ export default function RootProvider({ children }: PropsWithChildren) {
       <RecoilRoot>
         <GlobalPortal.Provider>{children}</GlobalPortal.Provider>
       </RecoilRoot>
+      <ReactQueryDevtools
+        initialIsOpen={process.env.NEXT_PUBLIC_MODE === 'local'}
+      />
     </QueryClientProvider>
   );
 }
