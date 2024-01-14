@@ -1,5 +1,5 @@
 'use client';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 import { useRecoilValue } from 'recoil';
 
 import { Quiz } from '@/app/(BackHeader)/quiz/models/quiz';
@@ -20,7 +20,7 @@ export const useQuizListInfinityQuery = () => {
     ? selectedUserCategory
     : selectedTemporaryCategory;
 
-  return useInfiniteQuery({
+  return useSuspenseInfiniteQuery({
     queryKey: [
       'quizList',
       {
