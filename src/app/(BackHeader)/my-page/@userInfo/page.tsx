@@ -24,7 +24,7 @@ const UserInfo = () => {
       <div className="mx-auto mb-24px h-96px w-96px overflow-hidden rounded-full">
         <Image src={profileImage} alt="프로필 이미지" width={96} height={96} />
       </div>
-      <div className="mb-8px flex w-full justify-center">
+      <div className="mb-8px flex h-24px w-full justify-center">
         <Text typo="headingL" color="gray10">
           {user?.nickname}
         </Text>
@@ -37,9 +37,11 @@ const UserInfo = () => {
           onClick={() => router.push('/nickname/update')}
         />
       </div>
-      <Text typo="body" color="gray40">
-        {user?.email}
-      </Text>
+      <div className="h-24px">
+        <Text typo="body" color="gray40">
+          {user?.email}
+        </Text>
+      </div>
     </div>
   );
 };
