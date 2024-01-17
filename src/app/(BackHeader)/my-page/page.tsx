@@ -1,38 +1,19 @@
 'use client';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 
 import { GOOGLE_FORM_URL, ICON_URL } from '@/common';
 import { Button } from '@/common/components/Button';
 import { Text } from '@/common/components/Text';
-import { Toast, ToastProps } from '@/common/components/Toast';
-import { useToast } from '@/common/hooks/useToast';
 
 import { LogoutBar } from './_components/LogoutBar';
 import { UserInfo } from './_components/UserInfo';
 
 const MyPage = () => {
-  const [toastData, setToastData] = useState<ToastProps | null>(null);
   const router = useRouter();
-  const { getSavedToastInfo, clearSavedToast } = useToast();
-  useEffect(() => {
-    setToastData(getSavedToastInfo());
-    clearSavedToast();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return (
     <div className="h-full">
       <div>
-        {toastData && (
-          <Toast
-            isShow={toastData.isShow}
-            type={toastData.type}
-            direction={toastData.direction}
-            title={toastData.title}
-          />
-        )}
         <UserInfo />
         <div className="h-40px" />
         <LogoutBar />

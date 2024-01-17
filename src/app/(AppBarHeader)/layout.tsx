@@ -6,7 +6,8 @@ export default function AppBarLayout({ children }: StrictPropsWithChildren) {
     <>
       <Appbar />
       {children}
-      <CategoryBottomSheet />
+      {/* TODO: 에러 고치기 .. */}
+      {/* <CategoryBottomSheet /> */}
     </>
   );
 }
