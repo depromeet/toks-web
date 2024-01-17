@@ -7,14 +7,12 @@ import { Button } from '@/common/components/Button';
 import { Text } from '@/common/components/Text';
 
 import { LogoutBar } from './_components/LogoutBar';
-import { UserInfo } from './_components/UserInfo';
 
 const MyPage = () => {
   const router = useRouter();
   return (
     <div className="h-full">
       <div>
-        <UserInfo />
         <div className="h-40px" />
         <LogoutBar />
         <div className="h-56px" />

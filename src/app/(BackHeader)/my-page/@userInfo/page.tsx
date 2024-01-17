@@ -8,7 +8,7 @@ import { ICON_URL, IMAGE_URL } from '@/common';
 import { Text } from '@/common/components/Text';
 import { useAuth } from '@/common/hooks';
 
-export const UserInfo = () => {
+const UserInfo = () => {
   const { user } = useAuth();
   const [profileImage, setProfileImage] = useState(ICON_URL.EMOJI_BASE_GRAY);
   const router = useRouter();
@@ -43,3 +43,5 @@ export const UserInfo = () => {
     </div>
   );
 };
+
+export default UserInfo;
