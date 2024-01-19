@@ -10,7 +10,6 @@ const Toast = () => {
   const [toastData, setToastData] = useState<ToastProps | null>(null);
 
   useEffect(() => {
-    console.log('hi');
     setToastData(getSavedToastInfo());
     console.log(getSavedToastInfo());
     console.log(toastData);

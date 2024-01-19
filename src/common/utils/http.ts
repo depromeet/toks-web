@@ -92,6 +92,9 @@ export const authToken = {
 
 export const redirectToLoginPage = () => {
   const isDev = process.env.NODE_ENV === 'development';
+  if (typeof window === 'undefined') {
+    return;
+  }
 
   window.location.href = isDev
     ? 'http://localhost:3000/toks-main'
