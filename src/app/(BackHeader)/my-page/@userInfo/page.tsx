@@ -7,18 +7,22 @@ import { useRouter } from 'next/navigation';
 import { ICON_URL } from '@/common';
 import { Text } from '@/common/components/Text';
 
+import { SkeletonUserInfo } from '../_components/SkeletonUserInfo.tsx';
 import { useSuspenseUserInfoQuery } from '../_lib/hooks/useSuspenseUserInfoQuery';
 
 const UserInfo = () => {
   const router = useRouter();
   const accessToken = getCookie('accessToken');
-  const { data: user } = useSuspenseUserInfoQuery(accessToken as string);
+  const { data: userInfo } = useSuspenseUserInfoQuery(accessToken as string);
 
+  if (!userInfo) {
+    return <SkeletonUserInfo />;
+  }
   return (
     <div className="w-full flex-col items-center pt-20px text-center">
       <div className="mx-auto mb-24px h-96px w-96px overflow-hidden rounded-full">
         <Image
-          src={user ? user.profileImageUrl : ICON_URL.EMOJI_BASE_GRAY}
+          src={userInfo ? userInfo.profileImageUrl : ICON_URL.EMOJI_BASE_GRAY}
           alt="프로필 이미지"
           width={96}
           height={96}
@@ -26,7 +30,7 @@ const UserInfo = () => {
       </div>
       <div className="mb-8px flex h-24px w-full justify-center">
         <Text typo="headingL" color="gray10">
-          {user?.nickname}
+          {userInfo?.nickname}
         </Text>
         <Image
           className="ml-4px"
@@ -39,7 +43,7 @@ const UserInfo = () => {
       </div>
       <div className="h-24px">
         <Text typo="body" color="gray40">
-          {user?.email}
+          {userInfo?.email}
         </Text>
       </div>
     </div>

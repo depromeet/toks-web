@@ -11,8 +11,6 @@ const Toast = () => {
 
   useEffect(() => {
     setToastData(getSavedToastInfo());
-    console.log(getSavedToastInfo());
-    console.log(toastData);
 
     clearSavedToast();
     // eslint-disable-next-line react-hooks/exhaustive-deps
