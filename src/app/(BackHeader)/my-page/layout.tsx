@@ -1,4 +1,6 @@
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, Suspense } from 'react';
+
+import { SkeletonUserInfo } from './_components/SkeletonUserInfo.tsx';
 
 type Props = {
   toast: React.ReactNode;
@@ -12,7 +14,7 @@ export default function MyPageLayout({
 }: PropsWithChildren<Props>) {
   return (
     <>
-      {userInfo}
+      <Suspense fallback={<SkeletonUserInfo />}>{userInfo}</Suspense>
       {children}
       {toast}
     </>
