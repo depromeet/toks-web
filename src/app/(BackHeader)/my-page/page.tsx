@@ -1,15 +1,12 @@
-'use client';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
-import { GOOGLE_FORM_URL, ICON_URL } from '@/common';
-import { Button } from '@/common/components/Button';
+import { ICON_URL } from '@/common';
 import { Text } from '@/common/components/Text';
 
+import { GoogleFormButton } from './_components/GoogleFormButton';
 import { LogoutBar } from './_components/LogoutBar';
 
 const MyPage = () => {
-  const router = useRouter();
   return (
     <div className="h-full">
       <div>
@@ -26,17 +23,7 @@ const MyPage = () => {
           height={160}
           alt="로켓 이미지"
         />
-        <Button
-          className="w-full"
-          size="L"
-          typo="subheadingBold"
-          backgroundColor="primaryDefault"
-          onClick={() => {
-            router.push(GOOGLE_FORM_URL);
-          }}
-        >
-          이런 퀴즈가 있었으면 좋겠어요
-        </Button>
+        <GoogleFormButton />
       </div>
     </div>
   );
