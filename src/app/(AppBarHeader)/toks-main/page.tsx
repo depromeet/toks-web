@@ -1,16 +1,14 @@
 import { Suspense } from 'react';
 
-import { CardList } from './_components/CardList';
+import CartListSuspense from './_components/CartListSuspense';
 import { SkeletonCardList } from './_components/SkeletonCard';
 
-function ToksMainPage() {
+export default async function ToksMainPage() {
   return (
     <div className="flex-col">
       <Suspense fallback={<SkeletonCardList />}>
-        <CardList />
+        <CartListSuspense />
       </Suspense>
     </div>
   );
 }
-
-export default ToksMainPage;

@@ -1,5 +1,3 @@
-import { http } from '@/common/utils/http';
-
 import { GetQuizListRequest, GetQuizListResponse } from './types';
 
 export const getQuizList = async ({
@@ -18,5 +16,24 @@ export const getQuizList = async ({
 
   const searchParams = new URLSearchParams(queryParams).toString();
 
-  return await http.get<GetQuizListResponse>(`api/v1/quizzes?${searchParams}`);
+  // return await http.get<GetQuizListResponse>(`api/v1/quizzes?${searchParams}`);
+
+  const result = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}api/v1/quizzes?${searchParams}`,
+    {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'GET',
+      next: {
+        tags: [String(page), String(size)],
+      },
+    }
+  );
+  if (!result.ok) {
+    throw new Error('데이터를 가져오는데 실패했습니다.');
+  }
+
+  const { data } = await result.json();
+  return data as GetQuizListResponse;
 };

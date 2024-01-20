@@ -1,12 +1,14 @@
-import { Appbar } from './_components/Appbar';
-import { CategoryBottomSheet } from './toks-main/_components/CategoryBottomSheet';
+// import { Suspense } from 'react';
+
+// import { Appbar } from './_components/Appbar';
 
 export default function AppBarLayout({ children }: StrictPropsWithChildren) {
   return (
     <>
-      <Appbar />
+      {/* <Suspense>
+        <Appbar />
+      </Suspense> */}
       {children}
-      <CategoryBottomSheet />
     </>
   );
 }
