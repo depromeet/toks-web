@@ -8,6 +8,7 @@ import { useIntersectionObserver } from '@/common/hooks';
 import { useQuizListInfinityQuery } from '@/queries/useQuizListInfinityQuery';
 
 import { QuizNotice } from './QuizNotice';
+import { SkeletonCardList } from './SkeletonCard';
 import { CARD_LIST_QUERY_DEFAULT } from '../constants';
 
 export const CardList = () => {
@@ -17,7 +18,9 @@ export const CardList = () => {
     data = CARD_LIST_QUERY_DEFAULT,
     hasNextPage,
     fetchNextPage,
+    isPending,
     isFetchingNextPage,
+    isFetching,
   } = useQuizListInfinityQuery();
 
   useIntersectionObserver({
@@ -27,6 +30,10 @@ export const CardList = () => {
   });
 
   const { pages: quizList } = data;
+
+  if (isPending) {
+    return <SkeletonCardList />;
+  }
 
   return (
     <div className="flex h-full flex-col gap-8px">
@@ -46,6 +53,7 @@ export const CardList = () => {
         />
       ))}
       <div ref={observeBox} />
+      {isFetching && <SkeletonCardList />}
     </div>
   );
 };
