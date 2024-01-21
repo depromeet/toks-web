@@ -104,8 +104,14 @@ function DetailPage({ params: { quizId } }: Props) {
                 <Thumbnail OXType={oxAnswer as OX} />
                 <Text className="mt-20px " typo="headingL" color="gray10">
                   {isOXCorrectAnswer
-                    ? `딩동댕! 정답은 ${oxAnswer}에요.`
-                    : `앗, 정답은 ${oxAnswer}에요.`}
+                    ? `딩동댕! 정답은 ${
+                        (oxAnswer === 'O' ? buttonLeft : buttonRight).button
+                          .name
+                      }에요.`
+                    : `앗, 정답은 ${
+                        (oxAnswer === 'O' ? buttonLeft : buttonRight).button
+                          .name
+                      }에요.`}
                 </Text>
                 <Text className="mt-2px " typo="bodyBold" color="gray60">
                   {clsx(
