@@ -2,7 +2,11 @@
 
 import clsx from 'clsx';
 
-import { QuizButton, Thumbnail } from '@/app/quiz/components';
+import {
+  QuizButton,
+  SkeletonQuizDetail,
+  Thumbnail,
+} from '@/app/quiz/components';
 import {
   useGetQuizDetailQuery,
   useSubmitQuizMutation,
@@ -20,10 +24,10 @@ type Props = {
 
 function DetailPage({ params: { quizId } }: Props) {
   const { submitQuiz } = useSubmitQuizMutation(quizId);
-  const { data: quizDetail } = useGetQuizDetailQuery(quizId);
+  const { data: quizDetail, isLoading } = useGetQuizDetailQuery(quizId);
 
-  if (quizDetail === undefined) {
-    return null;
+  if (quizDetail === undefined || isLoading) {
+    return <SkeletonQuizDetail />;
   }
 
   const {

@@ -5,3 +5,4 @@ export * from './QuizButton';
 export * from './QuizCarousel';
 export * from './ScrollToTopButton';
 export * from './QuizProvider';
+export * from './SkeletonQuizDetail';
