@@ -2,7 +2,7 @@ import './globals.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Head from 'next/head';
+import Script from 'next/script';
 
 import { bgColor } from '@/common/foundation';
 import QueryProvider from '@/common/providers/QueryProvider';
@@ -35,15 +35,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Head>
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
-        />
-        {/* GA설정 */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+      <Script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+      />
+      {/* GA설정 */}
+      <Script
+        id="gtag-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
@@ -51,12 +52,14 @@ export default function RootLayout({
               page_path: window.location.pathname,
             });
           `,
-          }}
-        />
-        {/* hotjar 설정 */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+        }}
+      />
+      {/* hotjar 설정 */}
+      <Script
+        id="hotjar-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
     (function(h,o,t,j,a,r){
         h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
         h._hjSettings={hjid:${process.env.NEXT_PUBLIC_HJID},hjsv:${process.env.NEXT_PUBLIC_HJSV}};
@@ -66,9 +69,8 @@ export default function RootLayout({
         a.appendChild(r);
     })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
 `,
-          }}
-        />
-      </Head>
+        }}
+      />
       <body className={clsx(pretendard.className, bgColor['mainLayout'])}>
         <QueryProvider>
           <StyledLayout>{children}</StyledLayout>
