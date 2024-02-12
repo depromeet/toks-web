@@ -7,6 +7,8 @@ import { Text, bgColor } from '@/common';
 import { ProgressBar } from './ProgressBar';
 import { Thumbnail } from './Thumbnail';
 import { QuizButtonProps } from './type';
+import { useState } from 'react';
+import { Modal } from '@/common/components/Modal';
 
 export { Thumbnail };
 export function QuizButton({
@@ -20,15 +22,35 @@ export function QuizButton({
   name,
   ...rest
 }: QuizButtonProps) {
+  const [isShow, setIsShow] = useState(false);
   return (
     <div className={clsx(className, 'flex flex-1 flex-col items-center')}>
       {(OXType || imageUrl) && (
-        <Thumbnail
-          className="mb-24px w-full"
-          OXType={OXType}
-          imageUrl={imageUrl}
-          name={name}
-        />
+        <>
+          <Thumbnail
+            className="mb-24px w-full"
+            OXType={OXType}
+            imageUrl={imageUrl}
+            name={name}
+            onClick={() => {
+              console.log('hihi');
+              setIsShow(true);
+            }}
+          />
+          {!OXType && (
+            <Modal isShow={isShow} onClose={() => setIsShow(false)}>
+              <img
+                src={imageUrl}
+                alt={`${name}사진`}
+                style={{
+                  width: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center',
+                }}
+              />
+            </Modal>
+          )}
+        </>
       )}
       <div
         className={clsx(
