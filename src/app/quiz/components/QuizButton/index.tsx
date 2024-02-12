@@ -21,11 +21,7 @@ export function QuizButton({
   ...rest
 }: QuizButtonProps) {
   return (
-    <button
-      className={clsx(className, 'flex flex-1 flex-col items-center')}
-      disabled={isSubmitted}
-      {...rest}
-    >
+    <div className={clsx(className, 'flex flex-1 flex-col items-center')}>
       {(OXType || imageUrl) && (
         <Thumbnail
           className="mb-24px w-full"
@@ -43,11 +39,15 @@ export function QuizButton({
         {isSubmitted && (
           <ProgressBar percentage={percentage} isSelected={isSelected} />
         )}
-        <div className="absolute z-10 flex h-full w-full items-center justify-center">
+        <button
+          className="absolute z-10 flex h-full w-full items-center justify-center"
+          disabled={isSubmitted}
+          {...rest}
+        >
           <Text typo="bodyBold" color="gray10">
             {name}
           </Text>
-        </div>
+        </button>
       </div>
       {isSubmitted && participationLabel && (
         <Text
@@ -58,6 +58,6 @@ export function QuizButton({
           {participationLabel}
         </Text>
       )}
-    </button>
+    </div>
   );
 }
