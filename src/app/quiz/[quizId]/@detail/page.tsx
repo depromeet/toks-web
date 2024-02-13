@@ -15,6 +15,8 @@ import { OX, QuizButtonType } from '@/app/quiz/models/quiz';
 import { Text, bgColor } from '@/common';
 
 import { Comments } from '../../components/Comment/Comments';
+import { Modal } from '@/common/components/Modal';
+import { useState } from 'react';
 
 type Props = {
   params: {
@@ -54,6 +56,8 @@ function DetailPage({ params: { quizId } }: Props) {
   const checkSelectedAnswer = (buttonType: QuizButtonType) =>
     replyAnswer === buttonType;
 
+  const [isShow, setIsShow] = useState(false);
+
   return (
     <div>
       <section
@@ -75,11 +79,25 @@ function DetailPage({ params: { quizId } }: Props) {
         </Text>
         <div className="mt-48px">
           {isVisibleOXImage && (
-            <Thumbnail
-              className="mb-24px w-full"
-              imageUrl={oxImageUrl}
-              name="OX퀴즈 설명"
-            />
+            <>
+              <Thumbnail
+                className="mb-24px w-full"
+                imageUrl={oxImageUrl}
+                name="OX퀴즈 설명"
+                onClick={() => setIsShow(true)}
+              />
+              {/* <Modal isShow={isShow} onClose={() => setIsShow(false)}>
+                <img
+                  src={oxImageUrl}
+                  alt="OX퀴즈 설명"
+                  style={{
+                    width: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                  }}
+                />
+              </Modal> */}
+            </>
           )}
           <div className="flex gap-16px">
             {checkSameQuizType('A_B_') ? (

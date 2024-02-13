@@ -33,7 +33,6 @@ export function QuizButton({
             imageUrl={imageUrl}
             name={name}
             onClick={() => {
-              console.log('hihi');
               setIsShow(true);
             }}
           />
