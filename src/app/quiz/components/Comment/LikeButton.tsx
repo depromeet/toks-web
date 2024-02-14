@@ -10,6 +10,9 @@ import { useUnlikeCommentMutation } from '@/app/quiz/hooks/useUnlikeCommentMutat
 import { Text, useAuth } from '@/common';
 import { LOGIN_URL } from '@/common/constants';
 
+import likeOff from '../../../../../public/img/icon/like_off.svg';
+import likeOn from '../../../../../public/img/icon/like_on.svg';
+
 interface LikeButtonProps
   extends Omit<HTMLAttributes<HTMLSpanElement>, 'className'> {
   commentId: number;
@@ -43,7 +46,7 @@ function LikeButton({
       }}
     >
       <Image
-        src={isLiked ? `/img/icon/like_on.svg` : `/img/icon/like_off.svg`}
+        src={isLiked ? likeOn : likeOff}
         alt="좋아요 버튼"
         width={18}
         height={18}

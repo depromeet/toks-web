@@ -8,6 +8,7 @@ import QuizCategory from '@/app/toks-main/components/QuizCategory';
 import { GOOGLE_FORM_URL, ICON_URL, LOGIN_URL } from '@/common/constants';
 import { useAuth } from '@/common/hooks';
 
+import questionSvg from '../../../../public/img/icon/question.svg';
 import { SSRSuspense } from '../SSRSuspense';
 import { Text } from '../Text';
 
@@ -32,12 +33,7 @@ export const Appbar = () => {
           </div>
           <button className="flex items-center gap-[12px]">
             <a href={GOOGLE_FORM_URL} target="_blank" rel="noreferrer">
-              <Image
-                src={`/img/icon/question.svg`}
-                alt="질문하기"
-                width={28}
-                height={28}
-              />
+              <Image src={questionSvg} alt="질문하기" width={28} height={28} />
             </a>
             {/* TODO: 로그인 여부 분기 */}
             {isLogin ? (
