@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 import { BottomSheet, Button, ICON_URL, Text } from '@/common';
 import { useLogoutQuery } from '@/queries';
-import { BottomSheetProps } from '@/types/bottomsheet';
+import { BottomSheetProps } from '@/store/types/bottomsheet';
 
 export const LogoutBottomSheet = ({ onClose, isShow }: BottomSheetProps) => {
   const { mutate: logoutMutation } = useLogoutQuery();

@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useState } from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 
 import { BottomSheet, Button, ICON_URL, Tab, Text } from '@/common';
 import { useAuth, usePreventScroll } from '@/common/hooks';
@@ -16,26 +16,46 @@ import { CategoryButtonGroups } from './CategoryButtonGroups';
 import { useCategoryUpdateMutation } from '../hooks/useCategoryUpdateMutation';
 
 export const CategoryBottomSheet = () => {
-  const { isLogin } = useAuth();
+  const [isShow, setIsShow] = useRecoilState(isVisibleCategoryBottomSheetAtom);
   const { mutate: updateCategories } = useCategoryUpdateMutation();
-  const { data: selectedCategory = [] } = useSelectedCategoriesQuery();
+  const { isLogin } = useAuth();
+
+  const { data: selectedLoginCategory = [] } = useSelectedCategoriesQuery();
   const [selectedLocalCategory, setSelectedLocalCategories] = useState<
     string[]
-  >(selectedCategory ?? []);
+  >([]);
 
-  const setSelectedTemporaryCategory = useSetRecoilState(
-    selectedTemporaryCategoryAtom
-  );
-  const { data: categoryQuery } = useCategoriesQuery();
-  const [isShow, setIsShow] = useRecoilState(isVisibleCategoryBottomSheetAtom);
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedTemporaryCategory, setSelectedTemporaryCategory] =
+    useRecoilState(selectedTemporaryCategoryAtom);
+
   usePreventScroll(isShow);
 
-  const panel = categoryQuery?.panels[selectedTab];
-  const buttons = panel?.map(({ id, name }) => ({
+  const [selectedTab, setSelectedTab] = useState(0);
+  const { data: categoryQuery } = useCategoriesQuery();
+  const selectedPanel = categoryQuery?.panels[selectedTab];
+  const buttons = selectedPanel?.map(({ id, name }) => ({
     label: name,
     value: id,
   }));
+
+  const tabs = categoryQuery?.tabs.map(({ name }) => name) ?? [];
+
+  useLayoutEffect(() => {
+    setSelectedTab(0);
+    setSelectedLocalCategories([]);
+  }, [isShow]);
+
+  useEffect(() => {
+    if (isLogin && isShow && selectedLoginCategory.length > 0) {
+      setSelectedLocalCategories(selectedLoginCategory);
+    }
+  }, [isLogin, isShow, selectedLoginCategory]);
+
+  useEffect(() => {
+    if (selectedTemporaryCategory.length > 0 && isShow) {
+      setSelectedLocalCategories(selectedTemporaryCategory);
+    }
+  }, [isShow, selectedTemporaryCategory]);
 
   return (
     <BottomSheet
@@ -55,7 +75,7 @@ export const CategoryBottomSheet = () => {
       </div>
       <Tab
         activeIndex={selectedTab}
-        tabs={categoryQuery?.tabs ?? []}
+        tabs={tabs}
         onTabChange={(index) => {
           setSelectedTab(index);
         }}
