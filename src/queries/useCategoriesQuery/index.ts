@@ -8,7 +8,10 @@ export const useCategoriesQuery = () => {
     queryKey: ['categories'],
     queryFn: () => getCategories(),
     select: ({ categories }) => {
-      const { tabs, panels } = categories.reduce<{
+      const sortedCategories = [...categories].sort((a, b) =>
+        a.name < b.name ? -1 : 1
+      );
+      const { tabs, panels } = sortedCategories.reduce<{
         tabs: Array<{
           name: Category['name'];
           id: Category['id'];
