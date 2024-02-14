@@ -8,6 +8,8 @@ import { bgColor } from '@/common/foundation';
 import QueryProvider from '@/common/providers/QueryProvider';
 import * as gtag from '@/common/utils';
 
+import Provider from './_context/Provider';
+
 export const metadata: Metadata = {
   viewport: {
     width: 'device-width',
@@ -73,7 +75,9 @@ export default function RootLayout({
       />
       <body className={clsx(pretendard.className, bgColor['mainLayout'])}>
         <QueryProvider>
-          <StyledLayout>{children}</StyledLayout>
+          <Provider>
+            <StyledLayout>{children}</StyledLayout>
+          </Provider>
         </QueryProvider>
       </body>
     </html>
