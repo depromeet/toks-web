@@ -11,7 +11,7 @@ export function FloatingButton({
     <div className="pointer-events-none	sticky bottom-56px flex justify-end">
       <button
         className={clsx(
-          'z-99 pointer-events-auto flex h-50px w-50px items-center justify-center rounded-full border-1px border-gray-70 bg-gray-90 hover:cursor-pointer',
+          'z-99 pointer-events-auto flex h-62px w-62px items-center justify-center rounded-full border-1px border-gray-70 bg-gray-90 hover:cursor-pointer',
           className
         )}
         {...rest}
@@ -19,8 +19,8 @@ export function FloatingButton({
         <Image
           src={ICON_URL.EMOJI_DROOLING}
           alt="똑스 아이콘"
-          width={32}
-          height={32}
+          width={40}
+          height={40}
         />
       </button>
     </div>
