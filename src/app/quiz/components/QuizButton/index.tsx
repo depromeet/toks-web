@@ -39,6 +39,7 @@ export function QuizButton({
           {!OXType && (
             <Modal isShow={isShow} onClose={() => setIsShow(false)}>
               <img
+                className="rounded-8px"
                 src={imageUrl}
                 alt={`${name}사진`}
                 style={{

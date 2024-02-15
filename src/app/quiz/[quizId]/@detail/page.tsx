@@ -27,6 +27,7 @@ type Props = {
 function DetailPage({ params: { quizId } }: Props) {
   const { submitQuiz } = useSubmitQuizMutation(quizId);
   const { data: quizDetail, isLoading } = useGetQuizDetailQuery(quizId);
+  const [isShow, setIsShow] = useState(false);
 
   if (quizDetail === undefined || isLoading) {
     return <SkeletonQuizDetail />;
@@ -56,8 +57,6 @@ function DetailPage({ params: { quizId } }: Props) {
   const checkSelectedAnswer = (buttonType: QuizButtonType) =>
     replyAnswer === buttonType;
 
-  const [isShow, setIsShow] = useState(false);
-
   return (
     <div>
       <section
@@ -86,8 +85,9 @@ function DetailPage({ params: { quizId } }: Props) {
                 name="OX퀴즈 설명"
                 onClick={() => setIsShow(true)}
               />
-              {/* <Modal isShow={isShow} onClose={() => setIsShow(false)}>
+              <Modal isShow={isShow} onClose={() => setIsShow(false)}>
                 <img
+                  className="rounded-16px"
                   src={oxImageUrl}
                   alt="OX퀴즈 설명"
                   style={{
@@ -96,7 +96,7 @@ function DetailPage({ params: { quizId } }: Props) {
                     objectPosition: 'center',
                   }}
                 />
-              </Modal> */}
+              </Modal>
             </>
           )}
           <div className="flex gap-16px">
