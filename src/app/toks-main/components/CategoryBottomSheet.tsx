@@ -40,6 +40,14 @@ export const CategoryBottomSheet = () => {
 
   const tabs = categoryQuery?.tabs.map(({ name }) => name) ?? [];
 
+  /**
+   * useLayoutEffect(동기) -> useEffect(비동기) 순으로 렌더링된다.
+   * STEP1. BottomSheet가 열릴 때마다 selectedTab, selectedLocalCategories를 초기화한다.
+   * STEP2. 로그인 상태일 때, 로그인한 사용자의 관심 카테고리를 selectedLocalCategories에 저장한다.
+   * STEP3. 로그인 상태가 아니고, selectedTemporaryCategory가 존재할 때, selectedLocalCategories에 저장한다.
+   *
+   * 이를 통해 BottomSheet가 열릴 때마다 초기화되고, 저장한 카테고리/로그인 정보 카테고리를 불러온다.
+   */
   useLayoutEffect(() => {
     setSelectedTab(0);
     setSelectedLocalCategories([]);
