@@ -2,7 +2,6 @@
 
 import React, { PropsWithChildren } from 'react';
 
-// import { useClickAway } from '@/common/hooks/useClickAway';
 import { cn } from '@/common/utils';
 
 import { BottomSheetProps } from './types';
@@ -14,11 +13,6 @@ export const BottomSheet = ({
   onClose,
   className,
 }: PropsWithChildren<BottomSheetProps>) => {
-  // const bottomSheetContentRef = useClickAway({
-  //   callback: () => {
-  //     onClose();
-  //   },
-  // });
   return (
     <GlobalPortal.Consumer>
       <Dimmer isShow={isShow} onClose={() => onClose()} />
