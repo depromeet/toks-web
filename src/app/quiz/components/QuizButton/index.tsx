@@ -1,14 +1,14 @@
 'use client';
 
 import clsx from 'clsx';
+import { useState } from 'react';
 
 import { Text, bgColor } from '@/common';
+import { Modal } from '@/common/components/Modal';
 
 import { ProgressBar } from './ProgressBar';
 import { Thumbnail } from './Thumbnail';
 import { QuizButtonProps } from './type';
-import { useState } from 'react';
-import { Modal } from '@/common/components/Modal';
 
 export { Thumbnail };
 export function QuizButton({

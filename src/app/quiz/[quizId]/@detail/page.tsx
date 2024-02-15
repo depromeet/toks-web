@@ -1,6 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
+import { useState } from 'react';
 
 import {
   QuizButton,
@@ -13,10 +14,9 @@ import {
 } from '@/app/quiz/hooks/';
 import { OX, QuizButtonType } from '@/app/quiz/models/quiz';
 import { Text, bgColor } from '@/common';
+import { Modal } from '@/common/components/Modal';
 
 import { Comments } from '../../components/Comment/Comments';
-import { Modal } from '@/common/components/Modal';
-import { useState } from 'react';
 
 type Props = {
   params: {

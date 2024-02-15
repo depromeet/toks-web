@@ -1,11 +1,11 @@
 'use client';
 
 import Image from 'next/image';
+import { HTMLAttributes } from 'react';
 
 import { ICON_URL, bgColor, cn } from '@/common';
 
 import { QuizButtonProps } from './type';
-import { HTMLAttributes } from 'react';
 
 interface ThumbnailProps
   extends Pick<QuizButtonProps, 'OXType' | 'imageUrl' | 'className'>,
