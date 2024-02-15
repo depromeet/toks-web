@@ -18,11 +18,12 @@ export const LogoutBottomSheet = ({ onClose, isShow }: BottomSheetProps) => {
             로그아웃 하시겠어요?
           </Text>
           <Image
+            className="h-auto w-14px"
             onClick={() => onClose()}
             src={ICON_URL.SMALL_X}
             alt="바텀시트 닫기버튼"
-            width={14}
-            height={14}
+            width="0"
+            height="0"
           />
         </div>
         <div className="h-40px" />

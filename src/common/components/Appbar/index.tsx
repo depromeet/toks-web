@@ -57,11 +57,11 @@ export const Appbar = () => {
             }}
           >
             <Image
-              layout="fixed"
-              width={60}
-              height={20}
+              width="0"
+              height="0"
               src={ICON_URL.TOKS_LOGO}
               alt="toks 로고"
+              className="h-auto w-60px"
             />
             {/* TODO: POPOVER 구현 */}
             <Tooltip

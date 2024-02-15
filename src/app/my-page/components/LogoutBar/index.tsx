@@ -23,10 +23,11 @@ export const LogoutBar = () => {
           로그아웃
         </Text>
         <Image
+          className="h-auto w-24px"
           src={ICON_URL.CHEVRON_RIGHT}
           alt="로그아웃 버튼"
-          width={24}
-          height={24}
+          width="0"
+          height="0"
         />
       </button>
       <LogoutBottomSheet onClose={() => setIsShow(false)} isShow={isShow} />

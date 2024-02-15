@@ -14,10 +14,11 @@ export const BackHeader = () => {
         <div className="flex h-full w-full items-center justify-between">
           <button type="button" onClick={() => router.back()}>
             <Image
+              className="h-auto w-24px"
               src={ICON_URL.CHEVRON_LEFT_BIG}
               alt="뒤로가기 버튼"
-              width={24}
-              height={24}
+              width="0"
+              height="0"
             />
           </button>
         </div>
