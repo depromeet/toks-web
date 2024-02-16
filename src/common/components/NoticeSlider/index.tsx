@@ -32,7 +32,7 @@ export const NoticeSlider = ({ images, onClick }: NoticeSliderProp) => {
             alt="notice banner"
             src={url}
           />
-          <span className="absolute bottom-12px right-12px z-10 w-fit rounded-100px bg-gray-120 px-12px py-6px opacity-50">
+          <span className="absolute bottom-12px right-12px z-10 w-fit rounded-100px bg-gray-120 px-12px py-8px opacity-50">
             <Text typo="caption">
               {idx + 1}/{images.length}
             </Text>
