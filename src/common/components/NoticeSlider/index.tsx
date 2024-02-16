@@ -23,10 +23,7 @@ export const NoticeSlider = ({ images, onClick }: NoticeSliderProp) => {
   return (
     <Slider ref={slider} className="w-full" {...setting}>
       {images?.map((url, idx) => (
-        <div
-          onClick={onClick}
-          className="relative h-auto rounded-12px bg-white"
-        >
+        <div onClick={onClick} className="relative h-auto rounded-12px">
           <img
             className="z-0 h-auto w-full rounded-12px"
             alt="notice banner"
