@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
-import { FloatingButton, Toast, ToastProps } from '@/common';
+import { FloatingButton, NoticeSlider, Toast, ToastProps } from '@/common';
 import { useToast } from '@/common/hooks';
 import { isVisibleFloatingButtonBottomSheetAtom } from '@/store';
 
@@ -32,6 +32,7 @@ function ToksMainPage() {
           title={toastData.title}
         />
       )}
+      <NoticeSlider />
       <CardList />
       <FloatingButton
         onClick={() => setIsOpenFloatingButtonBottomSheet(true)}
