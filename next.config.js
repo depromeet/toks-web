@@ -6,7 +6,6 @@ const nextConfig = {
       'k.kakaocdn.net',
       'image.tokstudy.com',
       'asset.tokstudy.com',
-      'www.calliaweb.co.uk',
     ],
   },
   eslint: {

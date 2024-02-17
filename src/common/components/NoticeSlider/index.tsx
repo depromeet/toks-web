@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Slider from 'react-slick';
 
 import { Text } from '..';
@@ -16,22 +16,27 @@ const setting = {
 };
 
 type NoticeSliderProp = {
-  images?: string[];
+  images: string[];
   url?: string;
 };
 
-const image = [
-  'https://www.calliaweb.co.uk/wp-content/uploads/2015/10/600x200.jpg',
-  'https://www.calliaweb.co.uk/wp-content/uploads/2015/10/600x200.jpg',
-  'https://www.calliaweb.co.uk/wp-content/uploads/2015/10/600x200.jpg',
-];
-
 export const NoticeSlider = ({ images, url }: NoticeSliderProp) => {
   const slider = useRef<Slider>(null);
+  const [currentSlide, setCurrentSlide] = useState(1);
+
+  const handleAfterChange = (index: number) => {
+    setCurrentSlide(index);
+  };
+
   return (
     <div className="relative">
-      <Slider ref={slider} className="w-full" {...setting}>
-        {image?.map((imageSrc, idx) => (
+      <Slider
+        ref={slider}
+        className="w-full"
+        {...setting}
+        afterChange={(index) => handleAfterChange(index + 1)}
+      >
+        {images?.map((imageSrc) => (
           <a
             key={imageSrc}
             target="_blank"
@@ -47,9 +52,11 @@ export const NoticeSlider = ({ images, url }: NoticeSliderProp) => {
           </a>
         ))}
       </Slider>
-      {image.length > 1 && (
+      {images.length > 1 && (
         <span className="absolute bottom-12px right-12px z-10 w-fit rounded-100px bg-gray-120 px-12px py-8px opacity-50">
-          <Text typo="caption">1/{image.length}</Text>
+          <Text typo="caption">
+            {currentSlide}/{images.length}
+          </Text>
         </span>
       )}
     </div>
