@@ -47,6 +47,9 @@ export function Thumbnail({
           />
           <Modal isShow={isShow} onClose={() => setIsShow(false)}>
             <img
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
               className="rounded-8px"
               src={imageUrl}
               alt={`${name}사진`}

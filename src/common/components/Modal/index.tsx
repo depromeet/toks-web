@@ -1,5 +1,6 @@
 'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
 import { PropsWithChildren, ReactNode } from 'react';
 
@@ -25,6 +26,11 @@ export const Modal = ({
   );
 };
 
+const backdropVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
 const Dimmer = ({
   isShow,
   onClose,
@@ -35,24 +41,28 @@ const Dimmer = ({
   children: ReactNode;
 }) => {
   return (
-    <div
-      onClick={() => {
-        onClose();
-      }}
-      className={cn(
-        'fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-gray-120/80 p-20px',
-        {
-          hidden: !isShow,
-          'animate-fade-in-back-drop': isShow,
-        }
+    <AnimatePresence>
+      {isShow && (
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={backdropVariants}
+          transition={{ duration: 0.3 }}
+          onClick={() => onClose()}
+          className="fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-gray-120/80 p-20px"
+        >
+          <div className="flex flex-col">
+            <button
+              className="flex justify-end pb-16px"
+              onClick={() => onClose()}
+            >
+              <Image src={ICON_URL.CLOSE} alt="close" width={24} height={24} />
+            </button>
+            {children}
+          </div>
+        </motion.div>
       )}
-    >
-      <div className="flex flex-col">
-        <button className="flex justify-end pb-16px" onClick={() => onClose()}>
-          <Image src={ICON_URL.CLOSE} alt="close" width={24} height={24} />
-        </button>
-        {children}
-      </div>
-    </div>
+    </AnimatePresence>
   );
 };
