@@ -1,15 +1,15 @@
 'use client';
 
 import Image from 'next/image';
-import { HTMLAttributes } from 'react';
+import { useState } from 'react';
 
 import { ICON_URL, bgColor, cn } from '@/common';
+import { Modal } from '@/common/components/Modal';
 
 import { QuizButtonProps } from './type';
 
 interface ThumbnailProps
-  extends Pick<QuizButtonProps, 'OXType' | 'imageUrl' | 'className'>,
-    HTMLAttributes<HTMLDivElement> {
+  extends Pick<QuizButtonProps, 'OXType' | 'imageUrl' | 'className'> {
   name?: string;
 }
 
@@ -20,6 +20,8 @@ export function Thumbnail({
   className,
   ...rest
 }: ThumbnailProps) {
+  const [isShow, setIsShow] = useState(false);
+
   return (
     <div
       {...rest}
@@ -31,16 +33,31 @@ export function Thumbnail({
       )}
     >
       {imageUrl && (
-        <img
-          src={imageUrl}
-          alt={`${name}사진`}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
+        <>
+          <img
+            onClick={() => setIsShow(true)}
+            src={imageUrl}
+            alt={`${name}사진`}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+            }}
+          />
+          <Modal isShow={isShow} onClose={() => setIsShow(false)}>
+            <img
+              className="rounded-8px"
+              src={imageUrl}
+              alt={`${name}사진`}
+              style={{
+                width: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+              }}
+            />
+          </Modal>
+        </>
       )}
       {OXType && (
         <Image

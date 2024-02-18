@@ -1,10 +1,8 @@
 'use client';
 
 import clsx from 'clsx';
-import { useState } from 'react';
 
 import { Text, bgColor } from '@/common';
-import { Modal } from '@/common/components/Modal';
 
 import { ProgressBar } from './ProgressBar';
 import { Thumbnail } from './Thumbnail';
@@ -22,35 +20,15 @@ export function QuizButton({
   name,
   ...rest
 }: QuizButtonProps) {
-  const [isShow, setIsShow] = useState(false);
   return (
     <div className={clsx(className, 'flex flex-1 flex-col items-center')}>
       {(OXType || imageUrl) && (
-        <>
-          <Thumbnail
-            className="mb-24px w-full"
-            OXType={OXType}
-            imageUrl={imageUrl}
-            name={name}
-            onClick={() => {
-              setIsShow(true);
-            }}
-          />
-          {!OXType && (
-            <Modal isShow={isShow} onClose={() => setIsShow(false)}>
-              <img
-                className="rounded-8px"
-                src={imageUrl}
-                alt={`${name}사진`}
-                style={{
-                  width: '100%',
-                  objectFit: 'cover',
-                  objectPosition: 'center',
-                }}
-              />
-            </Modal>
-          )}
-        </>
+        <Thumbnail
+          className="mb-24px w-full"
+          OXType={OXType}
+          imageUrl={imageUrl}
+          name={name}
+        />
       )}
       <div
         className={clsx(

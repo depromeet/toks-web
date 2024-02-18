@@ -1,7 +1,6 @@
 'use client';
 
 import clsx from 'clsx';
-import { useState } from 'react';
 
 import {
   QuizButton,
@@ -14,7 +13,6 @@ import {
 } from '@/app/quiz/hooks/';
 import { OX, QuizButtonType } from '@/app/quiz/models/quiz';
 import { Text, bgColor } from '@/common';
-import { Modal } from '@/common/components/Modal';
 
 import { Comments } from '../../components/Comment/Comments';
 
@@ -27,7 +25,6 @@ type Props = {
 function DetailPage({ params: { quizId } }: Props) {
   const { submitQuiz } = useSubmitQuizMutation(quizId);
   const { data: quizDetail, isLoading } = useGetQuizDetailQuery(quizId);
-  const [isShow, setIsShow] = useState(false);
 
   if (quizDetail === undefined || isLoading) {
     return <SkeletonQuizDetail />;
@@ -78,26 +75,11 @@ function DetailPage({ params: { quizId } }: Props) {
         </Text>
         <div className="mt-48px">
           {isVisibleOXImage && (
-            <>
-              <Thumbnail
-                className="mb-24px w-full"
-                imageUrl={oxImageUrl}
-                name="OX퀴즈 설명"
-                onClick={() => setIsShow(true)}
-              />
-              <Modal isShow={isShow} onClose={() => setIsShow(false)}>
-                <img
-                  className="rounded-16px"
-                  src={oxImageUrl}
-                  alt="OX퀴즈 설명"
-                  style={{
-                    width: '100%',
-                    objectFit: 'cover',
-                    objectPosition: 'center',
-                  }}
-                />
-              </Modal>
-            </>
+            <Thumbnail
+              className="mb-24px w-full"
+              imageUrl={oxImageUrl}
+              name="OX퀴즈 설명"
+            />
           )}
           <div className="flex gap-16px">
             {checkSameQuizType('A_B_') ? (
