@@ -1,6 +1,10 @@
+'use client';
+
 import Image from 'next/image';
+import { useState } from 'react';
 
 import { ICON_URL, bgColor, cn } from '@/common';
+import { Modal } from '@/common/components/Modal';
 
 import { QuizButtonProps } from './type';
 
@@ -14,9 +18,13 @@ export function Thumbnail({
   imageUrl,
   name = '퀴즈',
   className,
+  ...rest
 }: ThumbnailProps) {
+  const [isShow, setIsShow] = useState(false);
+
   return (
     <div
+      {...rest}
       className={cn(
         'relative flex aspect-square w-140px items-center justify-center overflow-hidden rounded-8px',
         OXType &&
@@ -25,16 +33,34 @@ export function Thumbnail({
       )}
     >
       {imageUrl && (
-        <img
-          src={imageUrl}
-          alt={`${name}사진`}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'cover',
-            objectPosition: 'center',
-          }}
-        />
+        <>
+          <img
+            onClick={() => setIsShow(true)}
+            src={imageUrl}
+            alt={`${name}사진`}
+            style={{
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              objectPosition: 'center',
+            }}
+          />
+          <Modal isShow={isShow} onClose={() => setIsShow(false)}>
+            <img
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              className="rounded-8px"
+              src={imageUrl}
+              alt={`${name}사진`}
+              style={{
+                width: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+              }}
+            />
+          </Modal>
+        </>
       )}
       {OXType && (
         <Image
