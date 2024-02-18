@@ -29,7 +29,7 @@ function CommentPage({ params: { quizId } }: Props) {
   return (
     <div>
       {isSubmitted && (
-        <div className="mt-32px flex flex-col gap-32px">
+        <div className="mt-48px flex flex-col gap-32px">
           {isLogin && (
             <CommentForm quizId={quizId} commentCount={comments?.length} />
           )}

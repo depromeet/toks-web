@@ -8,12 +8,12 @@ type Props = {
   };
 };
 
-async function RecommendatonPage({ params: { quizId } }: Props) {
+async function RecommendationPage({ params: { quizId } }: Props) {
   const quizRecommendModels = await getRecommendationByQuizId(quizId);
   const isQuizzesExist = quizRecommendModels.length !== 0;
   return (
     isQuizzesExist && (
-      <div className="mt-64px">
+      <div className="mt-48px">
         <Text className="inline-block" typo="subheadingBold" color="gray10">
           더 많은 퀴즈를 확인해보세요
         </Text>
@@ -26,4 +26,4 @@ async function RecommendatonPage({ params: { quizId } }: Props) {
   );
 }
 
-export default RecommendatonPage;
+export default RecommendationPage;
