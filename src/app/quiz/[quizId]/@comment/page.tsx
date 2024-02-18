@@ -1,23 +1,28 @@
+'use client';
+
 import { Comment, CommentForm, GetStartedButton } from '@/app/quiz/components';
+import {
+  useGetCommentListQuery,
+  useGetQuizDetailQuery,
+} from '@/app/quiz/hooks';
 import { useAuth } from '@/common';
 
-import { useGetCommentListQuery } from '../../hooks/useGetCommentListQuery';
-
-type CommentsProps = {
-  quizId: string;
-  isSubmitted: boolean;
+type Props = {
+  params: {
+    quizId: string;
+  };
 };
 
-export const Comments = ({ quizId, isSubmitted }: CommentsProps) => {
-  const {
-    data: comments,
-    // isLoading,
-    // isFetching,
-  } = useGetCommentListQuery(quizId);
+function CommentPage({ params: { quizId } }: Props) {
+  const { data: quizDetail } = useGetQuizDetailQuery(quizId);
+  const { data: comments } = useGetCommentListQuery(quizId);
   const { isLogin } = useAuth();
-  if (!comments) {
+
+  if (comments === undefined || quizDetail === undefined) {
     return null;
   }
+
+  const { isSubmitted } = quizDetail;
 
   const isEmptyComment = comments?.length === 0;
 
@@ -58,4 +63,6 @@ export const Comments = ({ quizId, isSubmitted }: CommentsProps) => {
       )}
     </div>
   );
-};
+}
+
+export default CommentPage;
