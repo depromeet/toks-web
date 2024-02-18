@@ -7,6 +7,7 @@ import { fetchQuizDetailByQuizID } from '../remotes/quiz';
 type Props = {
   detail: React.ReactNode;
   recommendation: React.ReactNode;
+  comment: React.ReactNode;
   params: { quizId: string };
 };
 
@@ -26,12 +27,13 @@ export async function generateMetadata({
   };
 }
 
-function QuizIdLayout({ detail, recommendation }: Props) {
+function QuizIdLayout({ detail, recommendation, comment }: Props) {
   return (
     <main className="pb-80px">
       <QuizProvider>
         {detail}
         {recommendation}
+        {comment}
         <ScrollToTopButton />
       </QuizProvider>
     </main>

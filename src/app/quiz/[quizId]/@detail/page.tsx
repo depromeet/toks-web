@@ -14,8 +14,6 @@ import {
 import { OX, QuizButtonType } from '@/app/quiz/models/quiz';
 import { Text, bgColor } from '@/common';
 
-import { Comments } from '../../components/Comment/Comments';
-
 type Props = {
   params: {
     quizId: string;
@@ -142,7 +140,6 @@ function DetailPage({ params: { quizId } }: Props) {
           </div>
         </div>
       </section>
-      <Comments quizId={quizId} isSubmitted={isSubmitted} />
     </div>
   );
 }
