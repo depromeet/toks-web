@@ -28,7 +28,7 @@ export const UserInfo = () => {
           {user?.nickname}
         </Text>
         <Image
-          className="ml-4px"
+          className="ml-4px h-auto w-24px"
           src={ICON_URL.CHEVRON_RIGHT}
           alt="닉네임 수정 버튼"
           width={24}

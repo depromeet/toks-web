@@ -46,9 +46,10 @@ export function ScrollToTopButton() {
       }}
     >
       <Image
+        className="h-auto w-16px"
         src={ICON_URL.CHEVRON_UP}
-        width={16}
-        height={9}
+        width="0"
+        height="0"
         alt="맨 위로가기 아이콘"
       />
     </button>

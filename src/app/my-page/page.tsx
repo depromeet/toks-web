@@ -45,10 +45,10 @@ const MyPage = () => {
           똑스에서 풀고 싶은 퀴즈가 있다면?
         </Text>
         <Image
-          className="mx-auto my-20px"
+          className="mx-auto my-20px h-auto w-160px"
           src={ICON_URL.EMOJI_ROCKET}
-          width={160}
-          height={160}
+          width="0"
+          height="0"
           alt="로켓 이미지"
         />
         <Button

@@ -43,10 +43,11 @@ export const NicknameBox = ({
       )}
     >
       <Image
+        className="h-auto w-52px"
         src={ICON_URL.EMOJI_DROOLING}
         alt="똑스 아이콘"
-        width={52.5}
-        height={52.5}
+        width="0"
+        height="0"
       />
       <div className="mt-16px flex w-full flex-col items-center">
         <Text typo="headingM" color="white">

@@ -24,11 +24,11 @@ export const Appbar = () => {
         <div className="flex w-full items-center justify-between pb-[20px] pt-[16px]">
           <div className="flex items-center gap-4px" role="button">
             <Image
-              layout="fixed"
-              width={60}
-              height={20}
+              width="0"
+              height="0"
               src={ICON_URL.TOKS_LOGO}
               alt="toks 로고"
+              className="h-auto w-60px"
             />
           </div>
           <button className="flex items-center gap-[12px]">
