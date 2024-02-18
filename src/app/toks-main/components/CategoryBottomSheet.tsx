@@ -1,8 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useState } from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
 
 import { BottomSheet, Button, ICON_URL, Tab, Text } from '@/common';
 import { useAuth, usePreventScroll } from '@/common/hooks';
@@ -16,26 +16,54 @@ import { CategoryButtonGroups } from './CategoryButtonGroups';
 import { useCategoryUpdateMutation } from '../hooks/useCategoryUpdateMutation';
 
 export const CategoryBottomSheet = () => {
-  const { isLogin } = useAuth();
+  const [isShow, setIsShow] = useRecoilState(isVisibleCategoryBottomSheetAtom);
   const { mutate: updateCategories } = useCategoryUpdateMutation();
-  const { data: selectedCategory = [] } = useSelectedCategoriesQuery();
+  const { isLogin } = useAuth();
+
+  const { data: selectedLoginCategory = [] } = useSelectedCategoriesQuery();
   const [selectedLocalCategory, setSelectedLocalCategories] = useState<
     string[]
-  >(selectedCategory ?? []);
+  >([]);
 
-  const setSelectedTemporaryCategory = useSetRecoilState(
-    selectedTemporaryCategoryAtom
-  );
-  const { data: categoryQuery } = useCategoriesQuery();
-  const [isShow, setIsShow] = useRecoilState(isVisibleCategoryBottomSheetAtom);
-  const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedTemporaryCategory, setSelectedTemporaryCategory] =
+    useRecoilState(selectedTemporaryCategoryAtom);
+
   usePreventScroll(isShow);
 
-  const panel = categoryQuery?.panels[selectedTab];
-  const buttons = panel?.map(({ id, name }) => ({
+  const [selectedTab, setSelectedTab] = useState(0);
+  const { data: categoryQuery } = useCategoriesQuery();
+  const selectedPanel = categoryQuery?.panels[selectedTab];
+  const buttons = selectedPanel?.map(({ id, name }) => ({
     label: name,
     value: id,
   }));
+
+  const tabs = categoryQuery?.tabs.map(({ name }) => name) ?? [];
+
+  /**
+   * useLayoutEffect(동기) -> useEffect(비동기) 순으로 렌더링된다.
+   * STEP1. BottomSheet가 열릴 때마다 selectedTab, selectedLocalCategories를 초기화한다.
+   * STEP2. 로그인 상태일 때, 로그인한 사용자의 관심 카테고리를 selectedLocalCategories에 저장한다.
+   * STEP3. 로그인 상태가 아니고, selectedTemporaryCategory가 존재할 때, selectedLocalCategories에 저장한다.
+   *
+   * 이를 통해 BottomSheet가 열릴 때마다 초기화되고, 저장한 카테고리/로그인 정보 카테고리를 불러온다.
+   */
+  useLayoutEffect(() => {
+    setSelectedTab(0);
+    setSelectedLocalCategories([]);
+  }, [isShow]);
+
+  useEffect(() => {
+    if (isLogin && isShow && selectedLoginCategory.length > 0) {
+      setSelectedLocalCategories(selectedLoginCategory);
+    }
+  }, [isLogin, isShow, selectedLoginCategory]);
+
+  useEffect(() => {
+    if (selectedTemporaryCategory.length > 0 && isShow) {
+      setSelectedLocalCategories(selectedTemporaryCategory);
+    }
+  }, [isShow, selectedTemporaryCategory]);
 
   return (
     <BottomSheet
@@ -55,7 +83,7 @@ export const CategoryBottomSheet = () => {
       </div>
       <Tab
         activeIndex={selectedTab}
-        tabs={categoryQuery?.tabs ?? []}
+        tabs={tabs}
         onTabChange={(index) => {
           setSelectedTab(index);
         }}

@@ -8,20 +8,20 @@ import { Button, LOGIN_URL } from '@/common';
 
 import { ONBOARDING_IMAGES } from '../../constants/imageUrl';
 
+const setting = {
+  arrows: false,
+  dots: true,
+  infinite: false,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  dotsClass: 'dots_custom',
+};
+
 export const OnboardingCarousel = () => {
   const slider = useRef<Slider>(null);
   const router = useRouter();
 
   const [currentSlide, setCurrentSlide] = useState(0);
-
-  const setting = {
-    arrows: false,
-    dots: true,
-    infinite: false,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    dotsClass: 'dots_custom',
-  };
 
   return (
     <div className="relative w-full">

@@ -1,6 +1,6 @@
 import { BottomSheet } from '@/common';
+import { BottomSheetProps } from '@/common/components/BottomSheet/types';
 import { useAuth, usePreventScroll } from '@/common/hooks';
-import { BottomSheetProps } from '@/types/bottomsheet';
 
 import { OnboardingBottomSheet } from './OnboardingBottomsheet';
 import { ProgressCheckBottomSheet } from './ProgressCheckBottomSheet';

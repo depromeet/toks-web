@@ -1,7 +1,6 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { RecoilRoot } from 'recoil';
 
 import { Appbar, BackHeader, GlobalPortal } from '@/common';
 
@@ -13,21 +12,19 @@ export default function Template({ children }: StrictPropsWithChildren) {
   const pathName = usePathname();
 
   return (
-    <RecoilRoot>
-      <GlobalPortal.Provider>
-        {pathName === '/toks-main' ? (
-          <>
-            <Appbar />
-            {children}
-            <CategoryBottomSheet />
-          </>
-        ) : (
-          <>
-            <BackHeader />
-            {children}
-          </>
-        )}
-      </GlobalPortal.Provider>
-    </RecoilRoot>
+    <GlobalPortal.Provider>
+      {pathName === '/toks-main' ? (
+        <>
+          <Appbar />
+          {children}
+          <CategoryBottomSheet />
+        </>
+      ) : (
+        <>
+          <BackHeader />
+          {children}
+        </>
+      )}
+    </GlobalPortal.Provider>
   );
 }
