@@ -80,7 +80,7 @@ export const QuizCard = ({
             </Text>
           </div>
           <div className="inline-flex flex-1 -translate-y-0.5 items-center pt-12px">
-            <Text className="line-clamp-2" typo={'headingM'} color="gray10">
+            <Text className="line-clamp-2" typo="bodyBold" color="gray10">
               {quizDescription}
             </Text>
           </div>
