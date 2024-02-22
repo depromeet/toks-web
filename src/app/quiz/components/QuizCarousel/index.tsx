@@ -17,7 +17,16 @@ export function QuizCarousel({
 
   const settings: SwiperCore = {
     spaceBetween: 8,
-    slidesPerView: 1.5,
+    slidesPerView: 1.02,
+
+    breakpoints: {
+      320: {
+        slidesPerView: 1.02,
+      },
+      390: {
+        slidesPerView: 1.5,
+      },
+    },
   };
 
   const recommendQuizzes = quizRecommendModels.map(
