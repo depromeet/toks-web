@@ -17,13 +17,14 @@ export function QuizCarousel({
 
   const settings: SwiperCore = {
     spaceBetween: 8,
-    slidesPerView: 1.02,
+    slidesPerView: 1.1,
 
     breakpoints: {
-      320: {
-        slidesPerView: 1.02,
-      },
       390: {
+        slidesPerView: 1.4,
+      },
+
+      420: {
         slidesPerView: 1.5,
       },
     },
