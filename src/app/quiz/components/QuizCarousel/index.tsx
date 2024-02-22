@@ -20,12 +20,12 @@ export function QuizCarousel({
     slidesPerView: 1.1,
 
     breakpoints: {
-      390: {
-        slidesPerView: 1.4,
+      420: {
+        slidesPerView: 1.2,
       },
 
-      420: {
-        slidesPerView: 1.5,
+      440: {
+        slidesPerView: 1.3,
       },
     },
   };

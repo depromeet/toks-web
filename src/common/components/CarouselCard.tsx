@@ -44,7 +44,7 @@ export const CarouselCard = ({
       role="button"
       onClick={handleCardClick}
       className={clsx(
-        'flex h-160px min-w-240px max-w-320px justify-between gap-20px rounded-12px bg-gray-90 px-16px py-20px'
+        'flex min-w-246px max-w-320px justify-between gap-16px rounded-12px bg-gray-90 p-20px'
       )}
     >
       <div className="flex w-full flex-1 flex-col">
@@ -54,13 +54,13 @@ export const CarouselCard = ({
             {categoryTitle}
           </Text>
         </div>
-        <div className="inline-flex flex-1 -translate-y-0.5 items-center pt-12px">
-          <Text className="line-clamp-4" typo="subheadingBold" color="gray10">
+        <div className="inline-flex flex-1 -translate-y-0.5 items-center pt-8px">
+          <Text className="line-clamp-3" typo="subheadingBold" color="gray10">
             {quizDescription}
           </Text>
         </div>
       </div>
-      <div className="mt-10px flex h-100px w-100px flex-col justify-between overflow-hidden rounded-8px">
+      <div className="flex h-100px w-100px flex-col justify-between overflow-hidden rounded-8px">
         {isOX && images?.length === 0 ? (
           <OxQuizThumbnail />
         ) : (
