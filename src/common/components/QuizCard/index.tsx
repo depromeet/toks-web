@@ -2,50 +2,22 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import React from 'react';
 
-import { ICON_URL } from '@/common/constants';
-
 import type { QuizCardProps } from './types';
+import { Badge } from '../Badge';
 import { Text } from '../Text';
 
 export const QuizCard = ({
   categoryTitle,
   quizDescription,
   images,
-  likeCount = 0,
-  commentCount = 0,
-  sizeType = 'large',
   quizType = 'default',
   handleCardClick,
 }: QuizCardProps) => {
-  const isSmall = sizeType === 'small';
   const isOX = quizType === 'ox';
 
   const OxQuizThumbnail = () => {
-    if (isSmall) {
-      return (
-        <div className="flex h-full w-full rounded-8px">
-          <div
-            className="flex flex-1 items-center justify-center"
-            style={{
-              backgroundColor: '#3E97FF',
-            }}
-          >
-            <Image src={ICON_URL.O} alt="OX 퀴즈 O" width={24} height={24} />
-          </div>
-          <div
-            className="flex flex-1 items-center justify-center"
-            style={{
-              backgroundColor: '#FF5B65',
-            }}
-          >
-            <Image src={ICON_URL.X} alt="OX 퀴즈 X" width={22} height={22} />
-          </div>
-        </div>
-      );
-    }
-
     return (
-      <div className="flex h-full w-full flex-col gap-8px">
+      <div className="flex h-[167px] w-full flex-col gap-8px">
         <div
           className="relative flex flex-1 items-center justify-center rounded-8px"
           style={{
@@ -80,64 +52,39 @@ export const QuizCard = ({
       role="button"
       onClick={handleCardClick}
       className={clsx(
-        'flex w-full min-w-180px justify-between gap-20px rounded-12px bg-gray-110 px-16px py-20px',
-        isSmall ? 'h-160px' : 'h-220px'
+        'flex h-fit w-full min-w-180px flex-col justify-between gap-20px overflow-hidden rounded-12px bg-gray-110'
       )}
     >
-      <div className="flex w-full flex-1 flex-col">
-        <Text
-          className="inline-block"
-          typo="captionBold"
-          color="primaryDefault"
-        >
-          {categoryTitle}
-        </Text>
-        <div className="inline-flex flex-1 -translate-y-0.5 items-center pt-12px">
-          <Text
-            className="line-clamp-3"
-            typo={isSmall ? 'subheadingBold' : 'headingM'}
-            color="gray10"
-          >
-            {quizDescription}
-          </Text>
+      <div className="flex h-full w-full flex-col justify-between overflow-hidden rounded-8px">
+        <div className="flex h-[167px] w-full">
+          {isOX && images?.length === 0 ? (
+            <OxQuizThumbnail />
+          ) : (
+            images?.map((src, index) => (
+              <div className="h-full flex-1" key={`${src}-${index}`}>
+                <img
+                  className="h-full w-full object-cover object-center"
+                  src={src}
+                  alt={src}
+                  loading="lazy"
+                />
+              </div>
+            ))
+          )}
         </div>
-        <div className="flex gap-8px">
-          <Text typo="caption" color="gray50">
-            🔥 참여 {likeCount}명
-          </Text>
-          <Text typo="caption" color="gray50">
-            💬 댓글 {commentCount}개
-          </Text>
+        <div className="flex w-full flex-1 flex-col bg-gray-90 p-[16px]">
+          <div className="flex items-center gap-[4px]">
+            <Badge label={quizType === 'default' ? 'AB' : 'OX'} />
+            <Text typo="captionBold" color="gray60">
+              {categoryTitle}
+            </Text>
+          </div>
+          <div className="inline-flex flex-1 -translate-y-0.5 items-center pt-12px">
+            <Text className="line-clamp-2" typo={'headingM'} color="gray10">
+              {quizDescription}
+            </Text>
+          </div>
         </div>
-      </div>
-      <div className="flex h-full w-120px flex-col justify-between overflow-hidden rounded-8px">
-        {isOX && images?.length === 0 ? (
-          <OxQuizThumbnail />
-        ) : (
-          images?.map((src, index) => (
-            <div
-              className={images.length > 1 ? 'h-1/2' : 'h-full'}
-              key={`${src}-${index}`}
-            >
-              <img
-                className="h-full w-full"
-                src={src}
-                alt={src}
-                loading="lazy"
-                // fill={true}
-                style={{
-                  objectFit: 'cover',
-                  objectPosition: 'center',
-                }}
-                // layout="fill"
-                // objectFit="cover"
-                // objectPosition="center"
-                // placeholder="blur"
-                // blurDataURL={ICON_URL.BLUR_BACKGROUND}
-              />
-            </div>
-          ))
-        )}
       </div>
     </div>
   );
