@@ -13,6 +13,7 @@ import {
 } from '@/app/quiz/hooks/';
 import { OX, QuizButtonType } from '@/app/quiz/models/quiz';
 import { Text, bgColor } from '@/common';
+// import { Badge } from '@/common/components/Badge';
 
 type Props = {
   params: {
@@ -30,7 +31,6 @@ function DetailPage({ params: { quizId } }: Props) {
 
   const {
     quizTitle,
-    tags,
     oxImageUrl,
     buttonLeft,
     buttonRight,
@@ -57,16 +57,11 @@ function DetailPage({ params: { quizId } }: Props) {
       <section
         className={clsx(bgColor['gray110'], 'mt-8px rounded-16px p-20px')}
       >
-        <div className="flex gap-8px">
-          {[categoryName, ...tags].map((tagName, index) => (
-            <Text
-              key={`${tagName}-${index}`}
-              typo="captionBold"
-              color="primaryDefault"
-            >
-              {tagName}
-            </Text>
-          ))}
+        <div className="flex items-center gap-[4px]">
+          {/* <Badge label={checkSameQuizType('A_B_') ? 'AB' : 'OX'} /> */}
+          <Text typo="captionBold" color="gray60">
+            {categoryName}
+          </Text>
         </div>
         <Text className="mt-12px block " typo="headingL" color="gray10">
           {quizTitle}
