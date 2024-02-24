@@ -17,31 +17,23 @@ export const QuizCard = ({
 
   const OxQuizThumbnail = () => {
     return (
-      <div className="flex h-[167px] w-full flex-col gap-8px">
-        <div
-          className="relative flex flex-1 items-center justify-center rounded-8px"
-          style={{
-            backgroundColor: '#3E97FF',
-          }}
-        >
+      <div className="flex h-full flex-1">
+        <div className="relative flex flex-1 items-center justify-center bg-blue-10">
           <Image
+            width={73}
+            height={73}
             src="https://asset.tokstudy.com/ic_O.svg"
             alt="OX 퀴즈 O"
-            width={38}
-            height={38}
+            loading="lazy"
           />
         </div>
-        <div
-          className="relative flex flex-1 items-center justify-center rounded-8px"
-          style={{
-            backgroundColor: '#FF5B65',
-          }}
-        >
+        <div className="relative flex flex-1 items-center justify-center bg-danger-default">
           <Image
+            width={73}
+            height={73}
             src="https://asset.tokstudy.com/ic_X.svg"
             alt="OX 퀴즈 X"
-            width={36}
-            height={36}
+            loading="lazy"
           />
         </div>
       </div>
