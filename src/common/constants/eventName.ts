@@ -22,3 +22,17 @@ export const EVENT_NAME = {
     },
   },
 };
+
+type ClickEvent = {
+  click: string;
+};
+
+export type EventNameType = {
+  [feature: string]: {
+    [page: string]: {
+      [at: string]: {
+        [target: string]: ClickEvent;
+      };
+    };
+  };
+};
