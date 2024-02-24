@@ -6,6 +6,7 @@ import { ICON_URL, SSRSuspense } from '@/common';
 
 export const BackHeader = () => {
   const router = useRouter();
+
   return (
     <SSRSuspense
       fallback={<div className="h-54px bg-gray-120">로딩중입니다..</div>}
