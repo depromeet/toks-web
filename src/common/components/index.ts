@@ -17,3 +17,4 @@ export * from './Toast';
 export * from './BackHeader';
 export * from './ToksCalendar';
 export * from './NoticeSlider';
+export * from './LogClickEvent';

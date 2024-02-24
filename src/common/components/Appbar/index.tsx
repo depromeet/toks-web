@@ -9,6 +9,7 @@ import { GOOGLE_FORM_URL, ICON_URL, LOGIN_URL } from '@/common/constants';
 import { useAuth } from '@/common/hooks';
 
 import questionSvg from '../../../../public/img/icon/question.svg';
+import { LogClickEvent } from '../LogClickEvent';
 import { SSRSuspense } from '../SSRSuspense';
 import { Text } from '../Text';
 
@@ -62,7 +63,13 @@ export const Appbar = () => {
             )}
           </button>
         </div>
-        <QuizCategory />
+        <LogClickEvent
+          eventPath={['toks', '메인페이지', '카테고리', '카테고리']}
+        >
+          <span>
+            <QuizCategory />
+          </span>
+        </LogClickEvent>
       </nav>
     </SSRSuspense>
   );

@@ -5,6 +5,7 @@ import React from 'react';
 import { ICON_URL } from '@/common/constants';
 
 import { Badge } from './Badge';
+import { LogClickEvent } from './LogClickEvent';
 import { QuizCardProps } from './QuizCard/types';
 import { Text } from './Text';
 
@@ -40,49 +41,57 @@ export const CarouselCard = ({
   };
 
   return (
-    <div
-      role="button"
-      onClick={handleCardClick}
-      className={clsx(
-        'flex min-w-246px max-w-320px justify-between gap-16px rounded-12px bg-gray-90 p-20px'
-      )}
-    >
-      <div className="flex w-full flex-1 flex-col">
-        <div className="flex items-center gap-[4px]">
-          <Badge label={quizType === 'default' ? 'AB' : 'OX'} />
-          <Text typo="captionBold" color="gray60">
-            {categoryTitle}
-          </Text>
-        </div>
-        <div className="inline-flex flex-1 -translate-y-0.5 items-center pt-8px">
-          <Text className="line-clamp-3" typo="subheadingBold" color="gray10">
-            {quizDescription}
-          </Text>
-        </div>
-      </div>
-      <div className="flex h-100px w-100px flex-col justify-between overflow-hidden rounded-8px">
-        {isOX && images?.length === 0 ? (
-          <OxQuizThumbnail />
-        ) : (
-          images?.map((src, index) => (
-            <div
-              className={images.length > 1 ? 'h-1/2' : 'h-full'}
-              key={`${src}-${index}`}
-            >
-              <img
-                className="h-full w-full"
-                src={src}
-                alt={src}
-                loading="lazy"
-                style={{
-                  objectFit: 'cover',
-                  objectPosition: 'center',
-                }}
-              />
+    <LogClickEvent eventPath={['toks', '퀴즈페이지', '더보기퀴즈', '퀴즈카드']}>
+      <div>
+        <div
+          role="button"
+          onClick={handleCardClick}
+          className={clsx(
+            'flex min-w-246px max-w-320px justify-between gap-16px rounded-12px bg-gray-90 p-20px'
+          )}
+        >
+          <div className="flex w-full flex-1 flex-col">
+            <div className="flex items-center gap-[4px]">
+              <Badge label={quizType === 'default' ? 'AB' : 'OX'} />
+              <Text typo="captionBold" color="gray60">
+                {categoryTitle}
+              </Text>
             </div>
-          ))
-        )}
+            <div className="inline-flex flex-1 -translate-y-0.5 items-center pt-8px">
+              <Text
+                className="line-clamp-3"
+                typo="subheadingBold"
+                color="gray10"
+              >
+                {quizDescription}
+              </Text>
+            </div>
+          </div>
+          <div className="flex h-100px w-100px flex-col justify-between overflow-hidden rounded-8px">
+            {isOX && images?.length === 0 ? (
+              <OxQuizThumbnail />
+            ) : (
+              images?.map((src, index) => (
+                <div
+                  className={images.length > 1 ? 'h-1/2' : 'h-full'}
+                  key={`${src}-${index}`}
+                >
+                  <img
+                    className="h-full w-full"
+                    src={src}
+                    alt={src}
+                    loading="lazy"
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: 'center',
+                    }}
+                  />
+                </div>
+              ))
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </LogClickEvent>
   );
 };

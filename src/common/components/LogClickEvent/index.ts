@@ -22,7 +22,7 @@ export const LogClickEvent = ({ children, eventPath }: LogClickEventProps) => {
 
   return cloneElement(child, {
     onClick: () => {
-      logEvent(analytics, eventName);
+      analytics && logEvent(analytics, eventName);
     },
   });
 };
