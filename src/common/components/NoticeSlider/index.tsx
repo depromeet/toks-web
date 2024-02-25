@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useRef, useState } from 'react';
 import Slider from 'react-slick';
 
@@ -43,7 +42,7 @@ export const NoticeSlider = ({ images }: NoticeSliderProp) => {
         afterChange={(index) => handleAfterChange(index + 1)}
       >
         {images?.map(({ imageSrc, url }) => (
-          <Link
+          <a
             key={imageSrc}
             target="_blank"
             rel="noreferrer noopener"
@@ -55,7 +54,7 @@ export const NoticeSlider = ({ images }: NoticeSliderProp) => {
               alt="notice banner"
               src={imageSrc}
             />
-          </Link>
+          </a>
         ))}
       </Slider>
       {images.length > 1 && (
