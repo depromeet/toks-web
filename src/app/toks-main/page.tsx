@@ -33,9 +33,11 @@ function ToksMainPage() {
         />
       )}
       <CardList />
+
       <FloatingButton
         onClick={() => setIsOpenFloatingButtonBottomSheet(true)}
       />
+
       <MainPageBottomSheet
         onClose={() => setIsOpenFloatingButtonBottomSheet(false)}
         isShow={isOpenFloatingButtonBottomSheet}
