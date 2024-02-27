@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ['@tanstack/react-query', '@tanstack/query-core'],
   images: {
     domains: [
       'source.unsplash.com',
