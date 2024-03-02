@@ -2,13 +2,14 @@
 import { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 
-import { FloatingButton, NoticeSlider, Toast, ToastProps } from '@/common';
+import { FloatingButton, SSRSuspense, Toast, ToastProps } from '@/common';
 import { useToast } from '@/common/hooks';
 import { isVisibleFloatingButtonBottomSheetAtom } from '@/store';
 
 import { CardList } from './components/CardList';
 import { MainPageBottomSheet } from './components/MainPageBottomSheet';
-import { NOTICESLIDER_IMAGES } from './constants';
+import { MainPageSlider } from './components/MainPageSlider';
+import { SkeletonSlider } from './components/MainPageSlider/SkeletonSlider';
 
 function ToksMainPage() {
   const { getSavedToastInfo, clearSavedToast } = useToast();
@@ -33,7 +34,9 @@ function ToksMainPage() {
           title={toastData.title}
         />
       )}
-      <NoticeSlider images={NOTICESLIDER_IMAGES} />
+      <SSRSuspense fallback={<SkeletonSlider />}>
+        <MainPageSlider />
+      </SSRSuspense>
       <div className="h-24px" />
       <CardList />
 

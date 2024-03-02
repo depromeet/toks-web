@@ -196,6 +196,10 @@ http.interceptors.response.use(
 );
 
 http.interceptors.request.use((config) => {
+  if (typeof window === 'undefined') {
+    return config;
+  }
+
   const accessToken = getCookie('accessToken');
   if (accessToken) {
     config.headers['X-TOKS-AUTH-TOKEN'] = accessToken;

@@ -9,7 +9,7 @@ import { useQuizListInfinityQuery } from '@/queries/useQuizListInfinityQuery';
 
 import { QuizNotice } from './QuizNotice';
 import { SkeletonCardList } from './SkeletonCard';
-import { CARD_LIST_QUERY_DEFAULT } from '../constants';
+import { CARD_LIST_QUERY_DEFAULT } from '../constants/constants';
 
 export const CardList = () => {
   const router = useRouter();

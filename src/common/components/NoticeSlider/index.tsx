@@ -17,8 +17,8 @@ const setting = {
 };
 
 type NoticeSliderImageType = {
-  imageSrc: string;
-  url: string;
+  imageUrl: string;
+  landingUrl: string;
 };
 
 type NoticeSliderProp = {
@@ -41,18 +41,18 @@ export const NoticeSlider = ({ images }: NoticeSliderProp) => {
         {...setting}
         afterChange={(index) => handleAfterChange(index + 1)}
       >
-        {images?.map(({ imageSrc, url }) => (
+        {images?.map(({ imageUrl, landingUrl }) => (
           <a
-            key={imageSrc}
+            key={imageUrl}
             target="_blank"
             rel="noreferrer noopener"
-            href={url}
+            href={landingUrl}
             className="h-auto rounded-12px focus:outline-none"
           >
             <img
               className="aspect-w-3 aspect-h-1 z-0 h-auto w-full rounded-12px"
               alt="notice banner"
-              src={imageSrc}
+              src={imageUrl}
             />
           </a>
         ))}
