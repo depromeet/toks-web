@@ -1,13 +1,17 @@
-'use client';
-import { useSuspenseQuery } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { NoticeSlider } from '@/common';
 
+import { SkeletonSlider } from './SkeletonSlider';
 import { QUERY_KEYS } from '../../constants/queryKeys';
 import { getNotices } from '../../remotes/notice';
 
 export const MainPageSlider = () => {
-  const { data: notices } = useSuspenseQuery({
+  const {
+    data: notices,
+    isLoading,
+    isSuccess,
+  } = useQuery({
     queryKey: [QUERY_KEYS.GET_NOTICES],
     queryFn: async () => {
       try {
@@ -18,9 +22,16 @@ export const MainPageSlider = () => {
     },
   });
 
-  const imageInfo = notices.bottomBanners.map((el) => {
-    return { imageUrl: el.imageUrl, landingUrl: el.landingUrl };
-  });
+  if (isLoading) {
+    return <SkeletonSlider />;
+  }
 
-  return <NoticeSlider images={imageInfo} />;
+  if (isSuccess) {
+    const imageInfo = notices.bottomBanners.map((el) => {
+      return { imageUrl: el.imageUrl, landingUrl: el.landingUrl };
+    });
+    return <NoticeSlider images={imageInfo} />;
+  }
+
+  return null;
 };
