@@ -9,6 +9,7 @@ import { CategoryBottomSheet } from './toks-main/components/CategoryBottomSheet'
 export default function Template({ children }: StrictPropsWithChildren) {
   // TODO: useAuth hook 구현
   // TODO: useLogin Modal hook 구현
+  // TODO: GlobalPortal 제거
   const pathName = usePathname();
 
   return (

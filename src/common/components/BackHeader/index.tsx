@@ -6,13 +6,20 @@ import { ICON_URL, SSRSuspense } from '@/common';
 
 export const BackHeader = () => {
   const router = useRouter();
+  const onClick = () => {
+    if (typeof window !== 'undefined' && window.history.length > 1) {
+      router.back();
+    } else {
+      router.push('/');
+    }
+  };
   return (
     <SSRSuspense
       fallback={<div className="h-54px bg-gray-120">로딩중입니다..</div>}
     >
       <nav className="sticky left-0 right-0 top-0 z-50 h-54px bg-gray-120">
         <div className="flex h-full w-full items-center justify-between">
-          <button type="button" onClick={() => router.back()}>
+          <button type="button" onClick={onClick}>
             <Image
               className="h-auto w-24px"
               src={ICON_URL.CHEVRON_LEFT_BIG}

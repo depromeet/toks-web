@@ -8,6 +8,7 @@ import { isVisibleFloatingButtonBottomSheetAtom } from '@/store';
 
 import { CardList } from './components/CardList';
 import { MainPageBottomSheet } from './components/MainPageBottomSheet';
+import { MainPageSlider } from './components/MainPageSlider';
 
 function ToksMainPage() {
   const { getSavedToastInfo, clearSavedToast } = useToast();
@@ -32,6 +33,8 @@ function ToksMainPage() {
           title={toastData.title}
         />
       )}
+      <MainPageSlider />
+      <div className="h-24px" />
       <CardList />
 
       <FloatingButton
