@@ -56,3 +56,6 @@
 <img alt="github actions" src="https://img.shields.io/badge/-GithubActions-2088FF?style=flat-square&logo=githubactions&logoColor=white" />
 </p>
 </br>
+
+# Deploy Blueprint
+<img width="1290" alt="스크린샷 2023-07-31 오후 6 48 10" src="https://github.com/depromeet/toks-web/assets/47452547/143762a5-ff63-43de-bbab-7715116d5829">
